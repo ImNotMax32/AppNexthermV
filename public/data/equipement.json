@@ -1,0 +1,94 @@
+{
+    "products": [
+        {
+            "Nom": "Kit Eau de Nappe",
+            "Particularites": ["Accessoire", "Eau de Nappe"],
+            "Description": "Kit obligatoire pour une installation sur Eau de nappe pour la garantie. Contient : Échangeur à plaques, support et un contrôleur de débit.",
+            "Compatibilite": {
+                "gammes": ["SMARTPACK 2 & 3", "OPTIPACK & DUO"],
+                "versions": [
+                    {
+                        "modele": "KEN5",
+                        "puissance": "2 - 4 - 6 kW"
+                    },
+                    {
+                        "modele": "KEN9",
+                        "puissance": "8 - 10 kW"
+                    },
+                    {
+                        "modele": "KEN15",
+                        "puissance": "13 - 17 kW"
+                    },
+                    {
+                        "modele": "KEN30",
+                        "puissance": "20 - 25 - 30 kW"
+                    },
+                    {
+                        "modele": "KEN37",
+                        "puissance": "35 kW"
+                    },
+                    {
+                        "modele": "KEN43",
+                        "puissance": "40 kW"
+                    }
+                ]
+            }
+        },
+        {
+            "Nom": "Kit Échangeur Démontable",
+            "Particularites": ["Accessoire", "Échangeur"],
+            "Description": "Contient : Échangeur à plaques démontable et un contrôleur de débit.",
+            "Compatibilite": {
+                "gammes": ["SMARTPACK 2 & 3", "OPTIPACK & DUO"],
+                "versions": [
+                    {
+                        "modele": "KEBD5",
+                        "puissance": "2 - 4 - 6 kW"
+                    },
+                    {
+                        "modele": "KEBD10",
+                        "puissance": "8 - 13 kW"
+                    },
+                    {
+                        "modele": "KEBD15",
+                        "puissance": "15 - 20 kW"
+                    },
+                    {
+                        "modele": "KEBD30",
+                        "puissance": "25 - 30 kW"
+                    },
+                    {
+                        "modele": "KEBD37",
+                        "puissance": "35 - 40 kW"
+                    }
+                ]
+            }
+        },
+        {
+            "Nom": "Kit Piscine",
+            "Particularites": ["Accessoire", "Piscine"],
+            "Description": "Contient : Échangeur à plaques en titane, support, 1 vanne 3 voies, thermostat piscine.",
+            "Compatibilite": {
+                "gammes": ["SMARTPACK 2 & 3", "OPTIPACK & DUO"],
+                "versions": [
+                    {
+                        "modele": "KP15",
+                        "puissance": "2 - 4 - 6 - 8 kW"
+                    },
+                    {
+                        "modele": "KP25",
+                        "puissance": "10 - 13 kW"
+                    },
+                    {
+                        "modele": "KP30",
+                        "puissance": "17 - 20 kW"
+                    },
+                    {
+                        "modele": "KP40",
+                        "puissance": "25 - 30 kW"
+                    }
+                ]
+            }
+        }
+    ]
+}
