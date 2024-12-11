@@ -100,13 +100,13 @@ export const ClassicLayout: React.FC<LayoutProps> = ({
                   value={clientInfo.zipCode}
                   onChange={(e) => setClientInfo({...clientInfo, zipCode: e.target.value})}
                   placeholder="CP"
-                  className="w-full"
+                  className="w-1/3"
                 />
                 <CompactInput
                   value={clientInfo.city}
                   onChange={(e) => setClientInfo({...clientInfo, city: e.target.value})}
                   placeholder="Ville"
-                  className="w-full"
+                  className="w-2/3"
                 />
               </div>
             </div>

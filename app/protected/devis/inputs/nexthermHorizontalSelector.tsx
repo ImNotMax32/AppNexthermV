@@ -114,14 +114,14 @@ ${product.Description}`;
             >
               <div className="aspect-[4/3] bg-gray-100 relative overflow-hidden">
               <img 
-  src={getImagePath(product.Image2)} 
-  alt={product.Nom}
-  className="w-full h-full object-cover"
-  onError={(e) => {
-    console.error(`Failed to load image: ${product.Image2}`);
-    e.currentTarget.src = '/placeholder.jpg';
-  }}
-/>
+                src={getImagePath(product.Image2)} 
+                alt={product.Nom}
+                className="w-full h-full object-cover"
+                onError={(e) => {
+                  console.error(`Failed to load image: ${product.Image2}`);
+                  e.currentTarget.src = '/placeholder.jpg';
+                }}
+              />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-4">
                   <div className="text-white text-lg font-medium">{product.Nom}</div>

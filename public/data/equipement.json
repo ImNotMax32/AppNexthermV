@@ -3,32 +3,34 @@
         {
             "Nom": "Kit Eau de Nappe",
             "Particularites": ["Accessoire", "Eau de Nappe"],
-            "Description": "Kit obligatoire pour une installation sur Eau de nappe pour la garantie. Contient : Échangeur à plaques, support et un contrôleur de débit.",
+            "Description": "Contient : Échangeur à plaques, support et un contrôleur de débit. Kit obligatoire pour une installation sur Eau de nappe pour la garantie.",
+            "Image": "/images/kit-nappe.jpg",
+            "Image2": "/images/kit-nappe-2.jpg",
             "Compatibilite": {
                 "gammes": ["SMARTPACK 2 & 3", "OPTIPACK & DUO"],
                 "versions": [
                     {
-                        "modele": "KEN5",
-                        "puissance": "2 - 4 - 6 kW"
+                        "modele": "KEB5",
+                        "puissance": "2-4-6 kW"
                     },
                     {
-                        "modele": "KEN9",
-                        "puissance": "8 - 10 kW"
+                        "modele": "KEB9",
+                        "puissance": "8-10 kW"
                     },
                     {
-                        "modele": "KEN15",
-                        "puissance": "13 - 17 kW"
+                        "modele": "KEB15",
+                        "puissance": "13-17 kW"
                     },
                     {
-                        "modele": "KEN30",
-                        "puissance": "20 - 25 - 30 kW"
+                        "modele": "KEB30",
+                        "puissance": "20-25-30 kW"
                     },
                     {
-                        "modele": "KEN37",
+                        "modele": "KEB37",
                         "puissance": "35 kW"
                     },
                     {
-                        "modele": "KEN43",
+                        "modele": "KEB43",
                         "puissance": "40 kW"
                     }
                 ]
@@ -38,28 +40,30 @@
             "Nom": "Kit Échangeur Démontable",
             "Particularites": ["Accessoire", "Échangeur"],
             "Description": "Contient : Échangeur à plaques démontable et un contrôleur de débit.",
+            "Image": "/images/kit-echangeur.jpg",
+            "Image2": "/images/kit-echangeur-2.jpg",
             "Compatibilite": {
                 "gammes": ["SMARTPACK 2 & 3", "OPTIPACK & DUO"],
                 "versions": [
                     {
                         "modele": "KEBD5",
-                        "puissance": "2 - 4 - 6 kW"
+                        "puissance": "2-4-6 kW"
                     },
                     {
                         "modele": "KEBD10",
-                        "puissance": "8 - 13 kW"
+                        "puissance": "8-13 kW"
                     },
                     {
                         "modele": "KEBD15",
-                        "puissance": "15 - 20 kW"
+                        "puissance": "15-20 kW"
                     },
                     {
                         "modele": "KEBD30",
-                        "puissance": "25 - 30 kW"
+                        "puissance": "25-30 kW"
                     },
                     {
                         "modele": "KEBD37",
-                        "puissance": "35 - 40 kW"
+                        "puissance": "35-40 kW"
                     }
                 ]
             }
@@ -68,24 +72,194 @@
             "Nom": "Kit Piscine",
             "Particularites": ["Accessoire", "Piscine"],
             "Description": "Contient : Échangeur à plaques en titane, support, 1 vanne 3 voies, thermostat piscine.",
+            "Image": "/images/kit-piscine.jpg",
+            "Image2": "/images/kit-piscine-2.jpg",
             "Compatibilite": {
                 "gammes": ["SMARTPACK 2 & 3", "OPTIPACK & DUO"],
                 "versions": [
                     {
+                        "modele": "KP10",
+                        "puissance": "2-4-6-8 kW"
+                    },
+                    {
                         "modele": "KP15",
-                        "puissance": "2 - 4 - 6 - 8 kW"
+                        "puissance": "10-13 kW"
                     },
                     {
                         "modele": "KP25",
-                        "puissance": "10 - 13 kW"
+                        "puissance": "17-20 kW"
                     },
                     {
                         "modele": "KP30",
-                        "puissance": "17 - 20 kW"
+                        "puissance": "25-30 kW"
                     },
                     {
                         "modele": "KP40",
-                        "puissance": "25 - 30 kW"
+                        "puissance": "35-40 kW"
+                    }
+                ]
+            }
+        },
+        {
+            "Nom": "Kit 2 Zones (Plancher)",
+            "Particularites": ["Régulation", "Plancher"],
+            "Description": "Contient : Ballon tampon (Suivant la puissance de la PAC : 100L KDZBP8 / 200L KDZBP22 / 500L KDZBP30), 2 thermostats",
+            "Image": "/images/kit-2zones-plancher.jpg",
+            "Image2": "/images/kit-2zones-plancher-2.jpg",
+            "Compatibilite": {
+                "gammes": ["SMARTPACK 2 & 3", "OPTIPACK & DUO"],
+                "versions": [
+                    {
+                        "modele": "KDZBP8",
+                        "puissance": "2-4-6-8 kW"
+                    },
+                    {
+                        "modele": "KDZBP15",
+                        "puissance": "10-13 kW"
+                    },
+                    {
+                        "modele": "KDZBP22",
+                        "puissance": "17-20 kW"
+                    },
+                    {
+                        "modele": "KDZBP30",
+                        "puissance": "25-30 kW"
+                    }
+                ]
+            }
+        },
+        {
+            "Nom": "Kit 2 Zones (Plancher / Radiateurs)",
+            "Particularites": ["Régulation", "Plancher", "Radiateurs"],
+            "Description": "Contient : Ballon tampon (Suivant la puissance de la PAC : 100L KDZBP8 / 200L KDZBP22 / 500L KDZBP30), 2 thermostats radio, 1 circulateur, 1 vanne 3 voies avec régulateur de température, 3 vannes isolements, 2 circulateurs",
+            "Image": "/images/kit-2zones-pr.jpg",
+            "Image2": "/images/kit-2zones-pr-2.jpg",
+            "Compatibilite": {
+                "gammes": ["SMARTPACK 2 & 3", "OPTIPACK & DUO"],
+                "versions": [
+                    {
+                        "modele": "KDZBPR8",
+                        "puissance": "2-4-6-8 kW"
+                    },
+                    {
+                        "modele": "KDZBPR15",
+                        "puissance": "10-13 kW"
+                    },
+                    {
+                        "modele": "KDZBPR22",
+                        "puissance": "17-20 kW"
+                    },
+                    {
+                        "modele": "KDZBPR30",
+                        "puissance": "25-30 kW"
+                    }
+                ]
+            }
+        },
+        {
+            "Nom": "Kit 2 Zones Radiateurs",
+            "Particularites": ["Régulation", "Radiateurs"],
+            "Description": "Contient : Ballon tampon (Suivant la puissance de la PAC : 100L KDZB8 / 200L KDZBP22 / 500L KDZBP30), 2 vanne 3 voies, 4 vannes, 2 thermostats radio, 1 soupape différentielle, 2 circulateurs",
+            "Image": "/images/kit-2zones-rad.jpg",
+            "Image2": "/images/kit-2zones-rad-2.jpg",
+            "Compatibilite": {
+                "gammes": ["SMARTPACK 2 & 3", "OPTIPACK & DUO"],
+                "versions": [
+                    {
+                        "modele": "KDZR8",
+                        "puissance": "2-4-6-8 kW"
+                    },
+                    {
+                        "modele": "KDZR15",
+                        "puissance": "10-13 kW"
+                    },
+                    {
+                        "modele": "KDZR22",
+                        "puissance": "17-20 kW"
+                    },
+                    {
+                        "modele": "KDZR40",
+                        "puissance": "25-30-35-40 kW"
+                    }
+                ]
+            }
+        },
+        {
+            "Nom": "Kit 1 Zone Radiateurs",
+            "Particularites": ["Régulation", "Radiateurs"],
+            "Description": "Kit de régulation pour une zone radiateurs",
+            "Image": "/images/kit-1zone-rad.jpg",
+            "Image2": "/images/kit-1zone-rad-2.jpg",
+            "Compatibilite": {
+                "gammes": ["SMARTPACK 2 & 3", "OPTIPACK & DUO"],
+                "versions": [
+                    {
+                        "modele": "KUZBR8",
+                        "puissance": "2-4-6-8 kW"
+                    },
+                    {
+                        "modele": "KUZBR15",
+                        "puissance": "10-13 kW"
+                    },
+                    {
+                        "modele": "KUZBR22",
+                        "puissance": "17-20 kW"
+                    }
+                ]
+            }
+        },
+        {
+            "Nom": "Kit Freecooling",
+            "Particularites": ["Régulation", "Freecooling"],
+            "Description": "Uniquement sur Eau Glycolée / Eau sur sonde ou Eau de nappe",
+            "Image": "/images/kit-freecooling.jpg",
+            "Image2": "/images/kit-freecooling-2.jpg",
+            "Compatibilite": {
+                "gammes": ["SMARTPACK 2 & 3", "OPTIPACK & DUO"],
+                "versions": [
+                    {
+                        "modele": "KFC",
+                        "puissance": "2-4-6-8 kW"
+                    },
+                    {
+                        "modele": "KFC2",
+                        "puissance": "10-13 kW"
+                    },
+                    {
+                        "modele": "KFC4",
+                        "puissance": "17-20 kW"
+                    }
+                ]
+            }
+        },
+        {
+            "Nom": "Kit Cascade",
+            "Particularites": ["Régulation", "Cascade"],
+            "Description": "Kit de régulation pour installation en cascade",
+            "Image": "/images/kit-cascade.jpg",
+            "Image2": "/images/kit-cascade-2.jpg",
+            "Compatibilite": {
+                "gammes": ["SMARTPACK 2 & 3", "OPTIPACK & DUO"],
+                "versions": [
+                    {
+                        "modele": "KITCASCADE2M",
+                        "puissance": "Toutes puissances"
+                    }
+                ]
+            }
+        },
+        {
+            "Nom": "Kit Résistance Électrique 1500W Monté",
+            "Particularites": ["Accessoire", "Résistance"],
+            "Description": "Résistance électrique d'appoint 1500W montée",
+            "Image": "/images/kit-resistance.jpg",
+            "Image2": "/images/kit-resistance-2.jpg",
+            "Compatibilite": {
+                "gammes": ["SMARTPACK 2 & 3", "OPTIPACK & DUO"],
+                "versions": [
+                    {
+                        "modele": "KR1500MN",
+                        "puissance": "Toutes puissances"
                     }
                 ]
             }

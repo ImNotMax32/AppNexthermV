@@ -27,9 +27,11 @@ import {
 import { createClient } from '@/utils/supabase/client';
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Search, FileText, Trash2, Filter, SlidersHorizontal, Pencil } from "lucide-react";
+import { ChevronDown, ChevronUp, Check, X, Send } from 'lucide-react';
 import { useToast } from "@/components/ui/use-toast";
+
 
 interface DevisInfo {
   id: string;
@@ -72,6 +74,221 @@ interface DevisInfo {
   tva_number: string;
 }
 
+const ExpandableQuoteRow = ({ 
+  devis, 
+  onEdit, 
+  onDelete, 
+  onUpdateStatus 
+}: { 
+  devis: DevisInfo;
+  onEdit: (devis: DevisInfo) => void;
+  onDelete: (id: string) => void;
+  onUpdateStatus: (id: string, status: string) => void;
+}) => {
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  const getStatusColor = (status: string) => {
+    switch(status) {
+      case 'accepted': return 'bg-green-100 text-green-800';
+      case 'rejected': return 'bg-red-100 text-red-800';
+      case 'sent': return 'bg-blue-100 text-blue-800';
+      default: return 'bg-gray-100 text-gray-800';
+    }
+  };
+
+  const getStatusText = (status: string) => {
+    switch(status) {
+      case 'accepted': return 'Accepté';
+      case 'rejected': return 'Refusé';
+      case 'sent': return 'Envoyé';
+      default: return 'Brouillon';
+    }
+  };
+
+  const renderActionButtons = () => (
+    <div className="flex items-center justify-end gap-2">
+      {!isExpanded && (
+        <>
+          <Button
+            variant="ghost"
+            size="icon"
+            className="hover:text-[#86BC29]"
+            onClick={(e) => {
+              e.stopPropagation();
+              onEdit(devis);
+            }}
+            title="Modifier le devis"
+          >
+            <Pencil className="h-4 w-4" />
+          </Button>
+          <Button
+            variant="ghost"
+            size="icon"
+            className="hover:text-red-600"
+            onClick={(e) => {
+              e.stopPropagation();
+              onDelete(devis.id);
+            }}
+            title="Supprimer le devis"
+          >
+            <Trash2 className="h-4 w-4" />
+          </Button>
+        </>
+      )}
+      {isExpanded ? 
+        <ChevronUp className="h-4 w-4 text-gray-400" /> : 
+        <ChevronDown className="h-4 w-4 text-gray-400" />
+      }
+    </div>
+  );
+
+  const renderDetailedActions = () => (
+    <div className="flex justify-between items-center pt-4 border-t">
+      <div className="space-x-2">
+        <Button
+          size="sm"
+          variant="outline"
+          className="hover:text-[#86BC29] hover:border-[#86BC29]"
+          onClick={(e) => {
+            e.stopPropagation();
+            onEdit(devis);
+          }}
+        >
+          <Pencil className="h-4 w-4 mr-2" />
+          Modifier
+        </Button>
+        <Button
+          size="sm"
+          variant="outline"
+          className="hover:text-red-600 hover:border-red-600"
+          onClick={(e) => {
+            e.stopPropagation();
+            onDelete(devis.id);
+          }}
+        >
+          <Trash2 className="h-4 w-4 mr-2" />
+          Supprimer
+        </Button>
+      </div>
+      <div className="space-x-2">
+        {devis.status === 'draft' && (
+          <Button
+            size="sm"
+            variant="outline"
+            className="hover:text-blue-600 hover:border-blue-600"
+            onClick={(e) => {
+              e.stopPropagation();
+              onUpdateStatus(devis.id, 'sent');
+            }}
+          >
+            <Send className="h-4 w-4 mr-2" />
+            Marquer comme envoyé
+          </Button>
+        )}
+        {devis.status === 'sent' && (
+          <>
+            <Button
+              size="sm"
+              variant="outline"
+              className="hover:text-green-600 hover:border-green-600"
+              onClick={(e) => {
+                e.stopPropagation();
+                onUpdateStatus(devis.id, 'accepted');
+              }}
+            >
+              <Check className="h-4 w-4 mr-2" />
+              Marquer comme accepté
+            </Button>
+            <Button
+              size="sm"
+              variant="outline"
+              className="hover:text-red-600 hover:border-red-600"
+              onClick={(e) => {
+                e.stopPropagation();
+                onUpdateStatus(devis.id, 'rejected');
+              }}
+            >
+              <X className="h-4 w-4 mr-2" />
+              Marquer comme refusé
+            </Button>
+          </>
+        )}
+      </div>
+    </div>
+  );
+
+  return (
+    <>
+      <TableRow className="group cursor-pointer" onClick={() => setIsExpanded(!isExpanded)}>
+        <TableCell className="font-medium">{devis.reference}</TableCell>
+        <TableCell>{devis.client_info?.name}</TableCell>
+        <TableCell>{new Date(devis.created_at).toLocaleDateString('fr-FR')}</TableCell>
+        <TableCell>
+          {new Intl.NumberFormat('fr-FR', {
+            style: 'currency',
+            currency: 'EUR'
+          }).format(devis.totals?.totalTTC || 0)}
+        </TableCell>
+        <TableCell>
+          <span className={`px-2 py-1 rounded-full text-xs ${getStatusColor(devis.status)}`}>
+            {getStatusText(devis.status)}
+          </span>
+        </TableCell>
+        <TableCell className="text-right pr-4">
+          {renderActionButtons()}
+        </TableCell>
+      </TableRow>
+      
+      <AnimatePresence>
+        {isExpanded && (
+          <TableRow>
+            <TableCell colSpan={6} className="p-0">
+              <motion.div
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: "auto", opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.2 }}
+                className="bg-gray-50"
+              >
+                <div className="p-4 space-y-4">
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <h4 className="font-semibold mb-2">Informations client</h4>
+                      <div className="text-sm space-y-1">
+                        <p>{devis.client_info?.name}</p>
+                        <p>{devis.client_info?.address}</p>
+                        <p>{devis.client_info?.zipCode} {devis.client_info?.city}</p>
+                        <p>{devis.client_info?.email}</p>
+                        <p>{devis.client_info?.phone}</p>
+                      </div>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold mb-2">Détails du devis</h4>
+                      <div className="text-sm space-y-1">
+                        <p>Total HT: {new Intl.NumberFormat('fr-FR', {
+                          style: 'currency',
+                          currency: 'EUR'
+                        }).format(devis.totals?.totalHT || 0)}</p>
+                        <p>TVA: {new Intl.NumberFormat('fr-FR', {
+                          style: 'currency',
+                          currency: 'EUR'
+                        }).format(devis.totals?.totalTVA || 0)}</p>
+                        <p>Nombre de produits: {devis.products?.length || 0}</p>
+                        <p>Date de validité: {new Date(devis.validity_date).toLocaleDateString('fr-FR')}</p>
+                      </div>
+                    </div>
+                  </div>
+                  {renderDetailedActions()}
+                </div>
+              </motion.div>
+            </TableCell>
+          </TableRow>
+        )}
+      </AnimatePresence>
+    </>
+  );
+};
+
 export default function QuoteList() {
     const router = useRouter();
     const supabase = useMemo(() => createClient(), []);
@@ -83,6 +300,37 @@ export default function QuoteList() {
     const [timeFilter, setTimeFilter] = useState<string>('all');
     const [sortOrder, setSortOrder] = useState<'newest' | 'oldest'>('newest');
     const { toast } = useToast();
+
+
+  const updateDevisStatus = async (id: string, newStatus: string) => {
+    try {
+      const { error } = await supabase
+        .from('devis')
+        .update({ status: newStatus })
+        .eq('id', id);
+  
+      if (error) throw error;
+  
+      setDevis(prevDevis => 
+        prevDevis.map(d => 
+          d.id === id ? { ...d, status: newStatus } : d
+        )
+      );
+  
+      toast({
+        title: "Succès",
+        description: "Le statut du devis a été mis à jour",
+      });
+    } catch (error) {
+      console.error('Error updating quote status:', error);
+      toast({
+        title: "Erreur",
+        description: "Impossible de mettre à jour le statut du devis",
+        variant: "destructive",
+      });
+    }
+  };
+
 
   // Fonction pour récupérer les devis
   const fetchDevis = useCallback(async () => {
@@ -194,31 +442,15 @@ export default function QuoteList() {
     }
   };
 
-  const handleEdit = async (devis: DevisInfo) => {
+  const handleEdit = (devis: DevisInfo) => {
     try {
-      // Store the devis data in localStorage for the edit page
-      localStorage.setItem('editDevisData', JSON.stringify({
-        quoteInfo: {
-          reference: devis.reference,
-          creationDate: devis.creation_date,
-          validityDate: devis.validity_date,
-          tvaNumber: devis.tva_number
-        },
-        clientInfo: devis.client_info,
-        companyInfo: devis.company_info,
-        products: devis.products.map(product => ({
-          ...product,
-          totalHT: product.quantity * product.priceHT
-        }))
-      }));
-
-      // Navigate to the edit page
-      router.push(`/protected/devis/new?id=${devis.id}`);
+      // Redirection vers la page de devis avec l'ID en paramètre
+      router.push(`/protected/devis?id=${devis.id}`);
     } catch (error) {
-      console.error('Error preparing devis for editing:', error);
+      console.error('Error navigating to edit devis:', error);
       toast({
         title: "Erreur",
-        description: "Impossible de charger le devis pour modification",
+        description: "Impossible d'accéder à l'édition du devis",
         variant: "destructive",
       });
     }
@@ -337,7 +569,7 @@ export default function QuoteList() {
   
               <Button 
                 className="flex items-center gap-2"
-                onClick={() => router.push('/protected/devis/new')}
+                onClick={() => router.push('/protected/devis')}
               >
                 <FileText className="h-4 w-4" />
                 Nouveau devis
@@ -382,58 +614,13 @@ export default function QuoteList() {
                 </TableRow>
               ) : (
                 filteredDevis.map((devis) => (
-                  <TableRow key={devis.id}>
-                    <TableCell className="font-medium">
-                      {devis.reference}
-                    </TableCell>
-                    <TableCell>
-                      {devis.client_info?.name}
-                    </TableCell>
-                    <TableCell>
-                      {new Date(devis.created_at).toLocaleDateString('fr-FR')}
-                    </TableCell>
-                    <TableCell>
-                      {new Intl.NumberFormat('fr-FR', {
-                        style: 'currency',
-                        currency: 'EUR'
-                      }).format(devis.totals?.totalTTC || 0)}
-                    </TableCell>
-                    <TableCell>
-                      <span className={`px-2 py-1 rounded-full text-xs ${
-                        devis.status === 'accepted' ? 'bg-green-100 text-green-800' :
-                        devis.status === 'rejected' ? 'bg-red-100 text-red-800' :
-                        devis.status === 'sent' ? 'bg-blue-100 text-blue-800' :
-                        'bg-gray-100 text-gray-800'
-                      }`}>
-                        {devis.status === 'accepted' ? 'Accepté' :
-                         devis.status === 'rejected' ? 'Refusé' :
-                         devis.status === 'sent' ? 'Envoyé' :
-                         'Brouillon'}
-                      </span>
-                    </TableCell>
-                    <TableCell className="text-right">
-                        <div className="flex justify-end gap-2">
-                        <Button
-                            variant="ghost"
-                            size="icon"
-                            className="hover:text-[#86BC29]"
-                            onClick={() => handleEdit(devis)}
-                            title="Modifier le devis"
-                            >
-                            <Pencil className="h-4 w-4" />
-                            </Button>
-                            <Button
-                            variant="ghost"
-                            size="icon"
-                            className="hover:text-red-600"
-                            onClick={() => deleteDevis(devis.id)}
-                            title="Supprimer le devis"
-                            >
-                            <Trash2 className="h-4 w-4" />
-                            </Button>
-                        </div>
-                        </TableCell>
-                  </TableRow>
+                  <ExpandableQuoteRow
+                    key={devis.id}
+                    devis={devis}
+                    onEdit={handleEdit}
+                    onDelete={deleteDevis}
+                    onUpdateStatus={updateDevisStatus}
+                  />
                 ))
               )}
             </TableBody>
@@ -442,4 +629,4 @@ export default function QuoteList() {
       </Card>
     </motion.div>
   );
-};
+}

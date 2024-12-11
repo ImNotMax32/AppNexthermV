@@ -443,6 +443,7 @@ const getPoolKitModel = (powerKw: number) => {
   if (powerKw <= 27) return { code: "KP 25", power: "17-27 kW" };
   return { code: "KP 35", power: "27+ kW" };
 };
+
 const convertToQuote = async (calculation: Calculation) => {
   try {
     const selectedProduct = calculation.parameters?.selectedProduct;
@@ -459,58 +460,54 @@ const convertToQuote = async (calculation: Calculation) => {
       return;
     }
 
-    console.log('Données heatPump:', heatPump); // Debug log
+    // Création des produits avec totalHT calculé
+    const createProduct = (code: string, description: string, quantity: number = 1, priceHT: number = 0, tva: number = 20) => ({
+      code,
+      description,
+      quantity,
+      priceHT,
+      tva,
+      totalHT: quantity * priceHT // Ajout du totalHT
+    });
 
     const products = [];
 
     // Produit principal
-    const mainProduct = {
-      code: selectedProduct.selectedModel.modele,
-      description: `${selectedProduct.Nom}
+    const mainProduct = createProduct(
+      selectedProduct.selectedModel.modele,
+      `${selectedProduct.Nom}
 Caractéristiques techniques:
-• Puissance calorifique: ${selectedProduct.selectedModel.puissance_calo} kW
-• Puissance frigorifique: ${selectedProduct.selectedModel.puissance_frigo} kW
-• COP: ${selectedProduct.selectedModel.cop}
-• ETAS: ${selectedProduct.selectedModel.etas}%
+- Puissance calorifique: ${selectedProduct.selectedModel.puissance_calo} kW
+- Puissance frigorifique: ${selectedProduct.selectedModel.puissance_frigo} kW
+- COP: ${selectedProduct.selectedModel.cop}
+- ETAS: ${selectedProduct.selectedModel.etas}%
 Type: ${selectedProduct.Particularites.join(', ')}
 Type de capteur: ${heatPump?.captorType || 'Non spécifié'}
-${heatPump?.captorType === 'Vertical' ? `Eau de nappe: ${heatPump?.waterTable}` : ''}`,
-      quantity: 1,
-      priceHT: 0,
-      tva: 20,
-    };
+${heatPump?.captorType === 'Vertical' ? `Eau de nappe: ${heatPump?.waterTable}` : ''}`
+    );
     products.push(mainProduct);
 
-    // Vérification pour le kit eau de nappe
+    // Kit eau de nappe
     const isGeothermal = selectedProduct.Particularites.includes('Geothermie');
-    if (isGeothermal && 
-        heatPump?.captorType === 'Vertical' && 
-        heatPump?.waterTable === 'Oui') {
-      console.log('Ajout du kit eau de nappe'); // Debug log
+    if (isGeothermal && heatPump?.captorType === 'Vertical' && heatPump?.waterTable === 'Oui') {
       const waterKit = getWaterKitModel(selectedProduct.selectedModel.puissance_calo);
-      products.push({
-        code: waterKit.code,
-        description: `Kit Eau de Nappe - ${waterKit.power}
+      products.push(createProduct(
+        waterKit.code,
+        `Kit Eau de Nappe - ${waterKit.power}
 Compatible avec ${selectedProduct.selectedModel.modele}
-Inclut : pompe de relevage, filtres et accessoires`,
-        quantity: 1,
-        priceHT: 0,
-        tva: 20,
-      });
+Inclut : pompe de relevage, filtres et accessoires`
+      ));
     }
 
-    // Ajout du kit piscine si nécessaire
+    // Kit piscine
     if (building?.poolKit === 'Oui') {
       const poolKit = getPoolKitModel(selectedProduct.selectedModel.puissance_calo);
-      products.push({
-        code: poolKit.code,
-        description: `Kit Piscine - ${poolKit.power}
+      products.push(createProduct(
+        poolKit.code,
+        `Kit Piscine - ${poolKit.power}
 Compatible avec ${selectedProduct.selectedModel.modele}
-Inclut : échangeur et vannes de régulation`,
-        quantity: 1,
-        priceHT: 0,
-        tva: 20,
-      });
+Inclut : échangeur et vannes de régulation`
+      ));
     }
 
     const quoteData: QuoteConversionData = {
@@ -538,9 +535,14 @@ Inclut : échangeur et vannes de régulation`,
       } : undefined
     };
 
-    console.log("Données complètes pour le devis:", quoteData); // Debug log
+    // Log de vérification avant stockage
+    console.log("Données formatées pour conversion:", quoteData);
+    console.log("Produits formatés:", products);
+
+    // Stockage dans localStorage
     localStorage.setItem('quoteConversionData', JSON.stringify(quoteData));
     
+    // Navigation après confirmation du stockage
     router.push('/protected/devis');
 
   } catch (error) {

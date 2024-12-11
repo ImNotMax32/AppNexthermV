@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import { createClient } from '@/utils/supabase/client';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
-import { ArrowUp, ArrowRight, Activity, PieChart as PieChartIcon } from 'lucide-react';
+import { ArrowUp, ArrowRight, Activity, PieChart as PieChartIcon, Calculator, FileText } from 'lucide-react';
 import { useToast } from "@/components/ui/use-toast";
 import { Button } from "@/components/ui/button";
 import { useRouter } from 'next/navigation';
@@ -26,6 +26,19 @@ interface Calculation {
   };
 }
 
+interface DevisInfo {
+  id: string;
+  reference: string;
+  created_at: string;
+  status: string;
+  client_info: {
+    name: string;
+  };
+  totals: {
+    totalTTC: number;
+  };
+}
+
 interface PieDataItem {
   name: string;
   value: number;
@@ -35,55 +48,71 @@ const COLORS = ['#86BC29', '#FFB020', '#0EA5E9', '#F43F5E', '#8B5CF6'];
 
 export default function VueGenerale() {
   const [calculations, setCalculations] = useState<Calculation[]>([]);
+  const [devis, setDevis] = useState<DevisInfo[]>([]);
   const [analysisType, setAnalysisType] = useState<'type' | 'department'>('type');
+  const [devisAnalysisType, setDevisAnalysisType] = useState<'status' | 'month'>('status');
   const [isLoading, setIsLoading] = useState(true);
   const { toast } = useToast();
   const router = useRouter();
   const supabase = useMemo(() => createClient(), []);
   
-
   useEffect(() => {
-    const fetchCalculations = async () => {
+    const fetchData = async () => {
       try {
         setIsLoading(true);
-        const { data, error } = await supabase
+        
+        // Fetch des dimensionnements
+        const { data: dimensionnements, error: dimError } = await supabase
           .from('dimensionnements')
           .select('*')
           .is('deleted_at', null)
           .order('created_at', { ascending: false });
-  
-        if (error) throw error;
-        setCalculations(data || []);
+
+        if (dimError) throw dimError;
+        setCalculations(dimensionnements || []);
+
+        // Fetch des devis
+        const { data: devisData, error: devisError } = await supabase
+          .from('devis')
+          .select('*')
+          .order('created_at', { ascending: false });
+
+        if (devisError) throw devisError;
+        setDevis(devisData || []);
+
       } catch (error) {
-        console.error('Error fetching calculations:', error);
+        console.error('Error fetching data:', error);
         toast({
           title: "Erreur",
-          description: "Impossible de charger les calculs",
+          description: "Impossible de charger les données",
           variant: "destructive",
         });
       } finally {
         setIsLoading(false);
       }
     };
-  
-    fetchCalculations();
-  
-    // Mettre en place un listener Supabase pour les mises à jour en temps réel
-    const channel = supabase
-      .channel('schema-db-changes')
-      .on('postgres_changes', 
-        { event: '*', schema: 'public', table: 'dimensionnements' }, 
-        () => {
-          fetchCalculations();
-        }
-      )
+
+    fetchData();
+
+    // Mise en place des listeners pour les deux tables
+    const dimensionnementsChannel = supabase
+      .channel('dimensionnements-changes')
+      .on('postgres_changes', { event: '*', schema: 'public', table: 'dimensionnements' }, 
+        () => fetchData())
       .subscribe();
-  
-    // Cleanup function
+
+    const devisChannel = supabase
+      .channel('devis-changes')
+      .on('postgres_changes', { event: '*', schema: 'public', table: 'devis' }, 
+        () => fetchData())
+      .subscribe();
+
     return () => {
-      channel.unsubscribe();
+      dimensionnementsChannel.unsubscribe();
+      devisChannel.unsubscribe();
     };
   }, [supabase, toast]);
+
 
   const getChartData = () => {
     // Créer un tableau des 30 derniers jours
@@ -221,9 +250,57 @@ export default function VueGenerale() {
     router.push('/protected/dimensionnement/save');
   };
 
+  const getDevisChartData = () => {
+    const last30Days = [...Array(30)].map((_, i) => {
+      const date = new Date();
+      date.setDate(date.getDate() - (29 - i));
+      return date.toISOString().split('T')[0];
+    });
+
+    return last30Days.map(date => ({
+      date,
+      count: devis.filter(d => 
+        new Date(d.created_at).toISOString().split('T')[0] === date
+      ).length
+    }));
+  };
+
+  const getDevisPieData = () => {
+    if (devisAnalysisType === 'status') {
+      const statusCounts = devis.reduce((acc: Record<string, number>, d) => {
+        const status = d.status === 'draft' ? 'Brouillon' :
+                      d.status === 'sent' ? 'Envoyé' :
+                      d.status === 'accepted' ? 'Accepté' :
+                      d.status === 'rejected' ? 'Refusé' : 'Non spécifié';
+        acc[status] = (acc[status] || 0) + 1;
+        return acc;
+      }, {});
+
+      return Object.entries(statusCounts).map(([name, value]) => ({
+        name,
+        value
+      }));
+    } else {
+      // Analyse par mois
+      const monthCounts = devis.reduce((acc: Record<string, number>, d) => {
+        const month = new Date(d.created_at).toLocaleDateString('fr-FR', { month: 'long' });
+        acc[month] = (acc[month] || 0) + 1;
+        return acc;
+      }, {});
+
+      return Object.entries(monthCounts)
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, 5)
+        .map(([name, value]) => ({
+          name,
+          value
+        }));
+    }
+  };
+
+
   return (
     <div className="p-6 space-y-6">
-      {/* En-tête avec animation */}
       <motion.h1 
         className="text-2xl font-bold text-gray-800"
         initial={{ opacity: 0, y: -20 }}
@@ -233,7 +310,20 @@ export default function VueGenerale() {
         Vue Générale
       </motion.h1>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {/* Section Dimensionnements */}
+      <div className="space-y-6">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+        >
+          <h2 className="text-lg text-gray-400 flex items-center gap-2 mb-4">
+            <Calculator className="w-5 h-5" />
+            Statistiques Dimensionnements
+          </h2>
+        </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Graphique linéaire */}
         <motion.div
           initial={{ y: 20, opacity: 0 }}
@@ -373,38 +463,156 @@ export default function VueGenerale() {
           </Card>
         </motion.div>
       </div>
+      </div>
 
-      {/* Liste des derniers dimensionnements */}
-      <motion.div
-        initial={{ y: 20, opacity: 0 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.4 }}
-      >
-        <Card className="bg-gradient-to-br from-white to-gray-50 border-none shadow-lg">
-          <CardHeader className="pb-2">
-            <CardTitle className="text-lg text-gray-600">Derniers dimensionnements</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-              {calculations.slice(0, 4).map((calc) => (
-                <div
-                  key={calc.id}
-                  className="group flex items-center gap-3 p-3 rounded-lg hover:bg-gray-50 cursor-pointer"
-                  onClick={navigateToSavedFiles}
-                >
-                  <div className="flex-1 min-w-0">
-                    <div className="font-medium truncate">{calc.projectName}</div>
-                    <div className="text-xs text-gray-500">
-                      {new Date(calc.created_at).toLocaleDateString('fr-FR')}
-                    </div>
-                  </div>
-                  <ArrowRight className="w-4 h-4 text-gray-400 group-hover:text-[#86BC29] transition-colors" />
+      
+    {/* Section Devis */}
+    <div className="space-y-6 mt-8">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+        >
+          <h2 className="text-lg text-gray-400 flex items-center gap-2 mb-4">
+            <FileText className="w-5 h-5" />
+            Statistiques Devis
+          </h2>
+        </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {/* Graphique linéaire des devis */}
+          <motion.div
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <Card className="bg-gradient-to-br from-white to-gray-50 border-none shadow-lg">
+              <CardHeader className="pb-2">
+                <CardTitle className="text-lg text-gray-600 flex items-center gap-2">
+                  <Activity className="w-5 h-5" />
+                  Performance mensuelle des devis
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="h-[150px]">
+                  <ResponsiveContainer width="100%" height="100%">
+                    <LineChart data={getDevisChartData()}>
+                      <CartesianGrid strokeDasharray="3 3" stroke="#E5E7EB" />
+                      <XAxis 
+                        dataKey="date" 
+                        tick={{ fill: '#6B7280', fontSize: 12 }}
+                        tickFormatter={(date) => new Date(date).toLocaleDateString('fr-FR', { 
+                          day: '2-digit',
+                          month: '2-digit'
+                        })}
+                      />
+                      <YAxis tick={{ fill: '#6B7280', fontSize: 12 }} />
+                      <Tooltip
+                        contentStyle={{
+                          backgroundColor: 'white',
+                          border: 'none',
+                          borderRadius: '8px',
+                          boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)'
+                        }}
+                        formatter={(value) => [`${value} devis`, '']}
+                        labelFormatter={(date) => new Date(date).toLocaleDateString('fr-FR', {
+                          day: '2-digit',
+                          month: 'long'
+                        })}
+                      />
+                      <Line
+                        type="monotone"
+                        dataKey="count"
+                        stroke="#86BC29"
+                        strokeWidth={2}
+                        dot={false}
+                        activeDot={{ r: 6, strokeWidth: 2, fill: '#fff' }}
+                      />
+                    </LineChart>
+                  </ResponsiveContainer>
                 </div>
-              ))}
-            </div>
-          </CardContent>
-        </Card>
-      </motion.div>
+              </CardContent>
+            </Card>
+          </motion.div>
+
+          {/* Analyse des devis */}
+          <motion.div
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            <Card className="bg-gradient-to-br from-white to-gray-50 border-none shadow-lg">
+              <CardHeader className="pb-2">
+                <div className="flex justify-between items-center">
+                  <CardTitle className="text-lg text-gray-600 flex items-center gap-2">
+                    <PieChartIcon className="w-5 h-5" />
+                    Analyse des devis
+                  </CardTitle>
+                  <div className="flex gap-2">
+                    <Button
+                      variant={devisAnalysisType === 'status' ? 'default' : 'outline'}
+                      size="sm"
+                      onClick={() => setDevisAnalysisType('status')}
+                    >
+                      Statut
+                    </Button>
+                    <Button
+                      variant={devisAnalysisType === 'month' ? 'default' : 'outline'}
+                      size="sm"
+                      onClick={() => setDevisAnalysisType('month')}
+                    >
+                      Mois
+                    </Button>
+                  </div>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <div className="flex items-center justify-between">
+                  <div className="w-1/2">
+                    <ResponsiveContainer width="100%" height={200}>
+                      <PieChart>
+                        <Pie
+                          data={getDevisPieData()}
+                          innerRadius={60}
+                          outerRadius={80}
+                          paddingAngle={5}
+                          dataKey="value"
+                          startAngle={90}
+                          endAngle={-270}
+                        >
+                          {getDevisPieData().map((entry, index) => (
+                            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                          ))}
+                        </Pie>
+                        <Tooltip content={<CustomTooltip />} />
+                      </PieChart>
+                    </ResponsiveContainer>
+                  </div>
+                  <div className="w-1/2 pl-4 space-y-2">
+                    {getDevisPieData().map((entry, index) => (
+                      <div 
+                        key={entry.name} 
+                        className="flex items-center gap-2 text-sm p-2 rounded-lg hover:bg-gray-50 transition-colors"
+                      >
+                        <div 
+                          className="w-3 h-3 rounded-full flex-shrink-0" 
+                          style={{ backgroundColor: COLORS[index % COLORS.length] }}
+                        />
+                        <div className="flex-1">
+                          <div className="font-medium">{entry.name}</div>
+                          <div className="text-xs text-gray-500">
+                            {entry.value} devis ({Math.round((entry.value / devis.length) * 100)}%)
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
+        </div>
+      </div>
     </div>
   );
 }

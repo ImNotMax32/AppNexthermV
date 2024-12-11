@@ -1,0 +1,176 @@
+{
+    "glycol": [
+      {
+        "Nom": "Kit Capteur Horizontal Non Chargé",
+        "Particularites": ["Capteur", "Horizontal", "Non chargé"],
+        "Description": "Contient : Tube DN25; Collecteur + Distributeur; Crampons de sol. Pour circuit EAU GLYCOLÉE DN 25/100m",
+        "Puissance": {
+          "min": 1,
+          "max": 12,
+          "disponibles": [
+            {
+              "modele": "KCPOG1H",
+              "nombre_couronnes": 1
+            },
+            {
+              "modele": "KCPOG2H",
+              "nombre_couronnes": 2
+            },
+            {
+              "modele": "KCPOG3H",
+              "nombre_couronnes": 3
+            },
+            {
+              "modele": "KCPOG4H",
+              "nombre_couronnes": 4
+            },
+            {
+              "modele": "KCPOG5H",
+              "nombre_couronnes": 5
+            },
+            {
+              "modele": "KCPOG6H",
+              "nombre_couronnes": 6
+            },
+            {
+              "modele": "KCPOG7H",
+              "nombre_couronnes": 7
+            },
+            {
+              "modele": "KCPOG9H",
+              "nombre_couronnes": 9
+            },
+            {
+              "modele": "KCPOG10H",
+              "nombre_couronnes": 10
+            },
+            {
+              "modele": "KCPOG12H",
+              "nombre_couronnes": 12
+            }
+          ]
+        }
+      },
+      {
+        "Nom": "Kit Capteur Horizontal Pré-chargé",
+        "Particularites": ["Capteur", "Horizontal", "Pré-chargé"],
+        "Description": "Contient : Tube DN25; Collecteur + Distributeur; Crampons de sol. Dosé en glycol à 35% pour circuit EAU GLYCOLÉE DN 25/100m",
+        "Puissance": {
+          "min": 1,
+          "max": 12,
+          "disponibles": [
+            {
+              "modele": "KCPOG1HP",
+              "nombre_couronnes": 1
+            },
+            {
+              "modele": "KCPOG2HP",
+              "nombre_couronnes": 2
+            },
+            {
+              "modele": "KCPOG3HP",
+              "nombre_couronnes": 3
+            },
+            {
+              "modele": "KCPOG4HP",
+              "nombre_couronnes": 4
+            },
+            {
+              "modele": "KCPOG5HP",
+              "nombre_couronnes": 5
+            },
+            {
+              "modele": "KCPOG6HP",
+              "nombre_couronnes": 6
+            },
+            {
+              "modele": "KCPOG7HP",
+              "nombre_couronnes": 7
+            },
+            {
+              "modele": "KCPOG9HP",
+              "nombre_couronnes": 9
+            },
+            {
+              "modele": "KCPOG10HP",
+              "nombre_couronnes": 10
+            },
+            {
+              "modele": "KCPOG12HP",
+              "nombre_couronnes": 12
+            }
+          ]
+        }
+      }
+    ],
+    "accessories": [
+      {
+        "Nom": "Liaison Capteur PEHD",
+        "Particularites": ["Accessoire", "PEHD"],
+        "Description": "Couronne de 50m",
+        "Versions": [
+          {
+            "modele": "1HYD0121",
+            "diametre": "32"
+          },
+          {
+            "modele": "1HYD0122",
+            "diametre": "40"
+          },
+          {
+            "modele": "1HYD0123",
+            "diametre": "50"
+          }
+        ]
+      },
+      {
+        "Nom": "Kit liaison Capteur PEHD",
+        "Particularites": ["Accessoire", "PEHD", "Kit"],
+        "Description": "Couronne de 50m, 25m pour KLC25 + 4 raccords",
+        "Versions": [
+          {
+            "modele": "KLC25",
+            "diametre": "32"
+          },
+          {
+            "modele": "KLC50",
+            "diametre": "32"
+          },
+          {
+            "modele": "KLC50D40",
+            "diametre": "40"
+          },
+          {
+            "modele": "KLC50D50",
+            "diametre": "50"
+          }
+        ]
+      },
+      {
+        "Nom": "Couronne Capteur PEHD",
+        "Particularites": ["Accessoire", "PEHD", "Couronne"],
+        "Description": "Couronne de 100m",
+        "Versions": [
+          {
+            "modele": "1HYD0120",
+            "diametre": "25"
+          }
+        ]
+      },
+      {
+        "Nom": "Monopropylène Glycol",
+        "Particularites": ["Accessoire", "Glycol"],
+        "Description": "À diluer, vf dosage sur les documentations techniques",
+        "Versions": [
+          {
+            "modele": "1HYD0091",
+            "quantite": "20"
+          },
+          {
+            "modele": "1HYD0200",
+            "quantite": "1000"
+          }
+        ]
+      }
+    ]
+  }
