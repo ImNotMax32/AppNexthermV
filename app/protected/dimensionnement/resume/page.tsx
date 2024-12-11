@@ -109,12 +109,14 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 const HeatLossDonut = () => {
   const [isAnimating, setIsAnimating] = useState(true);
   const [imageLoaded, setImageLoaded] = useState(false);
+  const [isImageLoaded, setIsImageLoaded] = useState(false)
   const imageRef = useRef<HTMLImageElement | null>(null);
 
   const getStorageValue = (key: string): number => {
     const value = sessionStorage.getItem(key);
     return value ? parseFloat(value) : 0;
   };
+  
 
   const data = [
     getStorageValue('ResultatDeperdition') || 300,
@@ -127,6 +129,27 @@ const HeatLossDonut = () => {
 
   const total = data.reduce((a, b) => a + b, 0);
   const labels = ['Mur', 'Fenêtre', 'Toit', 'Sol', 'Air neuf', 'Pont thermique'];
+
+  useEffect(() => {
+    const img = new Image();
+    
+    img.onload = () => {
+      setIsImageLoaded(true);
+      imageRef.current = img;
+    };
+  
+    img.onerror = (error) => {
+      console.error("Erreur lors du chargement de l'image:", error);
+      setIsImageLoaded(false);
+    };
+  
+    img.src = '/assets/img/X.png';
+  
+    return () => {
+      img.onload = null;
+      img.onerror = null;
+    };
+  }, []);
 
   useEffect(() => {
     let mounted = true; // Pour éviter les mises à jour de state sur un composant démonté
@@ -165,7 +188,7 @@ const HeatLossDonut = () => {
       if (mounted) {
         setIsAnimating(false);
       }
-    }, 2000);
+    }, 1500);
 
     return () => {
       mounted = false;
@@ -177,31 +200,25 @@ const HeatLossDonut = () => {
   useEffect(() => {
     console.log("État actuel de imageLoaded:", imageLoaded);
   }, [imageLoaded]);
-
   const centerImage = {
     id: 'centerImage',
     afterDraw(chart: any) {
-      if (!chart?.ctx || !imageRef.current || !imageLoaded) {
-        console.log("Conditions non remplies pour le dessin:", {
-          hasContext: !!chart?.ctx,
-          hasImage: !!imageRef.current,
-          isLoaded: imageLoaded,
-          imageRefContent: imageRef.current
-        });
+      if (!chart?.ctx || !imageRef.current || !isImageLoaded) {
         return;
       }
-
+  
       try {
         const { ctx, chartArea: { top, left, width, height } } = chart;
+        const img = imageRef.current;
+        
         const centerX = left + width / 2;
         const centerY = top + height / 2;
-        const img = imageRef.current;
         
         const maxSize = Math.min(width, height) * 0.4;
         const imageRatio = img.width / img.height;
         const newWidth = imageRatio >= 1 ? maxSize : maxSize * imageRatio;
         const newHeight = imageRatio >= 1 ? maxSize / imageRatio : maxSize;
-
+  
         ctx.save();
         
         // Effet de glow
@@ -216,17 +233,7 @@ const HeatLossDonut = () => {
         ctx.beginPath();
         ctx.arc(centerX, centerY, maxSize * 0.6, 0, Math.PI * 2);
         ctx.fill();
-
-        // Dessiner l'image avec des logs supplémentaires
-        console.log("Tentative de dessin de l'image:", {
-          centerX,
-          centerY,
-          newWidth,
-          newHeight,
-          imageWidth: img.width,
-          imageHeight: img.height
-        });
-
+  
         ctx.drawImage(
           img,
           centerX - newWidth / 2,
@@ -241,7 +248,6 @@ const HeatLossDonut = () => {
       }
     }
   };
-  
 
   const chartData: ChartData<'doughnut'> = {
     labels,
@@ -290,7 +296,6 @@ const HeatLossDonut = () => {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, ease: "easeOut" }}
         >
-          {/* Ajoutez l'id myDonutChart ici */}
           <Doughnut 
             id="myDonutChart"  // Ajoutez cette ligne
             data={chartData} 
@@ -485,8 +490,8 @@ const router = useRouter();
   }, []);
   if (isLoading) {
     return (
-      <div className="flex justify-center items-center min-h-screen bg-gradient-to-b from-white to-green-50">
-        <motion.div
+      <div className="flex justify-center items-center min-h-screen bg-white">
+                <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}

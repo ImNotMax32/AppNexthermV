@@ -154,7 +154,6 @@ export default function Header() {
               <Link href="/sign-in">Connexion</Link>
             </Button>
           )}
-          <ThemeSwitcher />
         </div>
       </div>
     </header>

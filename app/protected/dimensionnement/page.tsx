@@ -33,7 +33,6 @@ interface SelectWithAnimationProps {
   required?: boolean;
 }
 
-// Interface FormData reste la même
 interface FormData {
   hasExistingCalculation: boolean;
   knownDeperdition: string;
@@ -70,7 +69,6 @@ interface FormData {
   department: string;
   termsAccepted: boolean;
 }
-
 interface FormErrors {
   [key: string]: boolean;
 }
@@ -347,7 +345,90 @@ export default function DeperditionCalculator() {
     department: '',
     termsAccepted: false
   });
+  const [isLoading, setIsLoading] = useState(true);
+  useEffect(() => {
+    let mounted = true;
   
+    const loadSavedData = async () => {
+      try {
+        const { data: { session } } = await supabase.auth.getSession();
+        if (!session) {
+          router.push('/sign-in');
+          return;
+        }
+  
+        const isEditing = localStorage.getItem('isEditing');
+        console.log('État initial isEditing:', isEditing);
+        
+        if (isEditing === 'true' && mounted) {
+          const newFormData = {
+            hasExistingCalculation: false,
+            knownDeperdition: localStorage.getItem('ResultatDeperdition') || '',
+            constructionYear: localStorage.getItem('Annee_de_construction') || '',
+            buildingType: localStorage.getItem('Type_de_construction') || '',
+            floors: {
+              ground: {
+                surface: localStorage.getItem('Surface_RDC') || '',
+                height: '2.5' // Valeur par défaut
+              },
+              first: {
+                surface: localStorage.getItem('Surface_1er_etage') || '',
+                height: '2.5'
+              },
+              second: {
+                surface: localStorage.getItem('Surface_2e_etage') || '',
+                height: '2.5'
+              }
+            },
+            buildingStructure: localStorage.getItem('Structure_de_la_construction') || '',
+            groundStructure: localStorage.getItem('Structure_du_sol') || '',
+            showAdvancedOptions: false,
+            wallThickness: localStorage.getItem('wallThickness') || '',
+            wallComposition: localStorage.getItem('wallComposition') || '',
+            interiorInsulation: {
+              enabled: localStorage.getItem('interiorInsulation') === 'true',
+              material: localStorage.getItem('interiorMaterial') || '',
+              thickness: localStorage.getItem('interiorThickness') || ''
+            },
+            exteriorInsulation: {
+              enabled: localStorage.getItem('exteriorInsulation') === 'true',
+              material: localStorage.getItem('exteriorMaterial') || '',
+              thickness: localStorage.getItem('exteriorThickness') || ''
+            },
+            atticInsulation: localStorage.getItem('atticInsulation') || '',
+            floorInsulation: localStorage.getItem('floorInsulation') || '',
+            windowSurface: localStorage.getItem('Surface_de_vitrage') || '',
+            windowType: localStorage.getItem('windowType') || '',
+            adjacency: localStorage.getItem('Mitoyennete') || '',
+            mainOrientation: localStorage.getItem('mainOrientation') || '',
+            ventilation: localStorage.getItem('Ventilation') || '',
+            heatingTemp: localStorage.getItem('Temperature_de_chauffage') || '',
+            department: localStorage.getItem('Departement') || '',
+            termsAccepted: true
+          };
+  
+          console.log('Mise à jour du formulaire avec:', newFormData);
+          setFormData(newFormData);
+          
+          // Important: Ne supprimer isEditing qu'après avoir chargé les données
+          localStorage.removeItem('isEditing');
+        }
+      } catch (error) {
+        console.error('Erreur lors du chargement des données:', error);
+      } finally {
+        if (mounted) {
+          setIsLoading(false);
+        }
+      }
+    };
+  
+    loadSavedData();
+  
+    // Cleanup function
+    return () => {
+      mounted = false;
+    };
+  }, []);
 
   const [result, setResult] = useState<{
     totalLoss: number;
@@ -458,17 +539,44 @@ export default function DeperditionCalculator() {
     checkAuth();
   }, []);
 
-  // Fonctions de gestion du formulaire
   const handleChange = (field: string, value: any) => {
-    setFormData(prev => ({
-      ...prev,
-      [field]: value
-    }));
+    if (field === 'buildingType') {
+      // Réinitialisation des étages selon le type de bâtiment sélectionné
+      setFormData(prev => ({
+        ...prev,
+        [field]: value,
+        floors: {
+          ground: prev.floors.ground, // Garde le RDC inchangé
+          first: {
+            surface: value === 'RDC' ? '' : prev.floors.first.surface,
+            height: value === 'RDC' ? '' : prev.floors.first.height
+          },
+          second: {
+            surface: value === '2 Étages' ? prev.floors.second.surface : '',
+            height: value === '2 Étages' ? prev.floors.second.height : ''
+          }
+        }
+      }));
+  
+      // Mise à jour du localStorage pour les surfaces
+      if (value === 'RDC') {
+        localStorage.setItem('Surface_1er_etage', '0');
+        localStorage.setItem('Surface_2e_etage', '0');
+      } else if (value === '1 Étage') {
+        localStorage.setItem('Surface_2e_etage', '0');
+      }
+    } else {
+      // Comportement normal pour les autres champs
+      setFormData(prev => ({
+        ...prev,
+        [field]: value
+      }));
+    }
     
     // Reset le résultat et les erreurs à chaque modification
     setResult(null);
     setFormErrors(prev => ({ ...prev, [field]: false }));
-
+  
     // Sauvegarde dans localStorage avec les bonnes clés
     switch(field) {
       case 'constructionYear':
@@ -604,45 +712,6 @@ export default function DeperditionCalculator() {
     }
   };
 
-  useEffect(() => {
-    const isEditing = localStorage.getItem('isEditing');
-    
-    if (isEditing === 'true') {
-      setFormData(prev => ({
-        ...prev,
-        hasExistingCalculation: false,
-        constructionYear: localStorage.getItem('Annee_de_construction') || '',
-        buildingType: localStorage.getItem('Type_de_construction') || '',
-        floors: {
-          ground: { 
-            surface: localStorage.getItem('Surface_RDC') || '',
-            height: localStorage.getItem('Hauteur_RDC') || ''
-          }, 
-          first: { 
-            surface: localStorage.getItem('Surface_1er_etage') || '',
-            height: localStorage.getItem('Hauteur_1er') || ''
-          },
-          second: { 
-            surface: localStorage.getItem('Surface_2e_etage') || '',
-            height: localStorage.getItem('Hauteur_2e') || ''
-          }
-        },
-        buildingStructure: localStorage.getItem('Structure_de_la_construction') || '',
-        groundStructure: localStorage.getItem('Structure_du_sol') || '',
-        windowSurface: localStorage.getItem('Surface_de_vitrage') || '',
-        windowType: localStorage.getItem('Type_de_vitrage') || '',
-        adjacency: localStorage.getItem('Mitoyennete') || '',
-        mainOrientation: localStorage.getItem('Orientation_principale') || '',
-        ventilation: localStorage.getItem('Ventilation') || '',
-        heatingTemp: localStorage.getItem('Temperature_de_chauffage') || '',
-        department: localStorage.getItem('Departement') || ''
-      }));
-  
-      // Nettoyage du flag
-      localStorage.removeItem('isEditing');
-    }
-  }, []);
-  
   return (
     <motion.div className="max-w-5xl mx-auto p-6">
       <Card>

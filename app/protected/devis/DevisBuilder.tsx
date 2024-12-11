@@ -130,18 +130,42 @@ export default function DevisBuilder() {
   }, []);
 
   const loadInitialData = useCallback(async () => {
-    try {
-      setIsLoading(true);
+  try {
+    setIsLoading(true);
 
-      // Si on a un ID de devis, on charge depuis Supabase
-      if (devisId) {
-        const { data, error } = await supabase
-          .from('devis')
-          .select('*')
-          .eq('id', devisId)
-          .single();
+    // Si on a un ID de devis, on charge depuis Supabase
+    if (devisId) {
+      // Récupérer l'utilisateur courant
+      const { data: { user }, error: userError } = await supabase.auth.getUser();
+      
+      if (userError || !user) {
+        throw new Error('Utilisateur non authentifié');
+      }
 
-        } else {
+      // Charger le devis en vérifiant qu'il appartient à l'utilisateur
+      const { data, error } = await supabase
+        .from('devis')
+        .select('*')
+        .eq('id', devisId)
+        .eq('user_id', user.id)  // Ajouter cette condition
+        .single();
+
+      if (error) {
+        throw new Error('Devis non trouvé ou accès non autorisé');
+      }
+
+      if (data) {
+        setCompanyInfo(data.company_info);
+        setClientInfo(data.client_info);
+        setQuoteInfo({
+          reference: data.reference,
+          creationDate: data.creation_date,
+          validityDate: data.validity_date,
+          tvaNumber: data.tva_number
+        });
+        setProducts(data.products);
+      }
+    } else {
           // Sinon, on essaie de charger depuis localStorage
           const savedData = localStorage.getItem('quoteConversionData');
           
@@ -212,7 +236,7 @@ export default function DevisBuilder() {
         setIsLoading(false);
       }
     }, [devisId, supabase, toast]);
-    
+
   // Effet pour le chargement initial
   useEffect(() => {
     loadInitialData();
@@ -292,54 +316,61 @@ export default function DevisBuilder() {
     }, { totalHT: 0, totalTVA: 0, totalTTC: 0 });
   }, [products]);
 
-  // Sauvegarde du devis
-  const handleSave = async () => {
-    try {
-      const totals = calculateTotals();
-
-      const devisData = {
-        reference: quoteInfo.reference || `DEV-${new Date().getTime()}`,
-        creation_date: quoteInfo.creationDate,
-        validity_date: quoteInfo.validityDate,
-        company_info: companyInfo,
-        client_info: clientInfo,
-        products: products,
-        totals: {
-          totalHT: totals.totalHT,
-          totalTVA: totals.totalTVA,
-          totalTTC: totals.totalTTC
-        },
-        status: 'draft',
-        created_at: new Date().toISOString(),
-        tva_number: quoteInfo.tvaNumber
-      };
-
-      const { data, error } = await supabase
-        .from('devis')
-        .insert([devisData])
-        .select();
-
-      if (error) throw error;
-
-      setShowSaveConfirmation(true);
-      setTimeout(() => setShowSaveConfirmation(false), 3000);
-
-      toast({
-        title: "Succès",
-        description: "Le devis a été sauvegardé avec succès",
-      });
-
-      router.push('/protected/devis/');
-
-    } catch (error) {
-      console.error('Erreur lors de la sauvegarde:', error);
-      toast({
-        title: "Erreur",
-        description: "Impossible de sauvegarder le devis",
-        variant: "destructive",
-      });
+ const handleSave = async () => {
+  try {
+    // Récupérer l'utilisateur courant
+    const { data: { user }, error: userError } = await supabase.auth.getUser();
+    
+    if (userError || !user) {
+      throw new Error('Utilisateur non authentifié');
     }
-  };
+
+    const totals = calculateTotals();
+
+    const devisData = {
+      user_id: user.id, // Ajout de l'ID de l'utilisateur
+      reference: quoteInfo.reference || `DEV-${new Date().getTime()}`,
+      creation_date: quoteInfo.creationDate,
+      validity_date: quoteInfo.validityDate,
+      company_info: companyInfo,
+      client_info: clientInfo,
+      products: products,
+      totals: {
+        totalHT: totals.totalHT,
+        totalTVA: totals.totalTVA,
+        totalTTC: totals.totalTTC
+      },
+      status: 'draft',
+      created_at: new Date().toISOString(),
+      tva_number: quoteInfo.tvaNumber
+    };
+
+    const { data, error } = await supabase
+      .from('devis')
+      .insert([devisData])
+      .select();
+
+    if (error) throw error;
+
+    setShowSaveConfirmation(true);
+    setTimeout(() => setShowSaveConfirmation(false), 3000);
+
+    toast({
+      title: "Succès",
+      description: "Le devis a été sauvegardé avec succès",
+    });
+
+    router.push('/protected/devis/');
+
+  } catch (error) {
+    console.error('Erreur lors de la sauvegarde:', error);
+    toast({
+      title: "Erreur",
+      description: error instanceof Error ? error.message : "Impossible de sauvegarder le devis",
+      variant: "destructive",
+    });
+  }
+};
 
 // Et modifions le bouton pour imprimer/exporter en PDF
 const handlePrint = async () => {

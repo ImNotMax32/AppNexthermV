@@ -57,42 +57,62 @@ const getTemperatureFactor = (departmentNumber: string): number | null => {
   const cleanDepartment = departmentNumber.replace(/\D/g, '');
   return departementalTemperatureData[cleanDepartment] || null;
 };
-const createDonutChartForPdf = async (doc: jsPDF, data: BuildingData) => {
-  // On attend que le graphique soit rendu
-  await new Promise(resolve => setTimeout(resolve, 500));
-
+// Remplacer la fonction createDonutChartForPdf par :
+const displayHeatLossDetails = (doc: jsPDF, data: BuildingData) => {
   try {
-    // Capture le graphique existant
-    const donutChart = document.getElementById('myDonutChart');
-    
-    if (!donutChart) {
-      console.error('Graphique non trouvé');
-      return;
-    }
+    // Position de départ modifiée
+    const startX = 120;  // Augmenté pour déplacer vers la droite
+    let startY = 200;    // Augmenté pour déplacer vers le bas
+    const lineSpacing = 8;
 
-    // Utilise html2canvas pour capturer le graphique
-    const canvas = await html2canvas(donutChart, {
-      scale: 4, // Augmente la qualité
-      backgroundColor: null, // Garde la transparence
-      logging: false,
+    // Configuration du texte
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(12);
+    doc.setTextColor(132, 189, 0);
+
+    // Titre
+    doc.text('Détail des déperditions :', startX, startY);
+    startY += lineSpacing + 2;
+
+    // Configuration pour les valeurs
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(11);
+    doc.setTextColor(81, 83, 74);
+
+    const values = {
+      mur: sessionStorage.getItem('ResultatDeperdition') || '0',
+      fenetre: sessionStorage.getItem('windowHeatLoss') || '0',
+      toit: sessionStorage.getItem('roofHeatLoss') || '0',
+      sol: sessionStorage.getItem('FloorHeatLoss') || '0',
+      air: sessionStorage.getItem('airNeufLoss') || '0',
+      pont: sessionStorage.getItem('thermalBridgeLoss') || '0'
+    };
+
+    const items = [
+      { label: 'Murs :', value: values.mur },
+      { label: 'Fenêtres :', value: values.fenetre },
+      { label: 'Toiture :', value: values.toit },
+      { label: 'Sol :', value: values.sol },
+      { label: "Renouvellement d'air :", value: values.air },
+      { label: 'Ponts thermiques :', value: values.pont }
+    ];
+
+    items.forEach(item => {
+      const formattedValue = `${parseFloat(item.value).toFixed(1)} W`;
+      const text = `${item.label} ${formattedValue}`;
+      doc.text(text, startX, startY);
+      startY += lineSpacing;
     });
 
-    // Convertit le canvas en image
-    const imageData = canvas.toDataURL('image/png');
-
-    // Ajout de l'image au PDF
-    doc.addImage(
-      imageData,
-      'PNG',
-      85,     // Position X
-      180,    // Position Y
-      110,    // Largeur
-      110     // Hauteur
-    );
-
+    console.log('Détails des déperditions ajoutés au PDF avec succès à la position:', { x: startX, y: startY });
   } catch (error) {
-    console.error("Erreur lors de la capture du graphique:", error);
+    console.error('Erreur lors de l\'ajout des détails des déperditions:', error);
   }
+};
+
+// Fonction utilitaire pour vérifier si une image est valide
+const isValidImageData = (imageData: string): boolean => {
+  return imageData.startsWith('data:image/png;base64,') && imageData.length > 100;
 };
 
 const determineImagePath = (data: GeneratePdfData): string => {
@@ -389,7 +409,7 @@ if (resultDeperdition) {
     });
 
     // Appel de la fonction pour créer le donut chart
-    createDonutChartForPdf(doc, data.building);
+    displayHeatLossDetails(doc, data.building);
         
     
    // PAGE 3

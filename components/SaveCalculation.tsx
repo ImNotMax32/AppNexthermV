@@ -22,6 +22,7 @@ const SaveCalculation: React.FC<SaveCalculationProps> = ({ onSave }) => {
   const [projectName, setProjectName] = useState('');
   const [isSaving, setIsSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [saveSuccess, setSaveSuccess] = useState(false);
 
 
   const collectStorageData = () => {
@@ -115,7 +116,6 @@ const SaveCalculation: React.FC<SaveCalculationProps> = ({ onSave }) => {
       }
     };
   };
-  
   const handleSave = async () => {
     if (!projectName.trim()) {
       setError("Veuillez entrer un nom de projet");
@@ -149,12 +149,24 @@ const SaveCalculation: React.FC<SaveCalculationProps> = ({ onSave }) => {
       }
   
       setShowDialog(false);
+      setSaveSuccess(true); // Active l'état de succès
       
       toast({
+        title: "Succès !",
         description: "Le projet a été sauvegardé avec succès",
+        // Remplacer le Button par une div simple
+        action: (
+          <div className="p-1 rounded-full bg-[#86BC29]/10 text-[#86BC29]">
+            <Check className="h-4 w-4" />
+          </div>
+        ),
       });
   
-      // Appeler onSave avec les données uniquement si la sauvegarde a réussi
+      // Reset l'état de succès après 3 secondes
+      setTimeout(() => {
+        setSaveSuccess(false);
+      }, 3000);
+  
       if (onSave && data) {
         await onSave(data);
       }
@@ -163,6 +175,7 @@ const SaveCalculation: React.FC<SaveCalculationProps> = ({ onSave }) => {
       const errorMessage = err instanceof Error ? err.message : "Erreur lors de la sauvegarde";
       toast({
         variant: "destructive",
+        title: "Erreur",
         description: errorMessage,
       });
       
@@ -175,14 +188,23 @@ const SaveCalculation: React.FC<SaveCalculationProps> = ({ onSave }) => {
   return (
     <div className="relative">
       <motion.button
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-        onClick={() => setShowDialog(true)}
-        className="px-6 py-3 bg-[#86BC29] text-white rounded-lg font-medium flex items-center shadow-lg hover:bg-[#75a625] transition-colors"
-      >
-        <Save className="w-5 h-5 mr-2" />
-        Enregistrer
-      </motion.button>
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          onClick={() => setShowDialog(true)}
+          className="px-6 py-3 bg-[#86BC29] text-white rounded-lg font-medium flex items-center shadow-lg hover:bg-[#75a625] transition-colors"
+        >
+          {saveSuccess ? (
+            <div className="flex items-center">
+              <Check className="w-5 h-5 mr-2" />
+              Enregistré !
+            </div>
+          ) : (
+            <div className="flex items-center">
+              <Save className="w-5 h-5 mr-2" />
+              Enregistrer
+            </div>
+          )}
+        </motion.button>
 
       <Dialog open={showDialog} onOpenChange={setShowDialog}>
         <DialogContent className="sm:max-w-[425px]">

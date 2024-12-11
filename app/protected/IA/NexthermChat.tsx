@@ -212,9 +212,9 @@ export function NexthermChat() {
           <div className="flex items-center space-x-4">
             <div className="relative">
             <Avatar className="h-12 w-12 shadow-md">
-                <AvatarImage src="/assets/img/rb522.jpg" alt="Nextherm AI" />
-                <AvatarFallback className="bg-[#86BC29] text-white">NT</AvatarFallback>
-                </Avatar>
+              <Bot className="h-8 w-8 text-[#86BC29]" />
+              <AvatarFallback className="bg-[#86BC29] text-white">NT</AvatarFallback>
+            </Avatar>
               <div className="absolute bottom-0 right-0 w-3 h-3 bg-green-500 rounded-full border-2 border-white animate-pulse"></div>
             </div>
             <div>
@@ -282,9 +282,9 @@ export function NexthermChat() {
               >
                 {message.role === 'assistant' && (
                     <Avatar className="h-8 w-8 mt-1">
-                        <AvatarImage src="/assets/img/rb522.jpg" alt="Nextherm AI" />
-                        <AvatarFallback className="bg-[#86BC29] text-white">NT</AvatarFallback>
-                    </Avatar>
+                    <Bot className="h-5 w-5 text-[#86BC29]" />
+                    <AvatarFallback className="bg-[#86BC29] text-white">NT</AvatarFallback>
+                  </Avatar>
                     )}
                 <div className={`space-y-1 max-w-[80%] ${
                   message.role === 'user' ? 'ml-auto' : 'mr-auto'

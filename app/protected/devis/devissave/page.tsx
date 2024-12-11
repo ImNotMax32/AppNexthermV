@@ -301,48 +301,62 @@ export default function QuoteList() {
     const [sortOrder, setSortOrder] = useState<'newest' | 'oldest'>('newest');
     const { toast } = useToast();
 
+    const updateDevisStatus = async (id: string, newStatus: string) => {
+      try {
+        const { data: { user }, error: userError } = await supabase.auth.getUser();
+        
+        if (userError || !user) {
+          throw new Error('Utilisateur non authentifié');
+        }
+    
+        const { error } = await supabase
+          .from('devis')
+          .update({ status: newStatus })
+          .eq('id', id)
+          .eq('user_id', user.id);  // Ajouter cette condition
+    
+        if (error) throw error;
+    
+        setDevis(prevDevis => 
+          prevDevis.map(d => 
+            d.id === id ? { ...d, status: newStatus } : d
+          )
+        );
+    
+        toast({
+          title: "Succès",
+          description: "Le statut du devis a été mis à jour",
+        });
+      } catch (error) {
+        console.error('Error updating quote status:', error);
+        toast({
+          title: "Erreur",
+          description: "Impossible de mettre à jour le statut du devis",
+          variant: "destructive",
+        });
+      }
+    };
 
-  const updateDevisStatus = async (id: string, newStatus: string) => {
-    try {
-      const { error } = await supabase
-        .from('devis')
-        .update({ status: newStatus })
-        .eq('id', id);
-  
-      if (error) throw error;
-  
-      setDevis(prevDevis => 
-        prevDevis.map(d => 
-          d.id === id ? { ...d, status: newStatus } : d
-        )
-      );
-  
-      toast({
-        title: "Succès",
-        description: "Le statut du devis a été mis à jour",
-      });
-    } catch (error) {
-      console.error('Error updating quote status:', error);
-      toast({
-        title: "Erreur",
-        description: "Impossible de mettre à jour le statut du devis",
-        variant: "destructive",
-      });
-    }
-  };
-
-
-  // Fonction pour récupérer les devis
   const fetchDevis = useCallback(async () => {
     try {
       setIsLoading(true);
+      
+      // Récupérer l'utilisateur courant
+      const { data: { user }, error: userError } = await supabase.auth.getUser();
+      
+      if (userError || !user) {
+        throw new Error('Utilisateur non authentifié');
+      }
+  
+      // Récupérer uniquement les devis de l'utilisateur connecté
       const { data, error } = await supabase
         .from('devis')
         .select('*')
+        .eq('user_id', user.id)  // Filtrer par user_id
         .order('created_at', { ascending: false });
-
+  
       if (error) throw error;
-
+  
       if (data) {
         setDevis(data);
         setFilteredDevis(data);
@@ -351,7 +365,7 @@ export default function QuoteList() {
       console.error('Error fetching quotes:', error);
       toast({
         title: "Erreur",
-        description: "Impossible de charger les devis sauvegardés",
+        description: error instanceof Error ? error.message : "Impossible de charger les devis sauvegardés",
         variant: "destructive",
       });
     } finally {
@@ -417,30 +431,36 @@ export default function QuoteList() {
     }
   }, [devis, searchTerm, statusFilter, timeFilter, sortOrder, filterAndSortDevis]);
 
-  // Fonction de suppression
   const deleteDevis = async (id: string) => {
-    try {
-      const { error } = await supabase
-        .from('devis')
-        .delete()
-        .eq('id', id);
-
-      if (error) throw error;
-      
-      toast({
-        title: "Succès",
-        description: "Le devis a été supprimé avec succès",
-      });
-      setDevis(devis.filter(d => d.id !== id));
-    } catch (error) {
-      console.error('Error deleting quote:', error);
-      toast({
-        title: "Erreur",
-        description: "Impossible de supprimer le devis",
-        variant: "destructive",
-      });
+  try {
+    const { data: { user }, error: userError } = await supabase.auth.getUser();
+    
+    if (userError || !user) {
+      throw new Error('Utilisateur non authentifié');
     }
-  };
+
+    const { error } = await supabase
+      .from('devis')
+      .delete()
+      .eq('id', id)
+      .eq('user_id', user.id);  // Ajouter cette condition
+
+    if (error) throw error;
+    
+    toast({
+      title: "Succès",
+      description: "Le devis a été supprimé avec succès",
+    });
+    setDevis(devis.filter(d => d.id !== id));
+  } catch (error) {
+    console.error('Error deleting quote:', error);
+    toast({
+      title: "Erreur",
+      description: "Impossible de supprimer le devis",
+      variant: "destructive",
+    });
+  }
+};
 
   const handleEdit = (devis: DevisInfo) => {
     try {

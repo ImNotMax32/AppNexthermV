@@ -1,5 +1,4 @@
 'use client';
-
 import { motion } from 'framer-motion';
 import { 
   Building2, 
@@ -24,12 +23,133 @@ import {
 } from "@/components/ui/card";
 import { useRouter } from 'next/navigation';
 
-const BuildingCharacteristicsSection = ({ buildingData }) => {
+interface Emetteur {
+  min: number;
+  max: number;
+}
+
+interface Product {
+  Type: string;
+  Systeme: string;
+  Emetteur: Emetteur;
+  Nom: string;
+  // Ajoutez d'autres propriétés si nécessaire
+}
+
+interface BuildingData {
+  constructionYear: string | null;
+  buildingType: string | null;
+  heatLoss: string | null;
+  totalSurface: number;
+  ventilation: string | null;
+  heatingTemp: string | null;
+  department: string | null;
+  structure: string | null;
+  groundStructure: string | null;
+  windowSurface: string | null;
+  adjacency: string | null;
+  poolKit: string | null;
+  freecoolingKit: string | null;
+  hotWater: string | null;
+}
+
+interface ComponentProps {
+  buildingData: BuildingData;
+}
+
+
+const BuildingCharacteristicsSection: React.FC<ComponentProps> = ({ buildingData }) => {
   const router = useRouter();
 
   const handleEditClick = () => {
-    localStorage.setItem('isEditing', 'true');
-    router.push('/dashboard/dimensionnement');
+    try {
+      // Sauvegarder toutes les données nécessaires dans le localStorage
+      localStorage.setItem('isEditing', 'true');
+      
+      // Sauvegarder les données du bâtiment
+      if (buildingData) {
+        // Données de construction
+        localStorage.setItem('Annee_de_construction', buildingData.constructionYear || '');
+        localStorage.setItem('Type_de_construction', buildingData.buildingType || '');
+        localStorage.setItem('ResultatDeperdition', buildingData.heatLoss || '');
+        
+        // Surfaces
+        const surfaces = calculateSurfaces(
+          buildingData.buildingType || '',
+          buildingData.totalSurface
+        );
+        localStorage.setItem('Surface_RDC', surfaces.ground.toString());
+        localStorage.setItem('Surface_1er_etage', surfaces.first.toString());
+        localStorage.setItem('Surface_2e_etage', surfaces.second.toString());
+        
+        // Caractéristiques techniques
+        localStorage.setItem('Ventilation', buildingData.ventilation || '');
+        localStorage.setItem('Temperature_de_chauffage', buildingData.heatingTemp || '');
+        localStorage.setItem('Departement', buildingData.department || '');
+        localStorage.setItem('Structure_de_la_construction', buildingData.structure || '');
+        localStorage.setItem('Structure_du_sol', buildingData.groundStructure || '');
+        localStorage.setItem('Surface_de_vitrage', buildingData.windowSurface || '');
+        localStorage.setItem('Mitoyennete', buildingData.adjacency || '');
+        
+        // Options
+        localStorage.setItem('kit_piscine', buildingData.poolKit || 'Non');
+        localStorage.setItem('kit_freecooling', buildingData.freecoolingKit || 'Non');
+        localStorage.setItem('kit_ECS', buildingData.hotWater || 'Non');
+      }
+      
+      // Stocker les données du produit sélectionné
+      const selectedProductStr = localStorage.getItem('selected_product');
+      if (selectedProductStr) {
+        const product: Product = JSON.parse(selectedProductStr);
+        localStorage.setItem('type_pac', product.Type);
+        localStorage.setItem('systeme_pac', product.Systeme);
+        if (product.Emetteur) {
+          localStorage.setItem('emetteur_type', determineEmitterType(product.Emetteur));
+          localStorage.setItem('temp_radiateur', product.Emetteur.max.toString());
+          localStorage.setItem('temp_plancher', product.Emetteur.min.toString());
+        }
+      }
+
+      console.log('Données sauvegardées avec succès');
+      
+      // Rediriger vers la page de dimensionnement
+      router.push('/protected/dimensionnement');
+    } catch (error) {
+      console.error('Erreur lors de la sauvegarde des données:', error);
+    }
+  };
+
+  const calculateSurfaces = (buildingType: string, totalSurface: number) => {
+    switch(buildingType) {
+      case 'RDC':
+        return {
+          ground: totalSurface,
+          first: 0,
+          second: 0
+        };
+      case '1 Étage':
+        return {
+          ground: totalSurface / 2,
+          first: totalSurface / 2,
+          second: 0
+        };
+      case '2 Étages':
+        return {
+          ground: totalSurface / 3,
+          first: totalSurface / 3,
+          second: totalSurface / 3
+        };
+      default:
+        return {
+          ground: totalSurface,
+          first: 0,
+          second: 0
+        };
+    }
+  };
+
+  const determineEmitterType = (emetteur: Emetteur): string => {
+    return emetteur.max <= 35 ? 'plancher' : 'radiateur';
   };
 
   return (
