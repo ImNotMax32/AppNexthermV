@@ -66,10 +66,18 @@ export async function POST(req: Request) {
     // Récupérer les messages
     const messages = await openai.beta.threads.messages.list(thread.id);
     const lastMessage = messages.data[0]; // Le dernier message est le premier dans la liste
-
+    const messageContent = lastMessage.content[0];
+    let responseText = "";
+    
+    if (messageContent.type === 'text') {
+      responseText = messageContent.text.value;
+    } else {
+      responseText = "Received non-text response";
+    }
+    
     return NextResponse.json({ 
-      response: lastMessage.content[0].text.value,
-      threadId: thread.id // Renvoyer le threadId pour la continuité de la conversation
+      response: responseText,
+      threadId: thread.id
     });
 
   } catch (error) {
