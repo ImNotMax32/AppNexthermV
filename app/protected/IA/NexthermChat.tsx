@@ -29,6 +29,12 @@ interface Message {
     timestamp: Date;
   }
 
+  interface UserProfile {
+    id: string;
+    name?: string | null;
+    imageUrl?: string | null;
+  }
+
   const examplePrompts = [
     {
       title: "Dépannage",
