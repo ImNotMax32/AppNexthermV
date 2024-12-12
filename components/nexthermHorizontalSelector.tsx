@@ -10,16 +10,13 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 
-// Interfaces
 interface NexthermHorizontalSelectorProps {
   onProductSelect: (productData: {
     code: string;
     description: string;
-    basePrice: number;
+    basePrice: number;  // On garde basePrice ici car c'est la donnée brute
   }) => void;
 }
-
-
 
 interface PowerModel {
   modele: string;

@@ -8,14 +8,17 @@ import {
 import { NexthermHorizontalSelector } from './nexthermHorizontalSelector';
 import { Package } from 'lucide-react';
 
+// Définition du type Product pour la cohérence
+interface Product {
+  code: string;
+  description: string;
+  priceHT: number;
+}
+
 interface NexthermSelectorDialogProps {
   isOpen: boolean;
   onClose: () => void;
-  onProductSelect: (productData: {
-    code: string;
-    description: string;
-    basePrice: number;
-  }) => void;
+  onProductSelect: (productData: Pick<Product, "code" | "description" | "priceHT">) => void;
 }
 
 export const NexthermSelectorDialog: React.FC<NexthermSelectorDialogProps> = ({
@@ -28,7 +31,12 @@ export const NexthermSelectorDialog: React.FC<NexthermSelectorDialogProps> = ({
     description: string;
     basePrice: number;
   }) => {
-    onProductSelect(productData);
+    // Transformer les données pour correspondre au type attendu
+    onProductSelect({
+      code: productData.code,
+      description: productData.description,
+      priceHT: productData.basePrice // Conversion de basePrice en priceHT
+    });
     onClose();
   };
 
