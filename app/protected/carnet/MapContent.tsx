@@ -5,6 +5,7 @@ import { useEffect, useRef } from 'react';
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import { MapPin, Phone, Mail } from 'lucide-react';
 import L from 'leaflet';
+import type { Map } from 'leaflet';
 
 interface Contact {
   id: number;
@@ -21,7 +22,6 @@ interface MapContentProps {
   contacts?: Contact[];
 }
 
-// Composant pour gérer les mises à jour de la carte
 function MapController() {
   const map = useMap();
   
@@ -37,7 +37,10 @@ const MapContent = ({ contacts = [] }: MapContentProps) => {
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      delete L.Icon.Default.prototype._getIconUrl;
+      // Correction de l'erreur _getIconUrl
+      const icon = L.Icon.Default.prototype as any;
+      delete icon._getIconUrl;
+      
       L.Icon.Default.mergeOptions({
         iconRetinaUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png',
         iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png',
@@ -63,10 +66,12 @@ const MapContent = ({ contacts = [] }: MapContentProps) => {
       center={[46.227638, 2.213749]}
       zoom={6}
       style={{ height: "100%", width: "100%" }}
-      whenReady={(map) => {
-        setTimeout(() => {
-          map.target.invalidateSize();
-        }, 0);
+      whenReady={() => {
+        if (mapRef.current) {
+          setTimeout(() => {
+            mapRef.current?.invalidateSize();
+          }, 0);
+        }
       }}
     >
       <MapController />

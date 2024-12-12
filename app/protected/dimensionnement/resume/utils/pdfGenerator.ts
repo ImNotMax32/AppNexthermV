@@ -1,9 +1,65 @@
 'use client';
 
 import { jsPDF } from 'jspdf';
-import type { GeneratePdfData } from '@/types/pdf';
 import html2canvas from 'html2canvas';
 import { Chart as ChartJS } from 'chart.js/auto';
+
+export interface ClientInfo {
+  name?: string;
+  address?: string;
+  phone?: string;
+  postalCode?: string;
+  city?: string;
+}
+
+export interface InstallerInfo {
+  company?: string;
+  contact?: string;
+  email?: string;
+  phone?: string;
+  logo?: Blob;
+}
+
+export interface BuildingData {
+  constructionYear?: string;
+  buildingType?: string;
+  totalSurface?: number;
+  structure?: string;
+  groundStructure?: string;
+  windowSurface?: string;
+  adjacency?: string;
+  heatLoss?: string;
+  heatingTemp?: string;
+  department?: string;
+  ventilation?: string;
+}
+
+export interface ProductModel {
+  puissance_calo?: number;
+  cop?: number;
+  etas?: number;
+}
+
+export interface SelectedProduct {
+  Nom: string;
+  selectedModel?: ProductModel;
+}
+
+export interface GeneratePdfData {
+  fileName?: string;
+  projectName?: string;
+  referenceNumber?: string;
+  clientInfo?: ClientInfo;
+  installerInfo?: InstallerInfo;
+  building: BuildingData;
+  selectedProduct?: SelectedProduct;
+  parameters?: any; // Ajoutez les types spécifiques si nécessaire
+}
+
+// Type pour les températures départementales
+export type DepartementalTemperatures = {
+  [key: string]: number;
+}
 
 // Fonction utilitaire pour s'assurer qu'une valeur est une chaîne
 const ensureString = (value: any): string => {
@@ -37,7 +93,7 @@ const calculateLogoDimensions = (originalWidth: number, originalHeight: number, 
   return { width: newWidth, height: newHeight };
 };
 
-const departementalTemperatureData = {
+const departementalTemperatureData: DepartementalTemperatures = {
   "01": -10, "02": -7, "03": -8, "04": -8, "05": -10, "06": -5, "07": -6, "08": -10, "09": -5,
   "10": -10, "11": -5, "12": -8, "13": -5, "14": -7, "15": -8, "16": -5, "17": -5, "18": -7,
   "19": -8, "20": -2, "21": -10, "22": -4, "23": -8, "24": -5, "25": -12, "26": -6, "27": -7,

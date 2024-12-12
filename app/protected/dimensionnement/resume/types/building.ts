@@ -1,35 +1,23 @@
-// types/building.ts
-
 export interface BuildingData {
-    constructionYear: string | null;
-    buildingType: string | null;
-    heatLoss: string | null;
+    constructionYear?: string;
+    buildingType?: string;
+    heatLoss?: string;
     totalSurface: number;
-    ventilation: string | null;
-    heatingTemp: string | null;
-    department: string | null;
-    structure: string | null;
-    groundStructure: string | null;
-    windowSurface: string | null;
-    adjacency: string | null;
-    floors: {
-    ground: {
-        surface: string;
-        height: string;
-    };
-    first?: {
-        surface: string;
-        height: string;
-    };
-    second?: {
-        surface: string;
-        height: string;
-    };
-    };
-    poolKit: string | null;
-    freecoolingKit: string | null;
-    hotWater: string | null;
-}
+    ventilation?: string;
+    heatingTemp?: string;
+    department?: string;
+    structure?: string;
+    groundStructure?: string;
+    windowSurface?: string;
+    adjacency?: string;
+    poolKit?: string;
+    freecoolingKit?: string;
+    hotWater?: string;
+    surfaceRDC?: string;
+    surface1erEtage?: string;
+    surface2eEtage?: string;
+    externalTemp?: string;
+  }
 
 export interface HeatLossDetails {
     totalLoss: number;

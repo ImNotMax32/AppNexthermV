@@ -32,25 +32,24 @@ import { useRouter } from 'next/navigation';
 import BuildingCharacteristicsSection from '@/components/BuildingCharacteristicsSection';
 import { Edit } from 'lucide-react';
 
-
-
-// Interfaces
+// Dans page.tsx
 interface BuildingData {
-  constructionYear: string | null;
-  buildingType: string | null;
-  heatLoss: string | null;
+  constructionYear?: string;
+  buildingType?: string;
+  heatLoss?: string;
   totalSurface: number;
-  ventilation: string | null;
-  heatingTemp: string | null;
-  department: string | null;
-  structure: string | null;
-  groundStructure: string | null;
-  windowSurface: string | null;
-  adjacency: string | null;
-  poolKit: string | null;
-  freecoolingKit: string | null;
-  hotWater: string | null;
+  ventilation?: string;
+  heatingTemp?: string;
+  department?: string;
+  structure?: string;
+  groundStructure?: string;
+  windowSurface?: string;
+  adjacency?: string;
+  poolKit?: string;
+  freecoolingKit?: string;
+  hotWater?: string;
 }
+
 
 interface PowerCharacteristics {
   ratio_frigo: number;
@@ -459,35 +458,36 @@ const loadData = async () => {
   }
 };
 const router = useRouter();
-  useEffect(() => {
-    const newBuildingData: BuildingData = {
-      constructionYear: localStorage.getItem('Annee_de_construction'),
-      buildingType: localStorage.getItem('Type_de_construction'),
-      heatLoss: localStorage.getItem('ResultatDeperdition') || 
-                localStorage.getItem('ResultatDeperdition1'),
-      totalSurface: calculateTotalSurface(),
-      ventilation: localStorage.getItem('Ventilation'),
-      heatingTemp: localStorage.getItem('Temperature_de_chauffage'),
-      department: localStorage.getItem('Departement'),
-      structure: localStorage.getItem('Structure_de_la_construction'),
-      groundStructure: localStorage.getItem('Structure_du_sol'),
-      windowSurface: localStorage.getItem('Surface_de_vitrage'),
-      adjacency: localStorage.getItem('Mitoyennete'),
-      poolKit: localStorage.getItem('kit_piscine'),
-      freecoolingKit: localStorage.getItem('kit_freecooling'),
-      hotWater: localStorage.getItem('kit_ECS')
-    };
+
+useEffect(() => {
+  const newBuildingData: BuildingData = {
+    constructionYear: localStorage.getItem('Annee_de_construction') || undefined,
+    buildingType: localStorage.getItem('Type_de_construction') || undefined,
+    heatLoss: localStorage.getItem('ResultatDeperdition') || 
+              localStorage.getItem('ResultatDeperdition1') || undefined,
+    totalSurface: calculateTotalSurface(),
+    ventilation: localStorage.getItem('Ventilation') || undefined,
+    heatingTemp: localStorage.getItem('Temperature_de_chauffage') || undefined,
+    department: localStorage.getItem('Departement') || undefined,
+    structure: localStorage.getItem('Structure_de_la_construction') || undefined,
+    groundStructure: localStorage.getItem('Structure_du_sol') || undefined,
+    windowSurface: localStorage.getItem('Surface_de_vitrage') || undefined,
+    adjacency: localStorage.getItem('Mitoyennete') || undefined,
+    poolKit: localStorage.getItem('kit_piscine') || undefined,
+    freecoolingKit: localStorage.getItem('kit_freecooling') || undefined,
+    hotWater: localStorage.getItem('kit_ECS') || undefined
+  };
+
+  setBuildingData(newBuildingData);
+  loadData();
   
-    setBuildingData(newBuildingData);
-    loadData();
-    
-    // Augmentation du délai à 3000ms (3 secondes)
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 4500); // Changé de 1000 à 3000
-  
-    return () => clearTimeout(timer);
-  }, []);
+  const timer = setTimeout(() => {
+    setIsLoading(false);
+  }, 4500);
+
+  return () => clearTimeout(timer);
+}, []);
+
   if (isLoading) {
     return (
       <div className="flex justify-center items-center min-h-screen bg-white">

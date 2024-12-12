@@ -28,10 +28,12 @@ import { createClient } from '@/utils/supabase/client';
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { Product } from '@/app/protected/dimensionnement/resume/types/product';
 import { Search, Download, Trash2, Filter, SlidersHorizontal, Edit, FileText } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
 import { generateModernPdf } from '@/app/protected/dimensionnement/resume/utils/pdfGenerator';
+import { BuildingData } from '@/app/protected/dimensionnement/resume/types/building'
+import { Product, ClientInfo, InstallerInfo } from '@/app/protected/dimensionnement/resume/types/product';
+
 
 interface Calculation {
   id: string;
@@ -53,6 +55,9 @@ interface Calculation {
       poolKit: string | null;
       freecoolingKit: string | null;
       hotWater: string | null;
+      surfaceRDC?: string;
+      surface1erEtage?: string;
+      surface2eEtage?: string;
     };
     heating: {
       heatingTemp: string | null;
@@ -278,7 +283,7 @@ export default function SavedFiles() {
       }
   
       const pdfData = {
-        fileName: `${calculation.projectName || 'projet'}_${new Date().toISOString().split('T')[0]}`,
+        fileName: `${calculation.project_name || 'projet'}_${new Date().toISOString().split('T')[0]}`,
         building: {
           constructionYear: buildingData.constructionYear || '',
           buildingType: buildingData.buildingType || '',
@@ -336,7 +341,7 @@ export default function SavedFiles() {
           contact: installerInfo.contact || '',
           email: installerInfo.email || '',
           phone: installerInfo.phone || '',
-          logo: installerInfo.logo || null
+          logo: undefined 
         }
       };
   
@@ -657,9 +662,12 @@ Inclut : échangeur et vannes de régulation`
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent>
-                  <DropdownMenuRadioGroup value={sortOrder} onValueChange={(value: 'newest' | 'oldest') => setSortOrder(value)}>
-                    <DropdownMenuRadioItem value="newest">Plus récent</DropdownMenuRadioItem>
-                    <DropdownMenuRadioItem value="oldest">Plus ancien</DropdownMenuRadioItem>
+                <DropdownMenuRadioGroup 
+                        value={sortOrder} 
+                        onValueChange={(value) => {
+                          setSortOrder(value as "newest" | "oldest");
+                        }}
+                      >
                   </DropdownMenuRadioGroup>
                 </DropdownMenuContent>
               </DropdownMenu>

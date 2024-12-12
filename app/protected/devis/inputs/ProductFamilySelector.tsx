@@ -10,6 +10,7 @@ import { NexthermProduct, ProductPower } from '../types/nextherm';
 import { Product } from '../types/devis';
 import capteursData from '@/public/data/capteur.json'; 
 
+
 // Types
 interface Equipment {
   Nom: string;
@@ -41,27 +42,50 @@ interface BallonProduct {
   };
 }
 
-interface ProductListProps {
-  products: (NexthermProduct | Equipment | BallonProduct)[];
-  onProductSelect: (productData: Pick<Product, 'code' | 'description' | 'priceHT'>) => void;
-  type: 'pac' | 'equipment' | 'ballon';
+interface CapteurProduct {
+  Nom: string;
+  Particularites: string[];
+  Description: string;
+  Puissance: {
+    min: number;
+    max: number;
+    disponibles: {
+      modele: string;
+      nombre_couronnes: number;
+    }[];
+  };
 }
+
+interface CapteurData {
+  glycol: CapteurProduct[];
+  ground: CapteurProduct[];
+  accessories: any[];
+}
+
+const isCapteur = (product: any): product is CapteurProduct => {
+  return 'nombre_couronnes' in (product.Puissance?.disponibles?.[0] || {});
+};
+
+// Mettre à jour ProductListProps
+interface ProductListProps {
+  products: (NexthermProduct | Equipment | BallonProduct | CapteurProduct)[];
+  onProductSelect: (productData: Pick<Product, 'code' | 'description' | 'priceHT'>) => void;
+  type: 'pac' | 'equipment' | 'ballon' | 'capteur';
+}
+
 
 // Type guards
 const isNexthermProduct = (product: any): product is NexthermProduct => {
   return 'Puissance' in product;
 };
 
-const isEquipment = (product: any): product is Equipment => {
-  return 'Compatibilite' in product;
-};
 
 const isBallon = (product: any): product is BallonProduct => {
   return 'Volume' in product;
 };
 
 const ProductList: React.FC<ProductListProps> = ({ products, onProductSelect, type }) => {
-  const [selectedProduct, setSelectedProduct] = useState<NexthermProduct | Equipment | BallonProduct | null>(null);
+  const [selectedProduct, setSelectedProduct] = useState<NexthermProduct | Equipment | BallonProduct | CapteurProduct | null>(null);
   const [selectedPower, setSelectedPower] = useState<string>('');
   const [filterType, setFilterType] = useState<string>('all');
 
@@ -131,7 +155,7 @@ ${product.Description}`;
     filterType === 'all' || product.Particularites.includes(filterType)
   );
 
-  const renderProduct = (product: NexthermProduct | Equipment | BallonProduct) => {
+  const renderProduct = (product: NexthermProduct | Equipment | BallonProduct | CapteurProduct) => {
     if (isNexthermProduct(product)) {
       return (
         <div className="flex p-4">
@@ -177,6 +201,25 @@ ${product.Description}`;
             <p className="mt-3 text-sm text-gray-600">{product.Description}</p>
             <div className="mt-3 text-sm text-gray-500">
               Volume : {product.Volume.min} - {product.Volume.max} L
+            </div>
+          </div>
+        </div>
+      );
+    } else if (isCapteur(product)) {  // Nouveau cas pour les capteurs
+      return (
+        <div className="flex p-4">
+          <div className="flex-1">
+            <h3 className="text-lg font-medium">{product.Nom}</h3>
+            <div className="mt-2 flex flex-wrap gap-2">
+              {product.Particularites.map((tag, idx) => (
+                <span key={idx} className="px-2.5 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded-full">
+                  {tag}
+                </span>
+              ))}
+            </div>
+            <p className="mt-3 text-sm text-gray-600">{product.Description}</p>
+            <div className="mt-3 text-sm text-gray-500">
+              Puissance : {product.Puissance.min} - {product.Puissance.max} kW
             </div>
           </div>
         </div>
@@ -247,8 +290,8 @@ ${product.Description}`;
                 <h3 className="font-medium">{selectedProduct.Nom}</h3>
                 <p className="text-sm text-gray-500">
                   {isNexthermProduct(selectedProduct) ? "Sélectionnez une puissance" :
-                   isBallon(selectedProduct) ? "Sélectionnez un volume" :
-                   "Sélectionnez une version"}
+                    isBallon(selectedProduct) ? "Sélectionnez un volume" :
+                    "Sélectionnez une version"}
                 </p>
               </div>
             </div>
@@ -272,6 +315,12 @@ ${product.Description}`;
                   selectedProduct.Volume.disponibles.map((volume, idx) => (
                     <SelectItem key={idx} value={volume.modele}>
                       {volume.modele} - {volume.volume}L
+                    </SelectItem>
+                  ))
+                ) : isCapteur(selectedProduct) ? ( 
+                  selectedProduct.Puissance.disponibles?.map((version, idx) => (
+                    <SelectItem key={idx} value={version.modele}>
+                      {version.modele} - {version.nombre_couronnes} couronne(s)
                     </SelectItem>
                   ))
                 ) : (
@@ -308,6 +357,21 @@ ${product.Description}`;
                       priceHT: 0
                     });
                   }
+                } else if (isCapteur(selectedProduct)) {  // Nouveau cas pour les capteurs
+                  const version = selectedProduct.Puissance.disponibles.find(
+                    v => v.modele === selectedPower
+                  );
+                  if (version) {
+                    onProductSelect({
+                      code: version.modele,
+                      description: `${selectedProduct.Nom}
+            Caractéristiques techniques:
+            - Nombre de couronnes: ${version.nombre_couronnes}
+            Type: ${selectedProduct.Particularites.join(', ')}
+            ${selectedProduct.Description}`,
+                      priceHT: 0
+                    });
+                  }
                 } else {
                   const version = selectedProduct.Compatibilite.versions.find(
                     v => v.modele === selectedPower
@@ -321,6 +385,7 @@ Version : ${version.modele} - ${version.puissance}
 ${selectedProduct.Description}`,
                       priceHT: 0
                     });
+                    
                   }
                 }
                 setSelectedProduct(null);
@@ -375,7 +440,9 @@ export const ProductFamilySelector: React.FC<ProductFamilySelectorProps> = ({ on
           <Tabs defaultValue="glycol" className="w-full">
             <TabsList>
               <TabsTrigger value="glycol">Eau glycolée / Eau</TabsTrigger>
+              {/* Retirez ou commentez ce TabsTrigger si vous n'avez pas de produits ground
               <TabsTrigger value="ground">Sol/Eau</TabsTrigger>
+              */}
             </TabsList>
             
             <TabsContent value="glycol" className="pt-6">
@@ -385,6 +452,7 @@ export const ProductFamilySelector: React.FC<ProductFamilySelectorProps> = ({ on
                 onProductSelect={onProductSelect} 
               />
             </TabsContent>
+            {/* Retirez ou commentez cette section si vous n'avez pas de produits ground
             <TabsContent value="ground" className="pt-6">
               <ProductList 
                 type="capteur" 
@@ -392,18 +460,23 @@ export const ProductFamilySelector: React.FC<ProductFamilySelectorProps> = ({ on
                 onProductSelect={onProductSelect} 
               />
             </TabsContent>
+            */}
           </Tabs>
         </div>
       </TabsContent>
-
       {/* Kit divers */}
       <TabsContent value="equipment" className="p-6">
         <ProductList type="equipment" products={equipmentsData.products} onProductSelect={onProductSelect} />
       </TabsContent>
+      
 
       {/* Ballons */}
       <TabsContent value="ballon" className="p-6">
-        <ProductList type="ballon" products={ballonsData.products} onProductSelect={onProductSelect} />
+        <ProductList 
+          type="ballon" 
+          products={ballonsData.products as (NexthermProduct | Equipment | BallonProduct | CapteurProduct)[]} 
+          onProductSelect={onProductSelect} 
+        />
       </TabsContent>
     </Tabs>
   );

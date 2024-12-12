@@ -34,39 +34,15 @@ import {
 } from "@/components/ui/tooltip";
 import { ChevronDown } from 'lucide-react';
 import { generateModernPdf } from './utils/pdfGenerator'; 
-
-
-
-interface Spec {
-  type: string;
-  icon: React.ReactElement;
-  label: string;
-  value: string | number;
-  description: string;
-}
-
-interface ProductSpecs {
-  reference: Spec;
-  powerSpecs: Spec[];
-  performanceSpecs: Spec[];
-}
-
-interface Dimension {
-  largeur: number;
-  longueur: number;
-  hauteur: number;
-}
-
-interface PowerRange {
-  min: number;
-  max: number;
-  disponibles?: any[];
-}
-
-interface EmitterRange {
-  min: number;
-  max: number;
-}
+import { 
+  ClientInfo, 
+  InstallerInfo, 
+  Spec, 
+  TechnicalSpecs,
+  FormData,
+  FormSection
+} from '@/app/protected/dimensionnement/resume/types/showcase';
+import { BuildingData } from '@/app/protected/dimensionnement/resume/types/building'
 
 interface GeneratePdfData {
   fileName?: string;
@@ -85,75 +61,14 @@ interface GeneratePdfData {
     contact: string;
     email: string;
     phone: string;
-    logo?: File | null;
-  };
-}
-
-interface FormData {
-  pdfName: string;  // Ajout du nom du PDF
-  client: {
-    name: string;
-    address: string;
-    phone: string;
-    city: string;
-    postalCode: string;
-  };
-  installer: {
-    company: string;
-    contact: string;
-    email: string;
-    phone: string;
-    logo?: File | null;
+    logo?: Blob | undefined; 
   };
 }
 
 interface ProductShowcaseProps {
   products: Product[];
-  buildingData: BuildingData;  // Ajoutez cette ligne
+  buildingData: BuildingData;  
 }
-
-interface PowerModel {
-  modele: string;
-  puissance_calo: number;
-  puissance_frigo: number;
-  puissance_absorbee: number;
-  cop: number;
-  etas: number;
-}
-
-interface BuildingData {
-  constructionYear: string | null;
-  buildingType: string | null;
-  heatLoss: string | null;
-  totalSurface: number;
-  ventilation: string | null;
-  heatingTemp: string | null;
-  department: string | null;
-  structure: string | null;
-  groundStructure: string | null;
-  windowSurface: string | null;
-  adjacency: string | null;
-  poolKit: string | null;
-  freecoolingKit: string | null;
-  hotWater: string | null;
-}
-
-interface Calculation {
-  id: number;
-  user_id: string;
-  project_name: string;
-  parameters: {
-    building: BuildingData;
-    selectedProduct: Product;
-    clientInfo: ClientInfo;
-    installerInfo: InstallerInfo;
-  };
-
-  created_at: string;
-  updated_at: string;
-  deleted_at: string | null;
-}
-
 
 const slideVariants = {
   enter: (direction: number) => ({
@@ -206,7 +121,7 @@ const ProductShowcase: React.FC<ProductShowcaseProps> = ({ products, buildingDat
   const videoRef = useRef<HTMLVideoElement>(null);
   const [openSpec, setOpenSpec] = useState<string | null>(null);
   const [showForm, setShowForm] = useState(false);
-  const formRef = useRef(null);
+  const formRef = useRef<HTMLDivElement | null>(null);
   const [showActionButtons, setShowActionButtons] = useState(false);
   const [formData, setFormData] = useState({
     pdfName: '',  // Valeur par défaut vide
@@ -318,27 +233,34 @@ const ProductShowcase: React.FC<ProductShowcaseProps> = ({ products, buildingDat
 
   const currentProduct = products[page];
 // Modification de la fonction getTechnicalSpecs
-const getTechnicalSpecs = (product: Product) => {
+const getTechnicalSpecs = (product: Product): TechnicalSpecs | Spec[] => {
   const selectedModel = product.selectedModel;
   if (!selectedModel) {
     return [
       {
+        type: 'power',
         icon: <ThermometerSun className="text-[#86BC29]" size={24} />,
         label: "Puissance",
-        value: `${product.Puissance.min} - ${product.Puissance.max} kW`
+        value: `${product.Puissance.min} - ${product.Puissance.max} kW`,
+        description: specDescriptions.reference
       },
       {
+        type: 'cop',
         icon: <Wind className="text-[#86BC29]" size={24} />,
         label: "COP",
-        value: `${product.Cop.max}`
+        value: `${product.Cop.max}`,
+        description: specDescriptions.cop
       },
       {
+        type: 'etas',
         icon: <Sparkles className="text-[#86BC29]" size={24} />,
         label: "ETAS",
-        value: `${product.Etas.max}%`
+        value: `${product.Etas.max}%`,
+        description: specDescriptions.etas
       }
     ];
   }
+
   return {
     reference: {
       type: 'reference',
@@ -390,8 +312,7 @@ const getTechnicalSpecs = (product: Product) => {
 };
 
 
-
-const handleInputChange = (section: string, field: string, value: any) => {
+const handleInputChange = (section: FormSection, field: string, value: any) => {
   setFormData(prev => {
     if (section === 'general') {
       return {
@@ -409,16 +330,42 @@ const handleInputChange = (section: string, field: string, value: any) => {
   });
 };
 
-
 const handleGeneratePdf = async () => {
   try {
+    let logoBlob: Blob | undefined = undefined;
+    
+    if (formData.installer.logo) {
+      logoBlob = formData.installer.logo;
+    }
+
+    // Conversion pour correspondre au type attendu
+    const sanitizedBuildingData: BuildingData = {
+      totalSurface: buildingData.totalSurface,
+      constructionYear: buildingData.constructionYear || undefined,
+      buildingType: buildingData.buildingType || undefined,
+      heatLoss: buildingData.heatLoss || undefined,
+      ventilation: buildingData.ventilation || undefined,
+      heatingTemp: buildingData.heatingTemp || undefined,
+      department: buildingData.department || undefined,
+      structure: buildingData.structure || undefined,
+      groundStructure: buildingData.groundStructure || undefined,
+      windowSurface: buildingData.windowSurface || undefined,
+      adjacency: buildingData.adjacency || undefined,
+      poolKit: buildingData.poolKit || undefined,
+      freecoolingKit: buildingData.freecoolingKit || undefined,
+      hotWater: buildingData.hotWater || undefined
+    };
+
     const pdfData: GeneratePdfData = {
-      fileName: formData.pdfName, // Ajout du nom du fichier
-      building: buildingData,
+      fileName: formData.pdfName,
+      building: sanitizedBuildingData,
       selectedProduct: products[page],
       referenceNumber: "REF-" + new Date().getTime(),
       clientInfo: formData.client,
-      installerInfo: formData.installer
+      installerInfo: {
+        ...formData.installer,
+        logo: logoBlob
+      }
     };
     
     await generateModernPdf(pdfData);
@@ -426,19 +373,6 @@ const handleGeneratePdf = async () => {
   } catch (error) {
     console.error("Erreur lors de la génération du PDF:", error);
   }
-};
-
-
-
-const handleShowForm = () => {
-  setShowForm(true);
-  // Attendre que le formulaire soit rendu avant de scroller
-  setTimeout(() => {
-    formRef.current?.scrollIntoView({ 
-      behavior: 'smooth',
-      block: 'start'
-    });
-  }, 100);
 };
 
 const handleSubmit = (e: React.FormEvent) => {
@@ -601,56 +535,58 @@ const handleSaveCalculation = async (data: any) => {
             className="bg-white rounded-xl"
           >
             {activeTab === 'specs' ? (
-              <motion.div
-                variants={staggerContainer}
-                initial="hidden"
-                animate="show"
-                className="space-y-6"
-              >
-                {/* Référence centrée */}
-                <motion.div
-                  variants={fadeInUp}
-                  className="w-full flex justify-center"
-                >
-                  <div className="w-full max-w-2xl">
-                    <SpecCard
-                      spec={getTechnicalSpecs(currentProduct).reference}
-                      isOpen={openSpec === 'reference'}
-                      onToggle={() => setOpenSpec(openSpec === 'reference' ? null : 'reference')}
-                      className="bg-[#86BC29]/10"
-                    />
-                  </div>
-                </motion.div>
+              <motion.div variants={staggerContainer} initial="hidden" animate="show" className="space-y-6">
+                {(() => {
+                  const specs = getTechnicalSpecs(currentProduct);
+                  if (Array.isArray(specs)) {
+                    // Rendu pour le cas où selectedModel est null
+                    return specs.map((spec) => (
+                      <SpecCard
+                        key={spec.type}
+                        spec={spec}
+                        isOpen={openSpec === spec.type}
+                        onToggle={() => setOpenSpec(openSpec === spec.type ? null : spec.type)}
+                      />
+                    ));
+                  }
+                  // Rendu pour le cas où selectedModel existe
+                  return (
+                    <>
+                      <motion.div variants={fadeInUp} className="w-full flex justify-center">
+                        <div className="w-full max-w-2xl">
+                          <SpecCard
+                            spec={specs.reference}
+                            isOpen={openSpec === 'reference'}
+                            onToggle={() => setOpenSpec(openSpec === 'reference' ? null : 'reference')}
+                            className="bg-[#86BC29]/10"
+                          />
+                        </div>
+                      </motion.div>
 
-                {/* Groupe des puissances */}
-                <motion.div
-                  variants={fadeInUp}
-                  className="grid grid-cols-3 gap-4"
-                >
-                  {getTechnicalSpecs(currentProduct).powerSpecs.map((spec) => (
-                    <SpecCard
-                      key={spec.type}
-                      spec={spec}
-                      isOpen={openSpec === spec.type}
-                      onToggle={() => setOpenSpec(openSpec === spec.type ? null : spec.type)}
-                    />
-                  ))}
-                </motion.div>
+                      <motion.div variants={fadeInUp} className="grid grid-cols-3 gap-4">
+                        {specs.powerSpecs.map((spec) => (
+                          <SpecCard
+                            key={spec.type}
+                            spec={spec}
+                            isOpen={openSpec === spec.type}
+                            onToggle={() => setOpenSpec(openSpec === spec.type ? null : spec.type)}
+                          />
+                        ))}
+                      </motion.div>
 
-                {/* Groupe des performances */}
-                <motion.div
-                  variants={fadeInUp}
-                  className="grid grid-cols-2 gap-4"
-                >
-                  {getTechnicalSpecs(currentProduct).performanceSpecs.map((spec) => (
-                    <SpecCard
-                      key={spec.type}
-                      spec={spec}
-                      isOpen={openSpec === spec.type}
-                      onToggle={() => setOpenSpec(openSpec === spec.type ? null : spec.type)}
-                    />
-                  ))}
-                </motion.div>
+                      <motion.div variants={fadeInUp} className="grid grid-cols-2 gap-4">
+                        {specs.performanceSpecs.map((spec) => (
+                          <SpecCard
+                            key={spec.type}
+                            spec={spec}
+                            isOpen={openSpec === spec.type}
+                            onToggle={() => setOpenSpec(openSpec === spec.type ? null : spec.type)}
+                          />
+                        ))}
+                      </motion.div>
+                    </>
+                  );
+                })()}
               </motion.div>
             ) : (
               <motion.div
@@ -740,14 +676,16 @@ const handleSaveCalculation = async (data: any) => {
                         <p>P : {currentProduct.Dimension.longueur} mm</p>
                         <p>H : {currentProduct.Dimension.hauteur} mm</p>
                       </div>
-                      {currentProduct.Dimension2.largeur !== "-" && (
-                        <div className="text-sm">
-                          <p className="font-medium">Module double :</p>
-                          <p>L : {currentProduct.Dimension2.largeur} mm</p>
-                          <p>P : {currentProduct.Dimension2.longueur} mm</p>
-                          <p>H : {currentProduct.Dimension2.hauteur} mm</p>
-                        </div>
-                      )}
+                      {(typeof currentProduct.Dimension2.largeur === 'string' ? 
+                          currentProduct.Dimension2.largeur !== "-" : 
+                          currentProduct.Dimension2.largeur !== undefined) && (
+                          <div className="text-sm">
+                            <p className="font-medium">Module double :</p>
+                            <p>L : {currentProduct.Dimension2.largeur} mm</p>
+                            <p>P : {currentProduct.Dimension2.longueur} mm</p>
+                            <p>H : {currentProduct.Dimension2.hauteur} mm</p>
+                          </div>
+                        )}
                     </div>
                   </div>
 

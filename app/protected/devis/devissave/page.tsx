@@ -74,6 +74,8 @@ interface DevisInfo {
   tva_number: string;
 }
 
+type SortOrder = 'newest' | 'oldest';
+
 const ExpandableQuoteRow = ({ 
   devis, 
   onEdit, 
@@ -297,8 +299,7 @@ export default function QuoteList() {
     const [filteredDevis, setFilteredDevis] = useState<DevisInfo[]>([]);
     const [isLoading, setIsLoading] = useState(true);
     const [statusFilter, setStatusFilter] = useState<string>('all');
-    const [timeFilter, setTimeFilter] = useState<string>('all');
-    const [sortOrder, setSortOrder] = useState<'newest' | 'oldest'>('newest');
+    const [timeFilter, setTimeFilter] = useState<string>('all');const [sortOrder, setSortOrder] = useState<SortOrder>('newest');
     const { toast } = useToast();
 
     const updateDevisStatus = async (id: string, newStatus: string) => {
@@ -580,7 +581,12 @@ export default function QuoteList() {
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent>
-                  <DropdownMenuRadioGroup value={sortOrder} onValueChange={(value: 'newest' | 'oldest') => setSortOrder(value)}>
+                <DropdownMenuRadioGroup 
+                    value={sortOrder} 
+                    onValueChange={(value: string) => {
+                      setSortOrder(value as SortOrder);
+                    }}
+                  >
                     <DropdownMenuRadioItem value="newest">Plus récent</DropdownMenuRadioItem>
                     <DropdownMenuRadioItem value="oldest">Plus ancien</DropdownMenuRadioItem>
                   </DropdownMenuRadioGroup>

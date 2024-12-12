@@ -1,7 +1,5 @@
-// nexthermHorizontalSelector.tsx
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import { ChevronLeft, ChevronRight, Package } from 'lucide-react';
-import { NexthermProduct, ProductPower } from '@/types/nextherm';
 import productsData from '@/public/data/products.json';
 import { Button } from '@/components/ui/button';
 import {
@@ -12,12 +10,75 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 
+// Interfaces
 interface NexthermHorizontalSelectorProps {
   onProductSelect: (productData: {
     code: string;
     description: string;
     basePrice: number;
   }) => void;
+}
+
+
+
+interface PowerModel {
+  modele: string;
+  puissance_calo: number;
+  puissance_frigo: number;
+  puissance_absorbee: number;
+  cop: number;
+  etas: number;
+}
+
+interface PowerCharacteristics {
+  cop_moyen: number;
+  etas_moyen: number;
+  ratio_frigo?: number;  
+  ratio_absorbee?: number;  
+}
+
+interface PowerRange {
+  min: number;
+  max: number;
+  disponibles?: PowerModel[];
+  increment?: number;
+  baseModele?: string;
+  caracteristiques?: PowerCharacteristics;
+}
+
+interface ProductDimension {
+  largeur: string | number; 
+  longueur: string | number; 
+  hauteur: string | number;  
+}
+
+interface NexthermProduct {
+  Nom: string;
+  Particularites: string[];
+  Puissance: PowerRange;
+  Description: string;
+  Image2: string;
+  BrochureURL: string;
+  Freecooling: boolean;
+  Kit_Piscine: boolean;
+  Cop: {
+    max: number;
+  };
+  Etas: {
+    max: number;
+  };
+  Emetteur: {
+    min: number;
+    max: number;
+  };
+  Dimension?: ProductDimension;
+  Dimension2?: ProductDimension;
+  Image?: string;
+  selectedModel?: PowerModel;
+  Eau_de_nappe?: {
+    Puissance_min: number;
+    Puissance_max: number;
+  };
 }
 
 export const NexthermHorizontalSelector: React.FC<NexthermHorizontalSelectorProps> = ({ onProductSelect }) => {
@@ -49,7 +110,7 @@ export const NexthermHorizontalSelector: React.FC<NexthermHorizontalSelectorProp
     setSelectedPower('');
   };
 
-  const formatDescription = (product: NexthermProduct, power: ProductPower): string => {
+  const formatDescription = (product: NexthermProduct, power: PowerModel): string => {
     return `${product.Nom}
 Caractéristiques techniques:
 • Puissance calorifique: ${power.puissance_calo} kW
@@ -120,7 +181,7 @@ ${product.Description}`;
               </div>
               <div className="p-2">
                 <div className="flex flex-wrap gap-1">
-                  {product.Particularites.map((tag, idx) => (
+                  {product.Particularites.map((tag: string, idx: number) => (
                     <span 
                       key={idx}
                       className="px-1.5 py-0.5 bg-gray-100 text-gray-600 text-xs rounded-full"
@@ -152,7 +213,7 @@ ${product.Description}`;
                 <SelectValue placeholder="Choisir une puissance" />
               </SelectTrigger>
               <SelectContent>
-                {selectedProduct.Puissance.disponibles?.map((power, idx) => (
+                {selectedProduct.Puissance.disponibles?.map((power: PowerModel, idx: number) => (
                   <SelectItem key={idx} value={power.modele}>
                     {power.modele} - {power.puissance_calo} kW (COP: {power.cop})
                   </SelectItem>
@@ -165,7 +226,7 @@ ${product.Description}`;
             disabled={!selectedPower}
             onClick={() => {
               const power = selectedProduct.Puissance.disponibles?.find(
-                p => p.modele === selectedPower
+                (p: PowerModel) => p.modele === selectedPower
               );
               if (power) {
                 onProductSelect({

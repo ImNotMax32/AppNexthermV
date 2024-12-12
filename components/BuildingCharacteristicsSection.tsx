@@ -22,6 +22,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { useRouter } from 'next/navigation';
+import { BuildingData } from '@/app/protected/dimensionnement/resume/types/building'
 
 interface Emetteur {
   min: number;
@@ -34,23 +35,6 @@ interface Product {
   Emetteur: Emetteur;
   Nom: string;
   // Ajoutez d'autres propriétés si nécessaire
-}
-
-interface BuildingData {
-  constructionYear: string | null;
-  buildingType: string | null;
-  heatLoss: string | null;
-  totalSurface: number;
-  ventilation: string | null;
-  heatingTemp: string | null;
-  department: string | null;
-  structure: string | null;
-  groundStructure: string | null;
-  windowSurface: string | null;
-  adjacency: string | null;
-  poolKit: string | null;
-  freecoolingKit: string | null;
-  hotWater: string | null;
 }
 
 interface ComponentProps {

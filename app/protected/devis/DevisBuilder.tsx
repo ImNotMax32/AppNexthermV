@@ -44,6 +44,7 @@ interface ProductData {
   priceHT: number;
   tva: number;
   totalHT: number;
+  totalTTC?: number; // Ajouter ce champ pour correspondre à Product
 }
 
 const DEFAULT_PRODUCT: ProductData = {
@@ -176,14 +177,14 @@ export default function DevisBuilder() {
             // Vérification que products est un tableau et qu'il contient des éléments
             if (data.products && Array.isArray(data.products) && data.products.length > 0) {
               // Ajout de l'ID pour chaque produit
-              const formattedProducts = data.products.map((product, index) => ({
-                id: index + 1, // Important: ajout de l'ID
-                code: product.code,
-                description: product.description,
-                quantity: product.quantity,
-                priceHT: product.priceHT,
-                tva: product.tva,
-                totalHT: product.totalHT || (product.quantity * product.priceHT)
+              const formattedProducts = data.products.map((product: any, index: number) => ({
+                id: index + 1,
+                code: product.code || '',
+                description: product.description || '',
+                quantity: product.quantity || 1,
+                priceHT: product.priceHT || 0,
+                tva: product.tva || 20,
+                totalHT: product.totalHT || (product.quantity * product.priceHT) || 0
               }));
     
               console.log("Produits formatés à définir:", formattedProducts);
@@ -376,7 +377,7 @@ export default function DevisBuilder() {
 const handlePrint = async () => {
   try {
     const html2pdf = (await import('html2pdf.js')).default;
-    const element = document.querySelector('.devis-content');
+    const element = document.querySelector('.devis-content') as HTMLElement;
     if (!element) {
       throw new Error('Contenu du devis non trouvé');
     }

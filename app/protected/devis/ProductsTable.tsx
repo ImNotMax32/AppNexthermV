@@ -1,6 +1,6 @@
 import React from 'react';
 import { X } from 'lucide-react';
-import { ProductsTableProps } from './types/devis';
+import { ProductsTableProps, Product } from './types/devis';
 import { PersistentInput } from './inputs/PersistentInput';
 import { PersistentTextarea } from './inputs/PersistentTextarea';
 

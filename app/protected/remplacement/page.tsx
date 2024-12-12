@@ -24,7 +24,15 @@ import {
   Zap
 } from 'lucide-react';
 
-const replacementSolutions = {
+interface ReplacementSolution {
+  model: string;
+  power: string;
+  cop: string;
+  benefits: string[];
+  imageUrl: string;
+}
+
+const replacementSolutions: Record<string, ReplacementSolution> = {
   '6': {
     model: 'Optipack',
     power: '6kW',

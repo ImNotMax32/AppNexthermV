@@ -133,15 +133,7 @@ export default function TeamManagement() {
 
       if (membershipError) throw membershipError;
 
-      const formattedTeams: Team[] = memberships?.map(item => ({
-        ...item.teams,
-        role: item.role
-      })) || [];
-
-      setTeams(formattedTeams);
-    } catch (error) {
-      console.error('Erreur détaillée:', error);
-      toast.error("Erreur lors de la récupération des équipes");
+      
     } finally {
       setIsLoading(false);
     }

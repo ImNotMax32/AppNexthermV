@@ -159,59 +159,59 @@ ${product.Description}`;
 
       {/* Sélecteur de puissance */}
       {selectedProduct && (
-        <div className="fixed bottom-0 left-0 right-0 bg-white border-t shadow-lg">
-          <div className="max-w-7xl mx-auto p-6 flex items-center gap-6">
-            <div className="flex items-center gap-4 flex-1">
-            <img 
-                src={getImagePath(selectedProduct.Image2)}
-                alt={selectedProduct.Nom}
-                className="w-16 h-16 object-cover rounded-lg"
-                onError={(e) => {
-                  console.error(`Failed to load image: ${selectedProduct.Image2}`);
-                  e.currentTarget.src = '/placeholder.jpg';
-                }}
-              />
-              <div>
-                <h3 className="font-medium">{selectedProduct.Nom}</h3>
-                <p className="text-sm text-gray-500">Sélectionnez une puissance</p>
-              </div>
-            </div>
-            
-            <Select value={selectedPower} onValueChange={setSelectedPower} className="w-[300px]">
-              <SelectTrigger>
-                <SelectValue placeholder="Choisir une puissance" />
-              </SelectTrigger>
-              <SelectContent>
-                {selectedProduct.Puissance.disponibles?.map((power, idx) => (
-                  <SelectItem key={idx} value={power.modele}>
-                    {power.modele} - {power.puissance_calo} kW (COP: {power.cop})
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-            
-            <Button
-              disabled={!selectedPower}
-              onClick={() => {
-                const power = selectedProduct.Puissance.disponibles?.find(
-                  p => p.modele === selectedPower
-                );
-                if (power) {
-                  onProductSelect({
-                    code: power.modele,
-                    description: formatDescription(selectedProduct, power),
-                    basePrice: 0
-                  });
-                  setSelectedProduct(null);
-                  setSelectedPower('');
-                }
-              }}
-              className="min-w-[150px]"
-            >
-              Ajouter au devis
-            </Button>
+        <div className="flex items-center gap-6">
+        <div className="flex items-center gap-4 flex-1">
+          <img 
+            src={getImagePath(selectedProduct.Image2)}
+            alt={selectedProduct.Nom}
+            className="w-16 h-16 object-cover rounded-lg"
+            onError={(e) => {
+              console.error(`Failed to load image: ${selectedProduct.Image2}`);
+              e.currentTarget.src = '/placeholder.jpg';
+            }}
+          />
+          <div>
+            <h3 className="font-medium">{selectedProduct.Nom}</h3>
+            <p className="text-sm text-gray-500">Sélectionnez une puissance</p>
           </div>
         </div>
+        
+        <div className="w-[300px]"> {/* Wrapper div avec la classe de largeur */}
+          <Select value={selectedPower} onValueChange={setSelectedPower}>
+            <SelectTrigger>
+              <SelectValue placeholder="Choisir une puissance" />
+            </SelectTrigger>
+            <SelectContent>
+              {selectedProduct.Puissance.disponibles?.map((power, idx) => (
+                <SelectItem key={idx} value={power.modele}>
+                  {power.modele} - {power.puissance_calo} kW (COP: {power.cop})
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
+        
+        <Button
+          disabled={!selectedPower}
+          onClick={() => {
+            const power = selectedProduct.Puissance.disponibles?.find(
+              p => p.modele === selectedPower
+            );
+            if (power) {
+              onProductSelect({
+                code: power.modele,
+                description: formatDescription(selectedProduct, power),
+                basePrice: 0
+              });
+              setSelectedProduct(null);
+              setSelectedPower('');
+            }
+          }}
+          className="min-w-[150px]"
+        >
+          Ajouter au devis
+        </Button>
+      </div>
       )}
 
       <style jsx>{`
