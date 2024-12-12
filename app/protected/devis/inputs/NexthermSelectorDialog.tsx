@@ -7,6 +7,7 @@ import {
 } from "@/components/ui/dialog";
 import { ProductFamilySelector } from './ProductFamilySelector';
 import { Package, Info } from 'lucide-react';
+import { Product } from '../types/devis';
 
 interface NexthermSelectorDialogProps {
   isOpen: boolean;
@@ -23,12 +24,12 @@ export const NexthermSelectorDialog: React.FC<NexthermSelectorDialogProps> = ({
   onClose,
   onProductSelect
 }) => {
-  const handleProductSelect = (productData: {
-    code: string;
-    description: string;
-    basePrice: number;
-  }) => {
-    onProductSelect(productData);
+  const handleProductSelect = (productData: Pick<Product, "code" | "description" | "priceHT">) => {
+    onProductSelect({
+      code: productData.code,
+      description: productData.description,
+      basePrice: productData.priceHT // Conversion de priceHT vers basePrice
+    });
     onClose();
   };
 
