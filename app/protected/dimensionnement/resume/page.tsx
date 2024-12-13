@@ -31,25 +31,7 @@ import SaveCalculation from '@/components/SaveCalculation';
 import { useRouter } from 'next/navigation';
 import BuildingCharacteristicsSection from '@/components/BuildingCharacteristicsSection';
 import { Edit } from 'lucide-react';
-
-// Dans page.tsx
-interface BuildingData {
-  constructionYear?: string;
-  buildingType?: string;
-  heatLoss?: string;
-  totalSurface: number;
-  ventilation?: string;
-  heatingTemp?: string;
-  department?: string;
-  structure?: string;
-  groundStructure?: string;
-  windowSurface?: string;
-  adjacency?: string;
-  poolKit?: string;
-  freecoolingKit?: string;
-  hotWater?: string;
-}
-
+import { BuildingData } from './types/building';
 
 interface PowerCharacteristics {
   ratio_frigo: number;
@@ -733,8 +715,8 @@ useEffect(() => {
             </div>
           </CardContent>
         </Card>
-{/* Caractéristiques du bâtiment */}
-<BuildingCharacteristicsSection buildingData={buildingData} />
+        {/* Caractéristiques du bâtiment */}
+        <BuildingCharacteristicsSection buildingData={buildingData} />
         {/* Titre des produits compatibles */}
         <motion.h2
           variants={fadeInUp}
