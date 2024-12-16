@@ -13,14 +13,14 @@ import { createClient } from '@/utils/supabase/client';
 import { useState } from 'react';
 import { toast } from 'sonner';
 
-// Composant du formulaire qui utilise useSearchParams
-function LoginFormContent() {
+// Ne pas exporter ce composant, le garder interne au fichier
+function LoginForm() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const redirect = searchParams.get('redirect');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-
+  
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setIsLoading(true);
@@ -52,6 +52,7 @@ function LoginFormContent() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
+      {/* Votre formulaire existant */}
       <motion.div
         initial={{ opacity: 0, x: -20 }}
         animate={{ opacity: 1, x: 0 }}
@@ -150,7 +151,8 @@ function LoginFormContent() {
   );
 }
 
-export default function LoginPage() {
+// Seul export autorisé : le default export de la page
+export default function Page() {
   return (
     <div className="min-h-[70dvh] flex flex-col justify-between bg-white">
       <div className="flex-1 flex flex-col justify-center py-8 px-4 sm:px-6 lg:px-4">
@@ -192,7 +194,7 @@ export default function LoginPage() {
               </div>
             }
           >
-            <LoginFormContent />
+            <LoginForm />
           </Suspense>
         </motion.div>
       </div>
