@@ -1,5 +1,6 @@
 'use client';
 
+import { Suspense } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { Loader2 } from 'lucide-react';
@@ -12,7 +13,7 @@ import { createClient } from '@/utils/supabase/client';
 import { useState } from 'react';
 import { toast } from 'sonner';
 
-export default function Login() {
+function LoginContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const redirect = searchParams.get('redirect');
@@ -47,36 +48,35 @@ export default function Login() {
     router.push(redirect || '/protected');
     router.refresh();
   }
-  
+
   return (
-<div className="min-h-[70dvh] flex flex-col justify-between bg-white">
-<div className="flex-1 flex flex-col justify-center py-8 px-4 sm:px-6 lg:px-4">
-{/* Le reste du JSX reste identique, juste mettre à jour le form */}
-      <motion.div 
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        className="sm:mx-auto sm:w-full sm:max-w-md"
-      >
-        {/* Logo et titre restent identiques */}
-        <div className="flex justify-center">
-          <Link href="/" className="flex items-center space-x-3 group">
-            <motion.img 
-              transition={{ duration: 0.3 }}
-              src="assets/img/X.png"
-              alt="Nextherm Logo"
-              className="h-12 w-12 object-contain"
-            />
-            <div className="flex items-center space-x-2">
-              <span className="text-4xl font-bold text-gray-900">Nextherm</span>
-              <span className="text-4xl font-medium" style={{ color: '#86BC29' }}>Applications</span>
-            </div>
-          </Link>
-        </div>
-        <h2 className="mt-8 text-center text-3xl font-extrabold text-gray-900">
-          Connexion à votre compte
-        </h2>
-      </motion.div>
+    <div className="min-h-[70dvh] flex flex-col justify-between bg-white">
+      <div className="flex-1 flex flex-col justify-center py-8 px-4 sm:px-6 lg:px-4">
+        {/* Le reste de votre JSX existant */}
+        <motion.div 
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="sm:mx-auto sm:w-full sm:max-w-md"
+        >
+          <div className="flex justify-center">
+            <Link href="/" className="flex items-center space-x-3 group">
+              <motion.img 
+                transition={{ duration: 0.3 }}
+                src="assets/img/X.png"
+                alt="Nextherm Logo"
+                className="h-12 w-12 object-contain"
+              />
+              <div className="flex items-center space-x-2">
+                <span className="text-4xl font-bold text-gray-900">Nextherm</span>
+                <span className="text-4xl font-medium" style={{ color: '#86BC29' }}>Applications</span>
+              </div>
+            </Link>
+          </div>
+          <h2 className="mt-8 text-center text-3xl font-extrabold text-gray-900">
+            Connexion à votre compte
+          </h2>
+        </motion.div>
 
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
