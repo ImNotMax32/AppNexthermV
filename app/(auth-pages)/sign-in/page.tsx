@@ -13,12 +13,15 @@ import { createClient } from '@/utils/supabase/client';
 import { useState } from 'react';
 import { toast } from 'sonner';
 
-export default function Login() {
+// Composant du formulaire qui utilise useSearchParams
+function LoginFormContent() {
+  const searchParams = useSearchParams();
   const router = useRouter();
+  const redirect = searchParams.get('redirect');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  
-  async function handleSubmit(event: React.FormEvent<HTMLFormElement>, redirect: string | null) {
+
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setIsLoading(true);
     setError(null);
@@ -46,7 +49,108 @@ export default function Login() {
     router.push(redirect || '/protected');
     router.refresh();
   }
-  
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-6">
+      <motion.div
+        initial={{ opacity: 0, x: -20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.5, delay: 0.3 }}
+      >
+        <Label htmlFor="email" className="block text-sm font-medium text-gray-700">
+          Email
+        </Label>
+        <div className="mt-1">
+          <Input
+            id="email"
+            name="email"
+            type="email"
+            autoComplete="email"
+            required
+            maxLength={50}
+            className="appearance-none rounded-full relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-[#86BC29] focus:border-[#86BC29] focus:z-10 sm:text-sm"
+            placeholder="Entrez votre email"
+          />
+        </div>
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0, x: -20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.5, delay: 0.4 }}
+      >
+        <div className="flex justify-between items-center">
+          <Label htmlFor="password" className="block text-sm font-medium text-gray-700">
+            Mot de passe
+          </Label>
+          <Link className="text-xs text-[#86BC29] hover:text-[#75a625] underline" href="/forgot-password">
+            Mot de passe oublié ?
+          </Link>
+        </div>
+        <div className="mt-1">
+          <Input
+            id="password"
+            name="password"
+            type="password"
+            autoComplete="current-password"
+            required
+            minLength={8}
+            maxLength={100}
+            className="appearance-none rounded-full relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-[#86BC29] focus:border-[#86BC29] focus:z-10 sm:text-sm"
+            placeholder="Entrez votre mot de passe"
+          />
+        </div>
+      </motion.div>
+
+      {error && (
+        <div className="bg-red-50 border-l-4 border-red-500 p-4 rounded-md">
+          <div className="flex items-center">
+            <div className="flex-shrink-0">
+              <svg className="h-5 w-5 text-red-500" viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
+              </svg>
+            </div>
+            <div className="ml-3">
+              <p className="text-sm text-red-700">
+                {error === 'Invalid login credentials' ? 'Identifiants invalides' : error}
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
+
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.5 }}
+      >
+        <Button
+          type="submit"
+          className="w-full flex justify-center items-center py-2 px-4 border border-transparent rounded-full shadow-sm text-sm font-medium text-white bg-[#86BC29] hover:bg-[#75a625] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#86BC29] transition-colors duration-200"
+          disabled={isLoading}
+        >
+          {isLoading ? (
+            <>
+              <Loader2 className="animate-spin mr-2 h-4 w-4" />
+              Chargement...
+            </>
+          ) : (
+            'Se connecter'
+          )}
+        </Button>
+      </motion.div>
+
+      <Link
+        href={`/sign-up${redirect ? `?redirect=${redirect}` : ''}`}
+        className="w-full flex justify-center mt-4 py-2 px-4 border border-gray-300 rounded-full shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#86BC29] transition-colors duration-200"
+      >
+        Créer un compte
+      </Link>
+    </form>
+  );
+}
+
+export default function LoginPage() {
   return (
     <div className="min-h-[70dvh] flex flex-col justify-between bg-white">
       <div className="flex-1 flex flex-col justify-center py-8 px-4 sm:px-6 lg:px-4">
@@ -81,98 +185,14 @@ export default function Login() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="mt-8 sm:mx-auto sm:w-full sm:max-w-md"
         >
-          <Suspense fallback={
-            <div className="flex justify-center">
-              <Loader2 className="animate-spin h-8 w-8 text-[#86BC29]" />
-            </div>
-          }>
-            {/* Seule la partie qui utilise useSearchParams est dans le Suspense */}
-            {() => {
-              const searchParams = useSearchParams();
-              const redirect = searchParams.get('redirect');
-              return (
-                <form onSubmit={(e) => handleSubmit(e, redirect)} className="space-y-6">
-                  {/* Le reste de votre formulaire reste identique */}
-                  <motion.div
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5, delay: 0.3 }}
-                  >
-                    <Label htmlFor="email" className="block text-sm font-medium text-gray-700">
-                      Email
-                    </Label>
-                    <div className="mt-1">
-                      <Input
-                        id="email"
-                        name="email"
-                        type="email"
-                        autoComplete="email"
-                        required
-                        maxLength={50}
-                        className="appearance-none rounded-full relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-[#86BC29] focus:border-[#86BC29] focus:z-10 sm:text-sm"
-                        placeholder="Entrez votre email"
-                      />
-                    </div>
-                  </motion.div>
-
-                  <motion.div
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5, delay: 0.4 }}
-                  >
-                    <div className="flex justify-between items-center">
-                      <Label htmlFor="password" className="block text-sm font-medium text-gray-700">
-                        Mot de passe
-                      </Label>
-                      <Link className="text-xs text-[#86BC29] hover:text-[#75a625] underline" href="/forgot-password">
-                        Mot de passe oublié ?
-                      </Link>
-                    </div>
-                    <div className="mt-1">
-                      <Input
-                        id="password"
-                        name="password"
-                        type="password"
-                        autoComplete="current-password"
-                        required
-                        minLength={8}
-                        maxLength={100}
-                        className="appearance-none rounded-full relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-[#86BC29] focus:border-[#86BC29] focus:z-10 sm:text-sm"
-                        placeholder="Entrez votre mot de passe"
-                      />
-                    </div>
-                  </motion.div>
-
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.5 }}
-                  >
-                    <Button
-                      type="submit"
-                      className="w-full flex justify-center items-center py-2 px-4 border border-transparent rounded-full shadow-sm text-sm font-medium text-white bg-[#86BC29] hover:bg-[#75a625] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#86BC29] transition-colors duration-200"
-                      disabled={isLoading}
-                    >
-                      {isLoading ? (
-                        <>
-                          <Loader2 className="animate-spin mr-2 h-4 w-4" />
-                          Chargement...
-                        </>
-                      ) : (
-                        'Se connecter'
-                      )}
-                    </Button>
-                  </motion.div>
-
-                  <Link
-                    href={`/sign-up${redirect ? `?redirect=${redirect}` : ''}`}
-                    className="w-full flex justify-center py-2 px-4 border border-gray-300 rounded-full shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#86BC29] transition-colors duration-200"
-                  >
-                    Créer un compte
-                  </Link>
-                </form>
-              );
-            }}
+          <Suspense 
+            fallback={
+              <div className="flex justify-center">
+                <Loader2 className="animate-spin h-8 w-8 text-[#86BC29]" />
+              </div>
+            }
+          >
+            <LoginFormContent />
           </Suspense>
         </motion.div>
       </div>
