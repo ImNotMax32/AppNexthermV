@@ -69,31 +69,51 @@ function SignUpContent() {
     event.preventDefault();
     setIsLoading(true);
     setError(null);
-
+  
     const formData = new FormData(event.currentTarget);
     const email = formData.get('email') as string;
     const password = formData.get('password') as string;
     
     const supabase = createClient();
     
-    const { error } = await supabase.auth.signUp({
+    // 1. Créer l'authentification
+    const { data: authData, error: authError } = await supabase.auth.signUp({
       email,
       password,
       options: {
         emailRedirectTo: `${window.location.origin}/auth/callback${redirect ? `?redirect=${redirect}` : ''}`,
       },
     });
-
-    if (error) {
-      setError(error.message);
+  
+    if (authError) {
+      setError(authError.message);
       setIsLoading(false);
       return;
     }
-
+  
+    // 2. Si l'authentification réussit, créer l'entrée dans la table user
+    if (authData.user) {
+      const { error: profileError } = await supabase
+        .from('user')
+        .insert([
+          { 
+            id: authData.user.id,
+            email: email,
+            created_at: new Date().toISOString(),
+            updated_at: new Date().toISOString()
+          }
+        ]);
+  
+      if (profileError) {
+        setError("Erreur lors de la création du profil");
+        setIsLoading(false);
+        return;
+      }
+    }
+  
     router.push(redirect || '/protected');
     router.refresh();
   }
-
   return (
     <div className="min-h-[70dvh] flex flex-col justify-between bg-white">
       <div className="flex-1 flex flex-col justify-center py-12 px- sm:px-6 lg:px-8">
