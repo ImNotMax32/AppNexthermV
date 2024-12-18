@@ -117,7 +117,7 @@ export default function Header() {
                   </DropdownMenuLabel>
                   <DropdownMenuSeparator />
                   <DropdownMenuItem className="cursor-pointer">
-                    <Link href="/dashboard/VueGenerale" className="flex w-full items-center">
+                    <Link href="/protected/VueGenerale" className="flex w-full items-center">
                       <Home className="mr-2 h-4 w-4" />
                       <span>Tableau de bord</span>
                     </Link>
@@ -129,7 +129,7 @@ export default function Header() {
                     </Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem className="cursor-pointer">
-                    <Link href="/dashboard" className="flex w-full items-center">
+                    <Link href="/protected/" className="flex w-full items-center">
                       <Handshake className="mr-2 h-4 w-4" />
                       <span>Team</span>
                     </Link>
