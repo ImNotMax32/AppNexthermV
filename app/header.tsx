@@ -80,8 +80,8 @@ export default function Header() {
             className="h-12 w-12 object-contain"
           />
           <div className="flex items-center space-x-2">
-            <span className="text-2xl font-bold text-gray-900">Nextherm</span>
-            <span className="text-2xl font-medium" style={{ color: '#86BC29' }}>Applications</span>
+            <span className="font-bold text-gray-900" style={{ fontSize: '1.75rem', lineHeight: '2rem' }}>Nextherm</span>
+            <span className="font-medium" style={{ fontSize: '1.75rem', lineHeight: '2rem', color: '#86BC29' }}>Applications</span>
           </div>
         </Link>
         <div className="flex items-center space-x-4">

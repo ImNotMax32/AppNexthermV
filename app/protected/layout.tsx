@@ -1,7 +1,7 @@
 // app/dashboard/layout.tsx
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Button } from '@/components/ui/button';
@@ -47,6 +47,10 @@ export default function DashboardLayout({
   const pathname = usePathname();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
+  useEffect(() => {
+    setIsSidebarOpen(false);
+  }, [pathname]);
+
   const dimensionnementItems = [
     { href: '/protected/dimensionnement', icon: Calculator, label: 'Logiciel' },
     { href: '/protected/dimensionnement/save', icon: Save, label: 'Fichiers sauvegardés' },
@@ -81,45 +85,45 @@ export default function DashboardLayout({
 
   return (
     <div className="flex flex-col min-h-[calc(100dvh-68px)] max-w-7xl mx-auto w-full">
-      {/* Mobile header */}
-      <div className="lg:hidden flex items-center justify-between bg-white border-b border-gray-200 p-4">
-        <div className="flex items-center">
+      {/* Mobile menu button */}
+      <div className="block lg:hidden fixed top-0 left-0 right-0 bg-white border-b border-gray-200 p-4 z-50">
+        <div className="flex items-center justify-between max-w-7xl mx-auto">
           <span className="font-medium">Menu</span>
+          <Button
+            variant="ghost"
+            onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+          >
+            <Menu className="h-6 w-6" />
+            <span className="sr-only">Toggle sidebar</span>
+          </Button>
         </div>
-        <Button
-          className="-mr-3"
-          variant="ghost"
-          onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-        >
-          <Menu className="h-6 w-6" />
-          <span className="sr-only">Toggle sidebar</span>
-        </Button>
       </div>
 
-      <motion.div
-        className="fixed top-0 left-0 right-0 h-1 bg-[#86BC29] origin-left z-50"
-        style={{ scaleX }}
-      />
-
-      <div className="flex flex-1 overflow-hidden">
+      <div className="flex flex-1 overflow-hidden pt-[60px] lg:pt-0">
+        {/* Overlay pour mobile */}
+        {isSidebarOpen && (
+          <div 
+            className="fixed inset-0 bg-black bg-opacity-50 z-30 lg:hidden"
+            onClick={() => setIsSidebarOpen(false)}
+          />
+        )}
+        
+        {/* Sidebar */}
         <aside className={`
+          fixed lg:static
           w-64
           bg-white 
-          lg:bg-white 
           border-r 
-          border-white 
-          transition-all 
-          duration-300 
+          border-gray-200
+          h-full
+          overflow-y-auto
+          z-40
+          transition-transform
+          duration-300
           ease-in-out
           ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
-          ${isSidebarOpen ? 'fixed' : 'lg:relative'}
-          h-[calc(110vh-68px)]
-          lg:block
-          z-40
-          top-[68px]
-          lg:top-0
         `}>
-          <nav className="h-full overflow-y-auto p-4 space-y-4">
+          <nav className="h-full p-4 space-y-4">
             <Link href="/protected/VueGenerale" passHref>
               <Button
                 variant={pathname === '/protected/VueGenerale' ? 'secondary' : 'ghost'}
@@ -340,7 +344,15 @@ export default function DashboardLayout({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0 }}
-            className="flex-1 overflow-y-auto p-0 lg:p-4"
+            className={`
+              flex-1 
+              overflow-y-auto 
+              p-4
+              transition-all
+              duration-300
+              ease-in-out
+              ${isSidebarOpen ? 'lg:ml-0' : 'ml-0'}
+            `}
           >
             {children}
           </motion.main>

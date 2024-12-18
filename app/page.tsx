@@ -242,17 +242,22 @@ export default function HomePage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2, duration: 0.8 }}
-                // @ts-ignore
-                className="text-4xl font-bold text-gray-900 tracking-tight sm:text-5xl md:text-6xl"
+                className="font-bold text-gray-900 tracking-tight"
+                style={{
+                  fontSize: 'clamp(2.25rem, 5vw, 4rem)',
+                  lineHeight: '1.1',
+                }}
               >
                 Les applications
                 <motion.span 
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.4, duration: 0.8 }}
-                  // @ts-ignore
                   className="block"
-                  style={{ color: '#86BC29' }}
+                  style={{ 
+                    color: '#86BC29',
+                    fontSize: 'inherit',
+                  }}
                 >
                   Nextherm
                 </motion.span>
@@ -311,16 +316,17 @@ export default function HomePage() {
                   </div>
                   
                   {/* Code Content */}
-                  <div className="p-6">
+                  <div className="p-6 overflow-hidden">
                     <pre className="font-jetbrains text-[15px] leading-relaxed tracking-wide whitespace-pre-wrap">
                       <code 
-                        className="block"
+                        className="block relative"
                         style={{
-                          textShadow: '0 0 1px rgba(255,255,255,0.1)',
+                          WebkitFontSmoothing: 'antialiased',
+                          MozOsxFontSmoothing: 'grayscale',
                         }}
                         dangerouslySetInnerHTML={{ 
                           __html: displayText + (
-                            !isTypingComplete ? '<span class="animate-pulse ml-1 -mr-1">│</span>' : ''
+                            !isTypingComplete ? '<span class="animate-pulse ml-1 -mr-1 inline-block">│</span>' : ''
                           )
                         }}
                       />
@@ -337,21 +343,24 @@ export default function HomePage() {
   initial="hidden"
   whileInView="show"
   viewport={{ once: true }}
-  // @ts-ignore
   className="py-16 bg-white w-full relative"
 >
   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     {/* Grid des features */}
     <motion.div 
       variants={container}
-      // @ts-ignore
-      className="grid grid-cols-1 lg:grid-cols-3 gap-8"
+      className="grid grid-cols-1 lg:grid-cols-3 gap-8 w-full items-stretch"
+      style={{
+        display: 'grid',
+        gridAutoFlow: 'row',
+        alignItems: 'stretch',
+        minHeight: '250px'
+      }}
     >
       {/* Feature 1 - Dimensionnement */}
       <motion.div
         variants={item}
         whileHover={{ scale: 1.02 }}
-        // @ts-ignore
         onClick={() => {
           if (openSection === 0) {
             setOpenSection(null);
@@ -361,7 +370,7 @@ export default function HomePage() {
           }
         }}
         className={`
-          transform transition-all duration-300 cursor-pointer rounded-xl
+          transform transition-all duration-300 cursor-pointer rounded-xl h-full flex flex-col
           ${openSection === 0 ? 'bg-[#86BC29]' : 'bg-white hover:bg-gray-50'}
           relative overflow-hidden
         `}
@@ -404,7 +413,6 @@ export default function HomePage() {
       <motion.div
         variants={item}
         whileHover={{ scale: 1.02 }}
-        // @ts-ignore
         onClick={() => {
           if (openSection === 1) {
             setOpenSection(null);
@@ -414,7 +422,7 @@ export default function HomePage() {
           }
         }}
         className={`
-          transform transition-all duration-300 cursor-pointer rounded-xl
+          transform transition-all duration-300 cursor-pointer rounded-xl h-full flex flex-col
           ${openSection === 1 ? 'bg-[#86BC29]' : 'bg-white hover:bg-gray-50'}
           relative overflow-hidden
         `}
@@ -457,7 +465,6 @@ export default function HomePage() {
       <motion.div
         variants={item}
         whileHover={{ scale: 1.02 }}
-        // @ts-ignore
         onClick={() => {
           if (openSection === 2) {
             setOpenSection(null);
@@ -467,7 +474,7 @@ export default function HomePage() {
           }
         }}
         className={`
-          transform transition-all duration-300 cursor-pointer rounded-xl
+          transform transition-all duration-300 cursor-pointer rounded-xl h-full flex flex-col
           ${openSection === 2 ? 'bg-[#86BC29]' : 'bg-white hover:bg-gray-50'}
           relative overflow-hidden
         `}

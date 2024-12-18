@@ -17,7 +17,7 @@ import {
   Sparkles,
 } from 'lucide-react';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { toast } from 'sonner';
 import ReactMarkdown from 'react-markdown';
 
@@ -32,7 +32,7 @@ interface Message {
   interface UserProfile {
     id: string;
     name?: string | null;
-    imageUrl?: string | null;
+    image_url?: string | null;
   }
 
   const examplePrompts = [
@@ -217,9 +217,10 @@ export function NexthermChat() {
         <div className="p-6 flex items-center justify-between bg-gradient-to-r from-[#86BC29]/10 to-transparent rounded-t-lg">
           <div className="flex items-center space-x-4">
             <div className="relative">
-            <Avatar className="h-12 w-12 shadow-md">
-              <Bot className="h-8 w-8 text-[#86BC29]" />
-              <AvatarFallback className="bg-[#86BC29] text-white">NT</AvatarFallback>
+            <Avatar className="h-12 w-12 shadow-md bg-[#86BC29]/10">
+              <AvatarFallback className="bg-[#86BC29]/10">
+                <Bot className="h-8 w-8 text-[#86BC29]" />
+              </AvatarFallback>
             </Avatar>
               <div className="absolute bottom-0 right-0 w-3 h-3 bg-green-500 rounded-full border-2 border-white animate-pulse"></div>
             </div>
@@ -287,11 +288,12 @@ export function NexthermChat() {
                 }`}
               >
                 {message.role === 'assistant' && (
-                    <Avatar className="h-8 w-8 mt-1">
-                    <Bot className="h-5 w-5 text-[#86BC29]" />
-                    <AvatarFallback className="bg-[#86BC29] text-white">NT</AvatarFallback>
-                  </Avatar>
-                    )}
+                    <Avatar className="h-8 w-8 mt-1 bg-[#86BC29]/10">
+                      <AvatarFallback className="bg-[#86BC29]/10">
+                        <Bot className="h-5 w-5 text-[#86BC29]" />
+                      </AvatarFallback>
+                    </Avatar>
+                )}
                 <div className={`space-y-1 max-w-[80%] ${
                   message.role === 'user' ? 'ml-auto' : 'mr-auto'
                 }`}>
@@ -327,11 +329,15 @@ export function NexthermChat() {
                 </div>
 
                 {message.role === 'user' && (
-                  <Avatar className="h-8 w-8 mt-1">
-                    {userProfile?.imageUrl ? (
-                      <AvatarImage src={userProfile.imageUrl} alt={userProfile?.name || 'User'} />
+                  <Avatar className="h-8 w-8 mt-1 order-2 ml-4">
+                    {userProfile?.image_url ? (
+                      <img 
+                        src={userProfile.image_url} 
+                        alt="Profile" 
+                        className="h-full w-full object-cover"
+                      />
                     ) : (
-                      <AvatarFallback className="bg-gray-100 text-gray-600">
+                      <AvatarFallback className="bg-gray-200">
                         {getInitials(userProfile?.name)}
                       </AvatarFallback>
                     )}

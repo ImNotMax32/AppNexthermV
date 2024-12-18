@@ -259,7 +259,7 @@ export default function DevisBuilder() {
         toast({
           title: "Erreur",
           description: "Impossible de charger la liste des devis",
-          variant: "destructive"
+          variant: "destructive",
         });
       }
     };
@@ -375,45 +375,131 @@ export default function DevisBuilder() {
 
 // Et modifions le bouton pour imprimer/exporter en PDF
 const handlePrint = async () => {
-  try {
-    const html2pdf = (await import('html2pdf.js')).default;
-    const element = document.querySelector('.devis-content') as HTMLElement;
-    if (!element) {
-      throw new Error('Contenu du devis non trouvé');
+    const element = document.getElementById('devis-to-print');
+    if (!element) return;
+
+    try {
+      const html2pdf = (await import('html2pdf.js')).default;
+
+      // Créer une copie profonde de l'élément
+      const clone = element.cloneNode(true) as HTMLElement;
+      
+      // Supprimer les boutons de suppression
+      clone.querySelectorAll('.delete-button, .x-button, button').forEach(el => el.remove());
+      
+      // Créer un conteneur temporaire
+      const container = document.createElement('div');
+      container.style.position = 'absolute';
+      container.style.left = '-9999px';
+      container.style.top = '-9999px';
+      container.appendChild(clone);
+      document.body.appendChild(container);
+
+      // Appliquer les styles
+      const style = document.createElement('style');
+      style.textContent = `
+        * {
+          -webkit-print-color-adjust: exact !important;
+          print-color-adjust: exact !important;
+          background: none !important;
+          background-color: transparent !important;
+        }
+        #devis-to-print {
+          width: 210mm !important;
+          margin: 0 auto !important;
+          padding: 20mm 15mm !important;
+          background-color: white !important;
+          box-shadow: none !important;
+          position: relative !important;
+          left: 50% !important;
+          transform: translateX(-50%) !important;
+        }
+        #devis-to-print > * {
+          margin-left: auto !important;
+          margin-right: auto !important;
+          max-width: 180mm !important;
+        }
+        table {
+          width: 100% !important;
+          border-collapse: collapse !important;
+          margin: 0 auto !important;
+        }
+        td, th {
+          padding: 8px !important;
+          line-height: 1.5 !important;
+          font-size: 12px !important;
+          background-color: white !important;
+          border: 1px solid #ddd !important;
+        }
+        .description-cell {
+          max-width: 300px !important;
+          white-space: normal !important;
+          word-wrap: break-word !important;
+        }
+      `;
+      clone.appendChild(style);
+
+      // Forcer un recalcul du layout
+      clone.offsetHeight;
+
+      const opt = {
+        margin: 0,
+        filename: `devis-${quoteInfo.reference || 'sans-reference'}.pdf`,
+        image: { type: 'jpeg', quality: 1 },
+        html2canvas: { 
+          scale: 2,
+          useCORS: true,
+          letterRendering: true,
+          backgroundColor: null,
+          removeContainer: true,
+          foreignObjectRendering: true,
+          imageTimeout: 0,
+          windowWidth: 794, // Largeur A4 en pixels à 96 DPI
+          windowHeight: 1123, // Hauteur A4 en pixels à 96 DPI
+          onclone: function(clonedDoc: Document) {
+            const clonedElement = clonedDoc.getElementById('devis-to-print');
+            if (clonedElement) {
+              Array.from(clonedDoc.querySelectorAll('*')).forEach((el: Element) => {
+                if (el instanceof HTMLElement) {
+                  el.style.backgroundColor = 'transparent';
+                  if (el.classList.contains('delete-button') || 
+                      el.classList.contains('x-button') || 
+                      el.tagName === 'BUTTON') {
+                    el.remove();
+                  }
+                }
+              });
+            }
+          }
+        },
+        jsPDF: { 
+          unit: 'mm', 
+          format: 'a4', 
+          orientation: 'portrait',
+          compress: true,
+          precision: 16,
+          putTotalPages: true
+        }
+      };
+
+      await html2pdf().set(opt).from(clone).save();
+
+      // Nettoyer
+      document.body.removeChild(container);
+
+      toast({
+        title: "Succès",
+        description: "Le devis a été exporté en PDF avec succès",
+      });
+    } catch (error) {
+      console.error('Erreur lors de la génération du PDF:', error);
+      toast({
+        title: "Erreur",
+        description: "Impossible de générer le PDF",
+        variant: "destructive",
+      });
     }
-
-    const opt = {
-      margin: [10, 10, 10, 0],
-      filename: `devis-${quoteInfo.reference || 'sans-reference'}.pdf`,
-      image: { type: 'jpeg', quality: 0.98 },
-      html2canvas: { 
-        scale: 2,
-        useCORS: true,
-        letterRendering: true,
-      },
-      jsPDF: { 
-        unit: 'mm', 
-        format: 'a4', 
-        orientation: 'portrait',
-        compress: true
-      }
-    };
-
-    await html2pdf().set(opt).from(element).save();
-    
-    toast({
-      title: "Succès",
-      description: "Le devis a été exporté en PDF avec succès",
-    });
-  } catch (error) {
-    console.error('Erreur lors de la génération du PDF:', error);
-    toast({
-      title: "Erreur",
-      description: "Impossible de générer le PDF",
-      variant: "destructive",
-    });
-  }
-};
+  };
 
   // Props communs mémorisés pour les composants enfants
   const commonProps = useMemo(() => ({
@@ -488,6 +574,7 @@ return (
       initial={{ opacity: 0 }} 
       animate={{ opacity: 1 }} 
       className="devis-content space-y-8"
+      id="devis-to-print"
     >
       {Array.from({ length: pages }, (_, i) => {
         const pageProps = {

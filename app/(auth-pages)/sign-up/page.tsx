@@ -239,6 +239,14 @@ function SignUpContent() {
                 )}
               </Button>
             </motion.div>
+            <div className="flex flex-col space-y-2 text-center text-sm text-muted-foreground mt-4">
+              <Link href="/confidentialite" className="hover:underline">
+                Politique de confidentialité
+              </Link>
+              <Link href="/mentions-legales" className="hover:underline">
+                Mentions légales
+              </Link>
+            </div>
           </form>
 
           <motion.div 

@@ -44,7 +44,7 @@ interface PieDataItem {
   value: number;
 }
 
-const COLORS = ['#86BC29', '#FFB020', '#0EA5E9', '#F43F5E', '#8B5CF6'];
+const COLORS = ['#86BC29', '#FFB020', '#0EA5E9', '#F43F5E', '#8B5CF6']
 
 export default function VueGenerale() {
   const [calculations, setCalculations] = useState<Calculation[]>([]);
@@ -323,21 +323,32 @@ export default function VueGenerale() {
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div 
+          className="grid grid-cols-1 md:grid-cols-2 gap-6" 
+          style={{ 
+            display: 'grid', 
+            gridTemplateColumns: 'repeat(2, 1fr)', 
+            gap: '1.5rem', 
+            width: '100%', 
+            maxWidth: '100%',
+            minHeight: '280px'
+          }}
+        >
         {/* Graphique linéaire */}
         <motion.div
           initial={{ y: 20, opacity: 0 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
+          style={{ width: '100%', minWidth: 0, height: '100%' }}
         >
-          <Card className="bg-gradient-to-br from-white to-gray-50 border-none shadow-lg">
+          <Card className="bg-gradient-to-br from-white to-gray-50 border-none shadow-lg h-full" style={{ display: 'flex', flexDirection: 'column' }}>
             <CardHeader className="pb-2">
               <CardTitle className="text-lg text-gray-600 flex items-center gap-2">
                 <Activity className="w-5 h-5" />
                 Performance mensuelle
               </CardTitle>
             </CardHeader>
-            <CardContent>
+            <CardContent style={{ flex: 1, minHeight: 0, paddingTop: '0.5rem' }}>
               <div className="flex items-baseline gap-4">
                 <div className="text-4xl font-bold">{currentMonthCalcs.length}</div>
                 <div className={`text-sm font-medium flex items-center ${growthPercentage >= 0 ? 'text-green-600' : 'text-red-600'}`}>
@@ -345,7 +356,7 @@ export default function VueGenerale() {
                   {growthPercentage}% vs mois dernier
                 </div>
               </div>
-              <div className="mt-4 h-[150px]">
+              <div className="mt-2 h-[120px]">
               <ResponsiveContainer width="100%" height="100%">
                 <LineChart data={chartData}>
                   <CartesianGrid strokeDasharray="3 3" stroke="#E5E7EB" />
@@ -391,8 +402,9 @@ export default function VueGenerale() {
           initial={{ y: 20, opacity: 0 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
+          style={{ width: '100%', minWidth: 0, height: '100%' }}
         >
-          <Card className="bg-gradient-to-br from-white to-gray-50 border-none shadow-lg">
+          <Card className="bg-gradient-to-br from-white to-gray-50 border-none shadow-lg h-full" style={{ display: 'flex', flexDirection: 'column' }}>
             <CardHeader className="pb-2">
               <div className="flex justify-between items-center">
                 <CardTitle className="text-lg text-gray-600 flex items-center gap-2">
@@ -417,7 +429,7 @@ export default function VueGenerale() {
                 </div>
               </div>
             </CardHeader>
-            <CardContent>
+            <CardContent style={{ flex: 1, minHeight: 0 }}>
               <div className="flex items-center justify-between">
                 <div className="w-1/2">
                   <ResponsiveContainer width="100%" height={200}>
@@ -479,22 +491,33 @@ export default function VueGenerale() {
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div 
+          className="grid grid-cols-1 md:grid-cols-2 gap-6" 
+          style={{ 
+            display: 'grid', 
+            gridTemplateColumns: 'repeat(2, 1fr)', 
+            gap: '1.5rem', 
+            width: '100%', 
+            maxWidth: '100%',
+            minHeight: '280px'
+          }}
+        >
           {/* Graphique linéaire des devis */}
           <motion.div
             initial={{ y: 20, opacity: 0 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
+            style={{ width: '100%', minWidth: 0, height: '100%' }}
           >
-            <Card className="bg-gradient-to-br from-white to-gray-50 border-none shadow-lg">
+            <Card className="bg-gradient-to-br from-white to-gray-50 border-none shadow-lg h-full" style={{ display: 'flex', flexDirection: 'column' }}>
               <CardHeader className="pb-2">
                 <CardTitle className="text-lg text-gray-600 flex items-center gap-2">
                   <Activity className="w-5 h-5" />
                   Performance mensuelle des devis
                 </CardTitle>
               </CardHeader>
-              <CardContent>
-                <div className="h-[150px]">
+              <CardContent style={{ flex: 1, minHeight: 0, paddingTop: '0.5rem' }}>
+                <div className="h-[120px]">
                   <ResponsiveContainer width="100%" height="100%">
                     <LineChart data={getDevisChartData()}>
                       <CartesianGrid strokeDasharray="3 3" stroke="#E5E7EB" />
@@ -540,8 +563,9 @@ export default function VueGenerale() {
             initial={{ y: 20, opacity: 0 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
+            style={{ width: '100%', minWidth: 0, height: '100%' }}
           >
-            <Card className="bg-gradient-to-br from-white to-gray-50 border-none shadow-lg">
+            <Card className="bg-gradient-to-br from-white to-gray-50 border-none shadow-lg h-full" style={{ display: 'flex', flexDirection: 'column' }}>
               <CardHeader className="pb-2">
                 <div className="flex justify-between items-center">
                   <CardTitle className="text-lg text-gray-600 flex items-center gap-2">
@@ -566,7 +590,7 @@ export default function VueGenerale() {
                   </div>
                 </div>
               </CardHeader>
-              <CardContent>
+              <CardContent style={{ flex: 1, minHeight: 0 }}>
                 <div className="flex items-center justify-between">
                   <div className="w-1/2">
                     <ResponsiveContainer width="100%" height={200}>

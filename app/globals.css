@@ -67,3 +67,20 @@
     @apply bg-background text-foreground;
   }
 }
+
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.typing-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  background-color: currentColor;
+  margin-left: 2px;
+  animation: blink 1s infinite;
+  vertical-align: middle;
+  -webkit-animation: blink 1s infinite;
+}

@@ -147,6 +147,15 @@ function LoginForm() {
       >
         Créer un compte
       </Link>
+
+      <div className="flex flex-col space-y-2 text-center text-sm text-muted-foreground mt-4">
+        <Link href="/confidentialite" className="hover:underline">
+          Politique de confidentialité
+        </Link>
+        <Link href="/mentions-legales" className="hover:underline">
+          Mentions légales
+        </Link>
+      </div>
     </form>
   );
 }
@@ -155,20 +164,20 @@ function LoginForm() {
 export default function Page() {
   return (
     <div className="min-h-[70dvh] flex flex-col justify-between bg-white">
-      <div className="flex-1 flex flex-col justify-center py-8 px-4 sm:px-6 lg:px-4">
+      <div className="container mx-auto max-w-screen-lg flex-1 flex flex-col justify-center py-8 px-4">
         <motion.div 
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="sm:mx-auto sm:w-full sm:max-w-md"
+          className="mx-auto w-full max-w-md"
         >
           <div className="flex justify-center">
-            <Link href="/" className="flex items-center space-x-3 group">
+            <Link href="/" className="inline-flex items-center space-x-4 group">
               <motion.img 
                 transition={{ duration: 0.3 }}
                 src="assets/img/X.png"
                 alt="Nextherm Logo"
-                className="h-12 w-12 object-contain"
+                className="h-12 w-12 object-contain mr-3"
               />
               <div className="flex items-center space-x-2">
                 <span className="text-4xl font-bold text-gray-900">Nextherm</span>
@@ -176,7 +185,7 @@ export default function Page() {
               </div>
             </Link>
           </div>
-          <h2 className="mt-8 text-center text-3xl font-extrabold text-gray-900">
+          <h2 className="mt-12 text-center text-3xl font-extrabold text-gray-900">
             Connexion à votre compte
           </h2>
         </motion.div>
@@ -185,7 +194,7 @@ export default function Page() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="mt-8 sm:mx-auto sm:w-full sm:max-w-md"
+          className="mt-8 mx-auto w-full max-w-md bg-white p-6 sm:p-8"
         >
           <Suspense 
             fallback={
