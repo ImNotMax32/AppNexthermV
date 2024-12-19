@@ -127,6 +127,7 @@ export default function SavedFiles() {
   const [calculations, setCalculations] = useState<Calculation[]>([]);
   const [filteredCalculations, setFilteredCalculations] = useState<Calculation[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [loadAttempts, setLoadAttempts] = useState(0);
   const [typeFilter, setTypeFilter] = useState<string>('all');
   const [timeFilter, setTimeFilter] = useState<string>('all');
   const [sortOrder, setSortOrder] = useState<'newest' | 'oldest'>('newest');
@@ -169,6 +170,19 @@ export default function SavedFiles() {
     fetchData();
   }, [fetchCalculations]);
 
+  // Ajouter la logique de rechargement automatique
+  useEffect(() => {
+    if (isLoading) {
+      const timer = setTimeout(() => {
+        if (isLoading && loadAttempts < 2) { // Limite à 2 tentatives
+          setLoadAttempts(prev => prev + 1);
+          window.location.reload();
+        }
+      }, 3000); // 5 secondes
+
+      return () => clearTimeout(timer);
+    }
+  }, [isLoading, loadAttempts]);
 
   const deleteCalculation = async (id: string) => {
     try {

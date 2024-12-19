@@ -300,7 +300,7 @@ export default function VueGenerale() {
 
 
   return (
-    <div className="p-6 space-y-6">
+    <div className="p-6 space-y-4">
       <motion.h1 
         className="text-2xl font-bold text-gray-800"
         initial={{ opacity: 0, y: -20 }}
@@ -311,7 +311,7 @@ export default function VueGenerale() {
       </motion.h1>
 
       {/* Section Dimensionnements */}
-      <div className="space-y-6">
+      <div className="space-y-4">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -331,7 +331,7 @@ export default function VueGenerale() {
             gap: '1.5rem', 
             width: '100%', 
             maxWidth: '100%',
-            minHeight: '280px'
+            minHeight: '240px'
           }}
         >
         {/* Graphique linéaire */}
@@ -356,8 +356,8 @@ export default function VueGenerale() {
                   {growthPercentage}% vs mois dernier
                 </div>
               </div>
-              <div className="mt-2 h-[120px]">
-              <ResponsiveContainer width="100%" height="100%">
+              <div className="mt-2 h-[135px]">
+              <ResponsiveContainer width="100%" height={195}>
                 <LineChart data={chartData}>
                   <CartesianGrid strokeDasharray="3 3" stroke="#E5E7EB" />
                   <XAxis 
@@ -432,7 +432,7 @@ export default function VueGenerale() {
             <CardContent style={{ flex: 1, minHeight: 0 }}>
               <div className="flex items-center justify-between">
                 <div className="w-1/2">
-                  <ResponsiveContainer width="100%" height={200}>
+                  <ResponsiveContainer width="100%" height={210}>
                     <PieChart>
                       <Pie
                         data={getPieData()}
@@ -479,7 +479,7 @@ export default function VueGenerale() {
 
       
     {/* Section Devis */}
-    <div className="space-y-6 mt-8">
+    <div className="space-y-4 mt-6">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -499,7 +499,7 @@ export default function VueGenerale() {
             gap: '1.5rem', 
             width: '100%', 
             maxWidth: '100%',
-            minHeight: '280px'
+            minHeight: '240px'
           }}
         >
           {/* Graphique linéaire des devis */}
@@ -513,12 +513,31 @@ export default function VueGenerale() {
               <CardHeader className="pb-2">
                 <CardTitle className="text-lg text-gray-600 flex items-center gap-2">
                   <Activity className="w-5 h-5" />
-                  Performance mensuelle des devis
+                  Performance mensuelle
                 </CardTitle>
               </CardHeader>
               <CardContent style={{ flex: 1, minHeight: 0, paddingTop: '0.5rem' }}>
-                <div className="h-[120px]">
-                  <ResponsiveContainer width="100%" height="100%">
+                <div className="flex items-baseline gap-4">
+                  <div className="text-4xl font-bold">{devis.filter(d => 
+                    new Date(d.created_at).getMonth() === new Date().getMonth()
+                  ).length}</div>
+                  <div className={`text-sm font-medium flex items-center ${
+                    devis.filter(d => new Date(d.created_at).getMonth() === new Date().getMonth()).length >= 
+                    devis.filter(d => new Date(d.created_at).getMonth() === new Date().getMonth() - 1).length 
+                    ? 'text-green-600' : 'text-red-600'}`}>
+                    <ArrowUp className={`w-4 h-4 mr-1 ${
+                      devis.filter(d => new Date(d.created_at).getMonth() === new Date().getMonth()).length < 
+                      devis.filter(d => new Date(d.created_at).getMonth() === new Date().getMonth() - 1).length 
+                      ? 'rotate-180' : ''}`} />
+                    {Math.abs(Math.round(
+                      ((devis.filter(d => new Date(d.created_at).getMonth() === new Date().getMonth()).length - 
+                        devis.filter(d => new Date(d.created_at).getMonth() === new Date().getMonth() - 1).length) / 
+                        Math.max(devis.filter(d => new Date(d.created_at).getMonth() === new Date().getMonth() - 1).length, 1)) * 100
+                    ))}% vs mois dernier
+                  </div>
+                </div>
+                <div className="h-[135px]">
+                  <ResponsiveContainer width="100%" height={195}>
                     <LineChart data={getDevisChartData()}>
                       <CartesianGrid strokeDasharray="3 3" stroke="#E5E7EB" />
                       <XAxis 
@@ -593,7 +612,7 @@ export default function VueGenerale() {
               <CardContent style={{ flex: 1, minHeight: 0 }}>
                 <div className="flex items-center justify-between">
                   <div className="w-1/2">
-                    <ResponsiveContainer width="100%" height={200}>
+                    <ResponsiveContainer width="100%" height={210}>
                       <PieChart>
                         <Pie
                           data={getDevisPieData()}
@@ -613,7 +632,7 @@ export default function VueGenerale() {
                     </ResponsiveContainer>
                   </div>
                   <div className="w-1/2 pl-4 space-y-2">
-                    {getDevisPieData().map((entry, index) => (
+                    {getDevisPieData().map((entry: PieDataItem, index: number) => (
                       <div 
                         key={entry.name} 
                         className="flex items-center gap-2 text-sm p-2 rounded-lg hover:bg-gray-50 transition-colors"

@@ -290,6 +290,19 @@ const loadImage = (src: string): Promise<string> => {
   });
 };
 
+// Fonction utilitaire pour ajouter le footer
+const addFooter = (doc: jsPDF) => {
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(7);
+  doc.setTextColor(81, 83, 74);
+  const pageCenter = doc.internal.pageSize.getWidth() / 2;
+  
+  // Première ligne
+  doc.text('SAS NEXTHERM - immatriculée sous le SIREN 490711850', pageCenter, 290, { align: 'center' });
+  // Deuxième ligne
+  doc.text('Siège social : 30 Rue Maryse Bastié, ZA de Clairac, Beaumont-lès-Valence 26760', pageCenter, 294, { align: 'center' });
+};
+
 export async function generateModernPdf(data: GeneratePdfData): Promise<void> {
   
   try {
@@ -464,52 +477,224 @@ if (resultDeperdition) {
       posY += lineSpacing;
     });
 
-    // Appel de la fonction pour créer le donut chart
-    displayHeatLossDetails(doc, data.building);
+    // Titre Déperdition
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(20);
+    doc.setTextColor(81, 83, 74);
+    const titreX = 151; // 153 - 2
+    doc.text("Déperdition", titreX, 47, { align: 'left' });
+
+    // Texte explicatif des déperditions
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(12);
+    // Position fixe à 137 de la gauche
+    const texteX = 137;
+    const textWidth = 180; // Largeur maximale du texte (presque toute la page)
+    doc.text("Sur la gauche, vous trouverez les déperditions estimées précédemment pour le bâtiment*. Ce chiffre représente une estimation calculée à partir des données recueillies.", texteX, 55, { 
+        align: 'center',
+        maxWidth: textWidth
+    });
+
+    // Ajouter le disclaimer
+    doc.setFont('helvetica', 'italic');
+    doc.setFontSize(6);
+    doc.setTextColor(81, 83, 74);
+    const pageCenter = doc.internal.pageSize.getWidth() / 2;
+    const disclaimerText = "*Les informations fournies sont une estimation basée sur des critères spécifiques et n'engagent en rien la responsabilité de Nextherm sur le dimensionnement de l'installation. De plus, elles ne remplacent pas un véritable diagnostic nécessaire pour l'installation.";
+    doc.text(disclaimerText, pageCenter, 160, { align: 'center', maxWidth: 180 });
+
+    // Titre principal (descendu de 3px supplémentaires)
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(23);
+    doc.setTextColor(81, 83, 74);
+    doc.text("Données nécessaire prime CEE", pageCenter, 173, { align: 'center' });
+
+    // Sous-titre en vert
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(8);
+    doc.setTextColor(134, 188, 41);
+    doc.text("Selon courrier officiel du 01/08/2022 (https//www.prime-energie-edf.fr)", pageCenter, 178, { align: 'center' });
+
+    // Description en deux paragraphes
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(10);
+    doc.setTextColor(81, 83, 74);
+    const chartMargin = 10;
+    const chartContentWidth = doc.internal.pageSize.getWidth() - (2 * chartMargin);
+
+    doc.text("Les données présentées ci-dessous incluent les déperditions thermiques de votre logement, les caractéristiques techniques de la pompe à chaleur sélectionnée, ainsi que les différents seuils de puissance requis.", chartMargin, 185, { align: 'justify', maxWidth: chartContentWidth });
+
+    doc.text("Tous les calculs ont été effectués en considérant uniquement les pièces desservies par le réseau de chauffage, sans prise en compte d'éventuels générateurs complémentaires. Ce document constitue une pièce justificative essentielle pour votre dossier CEE.", chartMargin, 198, { align: 'justify', maxWidth: chartContentWidth });
+
+    // Configuration pour le tableau (remonté de 5px)
+    const startY = 213;
+    const col1Width = 85;
+    const col2Width = 100;
+    const lineHeight = 7;
+    const col1X = 10;
+    const col2X = 105;
+
+    // Style pour les items et sous-items
+    const addTableItem = (x: number, y: number, title: string, description: string, value: string, subItems?: { label: string, value: string }[]) => {
+        const isPoints7to10 = title.startsWith("7 -") || title.startsWith("8 -") || title.startsWith("9 -") || title.startsWith("10 -");
+        const isPoints7or8 = title.startsWith("7 -") || title.startsWith("8 -");
         
-    
-   // PAGE 3
-doc.addPage();
-doc.addImage(page3Img, 'JPEG', 0, 0, 210, 297);
+        // Titre
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(10);
+        doc.text(title, x, y);
+        
+        // Description
+        if (description) {
+            doc.setFont('helvetica', 'normal');
+            doc.setFontSize(8);
+            doc.setTextColor(81, 83, 74);
+            const maxWidth = x === col1X ? col1Width - 5 : col2Width;
+            const descY = isPoints7to10 ? y + 4 : y + 3.5;
+            doc.text(description, x, descY, { align: 'left', maxWidth: maxWidth });
+        }
+        
+        // Valeur standard (pour les points 1-6)
+        if (value && !isPoints7to10) {
+            doc.setFont('helvetica', 'normal');
+            doc.setFontSize(10);
+            let valueOffset = 60;
+            if (title.startsWith("2 -")) valueOffset = 67;
+            if (title.startsWith("4 -")) valueOffset = 70;
+            if (title.startsWith("5 -")) valueOffset = 75;
+            doc.text(value, x + valueOffset, y);
+        }
 
-if (data.selectedProduct) {
-  // Image du produit
-  const productImagePath = getProductImagePath(data.selectedProduct.Nom);
-  const productImg = await loadImage(productImagePath);
+        // Sous-items (températures pour points 7-10)
+        if (subItems && isPoints7to10) {
+            // Points 7 et 8 commencent plus bas pour éviter le chevauchement avec la description
+            let subY = isPoints7or8 ? y + 12 : y + 8;
+            const xOffset = x === col2X ? 20 : 5;
+            
+            subItems.forEach((item, index) => {
+                doc.setFont('helvetica', 'normal');
+                doc.setFontSize(9);
+                doc.text(`À ${item.label} :`, x + xOffset, subY);
+                doc.text(item.value, x + xOffset + 55, subY);
+                subY += 5;
+            });
+            
+            // Hauteur plus grande pour les points 7 et 8
+            return isPoints7or8 ? 20 : 16;
+        }
 
-  const img = new Image();
-  await new Promise((resolve) => {
-    img.onload = resolve;
-    img.src = productImagePath;
-  });
+        return lineHeight;
+    };
 
-  // Définir les dimensions maximales
-  const maxWidth = 130;
-  const maxHeight = 110;
+    // Première colonne
+    let currentY = startY;
+    addTableItem(col1X, currentY, "1 - Tbase en °C :", 
+        "(La température extérieure minimum régionale qui est en dessous de 0°C partout en France)", 
+        `${temperatureExterieure}°C`);
+    currentY += lineHeight * 2;
 
-  // Calculer les dimensions en conservant les proportions
-  let width = maxWidth;
-  let height = maxWidth * (img.height / img.width);
+    addTableItem(col1X, currentY, "2 - Déperditions thermique à Tbase en W :", 
+        "(La déperdition thermique totale de votre logement à la température extérieure minimum régionale)", 
+        `${data.building.heatLoss}`);
+    currentY += lineHeight * 2;
 
-  // Si la hauteur dépasse le maximum, ajuster en fonction de la hauteur
-  if (height > maxHeight) {
-    height = maxHeight;
-    width = maxHeight * (img.width / img.height);
-  }
+    addTableItem(col1X, currentY, "3 - Temp d'arrêt de la PAC :", 
+        "(La température à laquelle la pompe à chaleur arrête de fonctionner)", 
+        "-2°C");
+    currentY += lineHeight * 2;
 
-  // Centrer l'image horizontalement si nécessaire
-  const xPosition = -30 + (maxWidth - width) / 2;
+    addTableItem(col1X, currentY, "4 - Déperditions thermique à T d'arrêt en W :", 
+        "(La déperdition thermique totale de votre logement à la température d'arrêt de la pompe à chaleur)", 
+        `${(parseFloat(data.building.heatLoss || "0") * 0.8).toFixed(2)}`);
+    currentY += lineHeight * 2;
 
-  doc.addImage(
-    productImg,
-    'JPEG',
-    xPosition,
-    20,
-    width,
-    height
-  );
+    addTableItem(col1X, currentY, "5 - Surface desservies par le réseau de la PAC :", 
+        "(La surface totale des pièces desservies par le réseau de chauffage)", 
+        `${data.building.totalSurface} m²`);
 
-  // Image de la maison
+    // Deuxième colonne
+    currentY = startY;
+    const baseTemp = `${(parseFloat(data.building.heatLoss || "0") * 0.6).toFixed(2)}`;
+    const arretTemp = `${(parseFloat(data.building.heatLoss || "0") * 0.5).toFixed(2)}`;
+
+    // Point 7
+    currentY += addTableItem(col2X, currentY, "7 - Pui de la PAC à 60% des déperditions (W) :",
+        "(La puissance de la pompe à chaleur à 60% des déperditions thermiques totales de votre logement)",
+        "", [
+            { label: "température de base", value: baseTemp },
+            { label: "température d'arrêt", value: arretTemp }
+        ]);
+
+    // Point 8
+    currentY += addTableItem(col2X, currentY, "8 - Pui de la PAC à 140% des déperditions :",
+        "(La puissance de la pompe à chaleur à 140% des déperditions thermiques totales de votre logement)",
+        "", [
+            { label: "température de base", value: `${(parseFloat(data.building.heatLoss || "0") * 1.4).toFixed(2)}` },
+            { label: "température d'arrêt", value: `${(parseFloat(data.building.heatLoss || "0") * 1.2).toFixed(2)}` }
+        ]);
+
+    // Point 9
+    const puissancePac = data.selectedProduct?.selectedModel?.puissance_calo ? `${data.selectedProduct.selectedModel.puissance_calo * 1000}` : '';
+    currentY += addTableItem(col2X, currentY, "9 - Pui de la PAC en (W) :",
+        "(La puissance de la pompe à chaleur sélectionnée)",
+        "", [
+            { label: "température de base", value: puissancePac },
+            { label: "température d'arrêt", value: `${parseFloat(puissancePac || "0") * 0.85}` }
+        ]);
+
+    // Point 10
+    currentY += addTableItem(col2X, currentY, "10 - Temp d'eau pour la puissance de la PAC :",
+        "(La température d'eau pour la puissance de la pompe à chaleur sélectionnée)",
+        "", [
+            { label: "température de base", value: "35°C" },
+            { label: "température d'arrêt", value: "32°C" }
+        ]);
+
+    // Ajouter le footer à la page 2
+    addFooter(doc);
+
+    // PAGE 3
+    doc.addPage();
+    doc.addImage(page3Img, 'JPEG', 0, 0, 210, 297);
+
+    if (data.selectedProduct) {
+      // Image du produit
+      const productImagePath = getProductImagePath(data.selectedProduct.Nom);
+      const productImg = await loadImage(productImagePath);
+
+      const img = new Image();
+      await new Promise((resolve) => {
+        img.onload = resolve;
+        img.src = productImagePath;
+      });
+
+      // Définir les dimensions maximales
+      const maxWidth = 130;
+      const maxHeight = 110;
+
+      // Calculer les dimensions en conservant les proportions
+      let width = maxWidth;
+      let height = maxWidth * (img.height / img.width);
+
+      // Si la hauteur dépasse le maximum, ajuster en fonction de la hauteur
+      if (height > maxHeight) {
+        height = maxHeight;
+        width = maxHeight * (img.width / img.height);
+      }
+
+      // Centrer l'image horizontalement si nécessaire
+      const xPosition = -30 + (maxWidth - width) / 2;
+
+      doc.addImage(
+        productImg,
+        'JPEG',
+        xPosition,
+        20,
+        width,
+        height
+      );
+
+      // Image de la maison
 const housePath = determineImagePath(data);
 console.log("Chemin de l'image maison:", housePath);
   
@@ -528,27 +713,29 @@ console.log("Chemin de l'image maison:", housePath);
   // Titre et informations du produit
   doc.setFontSize(17);
   doc.setTextColor(81, 83, 74); // #51534A
-  addTextSafely(doc, data.selectedProduct.Nom, 107, 115);
+  addTextSafely(doc, data.selectedProduct.Nom, 101, 115);
 
   if (data.selectedProduct.selectedModel) {
     const model = data.selectedProduct.selectedModel;
     doc.setFontSize(12);
     addTextSafely(doc,
       `De ${model.puissance_calo} kW et un COP jusqu'à ${model.cop}`,
-      117, 125
+      101, 125
     );
     addTextSafely(doc,
       `ETAS jusqu'à ${model.etas}%`,
-      130, 130
+      101, 130
     );
   }
-}
-     // Sauvegarde du PDF
-      // Dans la fonction generateModernPdf
-doc.save(`${data.fileName || `proposition_nextherm_${data.referenceNumber || 'sans_reference'}`}.pdf`);
-
-    } catch (error) {
-      console.error('Erreur lors de la génération du PDF:', error);
-      throw error;
-    }
+     // Ajouter le footer à la page 3
+    addFooter(doc);
   }
+
+  // Sauvegarde du PDF
+  doc.save(`${data.fileName || `proposition_nextherm_${data.referenceNumber || 'sans_reference'}`}.pdf`);
+
+  } catch (error) {
+    console.error('Erreur lors de la génération du PDF:', error);
+    throw error;
+  }
+}

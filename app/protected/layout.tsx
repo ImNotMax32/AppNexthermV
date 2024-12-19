@@ -1,9 +1,9 @@
-// app/dashboard/layout.tsx
+// app/protected/layout.tsx
 'use client';
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion';
@@ -24,7 +24,7 @@ import {
   LibraryBig,
   HeartHandshake
 } from 'lucide-react';
-
+import { createClient } from '@/utils/supabase/client';
 
 const ComingSoonButton = ({ icon: Icon, label }: { icon: any; label: string }) => (
   <div className="relative flex items-center w-full group">
@@ -45,11 +45,24 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
+  const router = useRouter();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const supabase = createClient();
 
   useEffect(() => {
     setIsSidebarOpen(false);
   }, [pathname]);
+
+  useEffect(() => {
+    const checkAuth = async () => {
+      const { data: { session }, error } = await supabase.auth.getSession();
+      if (!session) {
+        router.push('/login');
+      }
+    };
+    
+    checkAuth();
+  }, [router]);
 
   const dimensionnementItems = [
     { href: '/protected/dimensionnement', icon: Calculator, label: 'Logiciel' },
