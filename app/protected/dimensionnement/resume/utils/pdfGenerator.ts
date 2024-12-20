@@ -43,6 +43,9 @@ export interface ProductModel {
 export interface SelectedProduct {
   Nom: string;
   selectedModel?: ProductModel;
+  Emetteur?: {
+    max: number;
+  };
 }
 
 export interface GeneratePdfData {
@@ -315,8 +318,8 @@ export async function generateModernPdf(data: GeneratePdfData): Promise<void> {
 
     // Chargement asynchrone des images
     const formulaireImg = await loadImage('/assets/img/formulaire.jpg');
-    const page2Img = await loadImage('/assets/img/page2.jpg');
-    const page3Img = await loadImage('/assets/img/page3.jpg');
+    const page2Img = await loadImage('/assets/img/page2.png');
+    const page3Img = await loadImage('/assets/img/page3.png');
     const departmentNumber = data.building.department ? 
       data.building.department.replace(/\D/g, '') : 
       null;
@@ -328,62 +331,54 @@ export async function generateModernPdf(data: GeneratePdfData): Promise<void> {
     // PAGE 1
     doc.addImage(formulaireImg, 'JPEG', 0, 0, 210, 297);
     
-    // Configuration du texte
-    doc.setFont('helvetica', 'normal');
-    doc.setFontSize(12);
+    // Configuration du texte pour les titres
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(11);
     doc.setTextColor(0, 0, 0);
+
+    // Titres principaux
+    addTextSafely(doc, "Référence dossier", 20, 240);
+    addTextSafely(doc, "Information client particulier", 20, 249);
+    addTextSafely(doc, "Information installateur", 110, 249);
+
+    // Configuration du texte pour le contenu
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(10);
 
     // Référence dossier
     const reference = data.fileName || data.projectName || data.referenceNumber;
-addTextSafely(doc, reference, 50.021, 244.196);
+    addTextSafely(doc, reference, 56, 240);
 
     // Informations client
     const clientInfo = data.clientInfo || {};
-    addTextSafely(doc, clientInfo.name, 43.021, 263.8);
-    addTextSafely(doc, clientInfo.address, 43.021, 269);
-    addTextSafely(doc, clientInfo.phone, 43.021, 274.5);
-    addTextSafely(doc, clientInfo.postalCode, 43.021, 285.3);
-    addTextSafely(doc, clientInfo.city, 43.021, 279.3);
+    addTextSafely(doc, "Nom : ", 25, 257.8);
+    addTextSafely(doc, clientInfo.name, 48.021, 257.8);
+    
+    addTextSafely(doc, "Adresse : ", 25, 263);
+    addTextSafely(doc, clientInfo.address, 48.021, 263);
+    
+    addTextSafely(doc, "Téléphone : ", 25, 268.5);
+    addTextSafely(doc, clientInfo.phone, 48.021, 268.5);
+    
+    addTextSafely(doc, "Ville : ", 25, 273.3);
+    addTextSafely(doc, clientInfo.city, 48.021, 273.3);
+    
+    addTextSafely(doc, "Code postal : ", 25, 279.3);
+    addTextSafely(doc, clientInfo.postalCode, 48.021, 279.3);
 
     // Informations installateur
     const installerInfo = data.installerInfo || {};
-    addTextSafely(doc, installerInfo.company, 147.521, 263.8);
-    addTextSafely(doc, installerInfo.contact, 147.521, 269);
-    addTextSafely(doc, installerInfo.email, 147.521, 274.5);
-    addTextSafely(doc, installerInfo.phone, 147.521, 279.3);
-
-    // Ajout du logo installateur
-    if (data.installerInfo?.logo) {
-      const maxLogoWidth = 17;
-      const maxLogoHeight = 17;
-      
-      const img = new Image();
-      const logoUrl = URL.createObjectURL(data.installerInfo.logo as Blob);
-      img.src = logoUrl;
-      
-      await new Promise((resolve) => {
-        img.onload = resolve;
-      });
-
-      const dimensions = calculateLogoDimensions(
-        img.width,
-        img.height,
-        maxLogoWidth,
-        maxLogoHeight
-      );
-
-      doc.addImage(
-        img,
-        'JPEG',
-        171.5,
-        237,
-        dimensions.width,
-        dimensions.height
-      );
-
-      URL.revokeObjectURL(logoUrl);
-    }
-// Dans la fonction generateModernPdf
+    addTextSafely(doc, "Société : ", 125, 257.8);
+    addTextSafely(doc, installerInfo.company, 147.521, 257.8);
+    
+    addTextSafely(doc, "Interlocuteur : ", 125, 263);
+    addTextSafely(doc, installerInfo.contact, 147.521, 263);
+    
+    addTextSafely(doc, "Adresse mail : ", 125, 268.5);
+    addTextSafely(doc, installerInfo.email, 147.521, 268.5);
+    
+    addTextSafely(doc, "Téléphone : ", 125, 273.3);
+    addTextSafely(doc, installerInfo.phone, 147.521, 273.3);
 
     // PAGE 2
     doc.addPage();
@@ -477,43 +472,25 @@ if (resultDeperdition) {
       posY += lineSpacing;
     });
 
-    // Titre Déperdition
-    doc.setFont('helvetica', 'bold');
-    doc.setFontSize(20);
-    doc.setTextColor(81, 83, 74);
-    const titreX = 151; // 153 - 2
-    doc.text("Déperdition", titreX, 47, { align: 'left' });
-
-    // Texte explicatif des déperditions
-    doc.setFont('helvetica', 'normal');
-    doc.setFontSize(12);
-    // Position fixe à 137 de la gauche
-    const texteX = 137;
-    const textWidth = 180; // Largeur maximale du texte (presque toute la page)
-    doc.text("Sur la gauche, vous trouverez les déperditions estimées précédemment pour le bâtiment*. Ce chiffre représente une estimation calculée à partir des données recueillies.", texteX, 55, { 
-        align: 'center',
-        maxWidth: textWidth
-    });
-
     // Ajouter le disclaimer
     doc.setFont('helvetica', 'italic');
     doc.setFontSize(6);
     doc.setTextColor(81, 83, 74);
     const pageCenter = doc.internal.pageSize.getWidth() / 2;
     const disclaimerText = "*Les informations fournies sont une estimation basée sur des critères spécifiques et n'engagent en rien la responsabilité de Nextherm sur le dimensionnement de l'installation. De plus, elles ne remplacent pas un véritable diagnostic nécessaire pour l'installation.";
-    doc.text(disclaimerText, pageCenter, 160, { align: 'center', maxWidth: 180 });
+    doc.text(disclaimerText, pageCenter, 162, { align: 'center', maxWidth: 180 });
 
     // Titre principal (descendu de 3px supplémentaires)
     doc.setFont('helvetica', 'bold');
     doc.setFontSize(23);
     doc.setTextColor(81, 83, 74);
-    doc.text("Données nécessaire prime CEE", pageCenter, 173, { align: 'center' });
+    doc.text("Données nécessaire prime CEE", pageCenter, 175, { align: 'center' });
 
     // Sous-titre en vert
     doc.setFont('helvetica', 'normal');
     doc.setFontSize(8);
     doc.setTextColor(134, 188, 41);
-    doc.text("Selon courrier officiel du 01/08/2022 (https//www.prime-energie-edf.fr)", pageCenter, 178, { align: 'center' });
+    doc.text("Selon courrier officiel du 01/08/2022 (https//www.prime-energie-edf.fr)", pageCenter, 180, { align: 'center' });
 
     // Description en deux paragraphes
     doc.setFont('helvetica', 'normal');
@@ -522,12 +499,12 @@ if (resultDeperdition) {
     const chartMargin = 10;
     const chartContentWidth = doc.internal.pageSize.getWidth() - (2 * chartMargin);
 
-    doc.text("Les données présentées ci-dessous incluent les déperditions thermiques de votre logement, les caractéristiques techniques de la pompe à chaleur sélectionnée, ainsi que les différents seuils de puissance requis.", chartMargin, 185, { align: 'justify', maxWidth: chartContentWidth });
+    doc.text("Les données présentées ci-dessous incluent les déperditions thermiques de votre logement, les caractéristiques techniques de la pompe à chaleur sélectionnée, ainsi que les différents seuils de puissance requis.", chartMargin, 187, { align: 'justify', maxWidth: chartContentWidth });
 
-    doc.text("Tous les calculs ont été effectués en considérant uniquement les pièces desservies par le réseau de chauffage, sans prise en compte d'éventuels générateurs complémentaires. Ce document constitue une pièce justificative essentielle pour votre dossier CEE.", chartMargin, 198, { align: 'justify', maxWidth: chartContentWidth });
+    doc.text("Tous les calculs ont été effectués en considérant uniquement les pièces desservies par le réseau de chauffage, sans prise en compte d'éventuels générateurs complémentaires. Ce document constitue une pièce justificative essentielle pour votre dossier CEE.", chartMargin, 200, { align: 'justify', maxWidth: chartContentWidth });
 
     // Configuration pour le tableau (remonté de 5px)
-    const startY = 213;
+    const startY = 215;
     const col1Width = 85;
     const col2Width = 100;
     const lineHeight = 7;
@@ -542,7 +519,9 @@ if (resultDeperdition) {
         // Titre
         doc.setFont('helvetica', 'bold');
         doc.setFontSize(10);
-        doc.text(title, x, y);
+        // Ajout d'un offset vertical pour les points 7-10
+        const titleY = isPoints7to10 ? y + 2 : y;
+        doc.text(title, x, titleY);
         
         // Description
         if (description) {
@@ -550,7 +529,7 @@ if (resultDeperdition) {
             doc.setFontSize(8);
             doc.setTextColor(81, 83, 74);
             const maxWidth = x === col1X ? col1Width - 5 : col2Width;
-            const descY = isPoints7to10 ? y + 4 : y + 3.5;
+            const descY = isPoints7to10 ? y + 5 : y + 3.5;
             doc.text(description, x, descY, { align: 'left', maxWidth: maxWidth });
         }
         
@@ -558,10 +537,12 @@ if (resultDeperdition) {
         if (value && !isPoints7to10) {
             doc.setFont('helvetica', 'normal');
             doc.setFontSize(10);
-            let valueOffset = 60;
-            if (title.startsWith("2 -")) valueOffset = 67;
-            if (title.startsWith("4 -")) valueOffset = 70;
-            if (title.startsWith("5 -")) valueOffset = 75;
+            let valueOffset = 28; // Augmenté de 5
+            if (title.startsWith("2 -")) valueOffset = 72; // Augmenté de 5
+            if (title.startsWith("3 -")) valueOffset = 48; // Augmenté de 5
+            if (title.startsWith("4 -")) valueOffset = 76; // Augmenté de 5
+            if (title.startsWith("5 -")) valueOffset = 80; // Augmenté de 5
+            if (title.startsWith("6 -")) valueOffset = 76; // Augmenté de 5
             doc.text(value, x + valueOffset, y);
         }
 
@@ -569,14 +550,14 @@ if (resultDeperdition) {
         if (subItems && isPoints7to10) {
             // Points 7 et 8 commencent plus bas pour éviter le chevauchement avec la description
             let subY = isPoints7or8 ? y + 12 : y + 8;
-            const xOffset = x === col2X ? 20 : 5;
+            const xOffset = x === col2X ? 15 : 5;
             
             subItems.forEach((item, index) => {
                 doc.setFont('helvetica', 'normal');
                 doc.setFontSize(9);
                 doc.text(`À ${item.label} :`, x + xOffset, subY);
-                doc.text(item.value, x + xOffset + 55, subY);
-                subY += 5;
+                doc.text(item.value, x + xOffset + 35, subY);
+                subY += 4; // Réduit de 5 à 4 pour rapprocher les lignes
             });
             
             // Hauteur plus grande pour les points 7 et 8
@@ -600,54 +581,57 @@ if (resultDeperdition) {
 
     addTableItem(col1X, currentY, "3 - Temp d'arrêt de la PAC :", 
         "(La température à laquelle la pompe à chaleur arrête de fonctionner)", 
-        "-2°C");
+        "Géothermie pas affecté");
     currentY += lineHeight * 2;
 
     addTableItem(col1X, currentY, "4 - Déperditions thermique à T d'arrêt en W :", 
         "(La déperdition thermique totale de votre logement à la température d'arrêt de la pompe à chaleur)", 
-        `${(parseFloat(data.building.heatLoss || "0") * 0.8).toFixed(2)}`);
+        "X");
     currentY += lineHeight * 2;
 
     addTableItem(col1X, currentY, "5 - Surface desservies par le réseau de la PAC :", 
-        "(La surface totale des pièces desservies par le réseau de chauffage)", 
+        "(La surface totale des pièces desservies par le chauffage)", 
         `${data.building.totalSurface} m²`);
+    currentY += lineHeight * 1.5;
 
-    // Deuxième colonne
+    addTableItem(col1X, currentY, "6 - Déperditions calculées sans générateur :", 
+        "", 
+        "Oui");
+
+    // Deuxième colonne - Commencer à la même hauteur que le point 1
     currentY = startY;
-    const baseTemp = `${(parseFloat(data.building.heatLoss || "0") * 0.6).toFixed(2)}`;
-    const arretTemp = `${(parseFloat(data.building.heatLoss || "0") * 0.5).toFixed(2)}`;
+    const puissancePac = data.selectedProduct?.selectedModel?.puissance_calo ? `${data.selectedProduct.selectedModel.puissance_calo * 1000}` : '';
 
     // Point 7
     currentY += addTableItem(col2X, currentY, "7 - Pui de la PAC à 60% des déperditions (W) :",
         "(La puissance de la pompe à chaleur à 60% des déperditions thermiques totales de votre logement)",
         "", [
-            { label: "température de base", value: baseTemp },
-            { label: "température d'arrêt", value: arretTemp }
+            { label: "température de base", value: puissancePac },
+            { label: "température d'arrêt", value: "X" }
         ]);
 
     // Point 8
     currentY += addTableItem(col2X, currentY, "8 - Pui de la PAC à 140% des déperditions :",
         "(La puissance de la pompe à chaleur à 140% des déperditions thermiques totales de votre logement)",
         "", [
-            { label: "température de base", value: `${(parseFloat(data.building.heatLoss || "0") * 1.4).toFixed(2)}` },
-            { label: "température d'arrêt", value: `${(parseFloat(data.building.heatLoss || "0") * 1.2).toFixed(2)}` }
+            { label: "température de base", value: puissancePac },
+            { label: "température d'arrêt", value: "X" }
         ]);
 
     // Point 9
-    const puissancePac = data.selectedProduct?.selectedModel?.puissance_calo ? `${data.selectedProduct.selectedModel.puissance_calo * 1000}` : '';
     currentY += addTableItem(col2X, currentY, "9 - Pui de la PAC en (W) :",
         "(La puissance de la pompe à chaleur sélectionnée)",
         "", [
             { label: "température de base", value: puissancePac },
-            { label: "température d'arrêt", value: `${parseFloat(puissancePac || "0") * 0.85}` }
+            { label: "température d'arrêt", value: "X" }
         ]);
 
     // Point 10
     currentY += addTableItem(col2X, currentY, "10 - Temp d'eau pour la puissance de la PAC :",
         "(La température d'eau pour la puissance de la pompe à chaleur sélectionnée)",
         "", [
-            { label: "température de base", value: "35°C" },
-            { label: "température d'arrêt", value: "32°C" }
+            { label: "température de base", value: `${data.selectedProduct?.Emetteur?.max}°C` },
+            { label: "température d'arrêt", value: "X" }
         ]);
 
     // Ajouter le footer à la page 2
