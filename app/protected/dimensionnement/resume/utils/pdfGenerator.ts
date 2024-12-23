@@ -542,7 +542,6 @@ if (resultDeperdition) {
             if (title.startsWith("3 -")) valueOffset = 48; // Augmenté de 5
             if (title.startsWith("4 -")) valueOffset = 76; // Augmenté de 5
             if (title.startsWith("5 -")) valueOffset = 80; // Augmenté de 5
-            if (title.startsWith("6 -")) valueOffset = 76; // Augmenté de 5
             doc.text(value, x + valueOffset, y);
         }
 
@@ -592,13 +591,8 @@ if (resultDeperdition) {
     addTableItem(col1X, currentY, "5 - Surface desservies par le réseau de la PAC :", 
         "(La surface totale des pièces desservies par le chauffage)", 
         `${data.building.totalSurface} m²`);
-    currentY += lineHeight * 1.5;
 
-    addTableItem(col1X, currentY, "6 - Déperditions calculées sans générateur :", 
-        "", 
-        "Oui");
-
-    // Deuxième colonne - Commencer à la même hauteur que le point 1
+    // Deuxième colonne
     currentY = startY;
     const puissancePac = data.selectedProduct?.selectedModel?.puissance_calo ? `${data.selectedProduct.selectedModel.puissance_calo * 1000}` : '';
 

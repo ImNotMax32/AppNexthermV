@@ -26,7 +26,7 @@ export const ModernLayout: React.FC<LayoutProps> = ({
   removeLogo,
   handleLogoUpload
 }) => (
-  <div key={pageNumber} className="w-[210mm] min-h-[297mm] bg-white shadow-lg p-8 relative mb-8">
+  <div key={pageNumber} className="w-[210mm] max-h-[297mm] bg-white shadow-lg p-8 relative mb-8">
     {pageNumber === 1 && (
       <>
         <div className="text-center mb-12">
@@ -160,13 +160,12 @@ export const ModernLayout: React.FC<LayoutProps> = ({
 
     <div className="mb-20">
       <ProductsTable 
-        pageNumber={pageNumber}
         products={products}
+        pageNumber={pageNumber}
         updateProduct={updateProduct}
         removeProduct={removeProduct}
         selectedTheme={selectedTheme}
         themes={themes}
-        ITEMS_PER_PAGE={ITEMS_PER_PAGE}
       />
       
       {pageNumber === pages && (
@@ -214,7 +213,7 @@ export const Modern2Layout: React.FC<LayoutProps> = ({
   removeLogo,
   handleLogoUpload
 }) => (
-  <div key={pageNumber} className="w-[210mm] min-h-[297mm] bg-white shadow-lg relative mb-8 overflow-hidden">
+  <div key={pageNumber} className="w-[210mm] max-h-[297mm] bg-white shadow-lg relative mb-8 overflow-hidden">
     {/* Background design elements */}
     <div className="absolute inset-0">
       <div 
@@ -383,13 +382,12 @@ export const Modern2Layout: React.FC<LayoutProps> = ({
       {/* Products table and totals remain the same */}
       <div className="mb-20">
         <ProductsTable 
-          pageNumber={pageNumber}
           products={products}
+          pageNumber={pageNumber}
           updateProduct={updateProduct}
           removeProduct={removeProduct}
           selectedTheme={selectedTheme}
           themes={themes}
-          ITEMS_PER_PAGE={ITEMS_PER_PAGE}
         />
         
         {pageNumber === pages && (

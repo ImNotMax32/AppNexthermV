@@ -279,30 +279,32 @@ export default function DashboardLayout({
                   </Button>
                 </Link>*/}
 
-                <Link href="/protected/devis" passHref>
+                <Button
+                  variant="ghost"
+                  className="w-full justify-start text-sm opacity-50 cursor-not-allowed hover:bg-transparent"
+                  disabled
+                >
+                  <Users className="mr-2 h-4 w-4" />
+                  Devis
+                </Button>
+                <div className="ml-4 space-y-1">
                   <Button
-                    variant={pathname === '/protected/devis' ? 'secondary' : 'ghost'}
-                    className="w-full justify-start text-sm hover:bg-gray-100"
-                    >
-                    <Users className="mr-2 h-4 w-4" />
+                    variant="ghost"
+                    className="w-full justify-start text-sm opacity-50 cursor-not-allowed hover:bg-transparent"
+                    disabled
+                  >
+                    <FileText className="mr-2 h-4 w-4" />
                     Devis
                   </Button>
-                </Link>
-                <div className="ml-4 space-y-1">
-                    {devisItems.map((item) => (
-                      <Link key={item.href} href={item.href} passHref>
-                        <Button
-                          variant={pathname === item.href ? 'secondary' : 'ghost'}
-                          className={`w-full justify-start text-sm ${
-                            pathname === item.href ? 'bg-[#86BC29] text-white hover:bg-[#86BC29]' : 'hover:bg-gray-100'
-                          }`}
-                        >
-                          <item.icon className="mr-2 h-4 w-4" />
-                          {item.label}
-                        </Button>
-                      </Link>
-                    ))}
-                  </div>
+                  <Button
+                    variant="ghost"
+                    className="w-full justify-start text-sm opacity-50 cursor-not-allowed hover:bg-transparent"
+                    disabled
+                  >
+                    <Save className="mr-2 h-4 w-4" />
+                    Devis sauvegardés
+                  </Button>
+                </div>
               </div>
             </NavSection>
 

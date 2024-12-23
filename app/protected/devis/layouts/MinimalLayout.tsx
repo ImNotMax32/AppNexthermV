@@ -26,7 +26,7 @@ export const MinimalLayout: React.FC<LayoutProps> = ({
   removeLogo,
   handleLogoUpload
 }) => (
-  <div className="w-[210mm] min-h-[297mm] bg-white shadow-lg relative mb-8">
+  <div className="w-[210mm] max-h-[297mm] bg-white shadow-lg relative mb-8">
     {pageNumber === 1 && (
       <div className="p-8">
         {/* En-tête minimaliste */}
@@ -171,14 +171,13 @@ export const MinimalLayout: React.FC<LayoutProps> = ({
 
     {/* Section des produits */}
     <div className="px-8">
-      <ProductsTable 
-        pageNumber={pageNumber}
+      <ProductsTable
         products={products}
+        pageNumber={pageNumber}
         updateProduct={updateProduct}
         removeProduct={removeProduct}
         selectedTheme={selectedTheme}
         themes={themes}
-        ITEMS_PER_PAGE={ITEMS_PER_PAGE}
       />
       
       {pageNumber === pages && (

@@ -28,7 +28,6 @@ export const ProductsTable = React.memo(({
   removeProduct, 
   selectedTheme, 
   themes,
-  ITEMS_PER_PAGE 
 }: ProductsTableProps) => {
   const calculateLineTTC = (product: Product) => {
     const totalHT = product.quantity * product.priceHT;
@@ -40,120 +39,92 @@ export const ProductsTable = React.memo(({
     products, 
     selectedTheme, 
     themes,
-    ITEMS_PER_PAGE 
   });
 
-  
+  console.log("ProductsTable - selectedTheme:", selectedTheme);
+  console.log("ProductsTable - themes:", themes);
+  console.log("ProductsTable - background color:", themes[selectedTheme]?.secondary);
 
   return (
     <div className="mt-8">
-      <table className="w-full text-sm border-collapse">
-        <thead style={{ backgroundColor: themes[selectedTheme].secondary }}>
+      <table className="w-full border-collapse" style={{ backgroundColor: themes[selectedTheme]?.secondary }}>
+        <thead>
           <tr>
-            <th className="py-2 px-2 text-left align-top" style={{ width: columnWidths.code }}>Code</th>
-            <th className="py-2 px-2 text-left align-top" style={{ width: columnWidths.description }}>Description</th>
-            <th className="py-2 px-2 text-right align-top" style={{ width: columnWidths.quantity }}>Qté</th>
-            <th className="py-2 px-2 text-right align-top" style={{ width: columnWidths.price }}>Montant HT</th>
-            <th className="py-2 px-2 text-right align-top" style={{ width: columnWidths.tva }}>TVA %</th>
-            <th className="py-2 px-2 text-right align-top" style={{ width: columnWidths.totalTTC }}>Total TTC</th>
-            <th className="p-0" style={{ width: columnWidths.actions }}></th>
+            <th style={{ width: columnWidths.code }} className="py-2 px-4 text-left border-b">Code</th>
+            <th style={{ width: columnWidths.description }} className="py-2 px-4 text-left border-b">Description</th>
+            <th style={{ width: columnWidths.quantity }} className="py-2 px-4 text-left border-b">Qté</th>
+            <th style={{ width: columnWidths.price }} className="py-2 px-4 text-left border-b">Prix HT</th>
+            <th style={{ width: columnWidths.tva }} className="py-2 px-4 text-left border-b">TVA</th>
+            <th style={{ width: columnWidths.totalTTC }} className="py-2 px-4 text-left border-b">Total TTC</th>
+            <th style={{ width: columnWidths.actions }} className="py-2 px-4 border-b"></th>
           </tr>
         </thead>
         <tbody>
-          {products
-            .slice((pageNumber - 1) * ITEMS_PER_PAGE, pageNumber * ITEMS_PER_PAGE)
-            .map((product) => {
-              console.log("Rendu du produit:", product);
-              return (
-                <tr key={product.id} className="group relative border-b border-gray-100">
-                  <td className="py-2 px-1" style={{ width: columnWidths.code }}>
-                    <PersistentTextarea
-                      value={product.code}
-                      onChange={(e) => updateProduct(product.id, 'code', e.target.value)}
-                      className="w-full"
-                      placeholder="CODE"
-                    />
-                  </td>
-                  <td className="py-2 px-1" style={{ width: columnWidths.description }}>
-                    <PersistentTextarea
-                      value={product.description}
-                      onChange={(e) => updateProduct(product.id, 'description', e.target.value)}
-                      className="w-full"
-                      placeholder="Description"
-                    />
-                  </td>
-                  <td className="py-2 px-1 number-cell" style={{ width: columnWidths.quantity }}>
-                    <PersistentInput
-                      type="number"
-                      value={product.quantity}
-                      onChange={(e) => updateProduct(product.id, 'quantity', parseInt(e.target.value) || 0)}
-                      className="w-full text-right"
-                      min="1"
-                    />
-                  </td>
-                  <td className="py-2 px-1 number-cell" style={{ width: columnWidths.price }}>
-                    <PersistentInput
-                      type="number"
-                      value={product.priceHT || 0} 
-                      onChange={(e) => updateProduct(product.id, 'priceHT', parseFloat(e.target.value) || 0)}
-                      className="w-full text-right"
-                      step="0.01"
-                    />
-                  </td>
-                  <td className="py-2 px-1 number-cell" style={{ width: columnWidths.tva }}>
-                    <PersistentInput
-                      type="number"
-                      value={product.tva}
-                      onChange={(e) => updateProduct(product.id, 'tva', parseFloat(e.target.value) || 0)}
-                      className="w-full text-right"
-                      min="0"
-                      max="100"
-                    />
-                  </td>
-                  <td className="py-2 px-1 number-cell" style={{ width: columnWidths.totalTTC }}>
-                    <div className="flex items-center min-h-[1.75rem]">
-                      <span className="w-full text-right font-medium">
-                        {formatNumber(calculateLineTTC(product))} €
-                      </span>
-                    </div>
-                  </td>
-                  <td className="p-0 relative" style={{ width: columnWidths.actions }}>
-                    <button
-                      onClick={() => removeProduct(product.id)}
-                      className="absolute -right-8 top-2 p-2 text-red-500 hover:text-red-700 transition-colors"
-                    >
-                      <X className="h-4 w-4" />
-                    </button>
-                  </td>
-                </tr>
-              );
-            })}
+          {products.map((product) => (
+            <tr key={product.id}>
+              <td className="py-2 px-4 border-b">
+                <PersistentInput
+                  value={product.code}
+                  onChange={(value: string) => updateProduct(product.id, 'code', value)}
+                  className="w-full bg-transparent"
+                />
+              </td>
+              <td className="py-2 px-4 border-b">
+                <PersistentTextarea
+                  value={product.description}
+                  onChange={(value: string) => updateProduct(product.id, 'description', value)}
+                  className="w-full bg-transparent resize-none"
+                  rows={2}
+                />
+              </td>
+              <td className="py-2 px-4 border-b">
+                <PersistentInput
+                  value={product.quantity.toString()}
+                  onChange={(value: string) => updateProduct(product.id, 'quantity', parseFloat(value) || 0)}
+                  className="w-full bg-transparent"
+                  type="number"
+                />
+              </td>
+              <td className="py-2 px-4 border-b">
+                <PersistentInput
+                  value={product.priceHT.toString()}
+                  onChange={(value: string) => updateProduct(product.id, 'priceHT', parseFloat(value) || 0)}
+                  className="w-full bg-transparent"
+                  type="number"
+                />
+              </td>
+              <td className="py-2 px-4 border-b">
+                <PersistentInput
+                  value={product.tva.toString()}
+                  onChange={(value: string) => updateProduct(product.id, 'tva', parseFloat(value) || 0)}
+                  className="w-full bg-transparent"
+                  type="number"
+                />
+              </td>
+              <td className="py-2 px-4 border-b">
+                {formatNumber(calculateLineTTC(product))}
+              </td>
+              <td className="py-2 px-4 border-b">
+                <button
+                  onClick={() => removeProduct(product.id)}
+                  className="delete-button text-red-500 hover:text-red-700"
+                >
+                  <X className="h-4 w-4" />
+                </button>
+              </td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>
   );
 }, (prevProps, nextProps) => {
-  // Comparaison simple de la longueur
-  if (prevProps.products.length !== nextProps.products.length) {
-    return false;
-  }
-
-  // Comparaison détaillée des produits
-  for (let i = 0; i < prevProps.products.length; i++) {
-    const prev = prevProps.products[i];
-    const next = nextProps.products[i];
-    
-    if (prev.id !== next.id ||
-        prev.code !== next.code ||
-        prev.description !== next.description ||
-        prev.quantity !== next.quantity ||
-        prev.priceHT !== next.priceHT ||
-        prev.tva !== next.tva) {
-      return false;
-    }
-  }
-  
-  return true;
+  // Vérifier si les props importantes ont changé
+  return (
+    prevProps.selectedTheme === nextProps.selectedTheme &&
+    prevProps.pageNumber === nextProps.pageNumber &&
+    prevProps.products === nextProps.products
+  );
 });
 
 ProductsTable.displayName = 'ProductsTable';

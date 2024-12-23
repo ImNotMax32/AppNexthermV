@@ -3,7 +3,7 @@ import { CompactInput } from './CompactInput';
 
 interface PersistentInputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange'> {
   value: string | number;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange: (value: string) => void;
 }
 
 export const PersistentInput = React.memo(({ 
@@ -23,7 +23,7 @@ export const PersistentInput = React.memo(({
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = e.target.value;
     setLocalValue(newValue);
-    onChange(e);
+    onChange(newValue);
   };
 
   return (

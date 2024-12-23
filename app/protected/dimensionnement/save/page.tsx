@@ -463,7 +463,7 @@ const getPoolKitModel = (powerKw: number) => {
   return { code: "KP 35", power: "27+ kW" };
 };
 
-const convertToQuote = async (calculation: Calculation) => {
+const convertToQuote = useCallback(async (calculation: Calculation) => {
   try {
     const selectedProduct = calculation.parameters?.selectedProduct;
     const clientInfo = calculation.parameters?.clientInfo;
@@ -572,7 +572,7 @@ Inclut : échangeur et vannes de régulation`
       variant: "destructive",
     });
   }
-};
+}, [toast, router]);
 
   return (
     <motion.div
@@ -757,9 +757,9 @@ Inclut : échangeur et vannes de régulation`
                         <Button
                           variant="ghost"
                           size="icon"
-                          className="hover:text-[#86BC29]"
-                          onClick={() => convertToQuote(calc)}
-                          title="Convertir en devis"
+                          className="hover:text-[#86BC29] opacity-50 cursor-not-allowed"
+                          disabled
+                          title="Convertir en devis (Bientôt disponible)"
                         >
                           <FileText className="h-4 w-4" />
                         </Button>

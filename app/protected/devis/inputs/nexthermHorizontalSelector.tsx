@@ -116,7 +116,9 @@ ${product.Description}`;
               <img 
                 src={getImagePath(product.Image2)} 
                 alt={product.Nom}
-                className="w-full h-full object-cover"
+                className={`w-full h-full object-cover ${
+                  product.Nom.toLowerCase().startsWith('smartpack') ? 'object-left' : 'object-center'
+                }`}
                 onError={(e) => {
                   console.error(`Failed to load image: ${product.Image2}`);
                   e.currentTarget.src = '/placeholder.jpg';

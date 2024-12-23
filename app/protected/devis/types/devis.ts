@@ -1,4 +1,3 @@
-
 export const ITEMS_PER_PAGE = 10;
 export const PAGE_HEIGHT = 297;
 export const PAGE_MARGIN = 20;
@@ -131,7 +130,6 @@ export interface ProductsTableProps {
   removeProduct: (id: number) => void;
   selectedTheme: string;
   themes: ThemeMap;
-  ITEMS_PER_PAGE: number;
 }
 
 export interface LayoutMap {
@@ -203,4 +201,3 @@ export const layouts: LayoutMap = {
     }
   }
 };
-

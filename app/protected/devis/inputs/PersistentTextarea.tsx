@@ -3,7 +3,7 @@ import { Textarea } from '@/components/ui/textarea';
 
 interface PersistentTextareaProps extends Omit<React.TextareaHTMLAttributes<HTMLTextAreaElement>, 'value' | 'onChange'> {
   value: string;
-  onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+  onChange: (value: string) => void;
 }
 
 const CompactTextarea = React.forwardRef<HTMLTextAreaElement, React.TextareaHTMLAttributes<HTMLTextAreaElement>>(
@@ -53,7 +53,7 @@ export const PersistentTextarea = React.memo(({
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const newValue = e.target.value;
     setLocalValue(newValue);
-    onChange(e);
+    onChange(newValue);
   };
 
   return (

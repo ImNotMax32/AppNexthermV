@@ -26,7 +26,7 @@ export const ContemporaryLayout: React.FC<LayoutProps> = ({
   removeLogo,
   handleLogoUpload
 }) => (
-  <div className="w-[210mm] min-h-[297mm] bg-white shadow-lg relative mb-8 overflow-hidden">
+  <div className="w-[210mm] max-h-[297mm] bg-white shadow-lg relative mb-8 overflow-hidden">
     <div className="absolute inset-0">
       <div 
         className="absolute top-0 right-0 w-96 h-96 rounded-full transform translate-x-1/3 -translate-y-1/3 opacity-10"
@@ -173,14 +173,13 @@ export const ContemporaryLayout: React.FC<LayoutProps> = ({
 
       {/* Contenu commun */}
       <div className="mb-20">
-        <ProductsTable 
-          pageNumber={pageNumber}
+        <ProductsTable
           products={products}
+          pageNumber={pageNumber}
           updateProduct={updateProduct}
           removeProduct={removeProduct}
           selectedTheme={selectedTheme}
           themes={themes}
-          ITEMS_PER_PAGE={ITEMS_PER_PAGE}
         />
         
         {pageNumber === pages && (
@@ -230,7 +229,7 @@ export const Contemporary2Layout: React.FC<LayoutProps> = ({
   removeLogo,
   handleLogoUpload
 }) => (
-  <div className="w-[210mm] min-h-[297mm] bg-white shadow-lg relative mb-8 overflow-hidden">
+  <div className="w-[210mm] max-h-[297mm] bg-white shadow-lg relative mb-8 overflow-hidden">
     {/* Formes abstraites différentes */}
     <div className="absolute inset-0">
       <div 
@@ -394,14 +393,13 @@ export const Contemporary2Layout: React.FC<LayoutProps> = ({
       )}
 
       <div className="mb-24">
-        <ProductsTable 
-          pageNumber={pageNumber}
+        <ProductsTable
           products={products}
+          pageNumber={pageNumber}
           updateProduct={updateProduct}
           removeProduct={removeProduct}
           selectedTheme={selectedTheme}
           themes={themes}
-          ITEMS_PER_PAGE={ITEMS_PER_PAGE}
         />
           
         {pageNumber === pages && (

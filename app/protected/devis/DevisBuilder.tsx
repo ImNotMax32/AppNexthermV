@@ -16,6 +16,15 @@ import type { Product, CompanyInfo, ClientInfo, QuoteInfo } from './types/devis'
 import { useToast } from "@/components/ui/use-toast";
 import { useRouter } from 'next/navigation';
 import { createClient } from '@/utils/supabase/client';
+import { generatePDF } from './inputs/pdfGenerator';
+
+// Constantes pour le format A4
+const A4_HEIGHT_PX = 1123; // 297mm en pixels à 96 DPI
+const PAGE_MARGIN = 50; // Marge pour le header/footer
+const FIRST_PAGE_HEIGHT = A4_HEIGHT_PX - PAGE_MARGIN;
+const OTHER_PAGES_HEIGHT = A4_HEIGHT_PX - (PAGE_MARGIN / 2); // Moins de marge car pas d'en-tête
+const PRODUCTS_PER_FIRST_PAGE = 3; // Moins de produits sur la première page
+const PRODUCTS_PER_OTHER_PAGE = 6; // Plus de produits sur les autres pages
 
 interface QuoteConversionData {
   products: Array<{
@@ -267,10 +276,25 @@ export default function DevisBuilder() {
     loadExistingQuotes();
   }, [supabase, toast]);
 
+  // Fonction pour diviser les produits en pages
+  const getProductsForPage = useCallback((pageNumber: number) => {
+    if (pageNumber === 1) {
+      // Pour la première page
+      return products.slice(0, PRODUCTS_PER_FIRST_PAGE);
+    } else {
+      // Pour les pages suivantes
+      const startIndex = PRODUCTS_PER_FIRST_PAGE + (pageNumber - 2) * PRODUCTS_PER_OTHER_PAGE;
+      const endIndex = startIndex + PRODUCTS_PER_OTHER_PAGE;
+      return products.slice(startIndex, endIndex);
+    }
+  }, [products]);
+
   // Effet pour gérer le nombre de pages
   useEffect(() => {
-    const calculatedPages = Math.max(1, Math.ceil(products.length / ITEMS_PER_PAGE));
-    setPages(calculatedPages);
+    const remainingProducts = products.length - PRODUCTS_PER_FIRST_PAGE;
+    const additionalPages = Math.max(0, Math.ceil(remainingProducts / PRODUCTS_PER_OTHER_PAGE));
+    const totalPages = 1 + additionalPages; // 1 pour la première page + les pages supplémentaires
+    setPages(totalPages);
   }, [products]);
 
   // Gestionnaires d'événements
@@ -373,132 +397,24 @@ export default function DevisBuilder() {
   }
 };
 
-// Et modifions le bouton pour imprimer/exporter en PDF
-const handlePrint = async () => {
-    const element = document.getElementById('devis-to-print');
-    if (!element) return;
-
-    try {
-      const html2pdf = (await import('html2pdf.js')).default;
-
-      // Créer une copie profonde de l'élément
-      const clone = element.cloneNode(true) as HTMLElement;
-      
-      // Supprimer les boutons de suppression
-      clone.querySelectorAll('.delete-button, .x-button, button').forEach(el => el.remove());
-      
-      // Créer un conteneur temporaire
-      const container = document.createElement('div');
-      container.style.position = 'absolute';
-      container.style.left = '-9999px';
-      container.style.top = '-9999px';
-      container.appendChild(clone);
-      document.body.appendChild(container);
-
-      // Appliquer les styles
-      const style = document.createElement('style');
-      style.textContent = `
-        * {
-          -webkit-print-color-adjust: exact !important;
-          print-color-adjust: exact !important;
-          background: none !important;
-          background-color: transparent !important;
-        }
-        #devis-to-print {
-          width: 210mm !important;
-          margin: 0 auto !important;
-          padding: 20mm 15mm !important;
-          background-color: white !important;
-          box-shadow: none !important;
-          position: relative !important;
-          left: 50% !important;
-          transform: translateX(-50%) !important;
-        }
-        #devis-to-print > * {
-          margin-left: auto !important;
-          margin-right: auto !important;
-          max-width: 180mm !important;
-        }
-        table {
-          width: 100% !important;
-          border-collapse: collapse !important;
-          margin: 0 auto !important;
-        }
-        td, th {
-          padding: 8px !important;
-          line-height: 1.5 !important;
-          font-size: 12px !important;
-          background-color: white !important;
-          border: 1px solid #ddd !important;
-        }
-        .description-cell {
-          max-width: 300px !important;
-          white-space: normal !important;
-          word-wrap: break-word !important;
-        }
-      `;
-      clone.appendChild(style);
-
-      // Forcer un recalcul du layout
-      clone.offsetHeight;
-
-      const opt = {
-        margin: 0,
-        filename: `devis-${quoteInfo.reference || 'sans-reference'}.pdf`,
-        image: { type: 'jpeg', quality: 1 },
-        html2canvas: { 
-          scale: 2,
-          useCORS: true,
-          letterRendering: true,
-          backgroundColor: null,
-          removeContainer: true,
-          foreignObjectRendering: true,
-          imageTimeout: 0,
-          windowWidth: 794, // Largeur A4 en pixels à 96 DPI
-          windowHeight: 1123, // Hauteur A4 en pixels à 96 DPI
-          onclone: function(clonedDoc: Document) {
-            const clonedElement = clonedDoc.getElementById('devis-to-print');
-            if (clonedElement) {
-              Array.from(clonedDoc.querySelectorAll('*')).forEach((el: Element) => {
-                if (el instanceof HTMLElement) {
-                  el.style.backgroundColor = 'transparent';
-                  if (el.classList.contains('delete-button') || 
-                      el.classList.contains('x-button') || 
-                      el.tagName === 'BUTTON') {
-                    el.remove();
-                  }
-                }
-              });
-            }
-          }
-        },
-        jsPDF: { 
-          unit: 'mm', 
-          format: 'a4', 
-          orientation: 'portrait',
-          compress: true,
-          precision: 16,
-          putTotalPages: true
-        }
-      };
-
-      await html2pdf().set(opt).from(clone).save();
-
-      // Nettoyer
-      document.body.removeChild(container);
-
-      toast({
-        title: "Succès",
-        description: "Le devis a été exporté en PDF avec succès",
-      });
-    } catch (error) {
-      console.error('Erreur lors de la génération du PDF:', error);
-      toast({
-        title: "Erreur",
-        description: "Impossible de générer le PDF",
-        variant: "destructive",
-      });
-    }
+  const handlePrint = async () => {
+    generatePDF(
+      'devis-to-print',
+      quoteInfo.reference,
+      () => {
+        toast({
+          title: "Succès",
+          description: "Le PDF a été généré avec succès",
+        });
+      },
+      (error) => {
+        toast({
+          title: "Erreur",
+          description: "Impossible de générer le PDF",
+          variant: "destructive"
+        });
+      }
+    );
   };
 
   // Props communs mémorisés pour les composants enfants
@@ -535,6 +451,7 @@ const handlePrint = async () => {
     calculateTotals,
     isLoading
   ]);
+
   if (isLoading) {
     return <div>Chargement...</div>;
   }
@@ -577,25 +494,36 @@ return (
       id="devis-to-print"
     >
       {Array.from({ length: pages }, (_, i) => {
+        const pageNumber = i + 1;
+        const pageProducts = getProductsForPage(pageNumber);
+        const pageHeight = pageNumber === 1 ? FIRST_PAGE_HEIGHT : OTHER_PAGES_HEIGHT;
+        
         const pageProps = {
           ...commonProps,
-          pageNumber: i + 1
+          pageNumber,
+          products: pageProducts,
         };
 
-        switch(selectedLayout) {
-          case 'moderne':
-            return <ModernLayout key={i} {...pageProps} />;
-          case 'moderne2':
-            return <Modern2Layout key={i} {...pageProps} />;
-          case 'contemporain':
-            return <ContemporaryLayout key={i} {...pageProps} />;
-          case 'contemporain2':
-            return <Contemporary2Layout key={i} {...pageProps} />;
-          case 'minimal':
-            return <MinimalLayout key={i} {...pageProps} />;
-          default:
-            return <ClassicLayout key={i} {...pageProps} />;
-        }
+        return (
+          <div key={i} style={{ minHeight: `${pageHeight}px` }} className="page-container">
+            {(() => {
+              switch(selectedLayout) {
+                case 'moderne':
+                  return <ModernLayout {...pageProps} />;
+                case 'moderne2':
+                  return <Modern2Layout {...pageProps} />;
+                case 'contemporain':
+                  return <ContemporaryLayout {...pageProps} />;
+                case 'contemporain2':
+                  return <Contemporary2Layout {...pageProps} />;
+                case 'minimal':
+                  return <MinimalLayout {...pageProps} />;
+                default:
+                  return <ClassicLayout {...pageProps} />;
+              }
+            })()}
+          </div>
+        );
       })}
     </motion.div>
 
