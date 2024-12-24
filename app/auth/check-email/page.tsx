@@ -5,11 +5,12 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { createClient } from '@/utils/supabase/client';
-import { useState } from 'react';
+import { useState, Suspense } from 'react';
 import { toast } from 'sonner';
 import { useSearchParams } from 'next/navigation';
 
-export default function CheckEmail() {
+// Composant principal qui utilise useSearchParams
+function CheckEmailContent() {
   const [isResending, setIsResending] = useState(false);
   const searchParams = useSearchParams();
   const email = searchParams.get('email');
@@ -126,5 +127,23 @@ export default function CheckEmail() {
         </div>
       </div>
     </div>
+  );
+}
+
+// Composant de chargement
+function LoadingState() {
+  return (
+    <div className="min-h-[70dvh] flex items-center justify-center">
+      <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#86BC29]"></div>
+    </div>
+  );
+}
+
+// Export par défaut qui enveloppe le contenu dans Suspense
+export default function CheckEmail() {
+  return (
+    <Suspense fallback={<LoadingState />}>
+      <CheckEmailContent />
+    </Suspense>
   );
 }
