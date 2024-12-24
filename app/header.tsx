@@ -131,7 +131,7 @@ export default function Header() {
                   <DropdownMenuItem className="cursor-pointer">
                     <Link href="/protected/" className="flex w-full items-center">
                       <Handshake className="mr-2 h-4 w-4" />
-                      <span>Team</span>
+                      <span>Acceuil</span>
                     </Link>
                   </DropdownMenuItem>
                   <DropdownMenuSeparator />

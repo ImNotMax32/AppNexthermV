@@ -12,7 +12,23 @@ export async function GET(request: Request) {
 
   if (code) {
     const supabase = await createClient();
-    await supabase.auth.exchangeCodeForSession(code);
+    const { data: { session }, error: sessionError } = await supabase.auth.exchangeCodeForSession(code);
+    
+    if (session?.user) {
+      // Créer l'entrée dans la table user
+      const { error: profileError } = await supabase
+        .from('user')
+        .insert([{ 
+          id: session.user.id,
+          email: session.user.email,
+          created_at: new Date().toISOString(),
+          updated_at: new Date().toISOString()
+        }]);
+
+      if (profileError) {
+        console.error('Erreur lors de la création du profil:', profileError);
+      }
+    }
   }
 
   if (redirectTo) {

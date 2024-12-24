@@ -76,43 +76,73 @@ function SignUpContent() {
     
     const supabase = createClient();
     
-    // 1. Créer l'authentification
-    const { data: authData, error: authError } = await supabase.auth.signUp({
-      email,
-      password,
-      options: {
-        emailRedirectTo: `${window.location.origin}/auth/callback${redirect ? `?redirect=${redirect}` : ''}`,
-      },
-    });
-  
-    if (authError) {
-      setError(authError.message);
-      setIsLoading(false);
-      return;
-    }
-  
-    // 2. Si l'authentification réussit, créer l'entrée dans la table user
-    if (authData.user) {
-      const { error: profileError } = await supabase
-        .from('user')
-        .insert([
-          { 
-            id: authData.user.id,
-            email: email,
-            created_at: new Date().toISOString(),
-            updated_at: new Date().toISOString()
+    try {
+      // 1. Vérifier si l'email existe déjà en essayant de se connecter
+      const { data: signInData, error: signInError } = await supabase.auth.signInWithPassword({
+        email,
+        password
+      });
+
+      // Si la connexion réussit, cela signifie que l'email existe et le mot de passe est correct
+      if (signInData?.user) {
+        // Vérifier si l'utilisateur existe dans la table user
+        const { data: existingUser } = await supabase
+          .from('user')
+          .select()
+          .eq('id', signInData.user.id)
+          .single();
+
+        if (!existingUser) {
+          // Créer l'entrée dans la table user si elle n'existe pas
+          const { error: profileError } = await supabase
+            .from('user')
+            .insert([{ 
+              id: signInData.user.id,
+              email: email,
+              created_at: new Date().toISOString(),
+              updated_at: new Date().toISOString()
+            }]);
+
+          if (profileError) {
+            setError(profileError.message);
+            setIsLoading(false);
+            return;
           }
-        ]);
-  
-      if (profileError) {
-        setError("Erreur lors de la création du profil");
+        }
+
+        router.push(redirect || '/');
+        return;
+      }
+
+      // Si nous arrivons ici, soit l'email n'existe pas, soit le mot de passe est incorrect
+      // Dans les deux cas, nous essayons de créer un nouvel utilisateur
+      const { data: authData, error: authError } = await supabase.auth.signUp({
+        email,
+        password,
+        options: {
+          emailRedirectTo: `${window.location.origin}/auth/callback${redirect ? `?redirect=${redirect}` : ''}`,
+        },
+      });
+    
+      if (authError) {
+        setError(authError.message);
         setIsLoading(false);
         return;
       }
+    
+      if (authData.user) {
+        setError(null);
+        setIsLoading(false);
+        router.push(`/auth/check-email?email=${encodeURIComponent(email)}`);
+        return;
+      }
+
+      router.push('/sign-in?message=Vérifiez vos emails pour confirmer votre inscription');
+    } catch (err) {
+      console.error('Erreur lors de l\'inscription:', err);
+      setError('Une erreur est survenue lors de l\'inscription');
+      setIsLoading(false);
     }
-  
-    router.push(redirect || '/protected');
-    router.refresh();
   }
   return (
     <div className="min-h-[70dvh] flex flex-col justify-between bg-white">

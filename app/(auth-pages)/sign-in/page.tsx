@@ -32,22 +32,63 @@ function LoginForm() {
     
     const supabase = createClient();
     
-    const { error } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    });
+    try {
+      // 1. Tentative de connexion
+      const { data: { user }, error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
 
-    if (error) {
-      setError(error.message);
-      toast.error(error.message);
+      if (error) {
+        setError(error.message);
+        toast.error(error.message);
+        setIsLoading(false);
+        return;
+      }
+
+      if (user) {
+        // 2. Vérifier si l'utilisateur existe dans la table user
+        const { data: userData, error: userError } = await supabase
+          .from('user')
+          .select('*')
+          .eq('id', user.id)
+          .single();
+
+        // 3. Si l'utilisateur n'existe pas dans la table user, le créer
+        if (!userData && !userError) {
+          const { error: insertError } = await supabase
+            .from('user')
+            .insert([
+              {
+                id: user.id,
+                email: user.email,
+                role: 'user',
+                created_at: new Date().toISOString(),
+                updated_at: new Date().toISOString()
+              }
+            ]);
+
+          if (insertError) {
+            console.error('Erreur lors de la création du profil:', insertError);
+          }
+        }
+      }
+
+      // Vérifier que la session est bien créée
+      const { data: { session } } = await supabase.auth.getSession();
+      if (!session) {
+        throw new Error('Session non créée');
+      }
+
+      toast.success('Connexion réussie');
+      router.push(redirect || '/protected');
+      router.refresh();
+    } catch (err) {
+      console.error('Erreur de connexion:', err);
+      setError('Une erreur est survenue lors de la connexion');
+      toast.error('Une erreur est survenue lors de la connexion');
       setIsLoading(false);
-      return;
     }
-    
-    toast.success('Connexion réussie');
-
-    router.push(redirect || '/protected');
-    router.refresh();
   }
 
   return (
