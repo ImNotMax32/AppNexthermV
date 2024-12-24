@@ -4,6 +4,8 @@ import Header from './header';
 import "./globals.css";
 import Link from "next/link";
 import { Toaster } from "@/components/ui/toaster";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
@@ -38,21 +40,23 @@ export default function RootLayout({
               <div className="max-w-7xl mx-auto px-4 py-8 flex flex-col md:flex-row justify-between items-center gap-4">
                 <div className="flex items-center space-x-2">
                   <img src="/assets/img/X.png" alt="Nextherm Logo" className="w-8 aspect-square object-contain" />
-                  <span className="text-gray-600">© 2024 Nextherm. Tous droits réservés.</span>
+                  <span className="text-gray-600"> 2024 Nextherm. Tous droits rservs.</span>
                 </div>
                 <div className="text-sm text-gray-500">
-                  Expert en solutions de pompes à chaleur depuis plus de 20 ans
+                  Expert en solutions de pompes  chaleur depuis plus de 20 ans
                 </div>
                 <div className="text-sm text-gray-500">
-                  <Link href="/mentions-legales" className="hover:text-[#86BC29]">Mentions légales</Link>
+                  <Link href="/mentions-legales" className="hover:text-[#86BC29]">Mentions lgales</Link>
                   <span className="mx-2">|</span>
-                  <Link href="/confidentialite" className="hover:text-[#86BC29]">Confidentialité</Link>
+                  <Link href="/confidentialite" className="hover:text-[#86BC29]">Confidentialit</Link>
                 </div>
               </div>
             </footer>
+            <Toaster />
           </main>
-          <Toaster />
         </ThemeProvider>
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
