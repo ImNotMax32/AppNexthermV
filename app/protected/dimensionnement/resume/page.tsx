@@ -465,7 +465,7 @@ useEffect(() => {
   
   const timer = setTimeout(() => {
     setIsLoading(false);
-  }, 4500);
+  }, 3000);
 
   return () => clearTimeout(timer);
 }, []);

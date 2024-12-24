@@ -8,6 +8,10 @@ export async function middleware(request: NextRequest) {
       request: {
         headers: request.headers,
       },
+      headers: {
+        'Cache-Control': 'no-store, max-age=0',
+        'Strict-Transport-Security': 'max-age=31536000; includeSubDomains',
+      },
     });
 
     const supabase = createServerClient(
@@ -72,6 +76,10 @@ export async function middleware(request: NextRequest) {
     return NextResponse.next({
       request: {
         headers: request.headers,
+      },
+      headers: {
+        'Cache-Control': 'no-store, max-age=0',
+        'Strict-Transport-Security': 'max-age=31536000; includeSubDomains',
       },
     });
   }

@@ -23,41 +23,54 @@ export default function Header() {
   const supabase = createClient();
 
   useEffect(() => {
+    let mounted = true;
+
     async function getUser() {
-      const { data: { user } } = await supabase.auth.getUser();
-      if (user) {
-        const { data: profile, error } = await supabase
-          .from('user')
-          .select('*')
-          .eq('id', user.id)
-          .single();
+      try {
+        const { data: { user }, error: authError } = await supabase.auth.getUser();
+        if (authError) throw authError;
         
-        if (!error) {
-          setUserProfile(profile);
-        } else {
-          console.error('Error fetching profile:', error);
+        if (user && mounted) {
+          const { data: profile, error } = await supabase
+            .from('user')
+            .select('*')
+            .eq('id', user.id)
+            .single();
+          
+          if (!error && mounted) {
+            setUserProfile(profile);
+          }
+        } else if (mounted) {
+          setUserProfile(null);
         }
+      } catch (error) {
+        console.error('Auth error:', error);
+        if (mounted) setUserProfile(null);
       }
     }
     
     getUser();
 
     const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, session) => {
-      if (event === 'SIGNED_IN' && session?.user) {
+      if (event === 'SIGNED_IN' && session?.user && mounted) {
         const { data: profile } = await supabase
           .from('user')
           .select('*')
           .eq('id', session.user.id)
           .single();
-        
-        setUserProfile(profile);
-      }
-      if (event === 'SIGNED_OUT') {
+          
+        if (mounted) {
+          setUserProfile(profile);
+        }
+      } else if (event === 'SIGNED_OUT' && mounted) {
         setUserProfile(null);
       }
     });
-
-    return () => subscription.unsubscribe();
+    
+    return () => {
+      mounted = false;
+      subscription.unsubscribe();
+    };
   }, []);
 
   const getInitials = (name: string | null | undefined) => {
