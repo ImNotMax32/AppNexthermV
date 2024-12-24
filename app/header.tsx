@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { LogOut, Home, User, Settings, Handshake } from 'lucide-react';
+import { LogOut, Home, User, Settings, Handshake, Menu } from 'lucide-react';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, DropdownMenuSeparator, DropdownMenuLabel } from '@/components/ui/dropdown-menu';
 import { useRouter } from 'next/navigation';
 import { ThemeSwitcher } from "@/components/theme-switcher";
@@ -18,59 +18,54 @@ type UserProfile = {
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [userProfile, setUserProfile] = useState<UserProfile | null>(null);
   const router = useRouter();
   const supabase = createClient();
 
-  useEffect(() => {
-    let mounted = true;
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+    // Émettre un événement personnalisé pour le layout
+    const event = new CustomEvent('toggleSidebar');
+    window.dispatchEvent(event);
+  };
 
+  useEffect(() => {
     async function getUser() {
-      try {
-        const { data: { user }, error: authError } = await supabase.auth.getUser();
-        if (authError) throw authError;
+      const { data: { user } } = await supabase.auth.getUser();
+      if (user) {
+        const { data: profile, error } = await supabase
+          .from('user')
+          .select('*')
+          .eq('id', user.id)
+          .single();
         
-        if (user && mounted) {
-          const { data: profile, error } = await supabase
-            .from('user')
-            .select('*')
-            .eq('id', user.id)
-            .single();
-          
-          if (!error && mounted) {
-            setUserProfile(profile);
-          }
-        } else if (mounted) {
-          setUserProfile(null);
+        if (!error) {
+          setUserProfile(profile);
+        } else {
+          console.error('Error fetching profile:', error);
         }
-      } catch (error) {
-        console.error('Auth error:', error);
-        if (mounted) setUserProfile(null);
       }
     }
     
     getUser();
 
     const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, session) => {
-      if (event === 'SIGNED_IN' && session?.user && mounted) {
+      if (event === 'SIGNED_IN' && session?.user) {
         const { data: profile } = await supabase
           .from('user')
           .select('*')
           .eq('id', session.user.id)
           .single();
-          
-        if (mounted) {
-          setUserProfile(profile);
-        }
-      } else if (event === 'SIGNED_OUT' && mounted) {
+        
+        setUserProfile(profile);
+      }
+      if (event === 'SIGNED_OUT') {
         setUserProfile(null);
       }
     });
-    
-    return () => {
-      mounted = false;
-      subscription.unsubscribe();
-    };
+
+    return () => subscription.unsubscribe();
   }, []);
 
   const getInitials = (name: string | null | undefined) => {
@@ -97,13 +92,22 @@ export default function Header() {
             <span className="font-medium" style={{ fontSize: '1.75rem', lineHeight: '2rem', color: '#86BC29' }}>Applications</span>
           </div>
         </Link>
+
         <div className="flex items-center space-x-4">
+          <Button
+            variant="ghost"
+            onClick={toggleSidebar}
+            className="lg:hidden"
+          >
+            <Menu className="h-6 w-6" />
+            <span className="sr-only">Toggle menu</span>
+          </Button>
           {userProfile ? (
             <div className="flex items-center space-x-3">
               <span className="text-sm font-medium text-gray-700 hidden md:block">
                 {userProfile.name || userProfile.email}
               </span>
-              <DropdownMenu open={isMenuOpen} onOpenChange={setIsMenuOpen}>
+              <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                 <Button variant="ghost" className="relative h-9 w-9 p-0 overflow-hidden">
                   {userProfile.image_url ? (

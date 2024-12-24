@@ -84,7 +84,7 @@ export default async function DashboardPage() {
     <div className="flex-1 w-full flex flex-col gap-8 p-4 md:p-8">
       <div className="space-y-4">
         <h1 className="text-4xl font-bold text-gray-900 dark:text-gray-100">
-          Bienvenue, {firstName}
+          Bonjour, {firstName}
         </h1>
         <p className="text-lg text-gray-600 dark:text-gray-400">
           Que souhaitez-vous faire aujourd'hui ?

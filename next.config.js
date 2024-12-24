@@ -1,16 +1,4 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  headers: async () => [
-    {
-      source: '/:path*',
-      headers: [
-        {
-          key: 'Cache-Control',
-          value: 'no-store, max-age=0',
-        },
-      ],
-    },
-  ],
-};
+const nextConfig = {};
 
 module.exports = nextConfig;

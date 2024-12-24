@@ -54,6 +54,15 @@ export default function DashboardLayout({
   }, [pathname]);
 
   useEffect(() => {
+    const handleToggleSidebar = () => {
+      setIsSidebarOpen(!isSidebarOpen);
+    };
+
+    window.addEventListener('toggleSidebar', handleToggleSidebar);
+    return () => window.removeEventListener('toggleSidebar', handleToggleSidebar);
+  }, [isSidebarOpen]);
+
+  useEffect(() => {
     const checkAuth = async () => {
       const { data: { session }, error } = await supabase.auth.getSession();
       if (!session) {
@@ -98,21 +107,7 @@ export default function DashboardLayout({
 
   return (
     <div className="flex flex-col min-h-[calc(100dvh-68px)] max-w-7xl mx-auto w-full">
-      {/* Mobile menu button */}
-      <div className="block lg:hidden fixed top-0 left-0 right-0 bg-white border-b border-gray-200 p-4 z-50">
-        <div className="flex items-center justify-between max-w-7xl mx-auto">
-          <span className="font-medium">Menu</span>
-          <Button
-            variant="ghost"
-            onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-          >
-            <Menu className="h-6 w-6" />
-            <span className="sr-only">Toggle sidebar</span>
-          </Button>
-        </div>
-      </div>
-
-      <div className="flex flex-1 overflow-hidden pt-[60px] lg:pt-0">
+      <div className="flex flex-1 overflow-hidden">
         {/* Overlay pour mobile */}
         {isSidebarOpen && (
           <div 
