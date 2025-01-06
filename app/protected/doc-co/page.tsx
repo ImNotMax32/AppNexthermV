@@ -35,201 +35,441 @@ const categories = [
   "Eau glycolée/Sol",
   "Tarifs",
   "Plaquettes",
-  "Ballon tampon",
+  "Ballon Tampon",
   "Ballon ECS"
 ];
 
+// Styles pour les catégories
+const categoryColors = {
+  "Eau/Eau": "bg-blue-50",
+  "Sol/Eau": "bg-green-50",
+  "Sol/Sol": "bg-amber-50",
+  "Eau glycolée/Sol": "bg-orange-50",
+  "Ballon Tampon": "bg-red-50",
+  "Ballon ECS": "bg-purple-50"
+};
 
 // Données des documents commerciaux
 const documents = [
   // Eau/Eau
   {
     id: 1,
-    title: "OPTIPACK2 R32",
+    title: "OPTIPACK 2 - R32",
     category: "Eau/Eau",
-    date: "02/2024",
+    date: "04/2024",
     version: "AA",
     gamme: "Pompes à chaleur",
     marché: "Résidentiel",
-    description: "Documentation commerciale pompe à chaleur OPTIPACK2 R32 Eau/Eau",
-    url: "https://www.nextherm.fr/wp-content/uploads/2024/02/OPTIPACK2-R32-SS.pdf",
+    description: "Documentation commerciale pompe à chaleur OPTIPACK 2 R32 Eau/Eau",
+    url: "https://www.nextherm.fr/wp-content/uploads/2024/04/OPTIPACK2_R32_FP-EGE-OPTI2-AA-02-2023-V2-VF.pdf",
     type: "PDF",
     taille: "2.4 MB"
   },
   {
     id: 2,
-    title: "OPTIPACK R410",
+    title: "OPTIPACK - R410",
     category: "Eau/Eau",
-    date: "02/2024",
+    date: "03/2023",
     version: "AA",
     gamme: "Pompes à chaleur",
     marché: "Résidentiel",
     description: "Documentation commerciale pompe à chaleur OPTIPACK R410 Eau/Eau",
-    url: "https://www.nextherm.fr/wp-content/uploads/2024/02/OPTIPACK-R410-SS.pdf",
+    url: "https://www.nextherm.fr/wp-content/uploads/2023/03/OPTIPACK_R410_FP-EGE-OPTI2-AA-02-2023-V2-VF.pdf",
     type: "PDF",
     taille: "2.4 MB"
   },
   {
     id: 3,
-    title: "SMARTPACK2 R410",
+    title: "OPTIPACKDUO - R410",
     category: "Eau/Eau",
-    date: "09/2023",
+    date: "03/2023",
     version: "AA",
     gamme: "Pompes à chaleur",
     marché: "Résidentiel",
-    description: "Documentation commerciale pompe à chaleur SMARTPACK2 R410 Eau/Eau",
-    url: "https://www.nextherm.fr/wp-content/uploads/2023/09/SMARTPACK2-R410-SS.pdf",
+    description: "Documentation commerciale pompe à chaleur OPTIPACKDUO R410 Eau/Eau",
+    url: "https://www.nextherm.fr/wp-content/uploads/2023/03/OPTIPACKDUO_R410_FP-EGE-OPTIDUO2-AA-02-2023-VF.1.pdf",
     type: "PDF",
     taille: "2.4 MB"
   },
   {
     id: 4,
-    title: "SMARTPACK3 R32",
+    title: "OPTIPACKDUO 2 - R32",
     category: "Eau/Eau",
+    date: "03/2023",
+    version: "AA",
+    gamme: "Pompes à chaleur",
+    marché: "Résidentiel",
+    description: "Documentation commerciale pompe à chaleur OPTIPACKDUO 2 R32 Eau/Eau",
+    url: "https://www.nextherm.fr/wp-content/uploads/2023/03/OPTIPACKDUO2_R32_FP-EGE-OPTIDUO2-AA-02-2023-VF-2.pdf",
+    type: "PDF",
+    taille: "2.4 MB"
+  },
+  {
+    id: 5,
+    title: "SMARTPACK 2 - R410",
+    category: "Eau/Eau",
+    date: "07/2023",
+    version: "AB",
+    gamme: "Pompes à chaleur",
+    marché: "Résidentiel",
+    description: "Documentation commerciale pompe à chaleur SMARTPACK 2 R410 Eau/Eau",
+    url: "https://www.nextherm.fr/wp-content/uploads/2023/07/SMARTPACK2_R410_FP-EGE-SP2-AB-07-202389.pdf",
+    type: "PDF",
+    taille: "2.4 MB"
+  },
+  {
+    id: 6,
+    title: "SMARTPACK 3 - R32",
+    category: "Eau/Eau",
+    date: "03/2023",
+    version: "AA",
+    gamme: "Pompes à chaleur",
+    marché: "Résidentiel",
+    description: "Documentation commerciale pompe à chaleur SMARTPACK 3 R32 Eau/Eau",
+    url: "https://www.nextherm.fr/wp-content/uploads/2023/03/SMARTPACK3_R32_FP-EGE-SP3-AA-02-2023-VF.3.pdf",
+    type: "PDF",
+    taille: "2.4 MB"
+  },
+  {
+    id: 7,
+    title: "SMARTPACK GP - R410",
+    category: "Eau/Eau",
+    date: "04/2024",
+    version: "AA",
+    gamme: "Pompes à chaleur",
+    marché: "Résidentiel",
+    description: "Documentation commerciale pompe à chaleur SMARTPACK GP R410 Eau/Eau",
+    url: "https://www.nextherm.fr/wp-content/uploads/2024/04/SMARTPACK_GP_R410A_FP-EGE-SP2-GP-AA-02-2023-VF.1.pdf",
+    type: "PDF",
+    taille: "2.4 MB"
+  },
+  {
+    id: 8,
+    title: "SMARTPACK HT - R410",
+    category: "Eau/Eau",
+    date: "03/2023",
+    version: "AA",
+    gamme: "Pompes à chaleur",
+    marché: "Résidentiel",
+    description: "Documentation commerciale pompe à chaleur SMARTPACK HT R410 Eau/Eau",
+    url: "https://www.nextherm.fr/wp-content/uploads/2023/03/SMARTPACK-HT-VF.1.pdf",
+    type: "PDF",
+    taille: "2.4 MB"
+  },
+
+  // Sol/Eau
+  {
+    id: 9,
+    title: "OPTIPACK 2 - R32",
+    category: "Sol/Eau",
+    date: "03/2023",
+    version: "AA",
+    gamme: "Pompes à chaleur",
+    marché: "Résidentiel",
+    description: "Documentation commerciale pompe à chaleur OPTIPACK 2 R32 Sol/Eau",
+    url: "https://www.nextherm.fr/wp-content/uploads/2023/03/OPTIPACK2_R32_FP-SE-OPTI2-AA-02-2023-V3.pdf",
+    type: "PDF",
+    taille: "2.4 MB"
+  },
+  {
+    id: 10,
+    title: "OPTIPACK - R410",
+    category: "Sol/Eau",
+    date: "03/2023",
+    version: "AA",
+    gamme: "Pompes à chaleur",
+    marché: "Résidentiel",
+    description: "Documentation commerciale pompe à chaleur OPTIPACK R410 Sol/Eau",
+    url: "https://www.nextherm.fr/wp-content/uploads/2023/03/OPTIPACK_R3410_FP-SE-OPTI-AA-02-2023-V4.pdf",
+    type: "PDF",
+    taille: "2.4 MB"
+  },
+  {
+    id: 11,
+    title: "OPTIPACKDUO 2 - R32",
+    category: "Sol/Eau",
+    date: "03/2023",
+    version: "AA",
+    gamme: "Pompes à chaleur",
+    marché: "Résidentiel",
+    description: "Documentation commerciale pompe à chaleur OPTIPACKDUO 2 R32 Sol/Eau",
+    url: "https://www.nextherm.fr/wp-content/uploads/2023/03/OPTIPACKDUO2_R32_FP-SE-OPTIDUO2-AA-02-2023-V4.pdf",
+    type: "PDF",
+    taille: "2.4 MB"
+  },
+  {
+    id: 12,
+    title: "OPTIPACKDUO - R410",
+    category: "Sol/Eau",
+    date: "03/2023",
+    version: "AA",
+    gamme: "Pompes à chaleur",
+    marché: "Résidentiel",
+    description: "Documentation commerciale pompe à chaleur OPTIPACKDUO R410 Sol/Eau",
+    url: "https://www.nextherm.fr/wp-content/uploads/2023/03/OPTIPACKDUO_R410_FP-SE-OPTIDUO-AA-02-2023-V4.pdf",
+    type: "PDF",
+    taille: "2.4 MB"
+  },
+  {
+    id: 13,
+    title: "SMARTPACK 2 - R410",
+    category: "Sol/Eau",
     date: "09/2023",
     version: "AA",
     gamme: "Pompes à chaleur",
     marché: "Résidentiel",
-    description: "Documentation commerciale pompe à chaleur SMARTPACK3 R32 Eau/Eau",
-    url: "https://www.nextherm.fr/wp-content/uploads/2023/09/SMARTPACK3-R32-SS.pdf",
+    description: "Documentation commerciale pompe à chaleur SMARTPACK 2 R410 Sol/Eau",
+    url: "https://www.nextherm.fr/wp-content/uploads/2023/09/SMARTPACK2_R410_FP-SE-SP2-AA-02-2023-VF.3.pdf",
+    type: "PDF",
+    taille: "2.4 MB"
+  },
+  {
+    id: 14,
+    title: "SMARTPACK 3 - R32",
+    category: "Sol/Eau",
+    date: "09/2023",
+    version: "AA",
+    gamme: "Pompes à chaleur",
+    marché: "Résidentiel",
+    description: "Documentation commerciale pompe à chaleur SMARTPACK 3 R32 Sol/Eau",
+    url: "https://www.nextherm.fr/wp-content/uploads/2023/09/SMARTPACK3_R32_FP-SE-SP3-AA-02-2023-V2.pdf",
+    type: "PDF",
+    taille: "2.4 MB"
+  },
+
+  // Sol/Sol
+  {
+    id: 15,
+    title: "OPTIPACK - R410",
+    category: "Sol/Sol",
+    date: "02/2024",
+    version: "AA",
+    gamme: "Pompes à chaleur",
+    marché: "Résidentiel",
+    description: "Documentation commerciale pompe à chaleur OPTIPACK R410 Sol/Sol",
+    url: "https://www.nextherm.fr/wp-content/uploads/2024/02/OPTIPACK_R410_FP-SS-OPTI-AA-02-2024.pdf",
+    type: "PDF",
+    taille: "2.4 MB"
+  },
+  {
+    id: 16,
+    title: "OPTIPACK 2 - R32",
+    category: "Sol/Sol",
+    date: "02/2024",
+    version: "AA",
+    gamme: "Pompes à chaleur",
+    marché: "Résidentiel",
+    description: "Documentation commerciale pompe à chaleur OPTIPACK 2 R32 Sol/Sol",
+    url: "https://www.nextherm.fr/wp-content/uploads/2024/02/OPTIPACK2_R32_FP-SS-OPTI2-AA-02-2024-VF.pdf",
+    type: "PDF",
+    taille: "2.4 MB"
+  },
+  {
+    id: 17,
+    title: "SMARTPACK 2 - R410",
+    category: "Sol/Sol",
+    date: "09/2023",
+    version: "AA",
+    gamme: "Pompes à chaleur",
+    marché: "Résidentiel",
+    description: "Documentation commerciale pompe à chaleur SMARTPACK 2 R410 Sol/Sol",
+    url: "https://www.nextherm.fr/wp-content/uploads/2023/09/SMARTPACK2_R410_FP-SS-SP3-AA-02-2023-VF.pdf",
+    type: "PDF",
+    taille: "2.4 MB"
+  },
+  {
+    id: 18,
+    title: "SMARTPACK 3 - R32",
+    category: "Sol/Sol",
+    date: "09/2023",
+    version: "AA",
+    gamme: "Pompes à chaleur",
+    marché: "Résidentiel",
+    description: "Documentation commerciale pompe à chaleur SMARTPACK 3 R32 Sol/Sol",
+    url: "https://www.nextherm.fr/wp-content/uploads/2023/09/SMARTPACK3_R32_FP-SS-SP3-AA-02-2023-VF.5.pdf",
+    type: "PDF",
+    taille: "2.4 MB"
+  },
+
+  // Eau glycolée/Sol
+  {
+    id: 19,
+    title: "SMARTPACK 2 - R410",
+    category: "Eau glycolée/Sol",
+    date: "03/2023",
+    version: "AA",
+    gamme: "Pompes à chaleur",
+    marché: "Résidentiel",
+    description: "Documentation commerciale pompe à chaleur SMARTPACK 2 R410 Eau glycolée/Sol",
+    url: "https://www.nextherm.fr/wp-content/uploads/2023/03/SMARTPACK2_R410_FP-EGS-SP3-AA-02-2023-V1.pdf",
+    type: "PDF",
+    taille: "2.4 MB"
+  },
+  {
+    id: 20,
+    title: "SMARTPACK 3 - R32",
+    category: "Eau glycolée/Sol",
+    date: "03/2023",
+    version: "AA",
+    gamme: "Pompes à chaleur",
+    marché: "Résidentiel",
+    description: "Documentation commerciale pompe à chaleur SMARTPACK 3 R32 Eau glycolée/Sol",
+    url: "https://www.nextherm.fr/wp-content/uploads/2023/03/SMARTPACK3_R32_FP-EGE-SP3-AA-02-2023-VF.5.pdf",
     type: "PDF",
     taille: "2.4 MB"
   },
 
   // Air/Eau
   {
-    id: 5,
-    title: "ROPACK3 R32",
+    id: 21,
+    title: "R/OPACK 3 - R32",
     category: "Air/Eau",
-    date: "07/2023",
-    version: "AE",
-    gamme: "Pompes à chaleur",
-    marché: "Résidentiel",
-    description: "Documentation commerciale pompe à chaleur ROPACK3 R32 Air/Eau",
-    url: "https://www.nextherm.fr/wp-content/uploads/2023/07/ROPACK3-R32-AE.pdf",
-    type: "PDF",
-    taille: "2.4 MB"
-  },
-  {
-    id: 6,
-    title: "ROPACK R410A",
-    category: "Air/Eau",
-    date: "07/2023",
-    version: "AE",
-    gamme: "Pompes à chaleur",
-    marché: "Résidentiel",
-    description: "Documentation commerciale pompe à chaleur ROPACK R410A Air/Eau",
-    url: "https://www.nextherm.fr/wp-content/uploads/2023/07/ROPACK-R410A-AE.pdf",
-    type: "PDF",
-    taille: "2.4 MB"
-  },
-  {
-    id: 7,
-    title: "ROPACKV AIR/EAU SPLIT",
-    category: "Air/Eau",
-    date: "07/2023",
+    date: "11/2020",
     version: "AA",
     gamme: "Pompes à chaleur",
     marché: "Résidentiel",
-    description: "Documentation commerciale pompe à chaleur ROPACKV Air/Eau Split",
-    url: "https://www.nextherm.fr/wp-content/uploads/2023/07/ROPACKV-AIR-EAU-SPLIT.pdf",
+    description: "Documentation commerciale pompe à chaleur R/OPACK 3 R32 Air/Eau",
+    url: "https://www.nextherm.fr/wp-content/uploads/2023/03/Fiche-ROPACK3-Ind-AE-AA-11-2020.pdf",
     type: "PDF",
     taille: "2.4 MB"
   },
+
+  // Ballon ECS
   {
-    id: 8,
-    title: "ROPACKV R410A",
-    category: "Air/Eau",
-    date: "07/2023",
-    version: "AA",
-    gamme: "Pompes à chaleur",
-    marché: "Résidentiel",
-    description: "Documentation commerciale pompe à chaleur ROPACKV R410A Air/Eau",
-    url: "https://www.nextherm.fr/wp-content/uploads/2023/07/ROPACKV-R410A-AIR-EAU.pdf",
-    type: "PDF",
-    taille: "2.4 MB"
-  },
-  {
-    id: 9,
-    title: "ROPACK2 R410A",
-    category: "Air/Eau",
-    date: "07/2023",
-    version: "AA",
-    gamme: "Pompes à chaleur",
-    marché: "Résidentiel",
-    description: "Documentation commerciale pompe à chaleur ROPACK2 R410A",
-    url: "https://www.nextherm.fr/wp-content/uploads/2023/07/ROPACK2-R410A.pdf",
-    type: "PDF",
-    taille: "2.4 MB"
-  },
-  {
-    id: 10,
-    title: "ROPACK2 R410A A/E",
-    category: "Air/Eau",
-    date: "07/2023",
-    version: "AB",
-    gamme: "Pompes à chaleur",
-    marché: "Résidentiel",
-    description: "Documentation commerciale pompe à chaleur ROPACK2 R410A Air/Eau",
-    url: "https://www.nextherm.fr/wp-content/uploads/2023/07/ROPACK2-R410A-AE.pdf",
-    type: "PDF",
-    taille: "2.4 MB"
-  },
-  {
-    id: 50,
-    title: "Tarifs 2024",
-    category: "Tarifs",
-    date: "01/2024",
-    version: "V1",
-    gamme: "Tous produits",
-    marché: "Tous marchés",
-    description: "Grille tarifaire complète de nos produits",
-    url: "#",
-    type: "PDF",
-    taille: "1.2 MB"
-  },
-  {
-    id: 51,
-    title: "Plaquette de présentation Nextherm",
-    category: "Plaquettes",
-    date: "2024",
-    version: "V1",
-    gamme: "Présentation générale",
-    marché: "Tous marchés",
-    description: "Présentation générale de l'entreprise et des solutions Nextherm",
-    url: "#",
-    type: "PDF",
-    taille: "3.5 MB"
-  },
-  {
-    id: 52,
-    title: "Ballons tampons",
-    category: "Ballon tampon",
-    date: "2024",
-    version: "V1",
-    gamme: "Ballons",
-    marché: "Tous marchés",
-    description: "Documentation technique des ballons tampons",
-    url: "#",
-    type: "PDF",
-    taille: "2.1 MB"
-  },
-  {
-    id: 53,
-    title: "Ballons ECS",
+    id: 22,
+    title: "Ballon ECS 200L",
     category: "Ballon ECS",
-    date: "2024",
-    version: "V1",
+    date: "06/2024",
+    version: "AA",
     gamme: "Ballons",
-    marché: "Tous marchés",
-    description: "Documentation technique des ballons d'eau chaude sanitaire",
-    url: "#",
+    marché: "Résidentiel",
+    description: "Documentation commerciale Ballon ECS 200L",
+    url: "https://www.nextherm.fr/wp-content/uploads/2024/06/200-L-ECS.pdf",
     type: "PDF",
-    taille: "2.3 MB"
-  }
+    taille: "2.4 MB"
+  },
+  {
+    id: 23,
+    title: "Ballon ECS 300L",
+    category: "Ballon ECS",
+    date: "06/2024",
+    version: "AA",
+    gamme: "Ballons",
+    marché: "Résidentiel",
+    description: "Documentation commerciale Ballon ECS 300L",
+    url: "https://www.nextherm.fr/wp-content/uploads/2024/06/300-L-ECS.pdf",
+    type: "PDF",
+    taille: "2.4 MB"
+  },
+  {
+    id: 24,
+    title: "Ballon ECS 500L",
+    category: "Ballon ECS",
+    date: "06/2024",
+    version: "AA",
+    gamme: "Ballons",
+    marché: "Résidentiel",
+    description: "Documentation commerciale Ballon ECS 500L",
+    url: "https://www.nextherm.fr/wp-content/uploads/2024/06/500-L-ECS.pdf",
+    type: "PDF",
+    taille: "2.4 MB"
+  },
+
+  // Ballon Tampon
+  {
+    id: 25,
+    title: "Ballon Tampon 200L",
+    category: "Ballon Tampon",
+    date: "06/2024",
+    version: "AA",
+    gamme: "Ballons",
+    marché: "Résidentiel",
+    description: "Documentation commerciale Ballon Tampon 200L",
+    url: "https://www.nextherm.fr/wp-content/uploads/2024/06/Fiche-tampon-200L-chaud-seul-.pdf",
+    type: "PDF",
+    taille: "2.4 MB"
+  },
+  {
+    id: 26,
+    title: "Ballon Tampon 300L",
+    category: "Ballon Tampon",
+    date: "06/2024",
+    version: "AA",
+    gamme: "Ballons",
+    marché: "Résidentiel",
+    description: "Documentation commerciale Ballon Tampon 300L",
+    url: "https://www.nextherm.fr/wp-content/uploads/2024/06/Fiche-tampon-300L-chaud-seul-.pdf",
+    type: "PDF",
+    taille: "2.4 MB"
+  },
+  {
+    id: 27,
+    title: "Ballon Tampon 500L",
+    category: "Ballon Tampon",
+    date: "06/2024",
+    version: "AA",
+    gamme: "Ballons",
+    marché: "Résidentiel",
+    description: "Documentation commerciale Ballon Tampon 500L",
+    url: "https://www.nextherm.fr/wp-content/uploads/2024/06/Fiche-tampon-500L-chaud-seul-.pdf",
+    type: "PDF",
+    taille: "2.4 MB"
+  },
+  {
+    id: 28,
+    title: "Ballon Tampon 800L",
+    category: "Ballon Tampon",
+    date: "06/2024",
+    version: "AA",
+    gamme: "Ballons",
+    marché: "Résidentiel",
+    description: "Documentation commerciale Ballon Tampon 800L",
+    url: "https://www.nextherm.fr/wp-content/uploads/2024/06/Fiche-tampon-800L-chaud-seul-.pdf",
+    type: "PDF",
+    taille: "2.4 MB"
+  },
+  {
+    id: 29,
+    title: "Ballon Tampon 1000L",
+    category: "Ballon Tampon",
+    date: "06/2024",
+    version: "AA",
+    gamme: "Ballons",
+    marché: "Résidentiel",
+    description: "Documentation commerciale Ballon Tampon 1000L",
+    url: "https://www.nextherm.fr/wp-content/uploads/2024/06/Fiche-tampon-1000L-chaud-seul-.pdf",
+    type: "PDF",
+    taille: "2.4 MB"
+  },
+  {
+    id: 30,
+    title: "Ballon Tampon 1500L",
+    category: "Ballon Tampon",
+    date: "06/2024",
+    version: "AA",
+    gamme: "Ballons",
+    marché: "Résidentiel",
+    description: "Documentation commerciale Ballon Tampon 1500L",
+    url: "https://www.nextherm.fr/wp-content/uploads/2024/06/Fiche-tampon-1500L-chaud-seul-.pdf",
+    type: "PDF",
+    taille: "2.4 MB"
+  },
+  {
+    id: 31,
+    title: "Ballon Tampon 2000L",
+    category: "Ballon Tampon",
+    date: "06/2024",
+    version: "AA",
+    gamme: "Ballons",
+    marché: "Résidentiel",
+    description: "Documentation commerciale Ballon Tampon 2000L",
+    url: "https://www.nextherm.fr/wp-content/uploads/2024/06/Fiche-tampon-2000L-chaud-seul-.pdf",
+    type: "PDF",
+    taille: "2.4 MB"
+  },
+
+  // Autres catégories à compléter...
 ];
-
-
 
 const getIconForCategory = (category: string) => {
   switch(category) {
@@ -259,21 +499,14 @@ export default function DocumentsCommerciaux() {
   }).sort((a, b) => a.title.localeCompare(b.title, 'fr', { sensitivity: 'base' }));
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      className="container mx-auto p-6 max-w-7xl"
-    >
+    <div className="container mx-auto p-6 max-w-7xl">
       {/* En-tête */}
       <div className="mb-8">
         <h1 className="text-3xl font-bold mb-2">Documentation Commerciale</h1>
-        <p className="text-gray-600">
-          Accédez à l'ensemble de nos documents commerciaux : pompes à chaleur, tarifs, ballons et plus encore...
-        </p>
+        <p className="text-gray-500">Retrouvez ici toute la documentation commerciale de nos produits</p>
       </div>
 
-      {/* Barre de recherche et filtres */}
+      {/* Filtres */}
       <Card className="mb-8">
         <CardContent className="p-6">
           <div className="space-y-4">
@@ -312,59 +545,66 @@ export default function DocumentsCommerciaux() {
       {/* Liste des documents */}
       <div className="space-y-4">
         {filteredDocuments.map((doc) => (
-          <Card key={doc.id} className="hover:bg-gray-50 transition-colors">
-            <CardContent className="p-6">
-              <div className="flex items-center justify-between gap-4">
-                {/* Informations principales */}
-                <div className="flex items-center gap-4 flex-1">
-                  <div className="bg-gray-100 p-3 rounded-lg">
-                    <FileText className="h-6 w-6 text-[#86BC29]" />
-                  </div>
-                  <div className="flex-1">
-                    <div className="flex items-center gap-2">
-                      <h3 className="font-semibold">{doc.title}</h3>
-                      <Badge variant="outline">{doc.category}</Badge>
+          <motion.div
+            key={doc.id}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            <Card className={`${categoryColors[doc.category] || ''} transition-colors`}>
+              <CardContent className="p-6">
+                <div className="flex items-center justify-between gap-4">
+                  {/* Informations principales */}
+                  <div className="flex items-center gap-4 flex-1">
+                    <div className="bg-gray-100 p-3 rounded-lg">
+                      {getIconForCategory(doc.category)}
                     </div>
-                    <div className="text-sm text-gray-500 mt-1">
-                      {doc.description}
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2">
+                        <h3 className="font-semibold">{doc.title}</h3>
+                        <Badge variant="outline">{doc.category}</Badge>
+                      </div>
+                      <div className="text-sm text-gray-500 mt-1">
+                        {doc.description}
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                {/* Spécifications et actions */}
-                <div className="flex items-center gap-8">
-                  <div className="text-sm">
-                    <div className="text-gray-500">Version</div>
-                    <div>{doc.version} ({doc.date})</div>
-                  </div>
-                  <div className="text-sm">
-                    <div className="text-gray-500">Taille</div>
-                    <div>{doc.taille}</div>
-                  </div>
-                  
-                  {/* Actions */}
-                  <div className="flex gap-2">
-                    <Button 
-                      variant="outline"
-                      onClick={() => window.open(doc.url, '_blank')}
-                      className="h-9"
-                    >
-                      <Eye className="h-4 w-4 mr-2" />
-                      Voir
-                    </Button>
-                    <a 
-                      href={doc.url}
-                      download={doc.url.split('/').pop()}
-                      className="inline-flex h-9 px-4 py-2 items-center justify-center whitespace-nowrap rounded-md text-sm font-medium bg-[#86BC29] hover:bg-[#75a625] text-white transition-colors"
-                    >
-                      <Download className="h-4 w-4 mr-2" />
-                      Télécharger
-                    </a>
+                  {/* Spécifications et actions */}
+                  <div className="flex items-center gap-8">
+                    <div className="text-sm">
+                      <div className="text-gray-500">Version</div>
+                      <div>{doc.version} ({doc.date})</div>
+                    </div>
+                    <div className="text-sm">
+                      <div className="text-gray-500">Taille</div>
+                      <div>{doc.taille}</div>
+                    </div>
+                    
+                    {/* Actions */}
+                    <div className="flex gap-2">
+                      <Button 
+                        variant="outline"
+                        onClick={() => window.open(doc.url, '_blank')}
+                        className="h-9"
+                      >
+                        <Eye className="h-4 w-4 mr-2" />
+                        Voir
+                      </Button>
+                      <a 
+                        href={doc.url}
+                        download={doc.url.split('/').pop()}
+                        className="inline-flex h-9 px-4 py-2 items-center justify-center whitespace-nowrap rounded-md text-sm font-medium bg-[#86BC29] hover:bg-[#75a625] text-white transition-colors"
+                      >
+                        <Download className="h-4 w-4 mr-2" />
+                        Télécharger
+                      </a>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </CardContent>
-          </Card>
+              </CardContent>
+            </Card>
+          </motion.div>
         ))}
       </div>
 
@@ -375,6 +615,6 @@ export default function DocumentsCommerciaux() {
           <p>Aucun document trouvé</p>
         </Card>
       )}
-    </motion.div>
+    </div>
   );
 }
