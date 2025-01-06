@@ -26,6 +26,9 @@ import {
   Table2
 } from "lucide-react";
 
+// Type pour les catégories
+type CategoryType = "Eau/Eau" | "Sol/Eau" | "Sol/Sol" | "Eau glycolée/Sol" | "Air/Eau" | "Ballon Tampon" | "Ballon ECS" | "Tarifs" | "Plaquettes";
+
 const categories = [
   "Tous",
   "Eau/Eau",
@@ -37,10 +40,10 @@ const categories = [
   "Plaquettes",
   "Ballon Tampon",
   "Ballon ECS"
-];
+] as const;
 
-// Styles pour les catégories
-const categoryColors = {
+// Styles pour les catégories avec type sécurisé
+const categoryColors: Partial<Record<CategoryType, string>> = {
   "Eau/Eau": "bg-blue-50",
   "Sol/Eau": "bg-green-50",
   "Sol/Sol": "bg-amber-50",
@@ -551,7 +554,7 @@ export default function DocumentsCommerciaux() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3 }}
           >
-            <Card className={`${categoryColors[doc.category] || ''} transition-colors`}>
+            <Card className={`${categoryColors[doc.category as CategoryType] || ''} transition-colors`}>
               <CardContent className="p-6">
                 <div className="flex items-center justify-between gap-4">
                   {/* Informations principales */}
