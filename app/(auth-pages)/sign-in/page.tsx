@@ -128,7 +128,7 @@ function LoginForm() {
             access_type: 'offline',
             prompt: 'consent',
           },
-          redirectTo: `${window.location.origin}/auth/callback?next=${redirect || '/protected'}`
+          redirectTo: 'https://app-nextherm-v.vercel.app/auth/callback'  // URL de production fixe
         }
       });
 
@@ -150,6 +150,15 @@ function LoginForm() {
       setIsLoading(false);
     }
   }
+
+  // Vérifier si nous avons un code d'authentification dans l'URL
+  useEffect(() => {
+    const code = searchParams.get('code');
+    if (code) {
+      // Rediriger vers le callback avec le code
+      window.location.href = `/auth/callback?code=${code}&next=${redirect || '/protected'}`;
+    }
+  }, [searchParams, redirect]);
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">

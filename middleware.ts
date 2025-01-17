@@ -47,6 +47,12 @@ export async function middleware(request: NextRequest) {
     );
 
     const { data: { user } } = await supabase.auth.getUser();
+    const authCompleted = request.cookies.get('supabase-auth-completed')?.value === 'true';
+
+    // Si l'authentification vient d'être complétée, on laisse passer
+    if (authCompleted) {
+      return response;
+    }
 
     // Protection des routes
     if (request.nextUrl.pathname.startsWith("/protected") && !user) {

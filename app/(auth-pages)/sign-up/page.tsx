@@ -10,7 +10,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { FormMessage } from '@/components/form-message';
 import { createClient } from '@/utils/supabase/client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { toast } from 'sonner';
 
@@ -160,7 +160,7 @@ function SignUpContent() {
             access_type: 'offline',
             prompt: 'consent',
           },
-          redirectTo: `${window.location.origin}/auth/callback?next=${redirect || '/protected'}`
+          redirectTo: 'https://app-nextherm-v.vercel.app/auth/callback'  // URL de production fixe
         }
       });
 
@@ -182,6 +182,14 @@ function SignUpContent() {
       setIsLoading(false);
     }
   }
+
+  useEffect(() => {
+    const code = searchParams.get('code');
+    if (code) {
+      // Rediriger vers le callback avec le code
+      window.location.href = `/auth/callback?code=${code}&next=${redirect || '/protected'}`;
+    }
+  }, [searchParams, redirect]);
 
   return (
     <div className="min-h-[70dvh] flex flex-col justify-between bg-white">
