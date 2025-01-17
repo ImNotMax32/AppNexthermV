@@ -148,21 +148,31 @@ function SignUpContent() {
   }
 
   async function handleGoogleSignIn() {
-    setIsLoading(true);
-    setError(null);
-    const supabase = createClient();
-    
     try {
+      setIsLoading(true);
+      setError(null);
+      const supabase = createClient();
+      
       const { data, error } = await supabase.auth.signInWithOAuth({
         provider: 'google',
         options: {
-          redirectTo: `${window.location.origin}/auth/callback?redirect_to=${redirect || '/protected'}`
+          queryParams: {
+            access_type: 'offline',
+            prompt: 'consent',
+          },
+          redirectTo: `${window.location.origin}/auth/callback?next=${redirect || '/protected'}`
         }
       });
 
       if (error) {
         setError(error.message);
         toast.error(error.message);
+        return;
+      }
+
+      // Rediriger vers l'URL de Google si elle est disponible
+      if (data.url) {
+        window.location.href = data.url;
       }
     } catch (err) {
       console.error('Erreur de connexion avec Google:', err);

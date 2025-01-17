@@ -1,66 +1,29 @@
-import { createClient } from "@/utils/supabase/server";
-import { NextResponse } from "next/server";
+import { NextResponse } from 'next/server'
+import { createClient } from '@/utils/supabase/server'
 
 export async function GET(request: Request) {
-  try {
-    const requestUrl = new URL(request.url);
-    const code = requestUrl.searchParams.get("code");
-    const origin = requestUrl.origin;
-    const redirectTo = requestUrl.searchParams.get("redirect_to")?.toString();
+  const { searchParams, origin } = new URL(request.url)
+  const code = searchParams.get('code')
+  // if "next" is in param, use it as the redirect URL
+  const next = searchParams.get('next') ?? '/protected'
 
-    if (!code) {
-      console.error('No code provided in callback');
-      return NextResponse.redirect(`${origin}/sign-in?error=No_auth_code`);
-    }
-
-    const supabase = await createClient();
-    const { data: { session }, error: sessionError } = await supabase.auth.exchangeCodeForSession(code);
-
-    if (sessionError || !session) {
-      console.error('Error exchanging code for session:', sessionError);
-      return NextResponse.redirect(`${origin}/sign-in?error=Auth_error`);
-    }
-
-    // Vérifier si l'utilisateur existe déjà dans la table user
-    const { data: existingUser, error: userCheckError } = await supabase
-      .from('user')
-      .select('id')
-      .eq('id', session.user.id)
-      .single();
-
-    if (!existingUser && !userCheckError) {
-      // L'utilisateur n'existe pas encore, on le crée
-      const { error: profileError } = await supabase
-        .from('user')
-        .insert([{ 
-          id: session.user.id,
-          email: session.user.email,
-          created_at: new Date().toISOString(),
-          updated_at: new Date().toISOString()
-        }]);
-
-      if (profileError) {
-        console.error('Error creating user profile:', profileError);
-        // On continue quand même car l'authentification a réussi
+  if (code) {
+    const supabase = await createClient()
+    const { error } = await supabase.auth.exchangeCodeForSession(code)
+    if (!error) {
+      const forwardedHost = request.headers.get('x-forwarded-host') // original origin before load balancer
+      const isLocalEnv = process.env.NODE_ENV === 'development'
+      if (isLocalEnv) {
+        // we can be sure that there is no load balancer in between, so no need to watch for X-Forwarded-Host
+        return NextResponse.redirect(`${origin}${next}`)
+      } else if (forwardedHost) {
+        return NextResponse.redirect(`https://${forwardedHost}${next}`)
+      } else {
+        return NextResponse.redirect(`${origin}${next}`)
       }
     }
-
-    // Vérifier que la session est bien active
-    const { data: { session: currentSession }, error: sessionCheckError } = await supabase.auth.getSession();
-    
-    if (!currentSession || sessionCheckError) {
-      console.error('Session check failed:', sessionCheckError);
-      return NextResponse.redirect(`${origin}/sign-in?error=Session_error`);
-    }
-
-    // Tout est bon, on redirige vers la destination souhaitée
-    if (redirectTo) {
-      return NextResponse.redirect(`${origin}${redirectTo}`);
-    }
-
-    return NextResponse.redirect(`${origin}/protected`);
-  } catch (error) {
-    console.error('Unexpected error in callback:', error);
-    return NextResponse.redirect(`${origin}/sign-in?error=Unexpected_error`);
   }
+
+  // return the user to an error page with instructions
+  return NextResponse.redirect(`${origin}/sign-in?error=auth-code-error`)
 }
