@@ -2,20 +2,34 @@ import { createClient } from "@/utils/supabase/server";
 import { NextResponse } from "next/server";
 
 export async function GET(request: Request) {
-  // The `/auth/callback` route is required for the server-side auth flow implemented
-  // by the SSR package. It exchanges an auth code for the user's session.
-  // https://supabase.com/docs/guides/auth/server-side/nextjs
-  const requestUrl = new URL(request.url);
-  const code = requestUrl.searchParams.get("code");
-  const origin = requestUrl.origin;
-  const redirectTo = requestUrl.searchParams.get("redirect_to")?.toString();
+  try {
+    const requestUrl = new URL(request.url);
+    const code = requestUrl.searchParams.get("code");
+    const origin = requestUrl.origin;
+    const redirectTo = requestUrl.searchParams.get("redirect_to")?.toString();
 
-  if (code) {
+    if (!code) {
+      console.error('No code provided in callback');
+      return NextResponse.redirect(`${origin}/sign-in?error=No_auth_code`);
+    }
+
     const supabase = await createClient();
     const { data: { session }, error: sessionError } = await supabase.auth.exchangeCodeForSession(code);
-    
-    if (session?.user) {
-      // Créer l'entrée dans la table user
+
+    if (sessionError || !session) {
+      console.error('Error exchanging code for session:', sessionError);
+      return NextResponse.redirect(`${origin}/sign-in?error=Auth_error`);
+    }
+
+    // Vérifier si l'utilisateur existe déjà dans la table user
+    const { data: existingUser, error: userCheckError } = await supabase
+      .from('user')
+      .select('id')
+      .eq('id', session.user.id)
+      .single();
+
+    if (!existingUser && !userCheckError) {
+      // L'utilisateur n'existe pas encore, on le crée
       const { error: profileError } = await supabase
         .from('user')
         .insert([{ 
@@ -26,15 +40,27 @@ export async function GET(request: Request) {
         }]);
 
       if (profileError) {
-        console.error('Erreur lors de la création du profil:', profileError);
+        console.error('Error creating user profile:', profileError);
+        // On continue quand même car l'authentification a réussi
       }
     }
-  }
 
-  if (redirectTo) {
-    return NextResponse.redirect(`${origin}${redirectTo}`);
-  }
+    // Vérifier que la session est bien active
+    const { data: { session: currentSession }, error: sessionCheckError } = await supabase.auth.getSession();
+    
+    if (!currentSession || sessionCheckError) {
+      console.error('Session check failed:', sessionCheckError);
+      return NextResponse.redirect(`${origin}/sign-in?error=Session_error`);
+    }
 
-  // URL to redirect to after sign up process completes
-  return NextResponse.redirect(`${origin}/protected`);
+    // Tout est bon, on redirige vers la destination souhaitée
+    if (redirectTo) {
+      return NextResponse.redirect(`${origin}${redirectTo}`);
+    }
+
+    return NextResponse.redirect(`${origin}/protected`);
+  } catch (error) {
+    console.error('Unexpected error in callback:', error);
+    return NextResponse.redirect(`${origin}/sign-in?error=Unexpected_error`);
+  }
 }

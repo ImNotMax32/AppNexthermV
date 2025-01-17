@@ -10,7 +10,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { FormMessage, Message } from '@/components/form-message';
 import { createClient } from '@/utils/supabase/client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { toast } from 'sonner';
 import Image from 'next/image';
 
@@ -19,9 +19,32 @@ function LoginForm() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const redirect = searchParams.get('redirect');
+  const errorCode = searchParams.get('error');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  
+
+  useEffect(() => {
+    if (errorCode) {
+      let errorMessage = 'Une erreur est survenue lors de la connexion';
+      switch (errorCode) {
+        case 'No_auth_code':
+          errorMessage = 'Erreur lors de l\'authentification Google';
+          break;
+        case 'Auth_error':
+          errorMessage = 'Erreur lors de la création de la session';
+          break;
+        case 'Session_error':
+          errorMessage = 'Erreur lors de la vérification de la session';
+          break;
+        case 'Unexpected_error':
+          errorMessage = 'Une erreur inattendue est survenue';
+          break;
+      }
+      setError(errorMessage);
+      toast.error(errorMessage);
+    }
+  }, [errorCode]);
+
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setIsLoading(true);
