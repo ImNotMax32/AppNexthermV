@@ -70,7 +70,7 @@ export async function middleware(request: NextRequest) {
     }
 
     // Si nous sommes sur la page de connexion et que nous avons une session valide
-    if ((request.nextUrl.pathname === '/sign-in' || request.nextUrl.pathname === '/sign-up') && hasValidSession) {
+    if ((request.nextUrl.pathname === '/sign-in' || request.nextUrl.pathname === '/sign-up' || request.nextUrl.pathname === '/login') && hasValidSession) {
       return NextResponse.redirect(new URL('/protected', request.url));
     }
 
@@ -86,6 +86,11 @@ export async function middleware(request: NextRequest) {
       const redirectUrl = new URL('/sign-in', request.url);
       redirectUrl.searchParams.set('redirect', request.nextUrl.pathname);
       return NextResponse.redirect(redirectUrl);
+    }
+
+    // Redirection de /login vers /sign-in
+    if (request.nextUrl.pathname === '/login') {
+      return NextResponse.redirect(new URL('/sign-in', request.url));
     }
 
     return response;
