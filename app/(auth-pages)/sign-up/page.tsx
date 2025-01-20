@@ -160,7 +160,7 @@ function SignUpContent() {
             access_type: 'offline',
             prompt: 'consent',
           },
-          redirectTo: 'https://app-nextherm-v.vercel.app/auth/callback'  // URL de production fixe
+          redirectTo: `${window.location.origin}/auth/callback`
         }
       });
 
@@ -170,7 +170,6 @@ function SignUpContent() {
         return;
       }
 
-      // Rediriger vers l'URL de Google si elle est disponible
       if (data.url) {
         window.location.href = data.url;
       }
@@ -182,14 +181,6 @@ function SignUpContent() {
       setIsLoading(false);
     }
   }
-
-  useEffect(() => {
-    const code = searchParams.get('code');
-    if (code) {
-      // Rediriger vers le callback avec le code
-      window.location.href = `/auth/callback?code=${code}&next=${redirect || '/protected'}`;
-    }
-  }, [searchParams, redirect]);
 
   return (
     <div className="min-h-[70dvh] flex flex-col justify-between bg-white">
