@@ -1,5 +1,4 @@
 import { createBrowserClient } from "@supabase/ssr";
-import { CookieOptions } from '@supabase/ssr'
 
 export const createClient = () =>
   createBrowserClient(
@@ -8,13 +7,12 @@ export const createClient = () =>
     {
       cookieOptions: {
         name: 'sb-auth-token',
-        lifetime: 60 * 60 * 8, // 8 heures
-        domain: process.env.NEXT_PUBLIC_DOMAIN,
+        secure: true,
+        maxAge: 60 * 60 * 8, // 8 heures
         path: '/',
         sameSite: 'lax'
       },
       auth: {
-        flowType: 'pkce',
         detectSessionInUrl: true,
         persistSession: true,
         autoRefreshToken: true,
