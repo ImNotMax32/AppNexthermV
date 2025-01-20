@@ -8,6 +8,7 @@ export async function middleware(request: NextRequest) {
     },
   });
 
+  // Créer le client Supabase avec une gestion explicite des cookies
   const supabase = createServerClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
@@ -18,43 +19,29 @@ export async function middleware(request: NextRequest) {
         },
         set(name: string, value: string, options: CookieOptions) {
           request.cookies.set({
-            name,
             value,
             ...options,
-          });
-          response = NextResponse.next({
-            request: {
-              headers: request.headers,
-            },
+            name,
           });
           response.cookies.set({
-            name,
             value,
             ...options,
+            name,
           });
         },
         remove(name: string, options: CookieOptions) {
-          request.cookies.set({
-            name,
-            value: "",
-            ...options,
-          });
-          response = NextResponse.next({
-            request: {
-              headers: request.headers,
-            },
-          });
-          response.cookies.set({
-            name,
-            value: "",
-            ...options,
-          });
+          request.cookies.delete(name);
+          response.cookies.delete(name);
         },
       },
     }
   );
 
   const { data: { session } } = await supabase.auth.getSession();
+
+  // Ajouter des headers anti-cache
+  response.headers.set('Cache-Control', 'no-store, max-age=0');
+  response.headers.set('Pragma', 'no-cache');
 
   // Autoriser l'accès à /auth/callback
   if (request.nextUrl.pathname.startsWith('/auth/callback')) {
@@ -68,6 +55,7 @@ export async function middleware(request: NextRequest) {
 
   // Protéger les routes /protected
   if (!session && request.nextUrl.pathname.startsWith('/protected')) {
+    // Sauvegarder l'URL de redirection
     const redirectUrl = new URL('/sign-in', request.url);
     redirectUrl.searchParams.set('redirect', request.nextUrl.pathname);
     return NextResponse.redirect(redirectUrl);

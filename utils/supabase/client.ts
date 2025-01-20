@@ -8,12 +8,10 @@ export const createClient = () =>
       auth: {
         autoRefreshToken: true,
         persistSession: true,
-        detectSessionInUrl: true
+        detectSessionInUrl: true,
+        flowType: 'pkce'
       },
       cookieOptions: {
-        name: 'sb',
-        maxAge: 60 * 60 * 24 * 7, // 7 jours
-        domain: process.env.NEXT_PUBLIC_DOMAIN,
         path: '/',
         sameSite: 'lax',
         secure: process.env.NODE_ENV === 'production'
