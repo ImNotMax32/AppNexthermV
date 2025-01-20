@@ -1,38 +1,29 @@
 import { createBrowserClient } from "@supabase/ssr";
+import { CookieOptions } from '@supabase/ssr'
 
 export const createClient = () =>
   createBrowserClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
     {
-      cookies: {
-        get(name: string) {
-          return document.cookie
-            .split('; ')
-            .find((row) => row.startsWith(`${name}=`))
-            ?.split('=')[1]
-        },
-        set(name: string, value: string, options: { path?: string; maxAge?: number; domain?: string; secure?: boolean; sameSite?: 'strict' | 'lax' | 'none' }) {
-          let cookie = `${name}=${value}; path=${options.path || '/'}`;
-          if (options.maxAge) cookie += `; max-age=${options.maxAge}`;
-          if (options.domain) cookie += `; domain=${options.domain}`;
-          cookie += `; secure`;
-          cookie += `; samesite=lax`;
-          document.cookie = cookie;
-        },
-        remove(name: string, options: { path?: string; domain?: string }) {
-          document.cookie = `${name}=; path=${options.path || '/'}; max-age=0; secure; samesite=lax`;
-        },
+      cookieOptions: {
+        name: 'sb-auth-token',
+        lifetime: 60 * 60 * 8, // 8 heures
+        domain: process.env.NEXT_PUBLIC_DOMAIN,
+        path: '/',
+        sameSite: 'lax'
       },
       auth: {
-        storageKey: 'supabase.auth.token',
+        flowType: 'pkce',
+        detectSessionInUrl: true,
+        persistSession: true,
+        autoRefreshToken: true,
         storage: {
           getItem: (key: string) => {
             try {
               const value = window.localStorage.getItem(key);
               return value;
             } catch {
-              // Fallback pour Edge si localStorage n'est pas disponible
               try {
                 return window.sessionStorage.getItem(key);
               } catch {
@@ -44,7 +35,6 @@ export const createClient = () =>
             try {
               window.localStorage.setItem(key, value);
             } catch {
-              // Fallback pour Edge
               try {
                 window.sessionStorage.setItem(key, value);
               } catch {
