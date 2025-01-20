@@ -1,104 +1,87 @@
-import { createServerClient } from "@supabase/ssr";
+import { createServerClient, type CookieOptions } from "@supabase/ssr";
 import { type NextRequest, NextResponse } from "next/server";
 
 export async function middleware(request: NextRequest) {
-  try {
-    // Create an unmodified response
-    let response = NextResponse.next({
-      request: {
-        headers: request.headers,
-      },
-    });
+  let response = NextResponse.next({
+    request: {
+      headers: request.headers,
+    },
+  });
 
-    // Ajouter des headers pour éviter le cache
-    response.headers.set('Cache-Control', 'no-store, max-age=0');
-    response.headers.set('Pragma', 'no-cache');
-
-    const supabase = createServerClient(
-      process.env.NEXT_PUBLIC_SUPABASE_URL!,
-      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-      {
-        cookies: {
-          get(name) {
-            return request.cookies.get(name)?.value;
-          },
-          set(name, value, options) {
-            request.cookies.set({
-              name,
-              value,
-              ...options,
-            });
-            response.cookies.set({
-              name,
-              value,
-              ...options,
-            });
-          },
-          remove(name, options) {
-            request.cookies.set({
-              name,
-              value: '',
-              ...options,
-            });
-            response.cookies.set({
-              name,
-              value: '',
-              ...options,
-            });
-          },
+  const supabase = createServerClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    {
+      cookies: {
+        get(name: string) {
+          return request.cookies.get(name)?.value;
         },
-      }
-    );
-
-    // Double vérification de la session
-    const { data: { session }, error: sessionError } = await supabase.auth.getSession();
-    const { data: { user }, error: userError } = await supabase.auth.getUser();
-    
-    if (sessionError) {
-      console.error('Session error in middleware:', sessionError);
+        set(name: string, value: string, options: CookieOptions) {
+          request.cookies.set({
+            name,
+            value,
+            ...options,
+          });
+          response = NextResponse.next({
+            request: {
+              headers: request.headers,
+            },
+          });
+          response.cookies.set({
+            name,
+            value,
+            ...options,
+          });
+        },
+        remove(name: string, options: CookieOptions) {
+          request.cookies.set({
+            name,
+            value: "",
+            ...options,
+          });
+          response = NextResponse.next({
+            request: {
+              headers: request.headers,
+            },
+          });
+          response.cookies.set({
+            name,
+            value: "",
+            ...options,
+          });
+        },
+      },
     }
+  );
 
-    if (userError) {
-      console.error('User error in middleware:', userError);
-    }
+  const { data: { session } } = await supabase.auth.getSession();
 
-    const hasValidSession = session && user && session.user.id === user.id;
-
-    // Si nous sommes sur la route de callback, laisser passer
-    if (request.nextUrl.pathname === '/auth/callback') {
-      return response;
-    }
-
-    // Si nous sommes sur la page de connexion et que nous avons une session valide
-    if ((request.nextUrl.pathname === '/sign-in' || request.nextUrl.pathname === '/sign-up' || request.nextUrl.pathname === '/login') && hasValidSession) {
-      return NextResponse.redirect(new URL('/protected', request.url));
-    }
-
-    // Si nous essayons d'accéder à une route protégée sans session valide
-    if (request.nextUrl.pathname.startsWith('/protected') && !hasValidSession) {
-      // Nettoyer les cookies de session potentiellement invalides
-      response.cookies.set('supabase-auth-completed', '', {
-        path: '/',
-        maxAge: 0,
-      });
-
-      // Stocker l'URL actuelle pour la redirection après connexion
-      const redirectUrl = new URL('/sign-in', request.url);
-      redirectUrl.searchParams.set('redirect', request.nextUrl.pathname);
-      return NextResponse.redirect(redirectUrl);
-    }
-
-    // Redirection de /login vers /sign-in
-    if (request.nextUrl.pathname === '/login') {
-      return NextResponse.redirect(new URL('/sign-in', request.url));
-    }
-
+  // Autoriser l'accès à /auth/callback
+  if (request.nextUrl.pathname.startsWith('/auth/callback')) {
     return response;
-  } catch (e) {
-    console.error('Middleware error:', e);
-    // En cas d'erreur, rediriger vers la page de connexion
-    return NextResponse.redirect(new URL('/sign-in', request.url));
   }
+
+  // Rediriger vers /protected si déjà connecté et sur les pages d'auth
+  if (session && (request.nextUrl.pathname === '/sign-in' || request.nextUrl.pathname === '/sign-up')) {
+    return NextResponse.redirect(new URL('/protected', request.url));
+  }
+
+  // Protéger les routes /protected
+  if (!session && request.nextUrl.pathname.startsWith('/protected')) {
+    const redirectUrl = new URL('/sign-in', request.url);
+    redirectUrl.searchParams.set('redirect', request.nextUrl.pathname);
+    return NextResponse.redirect(redirectUrl);
+  }
+
+  // Permettre l'accès à /api/calculations seulement si authentifié
+  if (request.nextUrl.pathname.startsWith("/api/calculations") && !session) {
+    return NextResponse.json(
+      { error: "Non autorisé" },
+      { status: 401 }
+    );
+  }
+
+  return response;
 }
 
 export const config = {

@@ -10,41 +10,17 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { FormMessage, Message } from '@/components/form-message';
 import { createClient } from '@/utils/supabase/client';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { toast } from 'sonner';
-import Image from 'next/image';
 
 // Ne pas exporter ce composant, le garder interne au fichier
 function LoginForm() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const redirect = searchParams.get('redirect');
-  const errorCode = searchParams.get('error');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    if (errorCode) {
-      let errorMessage = 'Une erreur est survenue lors de la connexion';
-      switch (errorCode) {
-        case 'No_auth_code':
-          errorMessage = 'Erreur lors de l\'authentification Google';
-          break;
-        case 'Auth_error':
-          errorMessage = 'Erreur lors de la création de la session';
-          break;
-        case 'Session_error':
-          errorMessage = 'Erreur lors de la vérification de la session';
-          break;
-        case 'Unexpected_error':
-          errorMessage = 'Une erreur inattendue est survenue';
-          break;
-      }
-      setError(errorMessage);
-      toast.error(errorMessage);
-    }
-  }, [errorCode]);
-
+  
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setIsLoading(true);
@@ -111,41 +87,6 @@ function LoginForm() {
       console.error('Erreur de connexion:', err);
       setError('Une erreur est survenue lors de la connexion');
       toast.error('Une erreur est survenue lors de la connexion');
-      setIsLoading(false);
-    }
-  }
-
-  async function handleGoogleSignIn() {
-    try {
-      setIsLoading(true);
-      setError(null);
-      const supabase = createClient();
-      
-      const { data, error } = await supabase.auth.signInWithOAuth({
-        provider: 'google',
-        options: {
-          queryParams: {
-            access_type: 'offline',
-            prompt: 'consent',
-          },
-          redirectTo: `${window.location.origin}/auth/callback`
-        }
-      });
-
-      if (error) {
-        setError(error.message);
-        toast.error(error.message);
-        return;
-      }
-
-      if (data.url) {
-        window.location.href = data.url;
-      }
-    } catch (err) {
-      console.error('Erreur de connexion avec Google:', err);
-      setError('Une erreur est survenue lors de la connexion avec Google');
-      toast.error('Une erreur est survenue lors de la connexion avec Google');
-    } finally {
       setIsLoading(false);
     }
   }
@@ -225,52 +166,20 @@ function LoginForm() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.5 }}
       >
-        <div className="space-y-4">
-          <Button
-            type="submit"
-            className="w-full flex justify-center items-center py-2 px-4 border border-transparent rounded-full shadow-sm text-sm font-medium text-white bg-[#86BC29] hover:bg-[#75a625] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#86BC29] transition-colors duration-200"
-            disabled={isLoading}
-          >
-            {isLoading ? (
-              <>
-                <Loader2 className="animate-spin mr-2 h-4 w-4" />
-                Chargement...
-              </>
-            ) : (
-              'Se connecter'
-            )}
-          </Button>
-
-          <div className="relative">
-            <div className="absolute inset-0 flex items-center">
-              <span className="w-full border-t" />
-            </div>
-            <div className="relative flex justify-center text-xs uppercase">
-              <span className="bg-background px-2 text-muted-foreground">Ou continuer avec</span>
-            </div>
-          </div>
-
-          <Button
-            type="button"
-            variant="outline"
-            className="w-full"
-            onClick={handleGoogleSignIn}
-            disabled={isLoading}
-          >
-            {isLoading ? (
-              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-            ) : (
-              <Image
-                src="/google.svg"
-                alt="Google"
-                width={20}
-                height={20}
-                className="mr-2"
-              />
-            )}
-            Google
-          </Button>
-        </div>
+        <Button
+          type="submit"
+          className="w-full flex justify-center items-center py-2 px-4 border border-transparent rounded-full shadow-sm text-sm font-medium text-white bg-[#86BC29] hover:bg-[#75a625] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#86BC29] transition-colors duration-200"
+          disabled={isLoading}
+        >
+          {isLoading ? (
+            <>
+              <Loader2 className="animate-spin mr-2 h-4 w-4" />
+              Chargement...
+            </>
+          ) : (
+            'Se connecter'
+          )}
+        </Button>
       </motion.div>
 
       <Link

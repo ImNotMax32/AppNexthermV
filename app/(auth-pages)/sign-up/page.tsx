@@ -10,9 +10,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { FormMessage } from '@/components/form-message';
 import { createClient } from '@/utils/supabase/client';
-import { useState, useEffect } from 'react';
-import Image from 'next/image';
-import { toast } from 'sonner';
+import { useState } from 'react';
 
 // Composant principal
 export default function SignUp() {
@@ -146,42 +144,6 @@ function SignUpContent() {
       setIsLoading(false);
     }
   }
-
-  async function handleGoogleSignIn() {
-    try {
-      setIsLoading(true);
-      setError(null);
-      const supabase = createClient();
-      
-      const { data, error } = await supabase.auth.signInWithOAuth({
-        provider: 'google',
-        options: {
-          queryParams: {
-            access_type: 'offline',
-            prompt: 'consent',
-          },
-          redirectTo: `${window.location.origin}/auth/callback`
-        }
-      });
-
-      if (error) {
-        setError(error.message);
-        toast.error(error.message);
-        return;
-      }
-
-      if (data.url) {
-        window.location.href = data.url;
-      }
-    } catch (err) {
-      console.error('Erreur de connexion avec Google:', err);
-      setError('Une erreur est survenue lors de la connexion avec Google');
-      toast.error('Une erreur est survenue lors de la connexion avec Google');
-    } finally {
-      setIsLoading(false);
-    }
-  }
-
   return (
     <div className="min-h-[70dvh] flex flex-col justify-between bg-white">
       <div className="flex-1 flex flex-col justify-center py-12 px- sm:px-6 lg:px-8">
@@ -300,41 +262,11 @@ function SignUpContent() {
                 {isLoading ? (
                   <>
                     <Loader2 className="animate-spin mr-2 h-4 w-4" />
-                    Chargement...
+                    Création en cours...
                   </>
                 ) : (
-                  'S\'inscrire'
+                  'Créer un compte'
                 )}
-              </Button>
-
-              <div className="relative mt-6">
-                <div className="absolute inset-0 flex items-center">
-                  <span className="w-full border-t" />
-                </div>
-                <div className="relative flex justify-center text-xs uppercase">
-                  <span className="bg-background px-2 text-muted-foreground">Ou continuer avec</span>
-                </div>
-              </div>
-
-              <Button
-                type="button"
-                variant="outline"
-                className="w-full mt-6"
-                onClick={handleGoogleSignIn}
-                disabled={isLoading}
-              >
-                {isLoading ? (
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                ) : (
-                  <Image
-                    src="/google.svg"
-                    alt="Google"
-                    width={20}
-                    height={20}
-                    className="mr-2"
-                  />
-                )}
-                Google
               </Button>
             </motion.div>
             <div className="flex flex-col space-y-2 text-center text-sm text-muted-foreground mt-4">
