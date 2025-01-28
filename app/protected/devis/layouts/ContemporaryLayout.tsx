@@ -1,5 +1,5 @@
 import React from 'react';
-import { LayoutProps, layouts  } from '../types/devis';
+import { LayoutProps, layouts } from '../types/devis';
 import { LogoSection, QuoteInfoSection } from '../sections/CommonSections';
 import { ProductsTable } from '../ProductsTable';
 import { TotalsSection } from '../TotalsSection';
@@ -26,17 +26,17 @@ export const ContemporaryLayout: React.FC<LayoutProps> = ({
   removeLogo,
   handleLogoUpload
 }) => (
-  <div className="w-[210mm] max-h-[297mm] bg-white shadow-lg relative mb-8 overflow-hidden">
+  <div className="w-[210mm] bg-white shadow-lg relative mb-8 overflow-hidden">
     <div className="absolute inset-0">
-      <div 
+      <div
         className="absolute top-0 right-0 w-96 h-96 rounded-full transform translate-x-1/3 -translate-y-1/3 opacity-10"
         style={{ backgroundColor: themes[selectedTheme].primary }}
       />
-      <div 
+      <div
         className="absolute bottom-0 right-0 w-[600px] h-[300px] transform translate-x-1/4 translate-y-1/4 opacity-5"
-        style={{ 
+        style={{
           backgroundColor: themes[selectedTheme].accent,
-          clipPath: 'polygon(0 0, 100% 0, 100% 100%, 20% 100%)' 
+          clipPath: 'polygon(0 0, 100% 0, 100% 100%, 20% 100%)'
         }}
       />
     </div>
@@ -54,7 +54,7 @@ export const ContemporaryLayout: React.FC<LayoutProps> = ({
               />
             </div>
             <div className="text-right">
-              <h1 
+              <h1
                 className="text-6xl font-black mb-8 tracking-tight"
                 style={{ color: themes[selectedTheme].primary }}
               >
@@ -67,8 +67,8 @@ export const ContemporaryLayout: React.FC<LayoutProps> = ({
 
           <div className="grid grid-cols-2 gap-24 mb-16">
             <div className="space-y-6">
-              <div 
-                className="text-lg font-medium pb-2 border-b-2" 
+              <div
+                className="text-lg font-medium pb-2 border-b-2"
                 style={{ borderColor: themes[selectedTheme].primary }}
               >
                 Notre entreprise
@@ -76,26 +76,26 @@ export const ContemporaryLayout: React.FC<LayoutProps> = ({
               <div className="space-y-3">
                 <CompactInput
                   value={companyInfo.name}
-                  onChange={(e) => setCompanyInfo({...companyInfo, name: e.target.value})}
+                  onChange={(e) => setCompanyInfo({ ...companyInfo, name: e.target.value })}
                   placeholder="Nom de l'entreprise"
                   className="w-full bg-transparent border-0 border-b focus:border-b-2 rounded-none"
                 />
                 <CompactInput
                   value={companyInfo.address}
-                  onChange={(e) => setCompanyInfo({...companyInfo, address: e.target.value})}
+                  onChange={(e) => setCompanyInfo({ ...companyInfo, address: e.target.value })}
                   placeholder="Adresse"
                   className="w-full bg-transparent border-0 border-b focus:border-b-2 rounded-none"
                 />
                 <div className="flex gap-4">
                   <CompactInput
                     value={companyInfo.zipCode}
-                    onChange={(e) => setCompanyInfo({...companyInfo, zipCode: e.target.value})}
+                    onChange={(e) => setCompanyInfo({ ...companyInfo, zipCode: e.target.value })}
                     placeholder="Code postal"
                     className="w-1/3 bg-transparent border-0 border-b focus:border-b-2 rounded-none"
                   />
                   <CompactInput
                     value={companyInfo.city}
-                    onChange={(e) => setCompanyInfo({...companyInfo, city: e.target.value})}
+                    onChange={(e) => setCompanyInfo({ ...companyInfo, city: e.target.value })}
                     placeholder="Ville"
                     className="w-2/3 bg-transparent border-0 border-b focus:border-b-2 rounded-none"
                   />
@@ -103,23 +103,23 @@ export const ContemporaryLayout: React.FC<LayoutProps> = ({
                 <div className="flex gap-4">
                   <CompactInput
                     value={companyInfo.phone}
-                    onChange={(e) => setCompanyInfo({...companyInfo, phone: e.target.value})}
+                    onChange={(e) => setCompanyInfo({ ...companyInfo, phone: e.target.value })}
                     placeholder="Téléphone"
                     className="w-1/2 bg-transparent border-0 border-b focus:border-b-2 rounded-none"
                   />
                   <CompactInput
                     value={companyInfo.email}
-                    onChange={(e) => setCompanyInfo({...companyInfo, email: e.target.value})}
+                    onChange={(e) => setCompanyInfo({ ...companyInfo, email: e.target.value })}
                     placeholder="Email"
                     className="w-1/2 bg-transparent border-0 border-b focus:border-b-2 rounded-none"
                   />
                 </div>
               </div>
             </div>
-            
+
             <div className="space-y-6">
-              <div 
-                className="text-lg font-medium pb-2 border-b-2" 
+              <div
+                className="text-lg font-medium pb-2 border-b-2"
                 style={{ borderColor: themes[selectedTheme].accent }}
               >
                 Client
@@ -127,26 +127,26 @@ export const ContemporaryLayout: React.FC<LayoutProps> = ({
               <div className="space-y-3">
                 <CompactInput
                   value={clientInfo.name}
-                  onChange={(e) => setClientInfo({...clientInfo, name: e.target.value})}
+                  onChange={(e) => setClientInfo({ ...clientInfo, name: e.target.value })}
                   placeholder="Nom du client"
                   className="w-full bg-transparent border-0 border-b focus:border-b-2 rounded-none"
                 />
                 <CompactInput
                   value={clientInfo.address}
-                  onChange={(e) => setClientInfo({...clientInfo, address: e.target.value})}
+                  onChange={(e) => setClientInfo({ ...clientInfo, address: e.target.value })}
                   placeholder="Adresse"
                   className="w-full bg-transparent border-0 border-b focus:border-b-2 rounded-none"
                 />
                 <div className="flex gap-4">
                   <CompactInput
                     value={clientInfo.zipCode}
-                    onChange={(e) => setClientInfo({...clientInfo, zipCode: e.target.value})}
+                    onChange={(e) => setClientInfo({ ...clientInfo, zipCode: e.target.value })}
                     placeholder="Code postal"
                     className="w-1/3 bg-transparent border-0 border-b focus:border-b-2 rounded-none"
                   />
                   <CompactInput
                     value={clientInfo.city}
-                    onChange={(e) => setClientInfo({...clientInfo, city: e.target.value})}
+                    onChange={(e) => setClientInfo({ ...clientInfo, city: e.target.value })}
                     placeholder="Ville"
                     className="w-2/3 bg-transparent border-0 border-b focus:border-b-2 rounded-none"
                   />
@@ -154,13 +154,13 @@ export const ContemporaryLayout: React.FC<LayoutProps> = ({
                 <div className="flex gap-4">
                   <CompactInput
                     value={clientInfo.phone}
-                    onChange={(e) => setClientInfo({...clientInfo, phone: e.target.value})}
+                    onChange={(e) => setClientInfo({ ...clientInfo, phone: e.target.value })}
                     placeholder="Téléphone"
                     className="w-1/2 bg-transparent border-0 border-b focus:border-b-2 rounded-none"
                   />
                   <CompactInput
                     value={clientInfo.email}
-                    onChange={(e) => setClientInfo({...clientInfo, email: e.target.value})}
+                    onChange={(e) => setClientInfo({ ...clientInfo, email: e.target.value })}
                     placeholder="Email"
                     className="w-1/2 bg-transparent border-0 border-b focus:border-b-2 rounded-none"
                   />
@@ -181,10 +181,10 @@ export const ContemporaryLayout: React.FC<LayoutProps> = ({
           selectedTheme={selectedTheme}
           themes={themes}
         />
-        
+
         {pageNumber === pages && (
           <div className="relative mt-12">
-            <TotalsSection 
+            <TotalsSection
               products={products}
               setProducts={setProducts}
               calculateTotals={calculateTotals}
@@ -229,21 +229,21 @@ export const Contemporary2Layout: React.FC<LayoutProps> = ({
   removeLogo,
   handleLogoUpload
 }) => (
-  <div className="w-[210mm] max-h-[297mm] bg-white shadow-lg relative mb-8 overflow-hidden">
+  <div className="w-[210mm] bg-white shadow-lg relative mb-8 overflow-hidden">
     {/* Formes abstraites différentes */}
     <div className="absolute inset-0">
-      <div 
+      <div
         className="absolute top-0 left-0 w-[500px] h-[300px] transform -translate-x-1/4 -translate-y-1/4 opacity-5"
-        style={{ 
+        style={{
           backgroundColor: themes[selectedTheme].primary,
-          clipPath: 'polygon(0 0, 100% 0, 0 100%)' 
+          clipPath: 'polygon(0 0, 100% 0, 0 100%)'
         }}
       />
-      <div 
+      <div
         className="absolute bottom-0 right-0 w-80 h-80 rounded-full transform translate-x-1/4 translate-y-1/4 opacity-5"
         style={{ backgroundColor: themes[selectedTheme].accent }}
       />
-      <div 
+      <div
         className="absolute bottom-12 right-12 w-48 h-48 rounded-full opacity-5"
         style={{ backgroundColor: themes[selectedTheme].primary }}
       />
@@ -254,7 +254,7 @@ export const Contemporary2Layout: React.FC<LayoutProps> = ({
         <>
           {/* En-tête avec disposition différente */}
           <div className="flex justify-between items-center mb-16">
-            <h1 
+            <h1
               className="text-7xl font-black tracking-tighter"
               style={{ color: themes[selectedTheme].primary }}
             >
@@ -279,7 +279,7 @@ export const Contemporary2Layout: React.FC<LayoutProps> = ({
           {/* Section informations avec style différent */}
           <div className="grid grid-cols-2 gap-16 mb-16">
             <div className="relative">
-              <div 
+              <div
                 className="absolute top-0 left-0 w-12 h-1 rounded"
                 style={{ backgroundColor: themes[selectedTheme].primary }}
               />
@@ -288,26 +288,26 @@ export const Contemporary2Layout: React.FC<LayoutProps> = ({
                 <div className="space-y-3">
                   <CompactInput
                     value={companyInfo.name}
-                    onChange={(e) => setCompanyInfo({...companyInfo, name: e.target.value})}
+                    onChange={(e) => setCompanyInfo({ ...companyInfo, name: e.target.value })}
                     placeholder="Nom de l'entreprise"
                     className="w-full bg-transparent border-0 border-b focus:border-b-2 rounded-none"
                   />
                   <CompactInput
                     value={companyInfo.address}
-                    onChange={(e) => setCompanyInfo({...companyInfo, address: e.target.value})}
+                    onChange={(e) => setCompanyInfo({ ...companyInfo, address: e.target.value })}
                     placeholder="Adresse"
                     className="w-full bg-transparent border-0 border-b focus:border-b-2 rounded-none"
                   />
                   <div className="flex gap-4">
                     <CompactInput
                       value={companyInfo.zipCode}
-                      onChange={(e) => setCompanyInfo({...companyInfo, zipCode: e.target.value})}
+                      onChange={(e) => setCompanyInfo({ ...companyInfo, zipCode: e.target.value })}
                       placeholder="Code postal"
                       className="w-1/3 bg-transparent border-0 border-b focus:border-b-2 rounded-none"
                     />
                     <CompactInput
                       value={companyInfo.city}
-                      onChange={(e) => setCompanyInfo({...companyInfo, city: e.target.value})}
+                      onChange={(e) => setCompanyInfo({ ...companyInfo, city: e.target.value })}
                       placeholder="Ville"
                       className="w-2/3 bg-transparent border-0 border-b focus:border-b-2 rounded-none"
                     />
@@ -315,13 +315,13 @@ export const Contemporary2Layout: React.FC<LayoutProps> = ({
                   <div className="flex gap-4">
                     <CompactInput
                       value={companyInfo.phone}
-                      onChange={(e) => setCompanyInfo({...companyInfo, phone: e.target.value})}
+                      onChange={(e) => setCompanyInfo({ ...companyInfo, phone: e.target.value })}
                       placeholder="Téléphone"
                       className="w-1/2 bg-transparent border-0 border-b focus:border-b-2 rounded-none"
                     />
                     <CompactInput
                       value={companyInfo.email}
-                      onChange={(e) => setCompanyInfo({...companyInfo, email: e.target.value})}
+                      onChange={(e) => setCompanyInfo({ ...companyInfo, email: e.target.value })}
                       placeholder="Email"
                       className="w-1/2 bg-transparent border-0 border-b focus:border-b-2 rounded-none"
                     />
@@ -331,7 +331,7 @@ export const Contemporary2Layout: React.FC<LayoutProps> = ({
             </div>
 
             <div className="relative">
-              <div 
+              <div
                 className="absolute top-0 right-0 w-12 h-1 rounded"
                 style={{ backgroundColor: themes[selectedTheme].accent }}
               />
@@ -340,26 +340,26 @@ export const Contemporary2Layout: React.FC<LayoutProps> = ({
                 <div className="space-y-3">
                   <CompactInput
                     value={clientInfo.name}
-                    onChange={(e) => setClientInfo({...clientInfo, name: e.target.value})}
+                    onChange={(e) => setClientInfo({ ...clientInfo, name: e.target.value })}
                     placeholder="Nom du client"
                     className="w-full bg-transparent border-0 border-b focus:border-b-2 rounded-none text-right"
                   />
                   <CompactInput
                     value={clientInfo.address}
-                    onChange={(e) => setClientInfo({...clientInfo, address: e.target.value})}
+                    onChange={(e) => setClientInfo({ ...clientInfo, address: e.target.value })}
                     placeholder="Adresse"
                     className="w-full bg-transparent border-0 border-b focus:border-b-2 rounded-none text-right"
                   />
                   <div className="flex gap-4">
                     <CompactInput
                       value={clientInfo.zipCode}
-                      onChange={(e) => setClientInfo({...clientInfo, zipCode: e.target.value})}
+                      onChange={(e) => setClientInfo({ ...clientInfo, zipCode: e.target.value })}
                       placeholder="Code postal"
                       className="w-1/3 bg-transparent border-0 border-b focus:border-b-2 rounded-none text-right"
                     />
                     <CompactInput
                       value={clientInfo.city}
-                      onChange={(e) => setClientInfo({...clientInfo, city: e.target.value})}
+                      onChange={(e) => setClientInfo({ ...clientInfo, city: e.target.value })}
                       placeholder="Ville"
                       className="w-2/3 bg-transparent border-0 border-b focus:border-b-2 rounded-none text-right"
                     />
@@ -367,13 +367,13 @@ export const Contemporary2Layout: React.FC<LayoutProps> = ({
                   <div className="flex gap-4">
                     <CompactInput
                       value={clientInfo.phone}
-                      onChange={(e) => setClientInfo({...clientInfo, phone: e.target.value})}
+                      onChange={(e) => setClientInfo({ ...clientInfo, phone: e.target.value })}
                       placeholder="Téléphone"
                       className="w-1/2 bg-transparent border-0 border-b focus:border-b-2 rounded-none text-right"
                     />
                     <CompactInput
                       value={clientInfo.email}
-                      onChange={(e) => setClientInfo({...clientInfo, email: e.target.value})}
+                      onChange={(e) => setClientInfo({ ...clientInfo, email: e.target.value })}
                       placeholder="Email"
                       className="w-1/2 bg-transparent border-0 border-b focus:border-b-2 rounded-none text-right"
                     />
@@ -401,10 +401,10 @@ export const Contemporary2Layout: React.FC<LayoutProps> = ({
           selectedTheme={selectedTheme}
           themes={themes}
         />
-          
+
         {pageNumber === pages && (
           <div className="relative mt-12">
-            <TotalsSection 
+            <TotalsSection
               products={products}
               setProducts={setProducts}
               calculateTotals={calculateTotals}
@@ -414,7 +414,7 @@ export const Contemporary2Layout: React.FC<LayoutProps> = ({
           </div>
         )}
       </div>
-        
+
       <div className="absolute bottom-8 left-8 right-8 text-xs text-gray-500 flex justify-between border-t pt-4">
         <div>
           <p>Conditions de paiement : 30 jours</p>

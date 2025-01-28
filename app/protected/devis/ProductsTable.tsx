@@ -21,12 +21,12 @@ const formatNumber = (num: number): string => {
   }).format(num);
 };
 
-export const ProductsTable = React.memo(({ 
-  pageNumber, 
-  products, 
-  updateProduct, 
-  removeProduct, 
-  selectedTheme, 
+export const ProductsTable = React.memo(({
+  pageNumber,
+  products,
+  updateProduct,
+  removeProduct,
+  selectedTheme,
   themes,
 }: ProductsTableProps) => {
   const calculateLineTTC = (product: Product) => {
@@ -34,10 +34,10 @@ export const ProductsTable = React.memo(({
     return totalHT * (1 + product.tva / 100);
   };
 
-  console.log("ProductsTable reçoit:", { 
-    pageNumber, 
-    products, 
-    selectedTheme, 
+  console.log("ProductsTable reçoit:", {
+    pageNumber,
+    products,
+    selectedTheme,
     themes,
   });
 
@@ -63,7 +63,7 @@ export const ProductsTable = React.memo(({
           {products.map((product) => (
             <tr key={product.id}>
               <td className="py-2 px-4 border-b">
-                <PersistentInput
+                <PersistentTextarea
                   value={product.code}
                   onChange={(value: string) => updateProduct(product.id, 'code', value)}
                   className="w-full bg-transparent"

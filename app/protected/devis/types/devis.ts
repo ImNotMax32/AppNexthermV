@@ -167,8 +167,8 @@ export const layouts: LayoutMap = {
       height: 'h-32'
     }
   },
-  
-  
+
+
   minimal: {
     name: 'Minimal',
     logoPosition: 'left',
@@ -176,10 +176,10 @@ export const layouts: LayoutMap = {
     infoStyle: 'grid grid-cols-3 gap-12 mb-12',
     logoSize: {
       width: 'w-32',
-      height: 'h-16' 
+      height: 'h-16'
     }
   },
-  
+
   contemporain: {
     name: 'Contemporain',
     logoPosition: 'dynamic',
@@ -189,7 +189,7 @@ export const layouts: LayoutMap = {
       width: 'w-48',
       height: 'h-48'
     }
-},
+  },
   contemporain2: {
     name: 'Contemporain 2',
     logoPosition: 'dynamic',

@@ -9,7 +9,7 @@ interface PersistentTextareaProps extends Omit<React.TextareaHTMLAttributes<HTML
 const CompactTextarea = React.forwardRef<HTMLTextAreaElement, React.TextareaHTMLAttributes<HTMLTextAreaElement>>(
   ({ className, ...props }, ref) => {
     const textareaRef = useRef<HTMLTextAreaElement>(null);
-    
+
     const adjustHeight = () => {
       const textarea = (ref as React.RefObject<HTMLTextAreaElement>)?.current || textareaRef.current;
       if (textarea) {
@@ -25,7 +25,7 @@ const CompactTextarea = React.forwardRef<HTMLTextAreaElement, React.TextareaHTML
     return (
       <Textarea
         ref={ref || textareaRef}
-        className={`py-0.5 px-1.5 min-h-[1.75rem] text-sm border-[1px] resize-none overflow-hidden ${className}`}
+        className={`py-0.5 px-1.5 min-h-[1.75rem] text-xs border-[1px] resize-none overflow-hidden ${className}`}
         rows={1}
         onInput={adjustHeight}
         {...props}
@@ -36,10 +36,10 @@ const CompactTextarea = React.forwardRef<HTMLTextAreaElement, React.TextareaHTML
 
 CompactTextarea.displayName = 'CompactTextarea';
 
-export const PersistentTextarea = React.memo(({ 
-  value, 
+export const PersistentTextarea = React.memo(({
+  value,
   onChange,
-  ...props 
+  ...props
 }: PersistentTextareaProps) => {
   const [localValue, setLocalValue] = useState<string>(value.toString());
   const [isFocused, setIsFocused] = useState(false);

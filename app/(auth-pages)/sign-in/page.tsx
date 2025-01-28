@@ -58,7 +58,7 @@ function LoginForm() {
       setIsLoading(true);
       setError(null);
       const supabase = createClient();
-      
+
       const { data, error } = await supabase.auth.signInWithOAuth({
         provider: 'google',
         options: {
@@ -114,7 +114,7 @@ function LoginForm() {
         </div>
       </div>
 
-      {error && <FormMessage message={{ error }} />}
+      {error && <FormMessage message={{ error: error }} />}
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -189,7 +189,7 @@ export default function SignInPage() {
           <h1 className="text-2xl font-bold text-center">
             Connexion à votre compte
           </h1>
-          <Suspense 
+          <Suspense
             fallback={
               <div className="flex justify-center">
                 <Loader2 className="animate-spin h-8 w-8 text-[#86BC29]" />

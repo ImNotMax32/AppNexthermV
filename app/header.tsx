@@ -39,7 +39,7 @@ export default function Header() {
           .select('*')
           .eq('id', user.id)
           .single();
-        
+
         if (!error) {
           setUserProfile(profile);
         } else {
@@ -47,22 +47,24 @@ export default function Header() {
         }
       }
     }
-    
+
     getUser();
 
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, session) => {
-      if (event === 'SIGNED_IN' && session?.user) {
-        const { data: profile } = await supabase
-          .from('user')
-          .select('*')
-          .eq('id', session.user.id)
-          .single();
-        
-        setUserProfile(profile);
-      }
-      if (event === 'SIGNED_OUT') {
-        setUserProfile(null);
-      }
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
+      setTimeout(async () => {
+        if (event === 'SIGNED_IN' && session?.user) {
+          const { data: profile } = await supabase
+            .from('user')
+            .select('*')
+            .eq('id', session.user.id)
+            .single();
+
+          setUserProfile(profile);
+        }
+        if (event === 'SIGNED_OUT') {
+          setUserProfile(null);
+        }
+      }, 0);
     });
 
     return () => subscription.unsubscribe();
@@ -74,15 +76,23 @@ export default function Header() {
   };
 
   async function handleSignOut() {
-    await supabase.auth.signOut();
-    router.push('/');
+    try {
+      Promise.race([
+        supabase.auth.signOut(),
+        new Promise((resolve) => setTimeout(resolve, 3000))
+      ]);
+      router.push('/');
+    } catch (error) {
+      console.error('Erreur lors de la déconnexion:', error);
+      router.push('/');
+    }
   }
 
   return (
     <header className="border-b border-gray-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
         <Link href="/" className="flex items-center space-x-3">
-          <img 
+          <img
             src="/assets/img/X.png"
             alt="Nextherm Logo"
             className="h-12 w-12 object-contain"
@@ -109,22 +119,22 @@ export default function Header() {
               </span>
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className="relative h-9 w-9 p-0 overflow-hidden">
-                  {userProfile.image_url ? (
-                    <div className="h-full w-full rounded-full overflow-hidden">
-                      <img 
-                        src={userProfile.image_url} 
-                        alt="Profile" 
-                        className="h-full w-full object-cover"
-                      />
-                    </div>
-                  ) : (
-                    <div className="h-full w-full rounded-full bg-[#86BC29] flex items-center justify-center text-white">
-                      {getInitials(userProfile.name || userProfile.email || 'U')}
-                    </div>
-                  )}
-                </Button>
-                  </DropdownMenuTrigger>
+                  <Button variant="ghost" className="relative h-9 w-9 p-0 overflow-hidden">
+                    {userProfile.image_url ? (
+                      <div className="h-full w-full rounded-full overflow-hidden">
+                        <img
+                          src={userProfile.image_url}
+                          alt="Profile"
+                          className="h-full w-full object-cover"
+                        />
+                      </div>
+                    ) : (
+                      <div className="h-full w-full rounded-full bg-[#86BC29] flex items-center justify-center text-white">
+                        {getInitials(userProfile.name || userProfile.email || 'U')}
+                      </div>
+                    )}
+                  </Button>
+                </DropdownMenuTrigger>
                 <DropdownMenuContent align="end" className="w-56">
                   <DropdownMenuLabel className="font-normal">
                     <div className="flex flex-col space-y-1">
@@ -154,10 +164,10 @@ export default function Header() {
                   <DropdownMenuSeparator />
                   <form action={handleSignOut} className="w-full">
                     <button type="submit" className="flex w-full">
-                    <DropdownMenuItem onClick={handleSignOut} className="w-full cursor-pointer text-red-600">
-                      <LogOut className="mr-2 h-4 w-4" />
-                      <span>Déconnexion</span>
-                    </DropdownMenuItem>
+                      <DropdownMenuItem className="w-full cursor-pointer text-red-600" onClick={handleSignOut}>
+                        <LogOut className="mr-2 h-4 w-4" />
+                        <span>Déconnexion</span>
+                      </DropdownMenuItem>
                     </button>
                   </form>
                 </DropdownMenuContent>

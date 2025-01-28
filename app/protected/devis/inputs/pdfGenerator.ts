@@ -1,4 +1,3 @@
-
 import { jsPDF } from 'jspdf';
 import html2canvas from 'html2canvas';
 
@@ -10,68 +9,105 @@ export const generatePDF = async (elementId: string, reference: string, onSucces
   }
 
   try {
-    // Créer le PDF
+    // Ajouter une variable globale pour indiquer qu'on est en mode PDF
+    (window as any).htmlToPdf = true;
+
+    const pageWidth = 210;
+    const pageHeight = 297;
+    const margin = 8;
+
     const pdf = new jsPDF({
       orientation: 'portrait',
       unit: 'mm',
       format: 'a4'
     });
 
-    // Récupérer toutes les pages
     const pages = element.children;
-    
+
     for (let i = 0; i < pages.length; i++) {
       const page = pages[i] as HTMLElement;
-      
-      // Créer une copie de la page pour la manipulation
       const clone = page.cloneNode(true) as HTMLElement;
-      
-      // Supprimer les éléments interactifs
+
+      // Préserver les retours à la ligne dans les textareas
+      clone.querySelectorAll('textarea').forEach(textarea => {
+        const div = document.createElement('div');
+        div.style.whiteSpace = 'pre-wrap';
+        div.style.wordBreak = 'break-word';
+        div.innerHTML = textarea.value;
+        textarea.parentNode?.replaceChild(div, textarea);
+      });
+
+      // Ajouter une marge en bas du dernier élément
+      const lastElement = clone.querySelector('[data-last-element]') as HTMLElement;
+      if (lastElement) {
+        lastElement.style.marginBottom = '0px';
+      }
+
+      // Supprimer les boutons comme avant
       clone.querySelectorAll('.delete-button, .x-button, button').forEach(el => el.remove());
-      
-      // Créer un conteneur temporaire hors écran avec les mêmes dimensions que l'original
+
       const container = document.createElement('div');
       container.appendChild(clone);
       container.style.position = 'fixed';
       container.style.top = '-9999px';
-      container.style.width = page.offsetWidth + 'px';
-      container.style.height = page.offsetHeight + 'px';
+      container.style.width = '793px';
+      // Ne pas fixer la hauteur pour permettre le contenu de s'étendre
+      container.style.minHeight = '1122px';
       document.body.appendChild(container);
 
-      // Configurer les options de html2canvas
-      const canvas = await html2canvas(clone, {
-        scale: 2, // Meilleure qualité
-        useCORS: true,
-        logging: false,
-        allowTaint: true,
-        backgroundColor: '#ffffff',
-        width: page.offsetWidth,
-        height: page.offsetHeight
-      });
 
-      // Supprimer le conteneur temporaire
-      document.body.removeChild(container);
+      const contentHeight = clone.scrollHeight;
+      const numberOfPages = Math.ceil(contentHeight / 1122);
 
-      // Calculer les dimensions pour ajuster l'image au format A4
-      const imgWidth = 210; // A4 width in mm
-      const imgHeight = (canvas.height * imgWidth) / canvas.width;
-      
-      // Ajouter l'image au PDF
-      const imgData = canvas.toDataURL('image/png');
-      
-      // Si ce n'est pas la première page, ajouter une nouvelle page
-      if (i > 0) {
-        pdf.addPage();
+      for (let j = 0; j < numberOfPages; j++) {
+        if (i > 0 || j > 0) {
+          pdf.addPage();
+        }
+
+        const canvas = await html2canvas(clone, {
+          scale: 2,
+          useCORS: true,
+          logging: false,
+          allowTaint: true,
+          backgroundColor: '#ffffff',
+          width: 793,
+          height: 1122,
+          windowHeight: 1122,
+          y: j * 1122
+        });
+
+        pdf.addImage(
+          canvas.toDataURL('image/png'),
+          'PNG',
+          margin,
+          margin,
+          pageWidth - (margin * 2),
+          pageHeight - (margin * 2)
+        );
+
+        const currentPage = i * numberOfPages + j + 1;
+        const totalPages = pages.length * numberOfPages;
+        pdf.setFontSize(10);
+        pdf.setTextColor(128, 128, 128); // Gris clair
+        pdf.text(
+          `Page ${currentPage}/${totalPages}`,
+          pageWidth - (margin / 2),
+          pageHeight - (margin / 2),
+          { align: 'right' }
+        );
       }
-      
-      pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
+
+      document.body.removeChild(container);
     }
 
-    // Sauvegarder le PDF
-    pdf.save(`devis_${reference || 'sans_reference'}.pdf`);
+    // Nettoyer la variable globale
+    (window as any).htmlToPdf = false;
 
+    pdf.save(`devis_${reference || 'sans_reference'}.pdf`);
     onSuccess();
   } catch (error) {
+    // Nettoyer la variable globale même en cas d'erreur
+    (window as any).htmlToPdf = false;
     console.error('Erreur lors de la génération du PDF:', error);
     onError(error);
   }

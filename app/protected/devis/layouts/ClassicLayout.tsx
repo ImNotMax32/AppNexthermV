@@ -26,7 +26,7 @@ export const ClassicLayout: React.FC<LayoutProps> = ({
   removeLogo,
   handleLogoUpload
 }) => (
-  <div key={pageNumber} className="w-[210mm] h-[297mm] bg-white shadow-lg p-8 relative mb-8">
+  <div key={pageNumber} className={`w-[210mm] min-h-[297mm] bg-white shadow-lg ${!(window as any)?.htmlToPdf ? 'p-8' : ''} relative mb-8`}>
     {/* Contenu principal */}
     <div className="flex flex-col h-full">
       {pageNumber === 1 ? (
@@ -54,26 +54,26 @@ export const ClassicLayout: React.FC<LayoutProps> = ({
                 <div className="space-y-4">
                   <CompactInput
                     value={companyInfo.name}
-                    onChange={(e) => setCompanyInfo({...companyInfo, name: e.target.value})}
+                    onChange={(e) => setCompanyInfo({ ...companyInfo, name: e.target.value })}
                     placeholder="Nom de l'entreprise"
                     className="w-full"
                   />
                   <CompactInput
                     value={companyInfo.address}
-                    onChange={(e) => setCompanyInfo({...companyInfo, address: e.target.value})}
+                    onChange={(e) => setCompanyInfo({ ...companyInfo, address: e.target.value })}
                     placeholder="Adresse"
                     className="w-full"
                   />
                   <div className="flex gap-2">
                     <CompactInput
                       value={companyInfo.zipCode}
-                      onChange={(e) => setCompanyInfo({...companyInfo, zipCode: e.target.value})}
+                      onChange={(e) => setCompanyInfo({ ...companyInfo, zipCode: e.target.value })}
                       placeholder="Code postal"
                       className="w-1/3"
                     />
                     <CompactInput
                       value={companyInfo.city}
-                      onChange={(e) => setCompanyInfo({...companyInfo, city: e.target.value})}
+                      onChange={(e) => setCompanyInfo({ ...companyInfo, city: e.target.value })}
                       placeholder="Ville"
                       className="w-2/3"
                     />
@@ -88,26 +88,26 @@ export const ClassicLayout: React.FC<LayoutProps> = ({
                 <div className="space-y-4">
                   <CompactInput
                     value={clientInfo.name}
-                    onChange={(e) => setClientInfo({...clientInfo, name: e.target.value})}
+                    onChange={(e) => setClientInfo({ ...clientInfo, name: e.target.value })}
                     placeholder="Nom du client"
                     className="w-full"
                   />
                   <CompactInput
                     value={clientInfo.address}
-                    onChange={(e) => setClientInfo({...clientInfo, address: e.target.value})}
+                    onChange={(e) => setClientInfo({ ...clientInfo, address: e.target.value })}
                     placeholder="Adresse du client"
                     className="w-full"
                   />
                   <div className="flex gap-8">
                     <CompactInput
                       value={clientInfo.zipCode}
-                      onChange={(e) => setClientInfo({...clientInfo, zipCode: e.target.value})}
+                      onChange={(e) => setClientInfo({ ...clientInfo, zipCode: e.target.value })}
                       placeholder="CP"
                       className="w-1/3"
                     />
                     <CompactInput
                       value={clientInfo.city}
-                      onChange={(e) => setClientInfo({...clientInfo, city: e.target.value})}
+                      onChange={(e) => setClientInfo({ ...clientInfo, city: e.target.value })}
                       placeholder="Ville"
                       className="w-2/3"
                     />
@@ -124,7 +124,7 @@ export const ClassicLayout: React.FC<LayoutProps> = ({
             />
           </div>
           {/* Table des produits pour la première page */}
-          <div className="flex-grow">
+          <div className={`flex-grow mb-[190px]`}>
             <ProductsTable
               products={products}
               pageNumber={pageNumber}
@@ -137,7 +137,7 @@ export const ClassicLayout: React.FC<LayoutProps> = ({
         </>
       ) : (
         /* Pages suivantes : utiliser tout l'espace disponible */
-        <div className="h-full pb-[80px]">
+        <div className={`h-full pb-[190px]`}>
           <ProductsTable
             products={products}
             pageNumber={pageNumber}
@@ -150,7 +150,7 @@ export const ClassicLayout: React.FC<LayoutProps> = ({
       )}
 
       {/* Section des totaux */}
-      <div className="absolute bottom-[60px] left-8 right-8">
+      <div data-last-element className={`absolute bottom-[110px] left-8 right-8`}>
         <TotalsSection
           products={products}
           setProducts={setProducts}
@@ -161,14 +161,15 @@ export const ClassicLayout: React.FC<LayoutProps> = ({
       </div>
 
       {/* Footer - même position pour toutes les pages */}
-      <div className="absolute bottom-8 left-8 right-8 text-xs text-gray-500 flex justify-between border-t pt-4">
+      <div className={`absolute ${(window as any)?.htmlToPdf ? 'bottom-4' : 'bottom-8'} left-8 right-8 text-xs text-gray-500 flex justify-between border-t pt-4`}>
         <div>
           <p>Conditions de paiement : 30 jours</p>
           <p>TVA non applicable, art. 293 B du CGI</p>
           {companyInfo.siret && <p>SIRET: {companyInfo.siret}</p>}
         </div>
-        <div>Page {pageNumber}/{pages}</div>
+        {/* <div className='absolute bottom-[2mm] right-[2mm]'>Page {pageNumber}/{pages}</div> */}
       </div>
     </div>
   </div>
 );
+

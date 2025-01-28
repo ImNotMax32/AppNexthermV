@@ -55,12 +55,12 @@ export const TotalsSection: React.FC<TotalsSectionProps> = ({
         onProductSelect={handleProductSelect}
       />
 
-      <div className="flex justify-between items-start">
+      <div className="flex justify-between items-start z-10">
         <div className="flex gap-2">
           <Button
             onClick={handleAddEmptyLine}
             variant="outline"
-            style={{ 
+            style={{
               color: themes[selectedTheme].primary,
               borderColor: themes[selectedTheme].primary
             }}
@@ -73,7 +73,7 @@ export const TotalsSection: React.FC<TotalsSectionProps> = ({
           <Button
             onClick={() => setIsProductSelectorOpen(true)}
             variant="outline"
-            style={{ 
+            style={{
               color: themes[selectedTheme].primary,
               borderColor: themes[selectedTheme].primary
             }}
@@ -88,12 +88,12 @@ export const TotalsSection: React.FC<TotalsSectionProps> = ({
           <div className="grid grid-cols-2 gap-2 text-sm">
             <div className="text-right text-gray-600">Total HT:</div>
             <div className="text-right font-medium">{totals.totalHT.toFixed(2)} €</div>
-            
+
             <div className="text-right text-gray-600">Total TVA:</div>
             <div className="text-right font-medium">{totals.totalTVA.toFixed(2)} €</div>
-            
+
             <div className="text-right text-gray-600 font-medium">Total TTC:</div>
-            <div 
+            <div
               className="text-right font-bold"
               style={{ color: themes[selectedTheme].primary }}
             >
