@@ -28,6 +28,21 @@ export const generatePDF = async (elementId: string, reference: string, onSucces
       const page = pages[i] as HTMLElement;
       const clone = page.cloneNode(true) as HTMLElement;
 
+      clone.querySelectorAll('img').forEach(img => {
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+        if (!ctx) return;
+
+        const maxHeight = 70; // Hauteur maximale du conteneur
+        const ratio = Math.min(maxHeight / img.naturalHeight, 1);
+        canvas.width = img.naturalWidth * ratio;
+        canvas.height = img.naturalHeight * ratio;
+
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+        img.parentNode?.replaceChild(canvas, img);
+      });
+
       // Préserver les retours à la ligne dans les textareas
       clone.querySelectorAll('textarea').forEach(textarea => {
         const div = document.createElement('div');
@@ -82,7 +97,9 @@ export const generatePDF = async (elementId: string, reference: string, onSucces
           margin,
           margin,
           pageWidth - (margin * 2),
-          pageHeight - (margin * 2)
+          pageHeight - (margin * 2),
+          undefined,
+          'FAST'
         );
 
         const currentPage = i * numberOfPages + j + 1;

@@ -213,7 +213,7 @@ export const Modern2Layout: React.FC<LayoutProps> = ({
   removeLogo,
   handleLogoUpload
 }) => (
-  <div key={pageNumber} className="w-[210mm] bg-white shadow-lg relative mb-8">
+  <div key={pageNumber} className="w-[210mm] bg-white shadow-lg relative mb-8 overflow-hidden">
     {/* Background design elements */}
     <div className="absolute inset-0">
       <div

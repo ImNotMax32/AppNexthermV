@@ -11,7 +11,6 @@ const columnWidths = {
   price: '110px',
   tva: '70px',
   totalTTC: '110px',
-  actions: '0px', // Cellule invisible pour le bouton
 };
 
 const formatNumber = (num: number): string => {
@@ -47,8 +46,8 @@ export const ProductsTable = React.memo(({
 
   return (
     <div className="mt-8">
-      <table className="w-full border-collapse" style={{ backgroundColor: themes[selectedTheme]?.secondary }}>
-        <thead>
+      <table className="w-full border-collapse bg-white" >
+        <thead style={{ backgroundColor: themes[selectedTheme]?.secondary }}>
           <tr>
             <th style={{ width: columnWidths.code }} className="py-2 px-4 text-left border-b">Code</th>
             <th style={{ width: columnWidths.description }} className="py-2 px-4 text-left border-b">Description</th>
@@ -56,12 +55,11 @@ export const ProductsTable = React.memo(({
             <th style={{ width: columnWidths.price }} className="py-2 px-4 text-left border-b">Prix HT</th>
             <th style={{ width: columnWidths.tva }} className="py-2 px-4 text-left border-b">TVA</th>
             <th style={{ width: columnWidths.totalTTC }} className="py-2 px-4 text-left border-b">Total TTC</th>
-            <th style={{ width: columnWidths.actions }} className="py-2 px-4 border-b"></th>
           </tr>
         </thead>
         <tbody>
           {products.map((product) => (
-            <tr key={product.id}>
+            <tr key={product.id} className="relative">
               <td className="py-2 px-4 border-b">
                 <PersistentTextarea
                   value={product.code}
@@ -104,14 +102,12 @@ export const ProductsTable = React.memo(({
               <td className="py-2 px-4 border-b">
                 {formatNumber(calculateLineTTC(product))}
               </td>
-              <td className="py-2 px-4 border-b">
-                <button
-                  onClick={() => removeProduct(product.id)}
-                  className="delete-button text-red-500 hover:text-red-700"
-                >
-                  <X className="h-4 w-4" />
-                </button>
-              </td>
+              <button
+                onClick={() => removeProduct(product.id)}
+                className="delete-button text-red-500 hover:text-red-700 absolute -right-6 top-1/2 -translate-y-1/2"
+              >
+                <X className="h-4 w-4" />
+              </button>
             </tr>
           ))}
         </tbody>

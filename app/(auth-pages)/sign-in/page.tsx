@@ -114,7 +114,7 @@ function LoginForm() {
         </div>
       </div>
 
-      {error && <FormMessage message={{ error: error }} />}
+      {error && <FormMessage type="error" message={{ error: error }} />}
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}

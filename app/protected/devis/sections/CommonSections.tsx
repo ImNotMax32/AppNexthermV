@@ -23,9 +23,14 @@ export const LogoSection: React.FC<LogoSectionProps> = ({
     ${selectedLayout === 'moderne' ? 'mx-auto' : ''}
     border-2 border-dashed border-gray-300 rounded-lg flex items-center justify-center relative overflow-hidden`}>
     {logoUrl ? (
-      <div className="relative w-full h-full group">
-        <img src={logoUrl} alt="Logo" className="w-full h-full object-contain"/>
-        <button 
+      <div className="relative w-full h-full group flex items-center justify-center">
+        <img
+          src={logoUrl}
+          alt="Logo"
+          className="w-full h-full object-contain"
+          style={{ maxWidth: '100%', maxHeight: '100%', display: 'block !important', objectPosition: 'center !important', objectFit: 'contain' }}
+        />
+        <button
           onClick={removeLogo}
           className="absolute top-1 right-1 bg-white rounded-full p-1 shadow-md opacity-0 group-hover:opacity-100 transition-opacity"
         >
@@ -55,7 +60,7 @@ export const QuoteInfoSection: React.FC<QuoteInfoSectionProps> = ({
   selectedTheme,
   themes
 }) => (
-  <div 
+  <div
     className="grid grid-cols-4 gap-4 my-8 p-4 rounded-lg"
     style={{ backgroundColor: themes[selectedTheme].secondary }}
   >
@@ -63,7 +68,7 @@ export const QuoteInfoSection: React.FC<QuoteInfoSectionProps> = ({
       <Label className="text-xs text-gray-600">Ref. Devis</Label>
       <Input
         value={quoteInfo.reference}
-        onChange={(e) => setQuoteInfo({...quoteInfo, reference: e.target.value})}
+        onChange={(e) => setQuoteInfo({ ...quoteInfo, reference: e.target.value })}
         placeholder="DEV-2024-001"
         className="text-sm mt-1"
       />
