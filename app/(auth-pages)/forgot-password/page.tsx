@@ -28,7 +28,7 @@ export default async function ForgotPassword(props: {
           <SubmitButton formAction={forgotPasswordAction}>
             Reset Password
           </SubmitButton>
-          <FormMessage message={searchParams} />
+          <FormMessage message={searchParams} type="error" />
         </div>
       </form>
       <SmtpMessage />

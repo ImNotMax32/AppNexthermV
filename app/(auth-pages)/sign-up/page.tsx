@@ -107,7 +107,7 @@ function SignUpContent() {
       setIsLoading(true);
       setError(null);
       const supabase = createClient();
-      
+
       const { data, error } = await supabase.auth.signInWithOAuth({
         provider: 'google',
         options: {
@@ -169,7 +169,7 @@ function SignUpContent() {
               </div>
             </div>
 
-            {error && <FormMessage message={{ error }} />}
+            {error && <FormMessage message={{ error }} type="error" />}
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}

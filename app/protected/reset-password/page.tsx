@@ -31,7 +31,7 @@ export default async function ResetPassword(props: {
       <SubmitButton formAction={resetPasswordAction}>
         Reset password
       </SubmitButton>
-      <FormMessage message={searchParams} />
+      <FormMessage message={searchParams} type="error" />
     </form>
   );
 }
