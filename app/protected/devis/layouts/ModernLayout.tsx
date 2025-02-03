@@ -50,7 +50,7 @@ export const ModernLayout: React.FC<LayoutProps> = ({
           />
 
           <div className="grid grid-cols-2 gap-16">
-            <div className="pr-12 space-y-6">
+            <div className="pr-0 space-y-6">
               <h2 className="font-medium text-xl pb-2 border-b-2" style={{ color: themes[selectedTheme].primary, borderColor: themes[selectedTheme].primary }}>
                 Notre entreprise
               </h2>
@@ -98,7 +98,7 @@ export const ModernLayout: React.FC<LayoutProps> = ({
               </div>
             </div>
 
-            <div className="pl-12 space-y-6">
+            <div className="pl-0 space-y-6">
               <h2 className="font-medium text-xl pb-2 border-b-2" style={{ color: themes[selectedTheme].accent, borderColor: themes[selectedTheme].accent }}>
                 Client
               </h2>
@@ -265,7 +265,7 @@ export const Modern2Layout: React.FC<LayoutProps> = ({
 
           {/* Company and Client sections with modern cards */}
           <div className="grid grid-cols-2 gap-8 mb-12">
-            <div className="bg-gray-50 p-6 rounded-lg">
+            <div className="bg-gray-50 p-3 rounded-lg">
               <h2
                 className="text-lg font-semibold mb-6 flex items-center gap-2"
                 style={{ color: themes[selectedTheme].primary }}
@@ -317,7 +317,7 @@ export const Modern2Layout: React.FC<LayoutProps> = ({
               </div>
             </div>
 
-            <div className="bg-gray-50 p-6 rounded-lg">
+            <div className="bg-gray-50 p-3 rounded-lg">
               <h2
                 className="text-lg font-semibold mb-6 flex items-center gap-2"
                 style={{ color: themes[selectedTheme].accent }}

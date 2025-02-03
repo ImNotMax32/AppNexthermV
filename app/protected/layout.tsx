@@ -274,31 +274,40 @@ export default function DashboardLayout({
                   </Button>
                 </Link>*/}
 
-                <Button
-                  variant="ghost"
-                  className="w-full justify-start text-sm opacity-50 cursor-not-allowed hover:bg-transparent"
-                  disabled
-                >
-                  <Users className="mr-2 h-4 w-4" />
-                  Devis
-                </Button>
-                <div className="ml-4 space-y-1">
+                <Link href="/protected/devis" passHref>
                   <Button
-                    variant="ghost"
-                    className="w-full justify-start text-sm opacity-50 cursor-not-allowed hover:bg-transparent"
-                    disabled
+                    variant={pathname === '/protected/devis' ? 'secondary' : 'ghost'}
+                    className={`w-full justify-start text-sm ${
+                      pathname === '/protected/devis' ? 'bg-[#86BC29] text-white hover:bg-[#86BC29]' : 'hover:bg-gray-100'
+                    }`}
                   >
-                    <FileText className="mr-2 h-4 w-4" />
+                    <Users className="mr-2 h-4 w-4" />
                     Devis
                   </Button>
-                  <Button
-                    variant="ghost"
-                    className="w-full justify-start text-sm opacity-50 cursor-not-allowed hover:bg-transparent"
-                    disabled
-                  >
-                    <Save className="mr-2 h-4 w-4" />
-                    Devis sauvegardés
-                  </Button>
+                </Link>
+                <div className="ml-4 space-y-1">
+                  <Link href="/protected/devis" passHref>
+                    <Button
+                      variant={pathname === '/protected/devis' ? 'secondary' : 'ghost'}
+                      className={`w-full justify-start text-sm ${
+                        pathname === '/protected/devis' ? 'bg-[#86BC29] text-white hover:bg-[#86BC29]' : 'hover:bg-gray-100'
+                      }`}
+                    >
+                      <FileText className="mr-2 h-4 w-4" />
+                      Devis
+                    </Button>
+                  </Link>
+                  <Link href="/protected/devis/devissave" passHref>
+                    <Button
+                      variant={pathname === '/protected/devis/devissave' ? 'secondary' : 'ghost'}
+                      className={`w-full justify-start text-sm ${
+                        pathname === '/protected/devis/devissave' ? 'bg-[#86BC29] text-white hover:bg-[#86BC29]' : 'hover:bg-gray-100'
+                      }`}
+                    >
+                      <Save className="mr-2 h-4 w-4" />
+                      Devis sauvegardés
+                    </Button>
+                  </Link>
                 </div>
               </div>
             </NavSection>

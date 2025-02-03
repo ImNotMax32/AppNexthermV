@@ -83,42 +83,38 @@ export default function HomePage() {
       { type: 'type', content: '  };\n}' }
     ],
 
-    // Blague
-
+    // Séquence 2: Fait sur la géothermie
     [
-      { type: 'type', content: '// Pourquoi les programmeurs préfèrent le froid ?\n' },
+      { type: 'type', content: '// Saviez-vous ? La géothermie en France 🌍\n' },
       { type: 'pause', duration: 800 },
-      { type: 'type', content: 'function blagueProgrammeur() {\n' },
-      { type: 'type', content: '  let raison = {\n' },
-      { type: 'type', content: '    température: 0,\n' },
-      { type: 'type', content: '    explication: "Parce que" '},
-      { type: 'pause', duration: 400 },
-      { type: 'type', content: '...\n' },
-      { type: 'pause', duration: 800 },
-      { type: 'type', content: '    // À zéro degré, il n\'y a pas de bug ! 🐛❄️\n' },
+      { type: 'type', content: 'function faitGeothermie() {\n' },
+      { type: 'type', content: '  const statistiques = {\n' },
+      { type: 'type', content: '    source: "ADEME",\n' },
+      { type: 'type', content: '    fait: "La géothermie peut couvrir 100% des besoins\n' },
+      { type: 'type', content: '          en chauffage et en eau chaude d\'une maison,\n' },
+      { type: 'type', content: '          tout en réduisant les émissions de CO2 de 75%" },\n' },
+      { type: 'type', content: '    impact: "Énergie renouvelable et durable ♻️"\n' },
       { type: 'type', content: '  };\n' },
-      { type: 'type', content: '  return raison.température === 0 ? "Code parfait" : "Debugger";\n' },
+      { type: 'type', content: '  return `${statistiques.fait}\n${statistiques.impact}`;\n' },
       { type: 'type', content: '}\n' },
-      { type: 'type', content: '\n// 404: Humour not found 😅' }
+      { type: 'type', content: '\n// L\'énergie du futur est sous nos pieds! 🌱' }
     ],
     
-    // Séquence 3: Citation Nietzsche
+    // Séquence 3: Citation sur la géothermie
     [
-      { type: 'type', content: '/* 🎭 Friedrich Nietzsche - Le Code du Philosophe */\n\n' },
-      { type: 'type', content: 'class Übermensch {\n' },
+      { type: 'type', content: '/* 🌟 Vision d\'Avenir - La Géothermie */\n\n' },
+      { type: 'type', content: 'class VisionGeothermie {\n' },
       { type: 'type', content: '  constructor() {\n' },
-      { type: 'type', content: '    this.wisdom = "Celui qui lutte contre les bugs\n' },
-      { type: 'type', content: '                   peut prendre garde à ne pas\n' },
-      { type: 'type', content: '                   devenir bug lui-même...";\n' },
-      { type: 'pause', duration: 500 },
-      { type: 'type', content: '    this.author = "Nietzsche, Par-delà le Code et le Debug";\n' },
+      { type: 'type', content: '    this.citation = "La géothermie, c\'est l\'avenir";\n' },
+      { type: 'type', content: '    this.auteur = "Jean-Luc Barrault";\n' },
+      { type: 'type', content: '    this.année = 1989;\n' },
       { type: 'type', content: '  }\n\n' },
-      { type: 'type', content: '  contemplate() {\n' },
-      { type: 'type', content: '    return `Si tu fixes longtemps l\'abîme du code,\n' },
-      { type: 'type', content: '            l\'abîme du code te fixe aussi.`;\n' },
+      { type: 'type', content: '  message() {\n' },
+      { type: 'type', content: '    return "Une énergie propre et inépuisable\n' },
+      { type: 'type', content: '            pour un futur durable";\n' },
       { type: 'type', content: '  }\n' },
       { type: 'type', content: '}\n' },
-      { type: 'type', content: '\n// L\'éternel retour du bug 🔄' }
+      { type: 'type', content: '\n// Le futur de l\'énergie est géothermique 🌍♨️' }
     ]
   ];
   useEffect(() => {

@@ -28,7 +28,7 @@ import { createClient } from '@/utils/supabase/client';
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
-import { Search, FileText, Trash2, Filter, SlidersHorizontal, Pencil } from "lucide-react";
+import { Search, FileText, Trash2, Filter, SlidersHorizontal, Pencil, Undo } from "lucide-react";
 import { ChevronDown, ChevronUp, Check, X, Send } from 'lucide-react';
 import { useToast } from "@/components/ui/use-toast";
 
@@ -213,7 +213,33 @@ const ExpandableQuoteRow = ({
               <X className="h-4 w-4 mr-2" />
               Marquer comme refusé
             </Button>
+            <Button
+              size="sm"
+              variant="outline"
+              className="hover:text-blue-600 hover:border-blue-600"
+              onClick={(e) => {
+                e.stopPropagation();
+                onUpdateStatus(devis.id, 'draft');
+              }}
+            >
+              <Undo className="h-4 w-4 mr-2" />
+              Retour à brouillon
+            </Button>
           </>
+        )}
+        {(devis.status === 'accepted' || devis.status === 'rejected') && (
+          <Button
+            size="sm"
+            variant="outline"
+            className="hover:text-blue-600 hover:border-blue-600"
+            onClick={(e) => {
+              e.stopPropagation();
+              onUpdateStatus(devis.id, 'sent');
+            }}
+          >
+            <Undo className="h-4 w-4 mr-2" />
+            Retour à envoyé
+          </Button>
         )}
       </div>
     </div>

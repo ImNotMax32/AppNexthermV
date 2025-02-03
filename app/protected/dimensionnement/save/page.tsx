@@ -190,7 +190,7 @@ export default function SavedFiles() {
         .from('dimensionnements')
         .update({ deleted_at: new Date().toISOString() })
         .eq('id', id);
-
+        
       if (error) throw error;
       
       toast({
@@ -757,9 +757,9 @@ Inclut : échangeur et vannes de régulation`
                         <Button
                           variant="ghost"
                           size="icon"
-                          className="hover:text-[#86BC29] opacity-50 cursor-not-allowed"
-                          disabled
-                          title="Convertir en devis (Bientôt disponible)"
+                          className="hover:text-[#86BC29]"
+                          onClick={() => convertToQuote(calc)}
+                          title="Convertir en devis"
                         >
                           <FileText className="h-4 w-4" />
                         </Button>

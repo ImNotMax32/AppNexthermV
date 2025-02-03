@@ -65,7 +65,7 @@ export const ContemporaryLayout: React.FC<LayoutProps> = ({
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-24 mb-16">
+          <div className="grid grid-cols-2 gap-6 mb-16">
             <div className="space-y-6">
               <div
                 className="text-lg font-medium pb-2 border-b-2"
@@ -277,7 +277,7 @@ export const Contemporary2Layout: React.FC<LayoutProps> = ({
           </div>
 
           {/* Section informations avec style différent */}
-          <div className="grid grid-cols-2 gap-16 mb-16">
+          <div className="grid grid-cols-2 gap-4 mb-16">
             <div className="relative">
               <div
                 className="absolute top-0 left-0 w-12 h-1 rounded"
@@ -317,13 +317,13 @@ export const Contemporary2Layout: React.FC<LayoutProps> = ({
                       value={companyInfo.phone}
                       onChange={(e) => setCompanyInfo({ ...companyInfo, phone: e.target.value })}
                       placeholder="Téléphone"
-                      className="w-1/2 bg-transparent border-0 border-b focus:border-b-2 rounded-none"
+                      className="w-1/3 bg-transparent border-0 border-b focus:border-b-2 rounded-none"
                     />
                     <CompactInput
                       value={companyInfo.email}
                       onChange={(e) => setCompanyInfo({ ...companyInfo, email: e.target.value })}
                       placeholder="Email"
-                      className="w-1/2 bg-transparent border-0 border-b focus:border-b-2 rounded-none"
+                      className="w-2/3 bg-transparent border-0 border-b focus:border-b-2 rounded-none"
                     />
                   </div>
                 </div>
@@ -369,13 +369,13 @@ export const Contemporary2Layout: React.FC<LayoutProps> = ({
                       value={clientInfo.phone}
                       onChange={(e) => setClientInfo({ ...clientInfo, phone: e.target.value })}
                       placeholder="Téléphone"
-                      className="w-1/2 bg-transparent border-0 border-b focus:border-b-2 rounded-none text-right"
+                      className="w-1/3 bg-transparent border-0 border-b focus:border-b-2 rounded-none text-right"
                     />
                     <CompactInput
                       value={clientInfo.email}
                       onChange={(e) => setClientInfo({ ...clientInfo, email: e.target.value })}
                       placeholder="Email"
-                      className="w-1/2 bg-transparent border-0 border-b focus:border-b-2 rounded-none text-right"
+                      className="w-2/3 bg-transparent border-0 border-b focus:border-b-2 rounded-none text-right"
                     />
                   </div>
                 </div>
