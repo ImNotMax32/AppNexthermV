@@ -2,7 +2,7 @@
 
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { useState, Suspense } from 'react';
+import { useState, Suspense, useEffect } from 'react';
 import { Loader2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -13,15 +13,53 @@ import { store, memoryLocalStorageAdapter } from '@/utils/store';
 
 function UpdatePasswordContent() {
   const searchParams = useSearchParams();
-  const type = searchParams.get('type');
-  const isRecovery = type === 'recovery';
+  const [isLoading, setIsLoading] = useState(true);
+  const [isAuthorized, setIsAuthorized] = useState(false);
+  const router = useRouter();
+  const supabase = createClientComponentClient();
 
-  if (!isRecovery) {
+  useEffect(() => {
+    async function checkSession() {
+      try {
+        const { data: { session } } = await supabase.auth.getSession();
+        console.log('Session check:', { 
+          hasSession: !!session,
+          type: searchParams.get('type')
+        });
+        
+        if (session && searchParams.get('type') === 'recovery') {
+          setIsAuthorized(true);
+        }
+      } catch (error) {
+        console.error('Session check error:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+
+    checkSession();
+  }, [searchParams, supabase.auth]);
+
+  if (isLoading) {
+    return (
+      <div className="flex min-h-screen flex-col items-center justify-center">
+        <Loader2 className="h-8 w-8 animate-spin" />
+      </div>
+    );
+  }
+
+  if (!isAuthorized) {
     return (
       <div className="flex min-h-screen flex-col items-center justify-center py-2">
         <div className="text-center">
           <h1 className="text-2xl font-bold text-red-600">Accès non autorisé</h1>
           <p className="mt-2 text-gray-600">Cette page n'est accessible que lors d'une réinitialisation de mot de passe...</p>
+          <button
+            onClick={() => router.push('/sign-in')}
+            className="mt-4 text-blue-600 hover:text-blue-800 underline"
+          >
+            Retourner à la page de connexion
+          </button>
         </div>
       </div>
     );
