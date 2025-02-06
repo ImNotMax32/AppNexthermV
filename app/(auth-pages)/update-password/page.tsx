@@ -1,62 +1,50 @@
 'use client';
 
-import { useState, useEffect, Suspense } from 'react';
-import { useSearchParams, useRouter } from 'next/navigation';
+import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
+import { useRouter, useSearchParams } from 'next/navigation';
+import { useState } from 'react';
 import { Loader2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { FormMessage, Message } from '@/components/form-message';
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import { toast } from 'sonner';
 import { store, memoryLocalStorageAdapter } from '@/utils/store';
 
 export default function UpdatePasswordPage() {
-  return (
-    <Suspense fallback={
-      <div className="flex items-center justify-center min-h-screen">
-        <Loader2 className="h-8 w-8 animate-spin" />
+  const searchParams = useSearchParams();
+  const type = searchParams.get('type');
+  const isRecovery = type === 'recovery';
+
+  if (!isRecovery) {
+    return (
+      <div className="flex min-h-screen flex-col items-center justify-center py-2">
+        <div className="text-center">
+          <h1 className="text-2xl font-bold text-red-600">Accès non autorisé</h1>
+          <p className="mt-2 text-gray-600">Cette page n'est accessible que lors d'une réinitialisation de mot de passe.</p>
+        </div>
       </div>
-    }>
-      <UpdatePasswordForm />
-    </Suspense>
-  );
+    );
+  }
+
+  return <UpdatePasswordForm />;
 }
 
 function UpdatePasswordForm() {
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [error, setError] = useState<string | null>(null);
+  const [message, setMessage] = useState<string | null>(null);
   const router = useRouter();
-  const searchParams = useSearchParams();
   const supabase = createClientComponentClient();
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState<Message | null>(null);
 
-  useEffect(() => {
-    const validateSession = async () => {
-      const { data: { session } } = await supabase.auth.getSession();
-      
-      // Vérifie si nous avons un token de réinitialisation dans l'URL
-      const type = searchParams.get('type');
-      
-      if (!session && type !== 'recovery') {
-        router.push('/sign-in');
-      }
-    };
-
-    validateSession();
-  }, [router, supabase.auth, searchParams]);
-
-  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    setIsLoading(true);
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     setError(null);
-
-    const formData = new FormData(event.currentTarget);
-    const password = formData.get('password') as string;
-    const confirmPassword = formData.get('confirmPassword') as string;
+    setMessage(null);
 
     if (password !== confirmPassword) {
-      setError({ error: 'Les mots de passe ne correspondent pas' });
-      setIsLoading(false);
+      setError('Les mots de passe ne correspondent pas');
       return;
     }
 
@@ -66,63 +54,80 @@ function UpdatePasswordForm() {
       });
 
       if (error) {
-        setError({ error: error.message });
-        toast.error(error.message);
+        setError(error.message);
         return;
       }
 
-      toast.success('Mot de passe mis à jour avec succès');
-      router.push('/sign-in');
-    } catch (error) {
-      setError({ error: 'Une erreur est survenue' });
-      toast.error('Une erreur est survenue');
-    } finally {
-      setIsLoading(false);
+      setMessage('Mot de passe mis à jour avec succès !');
+      setTimeout(() => {
+        router.push('/sign-in');
+      }, 2000);
+    } catch (err) {
+      setError('Une erreur est survenue lors de la mise à jour du mot de passe.');
     }
-  }
+  };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen py-2">
-      <div className="w-full max-w-md space-y-8 px-4">
-        <div className="space-y-2 text-center">
-          <h1 className="text-2xl font-semibold tracking-tight">
-            Définir un nouveau mot de passe
-          </h1>
-          <p className="text-sm text-muted-foreground">
-            Veuillez entrer votre nouveau mot de passe
-          </p>
+    <div className="flex min-h-screen flex-col items-center justify-center py-2">
+      <div className="w-full max-w-md space-y-8">
+        <div>
+          <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">
+            Mise à jour du mot de passe
+          </h2>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div className="space-y-2">
-            <Label htmlFor="password">Nouveau mot de passe</Label>
-            <Input
-              id="password"
-              name="password"
-              type="password"
-              required
-              className="w-full"
-            />
+        <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
+          <div className="-space-y-px rounded-md shadow-sm">
+            <div>
+              <Label htmlFor="password" className="sr-only">
+                Nouveau mot de passe
+              </Label>
+              <Input
+                id="password"
+                name="password"
+                type="password"
+                required
+                className="relative block w-full rounded-md border-0 p-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                placeholder="Nouveau mot de passe"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
+            <div>
+              <Label htmlFor="confirmPassword" className="sr-only">
+                Confirmer le mot de passe
+              </Label>
+              <Input
+                id="confirmPassword"
+                name="confirmPassword"
+                type="password"
+                required
+                className="relative block w-full rounded-md border-0 p-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                placeholder="Confirmer le mot de passe"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+              />
+            </div>
           </div>
-          <div className="space-y-2">
-            <Label htmlFor="confirmPassword">Confirmer le mot de passe</Label>
-            <Input
-              id="confirmPassword"
-              name="confirmPassword"
-              type="password"
-              required
-              className="w-full"
-            />
+
+          {error && (
+            <FormMessage type="error" message={{ error }} />
+          )}
+
+          {message && (
+            <div className="rounded-md bg-green-50 p-4">
+              <div className="text-sm text-green-700">{message}</div>
+            </div>
+          )}
+
+          <div>
+            <Button
+              type="submit"
+              className="group relative flex w-full justify-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            >
+              Mettre à jour le mot de passe
+            </Button>
           </div>
-          {error && <FormMessage type="error" message={error} />}
-          <Button
-            type="submit"
-            className="w-full"
-            disabled={isLoading}
-          >
-            {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-            Mettre à jour le mot de passe
-          </Button>
         </form>
       </div>
     </div>
