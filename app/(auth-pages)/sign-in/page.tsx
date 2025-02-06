@@ -111,6 +111,11 @@ function LoginForm() {
             required
             className="w-full px-3 py-2 border rounded-md"
           />
+          <div className="text-sm text-right">
+            <Link href="/reset-password" className="text-primary hover:underline">
+              Mot de passe oublié ?
+            </Link>
+          </div>
         </div>
       </div>
 
