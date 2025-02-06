@@ -9,6 +9,7 @@ import { Label } from '@/components/ui/label';
 import { FormMessage, Message } from '@/components/form-message';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import { toast } from 'sonner';
+import { store, memoryLocalStorageAdapter } from '@/utils/store';
 
 export default function UpdatePasswordPage() {
   return (
@@ -25,7 +26,17 @@ export default function UpdatePasswordPage() {
 function UpdatePasswordForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const supabase = createClientComponentClient();
+  const supabase = createClientComponentClient({
+    options: {
+      auth: {
+        flowType: 'pkce',
+        detectSessionInUrl: true,
+        autoRefreshToken: false,
+        persistSession: true,
+        storage: memoryLocalStorageAdapter(store)
+      }
+    }
+  });
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<Message | null>(null);
 

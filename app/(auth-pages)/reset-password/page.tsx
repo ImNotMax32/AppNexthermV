@@ -9,6 +9,7 @@ import { Label } from '@/components/ui/label';
 import { FormMessage, Message } from '@/components/form-message';
 import { createBrowserClient } from '@supabase/ssr';
 import { toast } from 'sonner';
+import { store, memoryLocalStorageAdapter } from '@/utils/store';
 
 export default function ResetPasswordPage() {
   const router = useRouter();
@@ -32,8 +33,9 @@ export default function ResetPasswordPage() {
           auth: {
             flowType: 'pkce',
             detectSessionInUrl: true,
-            autoRefreshToken: true,
-            persistSession: true
+            autoRefreshToken: false,
+            persistSession: true,
+            storage: memoryLocalStorageAdapter(store)
           }
         }
       );
