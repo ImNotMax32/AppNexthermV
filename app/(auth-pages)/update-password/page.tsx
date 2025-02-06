@@ -1,19 +1,30 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { Loader2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { FormMessage, Message } from '@/components/form-message';
-import { createClient } from '@/utils/supabase/client';
+import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import { toast } from 'sonner';
 
 export default function UpdatePasswordPage() {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<Message | null>(null);
+  const supabase = createClientComponentClient();
+
+  useEffect(() => {
+    const checkSession = async () => {
+      const { data: { session } } = await supabase.auth.getSession();
+      if (!session) {
+        router.push('/sign-in');
+      }
+    };
+    checkSession();
+  }, [router, supabase.auth]);
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -31,7 +42,6 @@ export default function UpdatePasswordPage() {
     }
 
     try {
-      const supabase = createClient();
       const { error } = await supabase.auth.updateUser({
         password: password
       });
