@@ -23,9 +23,10 @@ export async function GET(request: Request) {
     }, {
       cookieOptions: {
         name: 'sb',
-        domain: process.env.NEXT_PUBLIC_SITE_URL,
+        path: '/',
+        domain: "https://app-nextherm-v.vercel.app/", // @TODO: Loïc: mettre en place dans les variables d'environnement plutot que d'être en dur
         sameSite: 'lax',
-        secure: true
+        secure: process.env.NODE_ENV === 'production'
       }
     });
 
