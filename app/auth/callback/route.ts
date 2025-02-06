@@ -5,7 +5,9 @@ import { NextResponse } from 'next/server';
 export async function GET(request: Request) {
   const requestUrl = new URL(request.url);
   const code = requestUrl.searchParams.get('code');
-  const redirect = requestUrl.searchParams.get('redirect') || '/protected';
+  const next = requestUrl.searchParams.get('next');
+  const redirect = requestUrl.searchParams.get('redirect');
+  const finalRedirect = redirect || next || '/protected';
 
   if (code) {
     const cookieStore = cookies();
@@ -64,7 +66,7 @@ export async function GET(request: Request) {
         }
       }
 
-      return NextResponse.redirect(`${requestUrl.origin}${redirect}`);
+      return NextResponse.redirect(`${requestUrl.origin}${finalRedirect}`);
     } catch (error) {
       console.error('Erreur inattendue:', error);
       return NextResponse.redirect(`${requestUrl.origin}/sign-in?error=${encodeURIComponent('Une erreur est survenue')}`);
