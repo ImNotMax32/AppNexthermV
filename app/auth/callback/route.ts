@@ -18,7 +18,16 @@ export async function GET(request: Request) {
   try {
     // Créer le client avec les cookies
     const cookieStore = cookies();
-    const supabase = createRouteHandlerClient({ cookies: () => cookieStore });
+    const supabase = createRouteHandlerClient({
+      cookies: () => cookieStore
+    }, {
+      cookieOptions: {
+        name: 'sb',
+        domain: process.env.NEXT_PUBLIC_SITE_URL,
+        sameSite: 'lax',
+        secure: true
+      }
+    });
 
     // Échanger le code contre une session
     const { data: { session }, error } = await supabase.auth.exchangeCodeForSession(code);
