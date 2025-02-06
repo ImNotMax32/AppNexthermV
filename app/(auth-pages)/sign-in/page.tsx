@@ -21,6 +21,22 @@ function LoginForm() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  useEffect(() => {
+    const errorCode = searchParams.get('error');
+    if (errorCode) {
+      switch (errorCode) {
+        case 'unauthorized':
+          setError('Votre session a expiré. Veuillez vous reconnecter.');
+          break;
+        case 'invalid_request':
+          setError('Requête invalide. Veuillez réessayer.');
+          break;
+        default:
+          setError('Une erreur est survenue. Veuillez réessayer.');
+      }
+    }
+  }, [searchParams]);
+
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setIsLoading(true);
@@ -142,7 +158,7 @@ function LoginForm() {
             )}
           </Button>
 
-          <div className="relative">
+          {/* <div className="relative">
             <div className="absolute inset-0 flex items-center">
               <span className="w-full border-t" />
             </div>
@@ -172,7 +188,7 @@ function LoginForm() {
               />
             )}
             Google
-          </Button>
+          </Button> */}
         </div>
       </motion.div>
 

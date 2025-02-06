@@ -20,18 +20,15 @@ export async function GET(request: Request) {
     const cookieStore = cookies();
     const supabase = createRouteHandlerClient({
       cookies: () => cookieStore
-    }, {
-      cookieOptions: {
-        name: 'sb',
-        domain: process.env.NEXT_PUBLIC_SITE_URL,
-        sameSite: 'lax',
-        secure: true
-      }
     });
 
     // Laisser le client gérer l'échange du code
-    // Le middleware s'occupera du code verifier
-    await supabase.auth.exchangeCodeForSession(code);
+    const { error } = await supabase.auth.exchangeCodeForSession(code);
+
+    if (error) {
+      console.error('Error exchanging code:', error);
+      return NextResponse.redirect(`${requestUrl.origin}/sign-in?error=${error.message}`);
+    }
 
     // Rediriger vers la page finale
     return NextResponse.redirect(`${requestUrl.origin}${finalRedirect}`);

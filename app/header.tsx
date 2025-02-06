@@ -61,6 +61,9 @@ export default function Header() {
 
           setUserProfile(profile);
         }
+        if (event === 'PASSWORD_RECOVERY') {
+          router.push('/update-password?type=recovery');
+        }
         if (event === 'SIGNED_OUT') {
           setUserProfile(null);
         }
