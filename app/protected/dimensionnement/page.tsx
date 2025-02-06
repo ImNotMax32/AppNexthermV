@@ -740,7 +740,7 @@ export default function DeperditionCalculator() {
     className="text-center space-y-4 max-w-2xl mx-auto"
   >
     <p className="text-gray-600">
-      Notre calculateur de déperditions thermiques vous permet d'évaluer avec précision les besoins énergétiques de votre habitation.
+      Notre calculateur de déperditions thermiques vous permet d'évaluer avec précision les besoins énergétiques de votre batiment.
     </p>
     <p className="text-gray-600">
       En prenant en compte les caractéristiques spécifiques de votre bâtiment, nous vous proposons une estimation fiable pour dimensionner votre système de chauffage de manière optimale.
