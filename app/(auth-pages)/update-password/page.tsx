@@ -26,17 +26,7 @@ export default function UpdatePasswordPage() {
 function UpdatePasswordForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const supabase = createClientComponentClient({
-    options: {
-      auth: {
-        flowType: 'pkce',
-        detectSessionInUrl: true,
-        autoRefreshToken: false,
-        persistSession: true,
-        storage: memoryLocalStorageAdapter(store)
-      }
-    }
-  });
+  const supabase = createClientComponentClient();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<Message | null>(null);
 
