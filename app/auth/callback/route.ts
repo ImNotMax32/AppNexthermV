@@ -18,7 +18,16 @@ export async function GET(request: Request) {
   try {
     // Créer le client avec les cookies
     const cookieStore = cookies();
-    const supabase = createRouteHandlerClient({ cookies: () => cookieStore });
+    const supabase = createRouteHandlerClient({
+      cookies: () => cookieStore
+    }, {
+      cookieOptions: {
+        name: 'sb',
+        domain: process.env.NEXT_PUBLIC_SITE_URL,
+        sameSite: 'lax',
+        secure: true
+      }
+    });
 
     // Laisser le client gérer l'échange du code
     // Le middleware s'occupera du code verifier
