@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { FormMessage, Message } from '@/components/form-message';
-import { createClient } from '@/utils/supabase/client';
+import { createBrowserClient } from '@supabase/ssr';
 import { toast } from 'sonner';
 
 export default function ResetPasswordPage() {
@@ -25,7 +25,18 @@ export default function ResetPasswordPage() {
     const email = formData.get('email') as string;
 
     try {
-      const supabase = createClient();
+      const supabase = createBrowserClient(
+        process.env.NEXT_PUBLIC_SUPABASE_URL!,
+        process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+        {
+          auth: {
+            flowType: 'pkce',
+            detectSessionInUrl: true,
+            autoRefreshToken: true,
+            persistSession: true
+          }
+        }
+      );
       const { error } = await supabase.auth.resetPasswordForEmail(email, {
         redirectTo: `${window.location.origin}/auth/callback?redirect=/update-password`,
       });
