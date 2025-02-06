@@ -2,7 +2,7 @@
 
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { useState } from 'react';
+import { useState, Suspense } from 'react';
 import { Loader2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -11,7 +11,7 @@ import { FormMessage, Message } from '@/components/form-message';
 import { toast } from 'sonner';
 import { store, memoryLocalStorageAdapter } from '@/utils/store';
 
-export default function UpdatePasswordPage() {
+function UpdatePasswordContent() {
   const searchParams = useSearchParams();
   const type = searchParams.get('type');
   const isRecovery = type === 'recovery';
@@ -21,13 +21,25 @@ export default function UpdatePasswordPage() {
       <div className="flex min-h-screen flex-col items-center justify-center py-2">
         <div className="text-center">
           <h1 className="text-2xl font-bold text-red-600">Accès non autorisé</h1>
-          <p className="mt-2 text-gray-600">Cette page n'est accessible que lors d'une réinitialisation de mot de passe.</p>
+          <p className="mt-2 text-gray-600">Cette page n'est accessible que lors d'une réinitialisation de mot de passe...</p>
         </div>
       </div>
     );
   }
 
   return <UpdatePasswordForm />;
+}
+
+export default function UpdatePasswordPage() {
+  return (
+    <Suspense fallback={
+      <div className="flex min-h-screen flex-col items-center justify-center">
+        <Loader2 className="h-8 w-8 animate-spin" />
+      </div>
+    }>
+      <UpdatePasswordContent />
+    </Suspense>
+  );
 }
 
 function UpdatePasswordForm() {
