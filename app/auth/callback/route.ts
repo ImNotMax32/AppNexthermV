@@ -20,12 +20,29 @@ export async function GET(request: Request) {
     const cookieStore = cookies();
     const supabase = createRouteHandlerClient({ cookies: () => cookieStore });
 
-    // Laisser le client gérer l'échange du code
-    // Le middleware s'occupera du code verifier
-    await supabase.auth.exchangeCodeForSession(code);
+    // Échanger le code contre une session
+    const { data: { session }, error } = await supabase.auth.exchangeCodeForSession(code);
+    
+    if (error) {
+      console.error('Error exchanging code:', error);
+      return NextResponse.redirect(`${requestUrl.origin}/sign-in?error=${encodeURIComponent(error.message)}`);
+    }
 
-    // Rediriger vers la page finale
-    return NextResponse.redirect(`${requestUrl.origin}${finalRedirect}`);
+    if (!session) {
+      console.error('No session established');
+      return NextResponse.redirect(`${requestUrl.origin}/sign-in?error=No session established`);
+    }
+
+    console.log('Session established successfully:', {
+      user: session.user.email,
+      expiresAt: session.expires_at
+    });
+
+    // Rediriger vers la page finale avec le type recovery
+    const redirectUrl = new URL(`${requestUrl.origin}${finalRedirect}`);
+    redirectUrl.searchParams.set('type', 'recovery');
+    
+    return NextResponse.redirect(redirectUrl.toString());
   } catch (error) {
     console.error('Error in callback:', error);
     return NextResponse.redirect(`${requestUrl.origin}/sign-in?error=Authentication failed`);
