@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import { useSearchParams, useRouter } from 'next/navigation';
 import { Loader2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -12,41 +12,25 @@ import { toast } from 'sonner';
 
 export default function UpdatePasswordPage() {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const supabase = createClientComponentClient();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<Message | null>(null);
-  const [canUpdatePassword, setCanUpdatePassword] = useState(false);
 
   useEffect(() => {
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, session) => {
-      if (event === "PASSWORD_RECOVERY") {
-        setCanUpdatePassword(true);
-      } else if (!session) {
+    const validateSession = async () => {
+      const { data: { session } } = await supabase.auth.getSession();
+      
+      // Vérifie si nous avons un token de réinitialisation dans l'URL
+      const type = searchParams.get('type');
+      
+      if (!session && type !== 'recovery') {
         router.push('/sign-in');
       }
-    });
-
-    return () => {
-      subscription.unsubscribe();
     };
-  }, [router, supabase.auth]);
 
-  if (!canUpdatePassword) {
-    return (
-      <div className="flex flex-col items-center justify-center min-h-screen py-2">
-        <div className="w-full max-w-md space-y-8 px-4">
-          <div className="space-y-2 text-center">
-            <h1 className="text-2xl font-semibold tracking-tight">
-              Accès non autorisé
-            </h1>
-            <p className="text-sm text-muted-foreground">
-              Cette page n'est accessible que via le lien de réinitialisation du mot de passe.
-            </p>
-          </div>
-        </div>
-      </div>
-    );
-  }
+    validateSession();
+  }, [router, supabase.auth, searchParams]);
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
