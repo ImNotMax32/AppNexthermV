@@ -4,51 +4,47 @@ import { NextResponse } from 'next/server';
 
 export async function GET(request: Request) {
   const requestUrl = new URL(request.url);
-  const code = requestUrl.searchParams.get('code');
-  const next = requestUrl.searchParams.get('next');
-  const redirect = requestUrl.searchParams.get('redirect');
-  const finalRedirect = redirect || next || '/protected';
+  const token = requestUrl.searchParams.get('token');
+  const redirect = requestUrl.searchParams.get('redirect') || '/protected';
 
-  // Si nous n'avons pas de code, rediriger vers la page de connexion
-  if (!code) {
-    console.error('No code found in URL');
-    return NextResponse.redirect(`${requestUrl.origin}/sign-in?error=No code found`);
+  if (!token) {
+    console.error('No token found in URL');
+    return NextResponse.redirect(`${requestUrl.origin}/sign-in?error=No token found`);
   }
 
   try {
-    // Créer le client avec les cookies
+    // Récupérer le store des cookies
     const cookieStore = cookies();
-    const supabase = createRouteHandlerClient({
-      cookies: () => cookieStore
-    }, {
-      cookieOptions: {
-        name: 'sb',
-        path: '/',
-        sameSite: 'lax',
-        secure: process.env.NODE_ENV === 'production'
+    const supabase = createRouteHandlerClient(
+      { cookies: () => cookieStore },
+      {
+        cookieOptions: {
+          name: 'sb',
+          path: '/',
+          sameSite: 'lax',
+          secure: process.env.NODE_ENV === 'production',
+        },
       }
+    );
+
+    // Définir la session directement
+    const { data, error } = await supabase.auth.setSession({
+      access_token: token,
+      refresh_token: token,
     });
 
-    // Échanger le code contre une session
-    const { data: { session }, error } = await supabase.auth.exchangeCodeForSession(code);
-
     if (error) {
-      console.error('Error exchanging code:', error);
+      console.error('Error setting session:', error);
       return NextResponse.redirect(`${requestUrl.origin}/sign-in?error=${encodeURIComponent(error.message)}`);
     }
 
-    if (!session) {
-      console.error('No session established');
-      return NextResponse.redirect(`${requestUrl.origin}/sign-in?error=No session established`);
-    }
-
     console.log('Session established successfully:', {
-      user: session.user.email,
-      expiresAt: session.expires_at
+      user: data.session?.user.email,
+      expiresAt: data.session?.expires_at,
     });
 
-    // Rediriger vers la page finale avec le type recovery
-    const redirectUrl = new URL(`${requestUrl.origin}${finalRedirect}`);
+    // Rediriger vers la page finale
+    const redirectUrl = new URL(`${requestUrl.origin}${redirect}`);
     redirectUrl.searchParams.set('type', 'recovery');
 
     return NextResponse.redirect(redirectUrl.toString());
