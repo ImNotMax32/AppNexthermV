@@ -4,7 +4,13 @@ import { NextResponse } from 'next/server';
 
 export async function GET(request: Request) {
   const requestUrl = new URL(request.url);
+  const code = requestUrl.searchParams.get('code'); // 🔥 Récupération du code d'auth
   const redirect = requestUrl.searchParams.get('redirect') || '/protected';
+
+  if (!code) {
+    console.error('No code found in URL');
+    return NextResponse.redirect(`${requestUrl.origin}/sign-in?error=No code found`);
+  }
 
   try {
     const cookieStore = cookies();
@@ -20,16 +26,17 @@ export async function GET(request: Request) {
       }
     );
 
-    const { data: { session }, error } = await supabase.auth.getSession();
+    // ✅ Échanger le code contre une session
+    const { data, error } = await supabase.auth.exchangeCodeForSession(code);
 
-    if (error || !session) {
-      console.error('No session found after redirection:', error);
-      return NextResponse.redirect(`${requestUrl.origin}/sign-in?error=No session found`);
+    if (error) {
+      console.error('Error exchanging code:', error);
+      return NextResponse.redirect(`${requestUrl.origin}/sign-in?error=${encodeURIComponent(error.message)}`);
     }
 
-    console.log('Session retrieved successfully:', {
-      user: session.user.email,
-      expiresAt: session.expires_at,
+    console.log('Session established successfully:', {
+      user: data.session?.user.email,
+      expiresAt: data.session?.expires_at,
     });
 
     const redirectUrl = new URL(`${requestUrl.origin}${redirect}`);
