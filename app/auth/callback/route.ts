@@ -4,7 +4,7 @@ import { NextResponse } from 'next/server';
 
 export async function GET(request: Request) {
   const requestUrl = new URL(request.url);
-  const token = requestUrl.searchParams.get('token');
+  const token = requestUrl.searchParams.get('token'); // 🔥 Récupère le token
   const redirect = requestUrl.searchParams.get('redirect') || '/protected';
 
   if (!token) {
@@ -13,7 +13,7 @@ export async function GET(request: Request) {
   }
 
   try {
-    // Récupérer le store des cookies
+    // Création du client Supabase avec les cookies
     const cookieStore = cookies();
     const supabase = createRouteHandlerClient(
       { cookies: () => cookieStore },
@@ -27,14 +27,11 @@ export async function GET(request: Request) {
       }
     );
 
-    // Définir la session directement
-    const { data, error } = await supabase.auth.setSession({
-      access_token: token,
-      refresh_token: token,
-    });
+    // ✅ Échanger le token PKCE contre une session
+    const { data, error } = await supabase.auth.exchangeCodeForSession(token);
 
     if (error) {
-      console.error('Error setting session:', error);
+      console.error('Error exchanging code:', error);
       return NextResponse.redirect(`${requestUrl.origin}/sign-in?error=${encodeURIComponent(error.message)}`);
     }
 
@@ -43,7 +40,7 @@ export async function GET(request: Request) {
       expiresAt: data.session?.expires_at,
     });
 
-    // Rediriger vers la page finale
+    // ✅ Redirection vers la page finale après le reset
     const redirectUrl = new URL(`${requestUrl.origin}${redirect}`);
     redirectUrl.searchParams.set('type', 'recovery');
 
