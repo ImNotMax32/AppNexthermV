@@ -4,16 +4,9 @@ import { NextResponse } from 'next/server';
 
 export async function GET(request: Request) {
   const requestUrl = new URL(request.url);
-  const token = requestUrl.searchParams.get('token'); // 🔥 Récupère le token
   const redirect = requestUrl.searchParams.get('redirect') || '/protected';
 
-  if (!token) {
-    console.error('No token found in URL');
-    return NextResponse.redirect(`${requestUrl.origin}/sign-in?error=No token found`);
-  }
-
   try {
-    // Création du client Supabase avec les cookies
     const cookieStore = cookies();
     const supabase = createRouteHandlerClient(
       { cookies: () => cookieStore },
@@ -27,20 +20,18 @@ export async function GET(request: Request) {
       }
     );
 
-    // ✅ Échanger le token PKCE contre une session
-    const { data, error } = await supabase.auth.exchangeCodeForSession(token);
+    const { data: { session }, error } = await supabase.auth.getSession();
 
-    if (error) {
-      console.error('Error exchanging code:', error);
-      return NextResponse.redirect(`${requestUrl.origin}/sign-in?error=${encodeURIComponent(error.message)}`);
+    if (error || !session) {
+      console.error('No session found after redirection:', error);
+      return NextResponse.redirect(`${requestUrl.origin}/sign-in?error=No session found`);
     }
 
-    console.log('Session established successfully:', {
-      user: data.session?.user.email,
-      expiresAt: data.session?.expires_at,
+    console.log('Session retrieved successfully:', {
+      user: session.user.email,
+      expiresAt: session.expires_at,
     });
 
-    // ✅ Redirection vers la page finale après le reset
     const redirectUrl = new URL(`${requestUrl.origin}${redirect}`);
     redirectUrl.searchParams.set('type', 'recovery');
 
