@@ -24,7 +24,6 @@ export async function GET(request: Request) {
       cookieOptions: {
         name: 'sb',
         path: '/',
-        domain: "https://app-nextherm-v.vercel.app/", // @TODO: Loïc: mettre en place dans les variables d'environnement plutot que d'être en dur
         sameSite: 'lax',
         secure: process.env.NODE_ENV === 'production'
       }
