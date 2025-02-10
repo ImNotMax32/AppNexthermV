@@ -35,8 +35,7 @@ export default function ResetPasswordPage() {
             detectSessionInUrl: true,
             autoRefreshToken: false,
             persistSession: true,
-            // storage: memoryLocalStorageAdapter(store),
-            storage: localStorage,
+            storage: memoryLocalStorageAdapter(store),
           }
         }
       );
