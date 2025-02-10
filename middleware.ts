@@ -43,8 +43,9 @@ export async function middleware(request: NextRequest) {
   response.headers.set('Cache-Control', 'no-store, max-age=0');
   response.headers.set('Pragma', 'no-cache');
 
-  // Autoriser l'accès à /auth/callback
-  if (request.nextUrl.pathname.startsWith('/auth/callback')) {
+  // Autoriser l'accès à /auth/callback et au reset de mot de passe
+  if (request.nextUrl.pathname.startsWith('/auth/callback') ||
+    request.nextUrl.pathname.startsWith('/auth/reset-password')) {
     return response;
   }
 
