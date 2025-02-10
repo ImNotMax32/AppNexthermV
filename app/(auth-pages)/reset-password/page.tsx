@@ -31,7 +31,7 @@ export default function ResetPasswordPage() {
         process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
         {
           auth: {
-            flowType: 'implicit',
+            flowType: 'pkce',
             detectSessionInUrl: true,
             autoRefreshToken: false,
             persistSession: true,
