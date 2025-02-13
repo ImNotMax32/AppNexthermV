@@ -12,7 +12,7 @@ export function FormMessage({ type, message }: { type: 'success' | 'error' | 'me
         </div>
       )}
       {("error" in message) && type === 'error' && (
-        <div className="text-destructive-foreground border-l-2 border-destructive-foreground px-4">
+        <div className="text-destructive-foreground text-red-500 border-l-2 border-destructive-foreground px-4">
           {message.error}
         </div>
       )}

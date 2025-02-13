@@ -1,6 +1,4 @@
 import { createClient } from '@/utils/supabase/server';
-import { createRouteHandlerClient } from '@supabase/auth-helpers-nextjs';
-import { cookies } from 'next/headers';
 import { NextResponse } from 'next/server';
 
 export async function GET(request: Request) {
@@ -14,21 +12,8 @@ export async function GET(request: Request) {
   }
 
   try {
-    const cookieStore = cookies();
     const supabase = await createClient();
-    // const supabase = createRouteHandlerClient(
-    //   { cookies: () => cookieStore },
-    //   {
-    //     cookieOptions: {
-    //       name: 'sb',
-    //       path: '/',
-    //       sameSite: 'lax',
-    //       secure: process.env.NODE_ENV === 'production',
-    //     },
-    //   }
-    // );
 
-    // ✅ Échanger le code contre une session
     const { data, error } = await supabase.auth.exchangeCodeForSession(code);
 
     if (error) {
