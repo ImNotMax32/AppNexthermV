@@ -1,0 +1,256 @@
+{
+    "products": [
+      {
+        "Nom": "Circulateur WILO",
+        "Particularites": ["Hydraulique", "Pompe"],
+        "Description": "Circulateur haute performance WILO pour systèmes de chauffage",
+        "Image": "/images/circulateur.jpg",
+        "Image2": "/images/circulateur-2.jpg",
+        "Modeles": {
+          "disponibles": [
+            {
+              "modele": "1HYD0011",
+              "type": "15/6",
+              "prix": 383,
+              "caracteristiques": {
+                "puissance": "15/6"
+              }
+            },
+            {
+              "modele": "1HYD0012",
+              "type": "15/8",
+              "prix": 560,
+              "caracteristiques": {
+                "puissance": "15/8"
+              }
+            },
+            {
+              "modele": "1HYD0013",
+              "type": "25/8",
+              "prix": 976,
+              "caracteristiques": {
+                "puissance": "25/8"
+              }
+            },
+            {
+              "modele": "1HYD280",
+              "type": "30/12",
+              "prix": 1399,
+              "caracteristiques": {
+                "puissance": "30/12"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "Nom": "Vase d'Expansion",
+        "Particularites": ["Hydraulique", "Expansion"],
+        "Description": "Vase d'expansion pour installation de chauffage",
+        "Image": "/images/vase-expansion.jpg",
+        "Image2": "/images/vase-expansion-2.jpg",
+        "Modeles": {
+          "disponibles": [
+            {
+              "modele": "1HYD0017",
+              "capacite": 8,
+              "prix": 74,
+              "caracteristiques": {
+                "volume": "8 litres"
+              }
+            },
+            {
+              "modele": "1HYD0018",
+              "capacite": 12,
+              "prix": 85,
+              "caracteristiques": {
+                "volume": "12 litres"
+              }
+            },
+            {
+              "modele": "1HYD0019",
+              "capacite": 18,
+              "prix": 105,
+              "caracteristiques": {
+                "volume": "18 litres"
+              }
+            },
+            {
+              "modele": "1HYD0032",
+              "capacite": 25,
+              "prix": 128,
+              "caracteristiques": {
+                "volume": "25 litres"
+              }
+            },
+            {
+              "modele": "1HYD0033",
+              "capacite": 35,
+              "prix": 242,
+              "caracteristiques": {
+                "volume": "35 litres"
+              }
+            },
+            {
+              "modele": "1HYD0034",
+              "capacite": 50,
+              "prix": 399,
+              "caracteristiques": {
+                "volume": "50 litres"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "Nom": "Vanne 3 Voies",
+        "Particularites": ["Hydraulique", "Vanne"],
+        "Description": "Vanne 3 voies 1 pouce",
+        "Image": "/images/vanne-3voies.jpg",
+        "Image2": "/images/vanne-3voies-2.jpg",
+        "Modeles": {
+          "disponibles": [
+            {
+              "modele": "1HYD0002",
+              "type": "Standard",
+              "prix": 95,
+              "caracteristiques": {
+                "diametre": "1 pouce"
+              }
+            },
+            {
+              "modele": "1ELE0195",
+              "type": "Premium",
+              "prix": 90,
+              "caracteristiques": {
+                "diametre": "1 pouce"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "Nom": "Potence Équipée",
+        "Particularites": ["Hydraulique", "Potence"],
+        "Description": "Potence équipée avec soupape, purgeur, raccord rapide, départ 3/4\"",
+        "Image": "/images/potence.jpg",
+        "Image2": "/images/potence-2.jpg",
+        "Modeles": {
+          "disponibles": [
+            {
+              "modele": "1HYD0015",
+              "prix": 108,
+              "caracteristiques": {
+                "raccordement": "3/4 pouce"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "Nom": "Pot à Boue Magnétique",
+        "Particularites": ["Hydraulique", "Filtration"],
+        "Description": "Pot à boue avec système magnétique pour filtration",
+        "Image": "/images/pot-boue.jpg",
+        "Image2": "/images/pot-boue-2.jpg",
+        "Modeles": {
+          "disponibles": [
+            {
+              "modele": "1HYD0026",
+              "prix": 357,
+              "caracteristiques": {
+                "diametre": "1\""
+              }
+            },
+            {
+              "modele": "1HYD0098",
+              "prix": 411,
+              "caracteristiques": {
+                "diametre": "1\"1/4"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "Nom": "Contrôleur de Circulation",
+        "Particularites": ["Hydraulique", "Contrôle"],
+        "Description": "Contrôleur de circulation pour circuit hydraulique",
+        "Image": "/images/controleur.jpg",
+        "Image2": "/images/controleur-2.jpg",
+        "Modeles": {
+          "disponibles": [
+            {
+              "modele": "1HYD0080",
+              "prix": 92,
+              "caracteristiques": {
+                "type": "Standard"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "Nom": "Groupe de Sécurité",
+        "Particularites": ["Hydraulique", "Sécurité"],
+        "Description": "Groupe de sécurité avec raccordement 3/4\", échappement 1\", en laiton non nickelé",
+        "Image": "/images/groupe-securite.jpg",
+        "Image2": "/images/groupe-securite-2.jpg",
+        "Modeles": {
+          "disponibles": [
+            {
+              "modele": "1HYD0040",
+              "prix": 26,
+              "caracteristiques": {
+                "raccordement": "3/4 pouce",
+                "echappement": "1 pouce"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "Nom": "Kit Flexibles",
+        "Particularites": ["Hydraulique", "Raccordement"],
+        "Description": "Kit flexibles avec coudes 90° pour GP",
+        "Image": "/images/kit-flexibles.jpg",
+        "Image2": "/images/kit-flexibles-2.jpg",
+        "Modeles": {
+          "disponibles": [
+            {
+              "modele": "KFR00",
+              "nombre": 2,
+              "prix": 75,
+              "caracteristiques": {
+                "nombre_pieces": "2 flexibles"
+              }
+            },
+            {
+              "modele": "KFR01",
+              "nombre": 4,
+              "prix": 131,
+              "caracteristiques": {
+                "nombre_pieces": "4 flexibles"
+              }
+            },
+            {
+              "modele": "KFR02",
+              "nombre": 6,
+              "prix": 196,
+              "caracteristiques": {
+                "nombre_pieces": "6 flexibles"
+              }
+            },
+            {
+              "modele": "KFR03",
+              "nombre": 4,
+              "prix": 334,
+              "caracteristiques": {
+                "nombre_pieces": "4 flexibles premium"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }

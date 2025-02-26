@@ -1,0 +1,314 @@
+{
+    "products": [
+      {
+        "Nom": "Ballon ECS Inox",
+        "Particularites": ["Inox", "ECS"],
+        "Description": "Ballon d'eau chaude sanitaire en inox, double échangeur",
+        "Image": "/images/ballon-inox.jpg",
+        "Image2": "/images/ballon-inox-2.jpg",
+        "Volume": {
+          "min": 170,
+          "max": 380,
+          "disponibles": [
+            {
+              "modele": "KITECS170N",
+              "volume": 170,
+              "pression_service": 6,
+              "surface_echangeur": 2.5,
+              "compatibilite": {
+                "R/OPACK2": "5-7-11-15",
+                "R/OPACK3": "4-6-8-10-12",
+                "OPTIPACK": "2-4-6-8",
+                "OPTIPACKDUO": "2-4-6-8",
+                "SMARTPACK": "2-4-6-8"
+              }
+            },
+            {
+              "modele": "KITECS270N",
+              "volume": 270,
+              "pression_service": 6,
+              "surface_echangeur": 3.2,
+              "compatibilite": {
+                "R/OPACK3": "14-16-18",
+                "OPTIPACK": "10-13",
+                "SMARTPACK": "4-6-8-10-13-17"
+              }
+            },
+            {
+              "modele": "KITECS380N",
+              "volume": 380,
+              "pression_service": 6,
+              "surface_echangeur": 4.8,
+              "compatibilite": {
+                "R/OPACK3": "14-16-18",
+                "SMARTPACK": "10-13-17-20"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "Nom": "Ballon ECS Acier Émaillé",
+        "Particularites": ["Acier émaillé", "ECS"],
+        "Description": "Ballon d'eau chaude sanitaire en acier émaillé",
+        "Image": "/images/ballon-acier.jpg",
+        "Image2": "/images/ballon-acier-2.jpg",
+        "Volume": {
+          "min": 196,
+          "max": 475,
+          "disponibles": [
+            {
+              "modele": "KITECS200AE",
+              "volume": 196,
+              "pression_service": 6,
+              "surface_echangeur": 2.5,
+              "compatibilite": {
+                "OPTIPACK": "2-4-6-8",
+                "SMARTPACK": "2-4-6-8",
+                "R/OPACK2": "5-7-11-15",
+                "R/OPACK3": "4-6-8-10-12"
+              }
+            },
+            {
+              "modele": "KITECS300AE",
+              "volume": 285,
+              "pression_service": 6,
+              "surface_echangeur": 3.2,
+              "compatibilite": {
+                "OPTIPACK": "10-13",
+                "SMARTPACK": "4-6-8-10-13-17",
+                "R/OPACK3": "14-16-18"
+              }
+            },
+            {
+              "modele": "KITECS500AE",
+              "volume": 475,
+              "pression_service": 6,
+              "surface_echangeur": 4.8,
+              "compatibilite": {
+                "SMARTPACK": "10-13-17-20",
+                "R/OPACK3": "14-16-18"
+              }
+            }
+          ]
+        }
+      }, 
+      {
+        "Nom": "Ballon Tampon Chaud et Froid",
+        "Particularites": ["Tampon", "Chaud/Froid"],
+        "Description": "Ballon tampon : Bouteille isolée en acier, 1 piquage purge air et 1 piquage chasse boues, 4 piquages côté droit et gauche diam. 1\"1/4 (100L et 200L) et diam. 1\"1/2 (300L), 3 piquages face avant diam 1/2, et 1 piquage diam 1\"1/2 (100L et 200L), 2 piquages face avant diam. 1\"1/2 (300L)",
+        "Image": "/images/ballon-tampon-cf.jpg",
+        "Image2": "/images/ballon-tampon-cf-2.jpg",
+        "Volume": {
+          "min": 50,
+          "max": 800,
+          "disponibles": [
+            {
+              "modele": "1HYD0273",
+              "volume": 50,
+              "pression_service": 6,
+              "type": "mural",
+              "kit_bouchons": "KITBB50L",
+              "nombre_bouchons": 6
+            },
+            {
+              "modele": "1HYD0054",
+              "volume": 100,
+              "pression_service": 6,
+              "kit_bouchons": "KITBB100-200L",
+              "nombre_bouchons": 6
+            },
+            {
+              "modele": "1HYD0055",
+              "volume": 200,
+              "pression_service": 6,
+              "kit_bouchons": "KITBB100-200L",
+              "nombre_bouchons": 6
+            },
+            {
+              "modele": "1HYD0056",
+              "volume": 300,
+              "pression_service": 6,
+              "kit_bouchons": "KITBB300L",
+              "nombre_bouchons": 8
+            },
+            {
+              "modele": "1HYD0150",
+              "volume": 500,
+              "pression_service": 6,
+              "kit_bouchons": "KITBB500-800L",
+              "nombre_bouchons": 6
+            },
+            {
+              "modele": "1HYD0151",
+              "volume": 800,
+              "pression_service": 6,
+              "kit_bouchons": "KITBB500-800L",
+              "nombre_bouchons": 8
+            }
+          ]
+        }
+      },
+      {
+        "Nom": "Ballon Tampon Chaud seul",
+        "Particularites": ["Tampon", "Chaud"],
+        "Description": "Ballon tampon : thermomètre indicateur, 4 piquages en façade et 4 piquages supplémentaires à 90 degrés des premiers en 1\"1/2, 1 drainage 3/4, ainsi que 1 piquage de purge et 1 piquage chasse boues",
+        "Image": "/images/ballon-tampon-c.jpg",
+        "Image2": "/images/ballon-tampon-c-2.jpg",
+        "Volume": {
+          "min": 200,
+          "max": 800,
+          "disponibles": [
+            {
+              "modele": "1HYD0346",
+              "volume": 200,
+              "pression_service": 6,
+              "kit_bouchons": "KITBBT200-300-500",
+              "nombre_bouchons": 6
+            },
+            {
+              "modele": "1HYD0347",
+              "volume": 300,
+              "pression_service": 6,
+              "kit_bouchons": "KITBBT200-300-500",
+              "nombre_bouchons": 8
+            },
+            {
+              "modele": "1HYD0348",
+              "volume": 500,
+              "pression_service": 6,
+              "kit_bouchons": "KITBBT200-300-500",
+              "nombre_bouchons": 6
+            },
+            {
+              "modele": "1HYD0349",
+              "volume": 800,
+              "pression_service": 6,
+              "nombre_bouchons": 8
+            }
+          ]
+        }
+      }, 
+      {
+        "Nom": "Kit Bouchons Ballon Tampon Acier Emaillé",
+        "Particularites": ["Accessoire", "Tampon", "Acier"],
+        "Description": "Contient : Bouchons avec vanne de vidange et purgeur. Pour référence de ballon : 1HYD0273 et 1HYD0054/55/56/150/151",
+        "Image": "/images/kit-bouchons.jpg",
+        "Image2": "/images/kit-bouchons-2.jpg",
+        "Volume": {
+          "min": 50,
+          "max": 800,
+          "disponibles": [
+            {
+              "modele": "KITBB50L",
+              "volume": 50,
+              "nombre_bouchons": 6
+            },
+            {
+              "modele": "KITBB100/200L",
+              "volume": 100,
+              "nombre_bouchons": 6
+            },
+            {
+              "modele": "KITBB100/200L",
+              "volume": 200,
+              "nombre_bouchons": 6
+            },
+            {
+              "modele": "KITBB300L",
+              "volume": 300,
+              "nombre_bouchons": 8
+            },
+            {
+              "modele": "KITBB500/800L",
+              "volume": 500,
+              "nombre_bouchons": 6
+            },
+            {
+              "modele": "KITBB500/800L",
+              "volume": 800,
+              "nombre_bouchons": 8
+            }
+          ]
+        }
+      },
+      {
+        "Nom": "Kit Bouchons Ballon Tampon Inox",
+        "Particularites": ["Accessoire", "Tampon", "Inox"],
+        "Description": "Contient : 4 Bouchons, vanne de vidange, doigt de gant et purgeur. Pour référence de ballon : 1HYD0346 - 1HYD0347 - 1HYD0348",
+        "Image": "/images/kit-bouchons-inox.jpg",
+        "Image2": "/images/kit-bouchons-inox-2.jpg",
+        "Volume": {
+          "min": 200,
+          "max": 800,
+          "disponibles": [
+            {
+              "modele": "KITBBT200-300-500",
+              "volume": 200,
+              "nombre_bouchons": 6
+            },
+            {
+              "modele": "KITBBT200-300-500",
+              "volume": 300,
+              "nombre_bouchons": 8
+            },
+            {
+              "modele": "KITBBT200-300-500",
+              "volume": 500,
+              "nombre_bouchons": 6
+            }
+          ]
+        }
+      },
+      {
+        "Nom": "Circulateur WILO",
+        "Particularites": ["Accessoire", "Circulateur"],
+        "Description": "Circulateur WILO haute performance",
+        "Image": "/images/circulateur.jpg",
+        "Image2": "/images/circulateur-2.jpg",
+        "Volume": {
+          "min": 0,
+          "max": 0,
+          "disponibles": [
+            {
+              "modele": "1HYD0011",
+              "type": "15/6",
+              "pression_service": 6
+            },
+            {
+              "modele": "1HYD0012",
+              "type": "15/8",
+              "pression_service": 6
+            },
+            {
+              "modele": "1HYD0290",
+              "type": "8",
+              "pression_service": 6
+            },
+            {
+              "modele": "1HYD0280",
+              "type": "30/12",
+              "pression_service": 6
+            }
+          ]
+        }
+      },
+      {
+        "Nom": "Aquastat",
+        "Particularites": ["Accessoire"],
+        "Description": "Plongeur ballon Tampon",
+        "Image": "/images/kit-2zones.jpg",
+        "Image2": "/images/kit-2zones-2.jpg",
+        "Volume": {
+          "min": 0,
+          "max": 0,
+          "disponibles": [
+            {
+              "modele": "1ELE0070",
+              "type": "Ballon"
+            }
+          ]
+        }
+      }
+    ]
+  }

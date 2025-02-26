@@ -1,0 +1,1611 @@
+{
+    "products": [
+        {
+            "Nom": "Smartpack 3 - Eau Glycolée/Eau - R32",
+            "Particularites": ["Geothermie", "Eau/Eau", "R32"],
+            "Puissance": {
+                "min": 2.61,
+                "max": 17.300,
+                "disponibles": [
+                    {
+                        "modele": "SP3 EGE - 2 KW",
+                        "puissance_calo": 2.610,
+                        "puissance_frigo": 2.000,
+                        "puissance_absorbee": 0.610,
+                        "cop": 4.35,
+                        "etas": 166
+                    },
+                    {
+                        "modele": "SP3 EGE - 4 KW",
+                        "puissance_calo": 4.860,
+                        "puissance_frigo": 3.780,
+                        "puissance_absorbee": 1.080,
+                        "cop": 4.50,
+                        "etas": 196
+                    },
+                    {
+                        "modele": "SP3 EGE - 6 KW",
+                        "puissance_calo": 6.530,
+                        "puissance_frigo": 5.000,
+                        "puissance_absorbee": 1.530,
+                        "cop": 4.27,
+                        "etas": 167
+                    },
+                    {
+                        "modele": "SP3 EGE - 8 KW",
+                        "puissance_calo": 7.470,
+                        "puissance_frigo": 5.720,
+                        "puissance_absorbee": 1.750,
+                        "cop": 4.27,
+                        "etas": 167
+                    },
+                    {
+                        "modele": "SP3 EGE - 10 KW",
+                        "puissance_calo": 10.500,
+                        "puissance_frigo": 8.000,
+                        "puissance_absorbee": 2.500,
+                        "cop": 4.20,
+                        "etas": 186
+                    },
+                    {
+                        "modele": "SP3 EGE - 13 KW",
+                        "puissance_calo": 13.300,
+                        "puissance_frigo": 10.140,
+                        "puissance_absorbee": 3.160,
+                        "cop": 4.21,
+                        "etas": 184
+                    },
+                    {
+                        "modele": "SP3 EGE - 17 KW",
+                        "puissance_calo": 17.300,
+                        "puissance_frigo": 13.210,
+                        "puissance_absorbee": 4.090,
+                        "cop": 4.23,
+                        "etas": 187
+                    }
+                ]
+            },
+            "Freecooling": true,
+            "Kit_Piscine": true,
+            "Cop": {"max": 4.5},
+            "Etas": {"max": 196},
+            "Eau_de_nappe": {"Puissance_min": 3.132, "Puissance_max": 21.4},
+            "Emetteur": {"min": 0, "max": 45},
+            "Dimension": {"largeur": 635, "longueur": 635, "hauteur": 990},
+            "Dimension2": {"largeur": 635, "longueur": 635, "hauteur": 1840},
+            "Image": "assets/img/SMARTPACK.mp4",
+            "Image2": "assets/img/SPCD.jpg",
+            "BrochureURL": "https://www.nextherm.fr/wp-content/uploads/2023/03/SMARTPACK3_R32_FP-EGE-SP3-AA-02-2023-VF.3.pdf",
+            "Description": "Les SMARTPACK 3 EAU GLYCOLÉE/EAU ont été conçues pour offrir un maximum de possibilités, une gamme étendue de puissances.\n PACS design, elles sont destinées aux constructions neuves ou pour remplacer tout mode de chauffage existant (ancienne pompe à chaleur ou autres sources d'énergie). Tout a été fait pour faciliter la mise en œuvre, l'entretien et l'utilisation. Disponible en version Eau de Nappe, en insérant un échangeur de barrage. En répondant à tout type de projet, NEXTHERM® rend la géothermie accessible à tous."
+        },
+    
+        {
+            "Nom": "Smartpack 2 - Eau Glycolée/Eau - R410",
+            "Particularites": ["Geothermie", "Eau/Eau", "R410A"],
+            "Puissance": {
+                "min": 5.64,
+                "max": 20.200,
+                "disponibles": [
+                    {
+                        "modele": "SP2 EGE - 6 KW",
+                        "puissance_calo": 5.640,
+                        "puissance_frigo": 4.300,
+                        "puissance_absorbee": 1.340,
+                        "cop": 4.83,
+                        "etas": 193
+                    },
+                    {
+                        "modele": "SP2 EGE - 8 KW",
+                        "puissance_calo": 7.245,
+                        "puissance_frigo": 5.550,
+                        "puissance_absorbee": 1.695,
+                        "cop": 4.82,
+                        "etas": 193
+                    },
+                    {
+                        "modele": "SP2 EGE - 10 KW",
+                        "puissance_calo": 9.655,
+                        "puissance_frigo": 7.355,
+                        "puissance_absorbee": 2.300,
+                        "cop": 4.81,
+                        "etas": 193
+                    },
+                    {
+                        "modele": "SP2 EGE - 13 KW",
+                        "puissance_calo": 12.350,
+                        "puissance_frigo": 9.410,
+                        "puissance_absorbee": 2.940,
+                        "cop": 4.82,
+                        "etas": 194
+                    },
+                    {
+                        "modele": "SP2 EGE - 17 KW",
+                        "puissance_calo": 16.450,
+                        "puissance_frigo": 12.550,
+                        "puissance_absorbee": 3.900,
+                        "cop": 4.81,
+                        "etas": 192
+                    },
+                    {
+                        "modele": "SP2 EGE - 20 KW",
+                        "puissance_calo": 20.200,
+                        "puissance_frigo": 15.670,
+                        "puissance_absorbee": 4.530,
+                        "cop": 4.45,
+                        "etas": 192
+                    }
+                ]
+            },
+            "Freecooling": true,
+            "Kit_Piscine": true,
+            "Cop": {"max": 4.83},
+            "Etas": {"max": 194},
+            "Eau_de_nappe": {"Puissance_min": 7.05, "Puissance_max": 25.25},
+            "Emetteur": {"min": 0, "max": 55},
+            "Dimension": {"largeur": 635, "longueur": 635, "hauteur": 990},
+            "Dimension2": {"largeur": 635, "longueur": 635, "hauteur": 1840},
+            "Image": "assets/img/SMARTPACK.mp4",
+            "Image2": "assets/img/SPCD.jpg",
+            "BrochureURL": "https://www.nextherm.fr/wp-content/uploads/2023/07/SMARTPACK2_R410_FP-EGE-SP2-AB-07-202389.pdf",
+            "Description": "Les SMARTPACK 2 EAU GLYCOLÉE/EAU ont été conçues pour offrir un maximum de possibilités, une gamme étendue de puissances.\n PACS design, elles sont destinées aux constructions neuves ou pour remplacer tout mode de chauffage existant (ancienne pompe à chaleur ou autres sources d'énergie). Tout a été fait pour faciliter la mise en œuvre, l'entretien et l'utilisation. Disponible en version Eau de Nappe, en insérant un échangeur de barrage. En répondant à tout type de projet, NEXTHERM® rend la géothermie accessible à tous."
+        },
+        {
+            "Nom": "Smartpack 3 en cascade - Eau Glycolée/Eau - R32",
+            "Particularites": ["Geothermie", "Eau/Eau", "R32"],
+            "Puissance": {
+                "min": 17.300,
+                "max": 400,
+                "increment": 5,
+                "baseModele": "SP3 CASCADE",
+                "caracteristiques": {
+                    "cop_moyen": 4.29,
+                    "etas_moyen": 179
+                }
+            },
+            "Freecooling": true,
+            "Kit_Piscine": true,
+            "Cop": {"max": 4.5},
+            "Etas": {"max": 196},
+            "Eau_de_nappe": {"Puissance_min": 3.132, "Puissance_max": 21.4},
+            "Emetteur": {"min": 0, "max": 45},
+            "Dimension": {"largeur": 635, "longueur": 635, "hauteur": 990},
+            "Dimension2": {"largeur": "-", "longueur": "-", "hauteur": "-"},
+            "Image": "assets/img/SMARTPACK.mp4",
+            "Image2": "assets/img/SPCD.jpg",
+            "BrochureURL": "https://www.nextherm.fr/wp-content/uploads/2023/03/SMARTPACK3_R32_FP-EGE-SP3-AA-02-2023-VF.3.pdf",
+            "Description": "Les SMARTPACK 3 EAU GLYCOLÉE/EAU équipés d'un module cascade ont été conçus pour offrir un maximum de possibilités avec une plage de puissances pouvant répondre à n'importe quel projet.\n PACS design, elles sont destinées aux constructions neuves ou pour remplacer tout mode de chauffage existant (ancienne pompe à chaleur ou autres sources d'énergie). Tout a été fait pour faciliter la mise en œuvre, l'entretien et l'utilisation. Disponible en version Eau de Nappe, en insérant un échangeur de barrage. En répondant à tout type de projet, NEXTHERM® rend la géothermie accessible à tous."
+        },
+{
+    "Nom": "Smartpack GP en CASCADE - Eau Glycolée/Eau - R410",
+    "Particularites": ["Geothermie", "Eau/Eau", "R410A"],
+    "Puissance": {
+        "min": 40,
+        "max": 400,
+        "increment": 5,
+        "baseModele": "SP GP CASCADE",
+        "caracteristiques": {
+            "cop_moyen": 4.35,
+            "etas_moyen": 174
+        }
+    },
+    "Freecooling": true,
+    "Kit_Piscine": true,
+    "Cop": {"max": 4.41},
+    "Etas": {"max": 176},
+    "Eau_de_nappe": {"Puissance_min": 51.400, "Puissance_max": 400},
+    "Emetteur": {"min": 0, "max": 45},
+    "Dimension": {"largeur": 635, "longueur": 635, "hauteur": 990},
+    "Dimension2": {"largeur": "-", "longueur": "-", "hauteur": "-"},
+    "Image": "assets/img/SMARTPACK.mp4",
+    "Image2": "assets/img/SPCD.jpg",
+    "BrochureURL": "https://www.nextherm.fr/wp-content/uploads/2023/03/SMARTPACK_GP_R410A_FP-EGE-SP2-GP-AA-02-2023-VF.1.pdf",
+    "Description": "Les SMARTPACK GP EAU GLYCOLÉE/EAU équipés d'un module cascade ont été conçus pour offrir un maximum de possibilités avec une plage de puissances pouvant répondre à n'importe quel projet.\n PACS design, elles sont destinées aux constructions neuves ou pour remplacer tout mode de chauffage existant (ancienne pompe à chaleur ou autres sources d'énergie). Tout a été fait pour faciliter la mise en œuvre, l'entretien et l'utilisation. Disponible en version Eau de Nappe, en insérant un échangeur de barrage. En répondant à tout type de projet, NEXTHERM® rend la géothermie accessible à tous."
+},
+{
+    "Nom": "Smartpack GP - Eau Glycolée/Eau - R410",
+    "Particularites": ["Geothermie", "Eau/Eau", "R410A"],
+    "Puissance": {
+        "min": 24.750,
+        "max": 40.850,
+        "disponibles": [
+            {
+                "modele": "SP GP - 25 KW",
+                "puissance_calo": 24.750,
+                "puissance_frigo": 18.600,
+                "puissance_absorbee": 6.150,
+                "cop": 4.31,
+                "etas": 172
+            },
+            {
+                "modele": "SP GP - 30 KW",
+                "puissance_calo": 30.650,
+                "puissance_frigo": 23.000,
+                "puissance_absorbee": 7.650,
+                "cop": 4.30,
+                "etas": 172
+            },
+            {
+                "modele": "SP GP - 35 KW",
+                "puissance_calo": 35.250,
+                "puissance_frigo": 26.680,
+                "puissance_absorbee": 8.570,
+                "cop": 4.38,
+                "etas": 175
+            },
+            {
+                "modele": "SP GP - 40 KW",
+                "puissance_calo": 40.850,
+                "puissance_frigo": 30.900,
+                "puissance_absorbee": 9.950,
+                "cop": 4.41,
+                "etas": 176
+            }
+        ]
+    },
+    "Freecooling": true,
+    "Kit_Piscine": true,
+    "Cop": {"max": 4.41},
+    "Etas": {"max": 176},
+    "Eau_de_nappe": {"Puissance_min": 28.960, "Puissance_max": 51.400},
+    "Emetteur": {"min": 0, "max": 45},
+    "Dimension": {"largeur": 635, "longueur": 635, "hauteur": 990},
+    "Dimension2": {"largeur": "-", "longueur": "-", "hauteur": "-"},
+    "Image": "assets/img/SMARTPACK.mp4",
+    "Image2": "assets/img/SPCD.jpg",
+    "BrochureURL": "https://www.nextherm.fr/wp-content/uploads/2023/03/SMARTPACK_GP_R410A_FP-EGE-SP2-GP-AA-02-2023-VF.1.pdf",
+    "Description": "Les SMARTPACK GP EAU GLYCOLÉE/EAU ont été conçues pour offrir une puissance élevée dans un seul module.\n PACS design, elles sont destinées aux constructions neuves ou pour remplacer tout mode de chauffage existant (ancienne pompe à chaleur ou autres sources d'énergie). Tout a été fait pour faciliter la mise en œuvre, l'entretien et l'utilisation. Disponible en version Eau de Nappe, en insérant un échangeur de barrage. En répondant à tout type de projet, NEXTHERM® rend la géothermie accessible à tous."
+},
+{
+    "Nom": "Smartpack HT - Eau Glycolée/Eau - R410",
+    "Particularites": ["Geothermie", "Eau/Eau", "R410A"],
+    "Puissance": {
+        "min": 9.660,
+        "max": 40.850,
+        "disponibles": [
+            {
+                "modele": "SP HT - 10 KW",
+                "puissance_calo": 9.660,
+                "puissance_frigo": 7.350,
+                "puissance_absorbee": 2.299,
+                "cop": 4.20,
+                "etas": 180
+            },
+            {
+                "modele": "SP HT - 13 KW",
+                "puissance_calo": 12.350,
+                "puissance_frigo": 9.410,
+                "puissance_absorbee": 2.940,
+                "cop": 4.20,
+                "etas": 179
+            },
+            {
+                "modele": "SP HT - 17 KW",
+                "puissance_calo": 16.450,
+                "puissance_frigo": 12.550,
+                "puissance_absorbee": 3.900,
+                "cop": 4.22,
+                "etas": 181
+            },
+            {
+                "modele": "SP HT - 20 KW",
+                "puissance_calo": 20.200,
+                "puissance_frigo": 15.390,
+                "puissance_absorbee": 4.809,
+                "cop": 4.20,
+                "etas": 180
+            },
+            {
+                "modele": "SP HT - 25 KW",
+                "puissance_calo": 24.750,
+                "puissance_frigo": 18.600,
+                "puissance_absorbee": 6.150,
+                "cop": 4.02,
+                "etas": 172
+            },
+            {
+                "modele": "SP HT - 30 KW",
+                "puissance_calo": 30.650,
+                "puissance_frigo": 23.000,
+                "puissance_absorbee": 7.650,
+                "cop": 4.01,
+                "etas": 172
+            },
+            {
+                "modele": "SP HT - 35 KW",
+                "puissance_calo": 35.250,
+                "puissance_frigo": 26.680,
+                "puissance_absorbee": 8.570,
+                "cop": 4.11,
+                "etas": 175
+            },
+            {
+                "modele": "SP HT - 40 KW",
+                "puissance_calo": 40.850,
+                "puissance_frigo": 30.900,
+                "puissance_absorbee": 9.950,
+                "cop": 4.10,
+                "etas": 176
+            }
+        ]
+    },
+    "Freecooling": true,
+    "Kit_Piscine": true,
+    "Cop": {"max": 4.20},
+    "Etas": {"max": 181},
+    "Eau_de_nappe": {"Puissance_min": 12.080, "Puissance_max": 51.401},
+    "Emetteur": {"min": 0, "max": 62},
+    "Dimension": {"largeur": 635, "longueur": 635, "hauteur": 990},
+    "Dimension2": {"largeur": 635, "longueur": 635, "hauteur": 1840},
+    "Image": "assets/img/SMARTPACK.mp4",
+    "Image2": "assets/img/SPCD.jpg",
+    "BrochureURL": "https://www.nextherm.fr/wp-content/uploads/2023/03/SMARTPACK-HT-VF.1.pdf",
+    "Description": "Les SMARTPACK HT EAU GLYCOLÉE/EAU ont été conçues pour offrir une température élevée afin de répondre à des demandes spécifiques.\n PACS design, elles sont destinées aux constructions neuves ou pour remplacer tout mode de chauffage existant (ancienne pompe à chaleur ou autres sources d'énergie). Tout a été fait pour faciliter la mise en œuvre, l'entretien et l'utilisation. Disponible en version Eau de Nappe, en insérant un échangeur de barrage. En répondant à tout type de projet, NEXTHERM® rend la géothermie accessible à tous."
+},
+{
+    "Nom": "Smartpack HT en CASCADE - Eau Glycolée/Eau - R410",
+    "Particularites": ["Geothermie", "Eau/Eau", "R410A"],
+    "Puissance": {
+        "min": 40,
+        "max": 400,
+        "increment": 5,
+        "baseModele": "SP HT CASCADE",
+        "caracteristiques": {
+            "cop_moyen": 4.13,
+            "etas_moyen": 177
+        }
+    },
+    "Freecooling": true,
+    "Kit_Piscine": true,
+    "Cop": {"max": 4.20},
+    "Etas": {"max": 181},
+    "Eau_de_nappe": {"Puissance_min": 51.401, "Puissance_max": 400},
+    "Emetteur": {"min": 0, "max": 62},
+    "Dimension": {"largeur": 635, "longueur": 635, "hauteur": 990},
+    "Dimension2": {"largeur": "-", "longueur": "-", "hauteur": "-"},
+    "Image": "assets/img/SMARTPACK.mp4",
+    "Image2": "assets/img/SPCD.jpg",
+    "BrochureURL": "https://www.nextherm.fr/wp-content/uploads/2023/03/SMARTPACK-HT-VF.1.pdf",
+    "Description": "Les SMARTPACK HT EAU GLYCOLÉE/EAU équipés d'un module cascade ont été conçus pour offrir un maximum de possibilités avec une plage de puissances et de températures pouvant répondre à n'importe quel projet.\n PACS design, elles sont destinées aux constructions neuves ou pour remplacer tout mode de chauffage existant (ancienne pompe à chaleur ou autres sources d'énergie). Tout a été fait pour faciliter la mise en œuvre, l'entretien et l'utilisation. Disponible en version Eau de Nappe, en insérant un échangeur de barrage. En répondant à tout type de projet, NEXTHERM® rend la géothermie accessible à tous."
+},
+{
+    "Nom": "Smartpack 3 - Sol/Eau - R32",
+    "Particularites": ["Geothermie", "Sol/Eau", "R32"],
+    "Puissance": {
+        "min": 4.820,
+        "max": 17.450,
+        "disponibles": [
+            {
+                "modele": "SP3 SE - 4 KW",
+                "puissance_calo": 4.820,
+                "puissance_frigo": 3.720,
+                "puissance_absorbee": 1.100,
+                "cop": 4.39,
+                "etas": 217
+            },
+            {
+                "modele": "SP3 SE - 6 KW",
+                "puissance_calo": 6.530,
+                "puissance_frigo": 5.050,
+                "puissance_absorbee": 1.470,
+                "cop": 4.43,
+                "etas": 221
+            },
+            {
+                "modele": "SP3 SE - 8 KW",
+                "puissance_calo": 7.430,
+                "puissance_frigo": 5.750,
+                "puissance_absorbee": 1.680,
+                "cop": 4.42,
+                "etas": 221
+            },
+            {
+                "modele": "SP3 SE - 10 KW",
+                "puissance_calo": 10.580,
+                "puissance_frigo": 8.100,
+                "puissance_absorbee": 2.480,
+                "cop": 4.34,
+                "etas": 217
+            },
+            {
+                "modele": "SP3 SE - 13 KW",
+                "puissance_calo": 13.400,
+                "puissance_frigo": 10.270,
+                "puissance_absorbee": 3.130,
+                "cop": 4.29,
+                "etas": 214
+            },
+            {
+                "modele": "SP3 SE - 17 KW",
+                "puissance_calo": 17.450,
+                "puissance_frigo": 13.400,
+                "puissance_absorbee": 4.050,
+                "cop": 4.31,
+                "etas": 215
+            }
+        ]
+    },
+    "Freecooling": true,
+    "Kit_Piscine": true,
+    "Cop": {"max": 4.43},
+    "Etas": {"max": 221},
+    "Eau_de_nappe": {"Puissance_min": 0, "Puissance_max": 0},
+    "Emetteur": {"min": 0, "max": 45},
+    "Dimension": {"largeur": 635, "longueur": 635, "hauteur": 990},
+    "Dimension2": {"largeur": 635, "longueur": 635, "hauteur": 1840},
+    "Image": "assets/img/SMARTPACK.mp4",
+    "Image2": "assets/img/SPCD.jpg",
+    "BrochureURL": "https://www.nextherm.fr/wp-content/uploads/2023/03/SMARTPACK3_R32_FP-EGE-SP3-AA-02-2023-VF.5.pdf",
+    "Description": "Les SMARTPACK 3 SOL/EAU sont des PACS design conçues pour offrir un maximum de possibilités, une gamme étendue de puissances et être capables de remplacer tout mode de chauffage existant (ancienne pompe à chaleur ou autres sources d'énergie). Tout a été fait pour faciliter la mise en œuvre, l'entretien et l'utilisation. En répondant à tout type de projet, NEXTHERM rend la géothermie accessible à tous."
+},
+{
+    "Nom": "Smartpack 2 - Sol/Eau - R410",
+    "Particularites": ["Geothermie", "Sol/Eau", "R410A"],
+    "Puissance": {
+        "min": 6.040,
+        "max": 26.900,
+        "disponibles": [
+            {
+                "modele": "SP2 SE - 6 KW",
+                "puissance_calo": 6.040,
+                "puissance_frigo": 4.690,
+                "puissance_absorbee": 1.350,
+                "cop": 4.47,
+                "etas": 196
+            },
+            {
+                "modele": "SP2 SE - 8 KW",
+                "puissance_calo": 7.900,
+                "puissance_frigo": 6.180,
+                "puissance_absorbee": 1.720,
+                "cop": 4.59,
+                "etas": 200
+            },
+            {
+                "modele": "SP2 SE - 10 KW",
+                "puissance_calo": 10.350,
+                "puissance_frigo": 8.100,
+                "puissance_absorbee": 2.250,
+                "cop": 4.60,
+                "etas": 201
+            },
+            {
+                "modele": "SP2 SE - 13 KW",
+                "puissance_calo": 13.050,
+                "puissance_frigo": 10.130,
+                "puissance_absorbee": 2.920,
+                "cop": 4.49,
+                "etas": 196
+            },
+            {
+                "modele": "SP2 SE - 17 KW",
+                "puissance_calo": 17.550,
+                "puissance_frigo": 13.670,
+                "puissance_absorbee": 3.880,
+                "cop": 4.53,
+                "etas": 200
+            },
+            {
+                "modele": "SP2 SE - 20 KW",
+                "puissance_calo": 20.900,
+                "puissance_frigo": 16.210,
+                "puissance_absorbee": 4.690,
+                "cop": 4.45,
+                "etas": 196
+            },
+            {
+                "modele": "SP2 SE - 26 KW",
+                "puissance_calo": 26.900,
+                "puissance_frigo": 20.850,
+                "puissance_absorbee": 6.050,
+                "cop": 4.47,
+                "etas": 200
+            }
+        ]
+    },
+    "Freecooling": true,
+    "Kit_Piscine": true,
+    "Cop": {"max": 4.6},
+    "Etas": {"max": 201},
+    "Eau_de_nappe": {"Puissance_min": 0, "Puissance_max": 0},
+    "Emetteur": {"min": 0, "max": 55},
+    "Dimension": {"largeur": 635, "longueur": 635, "hauteur": 990},
+    "Dimension2": {"largeur": 635, "longueur": 635, "hauteur": 1840},
+    "Image": "assets/img/SMARTPACK.mp4",
+    "Image2": "assets/img/SPCD.jpg",
+    "BrochureURL": "https://www.nextherm.fr/wp-content/uploads/2023/09/SMARTPACK2_R410_FP-SE-SP2-AA-02-2023-VF.3.pdf",
+    "Description": "Les SMARTPACK 2 SOL/EAU sont des PACS design conçues pour offrir un maximum de possibilités, une gamme étendue de puissances et être capables de remplacer tout mode de chauffage existant (ancienne pompe à chaleur ou autres sources d'énergie). Tout a été fait pour faciliter la mise en œuvre, l'entretien et l'utilisation. En répondant à tout type de projet, NEXTHERM rend la géothermie accessible à tous."
+},
+{
+    "Nom": "Smartpack 3 en CASCADE - Sol/Eau - R32",
+    "Particularites": ["Geothermie", "Sol/Eau", "R32"],
+    "Puissance": {
+        "min": 17.450,
+        "max": 400,
+        "increment": 5,
+        "baseModele": "SP3 SE CASCADE",
+        "caracteristiques": {
+            "cop_moyen": 4.36,
+            "etas_moyen": 217
+        }
+    },
+    "Freecooling": true,
+    "Kit_Piscine": true,
+    "Cop": {"max": 4.43},
+    "Etas": {"max": 221},
+    "Eau_de_nappe": {"Puissance_min": 0, "Puissance_max": 0},
+    "Emetteur": {"min": 0, "max": 45},
+    "Dimension": {"largeur": 635, "longueur": 635, "hauteur": 990},
+    "Dimension2": {"largeur": "-", "longueur": "-", "hauteur": "-"},
+    "Image": "assets/img/SMARTPACK.mp4",
+    "Image2": "assets/img/SPCD.jpg",
+    "BrochureURL": "https://www.nextherm.fr/wp-content/uploads/2023/03/SMARTPACK3_R32_FP-EGE-SP3-AA-02-2023-VF.5.pdf",
+    "Description": "Les SMARTPACK 3 SOL/EAU avec un module cascade sont des PAC design conçues pour offrir une grande plage de possibilités pour répondre à n'importe quel besoin, une gamme étendue de puissances et être capables de remplacer tout mode de chauffage existant (ancienne pompe à chaleur ou autres sources d'énergie). Tout a été fait pour faciliter la mise en œuvre, l'entretien et l'utilisation. En répondant à tout type de projet, NEXTHERM rend la géothermie accessible à tous."
+},
+{
+    "Nom": "Smartpack 2 en CASCADE - Sol/Eau - R410",
+    "Particularites": ["Geothermie", "Sol/Eau", "R410A"],
+    "Puissance": {
+        "min": 17.550,
+        "max": 400,
+        "increment": 5,
+        "baseModele": "SP2 SE CASCADE",
+        "caracteristiques": {
+            "cop_moyen": 4.51,
+            "etas_moyen": 198
+        }
+    },
+    "Freecooling": true,
+    "Kit_Piscine": true,
+    "Cop": {"max": 4.6},
+    "Etas": {"max": 201},
+    "Eau_de_nappe": {"Puissance_min": 0, "Puissance_max": 0},
+    "Emetteur": {"min": 0, "max": 55},
+    "Dimension": {"largeur": 635, "longueur": 635, "hauteur": 990},
+    "Dimension2": {"largeur": "-", "longueur": "-", "hauteur": "-"},
+    "Image": "assets/img/SMARTPACK.mp4",
+    "Image2": "assets/img/SPCD.jpg",
+    "BrochureURL": "https://www.nextherm.fr/wp-content/uploads/2023/09/SMARTPACK2_R410_FP-SE-SP2-AA-02-2023-VF.3.pdf",
+    "Description": "Les SMARTPACK 2 SOL/EAU avec un module cascade sont des PAC design conçues pour offrir une grande plage de possibilités pour répondre à n'importe quel besoin, une gamme étendue de puissances et être capables de remplacer tout mode de chauffage existant (ancienne pompe à chaleur ou autres sources d'énergie). Tout a été fait pour faciliter la mise en œuvre, l'entretien et l'utilisation. En répondant à tout type de projet, NEXTHERM rend la géothermie accessible à tous."
+},
+{
+    "Nom": "Smartpack 3 - Sol/Sol - R32",
+    "Particularites": ["Geothermie", "Sol/Sol", "R32"],
+    "Puissance": {
+        "min": 2.450,
+        "max": 15.690,
+        "disponibles": [
+            {
+                "modele": "SP3 SS - 2 KW",
+                "puissance_calo": 2.450,
+                "puissance_frigo": 1.840,
+                "puissance_absorbee": 0.610,
+                "cop": 4.02,
+                "etas": 201
+            },
+            {
+                "modele": "SP3 SS - 4 KW",
+                "puissance_calo": 4.300,
+                "puissance_frigo": 3.240,
+                "puissance_absorbee": 1.060,
+                "cop": 4.06,
+                "etas": 203
+            },
+            {
+                "modele": "SP3 SS - 5 KW",
+                "puissance_calo": 5.830,
+                "puissance_frigo": 4.420,
+                "puissance_absorbee": 1.410,
+                "cop": 4.13,
+                "etas": 207
+            },
+            {
+                "modele": "SP3 SS - 6 KW",
+                "puissance_calo": 6.950,
+                "puissance_frigo": 5.280,
+                "puissance_absorbee": 1.670,
+                "cop": 4.16,
+                "etas": 208
+            },
+            {
+                "modele": "SP3 SS - 9 KW",
+                "puissance_calo": 9.700,
+                "puissance_frigo": 7.350,
+                "puissance_absorbee": 2.350,
+                "cop": 4.14,
+                "etas": 207
+            },
+            {
+                "modele": "SP3 SS - 12 KW",
+                "puissance_calo": 12.250,
+                "puissance_frigo": 9.300,
+                "puissance_absorbee": 2.950,
+                "cop": 4.17,
+                "etas": 208
+            },
+            {
+                "modele": "SP3 SS - 15 KW",
+                "puissance_calo": 15.690,
+                "puissance_frigo": 11.940,
+                "puissance_absorbee": 3.750,
+                "cop": 4.18,
+                "etas": 209
+            }
+        ]
+    },
+    "Freecooling": true,
+    "Kit_Piscine": false,
+    "Cop": {"max": 4.18},
+    "Etas": {"max": 209},
+    "Eau_de_nappe": {"Puissance_min": 0, "Puissance_max": 0},
+    "Emetteur": {"min": 0, "max": 35},
+    "Dimension": {"largeur": 635, "longueur": 635, "hauteur": 990},
+    "Dimension2": {"largeur": 635, "longueur": 635, "hauteur": 1840},
+    "Image": "assets/img/SMARTPACK.mp4",
+    "Image2": "assets/img/SPCD.jpg",
+    "BrochureURL": "https://www.nextherm.fr/wp-content/uploads/2023/09/SMARTPACK3_R32_FP-SS-SP3-AA-02-2023-VF.5.pdf",
+    "Description": "Les SMARTPACK 3 SOL/SOL ont été conçues pour répondre au besoin de remplacement d'anciennes pompes à chaleur. Bénéficiant d'une gamme étendue de puissances, elles sont la solution pour donner une seconde vie à votre installation. En pensant à demain, NEXTHERM rend la géothermie durable et pérenne dans le temps."
+},
+
+{
+    "Nom": "Smartpack 2 - Sol/Sol - R410",
+    "Particularites": ["Geothermie", "Sol/Sol", "R410A"],
+    "Puissance": {
+        "min": 2.430,
+        "max": 13.300,
+        "disponibles": [
+            {
+                "modele": "SP2 SS - 2 KW",
+                "puissance_calo": 2.430,
+                "puissance_frigo": 1.830,
+                "puissance_absorbee": 0.600,
+                "cop": 4.05,
+                "etas": 184
+            },
+            {
+                "modele": "SP2 SS - 3 KW",
+                "puissance_calo": 3.600,
+                "puissance_frigo": 2.970,
+                "puissance_absorbee": 0.900,
+                "cop": 4.00,
+                "etas": 184
+            },
+            {
+                "modele": "SP2 SS - 4 KW",
+                "puissance_calo": 4.770,
+                "puissance_frigo": 3.570,
+                "puissance_absorbee": 1.200,
+                "cop": 3.98,
+                "etas": 183
+            },
+            {
+                "modele": "SP2 SS - 5 KW",
+                "puissance_calo": 5.800,
+                "puissance_frigo": 4.710,
+                "puissance_absorbee": 1.090,
+                "cop": 4.00,
+                "etas": 184
+            },
+            {
+                "modele": "SP2 SS - 6 KW",
+                "puissance_calo": 7.560,
+                "puissance_frigo": 5.760,
+                "puissance_absorbee": 1.800,
+                "cop": 4.20,
+                "etas": 193
+            },
+            {
+                "modele": "SP2 SS - 8 KW",
+                "puissance_calo": 9.500,
+                "puissance_frigo": 7.680,
+                "puissance_absorbee": 1.820,
+                "cop": 4.30,
+                "etas": 197
+            },
+            {
+                "modele": "SP2 SS - 10 KW",
+                "puissance_calo": 11.500,
+                "puissance_frigo": 9.225,
+                "puissance_absorbee": 2.275,
+                "cop": 4.33,
+                "etas": 199
+            },
+            {
+                "modele": "SP2 SS - 12 KW",
+                "puissance_calo": 13.300,
+                "puissance_frigo": 10.300,
+                "puissance_absorbee": 3.000,
+                "cop": 4.43,
+                "etas": 203
+            }
+        ]
+    },
+    "Freecooling": true,
+    "Kit_Piscine": false,
+    "Cop": {"max": 4.43},
+    "Etas": {"max": 203},
+    "Eau_de_nappe": {"Puissance_min": 0, "Puissance_max": 0},
+    "Emetteur": {"min": 0, "max": 35},
+    "Dimension": {"largeur": 635, "longueur": 635, "hauteur": 990},
+    "Dimension2": {"largeur": 635, "longueur": 635, "hauteur": 1840},
+    "Image": "assets/img/SMARTPACK.mp4",
+    "Image2": "assets/img/SPCD.jpg",
+    "BrochureURL": "https://www.nextherm.fr/wp-content/uploads/2023/09/SMARTPACK2_R410_FP-SS-SP3-AA-02-2023-VF.pdf",
+    "Description": "Les SMARTPACK 2 SOL/SOL ont été conçues pour répondre au besoin de remplacement d'anciennes pompes à chaleur. Bénéficiant d'une gamme étendue de puissances, elles sont la solution pour donner une seconde vie à votre installation. En pensant à demain, NEXTHERM rend la géothermie durable et pérenne dans le temps."
+},
+
+{
+    "Nom": "OPTIPACK - Sol/Sol - R410",
+    "Particularites": ["Geothermie", "Sol/Sol", "R410A"],
+    "Puissance": {
+        "min": 2.430,
+        "max": 13.300,
+        "disponibles": [
+            {
+                "modele": "OP SS - 2 KW",
+                "puissance_calo": 2.430,
+                "puissance_frigo": 1.830,
+                "puissance_absorbee": 0.600,
+                "cop": 4.05,
+                "etas": 184
+            },
+            {
+                "modele": "OP SS - 3 KW",
+                "puissance_calo": 3.600,
+                "puissance_frigo": 2.970,
+                "puissance_absorbee": 0.900,
+                "cop": 4.00,
+                "etas": 184
+            },
+            {
+                "modele": "OP SS - 4 KW",
+                "puissance_calo": 4.770,
+                "puissance_frigo": 3.570,
+                "puissance_absorbee": 1.200,
+                "cop": 3.98,
+                "etas": 183
+            },
+            {
+                "modele": "OP SS - 5 KW",
+                "puissance_calo": 5.800,
+                "puissance_frigo": 4.710,
+                "puissance_absorbee": 1.090,
+                "cop": 4.00,
+                "etas": 184
+            },
+            {
+                "modele": "OP SS - 6 KW",
+                "puissance_calo": 7.560,
+                "puissance_frigo": 5.760,
+                "puissance_absorbee": 1.800,
+                "cop": 4.20,
+                "etas": 193
+            },
+            {
+                "modele": "OP SS - 8 KW",
+                "puissance_calo": 9.500,
+                "puissance_frigo": 7.680,
+                "puissance_absorbee": 1.820,
+                "cop": 4.30,
+                "etas": 197
+            },
+            {
+                "modele": "OP SS - 10 KW",
+                "puissance_calo": 11.500,
+                "puissance_frigo": 9.225,
+                "puissance_absorbee": 2.275,
+                "cop": 4.33,
+                "etas": 199
+            },
+            {
+                "modele": "OP SS - 12 KW",
+                "puissance_calo": 13.300,
+                "puissance_frigo": 10.300,
+                "puissance_absorbee": 3.000,
+                "cop": 4.43,
+                "etas": 203
+            }
+        ]
+    },
+    "Freecooling": true,
+    "Kit_Piscine": false,
+    "Cop": {"max": 4.43},
+    "Etas": {"max": 203},
+    "Eau_de_nappe": {"Puissance_min": 0, "Puissance_max": 0},
+    "Emetteur": {"min": 0, "max": 35},
+    "Dimension": {"largeur": 635, "longueur": 635, "hauteur": 990},
+    "Dimension2": {"largeur": 635, "longueur": 635, "hauteur": 1840},
+    "Image": "assets/img/SMARTPACK.mp4",
+    "Image2": "assets/img/OPTICD.jpg",
+    "BrochureURL": "https://www.nextherm.fr/wp-content/uploads/2023/09/SMARTPACK2_R410_FP-SS-SP3-AA-02-2023-VF.pdf",
+    "Description": "Les OPTIPACK SOL/SOL ont été conçues pour répondre au besoin de remplacement d'anciennes pompes à chaleur. Bénéficiant d'une gamme étendue de puissances, elles sont la solution économique pour donner une seconde vie à votre installation. En pensant à demain, NEXTHERM rend la géothermie durable et pérenne dans le temps."
+},
+
+{
+    "Nom": "OPTIPACK 2 - Sol/Sol - R32",
+    "Particularites": ["Geothermie", "Sol/Sol", "R32"],
+    "Puissance": {
+        "min": 2.45,
+        "max": 15.69,
+        "disponibles": [
+            {
+                "modele": "OPTIPACK 2 - 2 KW",
+                "puissance_calo": 2.480,
+                "puissance_frigo": 1.880,
+                "puissance_absorbee": 0.600,
+                "cop": 4.61,
+                "etas": 176
+            },
+            {
+                "modele": "OPTIPACK 2 - 4 KW",
+                "puissance_calo": 4.610,
+                "puissance_frigo": 3.790,
+                "puissance_absorbee": 1.120,
+                "cop": 4.86,
+                "etas": 186
+            },
+            {
+                "modele": "OPTIPACK 2 - 6 KW",
+                "puissance_calo": 6.200,
+                "puissance_frigo": 4.700,
+                "puissance_absorbee": 1.500,
+                "cop": 4.55,
+                "etas": 175
+            },
+            {
+                "modele": "OPTIPACK 2 - 8 KW",
+                "puissance_calo": 7.090,
+                "puissance_frigo": 5.730,
+                "puissance_absorbee": 1.720,
+                "cop": 4.55,
+                "etas": 174
+            },
+            {
+                "modele": "OPTIPACK 2 - 10 KW",
+                "puissance_calo": 9.960,
+                "puissance_frigo": 7.370,
+                "puissance_absorbee": 2.590,
+                "cop": 4.53,
+                "etas": 173
+            }
+        ]
+    },
+    "Freecooling": true,
+    "Kit_Piscine": false,
+    "Cop": {"max": 4.86},
+    "Etas": {"max": 186},
+    "Eau_de_nappe": {"Puissance_min": 0, "Puissance_max": 0},
+    "Emetteur": {"min": 0, "max": 35},
+    "Dimension": {"largeur": 635, "longueur": 635, "hauteur": 990},
+    "Dimension2": {"largeur": 635, "longueur": 635, "hauteur": 1840},
+    "Image": "assets/img/SMARTPACK.mp4",
+    "Image2": "assets/img/OPTICD.jpg",
+    "BrochureURL": "https://www.nextherm.fr/wp-content/uploads/2023/09/SMARTPACK3_R32_FP-SS-SP3-AA-02-2023-VF.5.pdf",
+    "Description": "Les OPTIPACK 2 SOL/SOL ont été conçues pour répondre au besoin de remplacement d'anciennes pompes à chaleur. Bénéficiant d'une gamme étendue de puissances, elles sont la solution économique pour donner une seconde vie à votre installation. En pensant à demain, NEXTHERM rend la géothermie durable et pérenne dans le temps."
+},
+{
+    "Nom": "Smartpack 3 - Eau glycolée/Sol - R32",
+    "Particularites": ["Geothermie", "Eau glycolée/Sol", "R32"],
+    "Puissance": {
+        "min": 2.450,
+        "max": 15.690,
+        "disponibles": [
+            {
+                "modele": "SP3 EGS - 2 KW",
+                "puissance_calo": 2.450,
+                "puissance_frigo": 1.830,
+                "puissance_absorbee": 0.620,
+                "cop": 3.95,
+                "etas": 182
+            },
+            {
+                "modele": "SP3 EGS - 4 KW",
+                "puissance_calo": 4.300,
+                "puissance_frigo": 3.220,
+                "puissance_absorbee": 1.080,
+                "cop": 3.98,
+                "etas": 183
+            },
+            {
+                "modele": "SP3 EGS - 5 KW",
+                "puissance_calo": 5.830,
+                "puissance_frigo": 4.390,
+                "puissance_absorbee": 1.440,
+                "cop": 4.05,
+                "etas": 186
+            },
+            {
+                "modele": "SP3 EGS - 6 KW",
+                "puissance_calo": 6.950,
+                "puissance_frigo": 5.240,
+                "puissance_absorbee": 1.710,
+                "cop": 4.06,
+                "etas": 187
+            },
+            {
+                "modele": "SP3 EGS - 9 KW",
+                "puissance_calo": 9.700,
+                "puissance_frigo": 7.330,
+                "puissance_absorbee": 2.370,
+                "cop": 4.10,
+                "etas": 188
+            },
+            {
+                "modele": "SP3 EGS - 12 KW",
+                "puissance_calo": 12.250,
+                "puissance_frigo": 9.270,
+                "puissance_absorbee": 2.980,
+                "cop": 4.13,
+                "etas": 190
+            },
+            {
+                "modele": "SP3 EGS - 15 KW",
+                "puissance_calo": 15.690,
+                "puissance_frigo": 11.900,
+                "puissance_absorbee": 3.790,
+                "cop": 4.14,
+                "etas": 190
+            }
+        ]
+    },
+    "Freecooling": true,
+    "Kit_Piscine": false,
+    "Cop": {"max": 4.14},
+    "Etas": {"max": 190},
+    "Eau_de_nappe": {"Puissance_min": 2.94, "Puissance_max": 18.828},
+    "Emetteur": {"min": 0, "max": 35},
+    "Dimension": {"largeur": 635, "longueur": 635, "hauteur": 990},
+    "Dimension2": {"largeur": 635, "longueur": 635, "hauteur": 1840},
+    "Image": "assets/img/SMARTPACK.mp4",
+    "Image2": "assets/img/SPCD.jpg",
+    "BrochureURL": "https://www.nextherm.fr/wp-content/uploads/2023/03/SMARTPACK3_R32_FP-EGE-SP3-AA-02-2023-VF.5.pdf",
+    "Description": "Les SMARTPACK 3 EAU GLYCOPHILÉE/SOL ont été conçues pour répondre au besoin de remplacement d'anciennes pompes à chaleur (avec remplacement de l'ancien capteur fluide frigorigène, par un capteur EAU GLYCOPHILÉE). Bénéficiant d'une gamme étendue de puissances, elles sont la solution pour donner une seconde vie à votre installation. En pensant à demain, NEXTHERM rend la géothermie durable et pérenne dans le temps."
+},
+
+{
+    "Nom": "Smartpack 2 - Eau glycolée/Sol - R410",
+    "Particularites": ["Geothermie", "Eau glycolée/Sol", "R410A"],
+    "Puissance": {
+        "min": 2.430,
+        "max": 13.300,
+        "disponibles": [
+            {
+                "modele": "SP2 EGS - 2 KW",
+                "puissance_calo": 2.430,
+                "puissance_frigo": 1.790,
+                "puissance_absorbee": 0.640,
+                "cop": 3.80,
+                "etas": 175
+            },
+            {
+                "modele": "SP2 EGS - 3 KW",
+                "puissance_calo": 3.600,
+                "puissance_frigo": 2.660,
+                "puissance_absorbee": 0.940,
+                "cop": 3.83,
+                "etas": 176
+            },
+            {
+                "modele": "SP2 EGS - 4 KW",
+                "puissance_calo": 4.770,
+                "puissance_frigo": 3.530,
+                "puissance_absorbee": 1.240,
+                "cop": 3.85,
+                "etas": 177
+            },
+            {
+                "modele": "SP2 EGS - 5 KW",
+                "puissance_calo": 5.800,
+                "puissance_frigo": 4.320,
+                "puissance_absorbee": 1.480,
+                "cop": 3.92,
+                "etas": 180
+            },
+            {
+                "modele": "SP2 EGS - 6 KW",
+                "puissance_calo": 7.560,
+                "puissance_frigo": 5.710,
+                "puissance_absorbee": 1.850,
+                "cop": 4.09,
+                "etas": 188
+            },
+            {
+                "modele": "SP2 EGS - 8 KW",
+                "puissance_calo": 9.500,
+                "puissance_frigo": 7.250,
+                "puissance_absorbee": 2.250,
+                "cop": 4.22,
+                "etas": 194
+            },
+            {
+                "modele": "SP2 EGS - 10 KW",
+                "puissance_calo": 11.500,
+                "puissance_frigo": 8.790,
+                "puissance_absorbee": 2.710,
+                "cop": 4.24,
+                "etas": 195
+            },
+            {
+                "modele": "SP2 EGS - 12 KW",
+                "puissance_calo": 13.300,
+                "puissance_frigo": 10.200,
+                "puissance_absorbee": 3.100,
+                "cop": 4.29,
+                "etas": 197
+            }
+        ]
+    },
+    "Freecooling": true,
+    "Kit_Piscine": false,
+    "Cop": {"max": 4.29},
+    "Etas": {"max": 197},
+    "Eau_de_nappe": {"Puissance_min": 3.46, "Puissance_max": 14.94},
+    "Emetteur": {"min": 0, "max": 35},
+    "Dimension": {"largeur": 635, "longueur": 635, "hauteur": 990},
+    "Dimension2": {"largeur": 635, "longueur": 635, "hauteur": 1840},
+    "Image": "assets/img/SMARTPACK.mp4",
+    "Image2": "assets/img/SPCD.jpg",
+    "BrochureURL": "https://www.nextherm.fr/wp-content/uploads/2023/03/SMARTPACK2_R410_FP-EGS-SP3-AA-02-2023-V1.pdf",
+    "Description": "Les SMARTPACK 2 EAU GLYCOLÉE/SOL ont été conçues pour répondre au besoin de remplacement d'anciennes pompes à chaleur (avec remplacement de l'ancien capteur fluide frigorigène, par un capteur EAU GLYCOLÉE). Bénéficiant d'une gamme étendue de puissances, elles sont la solution pour donner une seconde vie à votre installation. En pensant à demain, NEXTHERM rend la géothermie durable et pérenne dans le temps."
+},
+
+{
+    "Nom": "Optipackduo 2 - Eau/Eau - R32",
+    "Particularites": ["Geothermie", "Eau/Eau", "R32"],
+    "Puissance": {
+        "min": 2.268,
+        "max": 9.665,
+        "disponibles": [
+            {
+                "modele": "OPD2 - 4 KW",
+                "puissance_calo": 2.268,
+                "puissance_frigo": 1.728,
+                "puissance_absorbee": 0.540,
+                "cop": 4.20,
+                "etas": 192
+            },
+            {
+                "modele": "OPD2 - 6 KW",
+                "puissance_calo": 4.220,
+                "puissance_frigo": 3.220,
+                "puissance_absorbee": 1.000,
+                "cop": 4.22,
+                "etas": 193
+            },
+            {
+                "modele": "OPD2 - 8 KW",
+                "puissance_calo": 5.640,
+                "puissance_frigo": 4.300,
+                "puissance_absorbee": 1.340,
+                "cop": 4.21,
+                "etas": 193
+            },
+            {
+                "modele": "OPD2 - 10 KW",
+                "puissance_calo": 7.245,
+                "puissance_frigo": 5.520,
+                "puissance_absorbee": 1.725,
+                "cop": 4.20,
+                "etas": 193
+            },
+            {
+                "modele": "OPD2 - 13 KW",
+                "puissance_calo": 9.665,
+                "puissance_frigo": 7.355,
+                "puissance_absorbee": 2.310,
+                "cop": 4.20,
+                "etas": 193
+            }
+        ]
+    },
+    "Freecooling": true,
+    "Kit_Piscine": true,
+    "Cop": {"max": 4.50},
+    "Etas": {"max": 196},
+    "Eau_de_nappe": {"Puissance_min": 3.132, "Puissance_max": 12.9},
+    "Emetteur": {"min": 0, "max": 45},
+    "Dimension": {"largeur": 635, "longueur": 635, "hauteur": 1840},
+    "Dimension2": {"largeur": "-", "longueur": "-", "hauteur": "-"},
+    "Image": "assets/img/OPTIPACKDUO.mp4",
+    "Image2": "assets/img/DUOCD.jpg",
+    "BrochureURL": "https://www.nextherm.fr/wp-content/uploads/2023/03/OPTIPACKDUO2_R32_FP-EGE-OPTIDUO2-AA-02-2023-VF-2.pdf",
+    "Description": "L'OPTIPACKDUO 2 EAU GLYCOLÉE / EAU, simple, économique et compacte, a été conçue tout spécialement pour la maison neuve RT2020. Tout a été pensé pour faciliter la mise en œuvre, l'entretien, l'utilisation. Disponible en version Eau de Nappe, en insérant un échangeur de barrage. En minimisant les contraintes et les coûts, NEXTHERM® rend la géothermie accessible à tous."
+},
+
+{
+    "Nom": "Optipackduo - Eau/Eau - R410",
+    "Particularites": ["Geothermie", "Eau/Eau", "R410A"],
+    "Puissance": {
+        "min": 2.268,
+        "max": 9.665,
+        "disponibles": [
+            {
+                "modele": "OPD - 4 KW",
+                "puissance_calo": 2.268,
+                "puissance_frigo": 1.728,
+                "puissance_absorbee": 0.540,
+                "cop": 4.20,
+                "etas": 192
+            },
+            {
+                "modele": "OPD - 6 KW",
+                "puissance_calo": 4.220,
+                "puissance_frigo": 3.220,
+                "puissance_absorbee": 1.000,
+                "cop": 4.22,
+                "etas": 193
+            },
+            {
+                "modele": "OPD - 8 KW",
+                "puissance_calo": 5.640,
+                "puissance_frigo": 4.300,
+                "puissance_absorbee": 1.340,
+                "cop": 4.21,
+                "etas": 193
+            },
+            {
+                "modele": "OPD - 10 KW",
+                "puissance_calo": 7.245,
+                "puissance_frigo": 5.520,
+                "puissance_absorbee": 1.725,
+                "cop": 4.20,
+                "etas": 193
+            },
+            {
+                "modele": "OPD - 13 KW",
+                "puissance_calo": 9.665,
+                "puissance_frigo": 7.355,
+                "puissance_absorbee": 2.310,
+                "cop": 4.20,
+                "etas": 193
+            }
+        ]
+    },
+    "Freecooling": true,
+    "Kit_Piscine": true,
+    "Cop": {"max": 4.20},
+    "Etas": {"max": 193},
+    "Eau_de_nappe": {"Puissance_min": 5.275, "Puissance_max": 15.438},
+    "Emetteur": {"min": 0, "max": 55},
+    "Dimension": {"largeur": 635, "longueur": 635, "hauteur": 1840},
+    "Dimension2": {"largeur": "-", "longueur": "-", "hauteur": "-"},
+    "Image": "assets/img/OPTIPACKDUO.mp4",
+    "Image2": "assets/img/DUOCD.jpg",
+    "BrochureURL": "https://www.nextherm.fr/wp-content/uploads/2023/03/OPTIPACKDUO_R410_FP-EGE-OPTIDUO2-AA-02-2023-VF.1.pdf",
+    "Description": "L'OPTIPACKDUO EAU GLYCOPHILÉE / EAU, simple, économique et compacte, a été conçue tout spécialement pour la maison neuve RT2020. Tout a été pensé pour faciliter la mise en œuvre, l'entretien, l'utilisation. Disponible en version Eau de Nappe, en insérant un échangeur de barrage. En minimisant les contraintes et les coûts, NEXTHERM® rend la géothermie accessible à tous."
+},
+
+{
+    "Nom": "Optipackduo 2 - Sol/Eau - R32",
+    "Particularites": ["Geothermie", "Sol/Eau", "R32"],
+    "Puissance": {
+        "min": 2.700,
+        "max": 10.580,
+        "disponibles": [
+            {
+                "modele": "OPD2 SE - 2 KW",
+                "puissance_calo": 2.700,
+                "puissance_frigo": 2.080,
+                "puissance_absorbee": 0.620,
+                "cop": 4.35,
+                "etas": 217
+            },
+            {
+                "modele": "OPD2 SE - 4 KW",
+                "puissance_calo": 4.820,
+                "puissance_frigo": 3.720,
+                "puissance_absorbee": 1.100,
+                "cop": 4.39,
+                "etas": 217
+            },
+            {
+                "modele": "OPD2 SE - 6 KW",
+                "puissance_calo": 6.530,
+                "puissance_frigo": 5.050,
+                "puissance_absorbee": 1.480,
+                "cop": 4.43,
+                "etas": 221
+            },
+            {
+                "modele": "OPD2 SE - 8 KW",
+                "puissance_calo": 7.430,
+                "puissance_frigo": 5.750,
+                "puissance_absorbee": 1.680,
+                "cop": 4.42,
+                "etas": 221
+            },
+            {
+                "modele": "OPD2 SE - 10 KW",
+                "puissance_calo": 10.580,
+                "puissance_frigo": 8.100,
+                "puissance_absorbee": 2.480,
+                "cop": 4.34,
+                "etas": 217
+            }
+        ]
+    },
+    "Freecooling": true,
+    "Kit_Piscine": true,
+    "Cop": {"max": 4.43},
+    "Etas": {"max": 221},
+    "Eau_de_nappe": {"Puissance_min": 3.132, "Puissance_max": 12.9},
+    "Emetteur": {"min": 0, "max": 45},
+    "Dimension": {"largeur": 635, "longueur": 635, "hauteur": 1840},
+    "Dimension2": {"largeur": "-", "longueur": "-", "hauteur": "-"},
+    "Image": "assets/img/OPTIPACKDUO.mp4",
+    "Image2": "assets/img/DUOCD.jpg",
+    "BrochureURL": "https://www.nextherm.fr/wp-content/uploads/2023/03/OPTIPACKDUO2_R32_FP-SE-OPTIDUO2-AA-02-2023-V4.pdf",
+    "Description": "L'OPTIPACKDUO 2 SOL/EAU est une PAC design, compacte, 2 en 1 Chauffage & ECS, tout a été pensé et conçu pour faciliter la mise en œuvre, l'entretien, l'utilisation. En minimisant les contraintes et les coûts, NEXTHERM rend la géothermie accessible à tous."
+},
+
+{
+    "Nom": "Optipackduo - Sol/Eau - R410",
+    "Particularites": ["Geothermie", "Sol/Eau", "R410A"],
+    "Puissance": {
+        "min": 2.360,
+        "max": 7.900,
+        "disponibles": [
+            {
+                "modele": "OPD SE - 4 KW",
+                "puissance_calo": 2.360,
+                "puissance_frigo": 1.810,
+                "puissance_absorbee": 0.550,
+                "cop": 4.45,
+                "etas": 191
+            },
+            {
+                "modele": "OPD SE - 6 KW",
+                "puissance_calo": 4.400,
+                "puissance_frigo": 3.420,
+                "puissance_absorbee": 0.980,
+                "cop": 4.40,
+                "etas": 191
+            },
+            {
+                "modele": "OPD SE - 8 KW",
+                "puissance_calo": 6.040,
+                "puissance_frigo": 4.720,
+                "puissance_absorbee": 1.320,
+                "cop": 4.57,
+                "etas": 194
+            },
+            {
+                "modele": "OPD SE - 10 KW",
+                "puissance_calo": 7.900,
+                "puissance_frigo": 6.220,
+                "puissance_absorbee": 1.680,
+                "cop": 4.71,
+                "etas": 200
+            }
+        ]
+    },
+    "Freecooling": true,
+    "Kit_Piscine": true,
+    "Cop": {"max": 4.71},
+    "Etas": {"max": 200},
+    "Eau_de_nappe": {"Puissance_min": 0, "Puissance_max": 0},
+    "Emetteur": {"min": 0, "max": 55},
+    "Dimension": {"largeur": 635, "longueur": 635, "hauteur": 1840},
+    "Dimension2": {"largeur": "-", "longueur": "-", "hauteur": "-"},
+    "Image": "assets/img/OPTIPACKDUO.mp4",
+    "Image2": "assets/img/DUOCD.jpg",
+    "BrochureURL": "https://www.nextherm.fr/wp-content/uploads/2023/03/OPTIPACKDUO_R410_FP-SE-OPTIDUO-AA-02-2023-V4.pdf",
+    "Description": "L'OPTIPACKDUO SOL/EAU est une PAC design, compacte, 2 en 1 Chauffage & ECS, tout a été pensé et conçu pour faciliter la mise en œuvre, l'entretien, l'utilisation. En minimisant les contraintes et les coûts, NEXTHERM rend la géothermie accessible à tous."
+}, 
+
+
+{
+    "Nom": "Optipack - Eau/Eau - R410",
+    "Particularites": ["Geothermie", "Eau/Eau", "R410A"],
+    "Puissance": {
+        "min": 2.360,
+        "max": 10.350,
+        "disponibles": [
+            {
+                "modele": "OP EE - 4 KW",
+                "puissance_calo": 2.360,
+                "puissance_frigo": 1.830,
+                "puissance_absorbee": 0.530,
+                "cop": 4.45,
+                "etas": 191
+            },
+            {
+                "modele": "OP EE - 6 KW",
+                "puissance_calo": 4.400,
+                "puissance_frigo": 3.415,
+                "puissance_absorbee": 0.985,
+                "cop": 4.60,
+                "etas": 191
+            },
+            {
+                "modele": "OP EE - 8 KW",
+                "puissance_calo": 6.040,
+                "puissance_frigo": 4.720,
+                "puissance_absorbee": 1.320,
+                "cop": 4.57,
+                "etas": 196
+            },
+            {
+                "modele": "OP EE - 10 KW",
+                "puissance_calo": 7.900,
+                "puissance_frigo": 6.220,
+                "puissance_absorbee": 1.680,
+                "cop": 4.68,
+                "etas": 200
+            },
+            {
+                "modele": "OP EE - 13 KW",
+                "puissance_calo": 10.350,
+                "puissance_frigo": 8.150,
+                "puissance_absorbee": 2.200,
+                "cop": 4.70,
+                "etas": 201
+            }
+        ]
+    },
+    "Freecooling": true,
+    "Kit_Piscine": true,
+    "Cop": {"max": 4.70},
+    "Etas": {"max": 201},
+    "Eau_de_nappe": {"Puissance_min": 5.275, "Puissance_max": 15.438},
+    "Emetteur": {"min": 0, "max": 55},
+    "Dimension": {"largeur": 550, "longueur": 440, "hauteur": 750},
+    "Dimension2": {"largeur": "-", "longueur": "-", "hauteur": "-"},
+    "Image": "assets/img/OPTIPACK.mp4",
+    "Image2": "assets/img/OPTICD.jpg",
+    "BrochureURL": "https://www.nextherm.fr/wp-content/uploads/2023/03/OPTIPACK_R410_FP-EGE-OPTI2-AA-02-2023-V2-VF.pdf",
+    "Description": "L'OPTIPACK EAU GLYCOLÉE / EAU, simple, économique et compacte, a été conçue tout spécialement pour la maison neuve RT2020. Tout a été pensé pour faciliter la mise en œuvre, l'entretien, l'utilisation. Disponible en version Eau de Nappe, en insérant un échangeur de barrage. En minimisant les contraintes et les coûts, NEXTHERM® rend la géothermie accessible à tous."
+},
+{
+    "Nom": "Optipack 2 - Eau/Eau - R32",
+    "Particularites": ["Geothermie", "Eau/Eau", "R32"],
+    "Puissance": {
+        "min": 2.480,
+        "max": 9.960,
+        "disponibles": [
+            {
+                "modele": "OP2 EE - 2 KW",
+                "puissance_calo": 2.480,
+                "puissance_frigo": 1.880,
+                "puissance_absorbee": 0.600,
+                "cop": 4.12,
+                "etas": 176
+            },
+            {
+                "modele": "OP2 EE - 4 KW",
+                "puissance_calo": 4.610,
+                "puissance_frigo": 3.790,
+                "puissance_absorbee": 1.120,
+                "cop": 4.12,
+                "etas": 186
+            },
+            {
+                "modele": "OP2 EE - 6 KW",
+                "puissance_calo": 6.200,
+                "puissance_frigo": 4.700,
+                "puissance_absorbee": 1.500,
+                "cop": 4.12,
+                "etas": 175
+            },
+            {
+                "modele": "OP2 EE - 8 KW",
+                "puissance_calo": 7.090,
+                "puissance_frigo": 5.730,
+                "puissance_absorbee": 1.560,
+                "cop": 4.12,
+                "etas": 174
+            },
+            {
+                "modele": "OP2 EE - 10 KW",
+                "puissance_calo": 9.960,
+                "puissance_frigo": 7.370,
+                "puissance_absorbee": 2.590,
+                "cop": 3.85,
+                "etas": 173
+            }
+        ]
+    },
+    "Freecooling": true,
+    "Kit_Piscine": true,
+    "Cop": {"max": 4.12},
+    "Etas": {"max": 186},
+    "Eau_de_nappe": {"Puissance_min": 3.132, "Puissance_max": 12.9},
+    "Emetteur": {"min": 0, "max": 45},
+    "Dimension": {"largeur": 550, "longueur": 440, "hauteur": 750},
+    "Dimension2": {"largeur": "-", "longueur": "-", "hauteur": "-"},
+    "Image": "assets/img/OPTIPACK.mp4",
+    "Image2": "assets/img/OPTICD.jpg",
+    "BrochureURL": "https://www.nextherm.fr/wp-content/uploads/2024/04/OPTIPACK2_R32_FP-EGE-OPTI2-AA-02-2023-V2-VF.pdf",
+    "Description": "L'OPTIPACK 2 EAU GLYCOLÉE / EAU, simple, économique et compacte, a été conçue tout spécialement pour la maison neuve RT2020. Tout a été pensé pour faciliter la mise en œuvre, l'entretien, l'utilisation. Disponible en version Eau de Nappe, en insérant un échangeur de barrage. En minimisant les contraintes et les coûts, NEXTHERM® rend la géothermie accessible à tous."
+},
+
+{
+    "Nom": "Optipack - Sol/Eau - R410",
+    "Particularites": ["Geothermie", "Sol/Eau", "R32"],
+    "Puissance": {
+        "min": 2.360,
+        "max": 10.350,
+        "disponibles": [
+            {
+                "modele": "OP2 SE - 4 KW",
+                "puissance_calo": 2.360,
+                "puissance_frigo": 1.830,
+                "puissance_absorbee": 0.530,
+                "cop": 4.45,
+                "etas": 191
+            },
+            {
+                "modele": "OP2 SE - 6 KW",
+                "puissance_calo": 4.400,
+                "puissance_frigo": 3.415,
+                "puissance_absorbee": 0.985,
+                "cop": 4.60,
+                "etas": 191
+            },
+            {
+                "modele": "OP2 SE - 8 KW",
+                "puissance_calo": 6.040,
+                "puissance_frigo": 4.720,
+                "puissance_absorbee": 1.320,
+                "cop": 4.57,
+                "etas": 196
+            },
+            {
+                "modele": "OP2 SE - 10 KW",
+                "puissance_calo": 7.900,
+                "puissance_frigo": 6.220,
+                "puissance_absorbee": 1.680,
+                "cop": 4.68,
+                "etas": 200
+            },
+            {
+                "modele": "OP2 SE - 13 KW",
+                "puissance_calo": 10.350,
+                "puissance_frigo": 8.150,
+                "puissance_absorbee": 2.200,
+                "cop": 4.70,
+                "etas": 201
+            }
+        ]
+    },
+    "Freecooling": true,
+    "Kit_Piscine": true,
+    "Cop": {"max": 4.70},
+    "Etas": {"max": 201},
+    "Eau_de_nappe": {"Puissance_min": 0, "Puissance_max": 0},
+    "Emetteur": {"min": 0, "max": 45},
+    "Dimension": {"largeur": 550, "longueur": 440, "hauteur": 750},
+    "Dimension2": {"largeur": "-", "longueur": "-", "hauteur": "-"},
+    "Image": "assets/img/OPTIPACK.mp4",
+    "Image2": "assets/img/OPTICD.jpg",
+    "BrochureURL": "https://www.nextherm.fr/wp-content/uploads/2023/03/OPTIPACK2_R32_FP-SE-OPTI2-AA-02-2023-V3.pdf",
+    "Description": "L'OPTIPACK 2 SOL/EAU, simple, compacte, a été pensée et conçue pour faciliter la mise en œuvre, l'entretien et l'utilisation. En minimisant les contraintes et les coûts, NEXTHERM rend la géothermie accessible à tous."
+},
+
+{
+    "Nom": "Optipack 2 - Sol/Eau - R32",
+    "Particularites": ["Geothermie", "Sol/Eau", "R32"],
+    "Puissance": {
+        "min": 2.700,
+        "max": 10.580,
+        "disponibles": [
+            {
+                "modele": "OP2 SE - 2 KW",
+                "puissance_calo": 2.700,
+                "puissance_frigo": 2.080,
+                "puissance_absorbee": 0.620,
+                "cop": 4.35,
+                "etas": 217
+            },
+            {
+                "modele": "OP2 SE - 4 KW",
+                "puissance_calo": 4.820,
+                "puissance_frigo": 3.720,
+                "puissance_absorbee": 1.100,
+                "cop": 4.39,
+                "etas": 217
+            },
+            {
+                "modele": "OP2 SE - 6 KW",
+                "puissance_calo": 6.530,
+                "puissance_frigo": 5.050,
+                "puissance_absorbee": 1.480,
+                "cop": 4.43,
+                "etas": 221
+            },
+            {
+                "modele": "OP2 SE - 8 KW",
+                "puissance_calo": 7.430,
+                "puissance_frigo": 5.750,
+                "puissance_absorbee": 1.680,
+                "cop": 4.42,
+                "etas": 221
+            },
+            {
+                "modele": "OP2 SE - 10 KW",
+                "puissance_calo": 10.580,
+                "puissance_frigo": 8.100,
+                "puissance_absorbee": 2.480,
+                "cop": 4.34,
+                "etas": 217
+            }
+        ]
+    },
+    "Freecooling": true,
+    "Kit_Piscine": true,
+    "Cop": {"max": 4.43},
+    "Etas": {"max": 221},
+    "Eau_de_nappe": {"Puissance_min": 0, "Puissance_max": 0},
+    "Emetteur": {"min": 0, "max": 45},
+    "Dimension": {"largeur": 550, "longueur": 440, "hauteur": 750},
+    "Dimension2": {"largeur": "-", "longueur": "-", "hauteur": "-"},
+    "Image": "assets/img/OPTIPACK.mp4",
+    "Image2": "assets/img/OPTICD.jpg",
+    "BrochureURL": "https://www.nextherm.fr/wp-content/uploads/2024/04/OPTIPACK2_R32_FP-SE-OPTI2-AA-02-2023-V2-VF.pdf",
+    "Description": "L'OPTIPACK 2 SOL/EAU, simple, économique et compacte, a été conçue tout spécialement pour la maison neuve RT2020. Tout a été pensé pour faciliter la mise en œuvre, l'entretien, l'utilisation. En minimisant les contraintes et les coûts, NEXTHERM® rend la géothermie accessible à tous."
+},
+
+{
+    "Nom": "R/OPACK 3 - Air/Eau - R32",
+    "Particularites": ["Aerothermie", "Air/Eau", "R32"],
+    "Puissance": {
+        "min": 7.810,
+        "max": 17.900,
+        "disponibles": [
+            {
+                "modele": "ROP3 AE - 8 KW",
+                "puissance_calo": 7.810,
+                "puissance_frigo": 6.030,
+                "puissance_absorbee": 1.780,
+                "cop": 4.38,
+                "etas": 176
+            },
+            {
+                "modele": "ROP3 AE - 10 KW",
+                "puissance_calo": 10.100,
+                "puissance_frigo": 7.820,
+                "puissance_absorbee": 2.280,
+                "cop": 4.43,
+                "etas": 178
+            },
+            {
+                "modele": "ROP3 AE - 12 KW",
+                "puissance_calo": 11.800,
+                "puissance_frigo": 9.070,
+                "puissance_absorbee": 2.730,
+                "cop": 4.43,
+                "etas": 176
+            },
+            {
+                "modele": "ROP3 AE - 16 KW",
+                "puissance_calo": 16.300,
+                "puissance_frigo": 12.810,
+                "puissance_absorbee": 3.490,
+                "cop": 4.32,
+                "etas": 177
+            },
+            {
+                "modele": "ROP3 AE - 18 KW",
+                "puissance_calo": 17.900,
+                "puissance_frigo": 13.830,
+                "puissance_absorbee": 4.070,
+                "cop": 4.85,
+                "etas": 175
+            }
+        ]
+    },
+    "Freecooling": false,
+    "Kit_Piscine": false,
+    "Cop": {"max": 4.85},
+    "Etas": {"max": 178},
+    "Eau_de_nappe": {"Puissance_min": 0, "Puissance_max": 0},
+    "Emetteur": {"min": 0, "max": 60},
+    "Dimension": {"largeur": "-", "longueur": "-", "hauteur": "-"},
+    "Dimension2": {"largeur": 550, "longueur": 440, "hauteur": 750},
+    "Image": "assets/img/ROPACK_12_15-01.png",
+    "Image2": "assets/img/ROPACK_12_15-01.png",
+    "BrochureURL": "https://www.nextherm.fr/wp-content/uploads/2024/02/OPTIPACK2_R32_FP-SS-OPTI2-AA-02-2024-VF.pdf",
+    "Description": "La pompe à chaleur R/OPACK3 – AIR/EAU a été conçue pour fonctionner jusqu'à une température de l'air de -20 °C et pour produire de l'eau de chauffage jusqu'à 60 °C. Cette pompe à chaleur au R32 est équipée des dernières technologies, telles que le compresseur rotatif à deux cylindres, un ventilateur à vitesse variable et une gestion par microprocesseur."
+}
+
+]
+}
