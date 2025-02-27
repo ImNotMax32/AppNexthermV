@@ -59,7 +59,7 @@ export const ProductsTable = React.memo(({
         </thead>
         <tbody>
           {products.map((product) => (
-            <tr key={product.id} className="relative">
+            <tr key={product.id} className="relative" style={{ breakInside: 'avoid', pageBreakInside: 'avoid' }}>
               <td className="py-2 px-[0.2rem] border-b">
                 <PersistentTextarea
                   value={product.code}

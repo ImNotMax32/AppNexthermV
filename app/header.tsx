@@ -3,11 +3,13 @@
 import Link from "next/link";
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { LogOut, Home, User, Settings, Handshake, Menu } from 'lucide-react';
+import { LogOut, Home, User, Settings, Handshake, Menu, X } from 'lucide-react';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, DropdownMenuSeparator, DropdownMenuLabel } from '@/components/ui/dropdown-menu';
 import { useRouter } from 'next/navigation';
 import { ThemeSwitcher } from "@/components/theme-switcher";
 import { createClient } from '@/utils/supabase/client';
+import { usePathname } from 'next/navigation';
+import { motion } from 'framer-motion';
 
 type UserProfile = {
   id: string;
@@ -21,11 +23,36 @@ export default function Header() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [userProfile, setUserProfile] = useState<UserProfile | null>(null);
   const router = useRouter();
+  const pathname = usePathname();
+  const hideHamburgerPaths = ['/', '/home', '/sign-in', '/sign-up', '/login'];
+  const [shouldHideHamburger, setShouldHideHamburger] = useState(false);
   const supabase = createClient();
+
+  useEffect(() => {
+    const isHomePage = pathname === '/';
+    const isLoginPage = pathname === '/login';
+    const isSignupPage = pathname === '/signup';
+    if (isHomePage || isLoginPage || isSignupPage) {
+      setShouldHideHamburger(true);
+    } else {
+      setShouldHideHamburger(false);
+    }
+  }, [pathname]);
+
+  useEffect(() => {
+    const handleOutsideClick = () => {
+      setIsSidebarOpen(false);
+    };
+
+    window.addEventListener('toggleSidebarClose', handleOutsideClick);
+
+    return () => {
+      window.removeEventListener('toggleSidebarClose', handleOutsideClick);
+    };
+  }, []);
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
-    // Émettre un événement personnalisé pour le layout
     const event = new CustomEvent('toggleSidebar');
     window.dispatchEvent(event);
   };
@@ -92,17 +119,20 @@ export default function Header() {
   }
 
   return (
-    <header className="border-b border-gray-200">
+    <header className="border-b border-gray-200 sticky top-0 z-[90] bg-white backdrop-blur-lg backdrop-saturate-150 bg-opacity-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
         <Link href="/" className="flex items-center space-x-3">
           <img
             src="/assets/img/X.png"
             alt="Nextherm Logo"
-            className="h-12 w-12 object-contain"
+            className="h-10 w-10 sm:h-12 sm:w-12 object-contain"
           />
-          <div className="flex items-center space-x-2">
-            <span className="font-bold text-gray-900" style={{ fontSize: '1.75rem', lineHeight: '2rem' }}>Nextherm</span>
-            <span className="font-medium" style={{ fontSize: '1.75rem', lineHeight: '2rem', color: '#86BC29' }}>Applications</span>
+          <div className="flex items-center space-x-1 sm:space-x-2">
+            <span className="font-bold text-gray-900 text-lg sm:text-xl md:text-2xl">Nextherm</span>
+            <span className="font-medium text-lg sm:text-xl md:text-2xl text-[#86BC29]">
+              <span className="hidden xs:inline">Applications</span>
+              <span className="xs:hidden">App</span>
+            </span>
           </div>
         </Link>
 
@@ -110,10 +140,30 @@ export default function Header() {
           <Button
             variant="ghost"
             onClick={toggleSidebar}
-            className="lg:hidden"
+            className={`lg:hidden z-60 relative ${shouldHideHamburger ? 'hidden' : ''}`}
+            aria-label="Toggle menu"
           >
-            <Menu className="h-6 w-6" />
-            <span className="sr-only">Toggle menu</span>
+            <div className="relative w-6 h-6">
+              {isSidebarOpen ? (
+                <motion.div
+                  initial={{ rotate: 0, opacity: 0 }}
+                  animate={{ rotate: 0, opacity: 1 }}
+                  exit={{ rotate: 0, opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <X className="h-6 w-6 text-gray-800" />
+                </motion.div>
+              ) : (
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <Menu className="h-6 w-6 text-gray-800" />
+                </motion.div>
+              )}
+            </div>
           </Button>
           {userProfile ? (
             <div className="flex items-center space-x-3">
@@ -179,7 +229,7 @@ export default function Header() {
           ) : (
             <Button
               asChild
-              className="bg-black hover:bg-gray-800 text-white text-sm px-4 py-2 rounded-full"
+              className="bg-black hover:bg-gray-800 text-white text-sm px-3 sm:px-4 py-2 rounded-full ml-2"
             >
               <Link href="/sign-in">Connexion</Link>
             </Button>

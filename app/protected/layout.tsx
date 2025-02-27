@@ -47,6 +47,7 @@ export default function DashboardLayout({
   const pathname = usePathname();
   const router = useRouter();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(false);
   const supabase = createClient();
 
   useEffect(() => {
@@ -72,6 +73,27 @@ export default function DashboardLayout({
     
     checkAuth();
   }, [router]);
+
+  useEffect(() => {
+    const checkIfDesktop = () => {
+      setIsDesktop(window.innerWidth >= 1024);
+      
+      // Si on passe en mode desktop, on s'assure que le menu est visible
+      if (window.innerWidth >= 1024) {
+        setIsSidebarOpen(true);
+      }
+    };
+    
+    // Vérification initiale
+    checkIfDesktop();
+    
+    // Écouteur pour les changements de taille
+    window.addEventListener('resize', checkIfDesktop);
+    
+    return () => {
+      window.removeEventListener('resize', checkIfDesktop);
+    };
+  }, []);
 
   const dimensionnementItems = [
     { href: '/protected/dimensionnement', icon: Calculator, label: 'Logiciel' },
@@ -109,33 +131,57 @@ export default function DashboardLayout({
     <div className="flex flex-col min-h-[calc(100dvh-68px)] max-w-7xl mx-auto w-full">
       <div className="flex flex-1 overflow-hidden">
         {/* Overlay pour mobile */}
-        {isSidebarOpen && (
-          <div 
-            className="fixed inset-0 bg-black bg-opacity-50 z-30 lg:hidden"
-            onClick={() => setIsSidebarOpen(false)}
-          />
-        )}
+        <AnimatePresence>
+          {isSidebarOpen && (
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="fixed inset-0 bg-black bg-opacity-60 backdrop-blur-sm z-[110] lg:hidden"
+              onClick={() => {
+                setIsSidebarOpen(false);
+                // Émettre un événement pour synchroniser l'état de l'icône
+                const event = new CustomEvent('toggleSidebarClose');
+                window.dispatchEvent(event);
+              }}
+            />
+          )}
+        </AnimatePresence>
         
         {/* Sidebar */}
-        <aside className={`
-          fixed lg:static
-          w-64
-          bg-white 
-          border-r 
-          border-gray-200
-          h-full
-          overflow-y-auto
-          z-40
-          transition-transform
-          duration-300
-          ease-in-out
-          ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
-        `}>
-          <nav className="h-full p-4 space-y-4">
+        <motion.aside 
+          animate={{
+            x: isSidebarOpen || isDesktop ? 0 : -320,
+            boxShadow: (isSidebarOpen && !isDesktop) ? "10px 0 50px rgba(0, 0, 0, 0.1)" : "none",
+          }}
+          transition={{ 
+            type: "spring", 
+            stiffness: 400, 
+            damping: 40,
+            mass: 1
+          }}
+          className={`
+            fixed ${isDesktop ? 'lg:static' : ''}
+            top-0
+            w-64
+            bg-white 
+            border-r-2
+            border-gray-200
+            h-screen
+            overflow-y-auto
+            ${isDesktop ? 'lg:z-[80]' : 'z-[120]'}
+            ${isDesktop ? 'lg:translate-x-0' : ''}
+            rounded-r-xl
+            pt-0
+            ease-in-out
+          `}
+        >
+          <nav className="h-full p-4 px-3 space-y-4 pt-12 lg:pt-2">
             <Link href="/protected/VueGenerale" passHref>
               <Button
                 variant={pathname === '/protected/VueGenerale' ? 'secondary' : 'ghost'}
-                className={`w-full justify-start ${
+                className={`w-full justify-start rounded-xl transition-all ${
                   pathname === '/protected/VueGenerale' ? 'bg-[#86BC29] text-white hover:bg-[#86BC29]' : 'hover:bg-gray-100'
                 }`}
               >
@@ -144,7 +190,7 @@ export default function DashboardLayout({
               </Button>
             </Link>
 
-            <Separator className="my-3" />
+            <Separator className="my-3 bg-gray-200" />
             
             {/* Section Outils techniques */}
             <NavSection label="Outils techniques">
@@ -153,7 +199,7 @@ export default function DashboardLayout({
                   <Link href="/protected/dimensionnement" passHref>
                     <Button
                       variant={pathname === '/protected/dimensionnement' ? 'secondary' : 'ghost'}
-                      className="w-full justify-start text-sm hover:bg-gray-100"
+                      className="w-full justify-start text-sm hover:bg-gray-100 rounded-xl transition-colors duration-200"
                     >
                       <Calculator className="mr-2 h-4 w-4" />
                       Dimensionnement
@@ -161,14 +207,14 @@ export default function DashboardLayout({
                   </Link>
                   
                   {/* Sous-menu dimensionnement */}
-                  <div className="ml-4 space-y-1">
+                  <div className="ml-4 space-y-1 mt-1">
                     {dimensionnementItems.map((item) => (
                       <Link key={item.href} href={item.href} passHref>
                         <Button
                           variant={pathname === item.href ? 'secondary' : 'ghost'}
-                          className={`w-full justify-start text-sm ${
-                            pathname === item.href ? 'bg-[#86BC29] text-white hover:bg-[#86BC29]' : 'hover:bg-gray-100'
-                          }`}
+                          className={`w-full justify-start text-sm rounded-lg transition-all duration-200 ${
+                            pathname === item.href ? 'bg-[#86BC29] text-white hover:bg-[#86BC29]/90' : 'hover:bg-gray-100'
+                           }`}
                         >
                           <item.icon className="mr-2 h-4 w-4" />
                           {item.label}
@@ -181,7 +227,7 @@ export default function DashboardLayout({
                   <Link href="/protected/schema/schematheque" passHref>
                     <Button
                       variant={pathname.startsWith('/dashboard/schema') ? 'secondary' : 'ghost'}
-                      className="w-full justify-start text-sm hover:bg-gray-100"
+                      className="w-full justify-start text-sm hover:bg-gray-100 rounded-xl transition-colors duration-200 mt-2"
                     >
                       <FileText className="mr-2 h-4 w-4" />
                       Documents techniques
@@ -194,9 +240,9 @@ export default function DashboardLayout({
                       <Link key={item.href} href={item.href} passHref>
                         <Button
                           variant={pathname === item.href ? 'secondary' : 'ghost'}
-                          className={`w-full justify-start text-sm ${
-                            pathname === item.href ? 'bg-[#86BC29] text-white hover:bg-[#86BC29]' : 'hover:bg-gray-100'
-                          }`}
+                          className={`w-full justify-start text-sm rounded-lg transition-all duration-200 ${
+                            pathname === item.href ? 'bg-[#86BC29] text-white hover:bg-[#86BC29]/90' : 'hover:bg-gray-100'
+                           }`}
                         >
                           <item.icon className="mr-2 h-4 w-4" />
                           {item.label}
@@ -353,7 +399,7 @@ export default function DashboardLayout({
               </div>
             </NavSection>
           </nav>
-        </aside>
+        </motion.aside>
 
         {/* Contenu principal */}
         <AnimatePresence mode="wait">

@@ -16,35 +16,7 @@ type TypingAction = {
 };
 
 const colorizeCode = (code: string) => {
-  return code
-    .replace(
-      /(function|return|if)/g,
-      '<span style="color: #C586C0; font-weight: 500;">$1</span>'
-    )
-    .replace(
-      /(projet|type|besoin|phase)/g,
-      '<span style="color: #9CDCFE;">$1</span>'
-    )
-    .replace(
-      /('dimensionnement'|'documentation'|'installation')/g,
-      '<span style="color: #CE9178;">$1</span>'
-    )
-    .replace(
-      /(===)/g,
-      '<span style="color: #56B6C2; font-weight: 500;">$1</span>'
-    )
-    .replace(
-      /({|})/g,
-      '<span style="color: #D4D4D4;">$1</span>'
-    )
-    .replace(
-      /(🚀|📊|📑|⚡|🏠|📐|🌟)/g,
-      '<span style="color: #FFD700;">$1</span>'
-    )
-    .replace(
-      /((\/\/ .+))/g,
-      '<span style="color: #6A9955; font-style: italic;">$1</span>'
-    );
+  return code;
 };
 
 export default function HomePage() {
@@ -55,66 +27,50 @@ export default function HomePage() {
   const [expandedContent, setExpandedContent] = useState<string>('');
 
   const typingSequences = [
-    // Séquence 1: Code original Nextherm
+    // Séquence 1: Informations sur Nextherm
     [
-      { type: 'type', content: 'function ' },
-      { type: 'type', content: 'assissta' },
+      { type: 'type', content: '🚀 Bienvenue dans l\'écosystème Nextherm !\n\n' },
+      { type: 'pause', duration: 300 },
+      { type: 'type', content: 'Notre mission : Révolutionner l\'installation des solutions\n' },
+      { type: 'type', content: 'géothermiques grâce à des outils numériques de pointe.\n\n' },
       { type: 'pause', duration: 200 },
-      { type: 'delete', duration: 100 },
-      { type: 'type', content: 'tance' },
-      { type: 'type', content: 'Installateur(projet) {' },
-      { type: 'type', content: '\n' },
+      { type: 'type', content: '✅ Dimensionnement intelligent avec IA prédictive\n' },
+      { type: 'pause', duration: 200 },
+      { type: 'type', content: '✅ Bibliothèque technique interactive et personnalisable\n' },
+      { type: 'pause', duration: 200 },
+      { type: 'type', content: '✅ Création de devis avec base de données Nextherm\n\n' },
       { type: 'pause', duration: 300 },
-      { type: 'type', content: '  // Aide au dimensionnement\n' },
-      { type: 'type', content: '  if (projet.type === ' },
-      { type: 'type', content: "'dimensionnement') {\n" },
-      { type: 'type', content: '    return "Calcul précis adapté au bâtiment 🏠";\n  }\n\n' },
-      { type: 'type', content: "  if (projet.besoin === '" },
-      { type: 'type', content: "schéma') {\n" },
-      { type: 'type', content: '    return "Schématèque complète et détaillée 📐";\n  }\n\n' },
-      { type: 'type', content: "  if (projet.phase === 'installation') {\n" },
-      { type: 'type', content: '    return "Support technique dédié ⚡";\n  }\n\n' },
-      { type: 'pause', duration: 300 },
-      { type: 'type', content: '  // Avantages installateur\n' },
-      { type: 'type', content: '  return {\n' },
-      { type: 'type', content: '    dimensionnement: "Sélection PAC optimale",\n' },
-      { type: 'type', content: '    assistance: "Équipe technique dédiée",\n' },
-      { type: 'type', content: '    documentation: "Schémas techniques détaillés"\n' },
-      { type: 'type', content: '  };\n}' }
+      { type: 'type', content: 'Rejoignez les professionnels qui transforment le secteur du\nchauffage et de la climatisation avec Nextherm.' }
     ],
 
-    // Séquence 2: Fait sur la géothermie
+    // Séquence 2: Faits sur la géothermie
     [
-      { type: 'type', content: '// Saviez-vous ? La géothermie en France 🌍\n' },
-      { type: 'pause', duration: 800 },
-      { type: 'type', content: 'function faitGeothermie() {\n' },
-      { type: 'type', content: '  const statistiques = {\n' },
-      { type: 'type', content: '    source: "ADEME",\n' },
-      { type: 'type', content: '    fait: "La géothermie peut couvrir 100% des besoins\n' },
-      { type: 'type', content: '          en chauffage et en eau chaude d\'une maison,\n' },
-      { type: 'type', content: '          tout en réduisant les émissions de CO2 de 75%" },\n' },
-      { type: 'type', content: '    impact: "Énergie renouvelable et durable ♻️"\n' },
-      { type: 'type', content: '  };\n' },
-      { type: 'type', content: '  return `${statistiques.fait}\n${statistiques.impact}`;\n' },
-      { type: 'type', content: '}\n' },
-      { type: 'type', content: '\n// L\'énergie du futur est sous nos pieds! 🌱' }
+      { type: 'type', content: '🌍 La géothermie en France - Le saviez-vous ?\n\n' },
+      { type: 'pause', duration: 300 },
+      { type: 'type', content: 'Une pompe à chaleur géothermique peut couvrir 100% des\n' },
+      { type: 'type', content: 'besoins en chauffage et en eau chaude d\'une maison.\n\n' },
+      { type: 'pause', duration: 200 },
+      { type: 'type', content: '♻️ Elle permet de réduire les émissions de CO2 de 75%\n' },
+      { type: 'pause', duration: 200 },
+      { type: 'type', content: '💰 Et d\'économiser jusqu\'à 70% sur votre facture énergétique !\n\n' },
+      { type: 'pause', duration: 300 },
+      { type: 'type', content: 'Une énergie renouvelable, durable et accessible.' }
     ],
     
-    // Séquence 3: Citation sur la géothermie
+    // Séquence 3: Avantages Nextherm
     [
-      { type: 'type', content: '/* 🌟 Vision d\'Avenir - La Géothermie */\n\n' },
-      { type: 'type', content: 'class VisionGeothermie {\n' },
-      { type: 'type', content: '  constructor() {\n' },
-      { type: 'type', content: '    this.citation = "La géothermie, c\'est l\'avenir";\n' },
-      { type: 'type', content: '    this.auteur = "Jean-Luc Barrault";\n' },
-      { type: 'type', content: '    this.année = 1989;\n' },
-      { type: 'type', content: '  }\n\n' },
-      { type: 'type', content: '  message() {\n' },
-      { type: 'type', content: '    return "Une énergie propre et inépuisable\n' },
-      { type: 'type', content: '            pour un futur durable";\n' },
-      { type: 'type', content: '  }\n' },
-      { type: 'type', content: '}\n' },
-      { type: 'type', content: '\n// Le futur de l\'énergie est géothermique 🌍♨️' }
+      { type: 'type', content: '✨ Pourquoi choisir Nextherm ?\n\n' },
+      { type: 'pause', duration: 300 },
+      { type: 'type', content: '📊 Des calculs précis pour une performance optimale\n' },
+      { type: 'pause', duration: 200 },
+      { type: 'type', content: '🔍 Une expertise reconnue depuis plus de 40 ans\n' },
+      { type: 'pause', duration: 200 },
+      { type: 'type', content: '👥 Une équipe de spécialistes à votre service\n' },
+      { type: 'pause', duration: 200 },
+      { type: 'type', content: '🛠️ Des outils numériques développés spécifiquement\n' },
+      { type: 'type', content: '    pour les professionnels du secteur\n\n' },
+      { type: 'pause', duration: 300 },
+      { type: 'type', content: 'Nextherm, votre partenaire pour la transition énergétique.' }
     ]
   ];
   useEffect(() => {
@@ -291,7 +247,7 @@ export default function HomePage() {
                 </motion.div>
             </motion.div>
 
-                      {/* Right Column - Terminal */}
+                      {/* Right Column - Terminal clair */}
               <motion.div 
                 initial={{ opacity: 0, x: 50 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -299,30 +255,26 @@ export default function HomePage() {
                 // @ts-ignore
                 className="mt-12 relative sm:max-w-lg sm:mx-auto lg:mt-0 lg:max-w-none lg:mx-0 lg:col-span-6 lg:flex lg:items-center"
               >
-                <div className="w-full rounded-xl shadow-2xl overflow-hidden bg-[#111827] text-white">
+                <div className="w-full rounded-xl shadow-lg overflow-hidden bg-white border border-gray-200 text-gray-800">
                   {/* Terminal Header */}
-                  <div className="flex items-center justify-between px-4 py-3 bg-[#1F2937] border-b border-gray-800">
+                  <div className="flex items-center justify-between px-4 py-3 bg-gray-50 border-b border-gray-200">
                     <div className="flex space-x-2">
-                      <div className="w-3 h-3 rounded-full bg-red-500"></div>
-                      <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-                      <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                      <div className="w-3 h-3 rounded-full bg-red-400"></div>
+                      <div className="w-3 h-3 rounded-full bg-yellow-400"></div>
+                      <div className="w-3 h-3 rounded-full bg-green-400"></div>
                     </div>
-                    <div className="text-sm text-gray-400 font-jetbrains">assistant.nextherm.js</div>
+                    <div className="text-sm text-gray-600 font-medium">nextherm-info.txt</div>
                     <div className="w-12"></div>
                   </div>
                   
-                  {/* Code Content */}
+                  {/* Content */}
                   <div className="p-6 overflow-hidden">
-                    <pre className="font-jetbrains text-[15px] leading-relaxed tracking-wide whitespace-pre-wrap">
+                    <pre className="font-sans text-[15px] leading-relaxed tracking-wide whitespace-pre-wrap text-gray-700">
                       <code 
                         className="block relative"
-                        style={{
-                          WebkitFontSmoothing: 'antialiased',
-                          MozOsxFontSmoothing: 'grayscale',
-                        }}
                         dangerouslySetInnerHTML={{ 
                           __html: displayText + (
-                            !isTypingComplete ? '<span class="animate-pulse ml-1 -mr-1 inline-block">│</span>' : ''
+                            !isTypingComplete ? '<span class="animate-pulse text-[#86BC29] ml-1 -mr-1 inline-block">│</span>' : ''
                           )
                         }}
                       />
@@ -356,7 +308,7 @@ export default function HomePage() {
       {/* Feature 1 - Dimensionnement */}
       <motion.div
         variants={item}
-        whileHover={{ scale: 1.02 }}
+        whileHover={{ scale: 1.03, boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)" }}
         onClick={() => {
           if (openSection === 0) {
             setOpenSection(null);
@@ -367,29 +319,29 @@ export default function HomePage() {
         }}
         className={`
           transform transition-all duration-300 cursor-pointer rounded-xl h-full flex flex-col
-          ${openSection === 0 ? 'bg-[#86BC29]' : 'bg-white hover:bg-gray-50'}
-          relative overflow-hidden
+          ${openSection === 0 ? 'bg-gradient-to-br from-[#86BC29] to-[#6ca01e]' : 'bg-white hover:bg-gray-50'}
+          relative overflow-hidden border border-gray-100
         `}
       >
         <div className="p-6 relative z-10">
           <div className={`
-            flex items-center justify-center h-12 w-12 rounded-xl transition-colors duration-300
+            flex items-center justify-center h-14 w-14 rounded-full transition-colors duration-300 shadow-md
             ${openSection === 0 ? 'bg-white text-[#86BC29]' : 'bg-[#86BC29] text-white'}
           `}>
-            <Calculator className="h-6 w-6" />
+            <Calculator className="h-7 w-7" />
           </div>
           <div className="mt-5">
             <h2 className={`
-              text-lg font-medium transition-colors duration-300
+              text-xl font-semibold transition-colors duration-300
               ${openSection === 0 ? 'text-white' : 'text-gray-900'}
             `}>
-              Dimensionnement Précis
+              Dimensionnement Intelligent
             </h2>
             <p className={`
-              mt-2 text-base transition-colors duration-300
+              mt-3 text-base transition-colors duration-300
               ${openSection === 0 ? 'text-gray-100' : 'text-gray-500'}
             `}>
-              Calculez rapidement la puissance nécessaire et sélectionnez la PAC idéale.
+              Calculs ultra-précis et recommandations intelligentes pour chaque projet.
             </p>
           </div>
         </div>
@@ -397,8 +349,7 @@ export default function HomePage() {
           <motion.div
             initial={{ scale: 0, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            // @ts-ignore
-            className="absolute bottom-0 right-0 w-32 h-32 -mb-8 -mr-8 transform rotate-45"
+            className="absolute bottom-0 right-0 w-40 h-40 -mb-10 -mr-10 transform rotate-45"
           >
             <div className="w-full h-full bg-white opacity-10 rounded-full" />
           </motion.div>
@@ -408,7 +359,7 @@ export default function HomePage() {
       {/* Feature 2 - Schématèque */}
       <motion.div
         variants={item}
-        whileHover={{ scale: 1.02 }}
+        whileHover={{ scale: 1.03, boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)" }}
         onClick={() => {
           if (openSection === 1) {
             setOpenSection(null);
@@ -419,29 +370,29 @@ export default function HomePage() {
         }}
         className={`
           transform transition-all duration-300 cursor-pointer rounded-xl h-full flex flex-col
-          ${openSection === 1 ? 'bg-[#86BC29]' : 'bg-white hover:bg-gray-50'}
-          relative overflow-hidden
+          ${openSection === 1 ? 'bg-gradient-to-br from-[#86BC29] to-[#6ca01e]' : 'bg-white hover:bg-gray-50'}
+          relative overflow-hidden border border-gray-100
         `}
       >
         <div className="p-6 relative z-10">
           <div className={`
-            flex items-center justify-center h-12 w-12 rounded-xl transition-colors duration-300
+            flex items-center justify-center h-14 w-14 rounded-full transition-colors duration-300 shadow-md
             ${openSection === 1 ? 'bg-white text-[#86BC29]' : 'bg-[#86BC29] text-white'}
           `}>
-            <FileText className="h-6 w-6" />
+            <FileText className="h-7 w-7" />
           </div>
           <div className="mt-5">
             <h2 className={`
-              text-lg font-medium transition-colors duration-300
+              text-xl font-semibold transition-colors duration-300
               ${openSection === 1 ? 'text-white' : 'text-gray-900'}
             `}>
-              Schématèque Complète
+              Bibliothèque Technique
             </h2>
             <p className={`
-              mt-2 text-base transition-colors duration-300
+              mt-3 text-base transition-colors duration-300
               ${openSection === 1 ? 'text-gray-100' : 'text-gray-500'}
             `}>
-              Accédez à une bibliothèque de schémas techniques détaillés.
+              Schémas, plans et documentation technique interactive à portée de main.
             </p>
           </div>
         </div>
@@ -449,8 +400,7 @@ export default function HomePage() {
           <motion.div
             initial={{ scale: 0, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            // @ts-ignore
-            className="absolute bottom-0 right-0 w-32 h-32 -mb-8 -mr-8 transform rotate-45"
+            className="absolute bottom-0 right-0 w-40 h-40 -mb-10 -mr-10 transform rotate-45"
           >
             <div className="w-full h-full bg-white opacity-10 rounded-full" />
           </motion.div>
@@ -460,7 +410,7 @@ export default function HomePage() {
       {/* Feature 3 - Support */}
       <motion.div
         variants={item}
-        whileHover={{ scale: 1.02 }}
+        whileHover={{ scale: 1.03, boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)" }}
         onClick={() => {
           if (openSection === 2) {
             setOpenSection(null);
@@ -471,29 +421,29 @@ export default function HomePage() {
         }}
         className={`
           transform transition-all duration-300 cursor-pointer rounded-xl h-full flex flex-col
-          ${openSection === 2 ? 'bg-[#86BC29]' : 'bg-white hover:bg-gray-50'}
-          relative overflow-hidden
+          ${openSection === 2 ? 'bg-gradient-to-br from-[#86BC29] to-[#6ca01e]' : 'bg-white hover:bg-gray-50'}
+          relative overflow-hidden border border-gray-100
         `}
       >
         <div className="p-6 relative z-10">
           <div className={`
-            flex items-center justify-center h-12 w-12 rounded-xl transition-colors duration-300
+            flex items-center justify-center h-14 w-14 rounded-full transition-colors duration-300 shadow-md
             ${openSection === 2 ? 'bg-white text-[#86BC29]' : 'bg-[#86BC29] text-white'}
           `}>
-            <HeadphonesIcon className="h-6 w-6" />
+            <HeadphonesIcon className="h-7 w-7" />
           </div>
           <div className="mt-5">
             <h2 className={`
-              text-lg font-medium transition-colors duration-300
+              text-xl font-semibold transition-colors duration-300
               ${openSection === 2 ? 'text-white' : 'text-gray-900'}
             `}>
-              Support Technique
+              Création de Devis
             </h2>
             <p className={`
-              mt-2 text-base transition-colors duration-300
+              mt-3 text-base transition-colors duration-300
               ${openSection === 2 ? 'text-gray-100' : 'text-gray-500'}
             `}>
-              Bénéficiez d'une assistance technique experte.
+              Générateur de devis sur mesure intégrant les produits Nextherm et vos services.
             </p>
           </div>
         </div>
@@ -501,8 +451,7 @@ export default function HomePage() {
           <motion.div
             initial={{ scale: 0, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            // @ts-ignore
-            className="absolute bottom-0 right-0 w-32 h-32 -mb-8 -mr-8 transform rotate-45"
+            className="absolute bottom-0 right-0 w-40 h-40 -mb-10 -mr-10 transform rotate-45"
           >
             <div className="w-full h-full bg-white opacity-10 rounded-full" />
           </motion.div>
@@ -549,16 +498,16 @@ export default function HomePage() {
                     <h3 className="text-2xl font-semibold mb-4">Comment ça fonctionne ?</h3>
                     <ul className="space-y-3">
                       <li className="flex items-start">
-                        <span className="mr-2">•</span>
-                        Analyse détaillée des besoins thermiques
+                        <span className="flex-shrink-0 h-6 w-6 bg-white bg-opacity-20 rounded-full flex items-center justify-center text-sm mr-3">1</span>
+                        <span>Analyse intelligente des besoins thermiques</span>
                       </li>
                       <li className="flex items-start">
-                        <span className="mr-2">•</span>
-                        Calcul automatique selon la norme EN 14825
+                        <span className="flex-shrink-0 h-6 w-6 bg-white bg-opacity-20 rounded-full flex items-center justify-center text-sm mr-3">2</span>
+                        <span>Simulation énergétique selon les normes en vigueur</span>
                       </li>
                       <li className="flex items-start">
-                        <span className="mr-2">•</span>
-                        Recommandations personnalisées
+                        <span className="flex-shrink-0 h-6 w-6 bg-white bg-opacity-20 rounded-full flex items-center justify-center text-sm mr-3">3</span>
+                        <span>Solutions personnalisées avec étude de rentabilité</span>
                       </li>
                     </ul>
                   </div>
@@ -566,122 +515,129 @@ export default function HomePage() {
                     <h3 className="text-2xl font-semibold mb-4">Les avantages</h3>
                     <ul className="space-y-3">
                       <li className="flex items-start">
-                        <span className="mr-2">•</span>
-                        Gain de temps considérable
+                        <span className="flex-shrink-0 h-6 w-6 bg-white bg-opacity-20 rounded-full flex items-center justify-center text-sm mr-3">✓</span>
+                        <span>Réduction de 80% du temps de dimensionnement</span>
                       </li>
                       <li className="flex items-start">
-                        <span className="mr-2">•</span>
-                        Précision garantie
+                        <span className="flex-shrink-0 h-6 w-6 bg-white bg-opacity-20 rounded-full flex items-center justify-center text-sm mr-3">✓</span>
+                        <span>Précision garantie par notre algorithme propriétaire</span>
                       </li>
                       <li className="flex items-start">
-                        <span className="mr-2">•</span>
-                        Optimisation des coûts
+                        <span className="flex-shrink-0 h-6 w-6 bg-white bg-opacity-20 rounded-full flex items-center justify-center text-sm mr-3">✓</span>
+                        <span>Optimisation des coûts et de la performance énergétique</span>
                       </li>
                     </ul>
-                    <Button asChild className="mt-6 bg-white text-[#86BC29] hover:bg-gray-100">
+                  </div>
+                  <div className="col-span-1 md:col-span-2 mt-6 flex justify-center">
+                    <Button asChild className="bg-white text-[#86BC29] hover:bg-gray-100 shadow-md px-6">
                       <Link href="/protected">
                         Commencer un calcul
                       </Link>
                     </Button>
                   </div>
                 </div>
-              )}
+            )}
 
-                {/* Contenu de l'expansion - Schématèque */}
-                {openSection === 1 && (
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div>
-                      <h3 className="text-2xl font-semibold mb-4">Bibliothèque technique</h3>
-                      <ul className="space-y-3">
-                        <li className="flex items-start">
-                          <span className="mr-2">•</span>
-                          Schémas hydrauliques complets
-                        </li>
-                        <li className="flex items-start">
-                          <span className="mr-2">•</span>
-                          Plans électriques détaillés
-                        </li>
-                        <li className="flex items-start">
-                          <span className="mr-2">•</span>
-                          Guides d'installation pas à pas
-                        </li>
-                      </ul>
-                    </div>
-                    <div>
-                      <h3 className="text-2xl font-semibold mb-4">Ressources disponibles</h3>
-                      <ul className="space-y-3">
-                        <li className="flex items-start">
-                          <span className="mr-2">•</span>
-                          Plus de 200 schémas
-                        </li>
-                        <li className="flex items-start">
-                          <span className="mr-2">•</span>
-                          Mises à jour régulières
-                        </li>
-                        <li className="flex items-start">
-                          <span className="mr-2">•</span>
-                          Formats CAD & PDF
-                        </li>
-                      </ul>
-                      <Button asChild className="mt-6 bg-white text-[#86BC29] hover:bg-gray-100">
-                        <Link href="/protected">
-                          Explorer la schématèque
-                        </Link>
-                      </Button>
-                    </div>
+            {/* Contenu de l'expansion - Schématèque */}
+            {openSection === 1 && (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <div>
+                    <h3 className="text-2xl font-semibold mb-4">Notre bibliothèque</h3>
+                    <ul className="space-y-3">
+                      <li className="flex items-start">
+                        <span className="flex-shrink-0 h-6 w-6 bg-white bg-opacity-20 rounded-full flex items-center justify-center text-sm mr-3">📐</span>
+                        <span>Plus de 500 schémas techniques prêts à l'emploi</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="flex-shrink-0 h-6 w-6 bg-white bg-opacity-20 rounded-full flex items-center justify-center text-sm mr-3">🔄</span>
+                        <span>Mise à jour régulière selon les évolutions technologiques</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="flex-shrink-0 h-6 w-6 bg-white bg-opacity-20 rounded-full flex items-center justify-center text-sm mr-3">🔎</span>
+                        <span>Recherche intelligente par type de projet ou bâtiment</span>
+                      </li>
+                    </ul>
                   </div>
-                )}
+                  <div>
+                    <h3 className="text-2xl font-semibold mb-4">Personnalisation</h3>
+                    <ul className="space-y-3">
+                      <li className="flex items-start">
+                        <span className="flex-shrink-0 h-6 w-6 bg-white bg-opacity-20 rounded-full flex items-center justify-center text-sm mr-3">✏️</span>
+                        <span>Modification en ligne des schémas selon vos besoins</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="flex-shrink-0 h-6 w-6 bg-white bg-opacity-20 rounded-full flex items-center justify-center text-sm mr-3">💾</span>
+                        <span>Enregistrement de vos modèles personnalisés</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="flex-shrink-0 h-6 w-6 bg-white bg-opacity-20 rounded-full flex items-center justify-center text-sm mr-3">🖨️</span>
+                        <span>Export en formats PDF, CAD et autres formats courants</span>
+                      </li>
+                    </ul>
+                  </div>
+                  <div className="col-span-1 md:col-span-2 mt-6 flex justify-center">
+                    <Button asChild className="bg-white text-[#86BC29] hover:bg-gray-100 shadow-md px-6">
+                      <Link href="/protected">
+                        Explorer la bibliothèque
+                      </Link>
+                    </Button>
+                  </div>
+                </div>
+            )}
 
-                {/* Contenu de l'expansion - Support */}
-                {openSection === 2 && (
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div>
-                      <h3 className="text-2xl font-semibold mb-4">Assistance premium</h3>
-                      <ul className="space-y-3">
-                        <li className="flex items-start">
-                          <span className="mr-2">•</span>
-                          Support téléphonique dédié
-                        </li>
-                        <li className="flex items-start">
-                          <span className="mr-2">•</span>
-                          Assistance à la mise en service
-                        </li>
-                        <li className="flex items-start">
-                          <span className="mr-2">•</span>
-                          Suivi personnalisé des installations
-                        </li>
-                      </ul>
-                    </div>
-                    <div>
-                      <h3 className="text-2xl font-semibold mb-4">Nos engagements</h3>
-                      <ul className="space-y-3">
-                        <li className="flex items-start">
-                          <span className="mr-2">•</span>
-                          Réponse sous 24h
-                        </li>
-                        <li className="flex items-start">
-                          <span className="mr-2">•</span>
-                          Experts qualifiés
-                        </li>
-                        <li className="flex items-start">
-                          <span className="mr-2">•</span>
-                          Disponibilité 6j/7
-                        </li>
-                      </ul>
-                      <Button asChild className="mt-6 bg-white text-[#86BC29] hover:bg-gray-100">
-                        <Link href="/protected">
-                          Contacter le support
-                        </Link>
-                      </Button>
-                    </div>
+            {/* Contenu de l'expansion - Support */}
+            {openSection === 2 && (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <div>
+                    <h3 className="text-2xl font-semibold mb-4">Devis personnalisés</h3>
+                    <ul className="space-y-3">
+                      <li className="flex items-start">
+                        <span className="flex-shrink-0 h-6 w-6 bg-white bg-opacity-20 rounded-full flex items-center justify-center text-sm mr-3">📝</span>
+                        <span>Sélection intuitive des produits Nextherm adaptés au projet</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="flex-shrink-0 h-6 w-6 bg-white bg-opacity-20 rounded-full flex items-center justify-center text-sm mr-3">📊</span>
+                        <span>Calcul automatique des tarifs selon les spécifications techniques</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="flex-shrink-0 h-6 w-6 bg-white bg-opacity-20 rounded-full flex items-center justify-center text-sm mr-3">📅</span>
+                        <span>Ajout simple de vos services additionnels et options</span>
+                      </li>
+                    </ul>
                   </div>
-                )}
+                  <div>
+                    <h3 className="text-2xl font-semibold mb-4">Fonctionnalités du module</h3>
+                    <ul className="space-y-3">
+                      <li className="flex items-start">
+                        <span className="flex-shrink-0 h-6 w-6 bg-white bg-opacity-20 rounded-full flex items-center justify-center text-sm mr-3">💼</span>
+                        <span>Export PDF professionnel avec votre identité visuelle</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="flex-shrink-0 h-6 w-6 bg-white bg-opacity-20 rounded-full flex items-center justify-center text-sm mr-3">📱</span>
+                        <span>Enregistrement et suivi de l'historique de vos devis</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="flex-shrink-0 h-6 w-6 bg-white bg-opacity-20 rounded-full flex items-center justify-center text-sm mr-3">🔄</span>
+                        <span>Connexion avec votre système de gestion existant</span>
+                      </li>
+                     </ul>
+                   </div>
+                   <div className="col-span-1 md:col-span-2 mt-6 flex justify-center">
+                     <Button asChild className="bg-white text-[#86BC29] hover:bg-gray-100 shadow-md px-6">
+                       <Link href="/protected">
+                         Créer un devis
+                       </Link>
+                     </Button>
+                   </div>
+                 </div>
+             )}
           </motion.div>
         </motion.div>
       )}
     </AnimatePresence>
   </div>
 </motion.section>
-    </div>
+
+     </div>
   );
 }

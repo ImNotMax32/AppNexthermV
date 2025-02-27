@@ -300,7 +300,7 @@ export default function VueGenerale() {
 
 
   return (
-    <div className="p-6 space-y-4">
+    <div className="p-6 space-y-6">
       <motion.h1 
         className="text-2xl font-bold text-gray-800"
         initial={{ opacity: 0, y: -20 }}
@@ -311,27 +311,23 @@ export default function VueGenerale() {
       </motion.h1>
 
       {/* Section Dimensionnements */}
-      <div className="space-y-4">
+      <div className="space-y-6">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="text-lg text-gray-400 flex items-center gap-2 mb-4">
+          <h2 className="text-lg text-gray-400 flex items-center gap-2 mb-5">
             <Calculator className="w-5 h-5" />
             Statistiques Dimensionnements
           </h2>
         </motion.div>
 
         <div 
-          className="grid grid-cols-1 md:grid-cols-2 gap-6" 
+          className="grid grid-cols-1 lg:grid-cols-2 gap-8" 
           style={{ 
-            display: 'grid', 
-            gridTemplateColumns: 'repeat(2, 1fr)', 
-            gap: '1.5rem', 
-            width: '100%', 
-            maxWidth: '100%',
-            minHeight: '240px'
+            width: '100%',
+            minHeight: '300px'
           }}
         >
         {/* Graphique linéaire */}
@@ -356,8 +352,8 @@ export default function VueGenerale() {
                   {growthPercentage}% vs mois dernier
                 </div>
               </div>
-              <div className="mt-2 h-[135px]">
-              <ResponsiveContainer width="100%" height={195}>
+              <div className="mt-2 h-[200px] sm:h-[250px]">
+              <ResponsiveContainer width="100%" height="100%">
                 <LineChart data={chartData}>
                   <CartesianGrid strokeDasharray="3 3" stroke="#E5E7EB" />
                   <XAxis 
@@ -409,7 +405,7 @@ export default function VueGenerale() {
               <div className="flex justify-between items-center">
                 <CardTitle className="text-lg text-gray-600 flex items-center gap-2">
                   <PieChartIcon className="w-5 h-5" />
-                  Analyse des projets
+                  Analyse par {analysisType === 'type' ? 'type' : 'département'}
                 </CardTitle>
                 <div className="flex gap-2">
                   <Button
@@ -430,18 +426,20 @@ export default function VueGenerale() {
               </div>
             </CardHeader>
             <CardContent style={{ flex: 1, minHeight: 0 }}>
-              <div className="flex items-center justify-between">
-                <div className="w-1/2">
-                  <ResponsiveContainer width="100%" height={210}>
+              <div className="flex flex-col sm:flex-row items-center justify-between h-full">
+                <div className="w-full sm:w-3/5 h-[180px] sm:h-[220px]">
+                  <ResponsiveContainer width="100%" height="100%">
                     <PieChart>
                       <Pie
                         data={getPieData()}
-                        innerRadius={60}
-                        outerRadius={80}
+                        cx="60%"
+                        cy="50%"
+                        innerRadius={65}
+                        outerRadius={90}
+                        fill="#8884d8"
                         paddingAngle={5}
                         dataKey="value"
-                        startAngle={90}
-                        endAngle={-270}
+                        label
                       >
                         {getPieData().map((entry, index) => (
                           <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
@@ -451,24 +449,24 @@ export default function VueGenerale() {
                     </PieChart>
                   </ResponsiveContainer>
                 </div>
-                <div className="w-1/2 pl-4 space-y-2">
-                {getPieData().map((entry: PieDataItem, index: number) => (
-                  <div 
-                    key={entry.name} 
-                    className="flex items-center gap-2 text-sm p-2 rounded-lg hover:bg-gray-50 transition-colors"
-                  >
+                <div className="w-full sm:w-2/5 flex flex-col space-y-2 mt-4 sm:mt-0 sm:pl-4">
+                  {getPieData().map((entry, index) => (
                     <div 
-                      className="w-3 h-3 rounded-full flex-shrink-0" 
-                      style={{ backgroundColor: COLORS[index % COLORS.length] }}
-                    />
-                    <div className="flex-1">
-                      <div className="font-medium">{entry.name}</div>
-                      <div className="text-xs text-gray-500">
-                        {entry.value} projets ({Math.round((entry.value / calculations.length) * 100)}%)
+                      key={entry.name} 
+                      className="flex items-center gap-2 text-sm p-2 rounded-lg hover:bg-gray-50 transition-colors"
+                    >
+                      <div 
+                        className="w-3 h-3 rounded-full flex-shrink-0" 
+                        style={{ backgroundColor: COLORS[index % COLORS.length] }}
+                      />
+                      <div className="flex-1">
+                        <div className="font-medium">{entry.name}</div>
+                        <div className="text-xs text-gray-500">
+                          {entry.value} projets ({Math.round((entry.value / calculations.length) * 100)}%)
+                        </div>
                       </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
                 </div>
               </div>
             </CardContent>
@@ -479,27 +477,23 @@ export default function VueGenerale() {
 
       
     {/* Section Devis */}
-    <div className="space-y-4 mt-6">
+    <div className="space-y-6 mt-10">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="text-lg text-gray-400 flex items-center gap-2 mb-4">
+          <h2 className="text-lg text-gray-400 flex items-center gap-2 mb-5">
             <FileText className="w-5 h-5" />
             Statistiques Devis
           </h2>
         </motion.div>
 
         <div 
-          className="grid grid-cols-1 md:grid-cols-2 gap-6" 
+          className="grid grid-cols-1 lg:grid-cols-2 gap-8" 
           style={{ 
-            display: 'grid', 
-            gridTemplateColumns: 'repeat(2, 1fr)', 
-            gap: '1.5rem', 
-            width: '100%', 
-            maxWidth: '100%',
-            minHeight: '240px'
+            width: '100%',
+            minHeight: '300px'
           }}
         >
           {/* Graphique linéaire des devis */}
@@ -536,8 +530,8 @@ export default function VueGenerale() {
                     ))}% vs mois dernier
                   </div>
                 </div>
-                <div className="h-[135px]">
-                  <ResponsiveContainer width="100%" height={195}>
+                <div className="h-[200px] sm:h-[250px]">
+                  <ResponsiveContainer width="100%" height="100%">
                     <LineChart data={getDevisChartData()}>
                       <CartesianGrid strokeDasharray="3 3" stroke="#E5E7EB" />
                       <XAxis 
@@ -610,18 +604,20 @@ export default function VueGenerale() {
                 </div>
               </CardHeader>
               <CardContent style={{ flex: 1, minHeight: 0 }}>
-                <div className="flex items-center justify-between">
-                  <div className="w-1/2">
-                    <ResponsiveContainer width="100%" height={210}>
+                <div className="flex flex-col sm:flex-row items-center justify-between h-full">
+                  <div className="w-full sm:w-3/5 h-[180px] sm:h-[220px]">
+                    <ResponsiveContainer width="100%" height="100%">
                       <PieChart>
                         <Pie
                           data={getDevisPieData()}
-                          innerRadius={60}
-                          outerRadius={80}
+                          cx="60%"
+                          cy="50%"
+                          innerRadius={65}
+                          outerRadius={90}
+                          fill="#8884d8"
                           paddingAngle={5}
                           dataKey="value"
-                          startAngle={90}
-                          endAngle={-270}
+                          label
                         >
                           {getDevisPieData().map((entry, index) => (
                             <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
@@ -631,8 +627,8 @@ export default function VueGenerale() {
                       </PieChart>
                     </ResponsiveContainer>
                   </div>
-                  <div className="w-1/2 pl-4 space-y-2">
-                    {getDevisPieData().map((entry: PieDataItem, index: number) => (
+                  <div className="w-full sm:w-2/5 flex flex-col space-y-2 mt-4 sm:mt-0 sm:pl-4">
+                    {getDevisPieData().map((entry, index) => (
                       <div 
                         key={entry.name} 
                         className="flex items-center gap-2 text-sm p-2 rounded-lg hover:bg-gray-50 transition-colors"

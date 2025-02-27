@@ -19,7 +19,9 @@ export const generatePDF = async (elementId: string, reference: string, onSucces
     const pdf = new jsPDF({
       orientation: 'portrait',
       unit: 'mm',
-      format: 'a4'
+      format: 'a4',
+      putOnlyUsedFonts: true,
+      floatPrecision: 16,
     });
 
     const pages = element.children;
@@ -68,8 +70,16 @@ export const generatePDF = async (elementId: string, reference: string, onSucces
       container.style.width = '793px';
       // Ne pas fixer la hauteur pour permettre le contenu de s'étendre
       container.style.minHeight = '1122px';
-      document.body.appendChild(container);
 
+      // Ajouter un style pour éviter les sauts de page à l'intérieur des lignes
+      const pdfStyle = document.createElement('style');
+      pdfStyle.textContent = `
+        tr { page-break-inside: avoid !important; break-inside: avoid !important; }
+        td { page-break-inside: avoid !important; break-inside: avoid !important; }
+      `;
+      container.appendChild(pdfStyle);
+
+      document.body.appendChild(container);
 
       const contentHeight = clone.scrollHeight;
       const numberOfPages = Math.ceil(contentHeight / 1122);
@@ -88,7 +98,15 @@ export const generatePDF = async (elementId: string, reference: string, onSucces
           width: 793,
           height: 1122,
           windowHeight: 1122,
-          y: j * 1122
+          y: j * 1122,
+          onclone: (doc, element) => {
+            // Forcer les styles directement sur les éléments pour éviter les sauts de page à l'intérieur des lignes
+            element.querySelectorAll('tr').forEach(tr => {
+              (tr as HTMLElement).style.pageBreakInside = 'avoid';
+              (tr as HTMLElement).style.breakInside = 'avoid';
+            });
+            return element;
+          }
         });
 
         pdf.addImage(

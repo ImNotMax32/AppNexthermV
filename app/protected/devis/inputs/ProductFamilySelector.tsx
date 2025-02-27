@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Package, Wrench, Droplet, Waves } from 'lucide-react';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -84,6 +84,12 @@ const isBallon = (product: any): product is BallonProduct => {
   return 'Volume' in product;
 };
 
+const isCascadeProduct = (product: any): boolean => {
+  return isNexthermProduct(product) && 
+         product.Puissance.increment !== undefined && 
+         product.Puissance.baseModele !== undefined;
+};
+
 const ProductList: React.FC<ProductListProps> = ({ products, onProductSelect, type }) => {
   const [selectedProduct, setSelectedProduct] = useState<NexthermProduct | Equipment | BallonProduct | CapteurProduct | null>(null);
   const [selectedPower, setSelectedPower] = useState<string>('');
@@ -95,13 +101,15 @@ const ProductList: React.FC<ProductListProps> = ({ products, onProductSelect, ty
     return `/${cleanPath}`;
   };
 
-  const formatDescription = (product: NexthermProduct, power: ProductPower): string => {
+  const formatDescription = (product: NexthermProduct, power: ProductPower, isCascade: boolean = false): string => {
     return `${product.Nom}
 Caractéristiques techniques:
 • Puissance calorifique: ${power.puissance_calo} kW
-• Puissance frigorifique: ${power.puissance_frigo} kW
+${isCascade ? `• COP moyen: ${power.cop}
+• ETAS moyen: ${power.etas}%` : 
+`• Puissance frigorifique: ${power.puissance_frigo} kW
 • COP: ${power.cop}
-• ETAS: ${power.etas}%
+• ETAS: ${power.etas}%`}
 Type: ${product.Particularites.join(', ')}
 ${product.Description}`;
   };
@@ -157,13 +165,23 @@ ${product.Description}`;
 
   const renderProduct = (product: NexthermProduct | Equipment | BallonProduct | CapteurProduct) => {
     if (isNexthermProduct(product)) {
+      // Déterminer le style spécifique à chaque type de produit
+      const isSmartpack = product.Nom.toLowerCase().includes('smartpack');
+      const isRopack = product.Nom.toLowerCase().includes('r/opack');
+      
+      const imageStyle = {
+        objectFit: isRopack ? 'contain' : 'cover',
+        objectPosition: isSmartpack ? 'right center' : 'center',
+      } as React.CSSProperties;
+      
       return (
         <div className="flex p-4">
           <div className="w-48 h-48 relative">
             <img 
               src={getImagePath(product.Image2)}
               alt={product.Nom}
-              className="w-full h-full object-cover"
+              className="w-full h-full"
+              style={imageStyle}
               onError={(e) => {
                 const target = e.target as HTMLImageElement;
                 target.src = '/placeholder.jpg';
@@ -247,6 +265,36 @@ ${product.Description}`;
     }
   };
 
+  const generateCascadePowers = (product: NexthermProduct) => {
+    if (!isCascadeProduct(product)) return [];
+    
+    const result = [];
+    const numSteps = Math.floor((product.Puissance.max - product.Puissance.min) / product.Puissance.increment!) + 1;
+    
+    // Limiter à 20 options maximum pour des raisons d'UX
+    const step = numSteps > 20 ? Math.ceil(numSteps / 20) : 1;
+    
+    for (let i = 0; i < numSteps; i += step) {
+      const power = product.Puissance.min + i * product.Puissance.increment!;
+      const modelName = `${product.Puissance.baseModele} - ${power} KW`;
+      result.push({
+        power,
+        modelName
+      });
+    }
+    
+    // Toujours inclure la puissance max
+    const maxPower = product.Puissance.max;
+    if (!result.some(item => item.power === maxPower)) {
+      result.push({
+        power: maxPower,
+        modelName: `${product.Puissance.baseModele} - ${maxPower} KW`
+      });
+    }
+    
+    return result;
+  };
+
   return (
     <div className="space-y-4">
       <div className="flex items-center gap-4 bg-white p-4 rounded-lg shadow-sm">
@@ -306,11 +354,19 @@ ${product.Description}`;
               </SelectTrigger>
               <SelectContent position="popper" side="top" className="max-h-[300px]">
                 {isNexthermProduct(selectedProduct) ? (
-                  selectedProduct.Puissance.disponibles?.map((power, idx) => (
-                    <SelectItem key={idx} value={power.modele}>
-                      {power.modele} - {power.puissance_calo} kW (COP: {power.cop})
-                    </SelectItem>
-                  ))
+                  isCascadeProduct(selectedProduct) ? (
+                    generateCascadePowers(selectedProduct).map((item) => (
+                      <SelectItem key={`power-${item.power}`} value={item.modelName}>
+                        {item.modelName} - (COP moyen: {selectedProduct.Puissance.caracteristiques?.cop_moyen})
+                      </SelectItem>
+                    ))
+                  ) : (
+                    selectedProduct.Puissance.disponibles?.map((power, idx) => (
+                      <SelectItem key={idx} value={power.modele}>
+                        {power.modele} - {power.puissance_calo} kW (COP: {power.cop})
+                      </SelectItem>
+                    ))
+                  )
                 ) : isBallon(selectedProduct) ? (
                   selectedProduct.Volume.disponibles.map((volume, idx) => (
                     <SelectItem key={idx} value={volume.modele}>
@@ -336,15 +392,33 @@ ${product.Description}`;
               disabled={!selectedPower}
               onClick={() => {
                 if (isNexthermProduct(selectedProduct)) {
-                  const power = selectedProduct.Puissance.disponibles?.find(
-                    p => p.modele === selectedPower
-                  );
-                  if (power) {
+                  if (isCascadeProduct(selectedProduct)) {
+                    const puissance = parseInt(selectedPower.split(' - ')[1]);
+                    const fakePower: ProductPower = {
+                      modele: selectedPower,
+                      puissance_calo: puissance,
+                      puissance_frigo: puissance * 0.8, // Estimation pour les besoins d'affichage
+                      puissance_absorbee: puissance * 0.2, // Estimation pour les besoins d'affichage
+                      cop: selectedProduct.Puissance.caracteristiques?.cop_moyen || 4.0,
+                      etas: selectedProduct.Puissance.caracteristiques?.etas_moyen || 160
+                    };
+                    
                     onProductSelect({
-                      code: power.modele,
-                      description: formatDescription(selectedProduct, power),
+                      code: selectedPower,
+                      description: formatDescription(selectedProduct, fakePower, true),
                       priceHT: 0
                     });
+                  } else {
+                    const power = selectedProduct.Puissance.disponibles?.find(
+                      p => p.modele === selectedPower
+                    );
+                    if (power) {
+                      onProductSelect({
+                        code: power.modele,
+                        description: formatDescription(selectedProduct, power),
+                        priceHT: 0
+                      });
+                    }
                   }
                 } else if (isBallon(selectedProduct)) {
                   const volumeInfo = selectedProduct.Volume.disponibles.find(
