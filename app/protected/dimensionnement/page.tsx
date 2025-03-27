@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Input as BaseInput} from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Calculator, ArrowRight, Check, X } from 'lucide-react';
+import { Calculator, ArrowRight, Check, X, ThermometerSun, Info, Home } from 'lucide-react';
 import { Checkbox } from '@/components/ui/checkbox';
 import { useRouter } from 'next/navigation';
 import { createClient } from '@/utils/supabase/client';
@@ -713,54 +713,73 @@ export default function DeperditionCalculator() {
   };
 
   return (
-    <motion.div className="max-w-5xl mx-auto p-6">
+    <>
+    <motion.div className="max-w-5xl mx-auto px-4 sm:px-6 py-4 sm:py-6">
       <Card>
         {/* Le titre va ici, juste après l'ouverture de la Card */}
-        <CardHeader className="space-y-6">
-  <motion.div
-    initial="initial"
-    animate="animate"
-    variants={titleVariants}
-  >
-    <CardTitle className="text-3xl font-bold text-center text-[#86BC29] mb-2">
-      Calcul des déperditions thermiques
-    </CardTitle>
-    <CardDescription className="text-lg text-center">
-      {formData.hasExistingCalculation 
-        ? "Entrez les déperditions connues de votre bâtiment"
-        : "Calculez les déperditions thermiques de votre bâtiment"}
-    </CardDescription>
-  </motion.div>
+        <CardHeader className="space-y-3 p-4 sm:p-6 border-b border-gray-100">
+          <motion.div
+            initial="initial"
+            animate="animate"
+            variants={titleVariants}
+          >
+            <div className="flex items-center justify-center mb-1">
+              <div className="h-px w-12 bg-[#86BC29]/50 mr-3"></div>
+              <CardTitle className="text-2xl sm:text-3xl font-bold text-center text-[#86BC29]">
+                Calcul des déperditions
+              </CardTitle>
+              <div className="h-px w-12 bg-[#86BC29]/50 ml-3"></div>
+            </div>
+            <CardDescription className="text-base text-center text-gray-500 mb-4">
+              {formData.hasExistingCalculation 
+                ? "Entrez les déperditions connues de votre bâtiment"
+                : "Calculez les déperditions thermiques de votre bâtiment"}
+            </CardDescription>
+          </motion.div>
 
-  {/* Nouveau texte de présentation */}
-  <motion.div
-    initial={{ opacity: 0, y: 20 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.6, delay: 0.3 }}
-    className="text-center space-y-4 max-w-2xl mx-auto"
-  >
-    <p className="text-gray-600">
-      Notre calculateur de déperditions thermiques vous permet d'évaluer avec précision les besoins énergétiques de votre batiment.
-    </p>
-    <p className="text-gray-600">
-      En prenant en compte les caractéristiques spécifiques de votre bâtiment, nous vous proposons une estimation fiable pour dimensionner votre système de chauffage de manière optimale.
-    </p>
-  </motion.div>
-</CardHeader>
+          {/* Texte de présentation plus léger */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="flex flex-col sm:flex-row items-center gap-3 text-center text-sm text-gray-600 max-w-3xl mx-auto"
+          >
+            <div className="flex items-center">
+              <div className="w-8 h-8 rounded-full bg-[#86BC29]/10 flex items-center justify-center mr-2">
+                <Home className="w-4 h-4 text-[#86BC29]" />
+              </div>
+              <span>Caractéristiques du bâtiment</span>
+            </div>
+            <div className="hidden sm:block h-4 w-px bg-gray-200"></div>
+            <div className="flex items-center">
+              <div className="w-8 h-8 rounded-full bg-[#86BC29]/10 flex items-center justify-center mr-2">
+                <ThermometerSun className="w-4 h-4 text-[#86BC29]" />
+              </div>
+              <span>Calcul précis</span>
+            </div>
+            <div className="hidden sm:block h-4 w-px bg-gray-200"></div>
+            <div className="flex items-center">
+              <div className="w-8 h-8 rounded-full bg-[#86BC29]/10 flex items-center justify-center mr-2">
+                <Info className="w-4 h-4 text-[#86BC29]" />
+              </div>
+              <span>Conseils personnalisés</span>
+            </div>
+          </motion.div>
+        </CardHeader>
 
-<CardContent className="space-y-8">
+<CardContent className="space-y-6 sm:space-y-8 p-4 sm:p-6">
   {/* Section des boutons Oui/Non améliorée */}
   <motion.div 
-    className="space-y-6 text-center"
+    className="space-y-4 sm:space-y-6 text-center"
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.5 }}
   >
-    <Label className="text-lg block mb-4">
+    <Label className="text-base sm:text-lg block mb-3 sm:mb-4">
       Possédez-vous déjà les déperditions de votre bâtiment ?
     </Label>
     <motion.div 
-      className="flex justify-center gap-6"
+      className="flex justify-center gap-4 sm:gap-6"
       initial="initial"
       animate="animate"
       variants={staggerChildren}
@@ -773,7 +792,7 @@ export default function DeperditionCalculator() {
         <Button 
           variant={formData.hasExistingCalculation ? "default" : "outline"}
           onClick={() => handleChange('hasExistingCalculation', true)}
-          className={`w-32 h-12 text-lg transition-all duration-300
+          className={`w-28 sm:w-32 h-10 sm:h-12 text-base sm:text-lg transition-all duration-300
             ${formData.hasExistingCalculation 
               ? 'bg-[#86BC29] hover:bg-[#75a625] text-white shadow-lg' 
               : 'hover:border-[#86BC29] hover:text-[#86BC29]'}`}
@@ -789,7 +808,7 @@ export default function DeperditionCalculator() {
         <Button 
           variant={!formData.hasExistingCalculation ? "default" : "outline"}
           onClick={() => handleChange('hasExistingCalculation', false)}
-          className={`w-32 h-12 text-lg transition-all duration-300
+          className={`w-28 sm:w-32 h-10 sm:h-12 text-base sm:text-lg transition-all duration-300
             ${!formData.hasExistingCalculation 
               ? 'bg-[#86BC29] hover:bg-[#75a625] text-white shadow-lg' 
               : 'hover:border-[#86BC29] hover:text-[#86BC29]'}`}
@@ -819,38 +838,39 @@ export default function DeperditionCalculator() {
         />
         
         {/* Conditions d'utilisation */}
-        <motion.div variants={fadeInUp} className="space-y-2">
-          <div className="flex items-center space-x-2">
-            <Checkbox
-              id="terms"
-              checked={formData.termsAccepted}
-              onCheckedChange={(checked) => handleChange('termsAccepted', checked)}
-            />
-            <div className="flex items-center space-x-1">
-              <Label htmlFor="terms">
-                J'accepte les
-              </Label>
-              <a 
-                href="/assets/img/CU.pdf" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="text-[#585858] hover:text-[#000000] underline underline-offset-2"
-              >
-                conditions d'utilisation
-              </a>
-            </div>
-          </div>
-        </motion.div>
+        <motion.div variants={fadeInUp} className="space-y-2 mt-6">
+                <div className="flex items-start space-x-2">
+                  <Checkbox
+                    id="terms"
+                    checked={formData.termsAccepted}
+                    onCheckedChange={(checked) => handleChange('termsAccepted', checked)}
+                    className="mt-1" 
+                  />
+                  <div className="flex flex-wrap items-center space-x-1">
+                    <Label htmlFor="terms" className="text-sm sm:text-base">
+                      J'accepte les
+                    </Label>
+                    <a 
+                      href="/assets/img/CU.pdf" 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="text-sm sm:text-base text-[#585858] hover:text-[#000000] underline underline-offset-2"
+                    >
+                      conditions d'utilisation
+                    </a>
+                  </div>
+                </div>
+              </motion.div>
         <motion.div
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
         >
           <Button 
-            className="w-full bg-[#86BC29] hover:bg-[#75a625] text-white"
+            className="w-full bg-[#86BC29] hover:bg-[#75a625] text-white py-2 sm:py-3 text-sm sm:text-base font-medium rounded-lg shadow transition-all duration-200"
             onClick={handleCalculate}
             disabled={!formData.termsAccepted}
           >
-            <ArrowRight className="mr-2 h-4 w-4" />
+            <ArrowRight className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
             Continuer
           </Button>
         </motion.div>
@@ -866,13 +886,13 @@ export default function DeperditionCalculator() {
               <motion.div variants={fadeInUp} className="space-y-6">
                 <motion.h3 
                   variants={subtitleVariants}
-                  className="text-2xl font-semibold text-[#86BC29] border-b-2 border-[#86BC29] pb-2"
+                  className="text-2xl sm:text-3xl font-semibold text-[#86BC29] border-b-2 border-[#86BC29] pb-2"
                 >
                   1 - Caractéristiques du bâtiment
                 </motion.h3>
                 
                 {/* Année et Type de construction */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <SelectWithAnimation
                     label="Année de construction"
                     value={formData.constructionYear}
@@ -906,7 +926,7 @@ export default function DeperditionCalculator() {
                 {/* Section des étages */}
                 <div className="space-y-4">
                   {/* RDC */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <Input
                       label="Surface RDC (m²)"
                       type="number"
@@ -929,7 +949,7 @@ export default function DeperditionCalculator() {
 
                   {/* 1er étage */}
                   {(formData.buildingType === "1 Étage" || formData.buildingType === "2 Étages") && (
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <Input
                         label="Surface 1er étage (m²)"
                         type="number"
@@ -953,7 +973,7 @@ export default function DeperditionCalculator() {
 
                   {/* 2ème étage */}
                   {formData.buildingType === "2 Étages" && (
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <Input
                         label="Surface 2e étage (m²)"
                         type="number"
@@ -977,7 +997,7 @@ export default function DeperditionCalculator() {
                 </div>
 
                 {/* Structure de construction et Structure du sol */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <SelectWithAnimation
                     label="Structure de la construction"
                     value={formData.buildingStructure}
@@ -1024,7 +1044,7 @@ export default function DeperditionCalculator() {
         initial={{ opacity: 0, height: 0 }}
         animate={{ opacity: 1, height: "auto" }}
         exit={{ opacity: 0, height: 0 }}
-        className="grid grid-cols-1 md:grid-cols-2 gap-4"
+        className="grid grid-cols-1 sm:grid-cols-2 gap-4"
       >
         {/* Épaisseur des murs */}
 <div className="space-y-2">
@@ -1434,11 +1454,11 @@ export default function DeperditionCalculator() {
               <motion.div variants={fadeInUp} className="space-y-4">
                 <motion.h3 
                   variants={subtitleVariants}
-                  className="text-2xl font-semibold text-[#86BC29] border-b-2 border-[#86BC29] pb-2"
+                  className="text-2xl sm:text-3xl font-semibold text-[#86BC29] border-b-2 border-[#86BC29] pb-2"
                 >
                   2 - Façade bâtiment
                 </motion.h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <SelectWithAnimation
                     label="Surface de vitrage"
                     value={formData.windowSurface}
@@ -1499,11 +1519,11 @@ export default function DeperditionCalculator() {
               <motion.div variants={fadeInUp} className="space-y-4">
                 <motion.h3 
                   variants={subtitleVariants}
-                  className="text-2xl font-semibold text-[#86BC29] border-b-2 border-[#86BC29] pb-2"
+                  className="text-2xl sm:text-3xl font-semibold text-[#86BC29] border-b-2 border-[#86BC29] pb-2"
                 >
                   3 - Autre
                 </motion.h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <SelectWithAnimation
                     label="Ventilation"
                     value={formData.ventilation}
@@ -1544,143 +1564,259 @@ export default function DeperditionCalculator() {
               </motion.div>
 
               {/* Conditions d'utilisation et bouton de calcul suivent dans la dernière partie... */}
-{/* Conditions d'utilisation */}
-<motion.div variants={fadeInUp} className="space-y-2">
-                <div className="flex items-center space-x-2">
+              <motion.div variants={fadeInUp} className="space-y-2 mt-6">
+                <div className="flex items-start space-x-2">
                   <Checkbox
                     id="terms"
                     checked={formData.termsAccepted}
                     onCheckedChange={(checked) => handleChange('termsAccepted', checked)}
+                    className="mt-1" 
                   />
-                  <div className="flex items-center space-x-1">
-                    <Label htmlFor="terms">
+                  <div className="flex flex-wrap items-center space-x-1">
+                    <Label htmlFor="terms" className="text-sm sm:text-base">
                       J'accepte les
                     </Label>
                     <a 
                       href="/assets/img/CU.pdf" 
                       target="_blank" 
                       rel="noopener noreferrer" 
-                      className="text-[#585858] hover:text-[#000000] underline underline-offset-2"
+                      className="text-sm sm:text-base text-[#585858] hover:text-[#000000] underline underline-offset-2"
                     >
                       conditions d'utilisation
                     </a>
                   </div>
                 </div>
               </motion.div>
+              <motion.div
+                variants={fadeInUp}
+                className="mt-6 sm:mt-8"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <Button 
+                  className="w-full bg-[#86BC29] hover:bg-[#75a625] text-white py-2 sm:py-3 text-sm sm:text-base font-medium rounded-lg shadow transition-all duration-200"
+                  onClick={handleCalculate}
+                  disabled={!formData.termsAccepted}
+                >
+                  <Calculator className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
+                  Calculer les déperditions
+                </Button>
+              </motion.div>
             </motion.div>
           )}
         </AnimatePresence>
 
-        {/* Bouton de calcul */}
-        {!formData.hasExistingCalculation && (
-          <motion.div
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-          >
-            <Button 
-              className="w-full bg-[#86BC29] hover:bg-[#75a625] text-white"
-              onClick={handleCalculate}
-              disabled={!formData.termsAccepted}
-            >
-              <Calculator className="mr-2 h-4 w-4" />
-              Calculer les déperditions
-            </Button>
-          </motion.div>
-        )}
-
         {/* Affichage du résultat */}
         <AnimatePresence>
-        {result && (
-          <motion.div
-            ref={resultRef} // Ajout de la référence ici
-            variants={resultCardVariants}
-            initial="initial"
-            animate="animate"
-            exit="exit"
-          >
-            <Card className="mt-4 border-[#86BC29]">
-                <CardContent className="pt-6">
-                  <motion.div 
-                    className="text-center"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.2 }}
-                  >
-                    <p className="text-sm text-gray-500 mb-2">
-                      Puissance recommandée
-                    </p>
-                    <motion.p
-                      className="text-3xl font-bold text-[#86BC29]"
-                      initial={{ scale: 0 }}
-                      animate={{ scale: 1 }}
-                      transition={{ 
-                        type: "spring",
-                        stiffness: 200,
-                        damping: 20,
-                        delay: 0.3 
-                      }}
+          {result && (
+            <motion.div 
+              ref={resultRef}
+              initial="initial"
+              animate="animate"
+              exit="exit"
+              variants={resultCardVariants}
+              className="mt-8 bg-gradient-to-r from-[#86BC29]/20 to-[#75a625]/10 rounded-lg p-4 sm:p-6 border border-[#86BC29]/20"
+            >
+              <div className="text-center mb-4 sm:mb-6">
+                <h3 className="text-xl sm:text-2xl font-bold text-[#86BC29]">Résultat du calcul</h3>
+                <p className="text-gray-600 text-sm sm:text-base mt-1">
+                  Voici les déperditions thermiques estimées pour votre bâtiment
+                </p>
+              </div>
+              
+              <div className="flex flex-col items-center justify-center gap-4 sm:gap-8 mb-6">
+                <motion.div 
+                  className="bg-white p-4 sm:p-6 rounded-xl shadow-lg border-2 border-[#86BC29] flex items-center justify-center"
+                  initial={{ scale: 0.8, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ duration: 0.5, delay: 0.3 }}
+                >
+                  <span className="text-5xl sm:text-6xl font-bold text-[#86BC29]">
+                    {result.totalLoss.toFixed(1)}
+                    <span className="text-3xl sm:text-4xl ml-1">kW</span>
+                  </span>
+                </motion.div>
+                
+                <div className="text-center w-full max-w-2xl">
+                  <p className="text-sm sm:text-base text-gray-600">
+                    Cette valeur représente la <span className="font-semibold">puissance nécessaire</span> pour 
+                    chauffer votre bâtiment.
+                  </p>
+                  
+                  {/* Commentaire automatique sur les résultats */}
+                  {result.details && (
+                    <motion.div 
+                      className="mt-4 p-4 bg-[#f8f9fa] rounded-lg border border-gray-200"
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.5 }}
                     >
-                      {result.totalLoss} kW
-                    </motion.p>
-                    
-                    {result.details && (
-                      <motion.div 
-                        className="mt-4 text-sm"
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.4 }}
-                      >
-                        <p>Détails des déperditions :</p>
-                        <motion.ul 
-                          className="list-none space-y-1"
-                          variants={staggerChildren}
-                          initial="initial"
-                          animate="animate"
+                      {(() => {
+                        // Trouver le poste avec le plus de déperditions
+                        const details = result.details;
+                        const items = [
+                          { name: 'Murs', value: details.wallLoss, key: 'wallLoss', percentage: 0 },
+                          { name: 'Fenêtres', value: details.windowLoss, key: 'windowLoss', percentage: 0 },
+                          { name: 'Toit', value: details.roofLoss, key: 'roofLoss', percentage: 0 },
+                          { name: 'Sol', value: details.floorLoss, key: 'floorLoss', percentage: 0 },
+                          { name: 'Ventilation', value: details.airLoss, key: 'airLoss', percentage: 0 },
+                          { name: 'Ponts thermiques', value: details.thermalBridge, key: 'thermalBridge', percentage: 0 }
+                        ];
+                        
+                        // Trier par valeur décroissante
+                        items.sort((a, b) => b.value - a.value);
+                        
+                        // Calculer le pourcentage de chaque poste
+                        const total = items.reduce((acc, item) => acc + item.value, 0);
+                        items.forEach(item => {
+                          item.percentage = (item.value / total) * 100;
+                        });
+                        
+                        const highestLoss = items[0];
+                        const secondHighest = items[1];
+                        
+                        return (
+                          <div className="space-y-2 text-sm sm:text-base">
+                            <p className="font-medium">
+                              {(() => {
+                                // Adapter l'article et le texte en fonction du nom
+                                const masculins = ['Toit', 'Sol'];
+                                const pluriels = ['Murs', 'Ponts thermiques', 'Fenêtres'];
+                                const getArticle = (name: string): string => {
+                                  if (pluriels.includes(name)) {
+                                    return "Les ";
+                                  } else if (masculins.includes(name)) {
+                                    return "Le ";
+                                  } else {
+                                    return "La ";
+                                  }
+                                };
+                                
+                                // Texte adapté avec l'article correct
+                                const article = getArticle(highestLoss.name);
+                                const nomMinuscule = highestLoss.name.charAt(0).toLowerCase() + highestLoss.name.slice(1);
+                                
+                                return (
+                                  <>{article}<span className="text-[#86BC29] font-bold">{nomMinuscule}</span> {pluriels.includes(highestLoss.name) ? "représentent" : "représente"} votre principale source de déperdition avec 
+                                  <span className="font-bold"> {highestLoss.percentage.toFixed(0)}%</span> des pertes totales.</>
+                                );
+                              })()}
+                            </p>
+                            
+                            {highestLoss.key === 'wallLoss' && (
+                              <p>Envisagez d'améliorer l'isolation de vos murs pour réduire considérablement vos besoins énergétiques.</p>
+                            )}
+                            {highestLoss.key === 'windowLoss' && (
+                              <p>Le remplacement par des fenêtres à double ou triple vitrage permettrait de réduire significativement ces déperditions.</p>
+                            )}
+                            {highestLoss.key === 'roofLoss' && (
+                              <p>Renforcer l'isolation de votre toiture pourrait diminuer considérablement votre consommation énergétique.</p>
+                            )}
+                            {highestLoss.key === 'floorLoss' && (
+                              <p>L'amélioration de l'isolation du sol permettrait de réduire cette source importante de déperdition.</p>
+                            )}
+                            {highestLoss.key === 'airLoss' && (
+                              <p>L'installation d'un système de ventilation à récupération de chaleur pourrait diminuer ces pertes tout en maintenant une bonne qualité d'air intérieur.</p>
+                            )}
+                            {highestLoss.key === 'thermalBridge' && (
+                              <p>Traiter les ponts thermiques de votre bâtiment permettrait de réduire significativement ces déperditions.</p>
+                            )}
+                            
+                            <p className="mt-2">
+                              {(() => {
+                                // Adapter la transition en fonction du composant secondaire
+                                const avecPluriel = ['Murs', 'Ponts thermiques', 'Fenêtres'];
+                                const avecMasculin = ['Toit', 'Sol'];
+                                const getPreposition = (name: string): string => {
+                                  if (avecPluriel.includes(name)) {
+                                    return "aux ";
+                                  } else if (avecMasculin.includes(name)) {
+                                    return "au ";
+                                  } else {
+                                    return "à la ";
+                                  }
+                                };
+                                
+                                const preposition = getPreposition(secondHighest.name);
+                                const nomComplet = secondHighest.name.toLowerCase();
+                                
+                                return (
+                                  <>Une attention particulière portée {preposition}<span className="text-[#86BC29] font-medium">{nomComplet}</span> ({secondHighest.percentage.toFixed(0)}%) 
+                                  permettrait également d'améliorer l'efficacité énergétique de votre bâtiment.</>
+                                );
+                              })()}
+                            </p>
+                          </div>
+                        );
+                      })()}
+                    </motion.div>
+                  )}
+                </div>
+              </div>
+              
+              {result.details && (
+                <div className="mt-4 space-y-4">
+                  <div className="text-base sm:text-lg font-semibold text-gray-700 mb-2">Détail des déperditions:</div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 text-sm sm:text-base">
+                    {(() => {
+                      // Calculer le poste avec le plus de déperditions pour le mettre en évidence
+                      const details = result.details;
+                      const items = [
+                        { name: 'Murs', value: details.wallLoss, key: 'wallLoss', percentage: 0 },
+                        { name: 'Fenêtres', value: details.windowLoss, key: 'windowLoss', percentage: 0 },
+                        { name: 'Toit', value: details.roofLoss, key: 'roofLoss', percentage: 0 },
+                        { name: 'Sol', value: details.floorLoss, key: 'floorLoss', percentage: 0 },
+                        { name: 'Ventilation', value: details.airLoss, key: 'airLoss', percentage: 0 },
+                        { name: 'Ponts thermiques', value: details.thermalBridge, key: 'thermalBridge', percentage: 0 }
+                      ];
+                      
+                      // Trouver la valeur maximale
+                      const maxValue = Math.max(...items.map(item => item.value));
+                      
+                      return items.map(item => (
+                        <div 
+                          key={item.key}
+                          className={`${
+                            item.value === maxValue 
+                              ? 'bg-[#86BC29]/10 border-[#86BC29] shadow-md' 
+                              : 'bg-white border-gray-200'
+                          } p-3 rounded-lg shadow-sm border transition-all duration-300 hover:shadow-md`}
                         >
-                          {Object.entries(result.details).map(([key, value], index) => (
-                            <motion.li
-                              key={key}
-                              variants={fadeInUp}
-                              transition={{ delay: 0.5 + (index * 0.1) }}
-                            >
-                              {key === 'wallLoss' && `Murs : ${value.toFixed(2)} W`}
-                              {key === 'windowLoss' && `Fenêtres : ${value.toFixed(2)} W`}
-                              {key === 'roofLoss' && `Toiture : ${value.toFixed(2)} W`}
-                              {key === 'floorLoss' && `Sol : ${value.toFixed(2)} W`}
-                              {key === 'airLoss' && `Renouvellement d'air : ${value.toFixed(2)} W`}
-                              {key === 'thermalBridge' && `Ponts thermiques : ${value.toFixed(2)} W`}
-                            </motion.li>
-                          ))}
-                        </motion.ul>
-                      </motion.div>
-                    )}
-                  </motion.div>
-                </CardContent>
-                <CardFooter className="justify-end">
-                  <motion.div
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    className="w-full"
-                  >
-                    <Button 
-                      className="w-full bg-[#86BC29] hover:bg-[#75a625] text-white"
-                      onClick={() => {
-                        handleCalculate();
-                        router.push('/protected/dimensionnement/methode');
-                      }}
-                      disabled={!formData.termsAccepted}
-                    >
-                      <ArrowRight className="mr-2 h-4 w-4" />
-                      Étape suivante
-                    </Button>
-                  </motion.div>
-                </CardFooter>
-              </Card>
+                          <div className="font-medium text-gray-700">{item.name}</div>
+                          <div className={`font-semibold ${
+                            item.value === maxValue ? 'text-[#86BC29] text-lg' : 'text-[#86BC29]'
+                          }`}>
+                            {item.value.toFixed(1)} <span className="text-sm">kW</span>
+                          </div>
+                        </div>
+                      ));
+                    })()}
+                  </div>
+                </div>
+              )}
             </motion.div>
           )}
         </AnimatePresence>
       </CardContent>
     </Card>
   </motion.div>
+  <AnimatePresence>
+    {result && (
+      <motion.div
+        className="mt-6 sm:mt-8"
+        whileHover={{ scale: 1.02 }}
+        whileTap={{ scale: 0.98 }}
+      >
+        <Button 
+          onClick={() => router.push('/protected/dimensionnement/methode')}
+          className="w-full bg-[#86BC29] hover:bg-[#75a625] text-white py-2 sm:py-3 text-sm sm:text-base font-medium rounded-lg shadow transition-all duration-200"
+        >
+          <ArrowRight className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
+          Continuer vers le choix de la méthode
+        </Button>
+      </motion.div>
+    )}
+  </AnimatePresence>
+  </>
 );
 }

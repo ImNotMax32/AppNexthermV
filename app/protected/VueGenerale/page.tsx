@@ -432,14 +432,14 @@ export default function VueGenerale() {
                     <PieChart>
                       <Pie
                         data={getPieData()}
-                        cx="60%"
+                        cx="50%"
                         cy="50%"
                         innerRadius={65}
                         outerRadius={90}
                         fill="#8884d8"
                         paddingAngle={5}
                         dataKey="value"
-                        label
+                        label={({ name, percent }) => `${(percent * 100).toFixed(0)}%`}
                       >
                         {getPieData().map((entry, index) => (
                           <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
@@ -610,14 +610,14 @@ export default function VueGenerale() {
                       <PieChart>
                         <Pie
                           data={getDevisPieData()}
-                          cx="60%"
+                          cx="50%"
                           cy="50%"
                           innerRadius={65}
                           outerRadius={90}
                           fill="#8884d8"
                           paddingAngle={5}
                           dataKey="value"
-                          label
+                          label={({ name, percent }) => `${(percent * 100).toFixed(0)}%`}
                         >
                           {getDevisPieData().map((entry, index) => (
                             <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />

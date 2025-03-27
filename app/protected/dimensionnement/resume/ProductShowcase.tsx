@@ -158,33 +158,61 @@ const ProductShowcase: React.FC<ProductShowcaseProps> = ({ products, buildingDat
     setIsPlaying(true); // Réinitialiser l'état de lecture
   };
 
-  // Effet mis à jour pour la gestion des vidéos
   useEffect(() => {
     const currentVideo = videoRef.current;
     if (currentVideo) {
+      // Reset video time
       currentVideo.currentTime = 0;
-      currentVideo.play().catch(error => {
-        console.log('Auto-play was prevented:', error);
-      });
+      
+      // Add a small delay before attempting to play
+      const playPromise = setTimeout(() => {
+        if (isPlaying && currentVideo) {
+          currentVideo.play().catch(error => {
+            console.log('Auto-play was prevented:', error);
+          });
+        }
+      }, 100);
+      
+      return () => {
+        clearTimeout(playPromise);
+        if (currentVideo) {
+          try {
+            currentVideo.pause();
+          } catch (err) {
+            console.log('Error pausing video:', err);
+          }
+        }
+      };
     }
-
-    return () => {
-      if (currentVideo) {
-        currentVideo.pause();
-      }
-    };
   }, [page]);
 
-  // Effet séparé pour la gestion du play/pause
   useEffect(() => {
-    if (videoRef.current) {
+    const currentVideo = videoRef.current;
+    if (currentVideo) {
       if (isPlaying) {
-        videoRef.current.play();
+        // Wrap in try/catch to handle potential errors
+        try {
+          const playPromise = currentVideo.play();
+          
+          // Modern browsers return a promise from play()
+          if (playPromise !== undefined) {
+            playPromise.catch(error => {
+              console.log('Play was prevented:', error);
+              // Don't update state here as it could cause re-renders
+            });
+          }
+        } catch (err) {
+          console.log('Error playing video:', err);
+        }
       } else {
-        videoRef.current.pause();
+        try {
+          currentVideo.pause();
+        } catch (err) {
+          console.log('Error pausing video:', err);
+        }
       }
     }
-  }, [isPlaying, page]);
+  }, [isPlaying]);
 
   const toggleVideo = () => {
     setIsPlaying(!isPlaying);
@@ -424,7 +452,7 @@ const handleSaveCalculation = async (data: any) => {
             className="w-full h-full object-contain"
             loop
             muted
-            autoPlay={isPlaying}
+            playsInline
           />
         )}
         </AnimatePresence>
@@ -449,9 +477,9 @@ const handleSaveCalculation = async (data: any) => {
         animate={{ opacity: 1, y: 0 }}
         className="relative p-6 bg-white shadow-lg rounded-b-xl"
       >
-        <div className="flex items-center justify-between mb-2">
+        <div className="flex flex-col sm:flex-row items-center justify-between mb-4 sm:mb-2">
           {/* Conteneur flèche gauche avec texte */}
-          <div className="flex flex-col items-center min-w-[100px]">
+          <div className="flex flex-col items-center min-w-[100px] mb-4 sm:mb-0">
             {!isFirstProduct ? (
               <>
                 <motion.button
@@ -473,21 +501,21 @@ const handleSaveCalculation = async (data: any) => {
             key={currentProduct.Nom}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-4xl font-bold text-center text-gray-800 flex flex-col items-center mb-8"
+            className="text-3xl sm:text-4xl font-bold text-center text-gray-800 flex flex-col items-center mb-4 sm:mb-8 mx-2"
           >
             <span className="text-sm text-[#86BC29] uppercase tracking-wider mb-2">
               Produit compatible
             </span>
-            <span className="text-3xl mb-2">{currentProduct.Nom}</span>
+            <span className="text-2xl sm:text-3xl mb-2 text-center">{currentProduct.Nom}</span>
             {currentProduct.selectedModel && (
-              <span className="text-2xl text-[#86BC29] font-semibold mt-2">
+              <span className="text-xl sm:text-2xl text-[#86BC29] font-semibold mt-2">
                 {currentProduct.selectedModel.puissance_calo} kW
               </span>
             )}
           </motion.h2>
 
           {/* Conteneur flèche droite avec texte */}
-          <div className="flex flex-col items-center min-w-[100px]">
+          <div className="flex flex-col items-center min-w-[100px] mb-4 sm:mb-0">
             {!isLastProduct ? (
               <>
                 <motion.button
@@ -564,7 +592,7 @@ const handleSaveCalculation = async (data: any) => {
                         </div>
                       </motion.div>
 
-                      <motion.div variants={fadeInUp} className="grid grid-cols-3 gap-4">
+                      <motion.div variants={fadeInUp} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                         {specs.powerSpecs.map((spec) => (
                           <SpecCard
                             key={spec.type}
@@ -647,7 +675,7 @@ const handleSaveCalculation = async (data: any) => {
                       <Ruler className="w-5 h-5 mr-2 text-[#86BC29] flex-shrink-0" />
                       Dimensions
                     </h3>
-                    <div className="grid grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                       <div className="text-sm">
                         <p className="font-medium">Module simple :</p>
                         <p>L : {currentProduct.Dimension.largeur} mm</p>
@@ -725,27 +753,27 @@ const handleSaveCalculation = async (data: any) => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -20 }}
-        className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8"
+        className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6"
       >
         {/* Bloc PDF */}
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
-          className="bg-white p-6 rounded-xl shadow-md border border-gray-100 space-y-4"
+          className="bg-white p-4 sm:p-6 rounded-xl shadow-md border border-gray-100 space-y-3 sm:space-y-4"
         >
-          <h3 className="text-lg font-semibold text-[#86BC29] mb-2">
+          <h3 className="text-base sm:text-lg font-semibold text-[#86BC29] mb-1 sm:mb-2">
             Document client
           </h3>
-          <p className="text-sm text-gray-600 mb-4">
+          <p className="text-xs sm:text-sm text-gray-600 mb-2 sm:mb-4">
             Imprimer un résumé du calcul afin de le présenter à votre client
           </p>
           <motion.button
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             onClick={() => setShowForm(true)}
-            className="w-full px-4 py-3 bg-[#86BC29] text-white rounded-lg font-medium flex items-center justify-center shadow hover:bg-[#75a625] transition-colors"
+            className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-[#86BC29] text-white rounded-lg font-medium flex items-center justify-center shadow-lg hover:bg-[#75a625] transition-colors text-sm sm:text-base"
           >
-            <FileText className="w-5 h-5 mr-2" />
+            <FileText className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
             Générer un PDF
           </motion.button>
         </motion.div>
@@ -754,12 +782,12 @@ const handleSaveCalculation = async (data: any) => {
         <motion.div
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
-          className="bg-white p-6 rounded-xl shadow-md border border-gray-100 space-y-4"
+          className="bg-white p-4 sm:p-6 rounded-xl shadow-md border border-gray-100 space-y-3 sm:space-y-4"
         >
-          <h3 className="text-lg font-semibold text-[#86BC29] mb-2">
+          <h3 className="text-base sm:text-lg font-semibold text-[#86BC29] mb-1 sm:mb-2">
             Sauvegarde projet
           </h3>
-          <p className="text-sm text-gray-600 mb-4">
+          <p className="text-xs sm:text-sm text-gray-600 mb-2 sm:mb-4">
             Enregistrer le projet pour le modifier à n'importe quel moment
           </p>
           <SaveCalculation onSave={handleSaveCalculation} />
@@ -775,16 +803,22 @@ const handleSaveCalculation = async (data: any) => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50"
+      className="fixed inset-0 bg-black bg-opacity-50 flex items-start sm:items-center justify-center p-2 sm:p-4 z-50 overflow-y-auto pt-16 sm:pt-0"
+      onClick={(e) => {
+        // Fermer le modal seulement si on clique sur l'arrière-plan
+        if (e.target === e.currentTarget) {
+          setShowForm(false);
+        }
+      }}
     >
       <motion.div
         initial={{ scale: 0.95, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         exit={{ scale: 0.95, opacity: 0 }}
-        className="bg-white rounded-xl w-full max-w-3xl p-6 shadow-xl max-h-[90vh] overflow-y-auto"
+        className="bg-white rounded-xl w-full max-w-3xl p-3 sm:p-6 shadow-xl max-h-[85vh] overflow-y-auto my-4 sm:my-0"
       >
-        <div className="flex justify-between items-center mb-6">
-          <h2 className="text-2xl font-bold text-gray-800">Informations pour le PDF</h2>
+        <div className="flex justify-between items-center mb-4 sm:mb-6">
+          <h2 className="text-xl sm:text-2xl font-bold text-gray-800">Informations pour le PDF</h2>
           <button 
             onClick={() => setShowForm(false)}
             className="text-gray-500 hover:text-gray-700"
@@ -794,8 +828,8 @@ const handleSaveCalculation = async (data: any) => {
             </svg>
           </button>
         </div>
-        <div className="space-y-4">
-          <h3 className="text-xl font-semibold text-gray-800">Information du document</h3>
+        <div className="space-y-3 sm:space-y-4">
+          <h3 className="text-lg sm:text-xl font-semibold text-gray-800">Information du document</h3>
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
               Nom du fichier PDF
@@ -805,22 +839,22 @@ const handleSaveCalculation = async (data: any) => {
               value={formData.pdfName || ''} // Ajout du || '' pour éviter les undefined
               onChange={(e) => handleInputChange('general', 'pdfName', e.target.value)}
               placeholder="Laissez vide pour un nom générique"
-              className="w-full p-2 border border-gray-300 rounded-md"
+              className="w-full p-2 border border-gray-300 rounded-md text-sm sm:text-base"
             />
           </div>
         </div>
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6 mt-4">
           {/* Section Client */}
-          <div className="space-y-4">
-            <h3 className="text-xl font-semibold text-gray-800">Informations Client</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="space-y-3 sm:space-y-4">
+            <h3 className="text-lg sm:text-xl font-semibold text-gray-800">Informations Client</h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Nom</label>
                 <input
                   type="text"
                   value={formData.client.name}
                   onChange={(e) => handleInputChange('client', 'name', e.target.value)}
-                  className="w-full p-2 border border-gray-300 rounded-md"
+                  className="w-full p-2 border border-gray-300 rounded-md text-sm sm:text-base"
                   required
                 />
               </div>
@@ -830,7 +864,7 @@ const handleSaveCalculation = async (data: any) => {
                   type="text"
                   value={formData.client.address}
                   onChange={(e) => handleInputChange('client', 'address', e.target.value)}
-                  className="w-full p-2 border border-gray-300 rounded-md"
+                  className="w-full p-2 border border-gray-300 rounded-md text-sm sm:text-base"
                   required
                 />
               </div>
@@ -840,7 +874,7 @@ const handleSaveCalculation = async (data: any) => {
                   type="tel"
                   value={formData.client.phone}
                   onChange={(e) => handleInputChange('client', 'phone', e.target.value)}
-                  className="w-full p-2 border border-gray-300 rounded-md"
+                  className="w-full p-2 border border-gray-300 rounded-md text-sm sm:text-base"
                   required
                 />
               </div>
@@ -850,7 +884,7 @@ const handleSaveCalculation = async (data: any) => {
                   type="text"
                   value={formData.client.city}
                   onChange={(e) => handleInputChange('client', 'city', e.target.value)}
-                  className="w-full p-2 border border-gray-300 rounded-md"
+                  className="w-full p-2 border border-gray-300 rounded-md text-sm sm:text-base"
                   required
                 />
               </div>
@@ -860,7 +894,7 @@ const handleSaveCalculation = async (data: any) => {
                   type="text"
                   value={formData.client.postalCode}
                   onChange={(e) => handleInputChange('client', 'postalCode', e.target.value)}
-                  className="w-full p-2 border border-gray-300 rounded-md"
+                  className="w-full p-2 border border-gray-300 rounded-md text-sm sm:text-base"
                   required
                   pattern="[0-9]{5}"
                   title="Code postal à 5 chiffres"
@@ -870,16 +904,16 @@ const handleSaveCalculation = async (data: any) => {
           </div>
 
           {/* Section Installateur */}
-          <div className="space-y-4">
-            <h3 className="text-xl font-semibold text-gray-800">Informations Installateur</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="space-y-3 sm:space-y-4">
+            <h3 className="text-lg sm:text-xl font-semibold text-gray-800">Informations Installateur</h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Société</label>
                 <input
                   type="text"
                   value={formData.installer.company}
                   onChange={(e) => handleInputChange('installer', 'company', e.target.value)}
-                  className="w-full p-2 border border-gray-300 rounded-md"
+                  className="w-full p-2 border border-gray-300 rounded-md text-sm sm:text-base"
                   required
                 />
               </div>
@@ -889,7 +923,7 @@ const handleSaveCalculation = async (data: any) => {
                   type="text"
                   value={formData.installer.contact}
                   onChange={(e) => handleInputChange('installer', 'contact', e.target.value)}
-                  className="w-full p-2 border border-gray-300 rounded-md"
+                  className="w-full p-2 border border-gray-300 rounded-md text-sm sm:text-base"
                   required
                 />
               </div>
@@ -899,7 +933,7 @@ const handleSaveCalculation = async (data: any) => {
                   type="email"
                   value={formData.installer.email}
                   onChange={(e) => handleInputChange('installer', 'email', e.target.value)}
-                  className="w-full p-2 border border-gray-300 rounded-md"
+                  className="w-full p-2 border border-gray-300 rounded-md text-sm sm:text-base"
                   required
                 />
               </div>
@@ -909,7 +943,7 @@ const handleSaveCalculation = async (data: any) => {
                   type="tel"
                   value={formData.installer.phone}
                   onChange={(e) => handleInputChange('installer', 'phone', e.target.value)}
-                  className="w-full p-2 border border-gray-300 rounded-md"
+                  className="w-full p-2 border border-gray-300 rounded-md text-sm sm:text-base"
                   required
                 />
               </div>
@@ -935,37 +969,34 @@ const handleSaveCalculation = async (data: any) => {
           </div>
 
           {/* Bouton de soumission */}
-          <div className="flex justify-end pt-6 space-x-4">
-            <motion.button
+          <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-3 sm:justify-end">
+            <button
               type="button"
               onClick={() => setShowForm(false)}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-6 py-3 bg-gray-200 text-gray-700 rounded-lg font-medium shadow-lg hover:bg-gray-300 transition-colors"
+              className="px-4 py-2 text-sm sm:text-base border border-gray-300 rounded-md shadow-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#86BC29]"
             >
               Annuler
-            </motion.button>
-            <motion.button
+            </button>
+            <button
               type="submit"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-6 py-3 bg-[#86BC29] text-white rounded-lg font-medium flex items-center shadow-lg hover:bg-[#75a625] transition-colors"
+              className="px-4 py-2 text-sm sm:text-base rounded-md shadow-sm font-medium text-white bg-[#86BC29] hover:bg-[#75a625] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#86BC29] flex items-center justify-center"
             >
               <svg 
                 className="w-5 h-5 mr-2" 
                 fill="none" 
                 stroke="currentColor" 
-                viewBox="0 0 24 24"
+                viewBox="0 0 24 24" 
+                xmlns="http://www.w3.org/2000/svg"
               >
                 <path 
                   strokeLinecap="round" 
                   strokeLinejoin="round" 
                   strokeWidth={2} 
-                  d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                  d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" 
                 />
               </svg>
               Générer le PDF
-            </motion.button>
+            </button>
           </div>
         </form>
       </motion.div>

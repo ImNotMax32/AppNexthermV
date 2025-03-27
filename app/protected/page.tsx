@@ -1,7 +1,9 @@
+// Partie serveur de la page - composant principal
 import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import {
   Bot,
   BookOpen,
@@ -13,151 +15,382 @@ import {
   BrainCircuit,
   ArrowRight,
   Library,
-  LibraryBig
+  LibraryBig,
+  Sparkles,
+  ChevronRight,
+  PlusCircle,
+  Zap,
+  MousePointerClick,
+  Lightbulb,
+  Thermometer,
+  Cloud
 } from "lucide-react";
+import ClientEarthParticlesAnimation from "./components/ClientEarthParticlesAnimation";
 
+// Composant principal qui charge les données et affiche la page
 export default async function DashboardPage() {
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
-  
+
   if (!user) {
-    return redirect("/sign-in");
+    return redirect("/login");
   }
 
-  const { data: profile } = await supabase
-    .from('user')
-    .select('name')
-    .eq('id', user.id)
-    .single();
+  // Récupérer le prénom de l'utilisateur depuis diverses sources possibles
+  let firstName = user.user_metadata?.firstName || 
+                 user.user_metadata?.first_name || 
+                 user.user_metadata?.name || 
+                 user.user_metadata?.full_name?.split(' ')[0] ||
+                 user.email?.split('@')[0] ||
+                 "utilisateur";
+  
+  // Déterminer le message de bienvenue en fonction de l'heure
+  let greeting = "Bonjour";
+  
+  // Définition des villes pour le conseil météo
+  const cities = [
+    { name: 'Lyon', lat: 45.7578, lon: 4.8320 },
+    { name: 'Marseille', lat: 43.2965, lon: 5.3698 },
+    { name: 'Lille', lat: 50.6292, lon: 3.0573 },
+    { name: 'Toulouse', lat: 43.6047, lon: 1.4442 },
+    { name: 'Nantes', lat: 47.2184, lon: -1.5536 },
+    { name: 'Strasbourg', lat: 48.5734, lon: 7.7521 },
+    { name: 'Bordeaux', lat: 44.8378, lon: -0.5792 }
+  ];
+  
+  // Générer aléatoirement un conseil météo pour l'utilisateur
+  const randomCity = cities[Math.floor(Math.random() * cities.length)];
+  const weatherTip = await fetchWeatherTip(randomCity);
 
-  const firstName = profile?.name?.split(' ')[0] || 'utilisateur';
-
-  const mainWorkflow = [
+  // Définition des actions principales
+  const mainActions = [
     {
       title: "Dimensionnement",
-      description: "Créez un dimensionnement de pompe à chaleur et générez des documents professionnels (PDF résumé, PDF format CEE)",
-      icon: <Calculator className="h-6 w-6 text-blue-500" />,
+      description: "Créez un dimensionnement précis de pompe à chaleur",
+      icon: <Calculator className="h-8 w-8 text-white" />,
       href: "/protected/dimensionnement",
-      color: "bg-blue-50 dark:bg-blue-950/30"
+      bgColor: "bg-gradient-to-br from-blue-500 to-blue-700",
+      hoverEffect: "hover:shadow-blue-200",
+      animation: "animate-fadeIn",
+      buttonText: "Commencer"
     },
     {
       title: "Devis",
-      description: "Créez un devis à partir d'un dimensionnement ou directement. Page personnalisable pour vos offres commerciales",
-      icon: <LibraryBig className="h-6 w-6 text-purple-500" />,
+      description: "Générez un devis professionnel pour vos clients",
+      icon: <LibraryBig className="h-8 w-8 text-white" />,
       href: "/protected/devis",
-      color: "bg-purple-50 dark:bg-purple-950/30"
-    }
-  ];
-
-  const additionalFeatures = [
+      bgColor: "bg-gradient-to-br from-purple-500 to-purple-700",
+      hoverEffect: "hover:shadow-purple-200",
+      animation: "animate-fadeIn animation-delay-200",
+      buttonText: "Créer"
+    },
     {
       title: "IA Nextherm",
-      description: "Votre assistant virtuel pour toutes vos questions techniques",
-      icon: <BrainCircuit className="h-6 w-6 text-emerald-500" />,
+      description: "Utilisez notre assistant IA pour vos questions",
+      icon: <BrainCircuit className="h-8 w-8 text-white" />,
       href: "/protected/IA",
-      color: "bg-emerald-50 dark:bg-emerald-950/30"
+      bgColor: "bg-gradient-to-br from-emerald-500 to-emerald-700",
+      hoverEffect: "hover:shadow-emerald-200",
+      animation: "animate-fadeIn animation-delay-400",
+      buttonText: "Consulter",
+      isNew: true
     },
     {
       title: "Mes Projets",
-      description: "Accédez à vos dimensionnements et devis sauvegardés",
-      icon: <Save className="h-6 w-6 text-amber-500" />,
+      description: "Accédez à vos travaux et projets sauvegardés",
+      icon: <Save className="h-8 w-8 text-white" />,
       href: "/protected/dimensionnement/save",
-      color: "bg-amber-50 dark:bg-amber-950/30"
-    },
-    {
-      title: "Documentation Technique",
-      description: "Consultez les guides et fiches techniques",
-      icon: <BookOpen className="h-6 w-6 text-indigo-500" />,
-      href: "/protected/schema/guide",
-      color: "bg-indigo-50 dark:bg-indigo-950/30"
-    },
-    {
-      title: "Schémathèque",
-      description: "Accédez à notre bibliothèque de schémas techniques",
-      icon: <Library className="h-6 w-6 text-orange-500" />,
-      href: "/protected/schema/schematheque",
-      color: "bg-orange-50 dark:bg-orange-950/30"
+      bgColor: "bg-gradient-to-br from-amber-500 to-amber-700",
+      hoverEffect: "hover:shadow-amber-200",
+      animation: "animate-fadeIn animation-delay-600",
+      buttonText: "Voir"
     }
   ];
 
+  // Définition des outils additionnels
+  const additionalTools = [
+    {
+      title: "Documentation",
+      icon: <BookOpen className="h-5 w-5" />,
+      href: "/protected/schema/guide",
+      color: "text-indigo-600"
+    },
+    {
+      title: "Schémathèque",
+      icon: <Library className="h-5 w-5" />,
+      href: "/protected/schema/schematheque",
+      color: "text-teal-600"
+    },
+    {
+      title: "Formations",
+      icon: <FileText className="h-5 w-5" />,
+      href: "/protected/formations",
+      color: "text-purple-600"
+    },
+    {
+      title: "Calculateurs",
+      icon: <Calculator className="h-5 w-5" />,
+      href: "/protected/calculateurs",
+      color: "text-orange-600"
+    },
+    {
+      title: "Catalogue",
+      icon: <FileSpreadsheet className="h-5 w-5" />,
+      href: "/protected/produits",
+      color: "text-rose-600"
+    },
+    {
+      title: "Références",
+      icon: <Building2 className="h-5 w-5" />,
+      href: "/protected/references",
+      color: "text-emerald-600"
+    }
+  ];
+
+  // Rendu de l'interface
   return (
-    <div className="flex-1 w-full flex flex-col gap-8 p-4 md:p-8">
-      <div className="space-y-4">
-        <h1 className="text-4xl font-bold text-gray-900 dark:text-gray-100">
-          Bonjour, {firstName}
-        </h1>
-        <p className="text-lg text-gray-600 dark:text-gray-400">
-          Que souhaitez-vous faire aujourd'hui ?
-        </p>
+    <div className="flex-1 w-full flex flex-col gap-6 p-4 md:p-8 bg-white dark:bg-gray-900 min-h-screen">
+      {/* Bannière de bienvenue avec animation complexe */}
+      <div className="relative overflow-hidden rounded-lg mb-8 h-48">
+        {/* Animation de particules façon géothermique - côté client uniquement */}
+        <ClientEarthParticlesAnimation />
+        
+        {/* Contenu - avec un léger effet de glassmorphisme */}
+        <div className="absolute inset-0 z-10 bg-white/10 backdrop-blur-sm border border-white/20 flex flex-col justify-center px-8">
+          <h1 className="text-4xl font-bold tracking-tight text-white drop-shadow-md">
+            {greeting}, {firstName} <Sparkles className="h-6 w-6 ml-2 text-yellow-300 animate-pulse" />
+          </h1>
+          <p className="mt-2 text-xl text-white/90 drop-shadow">
+            Découvrez les outils qui vous attendent aujourd'hui
+          </p>
+        </div>
       </div>
 
-      {/* Workflow Principal */}
-      <section className="space-y-4">
-        <h2 className="text-2xl font-semibold text-gray-900 dark:text-gray-100">
-          Outils principaux
-        </h2>
-        <div className="grid gap-6 md:grid-cols-2">
-          {mainWorkflow.map((item) => (
-            <Card key={item.title} className="group hover:shadow-md transition-all">
-              <CardHeader className={`${item.color} rounded-t-lg p-4`}>
-                {item.icon}
-              </CardHeader>
-              <CardContent className="p-4">
-                <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-1">
-                  {item.title}
-                </h3>
-                <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
-                  {item.description}
-                </p>
-                <Button
-                  variant="ghost"
-                  className="group-hover:translate-x-1 transition-transform w-full justify-between"
-                  asChild
-                >
-                  <a href={item.href}>
-                    Accéder
-                    <ArrowRight className="h-4 w-4" />
-                  </a>
-                </Button>
-              </CardContent>
-            </Card>
-          ))}
+      {/* Conseil rapide avec animation */}
+      <div className="bg-white dark:bg-gray-800 rounded-xl p-4 shadow-md border border-gray-100 dark:border-gray-700 flex items-center gap-3 animate-slideInFromRight">
+        <div className="p-2 bg-yellow-100 dark:bg-yellow-900/30 rounded-full">
+          {weatherTip.icon}
         </div>
-      </section>
+        <div className="flex flex-col flex-grow">
+          <p className="text-sm text-gray-700 dark:text-gray-300">
+            {weatherTip.text}
+          </p>
+          {'source' in weatherTip && weatherTip.source && (
+            <p className="text-xs text-gray-400 mt-1">Source: {weatherTip.source}</p>
+          )}
+        </div>
+        <Button size="sm" variant="ghost" asChild>
+          <a href="/protected/IA" className="text-xs flex items-center gap-1">
+            Plus de conseils <ChevronRight className="h-3 w-3" />
+          </a>
+        </Button>
+      </div>
 
-      {/* Fonctionnalités Additionnelles */}
-      <section className="space-y-4">
-        <h2 className="text-2xl font-semibold text-gray-900 dark:text-gray-100">
-          Autres fonctionnalités
-        </h2>
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-          {additionalFeatures.map((item) => (
-            <Card key={item.title} className="group hover:shadow-md transition-all">
-              <CardHeader className={`${item.color} rounded-t-lg p-4`}>
-                {item.icon}
-              </CardHeader>
-              <CardContent className="p-4">
-                <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-1">
-                  {item.title}
-                </h3>
-                <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
-                  {item.description}
-                </p>
-                <Button
-                  variant="ghost"
-                  className="group-hover:translate-x-1 transition-transform w-full justify-between"
-                  asChild
-                >
-                  <a href={item.href}>
-                    Accéder
-                    <ArrowRight className="h-4 w-4" />
-                  </a>
-                </Button>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </section>
+      {/* Grille principale d'actions */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
+        {mainActions.map((action: any, idx: number) => (
+          <div key={action.title} className={`${action.animation} rounded-xl overflow-hidden transition-all duration-300 transform hover:scale-[1.03] hover:translate-y-[-3px] ${action.hoverEffect}`}>
+            <a href={action.href} className="block h-full">
+              <div className={`h-full flex flex-col ${action.bgColor} text-white`}>
+                <div className="p-4 md:p-5">
+                  <div className="bg-white/10 rounded-full p-3 inline-flex mb-3">
+                    {action.icon}
+                  </div>
+                  <h3 className="text-lg md:text-xl font-bold mb-1 truncate">{action.title}</h3>
+                  <p className="text-xs sm:text-sm text-white/80 mb-4 line-clamp-2 md:line-clamp-3">{action.description}</p>
+                  
+                  <div className="flex items-center justify-between mt-auto">
+                    <span className="flex items-center gap-1 text-xs md:text-sm font-medium group-hover:underline truncate max-w-[70%]">
+                      {action.buttonText} <MousePointerClick className="h-4 w-4 animate-bounce" />
+                    </span>
+                    
+                    {action.isNew && (
+                      <Badge className="bg-white/20 text-white hover:bg-white/30 transition-colors border-0 text-xs whitespace-nowrap">
+                        Nouveau
+                      </Badge>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        ))}
+      </div>
+
+      {/* Outils supplémentaires */}
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-6 gap-2 md:gap-3">
+        {additionalTools.map((tool: any) => (
+          <a 
+            key={tool.title}
+            href={tool.href}
+            className="inline-flex items-center gap-2 px-3 py-2 md:px-4 md:py-2 bg-white dark:bg-gray-800 rounded-full shadow-sm hover:shadow-md transition-all border border-gray-200 dark:border-gray-700"
+          >
+            <span className={`${tool.color}`}>{tool.icon}</span>
+            <span className="text-xs md:text-sm font-medium truncate">{tool.title}</span>
+          </a>
+        ))}
+      </div>
+
+      {/* Pied de page avec animation */}
+      <div className="mt-auto pt-6 flex justify-center animate-fadeIn animation-delay-1000">
+        <p className="text-xs text-gray-500 dark:text-gray-400">
+          Nextherm v2.0 • Propulsé par la communauté des installateurs
+        </p>
+      </div>
     </div>
   );
+}
+
+// Fonction qui récupère un conseil basé sur des données météo
+async function fetchWeatherTip(randomCity: { name: string; lat: number; lon: number }) {
+  try {
+    // Déterminer la saison actuelle (approche plus générique)
+    const now = new Date();
+    const month = now.getMonth(); // 0-11 (jan-dec)
+    
+    // Définir un type pour la variable season
+    type Season = 'printemps' | 'été' | 'automne' | 'hiver';
+    let season: Season = 'printemps'; // Valeur par défaut
+    
+    if (month >= 2 && month <= 4) {
+      season = 'printemps';
+    } else if (month >= 5 && month <= 7) {
+      season = 'été';
+    } else if (month >= 8 && month <= 10) {
+      season = 'automne';
+    } else {
+      season = 'hiver';
+    }
+    
+    // Conseils basés sur la saison, indépendamment de la météo actuelle
+    const seasonalTips = {
+      'printemps': [
+        {
+          id: 'spring-1',
+          text: `Au printemps, c'est le moment idéal pour effectuer la maintenance annuelle de votre pompe à chaleur avant les fortes chaleurs.`,
+          icon: <Zap className="h-5 w-5 text-green-600 dark:text-green-500" />,
+          source: 'Conseils saisonniers'
+        },
+        {
+          id: 'spring-2',
+          text: `Contrôlez le bon fonctionnement de votre système de rafraîchissement avant l'arrivée des températures estivales.`,
+          icon: <Cloud className="h-5 w-5 text-blue-600 dark:text-blue-500" />,
+          source: 'Conseils saisonniers'
+        }
+      ],
+      'été': [
+        {
+          id: 'summer-1',
+          text: `En été, réglez votre pompe à chaleur réversible à 26°C maximum pour un confort optimal et des économies d'énergie.`,
+          icon: <Thermometer className="h-5 w-5 text-red-600 dark:text-red-500" />,
+          source: 'Conseils saisonniers'
+        },
+        {
+          id: 'summer-2',
+          text: `Vérifiez que votre unité extérieure est à l'ombre pour améliorer les performances de rafraîchissement.`,
+          icon: <Cloud className="h-5 w-5 text-blue-600 dark:text-blue-500" />,
+          source: 'Conseils saisonniers'
+        }
+      ],
+      'automne': [
+        {
+          id: 'autumn-1',
+          text: `En automne, vérifiez l'isolation de vos fenêtres et portes pour optimiser le rendement de votre chauffage.`,
+          icon: <Lightbulb className="h-5 w-5 text-yellow-600 dark:text-yellow-500" />,
+          source: 'Conseils saisonniers'
+        },
+        {
+          id: 'autumn-2',
+          text: `Contrôlez la pression du circuit de chauffage avant de basculer en mode hiver.`,
+          icon: <Zap className="h-5 w-5 text-green-600 dark:text-green-500" />,
+          source: 'Conseils saisonniers'
+        }
+      ],
+      'hiver': [
+        {
+          id: 'winter-1',
+          text: `En hiver, dégagez régulièrement l'unité extérieure de toute neige ou glace pour maintenir l'efficacité.`,
+          icon: <Thermometer className="h-5 w-5 text-blue-600 dark:text-blue-500" />,
+          source: 'Conseils saisonniers'
+        },
+        {
+          id: 'winter-2',
+          text: `Réglez votre pompe à chaleur entre 19°C et 21°C pour un confort optimal et une consommation maîtrisée.`,
+          icon: <Zap className="h-5 w-5 text-green-600 dark:text-green-500" />,
+          source: 'Conseils saisonniers'
+        }
+      ]
+    };
+    
+    // Obtenir aussi les données météo réelles pour enrichir le conseil
+    const weatherResponse = await fetch(
+      `https://api.open-meteo.com/v1/forecast?latitude=${randomCity.lat}&longitude=${randomCity.lon}&current=temperature_2m,weather_code&timezone=auto`,
+      { next: { revalidate: 3600 } } // Mettre en cache pendant 1 heure
+    );
+
+    if (weatherResponse.ok) {
+      const weatherData = await weatherResponse.json();
+      const temperature = weatherData.current?.temperature_2m;
+      
+      // Sélectionner un conseil saisonnier aléatoire pour cette saison
+      const seasonTips = seasonalTips[season];
+      const seasonTip = seasonTips[Math.floor(Math.random() * seasonTips.length)];
+      
+      // Ajouter l'information de température si disponible
+      if (temperature !== undefined) {
+        return {
+          ...seasonTip,
+          text: `${seasonTip.text} À ${randomCity.name}, il fait actuellement ${Math.round(temperature)}°C.`,
+        };
+      }
+      
+      return seasonTip;
+    } else {
+      // Si l'API météo échoue, utiliser uniquement le conseil saisonnier
+      const seasonTips = seasonalTips[season];
+      const seasonTip = seasonTips[Math.floor(Math.random() * seasonTips.length)];
+      return seasonTip;
+    }
+    
+  } catch (error) {
+    console.error('Erreur météo:', error);
+    
+    // En cas d'erreur, utiliser des conseils statiques
+    const tips = [
+      {
+        id: 1,
+        text: "Pour un confort optimal, pensez aux systèmes réversibles qui peuvent chauffer et refroidir votre logement.",
+        icon: <Thermometer className="h-5 w-5 text-blue-600 dark:text-blue-500" />
+      },
+      {
+        id: 2,
+        text: "Aujourd'hui est un jour idéal pour faire contrôler le rendement de votre pompe à chaleur.",
+        icon: <Zap className="h-5 w-5 text-yellow-600 dark:text-yellow-500" />
+      },
+      {
+        id: 3,
+        text: "Pensez à vérifier l'isolation de votre maison pour maximiser l'efficacité de votre chauffage géothermique.",
+        icon: <Lightbulb className="h-5 w-5 text-yellow-600 dark:text-yellow-500" />
+      },
+      {
+        id: 4,
+        text: "Un entretien régulier de votre système de pompe à chaleur peut réduire votre consommation d'énergie de 10%.",
+        icon: <Zap className="h-5 w-5 text-green-600 dark:text-green-500" />
+      },
+      {
+        id: 5,
+        text: "La température idéale pour un système géothermique se situe entre 18 et 20°C pour un confort optimal.",
+        icon: <Thermometer className="h-5 w-5 text-red-600 dark:text-red-500" />
+      },
+      {
+        id: 6,
+        text: "Saviez-vous que les pompes à chaleur air-eau peuvent fonctionner jusqu'à -20°C extérieur?",
+        icon: <Cloud className="h-5 w-5 text-blue-600 dark:text-blue-500" />
+      }
+    ];
+    
+    // Sélection aléatoire d'un conseil du jour
+    const randomTip = tips[Math.floor(Math.random() * tips.length)];
+    return randomTip;
+  }
 }
