@@ -20,6 +20,17 @@ function LoginForm() {
   const redirect = searchParams.get('redirect');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [loginSuccess, setLoginSuccess] = useState(false);
+  const [redirectTimer, setRedirectTimer] = useState<number | null>(null);
+
+  // Nettoyer le timer si le composant est démonté
+  useEffect(() => {
+    return () => {
+      if (redirectTimer !== null) {
+        clearTimeout(redirectTimer);
+      }
+    };
+  }, [redirectTimer]);
 
   useEffect(() => {
     const errorCode = searchParams.get('error');
@@ -59,8 +70,25 @@ function LoginForm() {
         return;
       }
 
+      // Marquer la connexion comme réussie
+      setLoginSuccess(true);
+      toast.success('Connexion réussie');
+      
+      // Redirection immédiate
       router.refresh();
       router.push(redirect || '/protected');
+      
+      // Si pas de redirection après 3 secondes, rafraîchir la page
+      const timer = window.setTimeout(() => {
+        // Vérifier si nous sommes toujours sur la page de connexion
+        if (window.location.pathname.includes('/sign-in')) {
+          console.log('Redirection automatique après délai...');
+          window.location.href = redirect || '/protected';
+        }
+      }, 3000);
+      
+      setRedirectTimer(timer as unknown as number);
+      
     } catch (error) {
       setError('Une erreur est survenue lors de la connexion');
       toast.error('Une erreur est survenue lors de la connexion');
@@ -146,12 +174,17 @@ function LoginForm() {
           <Button
             type="submit"
             className="w-full flex justify-center items-center py-2 px-4 border border-transparent rounded-full shadow-sm text-sm font-medium text-white bg-[#86BC29] hover:bg-[#75a625] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#86BC29] transition-colors duration-200"
-            disabled={isLoading}
+            disabled={isLoading || loginSuccess}
           >
             {isLoading ? (
               <>
                 <Loader2 className="animate-spin mr-2 h-4 w-4" />
                 Chargement...
+              </>
+            ) : loginSuccess ? (
+              <>
+                <Loader2 className="animate-spin mr-2 h-4 w-4" />
+                Redirection...
               </>
             ) : (
               'Se connecter'

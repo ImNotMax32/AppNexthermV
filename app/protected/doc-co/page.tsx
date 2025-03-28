@@ -471,6 +471,21 @@ const documents = [
     taille: "2.4 MB"
   },
 
+  // Tarifs
+  {
+    id: 32,
+    title: "Catalogue Nextherm 2025",
+    category: "Tarifs",
+    date: "03/2025",
+    version: "2025",
+    gamme: "Tarifs",
+    marché: "Tous",
+    description: "Catalogue des tarifs Nextherm 2025",
+    url: "https://www.nextherm.fr/catalogue/",
+    type: "WEB",
+    taille: "N/A"
+  },
+
   // Autres catégories à compléter...
 ];
 
