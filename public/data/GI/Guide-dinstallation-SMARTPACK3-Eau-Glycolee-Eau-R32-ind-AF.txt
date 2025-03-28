@@ -1,0 +1,3867 @@
+Guide d’installation GEOTHERMIE
+SMARTPACK3 R32
+Eau Glycolée Eau
+Captage Horizontal / Vertical
+
+SARL NEXTHERM - ZA de Clairac – 30 Rue Maryse Bastié
+26760 BEAUMONT LES VALENCE
+…………………………………………………………………….……..….………………….
+Tél. : 04 75 59 44 10- Fax : 04 75 55 52 30
+Email : contact@nextherm.fr - www.nextherm.fr
+
+Table des matières
+1
+
+Avant-propos ............................................................................................................................................. 4
+
+1.1
+
+Généralités ............................................................................................................................................ 4
+
+1.2 Sécurité électrique....................................................................................................................................... 4
+1.3 Réfrigérant ................................................................................................................................................... 5
+1.3.1 Généralités .......................................................................................................................................... 5
+1.3.2 Ventilation .......................................................................................................................................... 5
+1.4 Transport et déplacement du générateur ................................................................................................... 5
+2 La pompe à chaleur ........................................................................................................................................ 6
+2.1 Généralités .................................................................................................................................................. 6
+2.2 Particularités ................................................................................................................................................ 6
+2.3 Le générateur .............................................................................................................................................. 7
+2.3.1 Représentation photographique (photo non contractuel) ................................................................. 8
+2.3.2 Dimensions ......................................................................................................................................... 9
+2.3.3 Pose du générateur ............................................................................................................................. 9
+2.3.4 Caractéristiques techniques ............................................................................................................. 11
+2.3.5 Etiquette signalétique ....................................................................................................................... 12
+3 Dimensionnement de l’installation .............................................................................................................. 13
+3.1 Etude thermique ........................................................................................................................................ 13
+3.2 Capteur et Emetteurs ................................................................................................................................ 13
+4 Les capteurs .................................................................................................................................................. 14
+4.1 Généralités ................................................................................................................................................ 14
+4.2 Etude technique ........................................................................................................................................ 14
+4.3 Captage horizontal .................................................................................................................................... 15
+4.3.1 Généralités ........................................................................................................................................ 15
+4.3.2 Choix du nombre de boucles capteurs ............................................................................................. 16
+4.3.3 Le distributeur collecteur .................................................................................................................. 17
+4.4 Les liaisons ................................................................................................................................................. 18
+4.3.2 Surface de captage............................................................................................................................ 20
+4.3.3 Pré étude sur plan ............................................................................................................................. 21
+4.4 Captage en tranchées ................................................................................................................................ 21
+4.4.1 Généralités ........................................................................................................................................ 21
+4.4.2 Pré étude sur plan ............................................................................................................................ 22
+4.4.3 Double couches ................................................................................................................................ 22
+4.5 Captage vertical ......................................................................................................................................... 23
+4.5.1 Généralités ........................................................................................................................................ 23
+4.5.2 Etude ................................................................................................................................................. 24
+4.8 Mise en épreuve des capteurs................................................................................................................... 26
+4.8 Remplissage du capteur ............................................................................................................................ 26
+4.8.1 Capteur pré chargé en mélange eau glycolé : ................................................................................. 28
+4.8.2 Capteur non chargé : ........................................................................................................................ 29
+4.10 Remise en place des terres ...................................................................................................................... 30
+
+Ind : AF Février 2025 / Page 2
+
+5 Captage sur eau de nappe ............................................................................................................................ 30
+5.1 Généralités ................................................................................................................................................ 30
+5.2 Préconisations de mise en œuvre : ........................................................................................................... 30
+5.3 Raccordement hydraulique et électrique .................................................................................................. 32
+6 Emetteurs ..................................................................................................................................................... 35
+6.1 Généralité .................................................................................................................................................. 35
+6.2 Planchers chauffants ................................................................................................................................. 35
+6.3 Radiateurs ou convecteurs ........................................................................................................................ 36
+6.4 Schémas hydrauliques ............................................................................................................................... 38
+6.5 Vases d’expansion ..................................................................................................................................... 42
+7 Raccordement hydraulique et accessoires des circuits chauffage et capteur.............................................. 43
+7.5.1 Accessoires........................................................................................................................................ 43
+7.1 Accessoires de raccordement proposé en option ..................................................................................... 44
+6 Ballon d’eau chaude sanitaire ...................................................................................................................... 44
+6.1 Généralités ................................................................................................................................................ 44
+6.2 Caractéristiques du ballon ......................................................................................................................... 44
+6.3 Fonctionnement ........................................................................................................................................ 45
+6.4 Raccordement hydraulique ....................................................................................................................... 45
+6.6 Vanne trois voies (livrée avec le kit ECS) ................................................................................................... 46
+6.7 Indicateur thermostatique (installé sur le ballon ECS) .............................................................................. 46
+7.5.2 Kit Réchauffeur de boucles ............................................................................................................... 47
+7.5.3 Kit Réchauffeur de ballon Tampon ................................................................................................... 48
+8 Mise en service ............................................................................................................................................. 48
+8.1 Généralités ................................................................................................................................................ 48
+8.2 Pompe à chaleur ........................................................................................................................................ 48
+8.2.1 Configuration d’usine........................................................................................................................ 48
+8.2.2 Raccordement électrique.................................................................................................................. 49
+8.2.3 Réglage de la temporisation ............................................................................................................ 50
+8.2.4 Démarrage ........................................................................................................................................ 50
+8.2.5 Schéma électrique .................................................................................................................................. 52
+8.3 Capteur ...................................................................................................................................................... 52
+8.4 Fiche de mise en service ............................................................................................................................ 52
+8.5 Cause de pannes les plus fréquentes : ...................................................................................................... 53
+8.5.2 La machine ne démarre pas et le voyant sur RT1 est allumé. .......................................................... 53
+9 Maintenance................................................................................................................................................. 54
+9.1 Généralités ................................................................................................................................................ 54
+9.2 Circuits électriques .................................................................................................................................... 54
+9.3 Circuits hydrauliques ................................................................................................................................. 54
+9.4 Circuits frigorifiques .................................................................................................................................. 54
+
+Ind : AF Février 2025 / Page 3
+
+Avant-propos
+1 Avant-propos
+1.1
+
+Généralités
+Les installations de chauffage avec pompe à chaleur répondent à des normes strictes de fonctionnement et
+de sécurité que vous devez connaître et appliquer.
+En tant qu'installateur une partie importante de votre travail consiste à installer ou entretenir le système de
+manière à ce qu'il fonctionne efficacement et en toute sécurité.
+Pour effectuer une installation sûre et obtenir un fonctionnement sans problème, il faut :
+•
+•
+•
+•
+•
+
+Disposer du personnel qualifié et habilité ayant reçu une formation à nos produits.
+Lire attentivement cette notice d’installation avant de commencer.
+Procéder à chaque étape de l'installation ou de maintenance en suivant les explications.
+Observer toutes les recommandations de prudence et de sécurité données dans cette notice.
+Porter les équipements de protection individuelle (code du travail) visant à protéger la santé et la
+sécurité des travailleurs.
+
+Les recommandations professionnelles éditées sous la forme de guides, appelées « Règles de l’Art Grenelle
+Environnement 2012 » alimentant le processus normatif classique et reconnues par les assureurs doivent
+être suivies. Une copie de ces guides est accessible sur le site NEXTHERM.
+
+1.2 Sécurité électrique
+L’appareil est alimenté en 230V 50Hz monophasé ou 380V 50hz triphasé et présente donc un risque de choc
+électrique.
+Respectez toutes les règlementations électriques en vigueur, notamment la NF C15-100 et le code du
+travail.
+La totalité des opérations de raccordement doit se faire hors tension.
+Seuls des professionnels habilités peuvent réaliser des opérations d’installation et de maintenance
+électrique.
+Le ou les circuits d’alimentation doivent être déconnectés, condamnés et signalés comme tels, avant
+l’intervention sur le produit.
+Utilisez des lignes électriques dédiées et protégées contre les surintensités, les courants de fuite et les
+surtensions pour l’alimentation de l’appareil.
+
+La SMARTPACK3 requière deux lignes d’alimentation (dans le cas de l’option résistance). Elles
+doivent être distinctement, sectionné, condamnés et signalés comme tels, avant l’intervention
+sur le produit.
+Le tableau électrique doit être étiqueté avec l’indication que la pompe à chaleur est alimentée par une
+double alimentation.
+
+Ind : AF Février 2025 / Page 4
+
+1.3 Réfrigérant
+1.3.1 Généralités
+Le R32 est le réfrigérant utilisé dans la SMARTPACK3.
+C’est un gaz fluoré ne présentant pas de danger direct pour la santé en cas d’inhalation fortuite. Cependant,
+Lors d’opération de maintenance sur le circuit frigorifique, il convient de se référer aux fiches de sécurité
+des fabricants concernant les fluides et les huiles frigorifiques.
+Le R32 est un gaz inflammable sous certaines conditions. Lors de sa manipulation, il conviendra de prendre
+les dispositions de sécurité nécessaires, au minimum utilisé du matériel spécifique au gaz inflammable et
+ventiler la zone. Le R32 est un « gaz lourd » qui s’accumule dans les parties basses des locaux, il conviendra
+d’être particulièrement vigilant dans ces zones.
+En application du décret N°2007-737 du 7 Mai 2007 relatif à certains fluides réfrigérants utilisés dans les
+équipements frigorifiques et climatiques, toutes interventions sur le circuit frigorifique ne peuvent être
+menées que par un opérateur disposant d’une attestation d’aptitude à la manipulation des fluides
+frigorigènes.
+L’entreprise doit également être munie d’une attestation de capacité à l’utilisation des fluides frigorigènes
+en cours de validité.
+Faire procéder à un contrôle de l’étanchéité de la pompe à chaleur avec un détecteur de fuite électronique
+périodiquement vérifié, lors de la mise en service et après toutes interventions sur le circuit de fluide
+frigorigène.
+Ce contrôle est à renouveler à une fréquence conforme aux réglementations en vigueur.
+
+1.3.2 Ventilation
+Le local du générateur doit être d’un volume minimum pour qu’une éventuelle fuite ne fasse pas dépasser
+la concentration maximale autorisée. En cas de plusieurs modules seule la charge du module le plus gros
+doit être prise en compte.
+Générateur
+Volume
+minimum du
+local en m3
+Surface
+minimum pour
+une hauteur de
+2.5m en m²
+
+2
+
+4
+
+6
+
+8
+
+10M
+
+10T
+
+13
+
+17
+
+13.3
+
+16.6
+
+20.5
+
+25.6
+
+28.4
+
+27.1
+
+24.8
+
+32.2
+
+5.3
+
+6.6
+
+8.2
+
+10.2
+
+11.2
+
+10.8
+
+9.8
+
+12.7
+
+Si le local est trop petit, prévoir une extraction en partie basse ou s’assurer de la communication avec un
+local adjacent permettant d’obtenir le volume nécessaire (détalonnage de la porte en partie basse de 15
+mm).
+
+1.4 Transport et déplacement du générateur
+En cas de transport de la SMARTPACK3, de l’entreprise vers le lieu d’installation définitif la
+machine doit être fixée à la palette d’origine (type Europ)
+Une protection de l’habillage est nécessaire. Et le sanglage au véhicule est indispensable.
+
+Ind : AF Février 2025 / Page 5
+
+La pompe à chaleur
+2 La pompe à chaleur
+2.1 Généralités
+La pompe à chaleur permet de puiser l’énergie calorifique GRATUITE contenue dans la terre pour la
+restituer à l’utilisateur. Cette énergie est inépuisable car elle est sans cesse renouvelée par les apports
+solaires directs ou véhiculée par l’eau de pluie, la neige, le vent, ainsi que par la chaleur provenant du soussol.
+Pour prélever et transférer cette énergie, la pompe à chaleur nécessite l’utilisation d’un compresseur
+frigorifique. La part d’énergie électrique consommée est de 3 à 5 fois moindre que l’énergie calorifique
+totale restituée à l’installation de chauffage.
+
+Pour fonctionner correctement, l’installation nécessite principalement quelques éléments clefs :
+•
+•
+•
+•
+
+La pompe à chaleur est le cœur du système qui permet le transfert de l’énergie gratuite vers
+l’habitat.
+Le capteur géothermique est enfoui dans le sol à l’extérieur de la maison. Il peut être installé
+horizontalement ou verticalement. Il permet de drainer efficacement l’énergie gratuite du sol.
+Le Plancher chauffant, les radiateurs ou les ventilo-convecteurs, sont des éléments mis en place
+dans l’habitation et qui permettent la restitution harmonieuse de la chaleur.
+Le Thermostat d’ambiance, associé ou non à une régulation. Judicieusement positionné dans la
+maison, il a pour fonction de gérer les apports en chauffage et donc de fournir le confort adéquat
+pour les occupants.
+
+2.2 Particularités
+La SMARTPACK3 a été étudiée pour répondre au marché de la maison individuelle dans le neuf et la
+rénovation.
+La réglementation RT2012 limite la consommation globale du logement comprenant le chauffage, l’eau
+chaude sanitaire, l’éclairage, la ventilation et éventuellement le rafraichissement. Cette consommation doit
+être d’environ 50kWhep/m2/an, variable suivant les régions et l’altitude.
+Pour cette raison, la gamme SMARTPACK3 est particulièrement économe en énergie et sa modularité
+permet d’obtenir des puissances calorifiques allant de 2 à 20 kW environ sur capteur à eau glycolée.
+Le nombre de capteurs étant peu important, le choix est parfaitement adapté aux propriétés disposant
+d’une surface limitée de terrain à consacrer au captage.
+
+Ind : AF Février 2025 / Page 6
+
+2.3 Le générateur
+La pompe à chaleur SMARTPACK3 eau glycolée-eau est un générateur chargé, prêt à être raccordé à
+l’installation de chauffage et au capteur géothermique. Il est équipé de deux vases d’expansion de 8L et de
+deux circulateurs pour les circuits chauffage et capteur. Il est nécessaire d’installer un dispositif de
+remplissage hydraulique de type disconnecteur à zone neutre sur le circuit de chauffage (non fourni). Un
+dispositif de limitation de la pression (soupapes et manomètres fournis non montés) pour chaque réseau.
+Il peut être raccordé à un ballon d’eau chaude sanitaire.
+Les conditions de performance nominale reflètent la moyenne des performances annuelles de
+l’installation : Conditions et méthodes d’essais selon la norme EN 14511-2.
+Les gammes SMARTPACK3 Eau Glycolée Eau, possède un afficheur de température en façade de la PAC. Cet
+afficheur est éteint en mode veille de la PAC. En cas de demande de chauffage la température affichée est
+la température d’eau mesurée sur le tube départ chauffage. L’afficheur coupe le fonctionnement de la PAC
+lorsque la température d’eau est trop importante (limiteur chaud : réglage usine 45°C).
+
+Arrêt / Marche de l’indicateur
+Température actuelle de l’eau départ chauffage
+Lorsque « 1 » est affiché, la température est en
+dessous de la température limite programmée.
+
+Pompes à chaleur réversibles :
+En cas d’option réversibilité, commandé et installé en usine, la pompe à chaleur dispose d’une vanne sur le
+circuit thermodynamique qui permet d’inverser le cycle et ainsi produire du froid sur le plancher chauffant
+ou les ventilo convecteurs.
+Il suffit d’appuyer sur le bouton Hiver/été. Toutefois l’installateur devra impérativement introduire du
+glycol dans l’installation de chauffage avec une protection contre le gel de l’échangeur à -10°C minimum.
+Le contrôle de la température ambiante, se fera au moyen du thermostat radio comme en chauffage, et ne
+nécessite pas de changement de mode de fonctionnement du thermostat qui restera le mode hiver.
+L’utilisation d’un ballon tampon est dans ce cas indispensable pour donner un temps de fonctionnement de
+la PAC suffisant entre les démarrages et arrêts. 15l/kw de puissance calorifique.
+Il conviendra de limiter la température de rafraichissement à 18°C pour du plancher (régime 23/18°C) et à
+7°C dans le cas d’utilisation de ventilo convecteurs (régime 12/7°C).
+
+Pompes à chaleur avec ballon tampon effectuant de l’eau chaude sanitaire :
+Lorsque les émetteurs de chaleur sont des radiateurs ou des convecteurs, ou lorsque la pompe à chaleur est
+réversible, l’installateur doit installer un ballon tampon afin de donner de l’inertie à l’installation.
+Si la pompe à chaleur reste en fonction l’été afin d’effectuer de l’eau chaude sanitaire, il faut penser à
+inhiber le mode chauffage car sinon le ballon tampon est chauffé lui aussi.
+Un bouton de commutation été hiver sur la façade de la machine permet de stopper la demande de
+chauffage en été. Il conviendra de repasser en mode hiver à l’automne.
+
+Ind : AF Février 2025 / Page 7
+
+2.3.1 Représentation photographique (photo non contractuel)
+
+6
+
+10
+
+54
+
+9
+44
+
+7
+
+8
+3
+
+2
+
+1
+
+SMARTPACK3 EAU GLYCOLEE EAU
+
+Repère
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+
+Désignation
+Compresseur
+Circulateur (chauffage)
+Echangeur à plaques (condenseur)
+Afficheur de température / aquastat de sécurité sur la porte
+Vase d’expansion circuit chauffage de 8 litres
+Platine électrique
+Contrôleur de circulation capteur
+Circulateur (capteur)
+Echangeur à plaques (évaporateur haute performance)
+Vase d’expansion circuit capteur de 8 litres
+
+Nota : Certains éléments de la PAC ne sont pas représentés (ligne liquide, …). Photo non contractuelle.
+
+Ind : AF Février 2025 / Page 8
+
+2.3.2 Dimensions
+
+Hauteur
+Largeur
+Profondeur
+
+1 module
+990 mm
+635 mm
+635 mm
+
+2 modules
+1840 mm
+635 mm
+635 mm
+
+2.3.3 Pose du générateur
+
+Le générateur sera posé en respectant les règles suivantes :
+Choisissez de préférence un local éloigné des chambres.
+Ne pas monter les accessoires éventuels contre les cloisons des pièces adjacentes, mais privilégier les murs
+extérieurs. (Risques de nuisances sonores)
+Vérifiez que le sol est stable et dur pour supporter le générateur et le maintenir horizontal
+Isolez les départs et retours des liaisons capteurs (condensation)
+Ne pas installer les distributeurs/collecteurs du capteur en direct sur la PAC ni dans le bâtiment mais passez
+par des tubes de liaison isolés et des regards à l’extérieur.
+Permettre l’accessibilité et un espace de sécurité, en cas d’intervention ou de disfonctionnement du produit
+: 500 mm sur les côtés, 800 mm à l’avant et 600 mm sur le dessus.
+
+Ind : AF Février 2025 / Page 9
+
+Générateur
+2M
+4M
+Capteur 0/-3°C - Eau de chauffage 30-35°C
+
+6M
+
+8M
+
+10M
+
+10T
+
+13M
+
+13T
+
+17T
+
+Puissance calorifique
+
+W
+
+2610
+
+4860
+
+6530
+
+7470
+
+10500
+
+10300
+
+13300
+
+13200
+
+17300
+
+Puissance électrique
+absorbée
+
+W
+
+610
+
+1080
+
+1530
+
+1750
+
+2500
+
+2450
+
+3160
+
+3130
+
+4090
+
+Puissance frigorifique
+
+W
+
+2000
+
+3780
+
+5000
+
+5720
+
+8000
+
+7850
+
+10140
+
+10070
+
+13210
+
+COP
+
+-
+
+4.27
+
+4.50
+
+4.27
+
+4.27
+
+4.2
+
+4.2
+
+4.21
+
+4.22
+
+4.23
+
+Intensité à 30/35°C
+Monophasé 230V
+
+A
+
+2.92
+
+5.17
+
+7.32
+
+8.37
+
+11.96
+
+-
+
+15.12
+
+-
+
+-
+
+Intensité à 30/35°C
+Triphasé 400V
+
+A
+
+-
+
+-
+
+-
+
+-
+
+-
+
+4.38
+
+-
+
+5.59
+
+7.31
+
+Débit eau chauffage
+pour delta T : 5K
+
+m3/h
+
+0.450
+
+0.840
+
+1.125
+
+1.290
+
+1.825
+
+1.780
+
+2.310
+
+2.270
+
+2.980
+
+Débit eau capteur pour
+delta T : 3K
+
+m3/h
+
+0.650
+
+1.220
+
+1.620
+
+1.850
+
+2.590
+
+2.540
+
+3.290
+
+3.260
+
+4.280
+
+Coefficient de
+Performance
+SCOP 4.35
+4.97
+4.39
+4.38
+4.64
+4.64
+4.60
+4.66
+4.68
+saisonnier
+Efficacité Energétique
+%
+166
+196
+167
+167
+186
+186
+184
+184
+187
+Saisonnière (ηs/ETAS)
+Capteur 0/-3°C - Eau de chauffage 40-45°C
+Puissance calorifique
+W
+2350
+4560 6170 7110 10050 9850 12700 12600 16600
+Puissance électrique
+W
+680
+1300 1740 1970
+3070
+3160
+3960
+3860
+4980
+absorbée
+Puissance frigorifique
+W
+1670
+3260 4430 5140
+6980
+6690
+8740
+8740 11620
+COP
+3.46
+3.51
+3.55
+3.61
+3.27
+3 .12
+3.21
+3.26
+3.33
+Intensité à 40/45°C
+A
+3.31
+5.65
+8.30
+9.52
+13.35
+17.22
+Monophasé 230V
+Intensité à 40/45°C
+A
+5.63
+6.88
+8.88
+Triphasé 400V
+Coefficient de
+Performance
+SCOP 3.97
+4.16
+3.99
+4.01
+4.05
+4.01
+4.04
+4.06
+4.09
+saisonnier
+Efficacité Energétique
+%
+159
+167
+160
+160
+162
+160
+161
+163
+164
+Saisonnière (ηs/ETAS)
+Alimentation et protection électrique Monophasé : 230V, 1ph+N, 50Hz (25m) Tension minimum admissible
+au démarrage : 220 V
+Section câble
+mm²
+3x2,5 3x2.5
+3x4
+3x4
+3x6
+3x6
+puissance Mono
+Calibre disjoncteur
+6.3
+10
+16
+16
+20(C)
+25(C)
+MOTEUR Mono *
+(D)
+(D)
+(C)
+(C)
+Alimentation et protection électrique Monophasé de la résistance (en option) : 230V, 1ph+N, 50Hz (25m)
+Section câble 2.5mm2 ; Calibre disjoncteur courbe C 10A
+Alimentation et protection électrique Triphasé : 400V, 3ph+N+PE, 50Hz (25m)
+Section câble
+mm²
+5x2.5
+5x2.5 5x2.5
+puissance Tri
+Calibre disjoncteur
+10(C)
+10(C) 16(C)
+MOTEUR Tri *
+Poids
+kg
+48
+54
+59
+67
+92
+92
+92
+92
+97
+
+Ind : AF Février 2025 / Page 10
+
+Puissance acoustique
+(40/45°C)
+Intensité de
+démarrage
+
+Db(A)
+
+52
+
+55
+
+57
+
+56
+
+58
+
+59
+
+59
+
+59
+
+61
+
+A
+
+21
+
+42
+
+45**
+
+45**
+
+45**
+
+40**
+
+45**
+
+40**
+
+40**
+
+1
+
+2
+
+3
+
+4
+
+5
+
+5
+
+7
+
+7
+
+9
+
+256
+37
+
+253
+36
+
+334
+37
+
+317
+45
+1.50
+
+313
+45
+1.50
+
+412
+46
+1.95
+
+205
+
+201
+
+264
+
+Capteur Horizontal
+Pose en tranchées de 60cm mini
+Boucles (100m)
+
+Nb
+
+Pose sur terrain décapé avec extraction de 37W/m2 (température de base > -10°C)
+Surface
+m²
+47
+92
+124
+142
+201
+196
+Pas
+cm
+47
+46
+41
+36
+40
+39
+Pose sur terrain décapé avec extraction de 30W/m2 (température de base < -10°C)
+Surface
+m²
+59
+115
+154
+177
+249
+243
+Pas
+cm
+59
+58
+51
+44
+50
+49
+Charge R32
+Kg
+0.81
+1.01
+1.25
+1.56
+1.72
+1.65
+Capteur vertical
+Sondes espacées de 6m mini** (avec extraction de 50W/m)
+Longueur totale
+m
+41
+76
+102
+116
+162
+158
+2.3.4 Caractéristiques techniques
+
+Alimentation en Monophasée et triphasée
+* Disjoncteur Moteur : Courbe D sans démarreur et courbe C avec démarreur
+** L’espacement des forages doit être approprié. Respectez les réglementations locales selon NF EN 15450
+
+Nota :
+Toutes les caractéristiques s’appliquent à un appareil neuf comportant des échangeurs thermiques propres,
+selon la Norme EN 15879-1
+L’installateur doit donc avoir une parfaite maitrise de son art et connaitre la qualité de l’eau de l’installation
+et la traiter en conséquence.
+
+Ind : AF Février 2025 / Page 11
+
+2.3.5 Etiquette signalétique
+A l’intérieur de la machine se trouve l’étiquette de série de la pompe à chaleur, avec les informations
+techniques suivantes :
+
+5
+10
+
+Ind : AA
+
+SMARTPACK3
+
+Type:
+
+Eau Glycolé-Eau 8
+Année Fab
+
+Tension :
+
+1
+2
+4
+
+9
+
+N° de série:
+230V - 1~ - 50Hz
+
+Puissance Calorifique* (kW)
+
+7,47
+
+2018
+Protection électrique: IP X1
+Cop*
+
+4,50
+
+Puissance Absorbée*/Max (kW) 1,66/1,97
+
+Fluide frigorigène: R32
+
+Courant Absorbé*/Max (A)
+
+7,9/9,4
+
+Groupe:1
+
+Débit eau application* (kg/s)
+
+0,357
+
+Charge (kg)
+
+1,56
+
+Débit eau Mpg* (kg/s)
+
+0,520
+
+*Mpg 0/-3°C
+
+*eau:30/35°C
+
+Limite de températures et pressions admissibles Schéma élec
+
+149111 AA
+
+6
+7
+
+PS min (bar)
+
+PS max (bar)
+
+TS min (°C)
+
+TS max (°C)
+
+Captage(Mpg)
+
+0,5
+
+3
+
+-13
+
+15
+
+Application(eau)
+
+1,5
+
+3
+
+17
+
+55
+
+R32
+
+2,5
+
+42
+
+-24
+
+64
+
+8
+3
+
+Co ntient un fluide frigo rigène A 2L et à effet de serre fluo rés relevant du pro to co le de Kyo to
+
+*Les caractéristiques sont indiquées aux conditions d’essais.
+
+Repère
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+
+Désignation
+Alimentation électrique
+Débit d’eau pour le circuit de chauffage et le circuit capteur
+Mpg : mélange d’eau et de Mono propylène glycol.
+Numéro et indice du schéma électrique
+Limite des pressions et des températures pour le circuit chauffage et le circuit
+frigorifique
+Le marquage CE correspond à la conformité du produit par rapport aux législations
+européennes
+Coefficient de performance
+Classification du fluide frigorifique conformément à la direction des équipements
+sous pression et la charge réalisée par NEXTHERM ou l’installateur
+Régime de température et condition de test normalisé selon la norme NF EN
+14511-2
+Marquage NF : certification des produits par CERTITA
+Le circuit frigorifique contient un fluide inflammable : R32
+
+Ind : AF Février 2025 / Page 12
+
+Dimensionnement de l’installation
+3 Dimensionnement de l’installation
+3.1 Etude thermique
+La pompe à chaleur doit être sélectionnée pour couvrir de manière optimum, les déperditions calculées par
+le bureau d’études, majorées de 20 % selon la réglementation thermique en vigueur et pour la température
+extérieure de base.
+Cette étude thermique doit être réalisée par un bureau d’études agréé et compétent, qui prendra en
+compte tous les paramètres ayant une incidence sur les déperditions et en particulier :
+-
+
+-
+
+Le lieu de construction
+L’altitude, l’exposition aux vents, l’ensoleillement
+La nature, l’épaisseur et la qualité des isolants des parois
+La résistance thermique et l’étanchéité des vitrages et des portes
+La prise en compte des ponts thermiques
+Le taux de renouvellement d’air
+La température de confort intérieur souhaité par le client
+En cas de remplacement d’une ancienne PAC, vérifier avec le client que la pompe à chaleur qui est
+remplacée était correctement dimensionnée et couvrait les besoins. Un calcul, viendra enrichir le
+dossier technique, et confirmer la déclaration du client.
+Les déperditions seront majorées d’au moins 20%, selon la recommandation du COSTIC, de l’AFPAC et
+selon notre propre recommandation. La pompe à chaleur sera donc choisie dans la gamme de
+puissance NEXTHERM, de manière que sa puissance soit supérieure à 120% des déperditions.
+
+3.2 Capteur et Emetteurs
+Ces éléments mis en œuvre par l’installateur sont essentiels pour l’optimisation des performances de
+l’installation et disposent chacun d’un chapitre de la documentation.
+Les puissances frigorifiques sur le capteur au mètre linéaire de tube et au mètre carré ainsi que les
+puissances calorifiques des émetteurs au mètre linéaire de tube et au mètre carré devront être vérifiées
+afin que la machine choisie n’épuise pas le capteur ou ne surcharge pas les émetteurs.
+Les distributeurs /collecteurs doivent être parfaitement accessibles.
+La puissance calorifique maximum au mètre carré de plancher ne devra pas dépasser 90W/m2.
+La température de surface ne devra pas dépasser 28°C.
+
+Ind : AF Février 2025 / Page 13
+
+Les Capteurs
+4 Les capteurs
+4.1 Généralités
+Les capteurs de la gamme SMARTPACK3 Eau Glycolée / Eau sont réalisés avec du tube polyéthylène DN25.
+Ils ont une longueur de 100m.
+Les capteurs sont implantés horizontalement en tranchées de 50m ou sur terrain décapé.
+Les capteurs implantés verticalement ont une longueur prédéterminée mais ajustable, sous la
+responsabilité du foreur, en fonction de la nature du sol.
+Les capteurs sont reliés à un distributeur d’un côté et à un collecteur.
+
+4.2 Etude technique
+Réalisez en collaboration avec le client, un document comportant :
+• La taille et la forme du terrain disponible pour le captage ainsi que son ensoleillement.
+• La nature du terrain et son hydrologie
+• Les éléments de structures existants ou futurs (bâtiment, piscine, mur, fosses, …)
+• Les emplacements où seront installés la pompe à chaleur ainsi que les accessoires lorsque c’est le
+cas. (Ballon tampon, circulateur secondaire, regards pour la distribution …)
+• Les arbres (pour s’éloigner des racines présentes ou à venir et pour tenir compte de l’ombre sur
+le capteur)
+• L’accessibilité aux engins de chantier
+• Les réseaux souterrains (égouts, téléphone, électricité, …)
+Le concours du client final est intéressant car il pourra renseigner le technicien sur le type de clôture ou de
+haie qui seront implantés : mur avec arbustes, haies chez le client, haies chez le voisin, …
+Respectez les distances d’implantation suivantes :
+Obstacles
+
+Distance
+
+Arbres (tronc)
+
+2m
+
+Bâtiments, piscine, réseaux hydrauliques,
+égouts, …
+Réseaux enterrés non hydrauliques
+
+1.5 m
+
+Murs de clôture, haies, allées, …
+
+1m
+à l’appréciation de l’installateur et son client
+
+Tracez sur le plan de masse, les distances d’éloignement des ouvrages et des dispositifs techniques à
+protéger.
+
+Ind : AF Février 2025 / Page 14
+
+Repérer les points hauts et bas du terrain afin que les bulles d’air puisent s’évacuer jusqu’au distributeur /
+collecteur.
+Tracez alors les regards pour les distributeurs / collecteurs, les tubes de liaisons ainsi que les capteurs.
+Dans l’exemple ci-dessous, les distances d’éloignement à minima sont signalées en bleu.
+Le bâtiment et les ouvrages bétonnés sont en rouge ainsi que les allées.
+La zone de captage la plus étendue est alors facilement identifiable.
+
+4.3 Captage horizontal
+4.3.1 Généralités
+
+Nature du sol
+•
+•
+
+L’installateur doit vérifier préalablement que le sol correspond aux exigences thermiques et
+mécaniques d’un capteur géothermique.
+Si l’installateur estime que les pierres contenues dans la terre sont susceptibles de blesser ou
+écraser le tube, il doit dégager toutes les pierres effleurant le fond et réaliser un lit de terre
+végétale de 15cm minimum au-dessus du capteur.
+
+Tubes de captage
+•
+•
+•
+•
+•
+
+Les tubes sont maintenus par des crampons de sol afin de respecter le pas entre deux tubes.
+Les départs capteur doivent être isolés quand l’écartement est inférieur au pas.
+Il faut éviter toutes intrusions de terre dans les capteurs lors de la mise en œuvre.
+Les longueurs des boucles de capteur ne doivent pas être raccourcies.
+Le nombre de boucles doit être augmenté si la nature du sol ne permet pas d’atteindre la
+puissance thermique extraite nécessaire au fonctionnement de la PAC. (Voir paragraphe 4.3.2)
+
+Ind : AF Février 2025 / Page 15
+
+Grillage avertisseur
+•
+•
+
+Un dispositif avertisseur doit être enterré à 30cm de profondeur (NF T 54-080)
+Le concept de tranchée ne permet pas de faire déborder le dispositif avertisseur latéralement.
+Un bornage est donc conseillé.
+
+Distributeur / collecteur
+•
+•
+•
+•
+
+Afin de pouvoir placer toutes les boucles, il est préférable d’implanter le distributeur /collecteur
+au centre du terrain.
+Si le terrain est en pente, les collecteurs distributeurs doivent être en haut de la pente pour
+faciliter la purge de l’air.
+Le distributeur / collecteur doit être installé au-dessus du capteur dans un regard enterré avec le
+couvercle arrivant en surface afin de faciliter la mise en œuvre et l’entretien.
+Si plusieurs distributeurs / collecteurs sont installés, les longueurs des liaisons doivent comporter
+la même perte de charge.
+
+Evacuation des bulles d’air : Les tubes de captage sont positionnés en fonction de la pente
+
+Exemple de réalisation d’un distributeur / collecteur avec ses départs isolés
+
+4.3.2 Choix du nombre de boucles capteurs
+•
+•
+•
+
+Déterminez le nombre de capteurs et le nombre de distributeurs suivant le type de PAC.
+Déterminez le DN du tube de liaison en fonction du type de PAC et de la distance entre le
+distributeur / collecteur et la PAC
+En fonction des résultats précédents, déterminer les raccords à commander.
+
+Ind : AF Février 2025 / Page 16
+
+•
+•
+
+Mettre une légère inclinaison sur les nourrices afin que les bulles d’air s’échappent par le
+purgeur.
+Orienter les raccords afin que les tubes de liaison se raccordent le plus facilement possible en
+laissant de la souplesse dans les cintres de tubes, pour ne pas forcer sur les collecteurs et les
+joint.
+
+Collecteur
+
+NON
+
+Joint cuivre
+
+OUI
+Vanne d'isolement
+
+Tube capteur
+
+4.3.3 Le distributeur collecteur
+Collecteur / Distributeur équipés de vannes et purgeur
+Le kit comprend les capteurs, le distributeur / collecteur et le raccord coudé (avec l’adaptateur pour les
+liaisons).
+Le DN des liaisons est préétabli. Il peut cependant être augmenté, à la demande, en cas de distance plus
+éloignée.
+
+Cas particulier : SMARTPACK3 modèle 2 (1 seul capteur)
+La SMARTPACK3 modèle 2 n’a qu’un seul capteur donc pas de distributeur / collecteur.
+Le kit comprend le capteur, et 2 vannes en DN25 qui font la jonction entre le capteur et les tubes de liaison. Les
+tubes de liaison en DN25 sont à commander en sus.
+
+SMARTPACK3
+Nombre de capteurs
+Numéro du kit préchargé
+en Eau Glycolée (33% /
+protection = -15°C)
+
+2
+1
+KCPOG1HP
+
+Collecteur / Distributeur équipés de vannes et purgeur (repère 1 sur l’exemple de montage)
+
+Le kit comprend les capteurs, le distributeur / collecteur et le raccord coudé (avec l’adaptateur pour le
+DN32).
+Le DN des liaisons est préétabli. Il peut cependant être augmenté, à la demande, en cas de distance plus
+éloignée.
+
+Ind : AF Février 2025 / Page 17
+
+SMARTPACK3
+Nombre de
+capteurs
+Numéro du kit
+préchargé en Eau
+Glycolée (33% /
+protection
+= -15°C)
+DN Liaison mm
+
+4
+
+6
+
+8
+
+10
+5
+
+13
+7
+
+17
+9
+
+2
+
+3
+
+4
+
+KCPOG2HP
+
+KCPOG3HP
+
+KCPOG4HP
+
+KCPOG5HP
+
+KCPOG7HP
+
+KCPOG9HP
+
+32
+
+32
+
+32
+
+40
+
+40
+
+50
+
+Suivant performance des PAC aux régimes 0/-3°C et 30/35°C
+
+Compte tenu du nombre de boucles capteurs et afin de faciliter la pose des distributeurs et colleteurs,
+Il est nécessaire de prévoir la mise en place de regards de dimensions adaptés.
+
+4.4 Les liaisons
+Réalisez le passage des liaisons d’après les préconisations suivantes (vue de côté en coupe)
+
+Ind : AF Février 2025 / Page 18
+
+Veillez particulièrement à rétablir l’étanchéité du passage du mur à l’aide de matériaux appropriés.
+Nota : Les tuyaux de liaison capteur aller-retour (machine à l’intérieur) ne doivent pas être en contact mais
+isolés thermiquement entre eux deux et étanches envers l’environnement.
+
+Longueurs maximums des liaisons capteur en mètres (distance entre PAC et distributeurs)
+Générateur
+
+2M
+
+4M
+
+6M
+
+8M
+
+10M
+
+10T
+
+13M
+
+13T
+
+17T
+
+DN25x2.3
+
+40
+
+10
+
+6
+
+-
+
+-
+
+-
+
+-
+
+-
+
+-
+
+DN32x2.9
+
+-
+
+40
+
+20
+
+7
+
+7
+
+8
+
+10
+
+10
+
+-
+
+DN40x3.7
+
+-
+
+-
+
+60
+
+17
+
+18
+
+20
+
+30
+
+30
+
+8
+
+DN50x4.6
+
+-
+
+-
+
+-
+
+-
+
+-
+
+-
+
+-
+
+-
+
+27
+
+IMPORTANT
+•
+•
+•
+
+Les diamètres des liaisons doivent-être adaptés suivant la distance entre la PAC et les regards.
+Pour des raisons pratique de pose, il peut être judicieux de mettre en place 4 tubes de liaisons
+au lieu de 2.
+En effet, la manipulation de DN au-delà 50 devient difficile et le raccordement dans un même
+regard de 10 à 12 boucles n’est pas aisé non plus.
+
+Les tubes de liaison participent au captage.
+Ils ne doivent pas être juxtaposés mais écartés comme les capteurs afin qu’il n’ait pas d’échange
+entre eux.
+S’ils doivent être juxtaposés par commodité dans la même tranchée, ils doivent être éloignés
+thermiquement l’un de l’autre de 40cm minimum. Ils doivent de plus être isolés thermiquement
+s’ils se trouvent à proximité d’un ouvrage (Entrée dans le bâtiment, mur, terrasse, etc.)
+
+Mise en œuvre
+•
+•
+•
+•
+•
+
+Les tubes doivent être exempts de tout dommage mécanique : pliure, éraflure, coupure, érosion,
+etc …
+La pose doit être effectuée par du personnel responsable.
+Une couronne de rechange doit toujours être à la disposition des poseurs afin de pallier
+immédiatement une couronne défectueuse.
+La préparation des extrémités puis l’assemblage des tubes aux raccords doit être parfaitement
+exécutée.
+Le tubes de capteurs et liaison doivent être raccordés sans être tendu et doivent conserver un
+rayon de cintrage suffisant pour donner de la souplesse facilitant ainsi le raccordement.
+
+Contrôle du capteur
+Une fois que la pompe à chaleur, les liaisons, le collecteur, le distributeur et les couronnes capteurs sont
+raccordés entre eux, l’installateur doit vérifier l’étanchéité globale de l’installation en effectuant une mise
+sous pression d’eau à 6 Bar (pompe d’épreuve manuelle)
+Nota : Les raccords sont conçus pour 12.5 bars de pression maximum (PN12.5)
+
+Documents
+•
+
+Un plan de recollement devra être réalisé au plus tôt sur la base du document technique afin que le
+maître d’ouvrage dispose de ces documents pour ses éventuels futurs travaux (piscine, arbre).
+
+Ind : AF Février 2025 / Page 19
+
+•
+
+La réalisation de clichés répertoriés par l’installateur est aussi conseillée.
+
+4.3.2 Surface de captage
+
+La surface du capteur est le résultat du calcul :
+Surface (m2) = Puissance frigorifique extraite (W) / Débit d’extraction (W/m2).
+
+Puissance frigorifique extraite
+C’est la puissance extraite du sol.
+
+Taux d'extraction
+C’est une valeur normalisée en fonction de la nature du sol et de la durée annuelle de fonctionnement
+
+Débit d’extraction de chaleur spécifique
+Période de fonctionnement 1800 h
+Période de fonctionnement 2400 h
+par an
+par an
+Sol sec, non cohésif
+10 W/m²
+8 W/m²
+Sol humide cohésif
+20 à 30 w/m²
+16 à 24 W/m²
+Sable ou gravier saturé d’eau
+40 W/m²
+32 W/m²
+*Tableau extrait de la norme EN 15450 :2007
+Qualité du sol
+
+On constate que la surface du capteur va dépendre de la nature du sol.
+Le calcul du temps de fonctionnement en fonction des DJU (degré jour unifiés) du lieu d’implantation est
+donc intéressant pour choisir la puissance de sa PAC.
+
+Surface
+La surface du capteur est ainsi calculée au plus juste. Une surface supérieure, quand c’est possible
+augmente les performances.
+
+Ind : AF Février 2025 / Page 20
+
+4.3.3 Pré étude sur plan
+Une pré-étude sur plan permet de déterminer le passage des tubes de captage.
+
+4.4 Captage en tranchées
+4.4.1 Généralités
+Dans le cas où le captage sur terrain décapé n’est pas ou partiellement réalisable (zone étroite, zone avec
+arbres, …) il est possible de faire la totalité ou une partie du captage par tranchées.
+L’installateur peut donc réaliser son capteur à partir de tranchée de 0.6m minimum sur 0.6m de
+profondeur. L’entraxe entre 2 tranchées est de 1.2 m minimum.
+Une répartition des tranchées, à la limite de la propriété quand c’est possible, permet d’optimiser la surface
+disponible. Attention cependant aux zones d’ombres éventuelles, préjudiciables à la régénération du
+capteur.
+
+Ind : AF Février 2025 / Page 21
+
+4.4.2 Pré étude sur plan
+
+4.4.3 Double couches
+Il est aussi possible de réaliser, sous certaines conditions, du captage en double couches. L’emprise sur le
+terrain est alors réduite au minimum. Ce procédé doit faire l’objet d’une étude technique documentée.
+Toutes les mesures de sécurité doivent être prises concernant les risques d’éboulement de la tranchée lors
+de la pose du capteur (banchage).
+
+Ind : AF Février 2025 / Page 22
+
+4.5 Captage vertical
+4.5.1 Généralités
+Le capteur vertical sera réalisé avec des sondes verticales fournies par le foreur.
+Pour chaque modèle de pompe à chaleur, correspond une longueur moyenne de captage à répartir sur une
+ou plusieurs sondes et éventuellement a réajuster par le foreur.
+Taux d'extraction normalisé en fonction de la nature du sol et de la durée annuelle de fonctionnement*
+Potentiel de prélèvement thermique spécifique
+Type de sol
+Valeurs générales recommandées :
+Sous-sol normal et sédiment saturé
+d’eau 1,5 < < 3,0 W/(m K)
+
+Période de fonctionnement 1800h
+
+Période de fonctionnement 2400h
+
+60 W/m
+
+50 W/m
+
+Ind : AF Février 2025 / Page 23
+
+Sous-sol pauvre (sédiment sec) et
+< 1,5 W/ (m K)
+Roche consolidée avec une
+conductivité thermique élevée
+>3,0
+K) individuels :
+TypesW/(m
+de sols
+Gravier ou sable blanc
+Gravier ou sable saturés d’eau
+Gravier ou sable et fort écoulement
+d’eau souterraine
+Argile humide
+Calcaire massif
+Grés
+Magmatique siliceuse (exemple :
+granit)
+Magmatique basique (exemple :
+basalte)
+
+25 W/m
+
+20W/m
+
+84 W/m
+
+70 W/m
+
+<25 W/m
+65 à 80 W/m
+
+<20 W/m
+55 à 65 W/m
+
+80 à 100 W/m
+
+80 à 100 W/m
+
+35 à 50 W/m
+55 à 70 W/m
+65 à 80 W/m
+
+30 à 40 W/m
+45 à 60 W/m
+55 à 65 W/m
+
+65 à 85 W/m
+
+55 à 70 W/m
+
+40 à 65 W/m
+
+35 à 55 W/m
+
+Diorite
+70 à 85 W/m
+* Tableau extrait de la norme EN 15450 :2007
+
+60 à 70 W/m
+
+On constate que le taux d’extraction dépend de la nature du sol et du temps de fonctionnement.
+
+Implantation
+•
+•
+
+La norme expérimentale NF X 10-970 est la référence dans ce domaine.
+L’objet de ce paragraphe est que l’installateur veille à l’équilibrage des sondes.
+
+Les tubes de captage avec leur liaison jusqu’au distributeur doivent avoir une perte de charge similaire afin
+d’obtenir un débit équilibré entre sondes.
+Trois solutions :
+• Un raccordement suivant un schéma dit de Tickelmann avec deux regards en opposition
+• Un raccordement avec des liaisons au distributeur / collecteur de longueurs identiques
+• Un ajustement de la profondeur en fonction de la liaison
+Il est nécessaire de documenter la méthode employée.
+
+Repérage
+L’installateur réalisera un relevé de la position des sondes par rapport à des éléments de la construction et
+un bornage. Il établira ensuite un plan de recollement.
+
+Réalisation
+Le foreur a la responsabilité de la conformité aux normes et réglementations.
+Il doit participer à l’étude technique avec l’installateur et documenter ses décisions.
+Les tubes à l’horizontal vont participer au captage et doivent être écartées de 0.6m au minimum et
+implanté suffisamment profond pour ne pas impacter la surface (de 0.6 à 0.8 m)
+
+4.5.2 Etude
+
+Exemple d’implantation des sondes suivant le schéma de Tickelmann
+
+Ind : AF Février 2025 / Page 24
+
+Exemple d’implantation des sondes avec longueur de liaison identique.
+Les liaisons horizontales du distributeur / collecteur aux puits ont des longueurs identiques afin que la perte
+de charge soit identique.
+
+Exemple avec ajustement des profondeurs de forage.
+Les liaisons horizontales du distributeur aux puits peuvent être de longueurs différentes.
+Exemple : 3 longueurs théoriques de 80m et 3 liaisons au distributeur / collecteur différentes de 2, 3 et 4m :
+Les forages passent à 79m, 81m et 80m pour équilibrer les liaisons.
+
+Ind : AF Février 2025 / Page 25
+
+4.8 Mise en épreuve des capteurs.
+Avant d’enfouir les capteurs, contrôler leur étanchéité en réalisant une mise en épreuve à 6 bars. Pour
+cela, il convient :
+•
+
+•
+•
+•
+
+Isoler la PAC, la soupape de sécurité et le vase d’expansion du circuit capteur en fermant des
+vannes d’isolement préalablement mise en place. Le vase d’expansion ne supporte pas la pression
+de 6 bars et risque de se dégrader.
+Connecter une pompe à épreuve aux tubes de liaisons.
+Mettre le circuit en épreuve à 6 bars pendant 48 heures et de contrôler l’absence de chute de
+pression.
+A la fin de l’épreuve, baisser la pression à 1 bar en attente de la remise en place de la terre.
+
+4.8 Remplissage du capteur
+Attention : Avant tout remplissage des circuits neufs ou en rénovation, procéder au rinçage puis à une
+purge complète des circuits à l’aide d’une pompe extérieure et prévue à cet effet.
+Le mono propylène glycol et l’eau se mélangent difficilement :
+Ne jamais utiliser le circulateur pour brasser un mélange non homogène d’eau et de glycol.
+
+Utiliser une station de remplissage comprenant un bac d’aspiration et une pompe d’injection / brassage.
+
+Vérifiez que l’installation dispose de vannes de remplissage pour le circuit capteur.
+Vérifiez que l’installation n’est pas reliée, à demeure, au circuit d’eau de ville.
+
+Ind : AF Février 2025 / Page 26
+
+Calculez la quantité de mono propylène glycol à introduire dans le circuit (voir tableau ci-dessous) :
+- Concentration de mono propylène = 33%
+- Protection = -15°C
+Ajouter 4 litres de glycol au volume calculé pour prendre en compte le volume contenu dans la PAC.
+
+Volume de glycol en L
+SMARTPACK3 modèle 2
+
+Volume glycol
+pour l’ensemble Volume glycol par mètre de
+DN liaison
+des couronnes
+liaison
+capteur
+25
+12
+0,10
+
+SMARTPACK3 modèle 4
+
+32
+
+23
+
+0,20
+
+SMARTPACK3 modèle 6
+
+32
+
+35
+
+0.20
+
+SMARTPACK3 modèle 8
+
+32
+
+47
+
+0.20
+
+SMARTPACK3 modèle 10
+
+40
+
+SMARTPACK3 modèle 13
+
+40
+
+SMARTPACK3 modèle 17
+
+50
+
+Rappel : Une distance de 5m entre le collecteur/distributeur et la PAC donne 10m de liaison
+
+Ind : AF Février 2025 / Page 27
+
+Nombre de bidons de glycol pur à commander pour un capteur
+Exemple 1 : Avec SMARTPACK3 4, 5 m de liaison et capteur non chargé.
+Suivant tableau, glycol pour les capteurs : 23 l
+Liaisons : 0.2 l X 5 m X 2 (aller /retour) = 2 l
+Machine : 4 l
+Total : 23 + 2 + 4 = 29 litres nécessaire
+
+Exemple 2 : Avec SMARTPACK3 6, 5 m de liaison et capteur chargé.
+Liaisons : 0.2 l X 5 m X 2 (aller /retour) = 2 l
+Machine : 4 l
+Total : 2 + 4 = 6 litres nécessaire soit 1 bidon de 20 litres
+
+4.8.1 Capteur pré chargé en mélange eau glycolé :
+Les capteurs étant pré chargé, seules les liaisons et la machine seront à remplir. Il convient de calculer le volume
+de glycol à introduire dans ceux-ci.
+Préparé le mélange eau-glycol (1/3 de glycol, 2/3 d’eau) dans un bac. (Il est possible d’effectuer l’opération en
+plusieurs fois). Mélanger en faisant boucler la pompe dans le bac.
+Connecter le groupe d’injection bac et pompe sur les vannes de remplissage n°9A et 9B et les ouvrir.
+Ouvrir les vannes 1 et 2 et le purgeur 5 dans la machine. Maintenir fermer la vanne 13, et les vannes 10 et 11 des
+capteurs à l’exception des vannes 10 et 11 d’une seule boucle afin d’assurer une circulation hydraulique.
+Mettre en route la pompe du groupe d’injection pour faire circuler le mélange dans le circuit hydraulique. Après
+quelques minutes de fonctionnement et en l’absence de retour d’air vers le bac, fermer la vanne 9B jusqu’à ce que
+la pression atteigne 2 bars.
+Lorsque la pression est atteinte fermé la vanne 9A ouvrir les vannes 13, 10 et 11 des capteurs et enclencher le
+circulateur du capteur de la PAC jusqu’à la purge complète du réseau, et des collecteur capteurs en utilisant les
+purgeurs manuels repère 12. Compléter le remplissage du réseau régulièrement par le groupe d’injection et la
+vanne 9A pour maintenir la pression à 2 bars.
+Arrêter la pompe du groupe d’injection, le déconnecter et bouchonner les vannes 9A et 9B et ouvert la vanne 13.
+Contrôler la concentration en glycol à l’aide d’un refractomètre, le réseau doit être protégé pour – 16 ° C soit une
+concentration de 33 % minimum. (Ne pas dépasser une concentration de 40%)
+
+Ind : AF Février 2025 / Page 28
+
+4.8.2 Capteur non chargé :
+Calculer le volume de glycol à introduire dans les capteurs, les liaisons et la machine.
+Préparé le mélange eau-glycol (1/3 de glycol, 2/3 d’eau) dans un bac. (Il est possible d’effectuer l’opération en
+plusieurs fois). Mélanger en faisant boucler la pompe dans le bac.
+Connecter le groupe d’injection bac et pompe sur les vannes de remplissage n°9A et 9B et les ouvrir.
+Ouvrir les vannes 1 et 2 et le purgeur 5 dans la machine. Maintenir fermées la vanne 13, et les vannes 10 et 11 des
+capteurs à l’exception des vannes 10 et 11 d’une des boucles afin d’assurer une circulation hydraulique.
+Mettre en route la pompe du groupe d’injection pour faire circuler le mélange dans le circuit hydraulique. Après
+quelques minutes de fonctionnement et en l’absence de retour d’air vers le bac, fermer les vannes 10 et 11 de la
+boucle déjà purgée. Ouvrir les vannes 10 et 11 d’une autre boucle pour la purger à son tour, puis répéter
+l’opération pour toutes les boucles de captage.
+Lorsque la dernière boucle est purgée, fermer la vanne 9B jusqu’à ce que la pression atteigne 2 bars. Lorsque la
+pression est atteinte, fermer la vanne 9A puis ouvrir les vannes 13, 10 et 11 des capteurs. Enclencher le circulateur
+du capteur jusqu’à la purge complète du réseau, et des collecteur capteurs en utilisant les purgeurs manuels
+repère 12. Compléter le remplissage du réseau régulièrement par le groupe d’injection et la vanne 9A pour
+maintenir la pression à 2 bars.
+Arrêter la pompe du groupe d’injection, le déconnecter et bouchonner les vannes 9A et 9B.
+Contrôler la concentration en glycol à l’aide d’un refractomètre, le réseau doit être protégé pour – 15 ° C soit une
+concentration de 33 % minimum. (Ne pas dépasser une concentration de 40%)
+
+Ind : AF Février 2025 / Page 29
+
+4.10 Remise en place des terres
+Le sol doit être exempt de grosses pierres (100 cm3) et la densité de pierres doit être inférieure à 25%. Dans
+le cas contraire, supprimer toutes les pierres sur le passage du capteur et recouvrir le capteur d’un lit de
+15cm de terre végétale.
+Maintenir une pression d’eau d’environ 6 Bar lors de la phase de remblaiement.
+Lors du remblaiement, le terrassier ne doit pas rouler sur les tubes mais sur la terre qu’il poussera devant
+les roues de sa tractopelle.
+L’installateur devra superviser le remblaiement.
+L’installateur posera un grillage avertisseur à 30 cm au-dessus des tubes, sur toute la surface du capteur
+(conforme à la norme NFT 54-080).
+
+Captage sur Eau de nappe
+5 Captage sur eau de nappe
+5.1 Généralités
+La pompe à chaleur ne doit pas fonctionner directement sur de l’eau de nappe mais à travers un échangeur
+barrage, qui va protéger l’échangeur de la PAC contre la corrosion et l’érosion.
+L’utilisation de l’eau de nappe à travers un échangeur barrage doit être préalablement déclarée au bureau
+d’étude réalisant l’étude RT2012 pour qu’il tienne compte des nouveaux paramètres.
+L’échangeur barrage et ses accessoires doivent alors être installés en dehors du lieu de vie, avec par
+exemple, l’installation de pompage.
+L’intérêt de l’eau de nappe est que la puissance calorifique de la pompe à chaleur et le COP sont nettement
+supérieurs à ceux des capteurs horizontal / vertical. Le COP sur eau de nappe est mesuré sur chaque
+machine par NEXTHERM. Il est en moyenne de 5.
+La dépense subie par la consommation de la pompe de nappe est donc compensée par le gain sur le COP de
+la PAC. Cependant la profondeur de puisage ne doit donc pas être trop conséquente.
+En résumé, le choix peut donc être dicté par l’opportunité de disposer d’une nappe à une profondeur
+correcte et par l’intérêt de ne pas monopoliser une partie de son terrain pour bâtir un capteur. Le client
+final devra aussi intégrer dans son calcul, l’intérêt pour lui de disposer d’une eau abondante pour d’autres
+utilisations.
+
+5.2 Préconisations de mise en œuvre :
+Il convient de traiter le circuit primaire du capteur entre la PAC et l’échangeur de barrage pour une
+température de -15° C soit une concentration de 33 % de glycol. Pour le volume, et pour le remplissage, se
+référer au chapitre 4.8 « Remplissage du capteur ».
+Vérifiez la disponibilité du débit d’eau de nappe en pleine saison froide.
+Vérifiez la température de l’eau de nappe en saison froide : Elle ne doit pas être inférieure à 10°C.
+Déterminez le débit d’eau et le type d’échangeur barrage suivant le tableau ci-dessous.
+
+Ind : AF Février 2025 / Page 30
+
+Les échangeurs ne sont pas démontables, la filtration est donc impérative. Ces échangeurs sont étudiés
+spécifiquement et travaillent en régime de base selon DTU en vigueur, 10/7°C sur la nappe et 5/8°C sur
+l’eau glycolée. Un échangeur non qualifié par Nextherm et sous dimensionné serait néfaste à la
+performance de l’installation et entrainerait une déchéance de la garantie contractuelle Nextherm.
+L’installateur devra mettre en place un contrôleur de débit sur l’eau de nappe régler suivant tableau cidessous pour couper le fonctionnement de la PAC si le débit est trop faible. Si la PAC est positionnée dans
+un local ou la température peut être inférieure à 10°C il faudra que l’installateur mette en place une
+résistance de carter sur le compresseur, afin de réduire les risques de coups de liquide au démarrage du
+compresseur.
+
+Générateur SMARTPACK3
+Avec échangeur barrage
+Puissance calorifique
+sur nappe (10/7 et
+W
+30/35°C)
+Puissance frigorifique
+W
+sur nappe
+Puissance électrique
+W
+absorbé
+COP
+SCOP
+Etas/ efficacité
+saisonnière
+Débit d’eau
+application
+Débit sur eau de
+nappe
+Puissance calorifique
+sur nappe (10/7 et
+40/45°C)
+Puissance frigorifique
+sur nappe
+Puissance électrique
+absorbé
+COP
+SCOP
+Etas/ efficacité
+saisonnière
+Débit d’eau
+application
+Débit sur eau de
+nappe
+Kit échangeur
+barrage
+
+2M
+
+4M
+
+6M
+
+8M
+
+10M
+
+10T
+
+13M
+
+13T
+
+17T
+
+3130
+
+5830
+
+7830
+
+8960
+
+12900
+
+12600
+
+16350
+
+16200
+
+21400
+
+2516
+
+4741
+
+6291
+
+7196
+
+10270
+
+10060
+
+13080
+
+13020
+
+17280
+
+614
+
+1089
+
+1539
+
+1764
+
+2630
+
+2540
+
+3270
+
+3180
+
+4120
+
+5.08
+
+5.35
+
+5.08
+
+5.08
+
+4.9
+
+4.96
+
+5
+
+5.09
+
+5.19
+
+5.81
+
+6.13
+
+5.82
+
+5.82
+
+5.63
+
+5.7
+
+5.75
+
+5.85
+
+5.74
+
+232
+
+145
+
+233
+
+233
+
+225
+
+228
+
+230
+
+234
+
+230
+
+M3/h
+
+0.54
+
+1.00
+
+1.35
+
+1.50
+
+2.23
+
+2.17
+
+2.82
+
+2.79
+
+3.69
+
+m3/h
+
+0.75
+
+1.39
+
+1.87
+
+2.14
+
+3.00
+
+3.00
+
+3.81
+
+3.81
+
+4.95
+
+W
+
+2983
+
+5554
+
+7463
+
+8537
+
+11900
+
+11700
+
+15900
+
+15400
+
+20400
+
+W
+
+2244
+
+4245
+
+5609
+
+6416
+
+8810
+
+8570
+
+11840
+
+11450
+
+15330
+
+W
+
+739
+
+1309
+
+1854
+
+2121
+
+3090
+
+3130
+
+4060
+
+3950
+
+5070
+
+4.03
+
+4.24
+
+4.02
+
+4.03
+
+3.85
+
+3.73
+
+3.92
+
+3.9
+
+4.02
+
+4.9
+
+5.2
+
+4.93
+
+4.94
+
+4.77
+
+4.81
+
+4.85
+
+4.93
+
+5.01
+
+196
+
+168
+
+197
+
+198
+
+191
+
+191
+
+194
+
+193
+
+200
+
+m3/h
+
+0.514
+
+0.96
+
+1.29
+
+1.47
+
+2.05
+
+2.02
+
+2.74
+
+2.66
+
+3.52
+
+m3/h
+
+0.64
+
+1.22
+
+1.61
+
+1.85
+
+2.53
+
+2.54
+
+3.4
+
+3.29
+
+4.4
+
+-
+
+KEB5
+
+KEB5
+
+KEB5
+
+KEB9
+
+KEB9
+
+KEB9
+
+KEB15
+
+KEB15
+
+KEB15
+
+La qualité de l’eau est à prendre en compte : l’eau doit être propre, exempte de sable et de végétaux.
+Le captage de l’eau de nappe et le retour de l’eau dans la nappe doivent se faire dans deux forages
+différents distants d’au moins 15 mètres. Le captage de l’eau se fera en amont de la nappe par rapport au
+
+Ind : AF Février 2025 / Page 31
+
+forage de retour qui sera en aval de la nappe. Il est interdit de brancher le retour d’eau sur le tout à l’égout
+ou le réseau d’eau pluviale. Pour faciliter le remplissage et la purge de l’échangeur de barrage il est
+nécessaire que la sortie d’eau de nappe se trouve au point haut de l’échangeur de barrage.
+
+Préconisation concernant la qualité de l’eau :
+PH
+TH (dureté de l’eau)
+Granulométrie
+Chlorure
+Conductivité
+Résistivité
+
+6à9
+10 à 20 °F
+< 0,4 mm
+50mg / litre maximum
+Comprise entre 50 µS/cm² et 500 µS/cm²
+Comprise entre 1k et 10 k
+
+5.3 Raccordement hydraulique et électrique
+Deux cas de figures :
+Schéma générique d’une installation avec pompe de nappe gérée par la pression d’un réservoir avec vessie.
+L’électrovanne (non fournie) permet d’alimenter la PAC avec l’eau du réservoir.
+
+Réglage débit
+4
+
+Manométre
+Vanne
+7
+
+8
+
+6
+
+6
+
+Controleur Electro
+de débit
+vanne
+
+PAC
+
+Echangeur 3
+de barrage
+
+Pressostat
+
+5
+
+1
+
+7
+
+2
+
+Filtre
+Ballon avec vessie
+Pompe de nappe
+Sens de la nappe
+
+Evacuation
+
+Schéma générique d’une pompe de nappe alimentant en eau directement la PAC.
+
+Manométre
+Vanne
+8
+7
+7
+6
+
+6
+
+Réglage débit
+Controleur
+de débit
+PAC
+
+Echangeur
+de barrage
+
+5
+
+1
+
+4
+
+3
+2
+
+Filtre
+
+Pompe de nappe
+Sens de la nappe
+Ballon avec vessie
+
+Ind : AF Février 2025 / Page 32
+
+Evacuation
+
+Repère
+1
+2
+3
+4
+5
+6
+7
+8
+
+Désignation
+Circulateur
+Vase d’expansion circuit eau-glycolée
+Jeux de vannes de remplissage circuit eau-glycolée
+Vanne d’ajustement de débit eau de nappe
+Filtre eau de nappe
+Vanne d’isolement du filtre eau de nappe
+Vannes de contrôle encrassement du filtre eau de nappe
+Manomètre de contrôle d’encrassement du filtre
+
+Pour les deux cas :
+•
+
+Installer un filtre de 500 microns adapté à la nature de l’eau en amont de l’échangeur (repère 5
+sur les schémas hydrauliques).
+Prévoir un dispositif de by-pass du filtre (repère 6 et 7 sur les schémas hydrauliques)
+Prévoir un dispositif de contrôle de l’encrassement par manomètre (repère 7 et 8 sur les
+schémas hydrauliques)
+Installer une vanne de réglage du débit d’eau (repère 4 sur les schémas hydrauliques)
+Installer un dispositif de remplissage du circuit intermédiaire en eau glycolée à 33% (repère 3 sur
+les schémas hydrauliques)
+Installer le contrôleur de débit en amont de la pompe à chaleur.
+
+•
+•
+•
+•
+•
+
+Raccordements électriques :
+•
+•
+
+Raccorder le contrôleur de débit comme indiqué sur le circuit de commande de la PAC.
+Raccorder l’électrovanne ou le contacteur de la pompe de puit comme indiqué sur le circuit
+de commande de la PAC.
+
+Détail des fournitures optionnelles NEXTHERM (kit KEB)
+Désignation
+Kits échangeur de barrage KEB05
+Kits échangeur de barrage KEB09
+Kits échangeur de barrage KEB15
+
+Référence PAC
+2-4- 6
+8-10
+13-17
+
+Ces kits contiennent
+Echangeur de barrage
+Isolation de l’échangeur de barrage
+Support acier
+Contrôleur de circulation
+
+1HYD-XXXX
+1ISO-XXXX
+1TOL-0129
+1HYD-0078
+
+Raccordement / Repère
+
+Pour KEB 05 à 30
+1’’M (à monter sur un raccord en Té non fourni)
+
+Eléments entre l’échangeur barrage et la pompe à chaleur à commander :
+On retrouve les mêmes composants que pour un capteur horizontal dont certains sont intégrés à la PAC : Le
+circuit hydraulique doit comprendre notamment ; manomètre, soupape de sécurité à 3 bars, vase d’expansion,
+vannes de remplissage pour de l’eau glycolée, et tout autres éléments en accord avec les règles de l’art.
+
+La pompe, le réservoir avec vessie, l’électrovanne, le filtre, le by-pass, etc. ne sont pas des fournitures
+Nextherm.
+
+Ind : AF Février 2025 / Page 33
+
+B
+
+C
+F
+
+D
+ref KIT
+KEB 5
+KEB 9
+KEB 15
+KEB 30
+
+A (mm)
+100
+150
+130
+180
+
+556mm
+670mm
+
+4x37mm
+4x44mm
+
+243mm
+
+4xE
+
+Support mural
+
+470mm
+
+Echangeur de barrage
+
+130mm
+
+B (mm)
+289
+289
+526
+526
+
+C (mm)
+243
+243
+470
+470
+
+D (mm)
+119
+119
+119
+119
+
+E (mm)
+1"
+1"
+1"1/4
+1"1/4
+
+F (mm)
+72
+72
+63
+63
+
+Le Kit échangeur de barrage Nextherm comprend ; l’échangeur eau de nappe eau glycolée, l’isolation de
+l’échangeur, le support mural de l’échangeur de barrage, le contrôleur de débit d’eau de nappe à palette.
+
+Eléments entre l’échangeur barrage et la pompe à chaleur à installer :
+On retrouve les mêmes composants que pour un capteur géothermique dont certains sont fournis avec la
+PAC :
+
+-
+
+Manomètre, soupape de sécurité à 3 bars (fournis, non montés)
+Vase d’expansion (fourni et intégré à la PAC)
+Vannes de remplissage pour de l’eau glycolée. (Non fourni)
+
+Ind : AF Février 2025 / Page 34
+
+Emetteurs
+6 Emetteurs
+6.1 Généralité
+La SMARTPACK3 dispose d’un groupe thermodynamique permettant d’alimenter aussi bien un plancher
+chauffant que des convecteurs ou des radiateurs.
+Le plancher chauffant est raccordé en direct sur la pompe à chaleur, ou en découplage sur un ballon
+tampon.
+Il convient de vérifier que les courbes de débits et de pressions du circulateur soient en corrélation avec le
+débit nécessaire et la perte de charge de la boucle la plus longue.
+Le circuit de chauffage nécessite une quantité d’eau permettant un temps de cycle minimum de 20mn.
+L’installateur doit donc éventuellement compléter le volume d’eau de l’installation par un ballon tampon,
+notamment dans le cas d’installation avec radiateurs ou convecteurs.
+Le pilotage de la PAC se fait par un thermostat d’ambiance ou par un équipement de régulation de la
+température de l’eau du réseau de chauffage, soit fixe soit variable en fonction de la température
+extérieure (option).
+Avant tout remplissage des circuits neufs ou en rénovation, procéder au rinçage puis à une purge complète
+des circuits à l’aide d’une pompe extérieure et prévue à cet effet.
+Un filtre à tamis et un pot de décantation magnétique doivent être installés sur le retour des émetteurs
+afin d’éviter l’encrassement de l’échangeur et des circulateurs.
+Certaine pompe à chaleur dispose d’une vanne sur le circuit thermodynamique qui permet d’inverser le
+cycle et ainsi produire du froid sur le plancher chauffant ou les ventilo convecteurs.
+Toutefois l’installateur devra impérativement introduire du glycol dans l’installation de chauffage avec une
+protection contre le gel de l’échangeur à -10°C minimum.
+L’utilisation d’un ballon tampon est dans ce cas indispensable pour donner un temps de fonctionnement de
+la PAC suffisant entre les démarrages et arrêts, 20l/kw.
+
+6.2 Planchers chauffants
+Il existe une offre pléthorique de solutions provenant de très nombreux fournisseurs de tubes, d’isolant,
+d’accessoires, avec des techniques de pose qui peuvent varier selon le produit choisi.
+Chaque installateur a souvent un fournisseur privilégié avec lequel il a développé un savoir-faire dans toute
+son entreprise et particulièrement pour les personnes chargées de la pose.
+Il n’est donc pas dans notre rôle de dire ici, quelle est la solution et en décrire une seule. Nous nous
+contenterons de rappeler les grands principes.
+Toutefois, pour des raisons d’inconfort utilisateurs, nous déconseillons les planchers chauffants de fortes
+épaisseurs avec tubes de chauffages intégrer à la dalle de compression. Les apports solaires par les
+ouvertures vitrées, cumulés avec la forte inertie du plancher sont incompatibles même avec une régulation
+de type loi d’eau.
+Nextherm se dégage de toutes responsabilités en cas de difficultés de chauffage suivant une telle mise en
+œuvre.
+
+Respect des règles
+•
+•
+•
+•
+
+Les DTU en vigueur (mise en œuvre, sécurité, …)
+La norme NF EN 1264 1-2-3-4
+Les règles de l’art
+Les prescriptions du fabricant du plancher chauffant
+
+Ind : AF Février 2025 / Page 35
+
+Une pompe à chaleur fonctionne correctement avec un différentiel de température de 5°C environ entre le
+départ et le retour du plancher.
+La longueur maximale des boucles en tube de 13/16 ne devra pas dépasser 80 m.
+
+La qualité de l’isolation de sol est primordiale : utiliser un isolant incompressible.
+Une bande d’isolation périphérique allant de la dalle porteuse jusqu’à la surface finie de l’habitation.
+Aucun raccord ne sera réalisé dans la chape.
+La première mise en chauffe ne pourra intervenir qu’après un délai minimum de 21 jours après la
+réalisation de la chape.
+La montée en température devra être lente et régulière, selon les prescriptions du DTU 65-14.
+Dans le cas d’une pompe à chaleur réversible produisant du froid, ou de free-cooling, Il conviendra de
+limiter la température de rafraichissement à 18°C (régime 23/18°C)
+
+Dimensionnement des liaisons entre le plancher et la PAC
+Les diamètres des tuyauteries doivent être déterminés de manière à respecter une perte de charge linéaire
+comprise entre 10 et 15 mm de colonne d’eau par mètre. Le tableau ci-dessous donne des valeurs
+indicatives qui devront être ajustées en fonction de caractéristiques de l’installation et des matériaux
+utilisés pour effectuer les liaisons.
+
+Longueurs Maximum « aller » entre la PAC et les collecteurs plancher
+Générateur
+
+2
+
+4
+
+6
+
+8
+
+10
+
+13
+
+17
+
+Nombre de boucles Ø13/16
+minimum
+
+3
+
+5
+
+7
+
+9
+
+11
+
+14
+
+18
+
+Ø 20 Ep
+1,9
+
+60 m
+
+22 m
+
+6m
+
+-
+
+-
+
+-
+
+-
+
+Ø 25 Ep
+2,3
+
+-
+
+45 m
+
+20 m
+
+15 m
+
+8m
+
+7m
+
+-
+
+Ø 32 Ep
+3,0
+
+-
+
+-
+
+80 m
+
+60 m
+
+23 m
+
+24 m
+
+22 m
+
+Ø 40 Ep
+3,7
+
+-
+
+-
+
+-
+
+-
+
+-
+
+70 m
+
+63 m
+
+Tubes de
+liaisons
+planchers
+Ø Ext x Ep
+
+6.3 Radiateurs ou convecteurs
+Les radiateurs ont généralement des puissances affichées pour des régimes de température de 90/70°C ou
+70/50°C, et de plus en plus à des températures inférieures de l’ordre de 50°C. Il convient de dimensionner
+ces radiateurs à un régime de température d’eau de 45/40°C maximum, voir plus bas afin d’augmenter le
+COP de l’installation.
+Le volume du ballon tampon éventuellement nécessaire à l’inertie de l’installation doit être au minimum de
+15L/kW.
+Une loi d’eau en fonction de la température extérieure peut permettre de limiter la température de chauffe
+du ballon.
+Le volume du vase d’expansion côtés chauffage sera environ de 0.8l/kW de puissance en régime 40/45°C et
+de 0.4L/kW de puissance au régime 30/35°C (installations standard 1 étage maxi avec ballon tampon en
+découplage pour régime 40/45°C)
+
+Ind : AF Février 2025 / Page 36
+
+Le réglage du circulateur de la PAC « à pression constante » doit permettre un débit correspondant à la
+puissance calorifique avec un différentiel de 5°C environ.
+Le réglage du circulateur en sortie du ballon tampon doit permettre un débit correspondant à la puissance
+calorifique avec un différentiel de 5°C maximum sur radiateurs.
+Le réglage du circulateur « à pression proportionnelle » permet à la pression dynamique du circuit de
+chauffage de chuter jusqu’à 50% en fonction du débit, pour accompagner la fermeture des robinets
+thermostatiques.
+Le réglage du circulateur de la PAC « à pression constante » donne quant à lui évidemment une pression
+constante.
+Le choix du mode de fonctionnement et le réglage de la vitesse se font avec des boutons poussoirs ou un
+bouton tournant suivant le modèle (voir notice spécifique aux circulateurs).
+Dans le cas d’une pompe à chaleur réversible produisant du froid, Il conviendra de limiter la température de
+l’eau glycolée à 7°C dans le cas d’utilisation de ventilo convecteurs (régime 12/7°C). L’installation devra
+impérativement être glycolée avec une protection minimum à -10°C.
+
+Ind : AF Février 2025 / Page 37
+
+6.4 Schémas hydrauliques
+Plancher chauffant
+Le schéma hydraulique est déterminant pour obtenir le meilleur résultat sur une installation de chauffage
+par pompe à chaleur.
+Le COP d’une pompe à chaleur est conditionné par l’écart de température entre la température
+d’évaporation et la température de condensation.
+On peut tant soit peu agir en dimensionnant largement le capteur mais c’est la température des émetteurs
+qui est déterminante. Elle doit être la plus basse possible.
+L’émetteur, avec le meilleur résultat en termes de coefficient de performance (COP), est celui dont la
+température d’émission est la plus basse. Nous avons donc par ordre le plafond rayonnant avec des
+températures de 25°C environ le plancher chauffant avec des températures d’eau de 35°C suivant le pas de
+pose, et pour finir le radiateur basse température avec des températures des températures d’eau de 45°C
+environ.
+L’utilisation d’un ballon tampon est nécessaire pour les plancher chauffants à deux zones de régulation. La
+taille du ballon tampon, pour éviter les cours cycles, est à calculer suivant la puissance de la pompe à
+chaleur (par défaut environ 15L/kW).
+Nextherm propose un kit KDZBP permettant de réguler indépendamment 2 zones de chauffage en plancher
+chauffant. Ce kit contient deux thermostats d’ambiance radio intégré à la PAC et deux électrovannes non
+monté à installer sur le départ des deux zones, d’une vanne de décharge et d’un ballon de tampon équipé
+de ses bouchons, de quatre vannes manuelles, d’une vanne de vidange et d’un purgeur.
+
+Schéma hydraulique générique d’une installation avec kit 2 zones plancher (kit KDZBP), ECS,
+résistance d’appoint, Piscine.
+Echangeur
+barrage
+
+EV1 M
+
+CDCB
+
+Filtration
+
+KIT KEB
+
+Pompe
+
+Rejet
+
+KIT KDZBP
+
+Soupape mano ( PAC eau-eau)
+
+B
+
+VS
+
+Retour
+Capteur
+
+Ba l lon
+ta mpon
+ca pa cité
+15l / kw
+
+KIT KR
+SMATPACK
+Soupape mano
+
+Départ
+Capteur
+
+AB
+
+V3VZ2 B
+
+VS
+
+AB
+
+VDD
+
+VS
+
+VS
+
+M
+
+Traitement
+
+M
+A V3VZ1
+
+M
+A
+
+TH2
+
+TH1
+
+RA
+
+Disconnecteur
+
+Pot de décantation avec
+anneau magnétique
+
+Départ
+ECS
+
+THECS
+
+Ballon ECS
+
+AB
+
+M
+A
+
+Entrée
+d'eau
+froide
+
+B
+
+B
+
+AB
+
+V3VP
+
+A
+
+V3VECS
+
+KIT ECS
+
+THP
+
+Delta T°
+échangeur Piscine:
+8 °C primaire
+6,5°C secondaire
+
+KIT KP
+Echangeur
+piscine
+
+Filtre
+
+Pompe
+
+PAC équipée de vase(s) d'expansion 8L
+prévoir un vase supplémentaire suivant capacité et température du circuit hydraulique de chauffage
+Nota: les sorties B des vannes 3 voies zone 1 et zone 2 doivent être bouchées
+Les accessoires en pointillés ne sont pas inclus dans les kits NEXTHERM
+
+Circuit réalisé à l'aide des KITS Suivants:
+KIT KDZBP: Kit 2 zones (plancher)
+KIT ECS: Kit Eau chaude sanitaire
+KIT KEB: Kit échangeur de barrage (uniquement PAC eau-eau)
+KIT KR: Kit résistance d'appoint
+KIT KP: Kit piscine
+
+Nomenclature:
+V3VZ1: Vanne trois voies Zone 1
+V3VZ2: Vanne trois voies Zone 2
+VDD: Vanne de décharge différentielle
+VS: Vanne à sphères FxF 1'' et réduction 1''/1/4
+TH1, TH2: Thermostats d'ambiance des zones 1 et 2,
+(dans les pièces les plus chaude des zones 1 et 2)
+
+Dessiné par:
+
+THECS: Thermostat eau chaude sanitaire
+V3VECS: Vanne 3 voies eau chaude sanitaire
+CDCB: contrôleur de circulation barrage
+EV1: Electrovanne échangeur de barrage
+RA: Resistance d'appoint
+V3VP: Vanne troies voies piscine
+THP: Thermostat piscine
+
+Ind : AF Février 2025 / Page 38
+
+Modifié par
+
+PM
+Schémas hyraulique SMARTPACK avec KITS:2
+04/10/2019 zones plancher maîtres, ECS, Echangeur de
+barrage, Résistance d'appoint, Piscine
+PM
+
+Date:
+
+03/12/2020 ind AB
+
+Date:
+
+Radiateur (schéma ci-dessous)
+L’utilisation d’un ballon tampon est nécessaire pour les convecteurs et les radiateurs. La taille du ballon
+tampon, pour éviter les cours cycles, est à calculer suivant la puissance de la pompe à chaleur (par défaut
+environ 15L/kW).
+Lorsque le circuit radiateur est équipé de vannes thermostatiques, le ballon tampon ne peut pas être
+raccordé en série mais en découplage à trois tubes (un tube d’entrée, un tube de sortie, un tube de retour
+équipé d’une vanne de décharge).
+
+Schéma d’une installation avec KIT deux zones radiateurs basse température KDZBR et autres
+kits
+
+Systèmes mixtes
+Le montage classique consiste à positionner le ballon tampon en découplage sur la pompe à chaleur avec
+deux sorties sur le ballon tampon : L’une en direct sur les radiateurs équipés de vannes thermostatiques et
+l’autre équipée d’une vanne de réglage avec éventuellement une loi d’eau sur le plancher. Comme on l’a
+compris, la pompe doit donc maintenir de l’eau à 40/45°C dans le ballon tampon pour pouvoir alimenter les
+radiateurs et cette même eau doit être refroidie via la vanne mélangeuse pour alimenter le plancher
+chauffant.
+
+Kit 2 zones de plancher et radiateurs
+Un kit permettant de distribuer la température adéquate sur le circuit radiateur et le circuit plancher
+chauffant pour les installations mixtes. Ce kit contient deux thermostats d’ambiance radio intégré à la PAC,
+
+Ind : AF Février 2025 / Page 39
+
+deux circulateurs non montés à installer sur le circuit radiateur et plancher, d’une vanne mélangeuse avec
+son régulateur de température pour plancher chauffant, d’un ballon de tampon équipé de ses bouchons, de
+deux vannes manuelles, d’une vanne de vidange et d’un purgeur.
+
+Ballon tampon
+En cas d’absence de plancher chauffant traditionnel, l’utilisation d’un ballon tampon en découplage est
+nécessaire pour les convecteurs et les radiateurs. La taille du ballon tampon, pour éviter les cours cycles, est
+à calculer suivant la puissance de la pompe à chaleur (par défaut plus de 15L/kW).
+
+Schéma hydraulique générique d’une installation avec kit 2 zones plancher radiateurs ( kit
+KDZBPR) et options, piscine, résistance d’appoint, eau chaude sanitaire.
+Echangeur
+barrage
+
+EV1 M
+
+CDCB
+
+Filtration
+
+KIT KEB
+
+Pompe
+
+Rejet
+
+Soupape mano ( PAC eau-eau)
+
+VS
+
+RA
+Retour
+Capteur SMARTPACK
+
+KIT KR
+
+M
+
+V3VR
+
+Soupape mano
+
+Départ
+Capteur
+
+Disconnecteur
+
+THECS
+
+Ballon ECS
+
+CIR3
+
+TH1
+
+KIT KDZBPR
+
+AB
+
+M
+A
+
+Entrée
+d'eau
+froide
+
+Plancher chauffant
+
+B
+
+B
+
+AB
+
+Rad ou VCV
+
+VS
+Pot de décantation avec
+anneau magnétique
+
+Départ
+ECS
+
+TH2
+
+CIR4
+
+Ba l lon
+ta mpon
+ca pa cité
+15l / kw
+
+V3VP
+
+M
+A
+
+V3VECS
+
+KIT ECS
+
+Traitement
+THP
+
+Delta T°
+échangeur Piscine:
+8 °C primaire
+6,5°C secondaire
+
+KIT KP
+Echangeur
+piscine
+
+Filtre
+
+PAC équipée de vase(s) d'expansion 8L
+prévoir un vase supplémentaire suivant capacité et température du circuit hydraulique de chauffage
+Les accessoires en pointillés ne sont pas inclus dans les kits NEXTHERM
+
+Nomenclature:
+CIR4: Circulateur circuit zone 2
+CIR3: Circulateur circuit zone 1
+V3VR: Vanne trois voies régulé zone 1 de 35 à 45°C
+VS: Vanne à sphères FxF 1'' et réduction 1''/1/4
+TH1, TH2: Thermostats d'ambiance des zones 1 et 2
+(dans les pièces les plus chaudes des zones 1 et 2)
+
+V3VECS: Vanne 3 voies eau chaude sanitaire
+THECS: Thermostat eau chaude sanitaire
+CDCB: contrôleur de circulation barrage
+EV1: Electrovanne échangeur de barrage
+RA: Resistance d'appoint
+V3VP: Vanne troies voies piscine
+THP: Thermostat piscine
+
+Pompe
+
+Circuit réalisé à l'aide des KITS Suivants:
+KIT KDZBPR: Kit 2 zones plancher et radiateurs
+KIT ECS: Kit Eau chaude sanitaire
+KIT KEB: Kit échangeur de barrage
+KIT KR: Kit résistance d'appoint
+KIT KP: Kit piscine
+
+Dessiné par:
+Date:
+Modifié par
+Date:
+
+PM
+04/10/2019
+
+Schémas hyraulique SMARTPACK eau glycolèe
+eau avec KITS: 2 zones plancher radiateurs, ECS,
+Echangeur de barrage, Résistance d'appoint,
+Piscine
+ind AA
+
+Montage avec loi d’eau
+Une loi d’eau est un procédé qui permet de déterminer la température de l’eau à générer dans le plancher
+chauffant ou dans les radiateurs en fonction de la température extérieure.
+La prescription d’une régulation par loi d’eau est du ressort du chauffagiste, il devra également l’ajuster
+suivant les besoins du client et la nature du local à chauffer.
+
+Résistance d’appoint
+Dans certains cas, il peut être nécessaire d’ajouter une résistance d’appoint électrique. Une solution
+d’appoint intégré à la machine de 1500 w existe en option. Cet appoint nécessite l’ajout de pièces sur le
+circuit électrique et sur le circuit hydraulique. Nous conseillons que cet appoint soit installé en usine,
+toutefois il pourra être ajouté ultérieurement par un technicien averti. Les schémas électriques intègrent
+cet option. D’autres puissance de résistances d’appoint sont disponibles en montage externe.
+
+Ind : AF Février 2025 / Page 40
+
+Free Cooling
+Le plancher chauffant associé à un capteur vertical ou sur nappe permet de tempérer le bâtiment l’été. Une
+documentation spécifique explique comment raccorder la pompe à chaleur.
+Code produit du Kit free cooling : KFCXX
+
+Chauffage de piscine
+Un kit permet de chauffer une piscine via l’SMARTPACK3. Ce kit est composé d’un échangeur spécifique de
+chauffage de piscine et d’un coffret électrique. Ce kit nécessite une intervention sur la platine électrique de
+la SMARTPACK3 et nous conseillons de le commander avec la machine. Il est toutefois possible de le faire
+installer ultérieurement par un technicien qualifier.
+Code produit du Kit de chauffage piscine : KP
+
+Régulation
+La SMARTPACK 3 est fourni sans régulation afin de l’adapter aux besoins et envies de l’utilisateur et à la
+spécificité de l’installation. Aussi, vous pouvez choisir parmi plusieurs options disponibles chez NEXTHERM.
+Thermostat filaire, thermostat radio, thermostat radio connecté. 1 zone ou 2 zones de chauffage.
+ATTENTION ; Afin de limiter les fluctuations de températures interne à l’habitation, il est nécessaire de
+limiter l’inertie des planchers chauffants, enrobage des tubes par 4 à 6cm maximum. De même, les apports
+solaires devront être maitrisés, pour ne pas surchauffer l’ambiance.
+
+-
+
+Thermostat d’ambiance radio : code 1 ELE0090
+Thermostat d’ambiance filaire programmable : code 1 ELE0089
+Thermostat d’ambiance radio et connecté : code 1 ELE0258
+Deuxième zone pour thermostat connecté 1ELE0259
+
+Montage avec loi d’eau
+Une loi d’eau est un procédé qui permet de déterminer la température de l’eau à générer en fonction de la
+température extérieure.
+La prescription d’une régulation par loi d’eau est du ressort du chauffagiste. Le pilotage de la PAC se fait
+alors en fonction de la température extérieure.
+ATTENTION ; Afin de limiter les fluctuations de températures interne à l’habitation, il est nécessaire de
+limiter l’inertie des planchers chauffants, enrobage des tubes par 4 à 6cm maximum. De même, les apports
+solaires devront être maitrisés, pour ne pas surchauffer l’ambiance.
+
+Ind : AF Février 2025 / Page 41
+
+Résistance d’appoint
+Dans certains cas, il peut être nécessaire d’ajouter une résistance d’appoint électrique. Une solution
+d’appoint intégré à la machine de 1500 w existe en option. Cet appoint existe également en version
+externe,
+
+6.5 Vases d’expansion
+Les SMARTPACK2 Nextherm sont équipées de vases d’expansion de 8Litres. 1 Vases pour le circuit de
+chauffage et un vase pour le circuit de captage. Toutefois suivant le régime de température de la PAC et
+suivant le volume d’eau contenu dans l’installation, il peut s’avérer nécessaire de rajouter un vase
+d’expansion à définir par calcul.
+
+Ind : AF Février 2025 / Page 42
+
+7 Raccordement hydraulique et accessoires des circuits chauffage et
+capteur
+Les raccordements de la PAC au circuit capteur et au circuit chauffage sont réalisé au moyen de liaison
+souple en 1 ‘’ male de 500 mm de longueur minimum afin de limiter la transmission de vibration à
+l’installation.
+Il est nécessaire de prévoir un dispositif de remplissage équipé d’un disconnecteur (en option), d’un
+dispositif permettant de limiter la montée en pression du circuit chauffage (soupape de sécurité fourni).
+Il est nécessaire de prévoir une vanne de remplissage bouchonné sur laquelle connecté la pompe
+d’injection, d’un dispositif permettant de limiter la montée en pression du circuit chauffage (soupape de
+sécurité fournit).
+Les canalisations du circuit « capteur » pouvant se trouver à des températures négatives, il est impératif
+de les calorifuger afin d’éviter la formation de condensation et de glace sur les tuyauteries. La formation
+de glace et de condensation n’a pas d’influence technique sur le fonctionnement de l’SMARTPACK3 mais
+peu provoquer un désagrément à l’utilisateur. (Présence d’eau au sol)
+Veillez à maintenir les raccords de la PAC lors du serrage des liaisons souples pour éviter une déformation
+des tubes.
+Nous préconisons l’ajout d’un filtre à boues magnétique sur les retours et d’un traitement d’eau sur le
+circuit chauffage.
+
+7.5.1 Accessoires
+Le circuit de chauffage doit comprendre :
+Des liaisons souples pour ne pas transmettre les vibrations de la PAC au reste de l’installation
+Une soupape de sécurité tarée à 3 Bar g avec un monomètre de 0 à 4 Bar g (1HYD0154)
+Un disconnecteur à zones de pression réduite non contrôlable pour le remplissage du circuit de chauffage
+(1HYD0025)
+Un pot de décantation magnétique (1HYD0026)
+Un filtre à tamis
+Des vannes d’isolement en 1’’
+Un produit de traitement de l’eau de chauffage (boues, corrosion)
+
+Ind : AF Février 2025 / Page 43
+
+7.1 Accessoires de raccordement proposé en option
+N° de kit
+1KFR01
+HYD0025
+HYD0026
+
+Désignation
+Ensemble de 4 Liaisons souples de 0.5 m diamètre 1’’
+Disconnecteur 3/8
+Pot de décantation 1’’
+
+Ballon Eau chaude sanitaire
+6 Ballon d’eau chaude sanitaire
+6.1 Généralités
+La SMARTPACK3 est pré équipée pour recevoir un dispositif pour générer et stocker de l’eau chaude
+sanitaire.
+Le chauffage et l’eau chaude sanitaire sont produits alternativement.
+L’indicateur thermostatique en façade du ballon ECS donne la priorité à l’eau chaude sanitaire dès que la
+température mesurée par la sonde interne au ballon descend en dessous de la consigne d’arrêt moins le
+différentiel.
+La consigne d’arrêt est fixée en usine à 50°C et le différentiel à 5°C, ce qui donne une température de
+démarrage de la fonction eau chaude sanitaire à 45°C.
+A savoir que l’augmentation de 5°C de la température de consigne augmente de 25% la consommation de
+la pompe à chaleur.
+
+6.2 Caractéristiques du ballon
+Type
+
+Volume (L)
+
+Surface échange (m2)
+
+Matière
+
+Isolation
+
+KITECS170N
+
+170
+
+2
+
+Inox 316L (cuve)
+Inox 304
+(serpentin)
+
+Polyurethane
+50mm
+0.176Wh/L/K
+
+KITECS270N
+
+270
+
+4
+
+Inox 316L (cuve)
+Inox 304
+(serpentin)
+
+Polyurethane
+50mm
+0.159Wh/L/K
+
+Nota: Le ballon peut être vidangé par une vanne située en bas du ballon.
+
+Type
+
+Volume (L)
+
+PAC
+
+KITECS170N
+
+170
+
+4-6-8*
+
+KITECS270N
+
+270
+
+6-8-10-13-17*
+
+* Sauf sur eau de nappe (trop de puissance)
+
+Ind : AF Février 2025 / Page 44
+
+6.3 Fonctionnement
+Lorsque la température du ballon descend en dessous 45°C, l’indicateur thermostatique actionne le relais
+auxiliaire du module SMARTPACK.
+Le relais force la commande de la PAC et actionne la vanne 3 voies.
+Le flux de chauffage est donc dirigé vers l’échangeur du ballon.
+Accessoirement, le relais inhibe l’aquastat de départ d’eau.
+
+6.4 Raccordement hydraulique
+A l’arrière de la pompe à chaleur se trouve le raccordement au capteur et le raccordement au circuit de
+chauffage. Le raccordement au réseau d’eau froide et d’eau chaude sanitaire se fond sur le ballon ECS.
+Avant tout raccordement, les canalisations doivent être rincées suffisamment pour qu’aucune particule
+métallique ou de brasure puissent être introduite dans la cuve, le serpentin ou la PAC.
+
+Sécurité du ballon :
+Un groupe de sécurité conforme à la norme NF EN 1487 doit être installé sur l’entrée d’eau froide.
+L’eau pouvant s’écouler de l’orifice de décharge du groupe, le tuyau de décharge doit être maintenu ouvert
+à l’air libre (garde à air incorporé, 1’’)
+Le tuyau d’écoulement doit être en pente continu vers le bas.
+
+Groupe et son tuyau d’évacuation
+Ce groupe doit être mis en fonctionnement régulièrement afin de retirer les dépôts de tartre et de vérifier
+qu’il n’est pas bloqué.
+Aucun autre élément de fermeture ne sera placé entre ce groupe de sécurité et le chauffe-eau.
+Ces éléments doivent être installés hors gel.
+
+Remarque 1 : L’utilisation d’un vase d’expansion, à l’entrée du ballon, spécial eau sanitaire, peut permettre
+des économies d’eau.
+Remarque 2 : Un compteur à l’entrée du ballon peut permettre de mesurer la consommation d’eau chaude
+sanitaire.
+
+Ind : AF Février 2025 / Page 45
+
+6.6 Vanne trois voies (livrée avec le kit ECS)
+La vanne trois voies permet d’aiguiller l’eau de chauffage, soit sur le circuit de chauffage, soit sur le ballon.
+En cas de remplacement, respecter l’orientation initiale de la vanne.
+
+Désignations
+Référence Nextherm
+Alimentation
+Consommation
+Temps de basculement
+Raccordement hydraulique
+Raccordement électrique
+Indice de protection
+
+Caractéristiques
+HYD0002
+230Vac
+4VA
+60s
+1 ‘’ cylindrique mâle
+0.75mm2
+IP40
+
+6.7 Indicateur thermostatique (installé sur le ballon ECS)
+L’indicateur est programmé en usine. Les informations ci-dessous sont destinées à la maintenance.
+
+Informations à saisir sur un indicateur vierge :
+Le seuil d’arrêt de fabrication de l’ECS à 50°C
+Différentiel : DiF=5°C (50°C -> 45°C)
+Les limites de présélection du seuil d’arrêt : LSE=0°C HSE=52°C
+Le mode (chauffage) : HC=H
+
+Paramètres du régulateur :
+Action
+Mise sous
+tension
+Appuyer sur
+SET pendant
+plus de 10s
+Appuyer sur la
+flèche du bas
+Appuyer sur
+SET
+Appuyer sur la
+flèche du haut
+Appuyer sur
+SET
+SET
+Appuyer sur
+SET
+Appuyer sur la
+flèche du haut
+Appuyer sur
+SET
+Appuyer sur les
+flèches
+Appuyer sur
+SET
+Appuyer sur la
+flèche du haut
+Appuyer sur
+
+Affichage
+Indication de la mesure de température
+DIF
+PA2
+0
+Incrémentation jusqu’à 135
+DIF + voyant
+Incrémentation jusqu’à 5
+DIF
+HSE
+Un nombre apparait à l’écran …
+Incrémentation ou décrémentation jusqu’à 52
+HSE
+LSE
+Un nombre apparait à l’écran …
+
+Ind : AF Février 2025 / Page 46
+
+SET
+Appuyer sur les
+flèches
+Appuyer sur
+SET
+Appuyer sur
+flèche du haut
+Appuyer sur la
+flèche du haut
+Appuyer sur
+SET
+Appuyer sur la
+flèche du haut
+Appuyer sur
+SET
+Appuyer sur I
+
+Incrémentation ou décrémentation jusqu’à 0
+LSE
+OSP
+HC
+C
+H
+HC
+Indication de la mesure de température
+
+Réglage du seuil d’arrêt de fabrication (consigne) :
+Action
+Mise sous
+tension
+Appuyer sur
+SET
+Appuyer sur
+SET
+Appuyer sur les
+flèches
+Appuyer sur
+SET
+Appuyer sur I
+
+Affichage
+Indication de la mesure de température
+SET
+La consigne actuelle
+Incrémentation ou décrémentation jusqu’à 50
+SET
+Indication de la mesure de température
+
+7.5.2 Kit Réchauffeur de boucles
+Un réchauffeur de boucles peut être installé en option sur le circuit hydraulique entre la PAC et les
+émetteurs.
+L’objet du réchauffeur est d’une part, d’avoir un dispositif de secours, d’autre part de disposer d’une marge
+dans le calcul de la puissance nécessaire vis-à-vis de la surpuissance de 120% ou de compenser la taille du
+capteur si celle-ci n’est pas suffisante au regard des déperditions.
+Les éléments sont fournis en kit par Nextherm.
+Le réchauffeur est alors géré par la PAC en fonction du temps de fonctionnement.
+
+N° de kit
+KR3000MN
+KR6000MN
+KR6000TN
+KR9000TN
+
+Désignation
+Kit réchauffeur de boucle 3000W monophasé
+Kit réchauffeur de boucle 6000W monophasé
+Kit réchauffeur de boucle 6000W triphasé
+Kit réchauffeur de boucle 9000W triphasé
+
+Composition du kit pour information :
+
+Ind : AF Février 2025 / Page 47
+
+N° article
+1ELE0010
+1HYD0142
+1HYD0080
+1ELE0120
+
+Désignation
+Résistance chauffante, raccordement 1’’ male, 1.5m de câble
+Temporisation (RT2 sur le schéma)
+Contacteur 32A (dépend de la puissance de la résistance)
+Contrôleur de circulation 9L/mn à monter sur la tuyauterie
+Rail DIN L= 100mm à fixer sur la platine
+
+7.5.3 Kit Réchauffeur de ballon Tampon
+En cas d’utilisation d’un ballon tampon, il est plus pratique de monter le réchauffeur directement sur le
+ballon
+L’objet du réchauffeur est d’une part, d’avoir un dispositif de secours, d’autre part de disposer d’une marge
+dans le calcul de la puissance nécessaire vis-à-vis de la surpuissance de 120% ou de compenser la taille du
+capteur si celle-ci n’est pas suffisante au regard des déperditions.
+Les éléments de régulation sont fournis en kit par Nextherm.
+Le réchauffeur est alors géré par la PAC en fonction du temps de fonctionnement.
+N° de kit
+KRBT3000MN
+KRBT6000MN
+KRBT6000TN
+
+Désignation
+Kit réchauffeur ballon tampon 3000W
+monophasé
+Kit réchauffeur ballon tampon 6000W
+monophasé
+Kit réchauffeur ballon tampon 6000W triphasé
+
+Mise en service
+8 Mise en service
+8.1 Généralités
+La mise en service doit suivre les préconisations RGE citées dans l’introduction.
+Après remplissage, mettre l’installation sous tension. La mise sous tension ne doit pas être effectuée tant
+que le circuit capteur et le circuit chauffage ne sont pas en eau afin de ne pas dégrader la PAC.
+Toutes les étapes doivent être consignées par le technicien dans le carnet d’entretien de l’installation
+Lorsqu’un ballon ECS est installé, la priorité est donnée au chauffage de l’ECS par rapport au réseau de
+chauffage.
+
+8.2 Pompe à chaleur
+8.2.1 Configuration d’usine
+L’afficheur de température en façade est l’aquastat de sécurité de départ d’eau « chauffage ». Son rôle est
+de limiter la montée en température du réseau de chauffage. Il est réglé par défaut sur 50°C et ne doit pas
+être réglé plus haut.
+L’aquastat de couleur blanche est l’aquastat de sécurité de départ d’eau « capteur ». Son rôle est
+d’interdire la baisse de température du circuit capteur au-delà du seuil de congélation du capteur. Il est
+
+Ind : AF Février 2025 / Page 48
+
+réglé par défaut sur -10°C (température minimum acceptable pour un capteur à eau glycolée protégé pour 16 °C).
+La temporisation RT1 sur le schéma, est la temporisation anti-cours cycles.
+Elle est réglée sur environ 30mn.
+Suivant la puissance de la PAC, l’organe de puissance est différent : Contacteur, démarreur monophasé avec
+condensateur permanent.
+Les circulateurs sont réglés par défaut en mode « pression constante » à la vitesse maximum.
+
+8.2.2 Raccordement électrique
+Les alimentations de la PAC se feront depuis un départ spécifique dans le tableau électrique du client.
+Attention en cas d’options résistance les Smartpack 2 sont équipées d’une double alimentation depuis le
+tableau du client, il convient donc avant toutes interventions de couper les disjoncteurs du tableau.
+La section, la longueur de la ligne et le type de disjoncteur pour l’alimentation du compresseur sont
+indiquées dans les tableaux des caractéristiques techniques situées en page 10.
+Il est nécessaire d’effectuer un resserrage des connexions électriques, notamment sur les câbles de
+puissance du côté du compresseur (couple : 2.5Nm) avant la mise en service.
+Il conviendra de s’assurer que la tension minimum au démarrage ne chute pas en dessous de 220 V.
+L’utilisation d’une borne d’alimentation type chantier est interdite
+
+Disponibilité
+Pour des raisons de disponibilité du circuit de chauffage et d’ECS, l’alarme haute pression n’est pas à
+réarmement. L’information du client final et la maintenance périodique sont donc nécessaires.
+
+Tableau client avec disjoncteur magnéto thermique ajusté au courant absorbé et avec le disjoncteur pour le
+réchauffeur de boucle et la commande
+
+Ind : AF Février 2025 / Page 49
+
+8.2.3 Réglage de la temporisation
+
+LED de visualisation de l’état du relais RT1 :
+
+- Eteint, relais pas en demande.
+- Clignotant rouge : Temporisation en
+cours
+- Rouge fixe, contact fermé
+
+Temporisations RT1
+Les pompes à chaleur sont toutes équipées d’une temporisation anti-cours cycles.
+Cette temporisation est repérée par RT1 sur les schémas et les étiquettes.
+Cette temporisation est de 30 mn. Ce temps ne doit pas être raccourci (dégradation du compresseur).
+L’objet de cette temporisation est d’éviter deux démarrages successifs du compresseur.
+Effectivement, lors de l’arrêt du compresseur, la pression HP est à son maximum, notamment en mode ECS.
+Un démarrage avant que les pressions HP/BP ne se soient équilibrées conduirait à un démarrage en charge
+du compresseur avec toutes ses conséquences néfastes à la durée de vie du produit.
+Les pompes à chaleurs équipés d’un démarreur disposent d’une temporisation supplémentaire de quelques
+minutes intégrée au démarreur.
+
+Réglage de la temporisation
+Le commutateur du haut permet de régler une plage de la temporisation. Le commutateur du bas,
+permet de régler le point de commutation dans la plage de temporisation.
+Exemple 1 : Curseur du haut sur 2 heures, curseur du bas sur 5 qui compte 20 graduations, donne un temps
+de 30mn environ. (2 h = 120 minutes, réglage sur 5 = ¼ des 20 graduations soit 120 /4 = 30 minutes).
+Attention : La temporisation est parfois mise à zéro lors de la mise en service. Elle doit être immédiatement
+remise dans sa position initiale sous peine de détérioration importante de l’équipement.
+La configuration par potentiomètre n’est pas précise : Les temps sélectionnés doivent être vérifiés lors de
+la mise en service et éventuellement ajustés.
+
+8.2.4 Démarrage
+Mise sous tension :
+
+-
+
+Les Smartpack3 sont équipées d’une simple ou double alimentation depuis le tableau du
+client, (suivant options)
+La pompe à chaleur peut être alimentée par un seul disjoncteur vu qu’un disjoncteur interne
+à la pompe à chaleur protège la partie commande.
+Mettre l’aquastat de la résistance à zéro afin d’inhiber le fonctionnement de la résistance
+(si option)
+Enclencher le disjoncteur de la télécommande.
+Positionner l’interrupteur « marche / arrêt » en position marche.
+Positionner l’interrupteur « été / hiver » en position « hiver.
+Mettre la PAC en demande (ECS / Thermostat / Aquastat)
+
+Ind : AF Février 2025 / Page 50
+
+-
+
+-
+
+-
+
+-
+
+-
+
+-
+
+Afin de purger rapidement et efficacement les circuits captage et chauffage, nous vous
+conseillons l’utilisation d’un groupe d’injection, qui vous permettra de purger
+efficacement les circuits. (Voir page 26)
+Positionner l’interrupteur « été / hiver » en position « hiver ».
+Mettre en marche le thermostat de demande de chauffage.
+Les circulateurs se mettent en fonctionnement, les réseaux capteur et chauffage doivent
+circuler correctement contrôler les pressions et les maintenir à 2 bars si des défauts de
+débits apparaissent sur l’afficheur effectuer une purge des réseaux.
+Si l’installation est équipée d’un ballon d’eau chaude sanitaire (ECS), baisser ponctuellement
+la température de consigne de l’eau chaude sanitaire 10 °C en dessous de la température
+affichée (appuyer 2 fois sur la touche « SET » puis baisser la consigne à l’aide du curseur vers
+le bas). La vanne 3 voies bascule et le réseau de chauffage est activé. Laisser le réseau finir
+de se purger si nécessaire.
+Remettre la consigne d’eau chaude sanitaire sur 50°C lorsqu’un ballon ECS est installé.
+Lorsque ses vérifications sont terminées, La temporisation RT1 pourra être activé en
+position 2s. Après le démarrage du compresseur remettre immédiatement la temporisation
+sur 2H et 6 sur bouton bleu, pour éviter un oubli préjudiciable à la durée de vie de la PAC.
+La température augmente, la PAC est en fonctionnement normal.
+Attention, en cas de démarrage successifs du compresseur pendant la mise en service, il
+convient de maintenir une temporisation minimum de 5 minutes entre chaque démarrage
+afin de permettre l’équilibrage des pressions BP et HP. Si le délai entre chaque démarrage
+n’est pas suffisant, (le compresseur « grogne » et force sans démarrer) il y a un risque
+d’endommager le compresseur. Dans ce cas, couper immédiatement le disjoncteur de la
+télécommande pour arrêter le démarrage.
+Effectuer les mesures demandées sur la fiche de mise en service
+Régler les vitesses des circulateurs coté chauffage et coté capteur afin d’obtenir un delta T
+de 5 °C environ sur le circuit chauffage de 3 °C environ sur le circuit capteur.
+Lors de la montée en température 15 à 20 minutes après le démarrage :
+Remplir la fiche de mise en service. Laisser un exemplaire dans la machine, garder un
+exemplaire et renvoyer un exemplaire à NEXTHERM afin de déclencher la garantie
+Remplir le carnet d’entretien.
+Contrôler les pressions des réseaux de chauffage et du capteur. Compléter si nécessaire afin
+de maintenir une pression de 2 bars
+Vérifier le réglage de la temporisation RT1
+La mise en service est terminée, remonter le capot de la machine
+
+- Vérifiez visuellement, avant de refermer les capots, le réglage des
+temporisations, des aquastats, …
+
+Cas spécifique de la temporisation RT1 avec l’option appoint électrique
+Les pompes à chaleur peuvent être équipées d’une résistance de départ d’eau permettant de compléter le
+chauffage au cas où la déperdition serait aléatoirement supérieure à celle déterminée par l’étude
+thermique. Dans le cas où cette option est choisie, la temporisation de base est remplacée par une double
+temporisation pilotant le compresseur et la résistance d’appoint.
+Dans ce cas, les temporisations sont figées à 30 minutes pour l’anti-cours cycles et à 2 h pour la résistance
+d’appoint. Un forçage de la temporisation anti-cours cycles est possible pour essais en tournant le
+commutateur de la position 0 à la position 1.
+
+Ind : AF Février 2025 / Page 51
+
+LED de visualisation de l’état du relais
+R2. Clignotant rouge lors de la phase
+de temporisation, fixe en rouge.
+
+LED de visualisation de l’état du relais
+R1. Clignotant verte lors de la phase de
+temporisation, fixe en verte lorsque le
+relais et enclenché.
+Bouton de forçage de la temporisation
+anti-cours cycles de 30 minutes à 30
+secondes. Maximum 5 départs successifs
+en manipulant le bouton de 0 à 1 pour
+chaque demande.
+
+Cas spécifique de l’option eau de nappe.
+Lorsque l’option « eau de nappe » a été choisi, la temporisation RT1 va piloter l’électrovanne d’alimentation
+de l’échangeur de barrage. Le contrôleur de débit « CDCB » autorisera alors le démarrage du compresseur.
+Dans ce cas, il conviendra d’ajuster la vanne de réglage de débit (4) afin d’obtenir un différentiel de
+température de 3 à 4 °C entre l’entrée et la sortie échangeur de l’eau de nappe.
+
+8.2.5 Schéma électrique
+La compréhension du schéma électrique permet la maitrise de l’installation.
+Effectivement la réaction des capteurs, composants la chaine de sécurité, donne une information précise
+sur la cause d’un éventuel dysfonctionnement de l’installation.
+Le schéma se trouve dans la pochette qui accompagne le produit avec les documentations technique et
+fiche de mises en service.
+Le schéma électrique intègre le câblage des différentes options possible sur la SMARTPACK3. Dans un souci
+de compréhension, les options sont représentées par des couleurs spécifiques aux options.
+
+Disponibilité
+Les sécurités haute pression et basse pression peuvent interrompre le fonctionnement de la PAC.
+Pour des raisons de disponibilité du circuit de chauffage et d’ECS, les pressostats sont à réarment
+automatique. L’information du client final et la maintenance périodique sont donc nécessaires.
+
+8.3 Capteur
+Pendant le fonctionnement des circulateurs :
+• Affinez le dégazage du capteur en manœuvrant les vannes des capteurs les unes après les autres.
+• Vérifiez la pression du capteur à 2 bars.
+• Après plusieurs heures de fonctionnement, ajuster le différentiel de température.
+
+8.4 Fiche de mise en service
+IMPORTANT :
+Une fois la mise en service effectuée, remplir la fiche de mise en service avec les valeurs mesurées.
+Transmettre une copie au client et une copie à NEXTHERM
+Attention : L’absence de fiche conditionne la garantie !
+Cette fiche est livrée avec la PAC, elle est également disponible sur le site de NEXTHERM.
+
+Ind : AF Février 2025 / Page 52
+
+8.5 Cause de pannes les plus fréquentes :
+Le pilotage de la machine étant entièrement électromécanique, la recherche de panne se fera à l’aide d’un
+multimètre. Vérifier l’état de la chaine de sécurité. Les pannes les plus souvent rencontré sont :
+
+-
+
+Les circulateurs capteurs et application ne fonctionnent pas. (Voyants éteints sur les
+circulateurs)
+•
+•
+•
+
+-
+
+L’Interrupteur n’est pas en position hiver
+Pas d’alimentation électrique
+Organe de régulation pas en demande :
+o Sur le thermostat radio, faire un arrêt puis marche.
+o Vérifier que le thermostat est en demande (Flamme affiché sur le thermostat radio)
+o Vérifier que la régulation est bien dans la configuration demandée (Mode chaud, flocon
+affiché ou froid, soleil affiché)
+
+Les circulateurs capteurs et application fonctionnent. (Voyants allumés sur les circulateurs)
+•
+
+•
+
+•
+
+Aquastat chaud réglé en dessous de la température d’eau (monter et descendre la consigne pour
+entendre le click de déclenchement) Régler l’Aquastat au-dessus de la température de
+déclenchement (maximum 50 °C)
+Aquastat froid réglé en dessus de la température d’eau du capteur (monter et descendre la
+consigne pour entendre le click de déclenchement) Régler l’Aquastat au-dessous de la
+température de déclenchement (minimum -10°C)
+Manque de débit sur le circuit capteur (CDCC non passant) :
+
+o
+o
+o
+o
+•
+
+Purger le réseau. Vérifier que les purgeurs soient ouverts sur la machine et sur le
+collecteur et le distributeur
+Contrôler la pression (2 bars)
+Vérifier que les vannes des capteurs sont ouvertes
+Prise en glace du capteur, vérifier le taux de glycol au refractomètre
+
+Manque de débit sur le circuit application (CDCA non passant) pour les machines ayant l’option
+résistance d’appoint :
+
+o
+o
+o
+o
+
+Purger le réseau. Vérifier que les purgeurs soient ouverts sur la machine et sur le
+collecteur et le distributeur
+Contrôler la pression (2 bars)
+Vérifier que les vannes des distributeurs de plancher chauffant sont ouvertes.
+En cas de défaut de débit l’afficheur de façade à un petit chiffre 1 à gauche qui
+clignote est un indicateur rouge en haut à droite en fixe.
+
+8.5.2 La machine ne démarre pas et le voyant sur RT1 est allumé.
+
+-
+
+Le démarreur progressif est en temporisation (LED orange fixe) : Attendre la fin de la
+temporisation de 5 minutes.
+Si l’option eau de nappe a été choisie :
+o L’électrovanne de l’échangeur de barrage n’est pas ouverte : Contrôler
+l’électrovanne et son sens de montage.
+o Manque de débit sur l’échangeur de barrage : Contrôler le débit d’eau dans
+l’échangeur. (Vanne de réglage et delta P sur le filtre)
+
+Ind : AF Février 2025 / Page 53
+
+9 Maintenance
+9.1 Généralités
+Les opérations de maintenance doivent suivre les préconisations RGE citées dans l’introduction :
+Une surveillance préventive réalisée annuellement
+Un petit entretien
+Aléatoirement un dépannage
+Toutes les étapes doivent être consignées par le technicien dans le carnet de chaufferie.
+Le but est de fournir des performances optimales, allonger la durée de vie du matériel, assurer un meilleur confort
+dans le temps.
+En cas de panne, ne pas hésiter à faire appel à votre installateur après avoir fait les vérifications d’usage de ce
+présent guide.
+
+9.2 Circuits électriques
+Contrôler visuellement l’état du câblage électrique.
+Resserrez les connexions électriques, notamment sur les câbles de puissance du côté du compresseur (couple :
+2.5Nm)
+Vérifiez visuellement l’état et le serrage des cosses électriques.
+Mesurez la tension et l’intensité absorbée à son régime de fonctionnement par le compresseur et la comparer
+avec les mesures initiales.
+Contrôler la chute de tension au démarrage (La tension minimum admissible au démarrage est de 220v)
+Afin de prévenir toutes dégradation par surchauffe électrique, nous préconisons un contrôle annuel des
+échauffements par caméra thermique.
+Soyez particulièrement vigilant à l’appareillage et à la connectique des pompes à chaleur
+(démarreur, condensateur, compresseurs temporisation, circulateur)
+Certaines pièces, comme les condensateurs / les démarreurs (durée moyenne d’utilisation en
+conditions de fonctionnement normal : environ 10 000 heures), restent des pièces d’usure. Il
+convient d’en vérifier l’état. Nous recommandons de les remplacer par des modèles « nouvelle
+génération », afin d’éviter une dégradation des performances et maintenir un fonctionnement
+optimal de la PAC.
+
+9.3 Circuits hydrauliques
+Vérifiez que les circuits de chauffage et capteur soient purgés et que la pression de remplissage est de
+l’ordre de 2 Bar.
+Vérifiez au réfractomètre que le circuit capteur est glycolé pour une température de -16°C.
+Si le client vous informe qu’il remonte souvent la ou les pressions, faites une recherche de fuite et en
+absence de fuite, vérifiez puis éventuellement changez le ou les vases d’expansion.
+Pour vérifier un vase d’expansion, le circuit hydraulique ne doit plus être sous pression : Mesurez la
+pression d’azote du vase d’expansion avec un manomètre automobile (la pression doit être de 1 bar).
+Vérifiez le delta de température des circuits capteur et chauffage, machine en fonctionnement, à son
+régime de fonctionnement nominal (3 à 4°C maximum pour le capteur et 5°C environ pour les émetteurs).
+Régler les vitesses des circulateurs au besoin.
+Contrôlez et comparez avec les paramètres d’origine les mêmes mesures que pour une installation neuve.
+Vérifiez l’état du filtre et tamis et du pot de décantation et les nettoyer si nécessaire.
+
+9.4 Circuits frigorifiques
+Vérifiez au détecteur électronique les soudures et les prises de pression sur la pompe à chaleur.
+Nous conseillons de ne poser les manomètres qu’en cas de nécessité.
+
+Ind : AF Février 2025 / Page 54
+
+Effectuer un relevé des températures de refoulement et d’aspiration et les comparer avec la fiche de mise en
+service et les relever des années précédentes. Analyser une éventuelle dérive.
+Remplir le carnet d’entretien avec les valeurs mesuré et les éventuelles actions entreprises.
+En cas de suspicion d’un dysfonctionnement, faire intervenir un frigoriste.
+Le frigoriste devra :
+Prendre les mesures élémentaires pour calculer la surchauffe et le sous refroidissement ainsi que les
+mesures de température sur le capteur et les émetteurs.
+Reportez ces mesures sur une fiche de mises en service ou sur une fiche équivalente propre à l’entreprise
+qui intervient.
+Etablir un diagnostic et intervenir sur le circuit si besoin.
+
+Rappel :
+Définition de la Surchauffe : C’est une marge de sécurité et de fonctionnement pour la régulation du
+réfrigérant par le détendeur. C’est la différence entre la température, mesurée au thermomètre, à l’entrée
+du compresseur avec la température d’évaporation, mesurée au manomètre BP.
+Définition du Sous refroidissement : C’est une marge de fonctionnement pour la régulation du réfrigérant
+par le détendeur. C’est la différence entre la température de condensation, mesurée au manomètre HP,
+avec la température en sortie condenseur, mesurée au thermomètre.
+
+Ind : AF Février 2025 / Page 55
+
+Ind : AF Février 2025 / Page 56
+
+

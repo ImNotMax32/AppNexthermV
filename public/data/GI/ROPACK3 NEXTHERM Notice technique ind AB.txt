@@ -1,0 +1,4342 @@
+﻿R/OPACK3 MonoBloc  
+
+Air / Eau Installation extérieure De 4kW à 18kW 
+
+ 
+
+ 
+
+Notice technique         Code d’accès au paramètres du régulateur : 195 
+
+ 
+
+    
+
+ 
+
+
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+04 05-2020   Éliminer indications chap. 3.2, éliminé la référence au vase d'expansion chap. 3.3    
+
+Ajoutées valeurs Lw pour les bandes d'octave, ajoutées données pour Ta = -15 ° C dans les tableaux 
+03 03-2020    
+
+de performances de chauffage, ajoutées puissances 10T et 12T 
+
+00 12-2019 E.M.   A.R. A.R. Première édition  
+
+Rév Date Rédaction Approbation Remarque  
+
+Séries 
+Catalogue 
+
+POMPES À CHALEUR INVERTER AIR/EAU AVEC VENTILATEURS  
+BT0110L8550-04 AXIAUX 
+
+P a g .  2 | 59 
+
+ 
+
+
+
+ 
+
+ 
+
+SOMMAIRE 
+1. DESCRIPTION UITÉ ET CARACTÉRISTIQUES TECHIQUES .................................................................................. 6 
+
+1.1 Structure ....................................................................................................................................................................... 6 
+
+1.2 Compresseurs ............................................................................................................................................................... 6 
+
+1.3 Échangeur latéral air .................................................................................................................................................... 6 
+
+1.4 Echangeur côté raccordement d’eau ............................................................................................................................ 6 
+
+1.5 Ventilateur .................................................................................................................................................................... 6 
+
+1.6 Réglage tours des ventilateurs...................................................................................................................................... 6 
+
+1.7 Circuit frigorigène ........................................................................................................................................................ 7 
+
+1.8 Tableau électrique ........................................................................................................................................................ 8 
+
+1.9 Système de commande ................................................................................................................................................. 8 
+
+1.10 Dispositifs de contrôle et de protection ...................................................................................................................... 8 
+
+1.11 Circuit hydraulique .................................................................................................................................................... 8 
+
+2. DESCRIPTION VERSIONS ET ACCESSOIRES ............................................................................................................ 9 
+
+2.1 Versions ........................................................................................................................................................................ 9 
+
+2.2 Liste accessoires ................................................................................................................................................. 10 
+
+2.3 Description accessoires .............................................................................................................................................. 10 
+
+2.3.1 Accessoires montée en usine ........................................................................................................................... 10 
+
+2.3.2 Accessoires fournis séparément ....................................................................................................................... 11 
+
+3. INSTALLATION ................................................................................................................................................................. 13 
+
+3.1 Dimensions unité, raccordements hydrauliques et poids ........................................................................................... 13 
+
+3.1.1 Dimensions nettes et avec emballage .............................................................................................................. 13 
+
+3.1.2 Modèles R/OPACK3  04 / 06 / 08 ................................................................................................................... 14 
+
+3.1.3 Modèles R/OPACK3  10 / 10T / 12 / 12T ....................................................................................................... 14 
+
+3.1.4 Modèles  R/OPACK3  14 / 14T / 16 / 16T / 18T ............................................................................................. 15 
+
+3.1.5 Poids ................................................................................................................................................................ 15 
+
+3.2 Espaces techniques de service.................................................................................................................................... 16 
+
+3.3 Circuit hydraulique .................................................................................................................................................... 18 
+
+3.3.1 Caractéristiques de l’eau de l’appareil............................................................................................................. 18 
+
+3.3.2 Schéma hydraulique type ................................................................................................................................ 19 
+P a g .  3 | 59 
+
+ 
+
+
+
+ 
+
+3.3.3 Schéma hydraulique interne de l’unité ............................................................................................................ 19 
+
+3.3.4 Système d’évacuation du condensat ................................................................................................................ 20 
+
+3.3.5 Chargement de l’installation ............................................................................................................................ 20 
+
+3.3.6 Vidange de l’installation .................................................................................................................................. 20 
+
+4. DONNÉES TECHNIQUES GÉNÉRALES ........................................................................................................................ 21 
+
+4.1 Tableau des données................................................................................................................................................... 21 
+
+4.2 Données électriques et auxiliaires .............................................................................................................................. 26 
+
+5. FACTEURS CORRECTIFS ................................................................................................................................................ 27 
+
+5.1 Facteurs de correction pour l'utilisation d'un mélange d'eau glycolée ....................................................................... 27 
+
+5.2 Facteurs de correction pour les dépôts incrustés ........................................................................................................ 27 
+
+5.3 Réglages et protections contrôles ............................................................................................................................... 27 
+
+6. DONNÉES DU GROUPE HYDRONIQUE ....................................................................................................................... 28 
+
+6.1 Hauteurs de refoulement ............................................................................................................................................ 28 
+
+          6.2 Courbes des circulateurs .................................................................................................................................. 28 
+
+7. EMISSIONS SONORES ..................................................................................................................................................... 31 
+
+8. LIMITES DE FONCTIONNEMENT ................................................................................................................................. 33 
+
+8.1 Débit d’eau à l’évaporateur ........................................................................................................................................ 33 
+
+8.2 Production d’eau glacée (fonctionnement été) ........................................................................................................... 33 
+
+8.3 Production d’eau chaude (fonctionnement hiver) ...................................................................................................... 33 
+
+8.4 Température air ambiant et tableau récapitulatif ........................................................................................................ 34 
+
+8.5 Enveloppe en Chauffage et Refroidissement ............................................................................................................. 34 
+
+8.6 Enveloppe en Sanitaire .............................................................................................................................................. 35 
+
+9. TABLEAU DU RENDEMENT .......................................................................................................................................... 36 
+
+9.1 Chauffage ................................................................................................................................................................... 36 
+
+9.2 Refroidissement ......................................................................................................................................................... 39 
+
+9.3 Sanitaire ..................................................................................................................................................................... 42 
+
+9.4 Données pour la certification énergétique des bâtiments selon UNI/TS 11300-4 pour pompes à chaleur ................ 43 
+
+ ......................................................................................................................................................................................... 43 
+
+Modello RO3-4M ..................................................................................................................................................... 44 
+
+Modèle RO3-6M ...................................................................................................................................................... 45 
+
+Modèle RO3-8M ...................................................................................................................................................... 46 
+
+P a g .  4 | 59 
+
+
+
+ 
+
+Modèle RO3-10M et RO3-10T ................................................................................................................................ 47 
+
+Modèle RO3-12M et RO3-12T ................................................................................................................................ 48 
+
+Modèle RO3-14 ........................................................................................................................................................ 49 
+
+Modèle RO3-16 ........................................................................................................................................................ 50 
+
+Modèle RO3-18T ..................................................................................................................................................... 51 
+
+9.5 Valeurs de EER pour le calcul de la performance énergétique des bâtiments, conformément à la norme UNI/TS 11300-
+3 ....................................................................................................................................................................................... 52 
+
+Modello RO3-4M ..................................................................................................................................................... 52 
+
+Modèle RO3-6M ...................................................................................................................................................... 53 
+
+Modèle RO3-8M ...................................................................................................................................................... 53 
+
+Modèle RO3-10M et RO3-10T ................................................................................................................................ 54 
+
+Modèle RO3-12M et RO3-12T ................................................................................................................................ 54 
+
+Modèle RO3-14M et RO3-14T ................................................................................................................................ 55 
+
+Modèle RO3-16M et RO3-16T ................................................................................................................................ 55 
+
+Modèle RO3-18T ..................................................................................................................................................... 56 
+
+10. FICHE DE SÉCURITÉ DU RÉFRIGÉRANT .................................................................................................................. 57 
+
+ 
+ 
+  
+
+P a g .  5 | 59 
+
+
+
+ 
+
+1. DESCRIPTION UNITÉ ET CARACTÉRISTIQUES TECHIQUES 
+Les pompes à chaleur de la série R/OPACK3 ont été conçus pour des applications domestiques et commerciales, ils sont 
+entièrement multifonctionnels et conçus pour une utilisation en mode pompe à chaleur avec production d'eau chaude sanitaire 
+pour le chauffage et pour l'utilisation sanitaire à une température de 60°C. L'utilisation de la technologie du compresseur sans 
+balais INVERTER, combinée avec le détendeur électronique, la pompe et le ventilateur à vitesse variable, optimise la 
+consommation et l'efficacité de fonctionnement des composants frigorifères. 
+
+1.1 Structure 
+Toutes les unités de la série sont produites en tôle galvanisée à chaud et peinte avec des poudres polyuréthanes au four à 180°C 
+pour assurer la meilleure résistance aux agents atmosphériques. La structure est autoportante avec panneaux amovibles pour 
+faciliter l'inspection et la maintenance des composants internes. Toutes les vis et tous les rivets pour installation externe sont en 
+acier galvanisé. 
+
+1.2 Compresseurs 
+Les compresseurs à DC inverter sont des compresseurs hermétiques rotatifs twin rotary, spécialement conçus pour fonctionner 
+avec le gaz R32, équipés d'une protection thermique et montés sur des amortisseurs de vibrations en caoutchouc.   
+Les compresseurs sont installés dans un compartiment séparé du flux d'air pour réduire le bruit. Ils sont également équipés 
+d'une résistance carter, ayant pour fonction d'éviter la dilution de l'huile qui pourrait provoquer le grippage du compresseur. 
+Cette fonction est activée si le compresseur a été arrêté pendant au moins 30 minutes à une température de refoulement 
+inférieure à 20 °C (avec une hystérésis de 2,0 °C). Lorsque le compresseur redémarre, la résistance carter est désactivée ; en 
+effet, elle ne s'active que lorsque le compresseur est éteint. Cependant, la résistance fonctionne même lorsque l'appareil est 
+éteint pour éviter des problèmes lors de sa remise en marche.  Cependant, il est recommandé de mettre l'appareil sous tension 
+et en veille au moins 12 heures avant sa mise en service, si le système est complètement éteint. La température du récipient 
+d’huile doit être tout au moins 10°C supérieur à la température ambiante. 
+L'inspection des compresseurs est possible en retirant les panneaux latéraux et frontaux de l'unité, ce qui permet d'effectuer 
+des interventions de maintenance lorsque l'unité est en fonctionnement. 
+
+1.3 Échangeur latéral air 
+Les échangeurs d'air sont constitués de tubes en cuivre et d'ailettes en aluminium. Les tubes sont assemblés mécaniquement dans 
+les ailettes en aluminium pour augmenter le facteur de transfert thermique. La géométrie de ces échangeurs de chaleur permet 
+une faible valeur de pertes de charge côté air et donc la possibilité d'utiliser des ventilateurs à faible vitesse (avec pour 
+conséquence une réduction du bruit de l'unité). Les batteries ont le traitement « GOLD FIN » pour permettre une plus grande 
+résistance à l'acidité et au brouillard salin, en outre le traitement augmente l'aptitude hydrofilique et les performances par rapport 
+à une batterie avec les simples ailettes en aluminium 
+
+1.4 Echangeur côté raccordement d’eau 
+Les échangeurs utilisateur, de type à plaques soudés-brasés, sont en acier inoxydable AISI 304, isolés en usine avec un matériau à 
+cellules fermées et peuvent être équipés d'une résistance électrique antigel (accessoire KA en option). Chaque évaporateur est 
+protégé par une sonde de température utilisée comme sonde de protection antigel qui active le circulateur, même lorsque la 
+machine est éteinte, si les conditions définies par la commande sont réunies. 
+
+1.5 Ventilateur 
+Les ventilateurs sont en matière plastique et sont de type axial avec ailettes profilées. Ils sont tous équilibrés statiquement et 
+dynamiquement et fournis avec une grille de protection conformément à la norme EN 60335-2-80 (sécurité des appareils 
+électriques à usage domestique et analogue). Les ventilateurs sont installés sur l'unité avec des supports antivibratoires en 
+caoutchouc pour réduire le bruit émis. Tous les moteurs électriques utilisés sont des moteurs sans balais modulants à 8 pôles 
+(200/1000 tr/min). Les moteurs sont directement couplés et équipés d'une protection thermique intégrée. Les moteurs sont tous 
+avec degré de protection IP 44. 
+
+1.6 Réglage tours des ventilateurs 
+Ce type de contrôle, géré par le microprocesseur, est nécessaire pour optimiser la pression d'évaporation/condensation en 
+fonctionnement été/hiver afin de permettre le bon fonctionnement de la machine 
+
+  
+
+P a g .  6 | 59 
+
+
+
+ 
+
+1.7 Circuit frigorigène 
+Le circuit frigorifique est réalisé avec des composants fabriqués par des entreprises internationales de premier plan et selon la 
+norme UNI EN 13134 concernant les procédés de brasage par brasage. Le fluide réfrigérant est le nouveau gaz écologique R32. Le 
+circuit frigorifique comprend, dans sa version de base : vanne d'inversion de cycle à 4 voies, détendeur électronique, séparateur 
+de liquide, réservoir de liquide, vannes d'inspection pour la maintenance et le contrôle, dispositif de sécurité (pressostat haute 
+pression), transducteurs de pression pour ajuster avec précision la pression d'évaporation et de condensation, filtres pour éviter 
+les obstructions de la vanne de lamination. 
+
+ 
+
+ 
+
+Schéma circuit   
+
+R/OPACK3  04-06-08-10-  
+10T-12-12T 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+Schéma circuit  
+
+ 
+R/OPACK3  14-14T-16-
+
+16T-18T  
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+P a g .  7 | 59 
+
+
+
+ 
+
+ MC COMPRESSEUR RD LIGNE REFOULEMENT 
+
+CO/EV CONDENSATEUR (EN FONCTIONNEMENT REFROIDISSEMENT) RL LIGNE LIQUIDE 
+
+ EV/CO ÉVAPORATEUR (EN FONCTIONNEMENT REFROIDISSEMENT) RD/RS LIGNE DE REFOULEMENT/ASPIRATION 
+
+EEV VANNE D’EXPANSION ÉLECTRONIQUE RS/RD LIGNE D’ASPIRATION/REFOULEMENT 
+
+ YISV VANNE 4 VOIE INVERSION DE CYCLE H/CS SORTIE EAU UTILISATION 
+
+LR RÉCEPTACLE DE LIQUIDE H/CR ENTRÉE EAU UTILISATION 
+
+ F FILTRE PEH TC TRANSDUCTEUR HAUTE PRESSION 
+
+ SV RACCORDEMENT DE CHARGEMENT PED TR TRANSDUCTEUR BASSE PRESSION 
+
+HC RÉSITANCE CARTER TE SONDE TEMPÉRATURE AIR EXTERNE 
+
+ MAF VENTILATEUR AXIAL TE SD SONDE TEMPÉRATURE LIGNE ASPIRATION 
+
+MF MUFFLER TE DT SONDE TEMPÉRATURE ÉVACUATON COMPRESSEURS 
+
+ LS SÉPARATEUR DE LIQUIDE PSH C PRESSOSTAT HAUTE PRESSION RÉARMEMENT AUTOMATIQE 
+
+RS LIGNE D’ASPIRATION   
+ 
+
+1.8 Tableau électrique 
+Le tableau électrique est réalisé conformément à la réglementation européenne en vigueur. L'accès au tableau électrique est 
+possible en enlevant le couvercle de l'appareil à l'aide d'un outil approprié. Le degré de protection du tableau électrique est IP24. 
+Le tableau est également équipé d'un bornier avec contacts propres pour ON-OFF à distance, commutation été/hiver, résistance 
+auxiliaire, capteur d'eau sanitaire, gestion externe des vannes 3 voies et contacts pour le panneau de commande à distance ainsi 
+que pour la gestion du double point de consigne de fonctionnement. 
+
+1.9 Système de commande 
+Toutes les unités I32V5 sont équipées d'un microprocesseur avec logique de contrôle de surchauffe à travers la vanne 
+thermostatique électronique gérée sur la base des signaux envoyés par les transducteurs de pression. L'unité centrale contrôle 
+également les fonctions suivantes : régulation de la température de l'eau, protection antigel, temporisation des compresseurs, 
+réinitialisation des alarmes, gestion des alarmes et LED de fonctionnement. Le système de commande, avec la technologie 
+INVERTER et les capteurs embarqués, surveille et adapte rapidement et en continu les performances du compresseur onduleur, 
+du circulateur et du ventilateur (2 ventilateurs dans les modèles RO3-14M, 14T, RO3-16M, 16T). 
+
+1.10 Dispositifs de contrôle et de protection 
+Toutes les unités sont munies de l'équipement de commande et de protection standard suivant : sonde de température de l'eau 
+de refoulement, installée sur la conduite de retour de l'installation, sonde antigel et de travail installée sur la conduite de l'eau 
+vers le système, transducteur de haute pression, transducteur de basse pression, sonde de température entrée et sortie 
+compresseur, protection thermique compresseurs, protection thermique ventilation, fluxostat côté eau pour protection 
+évaporateur, pressostat HP. 
+
+ 
+
+1.11 Circuit hydraulique 
+Les refroidisseurs de la série R/OPACK3 sont équipés d'un circuit hydraulique intégré qui comprend : circulateur modulant à 
+moteur brushless à haut rendement (EEI≤0,23 pour les tailles 14 et 16, EEI≤0,20 pour 06, 08, 10 et 12), adapté à l'utilisation d'eau 
+glacée et géré directement par la commande de la machine, échangeur thermique à plaques, fluxostat de protection, vase 
+d'expansion (la capacité dépend des tailles, voir les caractéristiques techniques), soupape de sécurité (6 bar) à raccorder à un 
+système collecteur et purge d'air manuelle. 
+
+P a g .  8 | 59 
+
+
+
+ 
+
+2. DESCRIPTION VERSIONS ET ACCESSOIRES 
+2.1 Versions 
+
+I32V5 - pompe à chaleur réversible avec unité hydrolique intégrée (soupape de sécurité, manomètre, circulateur modulant, 
+fluxostat, purgeur automatique, vanne de chargement et de déchargement) 
+
+Modèles disponibles : 04, 06, 08, 10, 10T 12, 12T 14, 16, 18T. Les puissances 10,12,14 et 16 sont disponibles en monophasé et en 
+triphasé, au contraire de la puissance 18 qui est seulement triphasé. Les autres puissances ne prévoient que l’alimentation en 
+monophasé. 
+
+Le code de l’unité est composé de : 
+
+✓ nr. 7 chiffres fixes  
+✓ le symbole # sert de séparateur 
+✓ nr. 7 chiffres variables (champs) identifiant les dimensions, l'alimentation et les accessoires montés en usine 
+✓ nr. 2 chiffres variables (champ MC) qui identifient la série R/OPÄCK3 dans ses personnalisations possibles 
+
+0110419#(VR)(AE)(CT1)(KA)(CR)(AC1)(MC) 
+
+CODE VERSION ALIMENTATEUR CAPACITÉ COMMANDE À 
+KIT ANTIGEL ACCESSOIRE 1 
+
+PARENT UNITÉ ÉLECTRIQUE THERMIQUE DISTANCE 
+
+0110419# VR 
+
+ 2 Standard AE 
+Standard 
+
+ 3 CT1 
+avec GI 
+
+   0 Monophasé 
+
+   1 Triphasé 
+
+     22 04 kW (*) 
+
+     16 06 kW (*) KA 
+
+     17 08 kW (*) CR 
+
+     18 10 kW (*) AC1 
+
+     19 12 kW (*) 
+
+     20 14 kW 
+
+     21 16 kW 
+
+     23 18 kW (**) 
+
+Sans kit 
+       0 
+
+antigel 
+Avec kit 
+
+       1 
+antigel 
+
+         0 Aucun 
+
+Protocole 
+         2 
+
+Modbus 
+
+           0 Aucun 
+
+Traitement 
+           T 
+
+batterie 
+
+ 
+
+(*) Variantes non valables pour AE=1 
+
+(**) Variantes non valables pour AE=0 
+
+P a g .  9 | 59 
+
+
+
+ 
+
+ATTENTION : Le kit antigel est un accessoire monté d’usine. Il n'est pas possible de l'installer successivement. 
+ 
+
+2.2 Liste accessoires 
+
+Ci-dessous, sont énumérés les accessoires disponibles pour les pompes à chaleur R/OPACK3 (si il n’est pas indiqué De 
+série, ou fourni en vrac, c’est une option)  
+
+Monté Fourni en 
+ Accessoire De série 
+
+d’usine vrac 
+
+Kit antivibrations x   x 
+Kit antigel x  x  
+
+Traitement anticorrosion batteries x  x  
+V3V - Vanne déviatrice (1”) Kvs 7 ou (1’’1/4) Kvs 16 x   x 
+
+Vanne de détente électronique  x x  
+Soupape de décharge thermique antigel x   x 
+
+SAS - Sonde eau chaude sanitaire/Sonde à distance installation x   x 
+Fluxostat (signalisation présence flux)  x x  
+
+Ventilateur axial avec moteur BLDC  x x  
+ Hi-T2 - Dispositif de commande à distance à écran tactile 
+
+x   x 
+multifonctions 
+
+Commande pour ventilo-convecteur (commande Hi-T nécessaire) x   x 
+i-CR - Télécommande murale x   x 
+
+GI - Module gestion installation x  x  
+Moniteur de phase (uniquement unité avec alimentation triphasée)  x x  
+
+Contact sec on/off à distance  x x  
+
+Prédisposition connectivité BMS - protocole ModBus inclus (CM)  x x  
+
+Convertisseur série USB/RS485 (ISK) x   x 
+
+Modification point de consigne depuis entrée 0-10V  x x  
+
+Modification du point de consigne dynamique – courbe climatique (par  x x  
+sonde air externe présent dans l'unité) 
+
+Contact sec pour sélection Été/Hiver  x x  
+Entrée numérique pour double point de consigne *  x x  
+Entrée numérique demande sanitaire *  x x  
+
+* Fonctions activables en alternative 
+
+2.3 Description accessoires 
+
+2.3.1 Accessoires montée en usine 
+
+Kit antigel - Utilise un câble auto-chauffant enroulé autour de la base de l'unité externe près du serpentin du condenseur et deux 
+résistances en PET situées sur les faces de l'échangeur thermique à plaques. 
+
+Traitement anticorrosion batteries – grâce au traitement, la batterie devient flexible pour résister à des contractions et à des 
+expansions thermiques, elle est mécaniquement résistante, protégée des rayons UV et repoussant la saleté. Les pertes de 
+transmission de la chaleur sont très limitées (autour de 2%). Le traitement garantit la protection des batteries pratiquement dans 
+toutes les conditions ambiantes : des milieux marins aux milieux ruraux, des zones industrielles aux zones urbaines. 
+
+Vanne de Détente électronique – vanne d'expansion, pour le contrôle et le réglage continu de la quantité de réfrigérant à l’entrée 
+de l'évaporateur. Les variations de charge thermique peuvent être rapidement suivies, afin d’avoir une optimisation des 
+consommations. 
+
+Fluxostat (signalisation présence flux) – dispositif qui a pour fonction de contrôler et signaler la circulation d'eau dans l'échangeur 
+à plaques. Ce composant est d’une importance fondamentale parce qu'il éteint l'unité et la met en sécurité en prévenant la 
+formation de glace. 
+
+Ventilateur axial avec moteur BLDC – Sans balais modulants à 8 pôles (200/1000 tours/min), contrôle de la 
+
+P a g .  10 | 59 
+
+
+
+ 
+
+condensation/évaporation intégré 
+
+GI - Module gestion installation – permet la gestion des fonctions suivantes : 
+
+• Gestion circulaire de relance à l’aide d’un thermostat ambiant (non fourni) ; 
+• Gestion de la vanne de mixage côté installation aussi bien en chauffage qu’en refroidissement ; 
+• Gestion d’intégration solaire - thermique. 
+
+ 
+
+Moniteur de phase (uniquement unité avec alimentation triphasée) – Relais triphasé pour la signalisation de séquence de phases 
+erronée, manque phase totale et partielle 
+
+Contact sec on/off à distance – contact en bornier qui permet l’autorisation de l'allumage et de l’arrêt de l'unité 
+
+Prédisposition connectivité BMS - protocole ModBus inclus (CM) – accessoire qui permet la connexion de l'unité à des contrôleurs 
+externes par câble série avec standard électrique RS-485 et protocole ModBus RTU. 
+
+Modification point de consigne depuis entrée 0-10V – ce réglage permet de modifier la consigne en ajoutant (ou en soustrayant) 
+une valeur en fonction de l'entrée 0-10V (si activée). 
+
+Modification du point de consigne dynamique – courbe climatique (par sonde air externe présent dans l'unité) – le régulateur 
+permet de modifier le point de consigne en additionnant une valeur en fonction de la température de la sonde air externe. 
+
+Contact sec pour sélection Été/Hiver – possibilité de gérer à distance le mode chauffage ou refroidissement de la pompe à chaleur. 
+
+Entrée numérique pour double point de consigne - entrée qui permet de changer le point de consigne  
+
+Entrée numérique demande sanitaire - fonction activable en alternative à la gestion du double point de consigne. L'activation de 
+la fonction eau chaude sanitaire peut être effectuée par la fermeture/ouverture d'une entrée numérique de l'unité. Cette fonction 
+est recommandée pour l'utilisation de deux ou plusieurs pompes à chaleur en cascade connectées hydroliquement au même 
+réservoir de stockage d'eau chaude sanitaire. 
+
+2.3.2 Accessoires fournis séparément 
+
+Kit antivibrations – ils ont pour but de ne pas transmettre de vibrations à la structure ; ils doivent être montés sous l'unité, dans 
+des trous appropriés.   
+
+V3V- Vanne déviatrice (1”) – Vanne à 3 voies à piston motorisée DN (1”) Kvs 7, connexions MMM 1” G avec servocommande. 
+
+Indicateur et sens de passage par rapport aux repérages (vanne 1’’) 
+            
+
+ 
+
+      
+
+      
+
+      
+
+  ECS Chauffage     
+
+  A B     
+
+  AB     
+
+      
+
+  Entrèe     
+ 
+
+     
+ 
+
+ 
+
+ 
+
+ 
+
+P a g .  11 | 59 
+
+
+
+ 
+
+Substances admises : 
+
+Eau de -15°C à +110°C 
+
+Sous 0° seulement pour eau avec additifs avec antigel 
+
+Inadapté pour gaz groupe 1 et 2, liquides groupe 1 (Directive 2014/68/UE) 
+
+Caractéristiques servocommande avec retour sans ressort : 
+
+Force [Nm] : 6 
+
+Temps de course : 15 s 
+
+Alimentation 230 Vac 
+
+Indice IP : 65 
+
+Caractéristiques corps vanne : 
+
+Caisse : PN 40 
+ 
+
+Soupape de décharge thermique antigel – soupape en mesure d'ouvrir à 0°C pour prévenir la formation de glace à l'intérieur des 
+tuyaux. 
+
+SAS - Sonde eau chaude sanitaire/Sonde à distance installation – Dans certaines solutions d'installation (p. ex. pompe à chaleur 
+en parallèle avec la chaudière sur le même circuit hydrolique et vanne de dérivation d'exclusion), il peut être nécessaire d'activer 
+une sonde de température de l'installation afin que le contrôleur embarqué sur la machine puisse traiter correctement la gestion. 
+La sonde à distance de l'installation thermorégule la pompe à chaleur uniquement pendant la phase de démarrage du 
+compresseur, l'arrêt est géré par la sonde présente sur l'eau en entrée de la pompe à chaleur. 
+
+Hi-T2 - Dispositif de commande à distance à écran tactile multifonctions – commande à distance à écran tactile pour la gestion 
+centralisée d'un réseau de refroidisseurs/pompes à chaleur, il intègre des capteurs d'humidité et de température pour l'analyse 
+thermo-hygrométrique de l'environnement et la gestion de la double consigne pour les systèmes de plancher radiant qui utilisent 
+un système de déshumidification. 
+
+Commande pour ventilo-convecteur (commande Hi-T nécessaire) –  dispositif à microprocesseur projeté pour le réglage 
+d’installations de chauffage/refroidissement avec ventilo-convecteurs à 2 ou 4 tubes, dans des installations avec Hi-T2 et 
+refroidisseur/pompes à chaleur air/eau. 
+
+i-CR - Télécommande murale – commande à distance Modbus avec LCD négatif et touches capacitives. L'appareil doit être utilisé 
+comme clavier à distance de la machine avec détection locale de la température et réplication des fonctions de la commande à 
+bord de la machine. 
+
+Convertisseur série USB/RS485 (ISK) – dispositif d'interface en mesure de lire et d'écrire les registres de contrôle par le standard 
+RS485 et de le convertir dans un port USB connectable à n'importe quel système de supervision.  
+
+P a g .  12 | 59 
+
+
+
+ 
+
+3. INSTALLATION 
+Toutes les opérations de manutention, installation et maintenance doivent être effectuées exclusivement par du PERSONNEL 
+QUALIFIÉ. Avant toute intervention sur l'appareil, s'assurer que l'alimentation électrique est débranchée.  
+La température minimale admissible pour le stockage des appareils est de 5°C. 
+
+3.1 Dimensions unité, raccordements hydrauliques et poids 
+
+3.1.1 Dimensions nettes et avec emballage 
+
+ 
+Dimensions avec 
+
+Branchements 
+Longueur Hauteur emballage (longueur 
+
+Modèle R/OPACK3 Largeur [mm] hydrauliques 
+[mm] [mm] x largeur x hauteur)  
+
+IN/OUT 
+[mm] 
+
+4M-6M-8M 924 377 828 1”M 970 x 395 x 985 
+
+10M-10T-12M-12T 1047 455 936 1”M 1080 x 510 x 1130 
+
+14M-14T-16M-16T-
+1044 448 1409 1”M 1100 x 490 x 1605 
+
+18T 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+P a g .  13 | 59 
+
+
+
+ 
+
+3.1.2 Modèles RO3-  4M / 6M / 8M 
+
+IN/OUT : 1”M G  
+E : entrée alimentation électrique 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ IN 
+
+OUT 
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+3.1.3 Modèles RO3-  10M / 10T / 12M / 12T 
+
+IN/OUT : 1”M G  
+E : entrée alimentation électrique 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+P a g .  14 | 59 
+
+
+
+ 
+
+3.1.4 Modèles  RO3-  14M / 14T / 16 M/ 16T / 18T 
+
+IN/OUT : 1”M G  
+E : entrée alimentation électrique 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ IN
+
+OUT
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+3.1.5 Poids  
+
+ 
+
+ 
+ Modèle Poids d’expédition Poids en service [kg] 
+
+ R/OPACK3  [kg] 
+
+ RO3-4M 84 72 
+ 
+
+RO3-6M 84 72 
+ 
+ RO3-8M 84 72 
+ 
+
+RO3-10M 110 96 
+ 
+ RO3-10T 122 108 
+ RO3-12M 110 96 
+ 
+ RO3-12T 122 108 
+ RO3-14M  134 121 
+ 
+ RO3-14T 148 136 
+
+ RO3-16M  140 126 
+ 
+
+RO3-16T 154 141 
+
+ RO3-18T 154 141 
+
+ 
+
+ 
+
+P a g .  15 | 59 
+
+
+
+ 
+
+3.2 Espaces techniques de service 
+ 
+Toute la série est projetée et construite pour des installations à l’extérieur.  
+Il est conseillé de créer une dalle de support de taille adaptée à l'unité. Les appareils transmettent un faible niveau de vibrations 
+au terrain : il est cependant conseillé d'interposer entre le châssis de base et la surface d'appui des supports antivibratoires. 
+Dans le cas d'une installation suspendue, il est nécessaire de s'assurer que le mur est fait de briques solides, de béton ou de 
+matériaux ayant des caractéristiques de résistance similaires. La capacité portante du mur doit être suffisante pour supporter 
+au moins quatre fois le poids de l'unité. 
+Pour réduire les vibrations et le bruit, nous recommandons l'utilisation de joints en caoutchouc pour l'installation murale. 
+ 
+Nous vous invitons toujours à effectuer une évaluation de l'impact sur l'environnement sur la base des données de puissance et 
+de pression acoustique indiquées au chapitre "Données techniques" et des limites d'émission sonore en fonction de la zone 
+d'installation de l'unité, en référence au DPCM de 14 / 11/1997. Une évaluation doit également être faite si l'unité est installée à 
+proximité des travailleurs, conformément au décret législatif LGS. 81/2008 art.189 et suivants. 
+ 
+La présence de sauts de loup ou de puits dans lesquels des gaz pourraient s'accumuler et générer une atmosphère explosive 
+doit être évitée sur au moins 5 mètres.  
+ 
+Il est très important d'éviter la recirculation entre l'aspiration et le refoulement, peine la réduction des performances de l'unité 
+ou même l’interruption du fonctionnement normal. À cet égard, il est nécessaire de garantir les espaces de service minimum 
+indiqués ci-dessous. 
+ 
+
+ 
+ 
+
+MODÈLE A [mm] B [mm] C [mm] D [mm] E [mm] 
+RO3-4M 1500 500 400 400 500 
+RO3-6M 1500 500 400 400 500 
+RO3-8M 1500 500 400 400 500 
+RO3-10M/RO3-10T 1500 500 400 400 500 
+RO3-12M/RO3-12T 1500 500 400 400 500 
+RO3-14M/RO3-14T 1500 500 400 400 500 
+RO3-16M/RO3-16T 1500 500 400 400 500 
+RO3-18T 1500 500 400 400 500 
+
+ 
+ 
+
+ 
+
+ 
+
+Ne pas obstruer ou couvrir les ouvertures de ventilation situées sur le couvercle supérieur. 
+
+ 
+
+ 
+MODÈLE L [mm] 
+
+ RO3-4M 500 
+RO3-6M 500 
+
+ 
+RO3-8M 500 
+
+ RO3-10M/RO3-10T 500 
+
+ RO3-12M/RO3-12T 500 
+RO3-14M/RO3-14T 500 
+
+ RO3-16M/RO3-16T 500 
+ RO3-18T 500 
+
+P a g .  16 | 59 
+
+
+
+ 
+
+ 
+Lmin 
+
+ 
+ 
+En cas d’unités côte à côte, la distance minimum Lmin à 
+respecter entre elles est de 1 m. 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Il faut donc éviter de placer l’appareil sous des auvents ou près de plantes ou de 
+murs pour éviter la recirculation d'air.  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+En cas de vents ayant des vitesses supérieures à 2,2 m/s, on conseille l’emploi de 
+barrières brise-vent. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+P a g .  17 | 59 
+
+
+
+ 
+
+3.3 Circuit hydraulique 
+Les raccords hydrauliques doivent être réalisés conformément aux réglementations nationales et/ou locales ; les tuyaux peuvent 
+être en acier, en acier galvanisé ou en PVC. Les conduites doivent être soigneusement dimensionnées en fonction du débit d'eau 
+nominal de l'appareil et des pertes de charge du circuit hydraulique. Tous les raccords hydrauliques doivent être isolés avec un 
+matériau à cellules fermées d'épaisseur suffisante. Le refroidisseur doit être raccordé aux tuyaux à l'aide de raccords flexibles. Il 
+est recommandé d'installer les composants suivants dans le circuit hydraulique : 
+
+• Thermomètre à sonde pour le relèvement de la température dans le circuit. 
+• Vannes manuelles pour isoler le refroidisseur du circuit hydraulique. 
+• Filtre métallique en forme de Y (installé sur le tuyau de retour du système) avec un maillage métallique ne dépassant pas 1 m m. 
+• Groupe de chargement et soupape de décharge si nécessaire. 
+• Vase d’expansion correctement dimensionné. 
+
+ 
+
+ATTENTION : lors du dimensionnement des tuyauteries, veiller à ne pas dépasser la fuite maximale côté installation indiquée dans 
+le tableau des données techniques du Paragraphe Erreur ! Source du renvoi introuvable. (voir la hauteur utile). 
+ATTENTION : toujours brancher les tuyaux aux raccordements à l'aide du système clé contre clé. 
+ATTENTION : Il incombe à l'installateur de vérifier que le vase d'expansion est adapté à la capacité réelle du système. 
+ATTENTION : La conduite de retour du système doit se trouver sur l'étiquette « INGRESSO ACQUA » (entrée eau) sinon 
+l'évaporateur peut geler. 
+ATTENTION : Il est obligatoire d'installer un filtre métallique (avec un maillage ne dépassant pas 1mm) et un déflateur sur le tuyau 
+
+ de retour du système étiqueté « INGRESSO ACQUA » (entrée eau). Si le commutateur de débit est manipulé ou modifié, ou si le 
+ filtre métallique et le déflateur ne sont pas présents sur le système, la garantie est immédiatement annulée. Le filtre et le déflateur 
+
+doivent être maintenus propres, aussi faut-il s'assurer qu'ils sont toujours propres après l'installation de l'appareil et les vérifier 
+périodiquement. 
+Toutes les unités quittent l'entreprise équipées d'un fluxostat (installé en usine). Si le fluxostat est modifié ou enlevé, ou si le filtre 
+à eau et le déflateur ne sont pas présents dans l'appareil, la garantie ne sera pas valide. Se reporter au schéma de câblage joint à 
+l'appareil pour le raccordement du fluxostat. 
+Le système de chauffage et les soupapes de sécurité doivent être conformes aux exigences de la norme EN 12828. 
+
+3.3.1 Caractéristiques de l’eau de l’appareil 
+
+Pour assurer le bon fonctionnement de l'appareil, l'eau doit être correctement filtrée (voir les indications au début de cette 
+section) et la quantité de substances dissoutes doit être minimale. Les valeurs maximales autorisées sont les suivantes 
+ 
+
+CARACTÉRISTIQUES PHYSICO-CHIMIQUES MAXIMALES AUTORISÉES POUR L'EAU DE 
+ 
+
+L'INSTALLATION 
+ 
+ PH 7,5 - 9 
+
+ Conductibilité électrique 100 - 500 μS/cm 
+
+ Dureté totale 4,5 – 8,5 dH 
+
+ Température ˂ 65°C 
+
+ Teneur en oxygène ˂ 0,1 ppm 
+
+ Quantité max. de glycol 40% 
+ Phosphates (PO4) ˂ 2ppm 
+ Manganèse (Mn) < 0,05 ppm 
+ Fer (Fe) < 0,3 ppm 
+ Alcalinité (HCO3) 70 – 300 ppm 
+ Ions de chlore (Cl-) < 50 ppm 
+ Ions sulfates (SO4) < 50 ppm 
+ Ion sulfure (S) Aucun 
+ Ions ammonium (NH4) Aucun 
+ Silice (SiO2) < 30 ppm 
+
+P a g .  18 | 59 
+
+
+
+ 
+
+3.3.2 Schéma hydraulique type 
+
+Est reporté ci-dessous un schéma de raccordement conseillé. 
+
+aux installations sanitaires 
+
+de l’alimentation hydrique 
+
+Sanitary 
+probe 
+
+secondary pump 
+
+to radiant panel 
+
+au 
+ventilo-
+
+convecte
+ur 
+
+du ventilo-
+convecteur 
+
+ 
+
+3.3.3 Schéma hydraulique interne de l’unité 
+
+On rapporte ci-dessous les schémas hydrauliques de raccordement à l'unité. 
+
+Modèles RO3- 4M / 6M / 8M Modèles RO3- 10M / 10T / 12M / 12T 
+
+ 
+
+Modèles RO3- 14M / 14T / 16M / 16T / 18T 
+
+TE SONDE TEMPÉRATURE ENTRÉE UTILISATION 
+
+TE SD SONDE TEMPÉRATURE SORTIE UTILISATION 
+
+DV ROBINET D’ÉVACUATION 
+
+RV SOUPAPE DE SÉCURITÉ 
+
+FL FLUXOSTAT 
+
+P POMPE 
+
+AV VANNE DE PURGE AIR AUTOMATIQUE 
+
+SM MANCHON DE SERVICE 
+
+ 
+ 
+
+P a g .  19 | 59 
+
+
+
+ 
+
+3.3.4 Système d’évacuation du condensat 
+
+Toutes les unités R/OPACK3 sont réalisées de telle façon que la base de l’unité serve de bassin de collecte de condensation ; un 
+raccord en plastique de série est fourni, à installer sous la base prédisposée pour le branchement d'un tuyau permettant de 
+canaliser l'eau de condensation. 
+
+Joint 
+
+Joint 
+
+Orifice dans le panneau 
+de base de l’unité 
+externe Raccord d’évacuation  
+
+ 
+
+Chaque unité est donc équipée, sur la base du kit hydronique du côté de la batterie), d'un orifice pour l'évacuation de la 
+condensation éventuelle susceptible de pénétrer à travers les tuyaux du système hydraulique. Comme ces tuyaux sont bien isolés, 
+la production de condensation est réduite au minimum et il n'est donc pas obligatoire de connecter un tuyau de drainage à ce 
+raccord. 
+
+3.3.5 Chargement de l’installation 
+
+ATTENTION : superviser toutes les opérations de chargement/réintégration. 
+ATTENTION : Avant de procéder au chargement/réintégration du système, débrancher l'alimentation électrique des 
+appareils. 
+ATTENTION : Le chargement/réintégration de l'installation doit toujours avoir lieu dans des conditions de pression 
+contrôlées (max. 1 bar). S'assurer qu'un réducteur de pression et une soupape de sécurité ont été installés sur la 
+conduite de chargement/réintégration. 
+
+ 
+ATTENTION : l'eau de la conduite de chargement/réintégration doit être convenablement préfiltrée de toutes 
+impuretés et particules en suspension. S'assurer qu'un filtre à cartouche amovible et un déflateur sont installés. 
+
+ATTENTION : Vérifier périodiquement et procéder à l'évacuation de l'air qui s'accumule dans le système. 
+
+ATTENTION : Prévoir un purgeur d'air automatique au point le plus haut du système. 
+ 
+
+ 
+
+3.3.6 Vidange de l’installation 
+
+Si l'unité doit être complètement vidangée, fermer tout d'abord les vannes d'entrée et de sortie manuelles (non fournies), puis 
+débrancher les tuyaux prédisposés à l'extérieur sur l'entrée et la sortie d'eau afin que le liquide contenu dans l'unité puisse sortir 
+(pour faciliter le fonctionnement, il est conseillé de monter, à l'extérieur, sur l’entrée et la sortie d’eau, deux robinets de vidange 
+entre l'unité et les vannes manuelles). 
+
+S'il est nécessaire de recharger le système ou d'ajuster la teneur en glycol, il est 
+possible d'utiliser le robinet de service. Dévisser le bouchon du robinet de service 
+et raccorder un tuyau de 14 ou 12 mm (diamètre intérieur - vérifier le modèle de 
+
+Bague robinet installé sur l'appareil) raccordé au réseau d'eau, puis charger le système 
+en dévissant la bague spéciale. L’opération terminée, resserrer la bague et 
+
+Bouchon avec joint revisser le bouchon. Dans tous les cas, il est recommandé de charger le système 
+en utilisant un robinet externe prédisposé par l'installateur. 
+
+ 
+
+P a g .  20 | 59 
+
+
+
+ 
+
+4. DONNÉES TECHNIQUES GÉNÉRALES 
+4.1 Tableau des données 
+
+R/OPACK3 
+
+CARACTÉRISTIQUES TECHNIQUES Unité 
+de 4M 6M 8M 10 
+
+mesur 
+Puissance frigorifique (1) 3,20 / 5,02 / 
+
+kW 3,03 / 4,23 / 4,65* 3,80 / 6,08 / 6,69* 4,66 / 7,53 / 8,28* 
+min/nom/max 5,52* 
+
+Puissance absorbée (1) kW 1,29 1,60 1,99 2,39 
+
+E.E.R. (1) W/W 3,28 3,14 3,05 3,15 
+
+Puissance calorifique (2) 4,82 / 6,18 / 
+kW 4,80 / 5,51 / 6,06* 4,91 / 7,72 / 8,49* 6,22 / 9,50 / 10,45* 
+
+min/nom/max 6,80* 
+
+Refroidissement Puissance absorbée (2)   kW 1,10 1,28 1,76 2,15 
+
+E.E.R. (2) W/W 5,02 4,82 4,38 4,41 
+
+SEER (5) W/W 4,07 4,12 4,25 4,15 
+
+Débit d'eau (1) L/s 0,20 0,24 0,28 0,36 
+
+Perte de chargement 
+kPa 1,7 2,0 2,8 6,9 
+
+échangeur côté utilisation (1) 
+Hauteur de refoulement utile 
+
+kPa 80,8 78,8 76,0 68,9 
+nominale (1) 
+
+Puissance calorifique (3) 3,95 / 6,08 / 5,33 / 10,10 / 
+kW 3,71 / 4,55 / 5,23* 3,95 / 7,81 / 8,98* 
+
+min/nom/max 6,99* 11,62* 
+
+Puissance absorbée (3) kW 0,95 1,35 1,78 2,28 
+
+C.O.P. (3) W/W 4,78 4,51 4,38 4,43 
+
+Puissance calorifique (4) 3,82 / 5,88 / 
+kW 3,69 / 4,47 / 5,14* 3,80 / 7,58 / 8,72* 5,18 / 9,76 / 11,22* 
+
+min/nom/max 6,76* 
+
+Puissance absorbée (4) kW 1,17 1,66 2,17 2,80 
+
+Chauffage C.O.P. (4) W/W 3,82 3,54 3,50 3,48 
+
+SCOP (6) W/W 4,52 4,46 4,46 4,53 
+
+Débit d'eau (4) L/s 0,22 0,28 0,37 0,47 
+
+Perte de charg échangeur 
+kPa 1,3 2,1 3,3 9,7 
+
+côté utilisation (4) 
+Hauteur de refoulement utile 
+
+kPa 80,0 75,8 66,3 55,2 
+nominale (4) 
+
+Etiquette énergie 
+Classe A+++/A++ A+++/A++ A+++/A++ A+++/A++ 
+
+eau 35°C / 55°C 
+
+Twin Rotary Twin Rotary Twin Rotary Twin Rotary 
+Type   
+
+DC Inverter DC Inverter DC Inverter DC Inverter 
+
+ESTEL OIL 
+Huile (type)   ESTEL OIL RB74AF ESTEL OIL RB74AF ESTEL OIL VG74 
+
+Compresseur RB74AF 
+
+Nombre compresseurs   1 1 1 1 
+
+Chargement huile (quantité) L 0,67 0,67 0,67 1 
+
+Circuits de refroidissement   1 1 1 1 
+
+Type   R32 R32 R32 R32 
+
+Charge réfrigérant (7) kg 1,5 1,5 1,5 2,5 
+
+Quantité réfrigérante en 
+ton 1,0 1,0 1,0 1,7 
+
+tonne de CO2 équivalente (7) 
+Réfrigérant Pression de projet 
+
+(haute/basse) modalité bar 42,8/1,3 42,8/1,3 42,8/1,3 42,8/1,3 
+pompe à chaleur 
+Pression de projet 
+(haute/basse) modalité bar 42,8/3,5 42,8/3,5 42,8/3,5 42,8/3,5 
+refroidisseur 
+
+P a g .  21 | 59 
+
+
+
+ 
+
+Motore DC Motore DC Motore DC 
+Ventilateurs Type   Motore DC Brushless 
+
+Brushless Brushless Brushless 
+zone externe 
+
+Nombre   1 1 1 1 
+
+Type échangeur interne   A plaques 
+Échangeur 
+
+N° échangeurs internes   1 1 1 1 
+interne 
+
+Contenu en eau L 0,9 0,9 0,9 1,2 
+
+Contenu en eau du circuit 
+L 1,4 1,4 1,4 1,8 
+
+hydronique 
+
+Pression maximale côté eau bar 6 6 6 6 
+
+Raccordements hydrauliques inch 1"M 1"M 1"M 1"M 
+
+Minimum volume d’eau L 35 40 40 50 
+Circuit 
+
+Puissance nominale 
+hydraulique kW 0,075 0,075 0,075 0,075 
+
+circulateur 
+Puissance maximale 
+
+kW 0,075 0,075 0,075 0,075 
+circulateur 
+Courant max absorbé 
+
+A 0,38 0,38 0,38 0,38 
+circulateur 
+Indice d'Efficacité 
+
+  ≤ 0,21 ≤ 0,21 ≤ 0,21 ≤ 0,21 
+Énergétique (IEE) circulateur 
+
+Puissance sonore Lw (8) dB(A) 64 64 64 64 
+
+Pression sonore à 1 m de 
+Nuisance sonore dB(A) 49,8 49,8 49,8 49,4 
+
+distance Lp1 (9) 
+Pression sonore à 10 m de 
+
+dB(A) 32,8 32,8 32,8 32,7 
+distance Lp10 (9) 
+
+Alimentation   230V/1/50Hz 
+
+Puissance maximale 
+kW 2,9 3,5 3,9 4,6 
+
+absorbée 
+Données Courant maximal absorbée A 12,6 15,1 17,0 20,2 
+
+électriques 
+Puissance maximale 
+
+kW 3,0 3,6 4,0 4,8 
+absorbée avec kit antigel 
+Courant maximal absorbé 
+
+A 13,2 15,6 17,6 20,7 
+avec kit antigel 
+
+A - Longueur mm 924 924 924 1047 
+
+B - Profondeur mm 377 377 377 455 
+Dimensions et 
+
+C - Hauteur mm 828 828 828 936 
+poids 
+
+Poids expédition kg 84 84 84 110 
+
+Poids en service kg 72 72 72 96 
+
+ 
+
+Unité i-32V5 
+CARACTÉRISTIQUES TECHNIQUES de 
+
+mesur 10T 12 12T 14 
+
+Puissance frigorifique (1) 4,55 / 8,51 / 
+kW 4,66 / 7,53 / 8,28* 4,55 / 8,51 / 9,36* 6,87 / 11,48 / 12,05* 
+
+min/nom/max 9,36* 
+
+Puissance absorbée (1) kW 2,39 2,79 2,79 3,53 
+
+E.E.R. (1) W/W 3,15 3,05 3,05 3,25 
+
+Puissance calorifique (2) 6,41 / 11,60 / 
+kW 6,22 / 9,50 / 10,45* 6,41 / 11,60 / 12,76* 9,17 / 14,00 / 14,70* 
+
+min/nom/max 12,76* 
+
+Refroidissement Puissance absorbée (2)   kW 2,15 2,79 2,79 2,59 
+
+E.E.R. (2) W/W 4,41 4,16 4,16 5,40 
+
+SEER (5) W/W 4,15 4,25 4,25 4,62 
+
+Débit d'eau (1) L/s 0,36 0,41 0,41 0,55 
+
+Perte de charge échangeur 
+kPa 6,9 8,8 8,8 12,9 
+
+côté utilisation (1) 
+Hauteur de refoulement utile 
+
+kPa 68,9 63,4 63,4 75,0 
+nominale (1) 
+
+P a g .  22 | 59 
+
+
+
+ 
+
+Puissance calorifique (3) 5,33 / 11,80 / 
+kW 5,33 / 10,10 / 11,62* 5,33 / 11,80 / 13,57* 7,54 / 14,10 / 15,23* 
+
+min/nom/max 13,57* 
+
+Puissance absorbée (3) kW 2,28 2,73 2,73 2,91 
+
+C.O.P. (3) W/W 4,43 4,32 4,32 4,85 
+
+Puissance calorifique (4) 5,13 / 11,47 / 
+kW 5,18 / 9,76 / 11,22* 5,13 / 11,47 / 13,19* 7,23 / 13,56 / 14,64* 
+
+min/nom/max 13,19* 
+
+Puissance absorbée (4) kW 2,80 3,33 3,33 3,55 
+
+Chauffage C.O.P. (4) W/W 3,48 3,44 3,44 3,82 
+
+SCOP (6) W/W 4,53 4,47 4,47 4,48 
+
+Débit d'eau (4) L/s 0,47 0,55 0,55 0,65 
+
+Perte de charge échangeur 
+kPa 9,7 13,1 13,1 13,0 
+
+côté utilisation (4) 
+Hauteur de refoulement utile 
+
+kPa 55,2 43,4 43,4 63,6 
+nominale (4) 
+
+Etiquette énergie 
+Classe A+++/A++ A+++/A++ A+++/A++ A+++/A++ 
+
+eau 35°C / 55°C 
+
+Twin Rotary Twin Rotary Twin Rotary Twin Rotary 
+Type   
+
+DC Inverter DC Inverter DC Inverter DC Inverter 
+
+Huile réfrigérante (type)   ESTEL OIL VG74 ESTEL OIL VG74 ESTEL OIL VG74 ESTEL OIL VG74 
+Compresseur 
+
+Nombre compresseurs   1 1 1 1 
+
+Chargement huile (quantité) L 1 1 1 1,4 
+
+Circuits de refroidissement   1 1 1 1 
+
+Type   R32 R32 R32 R32 
+
+Charge réfrigérante (7) kg 2,5 2,5 2,5 3,6 
+
+Quantité réfrigérante en 
+ton 1,7 1,7 1,7 2,4 
+
+tonne de CO2 équivalente (7) 
+Réfrigérant Pression de projet 
+
+(haute/basse) modalité bar 42,8/1,3 42,8/1,3 42,8/1,3 42,8/1,3 
+pompe à chaleur 
+Pression de projet 
+(haute/basse) modalité bar 42,8/3,5 42,8/3,5 42,8/3,5 42,8/3,5 
+refroidisseur 
+
+Motore DC 
+Ventilateurs Type   Motore DC Brushless Motore DC Brushless Motore DC Brushless 
+
+Brushless 
+zone externe 
+
+Nombre   1 1 1 2 
+
+Type échangeur interne   A plaques 
+Échangeur 
+
+N° échangeurs internes   1 1 1 1 
+interne 
+
+Contenu en eau L 1,2 1,2 1,2 1,7 
+
+Contenu en eau du circuit 
+L 1,8 1,8 1,8 3,0 
+
+hydronique 
+
+Pression maximale côté eau bar 6 6 6 6 
+
+Raccordements hydrauliques inch 1"M 1"M 1"M 1"M 
+
+Minimum volume d’eau L 50 60 60 60 
+Circuit 
+
+Puissance nominale 
+hydraulique kW 0,075 0,075 0,075 0,14 
+
+circulateur 
+Puissance maximale 
+
+kW 0,075 0,075 0,075 0,14 
+circulateur 
+Courant max absorbé 
+
+A 0,38 0,38 0,38 1,10 
+circulateur 
+Indice d'Efficacité 
+
+  ≤ 0,21 ≤ 0,21 ≤ 0,21 ≤ 0,23 
+Énergétique (IEE) circulateur 
+
+Puissance sonore Lw (8) dB(A) 64 65 65 68 
+Nuisance sonore Pression sonore à 1 m de 
+
+dB(A) 49,4 50,4 50,4 52,7 
+distance Lp1 (9) 
+
+P a g .  23 | 59 
+
+
+
+ 
+
+Pression sonore à 10 m de 
+dB(A) 32,7 33,7 33,7 36,6 
+
+distance Lp10 (9) 
+
+Alimentation   400V/3P+N+T/50Hz 230V/1/50Hz 400V/3P+N+T/50Hz 230V/1/50Hz 
+
+Puissance maximale 
+kW 4,6 5,1 5,1 6,6 
+
+absorbée 
+Données Courant maximal absorbée A 6,6 22,1 7,3 28,6 
+
+électriques 
+Puissance maximale 
+
+kW 4,8 5,2 5,2 6,7 
+absorbée avec kit antigel 
+Courant maximal absorbé 
+
+A 7,0 22,7 7,5 29,2 
+avec kit antigel 
+
+A - Longueur mm 1047 1047 1047 1044 
+
+B - Profondeur mm 455 455 455 448 
+Dimensions et 
+
+C - Hauteur mm 936 936 936 1409 
+poids 
+
+Poids expédition kg 110 110 110 134 
+
+Poids en service kg 96 96 96 121 
+
+ 
+
+Unité de i-32V5 
+CARACTÉRISTIQUES TECHNIQUES 
+
+mesur 14T 16 16T 18T 
+
+Puissance frigorifique (1) 6,87 / 11,48 / 5,99 / 13,80 / 5,99 / 13,80 / 
+kW 6,86 15,04 / 15,79* 
+
+min/nom/max 12,05* 14,49* 14,49* 
+
+Puissance absorbée (1) kW 3,53 4,38 4,38 4,88 
+
+E.E.R. (1) W/W 3,25 3,15 3,15 3,08 
+
+Puissance calorifique (2) 9,17 / 14,00 / 9,20 / 15,80 / 9,20 / 15,80 / 9,09 / 17,10 / 
+kW 
+
+min/nom/max 14,70*   16,59* 16,59* 17,96* 
+
+Refroidissement Puissance absorbée (2)   kW 2,59 3,15 3,15 3,59 
+
+E.E.R. (2) W/W 5,40 5,02 5,02 4,76 
+
+SEER (5) W/W 4,62 4,80 4,80 4,91 
+
+Débit d'eau (1) L/s 0,55 0,66 0,66 0,71 
+
+Perte de charge échangeur côté 
+kPa 12,9 17,5 17,5 20,6 
+
+utilisation (1) 
+Hauteur de refoulement utile 
+
+kPa 75,0 62,3 62,3 55,6 
+nominale (1) 
+
+Puissance calorifique (3) 7,54 / 14,10 / 7,36 / 16,30 / 7,36 / 16,30 / 7,30 / 17,90 / 
+kW 
+
+min/nom/max 15,23* 17,60* 17,60* 19,33* 
+
+Puissance absorbée (3) kW 2,91 3,49 3,49 4,07 
+
+C.O.P. (3) W/W 4,85 4,67 4,67 4,40 
+
+Puissance calorifique (4) 7,23 / 13,56 / 7,06 / 15,77 / 7,06 / 15,77 / 7,02 / 17,32 / 
+kW 
+
+min/nom/max 14,64* 17,03* 17,03* 18,71* 
+
+Puissance absorbée (4) kW 3,55 4,24 4,24 4,92 
+
+Chauffage C.O.P. (4) W/W 3,82 3,72 3,72 3,52 
+
+SCOP (6) W/W 4,48 4,49 4,49 4,46 
+
+Débit d'eau (4) L/s 0,65 0,76 0,76 0,83 
+
+Perte de charge échangeur côté 
+kPa 13,0 17,6 17,6 21,0 
+
+utilisation (4) 
+Hauteur de refoulement utile 
+
+kPa 63,6 48,5 48,5 37,3 
+nominale (4) 
+
+Etiquette énergie 
+Classe A+++/A++ A+++/A++ A+++/A++ A+++/A++ 
+
+eau 35°C / 55°C 
+
+Twin Rotary Twin Rotary Twin Rotary Twin Rotary 
+Type   
+
+Compresseur DC Inverter DC Inverter DC Inverter DC Inverter 
+ESTEL OIL 
+
+Huile réfrigérant (type)   ESTEL OIL VG74 ESTEL OIL VG74 ESTEL OIL VG74 
+VG74 
+
+P a g .  24 | 59 
+
+
+
+ 
+
+Nombre compresseurs   1 1 1 1 
+
+Chargement huile (quantité) L 1,4 1,4 1,4 1,4 
+
+Circuits de refroidissement   1 1 1 1 
+
+Type   R32 R32 R32 R32 
+
+Charge réfrigérant (7) kg 3,6 4 4 4 
+
+Quantité réfrigérant en tonne de 
+Réfrigérant ton 2,4 2,7 2,7 2,7 
+
+CO2 équivalente (7) 
+Pression de projet (haute/basse) 
+
+bar 42,8/1,3 42,8/1,3 42,8/1,3 42,8/1,3 
+modalité pompe à chaleur 
+Pression de projet (haute/basse) 
+
+bar 42,8/3,5 42,8/3,5 42,8/3,5 42,8/3,5 
+modalité refroidisseur 
+
+Motore DC Motore DC Motore DC Motore DC 
+Ventilateurs zone Type   
+
+Brushless Brushless Brushless Brushless 
+externe 
+
+Nombre   2 2 2 2 
+
+Type échangeur interne   A plaques 
+
+Échangeur interne N° échangeurs internes   1 1 1 1 
+
+Contenu en eau L 1,7 1,7 1,7 1,7 
+
+Contenu en eau du circuit 
+L 3,0 3,0 3,0 3,0 
+
+hydronique 
+
+Pression maximale côté eau bar 6 6 6 6 
+
+Raccordements hydrauliques inch 1"M 1"M 1"M 1"M 
+
+Minimum volume d’eau L 60 70 70 70 
+Circuit hydraulique 
+
+Puissance nominale circulateur kW 0,14 0,14 0,14 0,14 
+
+Puissance maximale circulateur kW 0,14 0,14 0,14 0,14 
+
+Courant max absorbé circulateur A 1,10 1,10 1,10 1,10 
+
+Indice d'Efficacité Énergétique (IEE) 
+  ≤ 0,23 ≤ 0,23 ≤ 0,23 ≤ 0,23 
+
+circulateur 
+
+Puissance sonore Lw (8) dB(A) 68 68 68 68 
+
+Pression sonore à 1 m de distance 
+Nuisance sonore dB(A) 52,7 52,7 52,7 52,7 
+
+Lp1 (9) 
+Pression sonore à 10 m de distance 
+
+dB(A) 36,6 36,6 36,6 36,6 
+Lp10 (9) 
+
+Alimentation   400V/3P+N+T/50Hz 230V/1/50Hz 400V/3P+N+T/50Hz 400V/3P+N+T/50Hz 
+
+Puissance maximale absorbée kW 6,6 7,0 7,0 8,3 
+
+Données Courant maximal absorbée A 9,5 30,4 10,1 12,0 
+électriques 
+
+Puissance maximale absorbée avec 
+kW 6,7 7,1 7,1 8,5 
+
+kit antigel 
+Courant maximal absorbé avec kit 
+
+A 9,7 31,0 10,3 12,2 
+antigel 
+
+A - Longueur mm 1044 1044 1044 1044 
+
+B - Profondeur mm 448 448 448 448 
+
+Dimensions et poids C - Hauteur mm 1409 1409 1409 1409 
+
+Poids expédition kg 148 140 154 154 
+
+Poids en service kg 136 126 141 141 
+
+ 
+Prestations en présence des conditions suivantes, conformément à la norme 14511:2018 :  
+(1) Refroidissement : température air externe 35°C ; température eau entr./sort. 12/7°C.    
+(2) Refroidissement : température air externe 35°C ; température eau entr./sort. 23/18°C.    
+(3) Chauffage : température air interne 7°C b.s. 6°C b.u. ; temp. eau entr./sort. 30/35°C.   
+(4) Chauffage : température air interne 7°C b.s. 6°C b.u. ; temp. eau entr./sort. 40/45°C.   
+(5) Refroidissement : température eau entr./sort. 7/12°C.     
+(6) Chauffage : conditions climatiques moyennes : Tbiv=-7°C ; temp. eau entr./sort. 30/35°C.   
+(7) Données indicatives et sujettes à variation. Pour une donnée correcte, toujours se référer à l’étiquette technique reportée sur l’unité. 
+(8) Puissance sonore : condition mode de chauffage (3) ; valeur déterminée sur la base des mesures effectuées conformément à la norme UNI EN ISO 9614-2, et en accord avec les exigences de la certification Eurovent. 
+(9) Pression acoustique : valeur calculée à partir du niveau de puissance acoustique d'après ISO 3744:2010. 
+(*) en activant la fonction Hz maximum   
+
+ 
+
+P a g .  25 | 59 
+
+
+
+ 
+
+N.B. les données de performance indiquées sont indicatives et peuvent être sujettes à variation. En outre, les rendements déclarés aux points 
+(1), (2), (3) et (4) s'entendent rapportés à la puissance instantanée selon la norme EN 14511. Le chiffre indiqué aux points (5) et (6) est 
+déterminé sur la base de la norme UNI EN 14825. 
+ 
+ 
+ 
+ 
+
+4.2 Données électriques et auxiliaires 
+230/1PH+PE/50*- Circuit commande à distance 
+
+Alimentation unité V/~/Hz V/~/Hz 12/1/50 
+400/3PH+PE/50** 
+
+Circuit commande intégré V/~/Hz 12/1/50 Alimentation ventilateurs V/~/Hz 230/1/50 
+
+Pour les puissances 6M, 8M, 10M, 12M, 14M et 16M* - Pour les puissances 10T, 12T, 14T, 16T 
+
+REMARQUE : Les données électriques sont sujettes à modification pour mise à jour. Il est donc toujours nécessaire de se référer  
+
+à l'étiquette des données techniques sur le panneau latéral droit de l'appareil. 
+
+Les câbles d’alimentation, les protecteurs électriques et les fusibles de ligne doivent être dimensionnés conformément au schéma 
+
+électrique de l’unité et dans les données électriques contenues dans le tableau des caractéristiques techniques (voir Paragraphe 
+11). 
+
+Utilisez une ligne d’alimentation dédiée, n’alimentez pas l’appareil par une ligne à laquelle sont connectés d’autres appareils. Fixez 
+les 
+
+Branchez les câbles d’alimentation de manière sûre et assurez-vous qu’ils ne sont pas en contact avec des angles vifs. Utilisez des 
+câbles à double isolation avec des fils de cuivre. 
+
+La liaison de terre doit être effectuée en premier au moment du raccordement, et inversement, elle doit être retirée en dernier 
+au moment du débranchement de l’unité. 
+
+En cas de desserrage du câble d’alimentation, il faut s’assurer que la tension des conducteurs actifs se produit avant 
+
+de celui du fil de terre. 
+
+Un disjoncteur ou un dispositif de déconnexion avec une puissance de coupure adéquate, qui dispose d’une séparation des 
+contacts dans tous les pôles, doit être installé sur la ligne d’alimentation. Le disjoncteur de dispersion au sol doit être compatible 
+avec les appareils 
+
+à l’onduleur, il est recommandé d’installer un disjoncteur différentiel de type B, l’installation d’un disjoncteur de type différent 
+pourrait entraîner des coups de feu. 
+
+Le tableau suivant indique les sections de câble recommandées pour une longueur maximale de 30 m. Dans tous les cas, selon le 
+type de câble 
+
+pose, du déplacement physique et de la longueur des câbles (qu’elle soit inférieure ou supérieure à 30m), sera prise en charge par 
+le concepteur de l’installation électrique 
+
+faire un choix approprié. 
+
+section du câble 
+Alimentation modèle couple de serrage du câble 
+
+(longueur maxi 30ml) 
+
+230V/1Ph RO3-4M / RO3-6M / RO3-8M 3x4mm² L/N:3,4Nm- PE:1Nm 
+230V/1Ph RO3-10M / RO3-12M 3x4mm² L/N:3,4Nm- PE:1Nm 
+230V/1Ph RO3-14M / RO3-16M 3x6mm² L/N:3,4Nm- PE:1Nm 
+400V/3Ph RO3-10T / RO3-12T 5x2,5mm² L1/L2/L3:3,4Nm- N/PE:1Nm 
+400V/3Ph RO3-14T / RO3-16T 5x2,5mm² L1/L2/L3:3,4Nm- N/PE:1Nm 
+400V/3Ph RO3-14T / RO3-16T 5x4mm² L1/L2/L3:3,4Nm- N/PE:1Nm 
+
+ 
+
+  
+
+P a g .  26 | 59 
+
+
+
+ 
+
+5. FACTEURS CORRECTIFS 
+5.1 Facteurs de correction pour l'utilisation d'un mélange d'eau glycolée 
+
+Les facteurs de correction pour le débit d'eau et les pertes de charge doivent être appliqués aux valeurs obtenues sans utilisation 
+de glycol. Le facteur de correction du débit d'eau est calculé pour maintenir le même écart de température que celui qui serait 
+obtenu sans l'utilisation du glycol. Le facteur de correction de perte de charge est appliqué à la valeur du débit d'eau corrigée par 
+le facteur de correction du débit d'eau. 
+
+Pourcentage Point de congélation Facteur de correction du Facteur de correction de Facteur de correction du Facteur de correction de 
+de glycol (C°) rendement la puissance absolue débit d’eau perte de charge 
+
+10% -3,2 0,985 1 1,02 1,08 
+
+20% -7,8 0,98 0,99 1,05 1,12 
+
+30% -14,1 0,97 0,98 1,10 1,22 
+
+40% -22,3 0,965 0,97 1,14 1,25 
+
+50% -33,8 0,955 0,965 1,2 1,33 
+
+ 
+
+5.2 Facteurs de correction pour les dépôts incrustés 
+Nous rapportons les facteurs de correction dus à l'encrassement de l'échangeur interne gaz/eau. 
+
+ 
+m2 °C / kW Facteur de correction de la puissance de sortie Facteur de correction de la puissance absorbée 
+0,44 x 10-1 1,00 1,00 
+
+ 
+0,88 x 10-1 0,99 1,00 
+
+1,76 x 10-1 0,98 1,00  
+
+5.3 Réglages et protections contrôles 
+
+ Description Valeur 
+Pressostat de haute pression 42,8 bar 
+
+ Alarme de haute pression 41,5 bar 
+Alarme de basse pression Dépend de l’unité 
+
+Nombre maximum de redémarrages après alarme 
+ 3 
+
+haute/basse pression (réinitialisation manuelle) 
+
+Déclenchement alarme : 4 °C  
+ Protection antigel 
+
+Annulation alarme : +7°C 
+
+Soupape de sécurité du circuit hydronique 6 bar 
+  
+
+ 
+5.4 Facteurs de correction en fonction de l’altitude 
+
+Les facteurs de correction des prestations en fonction de l'altitude sont calculés pour le refroidissement aux conditions (1) et pour 
+le chauffage aux conditions (3) des précédents tableaux des données techniques, et sont fournis pour les altitudes de 500, de 
+1000, de 1500 et 2000 m. 
+  
+
+R/OPACK3 
+
+Altitude [m] 500 1000 1500 2000 
+
+Facteur correctif rendement thermique 0,9964 0,9941 0,9888 0,9869 
+
+Facteur correctif puissance absorbée en 0,9931 0,9841 0,9853 0,9755 
+chauffage 
+
+Facteur correctif rendement 
+0,9888 0,9762 0,9618 0,9466 
+
+frigorifique 
+
+Facteur correctif puissance absorbée en 1,0106 1,0235 1,0386 1,0560 
+refroidissement 
+
+ 
+
+P a g .  27 | 59 
+
+
+
+ 
+
+6. DONNÉES DU GROUPE HYDROlIQUE 
+6.1 Hauteurs de refoulement  
+
+Les courbes caractéristiques hauteur-débit sont indiquées ci-dessous, nettes des pertes de charge du kit hydronique. Sur chaque 
+courbe, le point de travail optimal est mis en évidence dans les conditions spécifiées au sommet (4) du tableau des données 
+techniques. 
+L'installation doit être conçue de manière à garantir le débit nominal par rapport aux points de fonctionnement indiqués ci-
+dessous. 
+
+ 
+
+          
+
+110
+
+100
+
+90
+
+80
+
+70
+
+60
+
+50
+
+40
+
+30
+
+20
+
+10
+
+0
+0 0,25 0,5 0,75 1 1,25 1,5 1,75 2 2,25 2,5 2,75 3 3,25 3,5
+
+ 
+
+Débit d'eau [m3/h] 
+
+i-R32OVP5A 0C4K, 30 6  ,0 048 ; 06 ; 08 i-3R2OVP5A 1C0K, 130   T1,0 1 2; ,1 102TT ; 12 ; 12T i-R3O2VP5A 1C4K, 31 4  1T 41 6; ,1 146TT ,;  1186T ; 16T ; 18T 
+PPoiunnt ntoom ninoaml  inale i-R3O2PVA5CK 034  04 PoPinut nntoom innoalm  inale i-3RO2PVA5C K036  06 PoPiuntn ntoom ninoaml  inale Ri-O3P2AVC5K3 0  088 
+PPoiunnt ntoom ninoaml inale i-R3O2PVA5CK 130  1/01/010TT PoPinut nntoom innoalm  inale i-3RO2PVA5C K132  /112/21T2T PoPiuntn ntoom ninoaml  inale Ri-O3P2AVC5K3 1 144/144TT 
+ ROPACK3  18T 
+PPoiunnt ntom ninoaml inale i -R3O2PVA5CK 136  1/61/616TT PoPinut nntoom innoalm  inale i-32V5 18T
+  
+
+ 
+
+P a g .  28 | 59 
+
+PrevaHleauntzeau ru uttiillee  [[kkPPaa] ]
+
+Prevalenza utile [kPa] 
+
+
+
+ 
+
+6.2 Courbes des circulateurs 
+
+Nous rapportons également la plage de hauteurs utiles que la machine garantit lors de la modulation du circulateur. 
+
+ 
+
+ Zone opérationnelle du circulateur 
+4M, 6M, 8M 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+Débit d'eau [m3/h] 
+
+ 
+
+ 
+
+ 
+ZRoOne3 o-p1ér0aMtion, n1e0lleT ,d u1 c2irMcul,a 1te2urT 
+
+10M, 10T, 12M, 12T 
+ Area operativa del circolatore
+
+ 100
+
+90
+ 
+
+80
+ 
+
+70
+ 
+
+60
+
+ 
+50
+
+ 40
+
+ 30
+
+ 20
+
+10
+ 
+
+0
+ 0 0,25 0,5 0,75 1 1,25 1,5 1,75 2 2,25 2,5
+
+PorDtéabtiat da'ceqau a[m [3m/h3]/h]
+ 
+
+ 
+
+ 
+
+P a g .  29 | 59 
+
+PrevHaaluetneuzrau utitleil e[k P[kaP] a] Hauteur utile [kPa] 
+
+
+
+ 
+
+ 
+Zone opérationnelle du circulateur 
+
+ 14M, 14T, 16M, 16T, 18T 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+  
+
+Débit d'eau [m3/h] 
+
+P a g .  30 | 59 
+
+Hauteur utile [kPa] 
+
+
+
+ 
+
+7. EMISSIONS SONORES 
+Les niveaux sonores se réfèrent aux unités à pleine charge et dans des conditions de test normales en mode chauffage, 
+conformément aux dispositions du règlement UE 813/2013 (température BS (BH) air extérieur = 7 ° C (6 ° C), température de l'eau 
+d'entrée -sortie = 47-55 ° C). La tolérance sur la valeur du niveau de puissance acoustique total est de 2 dB (A). La valeur est 
+déterminée conformément à EN 12102-1: 2017, utilisée conjointement avec UNI EN ISO 9614-2 qui décrit les méthodes d'essai 
+avec la méthode intensimétrique. 
+
+Les données de pression sonore sont des valeurs calculées à partir du niveau de puissance acoustique conformément à ISO 
+3744:2010, en tenant compte des unités opérant en plein champ. 
+
+Niveau de puissance sonore par bandes d'octave dB(A) Niveau de 
+Niveau de Niveau de 
+
+puissance 
+puissance puissance 
+
+Modèle acoustique 
+acoustique à acoustique à 
+
+[LW(A)] 
+1m dB(A) 10m dB(A) 
+
+dB(A) 
+125 Hz                 250 Hz             500 Hz            1000 Hz          2000 Hz             4000 
+
+    
+Hz 
+
+4M 46,8 57,5 55,7 59,7 57,6 51,6 
+64 49,8 32,8 
+
+6M 46,8 57,5 55,7 59,7 57,6 51,6 
+64 49,8 32,8 
+
+8M 47,0 57,7 55,9 59,9 57,8 51,8 
+64 49,8 32,8 
+
+10M/10T 48,5 53,5 58,1 60,2 56,7 54,6 
+64 49,4 32,7 
+
+12M/12T 48,8 53,8 58,4 60,5 57,0 54,9 
+65 50,4 33,7 
+
+14M/14T 52,4 63,1 61,8 63,0 57,6 55,2 
+68 52,7 36,6 
+
+16/16T 52,6 63,3 62,0 63,2 57,8 55,4 
+68 52,7 36,6 
+
+18T 52,7 63,4 62,1 63,3 57,9 55,5 
+68 52,7 36,6 
+
+P a g .  31 | 59 
+
+
+
+ 
+
+ 
+
+  
+
+Niveau de puissance sonore Lw [dB(A)]
+75,0
+
+70,0
+
+65,0
+
+60,0
+
+55,0
+
+50,0
+
+45,0
+
+40,0
+
+35,0
+
+30,0
+
+25,0
+
+20,0
+
+15,0
+
+10,0
+
+5,0
+
+0,0
+63 125 250 500 1k 2k 4k Totale
+
+Fréquence [Hz]
+
+06 08 10/10T 12/12T 14/14T 16/16T 18T
+
+P a g .  32 | 59 
+
+Niveau de puissance sonore [dB(A)]
+
+
+
+ 
+
+8. LIMITES DE FONCTIONNEMENT 
+8.1 Débit d’eau à l’évaporateur 
+
+Le débit d’eau nominal se réfère à un écart thermique entre l’entrée et la sortie de l’évaporateur de 5°C. Le débit maximum 
+autorisé est celui présentant un écart de température de 3°C alors que le minimum est celui avec un écart de température de 8°C 
+aux conditions nominales, comme reporté dans la fiche technique.  
+
+Des débits d'eau insuffisants peuvent provoquer des températures d'évaporation trop basses avec l'intervention des dispositifs 
+de sécurité et l'arrêt de l'unité et, dans certains cas extrêmes, la formation de glace dans l'évaporateur et des pannes graves du 
+circuit frigorifique. 
+
+Pour plus de précision, nous reportons ci-dessous un tableau indiquant les débits minimums à assurer à l'échangeur de chaleur à 
+plaques pour assurer un fonctionnement correct selon le modèle (remarque : le fluxostat de l'eau sert à éviter la défaillance de la 
+sonde antigel par manque de débit mais ne garantit pas le débit minimum requis pour un fonctionnement correct de l'appareil).  
+
+Mod èle R/OPACK3 
+4M 6M 8M 10M/10T 12M/12T 14M 14T 16M 16T 18T 
+
+Débit d'eau minimum à garantir en 
+modalité refroidisseur (condition (1) 0,13 0,15 0,17 0,23 0,25 0,34 0,34 0,41 
+fiche technique) [l/s] 
+Débit d'eau maximum à garantir en 
+modalité refroidisseur (condition (1) 0,34 0,40 0,46 0,60 0,68 0,92 0,92 1,10 
+fiche technique) [l/s] 
+Débit intervention fluxostat – flux 
+
+0,117 0,117 0,117 0,153 0,153 0,153 0,262 0,262 
+descendant* [l/s] 
+Débit intervention fluxostat – flux 
+
+0,132 0,132 0,132 0,175 0,175 0,175 0,293 0,293 
+ascendant* [l/s] 
+
+* Lorsque le débit descend en dessous de la limite indiquée (débit intervention fluxostat - flux descendant) le fluxostat signale 
+l'alarme, qui pourra être réinitialisée seulement lors de la réalisation du débit intervention fluxostat - flux ascendant. 
+
+Pour une première approximation, et en l'absence d'autres systèmes de détection, le débit correct pour assurer la meilleure 
+performance de l'unité peut être vérifié, à la vitesse maximale du circulateur, en mesurant avec les manomètres, la différence 
+entre la pression de retour et celle du débit sur les connexions hydrauliques externes de l'unité et en s'assurant que la valeur est 
+inférieure ou égale à la hauteur utile indiquée sur les courbes au Paragraphe 6.2 pour chaque modèle. 
+
+8.2 Production d’eau glacée (fonctionnement été) 
+La température minimale admise à la sortie de l'évaporateur est de 5°C : pour des températures inférieures, contacter le Bureau 
+Technique. Dans ce cas, contacter notre bureau technique pour l'étude de faisabilité et l'évaluation des modifications à apporter 
+en fonction des demandes. La température maximale pouvant être maintenue à plein régime de l'évaporateur est de 25°C. Des 
+températures plus élevées (jusqu'à un maximum de 40°C) peuvent néanmoins être tolérées dans des conditions transitoires et 
+pendant les phases de démarrage. 
+
+8.3 Production d’eau chaude (fonctionnement hiver) 
+Une fois que le système a atteint la température de fonctionnement, la température de l'eau à l'entrée ne doit pas descendre en 
+dessous de 25°C : des valeurs inférieures, non dues à des phases transitoires ou au démarrage, peuvent provoquer des anomalies 
+du système et d'éventuelles de pannes du compresseur. La température maximale de l’eau à la sortie ne doit pas dépasse 60°C. A 
+cette température, l'absorption électrique et les performances en termes de COP sont optimisées si la température extérieure est 
+supérieure à 5°C, même si l'appareil est apte à fonctionner aux températures limites indiquées dans l'enveloppe. 
+
+Avec des températures supérieures à celles indiquées, en particulier si, en conjonction avec de faibles débits d'eau, il peut y avoir 
+des anomalies dans le bon fonctionnement de l'appareil, ou dans les cas les plus critiques, les dispositifs de sécurité peuvent 
+intervenir. 
+
+P a g .  33 | 59 
+
+
+
+ 
+
+8.4 Température air ambiant et tableau récapitulatif 
+Les unités sont conçues et construites pour fonctionner en régime estival, sous contrôle de la condensation, avec une température 
+de l'air extérieur comprise entre -10°C et 46°C. En mode pompe à chaleur, la plage de température extérieure admissible varie de 
+-20°C à +40°C en fonction de la température de sortie de l'eau, comme indiqué dans le tableau suivant. 
+
+Modalité refroidisseur d’eau 
+
+Température ambiante Minimale -10°C        Maximale +46°C 
+
+Température eau en sortie Minimale -5°C        Maximale +25°C 
+
+Modalité pompe à chaleur 
+
+Température ambiante  Minimale -20°C        Maximale +30°C 
+
+Température eau en sortie  Minimale +25°C       Maximale +60°C 
+
+Modalité pompe à chaleur pour eau chaude sanitaire 
+
+Température ambiante avec eau à 39°C maximum Minimale -20°C     Maximale +40°C 
+
+Température ambiante avec eau à 55° maximum  Minimale -10°C     Maximale +35°C 
+
+Température eau en sortie Minimale +25°C     Maximale +60°C 
+
+ 
+
+ 
+
+8.5 Enveloppe en Chauffage et Refroidissement 
+ 
+
+ Chauffage 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+P a g .  34 | 59 
+
+
+
+ 
+
+ 
+Refroidissement 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+8.6 Enveloppe en Sanitaire 
+ 
+
+mode sanitaire) 
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+  
+
+P a g .  35 | 59 
+
+
+
+ 
+
+9. TABLEAU DU RENDEMENT 
+9.1 Chauffage 
+
+Les tableaux reportent les valeurs de puissance thermique, de puissance absorbée et de COP pour différentes températures de l'air extérieur. Les données indiquées sont indicatives et peuvent 
+être sujettes à variation. Ils se réfèrent toujours à la puissance instantanée et sont calculés pour un écart thermique entrée/sortie de 5°C, selon EN 14511:2018.  
+
+CHAUFFAGE 
+
+Tout [°C] 
+
+Modèle T air 25 30 35 40 45 50 55 
+ externe 
+
+RO3 [°C ] Puissance Puissance Puissance Puissance Puissance Puissance Puissance Puissance Puissance 
+Puissance Puissance Puissance Puissance Puissance absorbée COP 
+
+COP COP thermique absorbée COP thermique absorbée COP thermique absorbée COP thermique absorbée COP thermique 
+thermique absorbée thermique absorbée [kW] 
+
+] [W/ ] [kW] [kW] [kW] [W/
+[kW [W/W] [kW] [kW] [W/W] [kW] [W/W] [kW] [kW] [W/W] [kW] 
+
+ ] [kW [W/
+ ] W [kW ] [kW ] W  
+
+         W] 
+
+-10 5,56 1,71 3,26 5,50 1,85 2,97 5,41 2,01 2,68 5,42 2,21 2,45 5,37 2,35 2,28 5,43 2,58 2,10 5,44 2,77 1,96 
+
+-7 5,46 1,53 3,57 5,37 1,68 3,20 5,37 1,89 2,85 5,40 2,06 2,63 5,37 2,21 2,43 5,39 2,42 2,23 5,38 2,61 2,06 
+
+-2 5,03 1,22 4,13 4,93 1,34 3,68 4,94 1,51 3,27 5,00 1,68 2,98 4,93 1,83 2,69 4,88 1,98 2,47 4,83 2,14 2,25 
+04 
+
+2 4,58 0,90 5,11 4,54 1,01 4,50 4,48 1,12 4,00 4,44 1,24 3,58 4,56 1,42 3,20 4,55 1,56 2,92 4,53 1,71 2,64 
+
+7 4,51 0,71 6,37 4,46 0,81 5,50 4,55 0,95 4,78 4,48 1,06 4,24 4,47 1,17 3,82 4,44 1,32 3,37 4,41 1,46 3,01 
+
+12 5,05 0,60 8,39 5,02 0,73 6,84 4,98 0,84 5,95 4,95 0,97 5,10 4,90 1,12 4,38 4,84 1,23 3,94 4,77 1,39 3,42 
+
+-15 5,88 1,95 3,02 5,82 2,13 2,74 5,85 2,33 2,51 5,84 2,56 2,28 5,91 2,72 2,17 - - - - - - 
+
+-10 5,95 1,77 3,35 5,87 1,94 3,02 5,82 2,11 2,76 5,82 2,35 2,48 5,83 2,50 2,33 5,83 2,76 2,11 5,84 2,90 2,01 
+
+-7 5,96 1,67 3,57 5,92 1,84 3,22 6,00 2,10 2,86 5,86 2,19 2,67 5,85 2,39 2,44 5,89 2,62 2,25 5,84 2,87 2,03 
+
+06 -2 5,95 1,45 4,10 5,89 1,64 3,60 5,92 1,84 3,22 5,77 1,97 2,93 5,86 2,20 2,67 5,78 2,36 2,45 5,76 2,65 2,17 
+
+2 5,92 1,23 4,79 5,93 1,39 4,26 6,07 1,59 3,82 5,85 1,75 3,34 5,77 1,88 3,06 6,00 2,17 2,76 5,99 2,32 2,58 
+
+7 6,21 1,05 5,93 6,13 1,19 5,14 6,08 1,35 4,51 6,04 1,53 3,93 5,88 1,66 3,54 6,07 1,93 3,15 6,03 2,14 2,82 
+
+12 6,68 0,91 7,37 6,65 1,07 6,22 6,57 1,25 5,25 6,55 1,41 4,64 6,53 1,63 4,02 6,38 1,79 3,56 6,31 1,98 3,19 
+
+ 
+
+ 
+
+ 
+
+ 
+
+P a g .  36 | 59 
+
+
+
+ 
+
+CHAUFFAGE 
+
+Tout [°C] 
+Modèle T air 25 30 35 40 45 50 55 
+
+ externe 
+RO3 [°C ] 
+
+Puissance Puissance Puissance Puissance Puissance Puissance Puissance Puissance Puissance Puissance Puissance Puissance Puissance Puissance 
+COP COP COP COP COP COP COP 
+
+thermique absorbée thermique absorbée thermique absorbée thermique absorbée thermique absorbée thermique absorbée thermique absorbée 
+[kW ] [kW / ]
+
+ ] [W W  [kW ] [kW ] [W/W] [kW ] [kW ] [W/W] [kW ] [kW W/W  
+ ] [ ] [kW ] [kW / ]
+
+ ] [W W  [kW ] [kW ] [W/W] [kW ] [kW ] [W/W] 
+
+-15 6,50 2,18 2,98 6,49 2,39 2,72 6,48 2,60 2,49 6,48 2,79 2,32 6,44 2,94 2,19 - - - - - - 
+
+-10 6,63 2,02 3,29 6,60 2,19 3,01 6,59 2,44 2,70 6,52 2,63 2,48 6,48 2,79 2,32 6,52 3,02 2,16 6,53 3,34 1,96 
+
+-7 6,64 1,90 3,50 6,64 2,09 3,17 6,60 2,29 2,88 6,49 2,42 2,68 6,57 2,71 2,42 6,51 2,88 2,26 6,54 3,13 2,09 
+
+08 -2 6,70 1,69 3,97 6,66 1,86 3,59 6,56 2,07 3,17 6,53 2,29 2,86 6,55 2,46 2,67 6,52 2,69 2,42 6,49 2,99 2,17 
+
+2 6,70 1,42 4,73 6,74 1,62 4,17 6,61 1,77 3,72 6,59 1,96 3,37 6,58 2,13 3,08 6,60 2,35 2,81 6,67 2,63 2,53 
+
+7 7,74 1,32 5,86 7,78 1,54 5,05 7,81 1,78 4,38 7,70 1,97 3,91 7,58 2,17 3,50 7,55 2,40 3,15 7,55 2,65 2,85 
+
+12 8,27 1,17 7,10 8,27 1,37 6,04 8,16 1,56 5,22 8,09 1,78 4,55 7,98 1,97 4,05 7,87 2,20 3,57 7,79 2,45 3,18 
+
+-15 8,29 2,77 2,99 8,32 3,02 2,76 8,25 3,26 2,53 8,29 3,60 2,30 8,33 3,85 2,17 - - - - - - 
+
+-10 8,33 2,52 3,30 8,22 2,72 3,03 8,22 2,99 2,75 8,19 3,28 2,50 8,17 3,53 2,31 8,22 3,86 2,13 8,11 4,05 2,00 
+
+-7 8,41 2,38 3,54 8,42 2,65 3,18 8,30 2,86 2,90 8,35 3,18 2,63 8,23 3,38 2,44 8,25 3,69 2,23 8,26 4,00 2,06 
+
+10/10T -2 8,63 2,16 3,99 8,52 2,38 3,58 8,56 2,68 3,19 8,51 2,94 2,89 8,40 3,21 2,61 8,35 3,52 2,37 8,31 3,82 2,18 
+
+2 9,15 1,89 4,85 9,22 2,15 4,29 9,50 2,51 3,78 9,18 2,69 3,41 9,41 3,11 3,03 9,28 3,37 2,75 9,01 3,63 2,48 
+
+7 10,23 1,75 5,84 10,17 2,02 5,04 10,10 2,28 4,43 10,03 2,58 3,89 9,76 2,80 3,48 9,79 3,17 3,09 9,73 3,50 2,78 
+
+12 10,92 1,53 7,12 10,83 1,79 6,04 10,74 2,09 5,14 10,63 2,39 4,45 10,49 2,69 3,90 10,36 2,99 3,47 10,21 3,31 3,09 
+
+-15 8,983 3,063 2,93 9,012 3,362 2,68 8,937 3,625 2,47 8,974 3,915 2,29 9,025 4,254 2,12 - - - - - - 
+
+-10 8,95 2,76 3,25 8,93 3,07 2,91 8,86 3,29 2,70 8,92 3,65 2,44 8,83 3,88 2,27 8,71 4,12 2,11 8,85 4,52 1,96 
+
+-7 9,01 2,59 3,47 8,93 2,83 3,15 8,90 3,12 2,85 8,85 3,39 2,61 8,91 3,73 2,39 8,75 3,96 2,21 8,85 4,34 2,04 
+
+12/12T -2 9,54 2,43 3,92 9,50 2,73 3,48 9,40 2,98 3,16 9,45 3,41 2,77 9,25 3,55 2,61 9,19 3,90 2,36 9,15 4,18 2,19 
+
+2 10,24 2,20 4,66 10,16 2,44 4,17 10,30 2,78 3,71 10,38 3,12 3,33 10,39 3,45 3,02 10,05 3,65 2,75 10,19 4,09 2,49 
+
+7 12,01 2,13 5,63 11,89 2,40 4,95 11,80 2,73 4,32 11,71 3,03 3,87 11,47 3,33 3,44 11,46 3,69 3,11 11,37 4,10 2,78 
+
+12 12,49 1,75 7,12 12,39 2,07 5,99 12,28 2,38 5,15 12,11 2,70 4,48 11,97 3,04 3,94 11,84 3,40 3,48 11,67 3,72 3,14 
+
+ 
+
+ 
+
+ 
+
+P a g .  37 | 59 
+
+
+
+ 
+
+CHAUFFAGE 
+
+Tout [°C] 
+Modèle T air 
+
+ externe 25 30 35 40 45 50 55 
+RO3 [°C ] 
+
+Puissance Puissance Puissance Puissance Puissance Puissance Puissance Puissance Puissance Puissance Puissance Puissance Puissance Puissance 
+COP COP COP COP COP COP COP 
+
+thermique absorbée ue absorbée thermique absorbée thermique absorbée thermique absorbée thermique absorbée thermique absorbée 
+[kW ] [kW ] [W/W] thermiq
+
+[kW ] [kW ] [W/W] [kW ] [kW ] [W/W] [kW ] [kW ] [W/W] [kW ] [kW ] [W/W] [kW ] [kW ] [W/W] [kW ] [kW ] [W/W] 
+
+-15 10,87 3,72 2,92 10,80 4,05 2,66 10,81 4,37 2,47 10,77 4,78 2,25 10,82 5,29 2,05 - - - - - - 
+
+-10 10,70 3,23 3,31 10,65 3,55 3,00 10,64 3,90 2,73 10,65 4,27 2,49 10,50 4,55 2,31 10,48 4,93 2,13 10,28 5,12 2,01 
+
+-7 10,90 3,01 3,62 10,78 3,31 3,26 10,70 3,63 2,95 10,72 4,00 2,68 10,65 4,36 2,44 10,68 4,83 2,21 10,58 5,05 2,09 
+
+14/14T -2 11,24 2,65 4,25 11,47 3,08 3,72 11,38 3,41 3,34 11,25 3,73 3,02 11,17 4,08 2,74 11,11 4,43 2,51 10,98 4,72 2,33 
+
+2 12,43 2,41 5,16 12,54 2,81 4,46 13,02 3,24 4,02 12,50 3,46 3,62 12,69 3,92 3,24 12,40 4,21 2,95 12,40 4,57 2,71 
+
+7 14,26 2,24 6,36 14,09 2,56 5,51 14,10 2,91 4,85 13,87 3,23 4,30 13,56 3,55 3,82 13,62 4,00 3,41 13,44 4,35 3,09 
+
+12 15,00 1,83 8,20 14,88 2,18 6,83 14,74 2,48 5,94 14,58 2,83 5,15 14,43 3,19 4,52 14,14 3,53 4,00 13,96 3,92 3,56 
+
+-15 10,28 3,62 2,84 10,22 4,00 2,56 10,22 4,33 2,36 10,19 4,62 2,20 10,78 5,32 2,03 - - - - - - 
+
+-10 11,85 3,71 3,20 11,84 4,07 2,91 11,79 4,42 2,67 11,75 4,82 2,44 11,61 5,15 2,25 11,64 5,56 2,09 11,30 5,88 1,92 
+
+-7 12,30 3,56 3,45 12,19 3,90 3,13 12,00 4,20 2,86 11,99 4,61 2,60 11,86 4,86 2,44 11,80 5,33 2,21 11,79 5,75 2,05 
+
+16/16T -2 12,68 3,18 3,99 12,88 3,57 3,61 12,81 3,97 3,23 12,65 4,30 2,94 12,56 4,68 2,68 12,45 5,07 2,45 12,39 5,51 2,25 
+
+2 14,03 2,90 4,83 14,17 3,29 4,30 14,05 3,62 3,88 14,04 4,02 3,49 14,36 4,59 3,13 14,10 4,91 2,87 14,15 5,44 2,60 
+
+7 16,58 2,74 6,05 16,39 3,09 5,30 16,30 3,49 4,67 16,13 3,90 4,13 15,77 4,24 3,72 15,84 4,77 3,32 15,63 5,18 3,02 
+
+12 16,42 2,08 7,91 16,29 2,45 6,65 16,13 2,79 5,77 15,95 3,18 5,02 15,79 3,57 4,43 15,47 3,94 3,93 15,27 4,35 3,51 
+
+-15 11,71 4,045 2,89 11,79 4,486 2,63 11,79 4,901 2,41 11,84 5,262 2,25 12,06 5,79 2,08 - - - - - - 
+
+-10 12,20 3,82 3,19 12,19 4,18 2,91 12,27 4,62 2,66 11,81 4,79 2,47 12,03 5,31 2,26 12,08 5,76 2,10 11,40 6,05 1,88 
+
+-7 12,93 3,77 3,43 12,53 4,03 3,11 12,61 4,46 2,83 12,41 4,77 2,60 12,46 5,26 2,37 12,29 5,58 2,20 12,30 6,04 2,04 
+
+18T -2 13,78 3,58 3,85 13,50 3,86 3,49 13,59 4,32 3,15 13,44 4,68 2,87 13,35 5,09 2,62 13,27 5,57 2,38 13,14 5,96 2,21 
+
+2 14,94 3,21 4,66 14,73 3,53 4,17 15,12 3,97 3,81 14,99 4,45 3,37 14,90 4,89 3,05 14,62 5,31 2,76 14,73 5,60 2,63 
+
+7 18,13 3,23 5,62 18,03 3,65 4,94 17,90 4,07 4,40 17,64 4,52 3,91 17,32 4,92 3,52 17,32 5,45 3,18 17,25 5,99 2,88 
+
+12 18,66 2,62 7,13 18,48 3,03 6,10 18,26 3,45 5,29 18,11 3,89 4,65 17,69 4,27 4,14 17,57 4,76 3,69 17,33 5,24 3,31 
+
+P a g .  38 | 59 
+
+
+
+ 
+
+9.2 Refroidissement 
+Les tableaux reportent les valeurs de puissance frigorifique, de puissance absorbée et de EER pour différentes conditions de température de l'air extérieur. Les données indiquées sont 
+indicatives et peuvent être sujettes à variation. Ils se réfèrent toujours à la puissance instantanée et sont calculés pour un écart thermique entrée/sortie de 5°C, selon EN 14511:2018. 
+
+REFROIDIS SEMENT 
+
+Tout [°C] 
+
+Modèle T air 5 7 10 12 15 18 
+externe 
+
+RO 3 
+[°C ] 
+
+Puissance Puissance Puissance Puissance Puissance Puissance Puissance Puissance Puissance Puissance Puissance Puissance 
+EER EER EER EER EER EER 
+
+frigorifique absorbée frigorifique absorbée 
+[kW ] [kW ] [W/W] [kW ] [kW ] [W/W] frigorifique absorbée 
+
+[kW ] [kW ] [W/W] frigorifique absorbée 
+[kW ] [kW ] [W/W] frigorifique absorbée 
+
+[kW ] [kW ] [W/W] frigorifique absorbée 
+[kW ] [kW ] [W/W] 
+
+20 4,41 0,88 4,99 4,72 0,88 5,34 5,19 0,88 5,89 5,47 0,81 6,77 5,88 0,70 8,42 6,28 0,69 9,15 
+
+25 4,36 1,02 4,26 4,67 1,03 4,53 5,15 1,04 4,94 5,36 0,95 5,61 5,67 0,82 6,89 6,06 0,82 7,43 
+
+30 4,17 1,14 3,65 4,47 1,16 3,87 4,94 1,17 4,22 5,14 1,08 4,74 5,43 0,95 5,70 5,80 0,95 6,09 
+04 
+
+35 3,96 1,27 3,12 4,23 1,29 3,28 4,69 1,31 3,59 4,88 1,22 4,00 5,16 1,09 4,74 5,51 1,10 5,02 
+
+40 3,72 1,39 2,67 3,99 1,42 2,82 4,41 1,45 3,04 4,59 1,36 3,38 4,87 1,22 3,98 5,20 1,23 4,22 
+
+45 3,49 1,51 2,31 3,73 1,54 2,41 4,14 1,58 2,62 4,31 1,49 2,90 4,57 1,35 3,39 4,88 1,37 3,57 
+
+20 4,91 1,00 4,90 5,26 1,02 5,13 5,80 1,00 5,80 5,91 0,89 6,61 6,08 0,74 8,26 6,50 0,72 8,98 
+
+25 4,92 1,20 4,10 5,26 1,20 4,40 5,82 1,23 4,75 5,88 1,09 5,39 5,98 0,89 6,70 6,38 0,88 7,22 
+
+30 4,86 1,39 3,49 5,19 1,41 3,69 5,75 1,43 4,03 5,81 1,29 4,51 5,90 1,08 5,47 6,32 1,09 5,81 
+06 
+
+35 4,70 1,58 2,98 5,02 1,60 3,14 5,55 1,63 3,40 5,64 1,49 3,79 5,78 1,28 4,54 6,18 1,28 4,82 
+
+40 4,42 1,72 2,57 4,72 1,76 2,69 5,23 1,79 2,92 5,32 1,65 3,23 5,46 1,43 3,82 5,83 1,44 4,05 
+
+45 4,14 1,86 2,22 4,42 1,90 2,32 4,90 1,96 2,51 4,99 1,80 2,77 5,13 1,57 3,27 5,48 1,59 3,45 
+
+20 6,16 1,34 4,62 6,58 1,34 4,91 7,26 1,34 5,43 7,43 1,22 6,09 7,68 1,05 7,34 8,24 1,04 7,90 
+
+25 6,17 1,56 3,96 6,59 1,59 4,15 7,28 1,60 4,55 7,42 1,47 5,06 7,62 1,27 6,02 8,19 1,30 6,33 
+
+30 6,02 1,78 3,39 6,43 1,81 3,55 7,08 1,85 3,82 7,24 1,71 4,23 7,49 1,51 4,97 8,00 1,53 5,24 
+08 
+
+35 5,61 1,97 2,86 6,08 1,99 3,05 6,71 2,04 3,28 6,92 1,92 3,60 7,25 1,74 4,17 7,72 1,76 4,38 
+
+40 5,33 2,14 2,50 5,71 2,18 2,62 6,26 2,24 2,80 6,49 2,11 3,07 6,84 1,93 3,54 7,29 1,95 3,73 
+
+45 5,03 2,30 2,19 5,36 2,35 2,28 5,91 2,42 2,44 6,12 2,30 2,66 6,42 2,11 3,05 6,85 2,14 3,20 
+
+ 
+
+ 
+
+P a g .  39 | 59 
+
+
+
+ 
+
+REFROIDIS SEMENT 
+
+Tout [°C] 
+
+Modèle T air 5 7 10 12 15 18 
+externe 
+
+RO 3 
+[°C ] 
+
+Puissance Puissance Puissance Puissance Puissance Puissance Puissance Puissance Puissance Puissance Puissance Puissance 
+EER EER EER EER EER EER 
+
+frigorifique absorbée frigorifique absorbée frigorifique absorbée frigorifique absorbée rigorifique absorbée sorbée 
+[kW ] [kW ] [W/W] [kW ] [kW ] [W/W] [kW ] [kW ] [W/W] [kW ] [kW ] [W/W] f
+
+[kW ] [kW ] [W/W] frigorifique ab
+[kW ] [kW ] [W/W] 
+
+20 7,20 1,48 4,86 7,79 1,50 5,20 8,61 1,47 5,85 8,74 1,37 6,36 8,93 1,23 7,29 9,78 1,22 8,00 
+
+25 7,49 1,86 4,04 7,83 1,76 4,46 8,82 1,86 4,73 8,88 1,74 5,11 8,97 1,55 5,79 9,87 1,52 6,49 
+
+30 7,21 2,13 3,39 7,78 2,10 3,71 8,72 2,17 4,02 8,85 2,05 4,32 9,06 1,86 4,86 9,78 1,83 5,35 
+10/10T 
+
+35 7,03 2,37 2,97 7,53 2,39 3,15 8,25 2,42 3,41 8,42 2,31 3,64 8,67 2,14 4,05 9,50 2,15 4,41 
+
+40 6,78 2,61 2,59 7,22 2,64 2,73 7,93 2,69 2,95 8,07 2,57 3,14 8,28 2,40 3,45 8,97 2,43 3,70 
+
+45 6,28 2,86 2,19 6,77 2,89 2,34 7,47 2,95 2,54 7,62 2,83 2,70 7,86 2,65 2,97 8,44 2,68 3,15 
+
+20 8,60 1,89 4,54 9,17 1,85 4,96 10,06 1,84 5,48 10,26 1,71 5,99 10,55 1,53 6,91 11,64 1,54 7,56 
+
+25 8,35 2,09 3,99 8,97 2,14 4,20 10,04 2,16 4,65 10,29 2,05 5,01 10,66 1,89 5,64 11,71 1,89 6,20 
+
+30 8,30 2,43 3,42 8,80 2,41 3,66 9,79 2,49 3,94 10,08 2,37 4,26 10,51 2,19 4,80 11,47 2,21 5,19 
+12/12T 
+
+35 7,78 2,74 2,84 8,51 2,79 3,05 9,60 2,86 3,36 10,06 2,82 3,57 10,74 2,75 3,90 11,60 2,79 4,16 
+
+40 7,62 3,02 2,52 8,17 3,07 2,66 8,99 3,15 2,85 9,45 3,11 3,03 10,14 3,06 3,32 10,88 3,10 3,51 
+
+45 7,21 3,29 2,19 7,52 3,33 2,26 8,34 3,42 2,44 8,79 3,39 2,59 9,46 3,35 2,82 10,27 3,41 3,01 
+
+20 10,39 2,02 5,14 11,33 2,05 5,53 12,30 2,02 6,08 13,14 1,87 7,04 14,40 1,64 8,81 15,60 1,61 9,71 
+
+25 10,78 2,51 4,30 11,61 2,51 4,62 12,74 2,55 5,01 13,25 2,30 5,76 14,02 1,93 7,26 15,05 1,89 7,98 
+
+30 11,19 3,07 3,65 12,04 3,19 3,77 13,10 3,23 4,05 13,34 2,85 4,69 13,71 2,27 6,05 14,76 2,26 6,53 
+14/14T 
+
+35 10,88 3,48 3,13 11,48 3,53 3,25 12,77 3,59 3,56 12,89 3,19 4,04 13,07 2,58 5,06 14,00 2,59 5,40 
+
+40 10,25 3,80 2,70 10,94 3,88 2,82 11,93 3,96 3,02 12,10 3,53 3,43 12,35 2,89 4,28 13,25 2,91 4,55 
+
+45 9,58 4,12 2,32 10,18 4,20 2,43 11,21 4,30 2,61 11,33 3,86 2,94 11,52 3,19 3,61 12,44 3,23 3,86 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+P a g .  40 | 59 
+
+
+
+ 
+
+REFROIDISSEMENT 
+
+Tout [°C] 
+
+Modèle T air 5 7 10 12 15 18 
+externe 
+
+RO 3 
+[°C ] 
+
+Puissance Puissance Puissance Puissance Puissance Puissance Puissance Puissance Puissance Puissance Puissance Puissance 
+EER EER EER EER EER EER 
+
+frigorifique absorbée frigorif absorbée ri ori iqu  
+] f g f e absorbée frigo
+
+ [kW ] [W/W] ique absorbée 
+[kW ] [kW ] [W/W] frigorifique 
+
+[kW] [kW ] [kW ] [W/W [kW ] [kW ] [W/W] rifique absorbée 
+[kW ] [kW ] [W/W] frigorifique absorbée 
+
+[kW ] [kW ] [W/W] 
+
+20 12,14 2,42 5,02 12,85 2,38 5,39 14,08 2,34 6,03 14,48 2,12 6,83 15,08 1,80 8,40 16,23 1,75 9,26 
+
+25 12,14 2,86 4,24 12,91 2,83 4,56 14,30 2,90 4,93 14,54 2,61 5,58 14,89 2,17 6,87 16,00 2,12 7,54 
+
+30 12,80 3,60 3,55 13,59 3,62 3,75 15,00 3,65 4,11 14,89 3,23 4,62 14,73 2,59 5,69 16,02 2,60 6,16 
+16/16T 
+
+35 12,86 4,32 2,98 13,80 4,38 3,15 15,05 4,49 3,35 14,94 3,94 3,79 14,77 3,11 4,75 15,80 3,15 5,02 
+
+40 12,17 4,70 2,59 13,10 4,80 2,73 14,21 4,91 2,90 14,11 4,33 3,26 13,95 3,47 4,02 14,96 3,50 4,28 
+
+45 11,43 5,07 2,26 12,23 5,17 2,37 13,55 5,34 2,54 13,33 4,72 2,82 13,01 3,80 3,42 14,04 3,86 3,64 
+
+20 13,37 2,68 5,00 14,24 2,72 5,23 15,63 2,72 5,75 15,78 2,42 6,51 16,01 1,98 8,09 17,39 1,99 8,73 
+
+25 13,70 3,30 4,15 14,82 3,41 4,35 16,19 3,38 4,80 16,18 3,03 5,34 16,17 2,52 6,42 17,51 2,49 7,04 
+
+30 14,06 4,00 3,52 15,01 4,11 3,65 16,29 4,00 4,07 16,17 3,58 4,51 16,00 2,95 5,42 17,33 2,99 5,80 
+18T 
+
+35 14,26 4,81 2,96 15,04 4,88 3,08 16,67 5,01 3,33 16,34 4,43 3,69 15,85 3,56 4,46 17,10 3,59 4,76 
+
+40 13,39 5,21 2,57 14,33 5,32 2,69 15,77 5,47 2,88 15,37 4,86 3,16 14,78 3,94 3,76 16,17 4,00 4,05 
+
+45 12,63 5,63 2,25 13,36 5,73 2,33 14,82 5,92 2,50 14,51 5,28 2,75 14,04 4,33 3,25 15,18 4,40 3,45 
+
+P a g .  41 | 59 
+
+
+
+ 
+
+ 
+
+9.3 Sanitaire 
+Les tableaux indiquent les valeurs de puissance thermique, de puissance absorbée et de COP pour différentes 
+températures de l’extérieur pendant la saison estivale pour l'eau technique à 45 / 50 / 55°C destinée à la production 
+d'eau chaude sanitaire. Les données indiquées sont indicatives et peuvent être sujettes à variation. Ils se réfèrent 
+toujours à la puissance instantanée.  
+
+CHAUFFAGE 
+
+Tout [°C] 
+T air 45 50 55 
+
+externe 
+Modèle  Puissance Puissance Puissance 
+
+T air Puissance Puissance Puissance 
+RO3 thermique thermique thermique 
+
+outdoor absorbée COP absorbée COP absorbée COP 
+Heating Heating Heating 
+
+Power input [W/W] Power input [W/W] Power input [W/W] 
+[°C] capacity capacity capacity 
+
+[kW] [kW] [kW] 
+[kW] [kW] [kW] 
+
+20 4,88 0,89 5,48 4,81 1,00 4,79 4,76 1,13 4,21 
+25 5,10 0,80 6,35 5,02 0,90 5,56 4,99 1,03 4,85 
+
+04 
+30 5,19 0,68 7,67 5,10 0,79 6,47 5,05 0,90 5,62 
+35 5,38 0,61 8,76 5,27 0,70 7,50 - - - 
+20 6,13 1,33 4,61 6,04 1,49 4,04 5,95 1,66 3,59 
+25 6,19 1,20 5,16 6,11 1,36 4,48 6,01 1,52 3,94 
+
+06 
+30 6,39 1,12 5,70 6,34 1,29 4,90 6,23 1,47 4,25 
+35 6,58 1,05 6,27 6,45 1,21 5,34 - - - 
+20 7,66 1,71 4,47 7,58 1,94 3,91 7,50 2,15 3,49 
+25 7,76 1,55 4,99 7,73 1,76 4,40 7,60 2,02 3,76 
+
+08 
+30 8,17 1,50 5,46 8,10 1,72 4,71 8,03 1,94 4,14 
+35 8,55 1,44 5,93 8,43 1,65 5,12 - - - 
+20 10,25 2,35 4,36 10,11 2,64 3,83 9,98 2,96 3,37 
+25 10,17 2,10 4,84 10,04 2,37 4,24 9,87 2,67 3,70 
+
+10/10T 
+30 10,62 2,02 5,25 10,38 2,28 4,55 10,28 2,59 3,96 
+35 11,13 1,92 5,78 10,97 2,21 4,97 - - - 
+20 10,55 2,35 4,50 10,43 2,62 3,97 10,27 2,92 3,52 
+25 10,30 2,03 5,08 10,15 2,27 4,46 9,99 2,58 3,87 
+
+12/12T 
+30 10,73 1,93 5,56 10,49 2,18 4,82 10,38 2,46 4,22 
+35 11,25 1,82 6,17 11,08 2,11 5,25 - - - 
+20 14,22 2,61 5,46 14,06 2,93 4,80 13,87 3,25 4,27 
+25 14,47 2,27 6,37 14,27 2,57 5,55 14,01 2,86 4,90 
+
+14/14T 
+30 15,45 2,06 7,51 15,08 2,38 6,33 14,84 2,69 5,52 
+35 16,19 1,90 8,51 15,90 2,21 7,19 - - - 
+20 14,94 2,79 5,35 14,77 3,13 4,72 14,57 3,48 4,19 
+25 14,74 2,31 6,39 14,54 2,64 5,50 14,28 2,94 4,86 
+
+16/16T 
+30 15,77 2,18 7,23 15,39 2,46 6,27 15,15 2,76 5,50 
+35 16,56 1,98 8,35 16,26 2,25 7,23 - - - 
+20 16,99 3,53 4,82 16,59 3,89 4,26 16,45 4,32 3,81 
+25 16,92 3,06 5,54 16,62 3,42 4,86 16,32 3,81 4,28 
+
+18T 
+30 17,89 2,88 6,20 17,58 3,26 5,39 17,29 3,63 4,76 
+35 18,83 2,72 6,93 18,63 3,14 5,94 - - - 
+
+P a g .  42 | 59 
+
+
+
+ 
+
+Attention. La production d'eau chaude sanitaire doit avoir lieu par un chauffe-eau approprié avec échangeur de chaleur 
+ou un appareil rapide. 
+
+9.4 Données pour la certification énergétique des bâtiments selon UNI/TS 11300-4 pour pompes à 
+chaleur  
+
+ 
+On rapporte les données supplémentaires des pompes à chaleur R/OPACK3 pour le calcul de la performance 
+
+ énergétique des bâtiments, conformément à la norme UNI/TS 11300 partie 4. Ci-dessous, sont illustrées les 
+grandeurs caractéristiques qui seront fournies pour chaque modèle. 
+
+ 
+
+Légende : 
+ 
+
+Tdesign Température de calcul (pour le climat A - moyenne, définie par la norme UNI EN 14825 à -10°C) 
+
+A, B, C, D Conditions de fonctionnement de référence pour l'évaluation des performances selon la norme UNI EN 14825 
+
+Tair Température air interne de référence 
+
+Teau Température de départ de l'eau de chauffage 
+
+PLR Partial Load Ratio - facteur de charge climatique 
+
+DC Declared Capacity - puissance de la pompe à chaleur dans les conditions d’exercice A, B, C, D 
+
+COPDC COP de la pompe à chaleur dans les conditions normales DC 
+
+COPPL COP de la pompe à chaleur dans les conditions de régulation de puissance définies par la norme UNI EN 14825 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+P a g .  43 | 59 
+
+
+
+ 
+
+ 
+
+Modèle RO3-4M 
+
+Limites de fonctionnement 
+
+Source FROIDE : AIR EXTERNE 
+
+Température de fonctionnement (coupure) min -20°C 
+
+  max 30°C 
+
+    
+
+Source CHAUDE : ACQUA 
+
+Température de fonctionnement (coupure) min 25°C 
+
+  max 60°C 
+
+Puissance thermique utile / COP dans les conditions nominales avec contribution au dégivrage 
+
+Puissance thermique utile [kW]   COPDC 
+
+ T air T eau (source chaude)    T air T eau (source chaude) 
+
+(source froide)     35 45 55   (source froide)     35 45 55 
+
+-7 5,37 5,37 5,38  -7 2,85 2,43 2,06 
+
+2 4,48 4,56 4,53  2 4,00 3,20 2,64 
+
+7 4,55 4,47 4,41  7 4,78 3,82 3,01 
+
+12 4,98 4,90 4,77  12 5,95 4,38 3,42 
+
+Données de performance mesurées en condition de charge partielle, selon la norme UNI EN 14825 
+
+Conditions d’exercice F A (E) B C D 
+
+T air [°C] -10 -7 2 7 12 
+
+PLR [%] 100 88 54 35 15 
+
+Puissance DC  
+(Declared Capacity (Capacité [kW] 5,38 5,34 3,25 3,18 3,68 
+Déclarée) 
+
+COPPL   2,72 2,98 4,41 5,84 7,95 
+
+COPDC   2,68 2,85 4,00 4,78 5,95 
+
+Prestations 
+
+35°C 
+
+SCOP ηS Classe énergétique 
+
+4,52 178% A+++ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+P a g .  44 | 59 
+
+
+
+ 
+
+ 
+
+Modèle RO3-6M 
+
+Limites de fonctionnement 
+
+Source FROIDE : AIR EXTERNE 
+
+Température de fonctionnement (coupure) min -20°C 
+
+  max 30°C 
+
+    
+
+Source CHAUDE : EAU 
+
+Température de fonctionnement (coupure) min 25°C 
+
+  max 60°C 
+
+ 
+Puissance thermique utile / COP dans les conditions nominales avec contribution au dégivrage 
+
+Puissance thermique utile [kW]   COPDC 
+
+ T air T eau (source chaude)    T air T eau (source chaude) 
+
+(source froide)     35 45 55   (source froide)     35 45 55 
+
+-7 6,0 5,85 5,84  -7 2,86 2,44 2,03 
+
+2 6,07 5,77 5,99  2 3,82 3,06 2,58 
+
+7 6,08 5,88 6,03  7 4,51 3,54 2,82 
+
+12 6,57 6,53 6,31  12 5,25 4,02 3,19 
+
+Données de performance mesurées en condition de charge partielle, selon la norme UNI EN 14825 
+
+Conditions d’exercice F A (E) B C D 
+
+T air [°C] -10 -7 2 7 12 
+
+PLR [%] 100 88 54 35 15 
+
+Puissance DC  
+(Declared Capacity (Capacité [kW] 6,12 6,07 3,68 3,16 3,69 
+Déclarée) 
+
+COPPL   2,73 2,96 4,36 5,56 7,88 
+
+COPDC   2,76 2,86 3,82 4,51 5,25 
+
+Prestations  
+
+35°C 
+
+SCOP ηS Classe énergétique 
+
+4,46 175% A+++ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+P a g .  45 | 59 
+
+
+
+ 
+
+Modèle RO3-8M 
+
+Limites de fonctionnement 
+
+Source FROIDE : AIR EXTERNE 
+
+Température de fonctionnement (coupure) min -20°C 
+
+  max 30°C 
+
+    
+
+Source CHAUDE : EAU 
+
+Température de fonctionnement (coupure) min 25°C 
+
+  max 60°C 
+
+ 
+Puissance thermique utile / COP dans les conditions nominales avec contribution au dégivrage 
+
+Puissance thermique utile [kW]   COPDC 
+
+ T air T eau (source chaude)    T air T eau (source chaude) 
+
+(source froide)     35 45 55   (source froide)     35 45 55 
+
+-7 6,6 6,57 6,54  -7 2,88 2,42 2,09 
+
+2 6,61 6,58 6,67  2 3,72 3,08 2,53 
+
+7 7,81 7,58 7,55  7 4,38 3,50 2,85 
+
+12 8,16 7,98 7,79  12 5,22 4,05 3,18 
+
+ 
+
+Données de performance mesurées en condition de charge partielle, selon la norme UNI EN 14825 
+
+Conditions d’exercice F A (E) B C D 
+
+T air [°C] -10 -7 2 7 12 
+
+PLR [%] 100 88 54 35 15 
+
+Puissance DC  
+(Declared Capacity (Capacité [kW] 6,52 6,52 3,97 3,14 3,67 
+Déclarée)) 
+
+COPPL  2,70 2,95 4,37 5,55 7,86 
+
+COPDC  2,70 2,88 3,72 4,38 5,22 
+
+ 
+
+Prestations  
+
+35°C 
+
+SCOP ηS Classe énergétique 
+
+4,46 176% A+++ 
+
+ 
+
+P a g .  46 | 59 
+
+
+
+ 
+
+Modèle RO3-10M et RO3-10T 
+
+Limites de fonctionnement 
+
+Source FROIDE : AIR EXTERNE 
+
+Température de fonctionnement (coupure) min -20°C 
+
+  max 30°C 
+
+    
+
+Source CHAUDE : EAU 
+
+Température de fonctionnement (coupure) min 25°C 
+
+  max 60°C 
+
+ 
+Puissance thermique utile / COP dans les conditions nominales avec contribution au dégivrage 
+
+Puissance thermique utile [kW]   COPDC 
+
+ T air T eau (source chaude)    T air T eau (source chaude) 
+
+(source froide)     35 45 55   (source froide)     35 45 55 
+
+-7 8,3 8,23 8,26   -7 2,90 2,44 2,06 
+
+2 9,50 9,41 9,01   2 3,78 3,03 2,48 
+
+7 10,10 9,76 9,73   7 4,43 3,48 2,78 
+
+12 10,74 10,49 10,21   12 5,14 3,90 3,09 
+
+ 
+
+Données de performance mesurées en condition de charge partielle, selon la norme UNI EN 14825 
+
+Conditions d’exercice F A (E) B C D 
+
+T air [°C] -10 -7 2 7 12 
+
+PLR [%] 100 88 54 35 15 
+
+Puissance DC  
+(Declared Capacity (Capacité [kW] 8,31 8,33 5,34 4,21 4,92 
+Déclarée)) 
+
+COPPL   2,71 2,93 4,32 6,01 8,08 
+
+COPDC   2,75 2,90 3,78 4,43 5,14 
+
+ 
+
+Prestations 
+
+35°C 
+
+SCOP ηS Classe énergétique 
+
+4,53 178% A+++ 
+
+ 
+
+ 
+
+P a g .  47 | 59 
+
+
+
+ 
+
+Modèle RO3-12M et RO3-12T 
+
+Limites de fonctionnement 
+
+Source FROIDE : AIR EXTERNE 
+
+Température de fonctionnement (coupure) min -20°C 
+
+  max 30°C 
+
+    
+
+Source CHAUDE : EAU 
+
+Température de fonctionnement (coupure) min 25°C 
+
+  max 60°C 
+
+ 
+Puissance thermique utile / COP dans les conditions nominales avec contribution au dégivrage 
+
+Puissance thermique utile [kW]   COPDC 
+
+ T air T eau (source chaude)    T air T eau (source chaude) 
+
+(source froide)     35 45 55   (source froide)     35 45 55 
+
+-7 8,9 8,91 8,85  -7 2,85 2,39 2,04 
+
+2 10,3 10,39 10,19  2 3,71 3,02 2,49 
+
+7 11,8 11,47 11,37  7 4,32 3,44 2,78 
+
+12 12,28 11,97 11,67  12 5,15 3,94 3,14 
+
+ 
+
+Données de performance mesurées en condition de charge partielle, selon la norme UNI EN 14825 
+
+Conditions d’exercice F A (E) B C D 
+
+T air [°C] -10 -7 2 7 12 
+
+PLR [%] 100 88 54 35 15 
+
+Puissance DC  
+(Declared Capacity (Capacité [kW] 8,82 8,86 5,39 4,27 4,86 
+Déclarée)) 
+
+COPPL   2,64 2,88 4,31 5,82 7,81 
+
+COPDC   2,70 2,85 3,71 4,32 5,15 
+
+ 
+
+Prestations 
+
+35°C 
+
+SCOP ηS Classe énergétique 
+
+4,47 176% A+++ 
+
+ 
+
+ 
+
+P a g .  48 | 59 
+
+
+
+ 
+
+Modèle RO3-14M et RO14T 
+
+Limites de fonctionnement 
+
+Source FROIDE : AIR EXTERNE 
+
+Température de fonctionnement (coupure) min -20°C 
+
+  max 30°C 
+
+    
+
+Source CHAUDE : EAU 
+
+Température de fonctionnement (coupure) min 25°C 
+
+  max 60°C 
+
+ 
+Puissance thermique utile / COP dans les conditions nominales avec contribution au dégivrage 
+
+Puissance thermique utile [kW]   COPDC 
+
+ T air T eau (source chaude)    T air T eau (source chaude) 
+
+(source froide)     35 45 55  
+(source froide) 35 45 55 
+
+-7 10,7 10,65 10,58  -7 2,95 2,44 2,09 
+
+2 13,02 12,69 12,40  2 4,02 3,24 2,71 
+
+7 14,1 13,56 13,44  7 4,85 3,82 3,09 
+
+12 14,74 14,43 13,96  12 5,94 4,52 3,56 
+
+ 
+
+Données de performance mesurées en condition de charge partielle, selon la norme UNI EN 14825 
+
+Conditions d’exercice F A (E) B C D 
+
+T air [°C] -10 -7 2 7 12 
+
+PLR [%] 100 88 54 35 15 
+
+Puissance DC  
+(Declared Capacity (Capacité [kW] 10,52 10,71 6,52 5,78 6,68 
+Déclarée)) 
+
+COPPL   2,69 2,98 4,20 5,98 8,16 
+
+COPDC   2,73 2,95 4,02 4,85 5,94 
+
+ 
+
+Prestations  
+
+35°C 
+
+SCOP ηS Classe énergétique 
+
+4,48 176% A+++ 
+
+ 
+
+ 
+
+P a g .  49 | 59 
+
+
+
+ 
+
+Modèle RO3-16M et RO3-16T 
+
+Limites de fonctionnement 
+
+Source FROIDE : AIR EXTERNE 
+
+Température de fonctionnement (coupure) min -20°C 
+
+  max 30°C 
+
+    
+
+Source CHAUDE : EAU 
+
+Température de fonctionnement (coupure) min 25°C 
+
+  max 60°C 
+
+ 
+Puissance thermique utile / COP dans les conditions nominales avec contribution au dégivrage 
+
+Puissance thermique utile [kW]   COPDC 
+
+ T air T eau (source chaude)    T air T eau (source chaude) 
+
+(source froide)     35 45 55   (source froide)     35 45 55 
+
+-7 12,0 11,86 11,79  -7 2,86 2,44 2,05 
+
+2 14,05 14,36 14,15  2 3,88 3,13 2,60 
+
+7 16,3 15,77 15,63  7 4,67 3,72 3,02 
+
+12 16,13 15,79 15,27  12 5,77 4,43 3,51 
+
+ 
+
+Données de performance mesurées en condition de charge partielle, selon la norme UNI EN 14825 
+
+Conditions d’exercice F A (E) B C D 
+
+T air [°C] -10 -7 2 7 12 
+
+PLR [%] 100 88 54 35 15 
+
+Puissance DC  
+[kW] 11,69 11,95 7,27 5,70 6,67 
+
+ (Capacité Déclarée) 
+
+COPPL   2,60 2,88 4,33 5,83 8,12 
+
+COPDC   2,67 2,86 3,88 4,67 5,77 
+
+ 
+
+Prestations  
+
+35°C 
+
+SCOP ηS Classe énergétique 
+
+4,49 177% A+++ 
+
+ 
+
+ 
+
+ 
+
+P a g .  50 | 59 
+
+
+
+ 
+
+Modèle RO3-18T 
+
+Limites de fonctionnement 
+
+Source FROIDE : AIR EXTERNE 
+
+Température de fonctionnement (coupure) min -20°C 
+
+  max 30°C 
+
+    
+
+Source CHAUDE : EAU 
+
+Température de fonctionnement (coupure) min 25°C 
+
+  max 60°C 
+
+ 
+Puissance thermique utile / COP dans les conditions nominales avec contribution au dégivrage 
+
+Puissance thermique utile [kW]   COPDC 
+
+ T air T eau (source chaude)    T air T eau (source chaude) 
+
+(source froide)     35 45 55   (source froide)     35 45 55 
+
+-7 12,61 12,46 12,30  -7 2,83 2,37 2,04 
+
+2 15,12 14,90 14,73  2 3,81 3,05 2,63 
+
+7 17,9 17,32 17,25  7 4,40 3,52 2,88 
+
+12 18,26 17,69 17,33  12 5,29 4,14 3,31 
+
+ 
+
+Données de performance mesurées en condition de charge partielle, selon la norme UNI EN 14825 
+
+Conditions d’exercice F A (E) B C D 
+
+T air [°C] -10 -7 2 7 12 
+
+PLR [%] 100 88 54 35 15 
+
+Puissance DC  
+[kW] 12,75 12,83 7,81 5,75 6,66 
+
+(Capacité Déclarée) 
+
+COPPL   2,59 2,83 4,34 5,67 7,94 
+
+COPDC   2,66 2,83 3,81 4,40 5,29 
+
+ 
+
+Prestations 
+
+35°C 
+
+SCOP ηS Classe énergétique 
+
+4,46 175% A+++ 
+
+ 
+
+  
+
+P a g .  51 | 59 
+
+
+
+ 
+
+ 
+
+9.5 Valeurs de EER pour le calcul de la performance énergétique des bâtiments, conformément à la 
+norme UNI/TS 11300-3 
+
+On rapporte les valeurs des coefficients EER en conditions de charge partielle pour les pompes à chaleur réversibles 
+R/OPACK3. 
+
+Ci-dessous, sont illustrées les conditions de référence à charge partielle spécifiées par la norme UNI/TS 11300-3 pour 
+refroidisseurs et pompes à chaleur réversibles air-eau. 
+
+Les EER sont aussi fournis pour des facteurs de charge inférieurs à 25%. 
+
+  
+
+Température eau glacée en 
+Température à bulbe sec 
+
+Essai Facteur de charge entrée/sortie des ventilo-
+air externe 
+
+convecteurs 
+
+1 100% 35 12/7 
+
+2 75% 30 *)/7 
+
+3 50% 25 *)/7 
+
+4 25% 20 *)/7 
+
+*) température déterminée par le débit d'eau à pleine charge 
+
+Modèle RO3-4M 
+
+ 
+
+RO3-4M 
+EER à charge partielle RO3-04
+
+Temperature bulbe sec 7,0
+Facteur de charge EER 
+
+air extérieur [°C] 6,0
+
+ 35 100% 3,28 5,0
+
+4,0
+30 75% 4,06 
+
+3,0
+25 50% 4,95 
+
+2,0
+20 25% 6,61 1,0
+
+EER @20°C x 
+C Facteur de charge 0,0
+
+C 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+
+ 0,95 20% 6,28 Facteur de charge
+ 0,94 15% 6,22 
+
+ 0,87 10% 5,75  
+
+ 0,71 5% 4,70  
+ 0,46 2% 3,04 
+
+ 
+ 0,29 1% 1,92 
+
+ 
+
+ 
+
+P a g .  52 | 59 
+
+EER
+
+
+
+ 
+
+Modèle RO3-6M  
+
+ 
+
+RO3-6M EER à charge partielle 
+RO3-06
+
+Température bulbe Facteur de 
+EER 
+
+sec air externe [°C] charge 7,0
+6,0
+
+ 35 100% 3,14 5,0
+
+30 75% 4,03 4,0
+3,0
+
+25 50% 4,82 
+2,0
+
+20 25% 6,57 1,0
+0,0
+
+Facteur de EER @20°C 
+C 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+
+charge x C 
+Facteur de charge
+
+ 0,95 20% 6,24 
+
+ 0,94 15% 6,17  
+
+ 0,87 10% 5,71 
+ 
+
+ 0,71 5% 4,66 
+
+ 0,46 2% 3,02  
+
+ 0,29 1% 1,90  
+
+ 
+
+ 
+
+Modèle RO3-8M  
+
+ 
+
+RO3-8M 
+EER à charge partielle 
+
+RO3-08
+Température bulbe Facteur de 
+
+EER 
+sec air externe [°C] charge 8,0
+
+7,0
+ 35 100% 3,05 6,0
+
+30 75% 4,07 5,0
+4,0
+
+25 50% 4,84 3,0
+2,0
+
+20 25% 6,70 1,0
+0,0
+
+Facteur de EER @20°C 
+C 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+
+charge x C 
+
+ 0,95 20% 6,37 Facteur de charge
+
+ 0,94 15% 6,30  
+
+ 0,87 10% 5,83 
+ 
+
+ 0,71 5% 4,76 
+
+ 0,46 2% 3,08  
+
+ 0,29 1% 1,94  
+
+P a g .  53 | 59 
+
+EER EER
+
+
+
+ 
+
+Modèle RO3-10M et RO3-10T 
+
+ 
+
+RO3-10M et RO3-10T 
+EER à charge partielle 
+
+Température bulbe Facteur de RO3-10
+EER 
+
+sec air externe [°C] charge 7,0
+6,0
+
+ 35 100% 3,15 
+5,0
+
+30 75% 3,92 4,0
+3,0
+
+25 50% 4,46 
+2,0
+
+20 25% 6,36 1,0
+0,0
+
+Facteur de EER @20°C 
+C 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+
+charge x C 
+
+ 0,95 20% 6,04 Facteur de charge
+
+ 0,94 15% 5,98  
+
+ 0,87 10% 5,54 
+ 
+
+ 0,71 5% 4,52 
+
+ 0,46 2% 2,93  
+
+ 0,29 1% 1,85  
+
+ 
+
+ 
+
+ 
+
+Modèle RO3-12M et RO3-12T 
+ 
+ 
+
+RO3-12 et RO3-12T 
+EER à charge partielle 
+
+RO3-12
+Température bulbe Facteur de 
+
+EER 
+sec air externe [°C] charge 7,0
+
+6,0
+ 35 100% 3,05 
+
+5,0
+30 75% 4,03 4,0
+
+3,0
+25 50% 4,58 
+
+2,0
+20 25% 6,32 1,0
+
+Facteur de EER @20°C 0,0
+C 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+
+charge x C 
+
+ 0,95 20% 6,00 Facteur de charge
+
+ 0,94 15% 5,94  
+
+ 0,87 10% 5,50 
+ 
+
+ 0,71 5% 4,49 
+
+ 0,46 2% 2,91  
+
+ 0,29 1% 1,83  
+
+P a g .  54 | 59 
+
+EER EER
+
+
+
+ 
+
+Modèle RO3-14M et RO3-14T 
+
+RO3-14M et RO3-14T EER à charge partielle 
+RO3-14
+
+Température bulbe Facteur de 
+EER 8,0
+
+sec air externe [°C] charge 7,0
+
+ 35 100% 3,25 6,0
+5,0
+
+30 75% 4,31 4,0
+3,0
+
+25 50% 4,91 2,0
+
+20 25% 6,72 1,0
+0,0
+
+Facteur de EER @20°C 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+C 
+
+charge x C 
+Facteur de charge
+
+ 0,95 20% 6,38 
+
+ 0,94 15% 6,31  
+
+ 0,87 10% 5,84  
+
+ 0,71 5% 4,77 
+ 
+
+ 0,46 2% 3,09 
+
+ 0,29 1% 1,95  
+
+ 
+
+ 
+
+Modèle RO3-16M et RO3-16T 
+
+RO3-16M et RO3-16T EER à charge partielle 
+RO3-16
+
+Température bulbe Facteur de 
+EER 8,0
+
+sec air externe [°C] charge 7,0
+
+ 35 100% 3,15 6,0
+5,0
+
+30 75% 4,36 4,0
+3,0
+
+25 50% 5,30 2,0
+
+20 25% 6,67 1,0
+0,0
+
+Facteur de EER @20°C 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+C 
+
+charge x C 
+Facteur de charge
+
+ 0,95 20% 6,34 
+
+ 0,94 15% 6,27  
+
+ 0,87 10% 5,80  
+
+ 0,71 5% 4,73 
+ 
+
+ 0,46 2% 3,07 
+
+ 0,29 1% 1,93  
+ 
+
+P a g .  55 | 59 
+
+EER EER
+
+
+
+ 
+
+Modèle RO3-18T 
+
+ 
+
+RO3-18T 
+EER EER à charge partielle
+
+RO3-18T
+Température bulbe Facteur de 
+
+EER 
+sec air externe [°C] charge 8,0
+
+7,0
+ 35 100% 3,08 6,0
+30 75% 4,38 5,0
+
+4,0
+25 50% 5,52 3,0
+
+20 25% 6,80 2,0
+1,0
+
+Facteur de EER @20°C x 
+C 0,0
+
+ 
+charge C 0% 10% 20% 30% 40% 50% 60% 70% 80% 90% 100%
+
+ 0,95 20% 6,46 Facteur de charge
+ 0,94 15% 6,39 
+
+ 
+ 0,87 10% 5,91 
+
+ 0,71 5% 4,83  
+
+ 0,46 2% 3,13 
+ 
+
+ 0,29 1% 1,97 
+
+ 
+
+ 
+
+  
+
+P a g .  56 | 59 
+
+EER
+
+
+
+ 
+
+ 10. FICHE DE SÉCURITÉ DU RÉFRIGÉRANT 
+Dénomination : R32. 
+
+INDICATION DES DANGERS 
+Dangers principaux : Asphyxie. 
+Dangers spécifiques : La rapidité de l’évaporation peut provoquer la congélation. 
+
+MESURES D’URGENCE 
+Informations 
+
+Ne rien administrer aux personnes évanouies. 
+générales : 
+Inhalation : Transporter la personne à l’air libre. 
+ Recourir à l’oxygène ou à la respiration artificielle si nécessaire. 
+ Ne pas administrer d’adrénaline ni de substances similaires. 
+
+Rincer soigneusement et abondamment avec de l’eau pendant au moins 15 minutes et 
+Contact avec les yeux : 
+
+s’adresser à un médecin. 
+Rincer aussitôt abondamment avec de l’eau pendant au moins 15 minutes. Appliquer 
+
+Contact avec la peau : 
+une gaze stérile. 
+
+ Retirer immédiatement les vêtements contaminés. 
+MESURES ANTI-INCENDIE 
+
+Moyens d’extinction : Eau nébulisée, poudre sèche. 
+Dangers spécifiques : Rupture ou explosion du récipient. 
+
+Refroidir les récipients avec des vaporisations d’eau depuis une position protégée. Si 
+Méthodes possible, arrêter la fuite de produit. Si possible, utiliser de l’eau nébulisée pour abattre 
+spécifiques : les fumées. Déplacer les récipients loin de la zone de l’incendie, s’il est possible de le 
+
+faire sans risques. 
+MESURES EN CAS DE FUITE ACCIDENTELLE 
+
+Précautions Tenter de bloquer la fuite. 
+individuelles : Évacuer le personnel dans des zones de sécurité. 
+
+Éliminer les sources d’inflammation. 
+ 
+
+Prévoir une ventilation adéquate. 
+ Utiliser des équipements de protection individuelle. 
+Précautions 
+
+Tenter de bloquer la fuite. 
+environnementales : 
+Méthodes de 
+
+Ventiler la zone. 
+nettoyage : 
+
+MANIPULATION ET STOCKAGE 
+Manipulation :  
+mesures/précautions Veiller à ce que le renouvellement d'air et/ou l'aspiration d'air soient suffisants dans 
+techniques : les locaux de travail. 
+conseils pour une 
+
+Ne pas respirer de vapeurs et ne pas utiliser d’aérosol. 
+utilisation sûre : 
+Stockage : Fermer soigneusement et conserver dans un endroit frais, sec et bien ventilé. 
+
+Conserver dans les récipients originaux. Produits incompatibles : explosifs, matériaux 
+ 
+
+inflammables, Peroxyde organique 
+CONTRÔLE DE L’EXPOSITION/PROTECTION INDIVIDUELLE 
+
+OEL - données non disponibles. 
+Paramètres de DNEL : Niveau dérivé sans effet (travailleurs) 
+contrôle : à long terme, effets systémiques, inhalation = 7035 mg/m3. 
+
+PNEC : Concentration prévisible sans effets 
+
+P a g .  57 | 59 
+
+
+
+ 
+
+eau (eau douce) = 0,142 mg/l 
+aquatique, émissions intermittentes = 1,42 mg/l 
+sédiments, eau douce = 0.534 mg/kg poids sec 
+
+Protection 
+Non nécessaire. 
+
+respiratoire : 
+Protection des yeux : Lunettes de sécurité. 
+Protection des mains : Gants de caoutchouc. 
+Mesures d’hygiène : Ne pas fumer. 
+
+PROPRIÉTÉS PHYSIQUES ET CHIMIQUES 
+Couleur : Incolore. 
+Odeur : Éthéré. Peu perceptible à basses concentrations. 
+Point d’ébullition : -51,7 °C à press. atm. 
+Point d'inflammation : 648 °C. 
+Densité relative gaz 
+(air=1) 1,8. 
+Densité relative liquide 1,1. 
+(eau=1) 
+Solubilité dans l’eau : 280000 mg/l. 
+
+STABILITÉ ET RÉACTIVITÉ 
+Stabilité : Stable en conditions normales. 
+Matières à éviter : Air, agents oxydants, humidité. 
+Produits de 
+
+En conditions normales de stockage et d’utilisation, aucun produit de décomposition 
+décomposition 
+
+dangereux ne devrait être généré. 
+dangereux 
+dangereux :  
+
+INFORMATIONS TOXICOLOGIQUES 
+Toxicité élevée : LD/LC50/inhalation/4 heures/test sur rat = 1107000 mg/m3. 
+Effets locaux : Aucun effet connu. 
+Toxicité à long terme : Aucun effet connu. 
+
+INFORMATIONS ÉCOLOGIQUES 
+Potentiel de 
+
+675 
+réchauffement global 
+GWP/ PRG (R744=1) :  
+Potentiel de 
+dégradation de l’ozone 0 
+ODP (R11=1) : 
+de l'ozone ODP 
+
+ 
+(R11=1) : 
+Considérations sur la Se conformer au programme de récupération de gaz du fournisseur. Éviter l’émission 
+mise au rebut :  directe dans l’atmosphère. 
+
+P a g .  58 | 59 
+
+
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+  
+
+ 
+
+NEXTHERM 
+Z.A. de Clairac,  
+30 rue Maryse Bastié 
+26760 Beaumont-Les-Valence 
+Tel. (+33) (0)4 75 59 44 10 
+
+E-mail: contact@nextherm.fr 
+www.nextherm.fr

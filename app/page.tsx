@@ -234,7 +234,7 @@ export default function HomePage() {
                     asChild 
                     className="bg-white hover:bg-gray-100 text-black border border-gray-200 rounded-full text-lg px-8 py-4 inline-flex items-center justify-center transform transition-all duration-300 hover:shadow-lg"
                   >
-                    <Link href="/protected/VueGenerale">
+                    <Link href="/protected">
                       Accéder aux outils
                       <motion.div
                         animate={{ x: [0, 5, 0] }}

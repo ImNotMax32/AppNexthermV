@@ -22,7 +22,8 @@ import {
   Replace,
   Globe,
   LibraryBig,
-  HeartHandshake
+  HeartHandshake,
+  LayoutDashboard
 } from 'lucide-react';
 import { createClient } from '@/utils/supabase/client';
 
@@ -178,6 +179,18 @@ export default function DashboardLayout({
           `}
         >
           <nav className="h-full p-4 px-3 space-y-4 pt-12 lg:pt-2">
+            <Link href="/protected" passHref>
+              <Button
+                variant={pathname === '/protected' ? 'secondary' : 'ghost'}
+                className={`w-full justify-start rounded-xl transition-all ${
+                  pathname === '/protected' ? 'bg-[#86BC29] text-white hover:bg-[#86BC29]' : 'hover:bg-gray-100'
+                }`}
+              >
+                <Home className="mr-2 h-4 w-4" />
+                Accueil
+              </Button>
+            </Link>
+
             <Link href="/protected/VueGenerale" passHref>
               <Button
                 variant={pathname === '/protected/VueGenerale' ? 'secondary' : 'ghost'}
@@ -185,8 +198,8 @@ export default function DashboardLayout({
                   pathname === '/protected/VueGenerale' ? 'bg-[#86BC29] text-white hover:bg-[#86BC29]' : 'hover:bg-gray-100'
                 }`}
               >
-                <Home className="mr-2 h-4 w-4" />
-                Accueil
+                <LayoutDashboard className="mr-2 h-4 w-4" />
+                Vue Générale
               </Button>
             </Link>
 

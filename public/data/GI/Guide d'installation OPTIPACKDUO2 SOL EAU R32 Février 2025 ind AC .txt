@@ -1,0 +1,2474 @@
+﻿GUIDE D’INSTALLATION GEOTHERMIE 
+OPTIPACKDUO2 SOL / EAU R32 
+
+ 
+ 
+
+SARL NEXTHERM - ZA de Clairac - Rue Maryse Bastié - 26760 BEAUMONT LES VALENCE 
+…………………………………………………………………….……..….…………………. 
+
+Tél. : 04 75 59 44 10- Fax : 04 75 55 52 30 
+: contact@nextherm.fr - www.nextherm.fr  
+
+
+
+ 
+ 
+
+Table des matières 
+1 Avant-propos ......................................................................................................................................................... 4 
+
+1.1 Généralités .................................................................................................................................................... 4 
+1.2 Sécurité électrique ........................................................................................................................................ 4 
+1.3 Réfrigérant .................................................................................................................................................... 5 
+
+1.3.1 Généralités ............................................................................................................................................ 5 
+
+1.3.2 Ventilation ............................................................................................................................................. 5 
+2 La pompe à chaleur................................................................................................................................................ 6 
+
+2.1 Généralités .................................................................................................................................................... 6 
+2.2 Particularités ................................................................................................................................................. 6 
+2.3 Le générateur ................................................................................................................................................ 7 
+
+2.3.1 Représentation éclatée ......................................................................................................................... 7 
+
+2.3.2 Représentation photographique d’un module de puissance (photo non contractuel) ........................ 8 
+
+2.3.3 Dimensions ............................................................................................................................................ 9 
+
+2.3.4 Pose du générateur ............................................................................................................................... 9 
+
+2.3.5 Caractéristiques techniques ................................................................................................................ 10 
+
+2.3.6 Etiquette signalétique ......................................................................................................................... 11 
+3 Dimensionnement de l’installation ...................................................................................................................... 12 
+
+3.1 Etude thermique ........................................................................................................................................ 12 
+4 Les capteurs ......................................................................................................................................................... 13 
+
+4.1 Généralités .................................................................................................................................................. 13 
+4.2 Etude Technique ......................................................................................................................................... 13 
+4.3 Captage horizontal ...................................................................................................................................... 15 
+
+4.3.1 Généralités .......................................................................................................................................... 15 
+
+4.3.2 Surface de captage .............................................................................................................................. 16 
+
+4.3.3 Captage en tranchées .......................................................................................................................... 17 
+
+4.4 Les liaisons .................................................................................................................................................. 18 
+
+4.4.1 Dimensionnement des liaisons capteur .............................................................................................. 18 
+
+4.5 Remise en place de la terre ........................................................................................................................ 19 
+4.6 Distributeurs et collecteurs ........................................................................................................................ 19 
+4.7 Remplissage par le capteur ......................................................................................................................... 19 
+5 Emetteurs ............................................................................................................................................................ 21 
+
+5.1 Généralité ................................................................................................................................................... 21 
+5.2 Planchers chauffants................................................................................................................................... 21 
+5.3 Radiateurs ou convecteurs ......................................................................................................................... 22 
+5.4 Schémas hydrauliques ................................................................................................................................ 23 
+6 Raccordements frigorifiques et hydrauliques ...................................................................................................... 26 
+
+6.1 Raccordements frigorifiques....................................................................................................................... 26 
+6.2 Raccordements hydrauliques et accessoires des circuits chauffage et capteur ......................................... 26 
+
+6.3 Accessoires ............................................................................................................................................. 27 
+7 Raccordement électrique .................................................................................................................................... 27 
+7.1 Schéma électrique ............................................................................................................................................ 28 
+8 Ballon ECS ............................................................................................................................................................ 29 
+
+8.1 Données constructeurs ............................................................................................................................... 29 
+
+8.1.1Caractéristiques dimensionnelles ........................................................................................................ 29 
+
+ 
+   Ind : AC Février 2025 / Page 2 
+
+
+
+ 
+ 
+
+8.1.2Isolation ................................................................................................................................................ 29 
+
+8.2 Raccordements hydrauliques : ................................................................................................................... 29 
+
+8.2.1 Schémas hydrauliques de raccordement du ballon ECS ..................................................................... 30 
+
+8.2.2 Calcul du temps de chauffe théorique (sans perte) ............................................................................ 30 
+
+8.2.3 Comptage énergétique ........................................................................................................................ 30 
+
+8.3. Vanne trois voies ....................................................................................................................................... 30 
+
+8.3.1 Raccordement hydraulique ................................................................................................................. 30 
+
+8.3.2 Caractéristiques et Raccordement électriques ................................................................................... 31 
+
+8.4 Régulateur Eau chaude Sanitaire ................................................................................................................ 31 
+
+8.4.1 Caractéristiques du Régulateur de température et raccordement électriques .................................. 31 
+
+8.4.2 Réglage du seuil d’arrêt de fabrication d’eau chaude sanitaire .......................................................... 32 
+
+8.5. Appoint électrique de secours ................................................................................................................... 32 
+8.6 Entretien de l’anode ................................................................................................................................... 33 
+9 Mise en service .................................................................................................................................................... 34 
+
+9.1 Généralités .................................................................................................................................................. 34 
+9.2 Pompe à chaleur ......................................................................................................................................... 34 
+
+8.2.1 Configuration d’usine .......................................................................................................................... 34 
+
+9.2.2 Démarrage ........................................................................................................................................... 35 
+
+9.3 Fiche de mise en service ............................................................................................................................. 36 
+9.4 Cause de pannes les plus fréquentes : ........................................................................................................ 37 
+
+9.4.1 La machine ne démarre pas et le voyant sur RT1 est éteint. .............................................................. 37 
+
+9.4.2 La machine ne démarre pas et le voyant R1 sur RT1 est allumé en vert fixe. ..................................... 37 
+10 Maintenance ...................................................................................................................................................... 37 
+
+10.1 Généralités ................................................................................................................................................ 37 
+10.2 Circuits électriques ................................................................................................................................... 38 
+10.3 Circuits hydrauliques ................................................................................................................................ 38 
+10.4 Circuits frigorifiques ................................................................................................................................. 38 
+
+ 
+
+  
+
+ 
+   Ind : AC Février 2025 / Page 3 
+
+
+
+ 
+ 
+
+Avant-propos 
+
+1 Avant-propos 
+
+1.1 Généralités 
+Les installations de chauffage avec pompe à chaleur répondent à des normes strictes de fonctionnement 
+et de sécurité que vous devez connaître et appliquer. En tant qu'installateur une partie importante de 
+votre travail consiste à installer le système de manière à ce qu'il fonctionne efficacement et en toute 
+sécurité. Pour effectuer une installation sûre et obtenir un fonctionnement sans problème, il faut : 
+ 
+
+• Disposer du personnel qualifié et habilité ayant reçu une formation à nos produits. 
+• Lire attentivement cette notice d’installation avant de commencer. 
+• Procéder à chaque étape de l'installation ou de la réparation en suivant les explications. 
+• Observer toutes les recommandations de prudence et de sécurité données dans cette notice. 
+• Porter les équipements de protection individuelle (code du travail) visant à protéger la santé et la 
+
+sécurité des travailleurs. 
+ 
+
+Les recommandations professionnelles éditées sous la forme de guide appelées « Règles de l’Art Grenelle 
+Environnement 2012 » alimentant le processus normatif classique et reconnues par les assureurs doivent 
+être suivies. 
+
+1.2 Sécurité électrique 
+L’appareil est alimenté en 230 V 50Hz monophasé et présente donc un risque de choc électrique. 
+Respectez toutes les règlementations électriques en vigueur, notamment la NF C15-100 et le code du 
+travail. La totalité des opérations de raccordement doit se faire hors tension. 
+ 
+
+Seuls des professionnels habilités peuvent réaliser des opérations d’installation et de maintenance 
+électrique. 
+
+ 
+ 
+
+  Le ou les circuits d’alimentation doivent être déconnectés, condamnés et signalés comme tels, avant     
+l’intervention sur le produit. 
+ 
+
+ Utilisez des lignes électriques dédiées et protégées contre les surintensités, les courants de fuite et 
+les surtensions pour l’alimentation de l’appareil.  
+ 
+
+ L’OPTIPACKDUO2 requière deux lignes d’alimentation (dans le cas de l’option résistance). Elles 
+doivent être distinctement, sectionné, condamnés et signalés comme tels, avant l’intervention sur le 
+produit. 
+Le tableau électrique doit être étiqueté avec l’indication que la pompe à chaleur est alimentée par 
+une double alimentation. 
+
+  
+
+ 
+   Ind : AC Février 2025 / Page 4 
+
+
+
+ 
+ 
+
+1.3 Réfrigérant 
+
+1.3.1 Généralités 
+
+Le R32 est le réfrigérant utilisé dans l’OPTIPACKDUO2 SOL/EAU.  
+ 
+C’est un gaz fluoré ne présentant pas de danger direct pour la santé en cas d’inhalation fortuite. 
+Cependant, Lors d’opération de maintenance sur le circuit frigorifique, il convient de se référer aux fiches 
+de sécurité des fabricants concernant les fluides et les huiles frigorifiques. 
+ 
+Le R32 est un gaz inflammable sous certaines conditions. Lors de sa manipulation, il conviendra de 
+prendre les dispositions de sécurité nécessaires, au minimum utilisé du matériel spécifique au gaz 
+inflammable et ventiler la zone (Le R32 est un « gaz lourd » qui s’accumule dans les parties basses des 
+locaux, il conviendra d’être particulièrement vigilant dans ces zones). 
+ 
+En application du décret N°2007-737 du 7 Mai 2007 relatif à certains fluides réfrigérants utilisés dans les 
+équipements frigorifiques et climatiques, toutes interventions sur le circuit frigorifique ne peuvent être 
+menées que par un opérateur disposant d’une attestation d’aptitude à la manipulation des fluides 
+frigorigènes. 
+ 
+L’entreprise doit également être munie d’une attestation de capacité à l’utilisation des fluides 
+frigorigènes en cours de validité. 
+ 
+Faire procéder à un contrôle de l’étanchéité de la pompe à chaleur avec un détecteur de fuite 
+électronique périodiquement vérifié, lors de la mise en service et après toutes interventions sur le circuit 
+de fluide frigorigène. 
+Ce contrôle est à renouveler à une fréquence conforme aux réglementations en vigueur.  
+
+1.3.2 Ventilation 
+
+Le local du générateur doit être d’un volume suffisamment grand pour qu’une éventuelle fuite ne fasse 
+pas dépasser la concentration maximale autorisée (voir graphique ci-dessous « volume minimum d’un 
+local non ventilé pouvant abriter une PAC »).  
+
+ 
+Volume minimum d’un local non ventilé pouvant abriter une PAC 
+
+ 
+ 
+
+Surface minimum pour une hauteur 
+Charge en Kg Volume minimum du local en m3 
+
+de 2.5m en m² 
+1 16 6 
+2 33 13 
+3 49 20 
+4 66 26 
+5 82 33 
+6 98 39 
+7 115 46 
+8 131 52 
+9 147 59 
+
+10 164 66 
+11 180 72 
+12 195 78 
+
+ 
+La limite de charge en fluide frigorigène R32 dans les PAC OPTIPACKDUO2 sol-eau est de 12Kg. 
+
+ 
+Si le local est trop petit, prévoir une extraction en partie basse ou s’assurer de la communication avec un 
+local adjacent permettant d’obtenir le volume nécessaire (détalonnage sous la porte de 15 mm). 
+
+  
+
+ 
+   Ind : AC Février 2025 / Page 5 
+
+
+
+ 
+ 
+
+La pompe à chaleur 
+
+2 La pompe à chaleur 
+
+2.1 Généralités 
+La pompe à chaleur permet de puiser l’énergie calorifique GRATUITE contenue dans la terre pour la 
+restituer à l’utilisateur. Cette énergie est inépuisable car elle est sans cesse renouvelée par les apports 
+solaires directs ou véhiculée par l’eau de pluie, la neige, le vent, ainsi que par la chaleur provenant du 
+sous-sol. 
+Pour prélever et transférer cette énergie, la pompe à chaleur nécessite l’utilisation d’un compresseur 
+frigorifique. La part d’énergie électrique consommée est de 3 à 5 fois moindre que l’énergie calorifique 
+totale restituée à l’installation de chauffage. 
+
+ 
+Pour fonctionner correctement, l’installation nécessite principalement quelques éléments clefs : 
+
+ 
+La pompe à chaleur est le cœur du système qui permet le transfert de l’énergie gratuite vers l’habitat. 
+Le capteur géothermique est enfoui dans le sol à l’extérieur de la maison. Il permet de drainer 
+efficacement l’énergie gratuite du sol. 
+Le plancher chauffant est mis en place dans l’habitation et il permet la restitution harmonieuse de la 
+chaleur.  
+Le thermostat d’ambiance, associé ou non à une régulation, judicieusement positionné dans la maison. 
+Il a pour fonction de gérer les apports en chauffage et donc de fournir le confort adéquat pour les 
+occupants. 
+
+2.2 Particularités 
+L’OPTIPACKDUO2 SOL / EAU a été étudiée pour répondre au marché du neuf comme à celui de la 
+rénovation. 
+Comme pour les autres pompes à chaleur de notre gamme, la réglementation RT2012 limite la 
+consommation globale du logement comprenant le chauffage, l’eau chaude sanitaire, l’éclairage, la 
+ventilation et éventuellement le rafraichissement. Cette consommation ne doit pas dépasser, suivant les 
+régions, une énergie d’environ 50kWhep/m2/an.  
+Pour cette raison, l’OPTIPACKDUO2 est particulièrement économe en énergie et sa modularité permet des 
+puissances calorifiques jusqu’à 10 kW. 
+Le nombre de capteur étant peu important, le choix du captage en tranchées s’impose, surtout lorsque la 
+propriété dispose d’une surface limitée de terrain à consacrer au captage.   
+Les tranchées peuvent alors serpenter entre les aménagements et les plantations du terrain sachant que 
+le captage latéral à la boucle est tout aussi important que le captage intérieur à la boucle elle-même. 
+ 
+ 
+
+ 
+   Ind : AC Février 2025 / Page 6 
+
+
+
+ 
+ 
+
+2.3 Le générateur 
+L’OPTIPACKDUO2 SOL-EAU est un générateur, non chargé, prêt à être raccordé à l’installation de 
+chauffage et au capteur géothermique, disposant de son propre ballon d’eau chaude sanitaire aux 
+qualités d’isolation remarquables. 
+Il est équipé du circulateur pour le circuit chauffage et du vase d’expansion de 8 l. Il faut installer un 
+dispositif de remplissage hydraulique de type disconnecteur à zone neutre (non fourni) et le dispositif de 
+limitation de la pression (soupape et manomètre fournis non montés). 
+Les conditions de performance nominale reflètent la moyenne des performances annuelles de 
+l’installation : Conditions et méthodes d’essais selon la norme NF EN 15879-1 et NF EN 14825 pour une 
+température de condensation de 1.5 °C. 
+
+2.3.1 Représentation éclatée  
+
+ 
+Représentation partielle d’une OPTIPACKDUO 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+   Ind : AC Février 2025 / Page 7 
+
+
+
+ 
+ 
+
+Repère Désignation 
+1 Condenseur 
+2 Compresseur 
+3 Circulateur chauffage 
+4 Platine électrique 
+7 Vase d’expansion chauffage  
+
+          8 Indicateur de la température du ballon ECS 
+
+          9 Boitier métallique 
+
+        10 Ballon ECS (170L) 
+
+ 
+
+2.3.2 Représentation photographique d’un module de puissance (photo non contractuel) 
+
+ 
+Représentation partielle d’une OPTIPACKDUO2 sol/eau 
+
+ 
+ 
+
+ 
+
+1  
+
+7  2  
+
+3  
+
+4  
+
+5  
+
+6  
+
+ 
+ 
+ 
+
+Repère Désignation 
+1 Aquastat de sécurité 
+2 Résistance d’appoint  
+3 Condenseur 
+4 Déshydrateur 
+5 Compresseur 
+6 Circulateur 
+7 Détendeur 
+
+ 
+   Ind : AC Février 2025 / Page 8 
+
+
+
+ 
+ 
+
+2.3.3 Dimensions 
+
+ 
+ 
+
+Hauteur : 1840mm 
+Largeur : 635mm 
+Profondeur : 635mm 
+
+    
+ 
+
+2.3.4 Pose du générateur 
+
+ 
+ 
+Le générateur sera posé en respectant les règles suivantes : 
+
+• Choisissez un local éloigné des chambres : local technique, cellier, garage ou cave. 
+• Ne pas monter les accessoires éventuels contre les cloisons des pièces adjacentes, mais privilégier 
+
+les murs extérieurs, ceci afin de réduire le risque de nuisances sonores.  
+• Vérifiez que le sol est stable et dur pour supporter le générateur et le maintenir horizontal 
+• Isolez les départs et retours des liaisons capteurs (condensation) 
+• Ne pas installer les distributeurs/collecteurs en direct sur la PAC. Montez-les 
+
+distributeurs/collecteurs dans un regard et les relier à la PAC par des tubes de liaison isolés. En 
+l’absence de regard et d’arriver des couronnes de captage directement dans le local technique, il 
+sera nécessaire de prévoir des tubes de liaison isolés de 1m mini entre la PAC et les 
+distributeurs/collecteurs.  
+
+• Permettre l’accessibilité et un espace de sécurité, en cas d’intervention ou de disfonctionnement du 
+produit : 500 mm sur les côtés, 800 mm à l’avant et 600 mm sur le dessus. 
+
+• Avant tout raccordement du nouveau générateur il sera nécessaire d’effectuer un nettoyage soigné 
+des capteurs existants, des tubes et collecteurs/distributeurs. En effet les générateurs d’ancienne 
+génération fonctionnaient avec des huiles minérales ou des huiles ester qui sont incompatibles avec 
+les huiles ester des nouveaux générateurs au R32. Les dégradations éventuelles des nouveaux 
+générateurs en raison d’un mauvais nettoyage de l’installation initiale ne pourront pas être prises 
+sous garantie par Nextherm. 
+
+• Vérifier et où remplacer les protections électriques de la ligne d’alimentation des nouveaux 
+générateurs en fonctions de leurs caractéristiques techniques. 
+
+ 
+ 
+
+ Le centre d’inertie de la pompe à chaleur étant en position haute ; Une étiquette, avec la mention 
+« sanglage obligatoire », doit être collée sur le colis afin de responsabiliser les transporteurs successifs. 
+
+ 
+
+                                                    
+ 
+
+  
+
+ 
+   Ind : AC Février 2025 / Page 9 
+
+
+
+ 
+ 
+
+2.3.5 Caractéristiques techniques 
+
+ 
+ Générateur 2 4 6 8 10 
+
+ Température d’eau du bain 1.5°C ; Eau de chauffage 30-35°C  
+ Puissance calorifique W 2700 4820 6530 7340 10580 
+ 
+
+Puissance électrique absorbée 
+ W 620 1100 1470 1680 2440 
+
+totale 
+ Puissance frigorifique W 2080 3720 5050 5750 8100 
+ 
+
+Intensité à 30/35°C monophasé A 2.97 5.26 7.06 8.04 11.67 
+ 
+ Intensité à 30/35°C triphasé A - - - - 4.33 
+
+ Débit d’eau de chauffage pour 
+m3/h 0.465 0.830 1.125 1.280 1.800 
+
+delta T 5 k 
+ 
+ COP - 4.35 4.39 4.43 4.42 4.34 
+
+ SCOP - 4.99 5.00 5.09 5.08 4.99 
+
+ Efficacité Energétique Saisonnière 
+% 217 217 221 221 217 
+
+ (ηs)/ ETAS 
+
+ Température d’eau du bain 1.5°C; Eau de chauffage 40-45°C  
+
+ Puissance calorifique W 2570 4600 6220 7080 10000 
+ Puissance électrique absorbée 
+ W 740 1320 1770 2020 2860 
+
+totale 
+ Puissance frigorifique W 1830 3280 4450 5060 7140 
+ Intensité à 40/45°C monophasé A 3.56 6.32 8.47 9.65 14.01 
+ 
+
+Intensité à 40/45°C triphasé A - - - - 5.19 
+ 
+ COP - 3.46 3.48 3.51 3.51 3.44 
+
+ SCOP - 4.24 4.25 4.32 4.31 4.23 
+
+ Efficacité Energétique Saisonnière 
+% 184 185 188 187 184 
+
+ (ηs)/ ETAS 
+
+ Alimentation et protection électrique (25m maxi)  
+
+ Section câble puissance Mono mm² 3x2.5 3x2.5 3x4 3x4 3x6 
+ 
+
+Section câble puissance Tri Mm²     5x2.5 
+ 
+ Calibre du disjoncteur Mono A 6.3 (D) 10(D) 16(C) 16(C) 20(C) 
+
+ Calibre du disjoncteur Tri      10(C) 
+
+ Poids kg 189 194 203 224 229 
+ 
+
+Puissance acoustique (40/45) Db(A) 52 55 57 56 58 
+ 
+
+I démarrage Monophasé A 21 42 45A* 
+ 
+ I démarrage Triphasé A - - - - 50* 
+
+ Pose sur terrain décapé avec extraction de 37W/m2 (température de base > -10°C)  
+
+ Surface optimum m² 49 91 125 143 204 
+ 
+
+Pas*** cm 61 57 52 45 51 
+ 
+ Pose sur terrain décapé avec extraction de 30W/m2 (température de base < -10°C)  
+
+ Surface optimum m² 61 113 156 178 253 
+
+ Pas cm 76 71 65 56 63 
+ Nombre de couronnes capteurs 
+
+80m 1 2 3 4 5 
+ 1/2’’ 
+
+ Charge R32** Kg 1.2 2.4 3.6 4.2 6 
+
+ Puissance de l’appoint électrique 
+W 1500 1500 1500 1500 1500 
+
+ (option) 
+
+ 
+*Avec démarreur électronique, limitant le courant à 45A en monophasé 
+** Pré charge puis ajustement par mesure de la surchauffe à 15 °C + ou – 2 °C 
+*** Minimum : 40cm (Costic) 
+
+ 
+   Ind : AC Février 2025 / Page 10 
+
+
+
+ 
+ 
+
+Nota : 
+Toutes les caractéristiques s’appliquent à un appareil neuf comportant des échangeurs thermiques 
+propres, selon la Norme EN 15879-1 
+L’installateur doit donc avoir une parfaite maitrise de son art et connaitre la qualité de l’eau de 
+l’installation et la traiter en conséquence. 
+ 
+ 
+ 
+
+2.3.6 Etiquette signalétique 
+
+A l’intérieur ou à l’arrière de la machine se trouve l’étiquette de série de la pompe à chaleur, avec les 
+informations techniques suivantes : 
+ 
+
+1 5 
+Ind : AA OPTIPACKDUO2
+Type: Sol-Eau 8
+
+N° de série: 26134508-1901293073 Année Fab 2019
+
+Tension : 230V - 1~ - 50Hz Protection électrique: IP X1
+2 6 
+
+Puissance Calorifique* (kW) 7,55 Cop* 4,75
+
+Puissance Absorbée*/Max (kW) 1,59/1,91 Fluide frigorigène: R32
+
+Courant Absorbé*/Max (A) 7,68/9,22 Groupe:1 7 
+
+Débit eau application* (kg/s) 0,361 Charge (kg) 
+3 
+
+*Selon NF EN 15879-1 (1,5°C,30/35°C) 8 
+
+Limite de températures et pressions admissibles Schéma élec 159111 AA
+4 
+
+PS min (bar) PS max (bar) TS min (°C) TS max (°C) 9 
+Captage(R32) 4,43 11,1 -12 13
+
+Application(eau) 1,5 3 17 55
+
+R32 2,5 42 -24 64
+
+Contient un fluide frigorigène A2L et à effet de serre fluorés relevant du protocole de Kyoto
+
+ 
+ 
+*Les caractéristiques sont indiquées aux conditions d’essais. 
+ 
+ 
+ 
+  
+Repère Désignations 
+
+Le marquage CE correspond à la conformité du produit par rapport aux législations 
+1 
+
+européennes 
+2 Alimentation électrique 
+
+3 Conditions d’essai selon NF EN 15879-1 (1.5°C,30/35°C) 
+4 Limite des pressions et des températures pour le circuit frigorifique et hydraulique 
+5 Le circuit frigorifique contient un fluide inflammable : R32 
+6 Coefficient de performance 
+
+Classification du fluide frigorifique conformément à la direction des équipements sous 
+7 
+
+pression 
+La charge réelle est à indiquer par l’installateur et à rapporter sur la fiche de mise en 
+
+8 
+service 
+
+9 Numéro et indice du schéma électrique 
+
+ 
+   Ind : AC Février 2025 / Page 11 
+
+
+
+ 
+ 
+
+Dimensionnement de l’installation 
+
+ 
+
+3 Dimensionnement de l’installation 
+3.1 Etude thermique 
+
+Dans le cas d’un renouvellement de tout ou partie de l’installation initiale, l’installateur devra s’assurer, 
+avec son client, que la puissance délivrée par l’ancienne installation était compatible avec les 
+déperditions. 
+La pompe à chaleur doit être sélectionnée pour couvrir de manière optimum, les déperditions calculées 
+par le bureau d’études, majorées de 20% selon la réglementation thermique en vigueur et pour la 
+température extérieure de base.  
+La pompe à chaleur sera donc choisie dans la gamme de puissance NEXTHERM, de manière à ce que sa 
+puissance soit supérieure à 120% des déperditions. 
+ 
+Cette étude thermique doit être réalisée par un bureau d’études agréé et compétent, qui prendra en 
+compte tous les paramètres ayant une incidence sur les déperditions et en particulier : 
+
+• Le lieu de construction 
+• L’altitude, l’exposition aux vents, l’ensoleillement 
+• La nature, l’épaisseur et la qualité des isolants des parois 
+• La résistance thermique et l’étanchéité des vitrages et des portes 
+• La prise en compte des ponts thermiques 
+• Le taux de renouvellement d’air 
+• La température de confort intérieur souhaité par le client  
+
+ 
+Un calcul, viendra enrichir le dossier technique, et confirmer la déclaration du client. 
+Les puissances frigorifiques sur le capteur au mètre linéaire de tube et au mètre carré devront être 
+vérifiées afin que la machine choisie n’épuise pas le capteur. 
+
+  
+
+ 
+   Ind : AC Février 2025 / Page 12 
+
+
+
+ 
+ 
+
+ Les Capteurs 
+
+4 Les capteurs 
+
+4.1 Généralités 
+Les capteurs prélèvent environ 15W/m (en puissance moyenne journalière). 
+ 
+Si les capteurs sont déjà installés : Vérifiez impérativement la longueur et le nombre de boucles pour 
+déterminer la puissance à installer. Vérifiez la corrélation avec les émetteurs. En cas de doute veuillez 
+contacter Nextherm. 
+ 
+Les capteurs de la gamme SOL-EAU Optipack Duo sont réalisés avec du tube cuivre de qualité frigorifique 
+en 1/2’’ (Ø12.7x 0,6mm). Les capteurs implantés horizontalement ont une longueur de 80m.  
+Dans tous les cas les tubes seront gainés avec du polyéthylène pour protéger le cuivre des chocs à la mise 
+en œuvre et de la corrosion en utilisation.  
+ 
+ 
+Les capteurs sont reliés à un distributeur d’un côté et à un collecteur de l’autre. Ils répartissent le 
+réfrigérant sous forme liquide dans les capteurs et collectent le réfrigérant sous forme gazeuse pour le 
+ramener à la pompe à chaleur. 
+Les distributeurs / collecteurs ne doivent pas être en contact direct avec le sol afin de préserver l’intégrité 
+des soudures dans le temps. 
+ 
+Un test à l’azote sous une pression de 15 Bars devra valider la solidité mécanique des raccords brasés de 
+l’installation complète. 
+ 
+
+4.2 Etude Technique 
+Réalisez en collaboration avec le client, un document comportant : 
+
+• La taille et la forme du terrain disponible pour le captage ainsi que son ensoleillement. 
+• Les éléments de structures existants ou futurs (bâtiment, piscine, mur, fosses, …) 
+• Les emplacements où seront installés la pompe à chaleur ainsi que les accessoires (regards pour 
+
+la distribution …)  
+• Les arbres (pour s’éloigner des racines présentes ou à venir et pour tenir compte de l’ombre sur 
+
+le capteur)  
+• L’accessibilité aux engins de chantier  
+• Les réseaux souterrains (égouts, téléphone, électricité, …) 
+
+ 
+Le concours du client final est intéressant car il pourra renseigner le technicien sur le type de clôture ou 
+de haie qui seront implantés : mur avec arbustes, haies chez le client, haies chez le voisin, … 
+
+ 
+Respectez les distances d’implantation suivantes : 
+
+ 
+Obstacles Distance 
+
+Arbres (tronc) 3m 
+
+Bâtiments, piscine, Réseaux 2m 
+hydrauliques, égouts, … 
+Réseaux enterrés non hydrauliques, 1 m 
+murs de clôture 
+Haies, allées, …  à l’appréciation de l’installateur et son 
+
+client 
+ 
+
+ 
+   Ind : AC Février 2025 / Page 13 
+
+
+
+ 
+ 
+
+Tracez sur le plan de masse, les distances d’éloignement des ouvrages et des dispositifs techniques à 
+protéger.  
+ 
+Tracez alors les regards pour les distributeurs / collecteurs, les tubes de liaisons ainsi que les capteurs.  
+ 
+Dans l’exemple ci-dessous, les distances d’éloignement à minima sont signalées en bleu. 
+ Le bâtiment et les ouvrages bétonnés sont en rouge ainsi que les allées. 
+ 
+La zone de captage la plus étendue est alors facilement identifiable.  
+ 
+ 
+ 
+ 
+ 
+
+ 
+  
+
+ 
+   Ind : AC Février 2025 / Page 14 
+
+
+
+ 
+ 
+
+4.3 Captage horizontal 
+
+4.3.1 Généralités 
+
+Nature du sol 
+Si l’installateur estime que les pierres contenues dans la terre sont susceptibles de blesser ou écraser le 
+tube, il doit dégager toutes les pierres effleurant le fond et réaliser un lit de terre végétale de 15cm 
+minimum au-dessus du capteur. 
+Un sol argileux qui a été tassé par la tractopelle lors du décapage doit être biné avant l’installation du 
+
+capteur. 
+ 
+ 
+Capteurs 
+Les tubes sont maintenus par des crampons de sol afin de respecter le pas entre deux tubes. 
+ 
+Les départs capteur doivent être isolés avec du polyéthylène quand l’écartement est inférieur au pas.  
+ 
+Il faut éviter toutes intrusions de terre et d’humidité dans les capteurs lors de la mise en œuvre. 
+ 
+
+ Les longueurs des boucles de capteur ne doivent pas être raccourcies. 
+ 
+Les capteurs sont successivement désoperculés puis soudés un par un au distributeur ou collecteur, en 
+prenant toutes les mesures nécessaires pour éviter toute entrée d’humidité dans la couronne. 
+ 
+
+ Vérifier que chaque couronne est encore sous pression. Si une couronne n’est plus sous pression ne 
+l’installez pas et remplacez celle-ci par une autre.  
+
+ Prévoyez donc toujours une couronne en plus à disposition des opérateurs. 
+ 
+Faire l’opération par temps sec (la pluie amènerait de l’humidité) et par un technicien aguerri à la soudure 
+frigorifique et titulaire de son attestation d’aptitude. 
+ 
+Si le terrain est en pente (dénivelé > 1.5m) et si le fluide circule à la monté il est nécessaire de réaliser des 
+pièges à huile (principe : aider l’huile à monter car la vitesse du fluide frigorifique sur capteur horizontal 
+est basse). 
+ 
+Grillage avertisseur 
+Un dispositif avertisseur doit être enterré à 30cm de profondeur (NF T 54-080). 
+ 
+Distributeur / collecteur 
+Afin de pouvoir placer toutes les boucles, il est préférable d’implanter le distributeur /collecteur au centre 
+du terrain. 
+ 
+Le distributeur / collecteur doit être installé dans un regard enterré avec le couvercle arrivant en surface 
+afin de faciliter la mise en œuvre et l’entretien.  
+ 
+Tubes de liaison 
+Les tubes de liaison fournis par Nextherm sont isolés thermiquement. Ils doivent restés isolés jusqu’à la 
+pompe à chaleur. Si le terrain est en pente (dénivelé > 1.5m) et que la PAC est en point haut par rapport 
+au capteur, il est nécessaire de réaliser des pièges à huile sur le tube d’aspiration fluide. (Principe : aider 
+l’huile à monter vers le compresseur). 
+ 
+ 
+Contrôle du capteur 
+Une fois que la pompe à chaleur, les liaisons, le collecteur, le distributeur et les couronnes capteur sont 
+raccordés entre eux, l’installateur vérifiera l’étanchéité globale de l’installation en effectuant une mise 
+sous pression d’azote de 15 bars (pression du R32 à 25°C). 
+Les soudures doivent être examinées avec une lotion pour la détection des fuites (type 1000 bulles®). 
+
+ 
+   Ind : AC Février 2025 / Page 15 
+
+
+
+ 
+ 
+
+Documents 
+Un plan de récolement devra être réalisé au plus tôt sur la base du document technique afin que le maître 
+d’ouvrage dispose de ces documents pour ses éventuels futurs travaux (piscine, arbre).  
+La réalisation de clichés répertoriés par l’installateur est aussi conseillée. 
+ 
+Exemple d’implantation sur zone décapée : 
+
+ 
+
+4.3.2 Surface de captage 
+
+La surface du capteur est le résultat du calcul : 
+Surface (m2) = Puissance frigorifique extraite (W) / Débit d’extraction (W/m2) 
+ 
+Puissance frigorifique extraite  
+C’est la puissance extraite du sol en fonction des déperditions du bâtiment et éventuellement de la 
+chauffe de l’eau chaude sanitaire. 
+ 
+Vérifier que la puissance captée en moyenne sur 24 h, ne dépasse pas les valeurs indiquées par le COSTIC : 
+En watt par m² de capteur, en watt par mètre de tube et en kWh par m² et par an. 
+ 
+Taux d'extraction  
+C’est une valeur normalisée en fonction de la nature du sol et de la durée annuelle de fonctionnement* 
+ 
+
+Débit d’extraction de chaleur spécifique 
+Qualité du sol Période de fonctionnement Période de fonctionnement 
+
+1800 h par an 2400 h par an 
+Sol sec, non cohésif 10 W/m² 8 W/m² 
+Sol humide cohésif 20 à 30 w/m² 16 à 24 W/m² 
+Sable ou gravier saturé d’eau 40 W/m² 32 W/m² 
+* Tableau extrait de la norme EN 15450:2007 
+
+ 
+   Ind : AC Février 2025 / Page 16 
+
+
+
+ 
+ 
+
+On constate que la surface du capteur va dépendre de la nature du sol.  
+ 
+Par analogie, on peut déduire que si le temps de fonctionnement est aux alentours de 1000h, le taux 
+d’extraction peut augmenter proportionnellement. 
+ 
+Le calcul du temps est donc intéressant pour choisir la puissance de sa PAC. 
+ 
+Surface 
+La surface du capteur est ainsi calculée au plus juste. Une surface supérieure, quand c’est possible 
+augmente les performances. 
+ 
+
+4.3.3 Captage en tranchées 
+
+Dans le cas où le captage sur terrain décapé n’est pas ou partiellement réalisable (zone étroite, zone avec 
+arbres, …) il est possible de faire la totalité ou une partie du captage par tranchées. 
+ 
+L’installateur peut donc réaliser son capteur à partir de tranchée de 0.5m minimum sur 0.6m de 
+profondeur. 
+ 
+Les tranchées permettent de s’adapter à la configuration du terrain. Une répartition des tranchées, à la 
+limite de la propriété quand c’est possible, permet d’optimiser la surface disponible. 
+ 
+Si les capteurs doivent être implantés parallèlement, le décapage est préférable aux tranchés mais les 
+tranchées peuvent être aussi réalisé avec un entre axe minimum de 1.2m. 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+
+  
+
+ 
+   Ind : AC Février 2025 / Page 17 
+
+
+
+ 
+ 
+
+4.4 Les liaisons 
+Réalisez le passage des liaisons d’après les préconisations suivantes (vue de côté en coupe) : 
+ 
+
+ 
+ 
+ 
+Veuillez particulièrement à rétablir l’étanchéité du passage du mur à l’aide de matériaux appropriés. 
+ 
+Les tuyaux aller-retour ne doivent pas être en contact mais isolés thermiquement avec un isolent 
+spécifique (polyéthylène) entre eux deux et étanches envers l’environnement. 
+
+4.4.1 Dimensionnement des liaisons capteur 
+
+Les liaisons doivent être enterrées et espacées à la même profondeur que les capteurs horizontaux. 
+Les longueurs des rouleaux sont de 25m. 
+Le raccordement soudé entre deux longueurs doit être accessible (regard). 
+ 
+ 
+ Longueurs maximum théoriques des liaisons des capteurs horizontaux en 
+ mètres 
+ Générateur 2 4 6 8 10 
+ aller Ø1/2" 
+ 25 20 10   
+
+retour Ø1/2 ‘’ 
+ aller Ø1/2" 
+  35 25 20 15 
+
+retour 5/8 ‘’ 
+ aller Ø1/2" 
+   50* 42 32 
+
+retour 3/4 ‘’ 
+ aller Ø5/8" 
+
+    35 40 
+retour Ø3/4‘’ 
+
+ 
+*Ne pas dépasser 2 longueurs de 25m soit 50m. 
+ 
+
+ 
+   Ind : AC Février 2025 / Page 18 
+
+
+
+ 
+ 
+
+4.5 Remise en place de la terre 
+Le sol doit être exempt de grosses pierres (100 cm3) et la densité de pierres doit être inférieure à 25%. 
+Dans le cas contraire, supprimer toutes les pierres sur le passage du capteur et recouvrir le capteur d’un 
+lit de 15cm de terre végétale. 
+ 
+Maintenir la pression d’azote à 15 Bar lors de la phase de remblaiement. 
+ 
+Lors du remblaiement, le terrassier ne doit pas rouler sur les tubes, mais sur la terre qu’il poussera devant 
+les roues de sa tractopelle.  
+ 
+L’installateur devra superviser le remblaiement. 
+ 
+L’installateur posera un grillage avertisseur à 30 cm au-dessus des tubes, sur toute la surface du capteur 
+(conforme à la norme NFT 54-080). 
+
+4.6 Distributeurs et collecteurs 
+Le raccordement des tubes de captages et des émetteurs se fait par l’intermédiaire de collecteurs et de 
+distributeurs qui sont conçues pour faire une répartition harmonieuse du fluide R32. 
+Il convient de les positionner selon un axe vertical afin de maitriser les départs et les retours de l’huile 
+frigorifique présente dans l’installation. Cette huile ne doit en aucun cas se retrouvé piégée en un point du 
+circuit.  Les distributeurs et collecteurs sont fournis avec des adaptateurs cuivre pour faciliter les 
+raccordements. 
+ 
+ 
+   Montage vertical 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+4.7 Remplissage par le capteur 
+ATTENTION : Le raccordement et le remplissage du capteur seront obligatoirement réalisés par une 
+entreprise ou un artisan possédant une attestation de capacité et un opérateur possédant l’attestation 
+d’aptitude pour la manipulation des fluides frigorigènes. 
+ 
+Procéder au tirage au vide de l’installation pour atteindre une valeur de l’ordre de 10mBar absolu 
+(mesuré avec un vacuum mètre et non avec le manifold) et vérifier que cette valeur se maintienne après 
+l’arrêt de la pompe à vide.  
+ 
+L’objectif du tirage au vide est double : Ne pas avoir de gaz étrangers dans l’installation (azote, air), mais 
+surtout d’éliminer toute trace d’humidité, vecteur de transformation acide à plus ou moins long terme. 
+ 
+ATTENTION : L’évaporation de l’humidité devient difficile en dessous une température limite de 10°C. 
+
+ 
+Pour améliorer l'efficacité de la déshumidification, il faut "casser le vide", c'est-à-dire 
+introduire une certaine quantité d'azote pour retrouver la pression atmosphérique, puis retirer 
+l'installation au vide. Cette opération peut être répétée plusieurs fois en cas de suspicion d'humidité 
+(méthode des 3 vides). 
+ 
+Ne jamais laisser une machine sous vide pendant une durée prolongée sans que la pompe à vide ne soit 
+en fonction (prise d’humidité par une éventuelle micro fuite sur les raccords et tuyaux de la pompe à 
+vide). 
+
+ 
+   Ind : AC Février 2025 / Page 19 
+
+
+
+ 
+ 
+
+ 
+Effectuez la charge de l’installation avec du R32 à 50% de la charge indiquée dans le tableau des 
+caractéristiques techniques. Le remplissage doit se faire par la valve après le détendeur, au niveau du 
+départ capteur. 
+ 
+Démarrez la pompe à chaleur et attendre quelques heures pour obtenir un régime de fonctionnement     
+stabilisé. 
+
+ 
+Mesurez la surchauffe de la pompe à chaleur. 
+Ajustez la charge pour atteindre une surchauffe de 15°C plus ou moins 2 sur un capteur chaud (début de 
+saison de chauffage ou installation neuve). 
+En cas de mise en service sur un capteur froid (en cours de saison de chauffe) cette surchauffe peut être 
+réduite à 11°C plus ou moins 1°C. 
+
+ 
+ATTENTION : le cycle est lent, attendre 10mn entre deux apports de charge. 
+ 
+Relevez la surchauffe et le sous refroidissement. 
+Vérifiez l’étanchéité du circuit lors de la mise en service et environ un mois après (détection d’une fuite de 
+moins de 5g / an). 
+
+  
+
+ 
+   Ind : AC Février 2025 / Page 20 
+
+
+
+ 
+ 
+
+Emetteurs 
+
+5 Emetteurs 
+
+5.1 Généralité 
+L’OPTIPACKDUO2 dispose d’un groupe thermodynamique permettant d’alimenter aussi bien un plancher 
+chauffant que des convecteurs ou des radiateurs.  
+ 
+Le plancher chauffant est raccordé en direct sur la pompe à chaleur. 
+Il convient de vérifier que les courbes de débit et de pression du circulateur soient en corrélation avec le 
+débit nécessaire et la perte de charge de la boucle la plus longue. 
+ 
+Le circuit de chauffage nécessite une quantité d’eau permettant un temps de cycle minimum de 30mn. 
+L’installateur doit donc éventuellement compléter le volume d’eau de l’installation par un ballon tampon, 
+notamment dans le cas d’installation avec radiateurs ou convecteurs. 
+ 
+Le pilotage de la PAC se fait par un thermostat d’ambiance ou par un équipement de régulation de la 
+température de l’eau du réseau de chauffage, soit fixe soit variable en fonction de la température 
+extérieur. 
+ 
+L’OPTIPACKDUO2 est fourni sans régulation afin de l’adapter aux besoins et envies de l’utilisateur et à la 
+spécificité de l’installation. Aussi, vous pouvez choisir parmi plusieurs options disponibles chez NEXTHERM 
+ou installer votre propre système de régulation. Option disponible chez NEXTHERM :  
+ 
+
+- Thermostat d’ambiance radio : code 1 ELE0090 
+- Thermostat d’ambiance filaire programmable : code 1 ELE0089 
+- Thermostat d’ambiance radio et connecté : code 1 ELE0258 
+
+ 
+ 
+Avant tout remplissage des circuits neufs ou en rénovation, procéder au rinçage puis à une purge 
+complète des circuits à l’aide d’une pompe extérieure et prévue à cet effet. 
+Nous conseillons l’installation d’un filtre à tamis et un pot de décantation magnétique sur le retour des 
+émetteurs afin d’éviter l’encrassement de l’échangeur et le gommage du circulateur. 
+
+5.2 Planchers chauffants 
+Il existe une offre pléthorique de solutions provenant de très nombreux fournisseurs de tubes, d’isolant, 
+d’accessoires, avec des techniques de pose qui peuvent varier selon le produit choisi. 
+Chaque installateur a souvent un fournisseur privilégié avec lequel il a développé un savoir-faire dans 
+toute son entreprise et particulièrement pour les personnes chargées de la pose. 
+Il n’est donc pas dans notre rôle de dire ici, quelle est la solution et en décrire une seule. Nous nous 
+contenterons de rappeler les grands principes. 
+Toutefois, pour des raisons d’inconfort utilisateurs, nous déconseillons les planchers chauffants de fortes 
+épaisseurs avec tubes de chauffages intégrer à la dalle de compression. Les apports solaires par les 
+ouvertures vitrées, cumulés avec la forte inertie du plancher sont incompatibles même avec une 
+régulation de type loi d’eau. 
+Nextherm se dégage de toutes responsabilités en cas de difficultés de chauffage suivant une telle mise en 
+œuvre. 
+ 
+ 
+Respect des règles 
+
+• Les DTU en vigueur (mise en œuvre, sécurité, …) 
+• La norme NF EN 1264 1-2-3-4 
+• Les règles de l’art  
+• Les prescriptions du fabricant du plancher chauffant 
+
+ 
+   Ind : AC Février 2025 / Page 21 
+
+
+
+ 
+ 
+
+ 
+Une pompe à chaleur fonctionne correctement avec un différentiel de température de 5K entre le départ 
+et le retour du plancher.  
+ 
+La longueur maximale des boucles en tube de 13/16 ne devra pas dépasser 80 m. 
+La qualité de l’isolation de sol est primordiale : utiliser un isolant incompressible. 
+Une bande d’isolation périphérique allant de la dalle porteuse jusqu’à la surface finie de l’habitation. 
+Aucun raccord ne sera réalisé dans la chape. 
+La première mise en chauffe ne pourra intervenir qu’après un délai minimum de 21 jours après la 
+réalisation de la chape.  
+La montée en température devra être lente et régulière, selon les prescriptions du DTU 65-14. 
+ 
+Dimensionnement des liaisons entre le plancher et la PAC 
+Les diamètres des tuyauteries doivent être déterminés de manière à respecter une perte de charge 
+linéaire comprise entre 10 et 15 mm de colonne d’eau par mètre. Le tableau ci-dessous donne des valeurs 
+indicatives qui devront être ajustées en fonction de caractéristiques de l’installation et des matériaux 
+utilisés pour effectuer les liaisons. 
+ 
+ 
+
+Longueurs Maximum « aller » entre la PAC et les collecteurs plancher 
+
+Générateur 2 4 6 8 10 
+
+Nombre de boucles 
+3 5 7 9 11 
+
+Ø13/16 minimum 
+
+Ø 20 Ep 
+60 m 22 m 6 m -  
+
+1,9 
+Tubes de 
+liaisons Ø 25 Ep 
+
+- 45 m 20 m 15 m 8m 
+planchers               2,3 
+Ø Ext x Ep 
+
+Ø32 Ep  
+- - 80m 60m 23m 
+
+3 
+
+ 
+ 
+
+5.3 Radiateurs ou convecteurs 
+ 
+Les radiateurs ont généralement des puissances affichées pour des régimes de température de 90/70°C 
+ou 70/50°C. Il convient donc de dimensionner ses radiateurs à un régime de température d’eau de 
+45/40°C maximum, voir plus bas afin d’augmenter le COP de l’installation. 
+ 
+Le volume du ballon tampon éventuellement nécessaire à l’inertie de l’installation doit être au minimum 
+de 15L/kW. 
+ 
+Le réglage du circulateur de la PAC doit permettre un débit correspondant à la puissance calorifique avec 
+un différentiel de 5°C.  
+ 
+Le réglage du circulateur « à pression proportionnelle » permet à la pression dynamique du circuit de 
+chauffage de chuter jusqu’à 50% en fonction du débit, pour accompagner la fermeture des robinets 
+thermostatiques.  
+ 
+Le réglage du circulateur de la PAC « à pression constante » donne quant à lui évidemment une pression 
+constante. 
+ 
+Le choix du mode de fonctionnement et le réglage de la vitesse se font avec des boutons poussoirs ou un 
+bouton tournant suivant le modèle (voir notice spécifique aux circulateurs). 
+
+  
+
+ 
+   Ind : AC Février 2025 / Page 22 
+
+
+
+ 
+ 
+
+5.4 Schémas hydrauliques 
+Plancher chauffant 
+ 
+Le schéma hydraulique est déterminant pour obtenir le meilleur résultat sur une installation de chauffage 
+par pompe à chaleur. 
+Le COP d’une pompe à chaleur est conditionné par l’écart de température entre la température 
+d’évaporation et la température de condensation.  
+On peut tant soit peu agir en dimensionnant largement le capteur mais c’est la température des 
+émetteurs qui est déterminante. Elle doit être la plus basse possible. 
+ 
+L’émetteur, avec le meilleur résultat en termes de coefficient de performance (COP), est celui dont la 
+température d’émission est la plus basse. Nous avons donc par ordre le plafond rayonnant avec des 
+températures de 25°C environ le plancher chauffant avec des températures d’eau de 35°C environ suivant 
+le pas de pose, et pour finir le radiateur basse température avec des températures d’eau de 45°C environ. 
+ 
+L’utilisation d’un ballon tampon est nécessaire pour les plancher chauffants à deux zones de régulation. 
+La taille du ballon tampon, pour éviter les cours cycles, est à calculer suivant la puissance de la pompe à 
+chaleur (par défaut environ 15L/kW). 
+ 
+Nextherm propose un kit KDZBP permettant de réguler indépendamment 2 zones de chauffage en 
+plancher chauffant. Ce kit contient deux thermostats d’ambiance radio intégré à la PAC et deux 
+électrovannes non monté à installer sur le départ des deux zones, d’une vanne de décharge et d’un ballon 
+de tampon équipé de ses bouchons, de quatre vannes manuelles, d’une vanne de vidange et d’un 
+purgeur. 
+ 
+Schéma hydraulique générique d’une installation avec kit 2 zones plancher (kit KDZBP), ECS, résistance 
+d’appoint, Piscine. ( à compléter suivant installation) 
+ 
+
+Echangeur EV1 M
+barrage
+
+CDCB
+Filtration
+
+KIT KEB Pompe Rejet
+Soupape mano ( PAC eau-eau) KIT KDZBP
+
+B
+VS AB M
+
+Bal lon V3VZ2 B A
+tampon VS V3VZ1
+
+AB
+Retour M
+
+KIT KR capacité 
+
+Capteur  15l/ kw A
+SMATPACK
+
+VS VS VDD
+TH2 TH1
+
+Soupape mano RA
+Départ
+Capteur  Disconnecteur
+
+Pot de décantation avec 
+anneau magnétique
+
+Départ
+ECS THECS
+
+B B
+AB
+
+Ballon ECS AB M Traitement
+M
+
+V3VP
+A
+
+A THP
+V3VECS Delta T°
+
+Entrée échangeur Piscine:
+d'eau 
+
+KIT ECS KIT KP 8 °C primaire
+froide 6,5°C secondaire
+
+Echangeur
+piscine
+
+Filtre Pompe
+
+Circuit réalisé à l'aide des KITS Suivants: 
+PAC équipée de vase(s) d'expansion 8L KIT KDZBP: Kit 2 zones (plancher)
+prévoir un vase supplémentaire suivant capacité et température du circuit hydraulique de chauffage KIT ECS: Kit Eau chaude sanitaire
+Nota: les sorties B des vannes 3 voies zone 1 et zone 2 doivent être bouchées KIT KEB: Kit échangeur de barrage (uniquement PAC eau-eau)
+Les accessoires en pointillés ne sont pas inclus dans les kits NEXTHERM KIT KR: Kit résistance d'appoint
+
+KIT KP: Kit piscine
+Nomenclature: THECS: Thermostat eau chaude sanitaire
+V3VZ1: Vanne trois voies Zone 1 V3VECS: Vanne 3 voies eau chaude sanitaire
+V3VZ2: Vanne trois voies Zone 2 CDCB: contrôleur de circulation barrage
+VDD: Vanne de décharge différentielle EV1: Electrovanne échangeur de barrage Dessiné par: PM Schémas hyraulique SMARTPACK avec  KITS:2 
+VS: Vanne à sphères FxF 1'' et réduction 1''/1/4 RA: Resistance d'appoint Date: 04/10/2019 zones plancher maîtres, ECS, Echangeur de 
+
+TH1, TH2: Thermostats d'ambiance des zones 1 et 2, V3VP: Vanne troies voies piscine Modifié par PM barrage, Résistance d'appoint, Piscine
+
+(dans les pièces les plus chaude des zones 1 et 2) THP: Thermostat piscine Date: 03/12/2020  ind AB  
+
+ 
+   Ind : AC Février 2025 / Page 23 
+
+
+
+ 
+ 
+
+ 
+Radiateurs  
+ 
+Schéma hydraulique générique d’une installation avec kit 2 zones radiateurs basse température (kit  
+KDZBR), ECS, résistance d’appoint, Piscine. (à compléter suivant installation) 
+ 
+ 
+
+ 
+ 
+
+ 
+L’utilisation d’un ballon tampon est nécessaire pour les convecteurs et les radiateurs. La taille du ballon 
+tampon, pour éviter les cours cycles, est à calculer suivant la puissance de la pompe à chaleur (par défaut 
+environ 15L/kW). 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Kit 2 zones plancher et radiateurs  
+ 
+Un kit permettant de distribuer la température adéquate sur le circuit radiateur et le circuit plancher 
+chauffant est proposé pour les installations mixtes. Ce kit contient deux thermostats d’ambiance radio 
+intégré à la PAC, deux circulateurs non montés à installer sur les circuits radiateurs et plancher chauffant, 
+d’une vanne mélangeuse avec son régulateur de température pour plancher chauffant, d’un ballon de 
+tampon équipé de ses bouchons, de deux vannes manuelles, d’une vanne de vidange et d’un purgeur. 
+ 
+ 
+ 
+
+ 
+   Ind : AC Février 2025 / Page 24 
+
+
+
+ 
+ 
+
+Schéma hydraulique générique d’une installation avec kit 2 zones plancher radiateurs ( kit KDZBPR) et 
+options, piscine, résistance d’appoint, eau chaude sanitaire. (à compléter suivant installation)  
+ 
+
+Echangeur
+EV1 M
+
+barrage
+
+CDCB
+Filtration
+
+KIT KEB Pompe Rejet
+
+Soupape mano ( PAC eau-eau)
+
+VS
+RA TH2 Rad ou VCV
+
+CIR4
+Bal lon 
+
+tampon 
+Retour capacité 
+
+15l/ kw M
+Capteur  KIT KR Plancher chauffant
+
+SMARTPACK
+
+V3VR
+Soupape mano CIR3
+
+Départ TH1
+
+Capteur  Disconnecteur
+VS
+
+KIT KDZBPR
+Pot de décantation avec 
+
+anneau magnétique
+Départ
+
+ECS THECS B
+B
+
+AB
+Ballon ECS AB M Traitement
+
+M V3VP
+A
+
+A THP
+V3VECS Delta T°
+
+Entrée 
+d'eau KIT KP échangeur Piscine:
+
+KIT ECS 8 °C primaire
+froide Echangeur 6,5°C secondaire
+
+piscine
+Filtre Pompe
+
+Circuit réalisé à l'aide des KITS Suivants: 
+PAC équipée de vase(s) d'expansion 8L KIT KDZBPR: Kit 2 zones plancher et radiateurs
+prévoir un vase supplémentaire suivant capacité et température du circuit hydraulique de chauffage KIT ECS: Kit Eau chaude sanitaire
+Les accessoires en pointillés ne sont pas inclus dans les kits NEXTHERM KIT KEB: Kit échangeur de barrage
+
+KIT KR: Kit résistance d'appoint
+KIT KP: Kit piscine
+
+Nomenclature: V3VECS: Vanne 3 voies eau chaude sanitaire
+CIR4: Circulateur circuit zone 2 THECS: Thermostat eau chaude sanitaire
+CIR3: Circulateur circuit zone 1 CDCB: contrôleur de circulation barrage
+V3VR: Vanne trois voies régulé zone 1 de 35 à 45°C EV1: Electrovanne échangeur de barrage Dessiné par: PM Schémas hyraulique SMARTPACK eau glycolèe 
+
+eau avec KITS: 2 zones plancher radiateurs, ECS, 
+VS: Vanne à sphères FxF 1'' et réduction 1''/1/4 RA: Resistance d'appoint Date: 04/10/2019
+
+Echangeur de barrage, Résistance d'appoint, 
+TH1, TH2: Thermostats d'ambiance des zones 1 et 2 V3VP: Vanne troies voies piscine Modifié par Piscine
+(dans les pièces les plus chaudes des zones 1 et 2) THP: Thermostat piscine Date:  ind AA  
+ 
+Montage avec loi d’eau 
+ 
+Une loi d’eau est un procédé qui permet de déterminer la température de l’eau à générer en fonction de 
+la température extérieure. 
+La prescription d’une régulation par loi d’eau est du ressort du chauffagiste. Le pilotage de la PAC se fait 
+alors en fonction de la température extérieure et des thermostats d’ambiance. 
+ATTENTION ; Afin de limiter les fluctuations de températures interne à l’habitation, il est nécessaire de 
+limiter l’inertie des planchers chauffants, enrobage des tubes par 4 à 6cm maximum. De même, les 
+apports solaires devront être maitrisés, pour ne pas surchauffer l’ambiance. 
+ 
+Résistance d’appoint 
+ 
+Dans certains cas, il peut être nécessaire d’ajouter une résistance d’appoint électrique. Une solution 
+d’appoint intégré à la machine de 1500 w existe en option. Cet appoint nécessite l’ajout de pièces sur le 
+circuit électrique et sur le circuit hydraulique. Nous conseillons que cet appoint soit installé en usine, 
+toutefois il pourra être ajouté ultérieurement par un technicien averti. Les schémas électriques intègrent 
+cette option. D’autres puissance de résistances d’appoint sont disponibles en montage externe. 
+ 
+Chauffage de piscine 
+ 
+Un kit permet de chauffer une piscine via l’OPTIPACK2. Ce kit est composé d’un échangeur spécifique de 
+chauffage de piscine et d’un coffret électrique. Ce kit nécessite une intervention sur la platine électrique 
+de l’OPTIPACK2 et nous conseillons de le commander avec la machine. Il est toutefois possible de le faire 
+installer ultérieurement par un technicien qualifier. 
+
+ 
+   Ind : AC Février 2025 / Page 25 
+
+
+
+ 
+ 
+
+Raccordements hydrauliques  
+et  
+
+frigorifiques 
+
+6 Raccordements frigorifiques et hydrauliques 
+
+6.1 Raccordements frigorifiques 
+ 
+Les tuyaux et les éventuels accessoires ne doivent pas être montés sur des cloisons intérieures 
+susceptibles de transmettre des sons ou des vibrations. 
+ 
+Lors de la soudure des raccords frigorifiques (brasage), maintenir un chiffon humide aux passages des 
+parois pour éviter toutes surchauffes de l’isolant et des composants. Départ en ½ ‘’ et retour en 5/8’’ . 
+ 
+Les canalisations du circuit se trouvant à des températures négatives, il est impératif de les calorifuger 
+afin d’éviter la formation de condensation et de glace sur les tuyauteries. La formation de glace et de 
+condensation n’a pas d’influence technique sur le fonctionnement de l’OPTIPACKDUO2 mais implique 
+un désagrément à l’utilisateur. (Présence d’eau au sol) 
+ 
+
+6.2 Raccordements hydrauliques et accessoires des circuits chauffage et capteur 
+ 
+Le raccordement de la PAC au circuit chauffage est réalisé au moyen de liaison souple en 1 ‘’ mâle de 500 
+mm de longueur minimum afin de limiter la transmission de vibration à l’installation.  
+ 
+Il est nécessaire de prévoir un dispositif de remplissage équipé d’un disconnecteur (en option) et d’un 
+dispositif permettant de limiter la montée en pression du circuit chauffage. (Soupape de sécurité et 
+manomètre fourni non montés) 
+ 
+Il est nécessaire de prévoir une vanne de remplissage bouchonné sur laquelle connecté la pompe 
+d’injection. 
+ 
+Veillez à maintenir les raccords de la PAC lors du serrage des liaisons souples pour éviter une déformation 
+des tubes. 
+ 
+Nous préconisons l’ajout d’un filtre à boues magnétique sur les retours et d’un traitement d’eau sur le 
+circuit chauffage. 
+ 
+ 
+ Accessoires de raccordement proposé en option  
+ 
+
+ 
+N° de kit Désignation 
+HYD0192 Disconnecteur 1/2 
+HYD0026 Pot de décantation 1’’ 
+
+ 
+  
+
+ 
+   Ind : AC Février 2025 / Page 26 
+
+
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+ 
+ Vue arrière 
+ 
+ 
+
+ 
+ Départ chauffage 
+ 
+ Retour capteur 
+
+ 5/8 1/2 1’’F 1’’F 
+ 
+
+Retour chauffage 
+ 
+ 
+
+Départ capteur 
+ 3/4’’F 
+
+Départ Eau 
+ Chaude Sanitaire  
+ 
+ 3/4’’F 
+ 
+
+Entrée Eau 
+ Sanitaire  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+6.3 Accessoires 
+Le circuit de chauffage doit comprendre : 
+ 
+
+• Des liaisons souples pour ne pas transmettre les vibrations de la PAC au reste de l’installation 
+• Une soupape de sécurité tarée à 3 Bar g avec un monomètre de 0 à 4 Bar g (1HYD0154) 
+• Un disconnecteur à zones de pression réduite non contrôlable pour le remplissage du circuit de 
+
+chauffage (1HYD0025) 
+• Un pot de décantation magnétique (1HYD0026) 
+• Un filtre à tamis 
+• Des vannes d’isolement en 1’’ 
+• Un produit de traitement de l’eau de chauffage (boues, corrosion) 
+
+ 
+
+7 Raccordement électrique 
+ 
+ 
+L’alimentation de la PAC se fera depuis un départ spécifique dans le tableau électrique du client.  
+Les sections, les longueurs des lignes et le type de disjoncteurs pour l’alimentation du compresseur et de 
+la résistance sont indiquées dans les tableaux des caractéristiques techniques situées en page 10. 
+ 
+Il est nécessaire d’effectuer un resserrage des connexions électriques, notamment sur les câbles de 
+puissance du côté du compresseur (couple : 2.5Nm) avant la mise en service. 
+
+ 
+   Ind : AC Février 2025 / Page 27 
+
+
+
+ 
+ 
+
+ 
+Il conviendra de s’assurer que la tension minimum au démarrage ne chute pas en dessous de 220 V.  
+ 
+Raccordez la commande thermostatique sur les bornes de la machine suivant le schéma fourni avec la 
+PAC. 
+ 
+Important : Sécurité électrique 
+ 
+Afin de s’assurer que l’électricité ne soit pas rétablie sur la PAC durant les manipulations, les disjoncteurs 
+doivent être munis d’un dispositif de condamnation efficace. 
+ 
+ATTENTION : 
+Passez les câbles d’alimentation de puissance et de commande dans les presses étoupes, puis serrez les 
+écrous des presses étoupes une fois les câbles raccordés.  
+ 
+L’installation et les raccordements devront être conformes à la norme EN60335-1 et EN60335-2-
+40 (Sécurité des appareils électrodomestiques). 
+
+7.1 Schéma électrique 
+ 
+La compréhension du schéma électrique permet la maitrise de l’installation. 
+L’état des capteurs composants la chaine de sécurité donnent une information précise sur la cause d’un 
+éventuel dysfonctionnement de l’installation. 
+ 
+Le schéma électrique intègre le câblage des différentes options possible sur l’OPTIPACKDUO2. Dans un 
+souci de compréhension, les options ont été dessiné dans une couleur spécifique à l’option. 
+ 
+Pour des raisons de disponibilité du circuit de chauffage et d’ECS, l’alarme haute pression n’est pas à 
+réarmement manuel. Il est donc nécessaire d’établir une maintenance périodique, et de sensibiliser 
+l’utilisateur sur ce point. 
+
+ 
+
+  
+
+ 
+   Ind : AC Février 2025 / Page 28 
+
+
+
+ 
+ 
+
+Production d’ECS et ballon d’eau chaude  
+
+8 Ballon ECS  
+
+8.1 Données constructeurs 
+L’OPTIPACKDUO est équipé d’un dispositif pour générer et stocker de l’eau chaude sanitaire. 
+Le chauffage et l’eau chaude sanitaire sont produits alternativement. 
+L’indicateur thermostatique en façade donne la priorité à l’eau chaude sanitaire dès que la température 
+mesurée par la sonde interne au ballon descend en dessous la consigne d’arrêt moins le différentiel. 
+La consigne d’arrêt est fixée en usine à 50°C et le différentiel à 5°C, ce qui donne une température de 
+démarrage de la fonction eau chaude sanitaire à 45°C. 
+
+ A savoir que l’augmentation de 5°C de la température de consigne augmente de 25% la 
+consommation de la pompe à chaleur. 
+
+ 
+
+8.1.1Caractéristiques dimensionnelles 
+
+Diamètre des ballons : Ø600mm 
+ 
+
+Volume (l) Surface échange (m2) Hauteur (mm) 
+170 2 1170 
+
+ 
+
+8.1.2Isolation 
+
+Matière Polyuréthane 
+
+Epaisseur 50 mm 
+
+Constante refroidissement 0.176 Wh/l/K 
+170L Par 24h 
+
+ 
+
+8.2 Raccordements hydrauliques : 
+ 
+Avant tout raccordement au chauffe-eau, les canalisations doivent être rincées suffisamment pour 
+qu’aucune particule solide, métallique ou de brasure puissent être introduite dans la cuve. 
+ 
+Sécurité du ballon : Un groupe de sécurité conforme à la norme EN 1487 doit être installé sur l’entrée 
+d’eau froide. Ce groupe doit être manœuvré au minimum 2 fois par mois pour éviter que le calcaire 
+s’accumule et empêche le bon fonctionnement. Aucun autre élément de fermeture ne sera placé entre ce 
+groupe de sécurité et le chauffe-eau. 
+
+ Réducteur de 
+ pression 
+
+Groupe de 
+ 
+
+sécurité Vanne 
+ 
+
+d’arrêt 
+ 
+ 
+
+Arrivée d’eau 
+  
+
+Entrée dans froide 
+ 
+
+l’OPTIPACKDUO2 
+la DUO   
+
+Vers  conduite 
+
+ de vidange 
+
+ 
+   Ind : AC Février 2025 / Page 29 
+
+
+
+ 
+ 
+
+ 
+Protection du ballon : Un raccord diélectrique sera obligatoirement posé sur la sortie d’eau chaude. 
+ 
+-Remarque 1 : L’utilisation d’un vase d’expansion, à l’entrée du ballon, spécial eau sanitaire, peut 
+permettre des économies d’eau. 
+-Remarque 2 : Un compteur à l’entrée du ballon peut permettre de mesurer la consommation d’eau 
+chaude sanitaire. 
+
+8.2.1 Schémas hydrauliques de raccordement du ballon ECS 
+
+ 
+La vitesse de l’eau dans les conduites, liée à la pression du réseau, doit être limitée afin de ne pas générer 
+de phénomènes acoustiques (vitesse < 1.2m/s). 
+Nous préconisons l’ajout d’un adoucisseur sur l’arrivée d’eau pour éviter la formation de tartre au niveau 
+de l’échangeur et maintenir les performances de fonctionnement en production d’eau chaude sanitaire. 
+Veiller au bon calorifugeage des tuyauteries. Nous préconisons, la pose d’un isolant sous forme de 
+mousse de polyuréthane, d’une épaisseur au moins égale à 19 mm.  
+
+8.2.2 Calcul du temps de chauffe théorique (sans perte) 
+Temps en minutes = (Volume en Litres x Chaleur massique de l’eau x écart de température) / (Puissance 
+calorifique de la PAC x 60) Exemple avec un ballon de 170L, une PAC de 8kW et un écart de température 
+de 40°C entre le démarrage et la fin du cycle : 170 x 4184 x (50 -10) / (8000 x 60) = 59 minutes.  
+
+8.2.3 Comptage énergétique 
+
+Le relais auxiliaire (R1) de la PAC, actif lors de la production de l’ECS, peut permettre d’actionner un 
+compteur d’énergie spécifique à l’ECS. 
+
+8.3. Vanne trois voies 
+Le moteur de la vanne ne doit pas être monté au-dessous du corps de la vanne car une éventuelle fuite 
+d’eau au niveau des raccords pourrait endommager les micromoteurs.  
+ 
+
+8.3.1 Raccordement hydraulique 
+
+     
+     
+
+Indicateur et sens de passage par rapport au marquage A, B, AB  
+
+ECS Chauffage 
+A B 
+
+AB 
+
+Entré  e                                                                                                               
+
+ 
+ 
+
+ 
+
+ 
+ 
+ 
+
+ 
+   Ind : AC Février 2025 / Page 30 
+
+
+
+ 
+ 
+
+8.3.2 Caractéristiques et Raccordement électriques 
+
+ 
+ 
+
+Désignations Caractéristiques 
+
+Référence Nextherm 1HYD0002 + 1ELE0195 
+
+Alimentation 230Vac 
+
+Consommation vanne noire 6VA 
+
+Temps d’ouverture/fermeture vanne noire 7s 
+
+Raccordement hydraulique vanne noire 1 ‘’cylindrique mâle 
+
+Raccordement électrique 0.75mm2 
+
+Indice de protection IP40 
+
+Fonction Couleur 
+
+Neutre Fil bleu 
+Raccordement du câble de 3m 
+
+Phase Fil marron 
+
+Signal Fil noir 
+
+ 
+
+8.4 Régulateur Eau chaude Sanitaire 
+
+8.4.1 Caractéristiques du Régulateur de température et raccordement électriques 
+
+                                                     
+Désignations Caractéristiques 
+
+Référence Nextherm 1ELE0138 
+
+Alimentation 230Vac 
+
+Sonde NTC 
+
+Consommation 4.5VA 
+
+Fonction Couleur 
+
+Neutre Fil bleu 
+
+Phase Fil marron 
+Raccordement du câble 
+
+Phase Fil gris 
+
+Signal Fil noir 
+
+Terre Vert jaune 
+
+ 
+   Ind : AC Février 2025 / Page 31 
+
+
+
+ 
+ 
+
+8.4.2 Réglage du seuil d’arrêt de fabrication d’eau chaude sanitaire 
+
+ 
+ 
+Par défaut le seuil d’arrêt de la production d’eau chaude est programmé sur 50°C avec un redémarrage de 
+la pompe à chaleur à 45°C. 
+ 
+Nota : Une augmentation de la consigne au-dessus de 50°C n’est pas possible 
+ 
+ Incrémentation Touche « I » : 
+
+Marche=Affichage 
+température/ Arrêt =OFF 
+
+Touche « SET » 
+
+Décrémentation  
+ 
+ 
+
+ 
+
+Touche Affichage 
+
+ La température 
+mesurée 
+
+Appuyer sur SET SET 
+Appuyer sur SET La consigne actuelle 
+Appuyer sur les flèches Incrémentation ou 
+
+décrémentation 
+jusqu’à 50 
+
+Appuyer sur SET SET 
+Appuyer sur I La température 
+
+mesurée 
+ 
+
+8.5. Appoint électrique de secours 
+
+ 
+Les ballons d’Eau Chaude Sanitaire sont équipés d’un appoint électrique de secours de 1500 W 
+monophasé. 
+Cet appoint peut être connecté avec sa fiche de raccordement à une prise ou rallonge électrique 230V. 
+Cet appoint est un secours et il doit être utilisé de manière temporaire et non permanente. 
+
+ 
+
+ 
+   Ind : AC Février 2025 / Page 32 
+
+
+
+ 
+ 
+
+8.6 Entretien de l’anode 
+ 
+L’état de l’anode magnésium du ballon doit être vérifié tous les ans et si nécessaire elle doit être 
+remplacée. 
+Pour s’assurer d’un bon montage et de la compatibilité avec nos cuves inox, les références des anodes 
+sont à commander chez NEXTHERM : 
+ 
+
+- Anode Ballon 170 litres / Ø21.3mm x 350mm : Code NEXTHERM 1HYD0232 
+(Étanchéité sur filetage par collage avec du téflon liquide) 
+ 
+
+ 
+
+ 
+ Anode neuve ballon 170 litres 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+   Ind : AC Février 2025 / Page 33 
+
+
+
+ 
+ 
+
+ 
+
+Mise en service 
+
+9 Mise en service 
+ 
+
+9.1 Généralités 
+ 
+La mise en service ou la maintenance doivent être mise en œuvre par un technicien frigoriste ayant reçu 
+une formation au produit NEXTHERM.  
+ 
+La mise en service doit suivre les préconisations RGE citées dans l’introduction. 
+ 
+ATTENTION : La mise en service ne peut être effectuée que lorsque les étapes suivantes sont terminées : 
+
+• Le circuit capteur doit être raccordé. 
+• L’étanchéité du circuit doit être validée 
+• Le circuit capteur doit être préchargé en R32 à la charge indiquée dans le tableau des 
+
+caractéristiques techniques. 
+• Le voyant liquide ne doit pas indiquer d’humidité. 
+• L’ensemble des soudures et les prises de pression ont été vérifiés au détecteur électronique. 
+• Le capteur et les liaisons doivent être remblayés. 
+• Les alimentations électriques raccordées. 
+• Les circuits de commande raccordés  
+• Le circuit de chauffage doit être rempli en eau à une pression de 1.5 bars 
+ 
+
+La priorité est donnée au chauffage du ballon d’ECS par rapport au réseau de chauffage. 
+ 
+
+La mise sous tension ne doit pas être effectuée tant que le circuit capteur et le circuit chauffage ne sont 
+pas en eau afin de ne pas gripper les paliers des circulateurs ou griller la résistance auxiliaire. 
+ 
+Toutes les étapes doivent être consignées par le technicien dans le carnet d’entretien de l’installation. 
+
+9.2 Pompe à chaleur 
+
+8.2.1 Configuration d’usine 
+
+ 
+L’Aquastat de sécurité de départ d’eau « chauffage » est réglé par défaut sur 50°C et ne peut être réglé 
+plus haut. 
+ 
+La temporisation RT1 sur le schéma, est la temporisation anti cours cycles. Elle est de 30mn a compté de 
+l’arrêt du compresseur. 
+ 
+L’enclenchement de l’appoint électrique de 1500 w (en option) se fait lorsque le compresseur fonctionne 
+pendants plus de 2 heures d’affilées sans interruption. C’est le contact R2 du relais RT1 qui le commande. 
+ 
+Suivant la puissance de la PAC, l’organe de puissance est différent : Contacteur, démarreur monophasé 
+avec condensateur permanent. 
+ 
+Le circulateur est réglé par défaut en mode « pression constante » à la vitesse maximum. 
+ 
+
+ 
+ 
+
+ 
+   Ind : AC Février 2025 / Page 34 
+
+
+
+ 
+ 
+
+9.2.2 Démarrage 
+
+ 
+Mise sous tension :  
+ 
+
+- Attention en cas d’options résistance les OPTIPACKDUO2 sont équipées d’une double 
+alimentation depuis le tableau du client, il convient donc avant toutes interventions de 
+couper les disjoncteurs du tableau.  
+
+- Alimenter le disjoncteur de la PAC depuis le tableau client. 
+- Enclencher le disjoncteur de la télécommande sur la platine de la PAC.  
+- Positionner l’interrupteur « marche / arrêt » en position marche. Le circulateur du circuit 
+
+chauffage se met en fonctionnement. 
+- Afin de purger rapidement et efficacement le circuit chauffage, nous vous conseillons 
+
+l’utilisation d’un groupe d’injection, qui vous permettra de purger efficacement les 
+circuits.  
+
+- Baisser la température de consigne de l’eau chaude sanitaire 10 °C en dessous de la 
+température affichée (appuyer 2 fois sur la touche « SET » puis baisser la consigne à 
+l’aide du curseur vers le bas). le réseau chauffage se purge (contrôlé la pression et la 
+maintenir à 1.5 bars) Arrêter et redémarrer l’interrupteur « marche / arrêt » à plusieurs 
+reprises afin d’aider le réseau à se purger. 
+
+- Positionner l’interrupteur « été / hiver » en position « hiver » 
+- Mettre en marche le thermostat de demande de chauffage. On entend le relais du 
+
+thermostat basculer (sur les thermostats radios)   
+- Contrôlé :  
+
+o La position du thermostat de sécurité chaud sur 50°C maximum. 
+o  Contrôler que le voyant du relais R1 de la temporisation RT1 clignote en vert. Si 
+
+ce voyant ne clignote pas, se reporter au paragraphe 9.4 sur les causes des 
+pannes 
+
+- Au bout de 30 minutes, le voyant du relais R1 de la temporisation RT1 passe allumer vert 
+en fixe et le compresseur se met en fonctionnement. (Possibilité de réduire le temps en 
+tournant le bouton « manual R1 » de la position 0 à la position 1(Temporisation de 30‘) 
+Attention, en cas de démarrage successifs du compresseur pendant la mise en service, il 
+convient de maintenir une temporisation minimum de 5 minutes entre chaque 
+démarrage afin de permettre l’équilibrage des pressions BP et HP. Si le délai entre 
+chaque démarrage n’est pas suffisant, (le compresseur « grogne » et force sans 
+démarrer) il y a un risque d’endommager le compresseur. Dans ce cas, couper 
+immédiatement le disjoncteur de la télécommande pour arrêter le démarrage.  
+
+- Ajuster la charge de gaz pour obtenir une surchauffe de 15 °C plus ou moins 2 sur 
+capteur chaud et 11°C plus ou moins 1 sur capteur froid. Procéder par petites charges 
+successives espacé de 10 minutes afin de laisser au fluide le temps de faire le cycle 
+complet. La température de condensation n’a que peu d’influence sur la surchauffe et le 
+réglage de la charge peu se faire avec une condensation comprise entre 25 et 50 °C 
+
+- Remettre la consigne d’eau chaude sanitaire à 50 °C. Le ballon monte en température 
+puis, lorsque la température est atteinte, la V3V bascule en mode chauffage et permet la 
+circulation de l’eau du réseau de chauffage. Si le thermostat d’ambiance est en demande, 
+l’eau montera en température et le thermostat arrêtera la PAC lorsque la température 
+d’ambiance aura atteint la température de consigne du thermostat. 
+
+- Remplir la fiche de mise en service avec les paramètres indiqués sur la fiche de mise en 
+service (pression, température, tension, intensité et charge de l’installation). 
+
+- Indiquer dans la machine et sur la plaque signalétique la charge de fluide frigorigène. 
+- Lors de la montée en température 15 à 20 minutes après le démarrage :  
+
+o Effectuer les mesures demandées sur la fiche de mise en service 
+
+ 
+   Ind : AC Février 2025 / Page 35 
+
+
+
+ 
+ 
+
+o Régler la vitesse du circulateur de la PAC afin d’obtenir un delta T de 5 °C environ 
+sur le circuit chauffage. 
+
+o Remplir la fiche de mise en service.  Laisser un exemplaire dans la machine, 
+garder un exemplaire et renvoyer un exemplaire à NEXTHERM afin de déclencher 
+la garantie 
+
+o Remplir le carnet d’entretien. 
+- Contrôler la pression du réseau de chauffage. Compléter si nécessaire afin de maintenir 
+
+une pression de 1.5 bars 
+- La mise en service est terminée. 
+
+ 
+ 
+ 
+ 
+
+LED de visualisation de l’état du relais 
+R2 (résistance). Clignotant rouge lors 
+de la phase de temporisation, fixe en 
+rouge lorsque le relais et enclenché 
+ 
+
+LED de visualisation de l’état du relais 
+R1 (chauffage). Clignotant verte lors 
+de la phase de temporisation, fixe en 
+verte lorsque le relais et enclenché 
+ 
+
+Bouton de forçage de la temporisation anti-
+cours cycles de 30 minutes à 30 secondes. 
+Maximum 5 départs successifs en 
+manipulant le bouton de 0 à 1 pour chaque 
+demande 
+
+ 
+ 
+
+ 
+
+9.3 Fiche de mise en service 
+ 
+La fiche de mise en service se sépare en trois exemplaires : 1 exemplaire à remettre au client, un 
+exemplaire pour l’installateur et un exemplaire à envoyer à NEXTHERM. 
+ 
+
+Attention : L’envoi de la fiche de mise en service à NEXTHERM 
+conditionne la garantie 
+
+ 
+ 
+Rappel (paramètres de la PAC à calculer lors de la mise en service et lors de la maintenance) 
+ 
+Définition de la Surchauffe : C’est une marge de sécurité et de fonctionnement pour la régulation du 
+réfrigérant par le détendeur. C’est la différence entre la température, mesurée au thermomètre, à 
+l’entrée du compresseur avec la température d’évaporation, mesurée au manomètre BP.  
+
+  
+
+ 
+   Ind : AC Février 2025 / Page 36 
+
+
+
+ 
+ 
+
+9.4 Cause de pannes les plus fréquentes : 
+ 
+Le pilotage de la machine étant entièrement électromécanique, la recherche de panne se fera à l’aide 
+d’un multimètre. Les pannes les plus souvent rencontré sont :  
+ 
+
+9.4.1 La machine ne démarre pas et le voyant sur RT1 est éteint. 
+
+ 
+- Le circulateur application ne fonctionne pas (voyant éteint sur le circulateur). 
+
+• L’Interrupteur n’est pas en position hiver 
+• Pas d’alimentation électrique  
+• Organe de régulation pas en demande : 
+
+o Sur le thermostat radio, faire un arrêt puis marche à la suite d’une coupure de 
+l’alimentation électrique 
+
+o Vérifier que le thermostat est en demande (Flamme affiché sur le thermostat radio) 
+o Vérifier que la régulation est bien dans la configuration demandée (Mode chaud, 
+
+flocon affiché même en été) 
+o Consigne ECS inférieure à la mesure de la température 
+
+  
+- Le circulateur application fonctionne (voyant allumé sur le circulateur). 
+
+• Aquastat chaud réglé trop bas(monter et descendre la consigne pour entendre le clic de 
+déclenchement) Régler l’Aquastat (maximum 50 °C) 
+
+• Manque de débit sur le circuit application (CDCA non passant) :  
+o Purger le réseau. Vérifier que les purgeurs sont ouverts sur la machine et sur le collecteur 
+
+et le distributeur 
+o Contrôler la pression (1.5 bars) 
+o Vérifier que les vannes des distributeurs de plancher chauffant sont ouvertes. 
+
+ 
+
+9.4.2 La machine ne démarre pas et le voyant R1 sur RT1 est allumé en vert fixe. 
+
+ 
+- Le démarreur progressif est en temporisation (LED orange fixe) : Attendre la fin de la temporisation de 5 
+
+minutes. 
+
+Maintenance 
+
+10 Maintenance 
+
+10.1 Généralités 
+Les opérations de maintenance doivent suivre les préconisations RGE citées dans l’introduction : 
+
+- Une surveillance préventive réalisée annuellement 
+- Un petit entretien 
+- Aléatoirement un dépannage 
+
+ 
+Toutes les étapes doivent être consignées par le technicien dans le carnet de chaufferie. 
+
+ 
+Le but est de fournir des performances optimales, allonger la durée de vie du matériel, assurer un 
+meilleur confort dans le temps. 
+
+ 
+En cas de panne, ne pas hésiter à faire appel à la hotline NEXTHERM après avoir fait les vérifications 
+d’usage de ce présent guide. 
+
+ 
+
+ 
+   Ind : AC Février 2025 / Page 37 
+
+
+
+ 
+ 
+
+10.2 Circuits électriques 
+Contrôler visuellement l’état du câblage électrique. 
+Resserrez les connexions électriques, notamment sur les câbles de puissance du côté du 
+compresseur (couple : 2.5Nm). 
+Vérifiez visuellement l’état et le serrage des cosses électriques. 
+Mesurez la tension et l’intensité absorbée à son régime de fonctionnement par le compresseur et la 
+comparer avec les mesures initiales. 
+Contrôler la chute de tension au démarrage (minimum 220v). 
+ 
+
+Afin de prévenir des dommages électriques, nous préconisons un contrôle annuel des échauffements 
+par caméra thermique. 
+
+ 
+Soyez particulièrement vigilant à l’appareillage et à la connectique des pompes à chaleur 
+(démarreur, condensateur, compresseurs temporisation, circulateur) 
+
+ 
+Certaines pièces, comme les condensateurs / les démarreurs (durée moyenne d’utilisation en 
+conditions de fonctionnement normal : environ 10 000 heures), restent des pièces d’usure. Il 
+convient d’en vérifier l’état. Nous recommandons de les remplacer par des modèles « nouvelle 
+génération », afin d’éviter une dégradation des performances et maintenir un fonctionnement 
+optimal de la PAC.  
+
+ 
+ 
+
+10.3 Circuits hydrauliques 
+Vérifiez que le circuit de chauffage est purgé et que la pression de remplissage est de l’ordre de 1.5 
+Bar.  
+Contrôlé le vase d’expansion. Pour vérifier un vase d’expansion, le circuit hydraulique ne doit plus 
+être sous pression : Mesurez la pression d’azote du vase d’expansion avec un manomètre 
+automobile (la pression doit être de 1 bar). 
+ 
+Vérifiez le delta de température du circuit chauffage, machine en fonctionnement, à son régime de 
+fonctionnement nominal (5 à 7°C maximum). Régler la vitesse du circulateur au besoin.  
+Contrôlez et comparez avec les paramètres d’origine les mêmes mesures que pour une installation 
+neuve. 
+Vérifiez l’état du filtre a tamis et du pot de décantation et les nettoyer si nécessaire.  
+
+ 
+
+10.4 Circuits frigorifiques 
+ 
+Effectuer une recherche de fuite. 
+Effectuer un relevé de fonctionnement complet de l’installation et le comparer avec la fiche de mise 
+en service et les relever des années précédentes. Annualiser une éventuelle dérive.  
+Contrôler la surchauffe qui doit être de 15 °C + ou – 2 °C sur un capteur chaud (avant la saison de 
+chauffe) et de 11°C + ou – 1 °C sur un capteur froid (février/mars). 
+
+ 
+Remplir le carnet d’entretien avec les valeurs mesuré et les éventuelles actions entreprises. 
+Vérifiez l’état du câblage, du condensateur, des bornes et des organes de commande à la recherche 
+de traces d’échauffement et les traiter si nécessaire. 
+ 
+En cas de suspicion d’un dysfonctionnement, faire intervenir un frigoriste. 
+Le frigoriste devra : 
+
+• Prendre les mesures élémentaires pour calculer la surchauffe et le sous refroidissement 
+ainsi que les mesures de température sur le capteur et les émetteurs. 
+
+• Reportez ces mesures sur une fiche de mises en service ou sur une fiche équivalente propre 
+à l’entreprise qui intervient. 
+
+• Etablir un diagnostic et intervenir sur le circuit si besoin.  
+
+ 
+   Ind : AC Février 2025 / Page 38 
+
+
+
+ 
+ 
+
+ 
+Rappel : 
+Définition de la Surchauffe : C’est une marge de sécurité et de fonctionnement pour la régulation du 
+réfrigérant par le détendeur. C’est la différence entre la température, mesurée au thermomètre, à 
+l’entrée du compresseur avec la température d’évaporation, mesurée au manomètre BP.  
+ 
+Définition du Sous refroidissement : C’est une marge de fonctionnement pour la régulation du 
+réfrigérant par le détendeur.  C’est la différence entre la température de condensation, mesurée au 
+manomètre HP, avec la température en sortie condenseur, mesurée au thermomètre.  
+
+ 
+ 
+ 
+
+ 
+
+ 
+   Ind : AC Février 2025 / Page 39 
+
+
+
+ 
+ 
+
+ 
+
+ 
+   Ind : AC Février 2025 / Page 40

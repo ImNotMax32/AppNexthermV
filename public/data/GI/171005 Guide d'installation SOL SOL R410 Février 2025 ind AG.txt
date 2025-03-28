@@ -1,0 +1,1570 @@
+﻿GUIDE D’INSTALLATION GEOTHERMIE 
+POMPE à CHALEUR SOL / SOL (R410A) 
+
+Et 
+MODULE DE PUISSANCE SOL / SOL 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+SARL NEXTHERM - ZA de Clairac - Rue Maryse Bastié - 26760 BEAUMONT LES VALENCE 
+…………………………………………………………………….……..….…………………. 
+
+Tél. : 04 75 59 44 10- Fax : 04 75 55 52 30 
+: contact@nextherm.fr - www.nextherm.fr 
+
+  
+
+
+
+  
+ 
+
+Table des matières 
+1 Avant-propos .............................................................................................................................................................. 3 
+
+1.1 Généralités .................................................................................................................................................... 3 
+1.2 Sécurité électrique ........................................................................................................................................ 3 
+1.3 Réfrigérant .................................................................................................................................................... 3 
+
+1.3.1 Généralités ..................................................................................................................................................... 3 
+1.3.2 Ventilation ...................................................................................................................................................... 4 
+2 Le pompage de chaleur .............................................................................................................................................. 5 
+
+2.1 Généralités .................................................................................................................................................... 5 
+2.2 Particularités ................................................................................................................................................. 5 
+2.3 Le générateur ................................................................................................................................................ 6 
+
+2.3.1 Représentation photographique d’un module de puissance (photo non contractuelle) .............................. 6 
+2.3.2 Dimensions avec habillage ............................................................................................................................. 7 
+2.3.3 Dimensions d’une platine équipée (module pour la maintenance avec sa tôle 1TOL0086) .......................... 7 
+2.3.4 Tableau des modules de puissance ................................................................................................................ 8 
+2.3.5 Pose du générateur ........................................................................................................................................ 8 
+2.3.6 Caractéristiques techniques ........................................................................................................................... 9 
+2.3.7 Etiquette signalétique .................................................................................................................................. 10 
+3 Dimensionnement de l’installation .......................................................................................................................... 11 
+
+3.1 Etude thermique ......................................................................................................................................... 11 
+4 Les capteurs ............................................................................................................................................................. 11 
+
+4.1 Généralités .................................................................................................................................................. 11 
+4.2 Etude Technique ......................................................................................................................................... 12 
+4.3 Captage horizontal ...................................................................................................................................... 13 
+
+4.3.1 Généralités ................................................................................................................................................... 13 
+4.3.2  Surface de captage ...................................................................................................................................... 15 
+4.3.3 Captage en tranchées .................................................................................................................................. 16 
+5 Les liaisons ............................................................................................................................................................... 18 
+
+5.1 Dimensionnement des liaisons capteur ...................................................................................................... 18 
+6 Remise en place de la terre ...................................................................................................................................... 19 
+7 Distributeurs et collecteurs ...................................................................................................................................... 19 
+8 Remplissage par le capteur ...................................................................................................................................... 19 
+9 Description des émetteurs (plancher chauffant) ..................................................................................................... 20 
+10 Raccordement thermodynamique (vue arrière) .................................................................................................... 21 
+11 Raccordement électrique ....................................................................................................................................... 22 
+11.1 Schéma électrique ......................................................................................................................................... 23 
+11.2 Réglage de la temporisation ......................................................................................................................... 23 
+12 Mise en service....................................................................................................................................................... 25 
+13 Maintenance .......................................................................................................................................................... 26 
+
+13.1 Généralités ................................................................................................................................................ 26 
+13.2Vérifications du système électrique .......................................................................................................... 26 
+13.3 Vérification du circuit frigorifique ............................................................................................................. 27 
+
+ 
+
+ 
+ 
+ 
+
+ 
+
+ 
+
+ 
+   Ind : AF Mars 2021 / Page 2 
+
+
+
+  
+ 
+
+ 
+Avant-propos 
+
+1 Avant-propos 
+
+1.1 Généralités 
+Les installations de chauffage avec pompe à chaleur répondent à des normes strictes de fonctionnement 
+et de sécurité que vous devez connaître et appliquer. En tant qu'installateur une partie importante de 
+votre travail consiste à installer ou entretenir le système de manière à ce qu'il fonctionne efficacement et 
+en toute sécurité. Pour effectuer une installation sûre et obtenir un fonctionnement sans problème, il 
+faut : 
+ 
+• Disposer du personnel qualifié et habilité ayant reçu une formation à nos produits. 
+• Lire attentivement cette notice d’installation avant de commencer. 
+• Procéder à chaque étape de l'installation ou de la réparation en suivant les explications. 
+• Observer toutes les recommandations de prudence et de sécurité données dans cette notice. 
+• Porter les équipements de protection individuelle (code du travail) visant à protéger la santé et la 
+
+sécurité des travailleurs. 
+ 
+
+Les recommandations professionnelles éditées sous la forme de guide appelées « Règles de l’Art Grenelle 
+Environnement 2012 » alimentant le processus normatif classique et reconnues par les assureurs doivent 
+être suivies. 
+
+1.2 Sécurité électrique 
+L’appareil est alimenté en 230 V 50Hz monophasé ou en 400V triphasé et présente donc un risque de 
+choc électrique. 
+Respectez toutes les règlementations électriques en vigueur, notamment la NF C15-100 et le code du 
+travail. 
+La totalité des opérations de raccordement doit se faire hors tension. 
+Seuls des professionnels habilités par leur employeur peuvent réaliser des opérations d’installation et de 
+maintenance électrique. 
+
+ Le ou les circuits d’alimentation doivent être déconnectés, condamnés et signalés comme tels, avant 
+l’intervention sur le produit. 
+
+ Utilisez des lignes électriques dédiées et protégées contre les surintensités, les courants de fuite et 
+les surtensions pour l’alimentation de l’appareil.  
+
+ Faire contrôler les installations équipées d’un nouveau module de maintenance 
+ 
+
+ 
+ 
+
+1.3 Réfrigérant 
+
+1.3.1 Généralités 
+
+Le R410a est le réfrigérant utilisé dans la SOL/SOL.  
+C’est un gaz fluoré ne présentant pas de danger direct pour la santé en cas d’inhalation fortuit (voir fiches 
+de sécurité disponibles auprès du distributeur). Cependant, lors d’opération de maintenance sur le circuit 
+frigorifique, il convient de se référer aux fiches de sécurité des fabricants, des fluides et des huiles 
+frigorifiques. 
+ 
+En application du décret N°2007-737 du 7 Mai 2007 relatif à certains fluides réfrigérants utilisés dans les 
+équipements frigorifiques et climatiques, toutes interventions sur le circuit frigorifique ne peuvent être 
+
+ 
+   Ind : AF Mars 2021 / Page 3 
+
+
+
+  
+ 
+
+menées que par un installateur muni de son attestation de capacité à la manipulation des fluides 
+frigorigènes en cours de validité et disposant d’un technicien avec une attestation d’aptitude à la 
+manipulation des fluides réfrigérants. 
+ 
+Faire procéder à un contrôle de l’étanchéité de la pompe à chaleur avec un détecteur de fuite 
+électronique périodiquement vérifié, lors de la mise en service et après toutes interventions sur le circuit 
+de fluide frigorigène. 
+Ce contrôle est à renouveler à une fréquence conforme aux réglementations en vigueur.  
+
+1.3.2 Ventilation 
+
+Le local du générateur doit être d’un volume suffisamment grand pour qu’une éventuelle fuite ne fasse 
+pas dépasser la concentration maximale autorisée (voir graphique ci-dessous « volume minimum d’un 
+local non ventilé pouvant abriter une PAC »). En cas de plusieurs modules seule la charge du module le 
+plus gros doit être prise en compte. 
+ 
+
+ 
+
+ 
+ 
+
+Si le local est trop petit, prévoir une entrée d’air en haut et en bas, donnant sur l’extérieur. Si le local ne 
+donne pas sur l’extérieur, prévoir une ventilation mécanique. 
+
+  
+
+ 
+   Ind : AF Mars 2021 / Page 4 
+
+
+
+  
+ 
+
+La pompe à chaleur 
+
+2 Le pompage de chaleur 
+
+2.1 Généralités 
+La pompe à chaleur permet de puiser l’énergie calorifique GRATUITE contenue dans la terre pour la 
+restituer à l’utilisateur. Cette énergie est inépuisable car elle est sans cesse renouvelée par les apports 
+solaires directs ou véhiculée par l’eau de pluie, la neige, le vent, ainsi que par la chaleur provenant du 
+sous-sol. 
+ 
+Pour prélever et transférer cette énergie, la pompe à chaleur nécessite l’utilisation d’un compresseur 
+frigorifique. La part d’énergie électrique consommée est de 3 à 5 fois moindre que l’énergie calorifique 
+totale restituée à l’installation de chauffage. 
+
+ 
+Pour fonctionner correctement, l’installation nécessite principalement quelques éléments clefs : 
+
+ 
+• La pompe à chaleur est le cœur du système qui permet le transfert de l’énergie gratuite vers 
+
+l’habitat. 
+• Le capteur géothermique est enfoui dans le sol à l’extérieur de la maison. Il permet de drainer 
+
+efficacement l’énergie gratuite du sol. 
+• Le plancher chauffant est mis en place dans l’habitation et il permet la restitution harmonieuse de la 
+
+chaleur.  
+• Le thermostat d’ambiance, associé ou non à une régulation, judicieusement positionné dans la 
+
+maison. Il a pour fonction de gérer les apports en chauffage et donc de fournir le confort adéquat 
+pour les occupants. 
+
+2.2 Particularités 
+La SOL-SOL a été étudiée pour répondre au marché de la rénovation. 
+Effectivement, de nombreuses installations de ce type sont encore opérationnelles mais parfois elles 
+nécessitent un renouvellement complet du module de puissance à cause de la défaillance d’un ou 
+plusieurs éléments après plusieurs années de service.  
+Lorsque c’est nécessaire, la machine est changée au complet. 
+Comme pour les autres pompes à chaleur de notre gamme, la réglementation RT2012 limite la 
+consommation globale du logement comprenant le chauffage, l’eau chaude sanitaire, l’éclairage, la 
+ventilation et éventuellement le rafraichissement. Cette consommation ne doit pas dépasser, suivant les 
+régions, une énergie d’environ 50kWhep/m2/an.  
+Pour cette raison, la gamme SMARTPACK est particulièrement économe en énergie et sa modularité 
+permet des puissances calorifiques jusqu’à 13 kW. 
+
+ 
+   Ind : AF Mars 2021 / Page 5 
+
+
+
+  
+ 
+
+ 
+ 
+
+2.3 Le générateur 
+La pompe à chaleur SOL-SOL est un générateur, non chargé, prêt à être raccordé à l’installation de 
+chauffage et au capteur géothermique.  
+ 
+L’intérieur d’une sol-sol est assez simple ce qui est aussi un gage de fiabilité sur le long terme.  
+ 
+Nous retrouvons toutefois de nombreux éléments communs avec d’autres types de pompes à chaleur ; 
+compresseur, filtre déshydrateur, détendeur, pressostats, notamment.  
+ 
+La sol-sol se distingue cependant par l’ajout d’un désurchauffeur.  
+Cet élément a pour but de limiter la température élevée des gaz de refoulement avant qu’ils ne pénètrent 
+dans les canalisations du plancher chauffant. 
+ 
+
+2.3.1 Représentation photographique d’un module de puissance (photo non contractuelle) 
+
+ 
+
+ 
+ 
+
+Représentation partielle d’un module de maintenance sol/sol 
+ 
+
+ 
+Repère Désignation 
+
+1 Compresseur 
+2 Désurchauffeur 
+3 Détendeur 
+4 Bornier électrique 
+5 Electrovanne 
+6 Déshydrateur 
+7 Pressostat HP 
+
+ 
+ 
+ 
+ 
+ 
+
+ 
+   Ind : AF Mars 2021 / Page 6 
+
+
+
+  
+ 
+
+2.3.2 Dimensions avec habillage 
+
+ 
+ 
+ 
+ Largeur Largeur 
+ 
+ 
+ 
+
+ 
+                 
+ 
+
+Largeur  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+Habillage 1 Habillage 2 Habillage 3 
+ 
+
+module modules  modules 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 1 module 2 modules 3 modules 
+Largeur 640 640 640 
+
+Profondeur 640 640 640 
+Hauteur 983 1840 1840 
+
+2.3.3 Dimensions d’une platine équipée (module pour la maintenance avec sa tôle 1TOL0086) 
+
+ 
+  Module seul 
+
+Largeur 570 
+Profondeur 390 
+
+Hauteur Jusqu’à 500mm 
+ 
+
+ 
+
+ 
+   Ind : AF Mars 2021 / Page 7 
+
+Hauteur 
+
+Hauteur 
+
+Hauteur 
+
+
+
+  
+ 
+
+2.3.4 Tableau des modules de puissance 
+
+ 
+Modèle Désignation Puissance calorifique 
+
+MSS 2 Générateur SOL SOL 2 R410 MONO 230V 2430W 
+MSS 3 Générateur SOL SOL 3 R410 MONO 230V 3600W 
+MSS 4 Générateur SOL SOL 4 R410 MONO 230V 4770W 
+MSS 5 Générateur SOL SOL 5 - R410 MONO 230V 5800W 
+MSS 6 Générateur SOL SOL 6 - R410 MONO 230V 7560W 
+MSS 8M Générateur SOL SOL 8 - R410 MONO 230V 9500W 
+MSS 8T Générateur SOL SOL 8 - R410 MONO 400V 9500W 
+MSS 10 M Générateur SOL SOL 10 - R410 MONO 230V 11500W 
+MSS 10 T Générateur SOL SOL 10 – R410 TRI 400V 11500W 
+MSS 12 M Générateur SOL SOL 12 – R410 TRI 230V 13300W 
+MSS 12 T Générateur SOL SOL 12 – R410 TRI 400V 13300W 
+
+ 
+ Attention : Les modules, vendus, ne sont pas des pièces de rechange d’origine mais des éléments de 
+
+maintenance adaptables.  
+ Leurs possibilités d’interchangeabilité demandent une identification technique de la machine d’origine 
+
+et un contrôle technique de l’installation, afin de vérifier l’adéquation du module de remplacement 
+avec celui d’origine. Si nécessaire une adaptation de l’installation de base sera à prévoir. 
+
+2.3.5 Pose du générateur 
+
+Le générateur sera posé en respectant les règles suivantes : 
+• Choisissez un local éloigné des chambres : local technique, cellier, garage ou cave. 
+• Ne pas monter les accessoires éventuels contre les cloisons des pièces adjacentes, mais privilégier 
+
+les murs extérieurs, ceci afin de réduire le risque potentiel de nuisances sonores.  
+• Vérifiez que le sol est stable et dur pour supporter le générateur et le maintenir horizontal 
+• Isolez les départs et retours des liaisons capteurs (condensation) 
+• Ne pas installer les distributeurs/collecteurs en direct sur la PAC. Montez-les 
+
+distributeurs/collecteurs dans un regard et les relier à la PAC par des tubes de liaison isolés. En 
+l’absence de regard et d’arriver des couronnes de captage directement dans le local technique, il 
+sera nécessaire de prévoir des tubes de liaison isolés de 1m mini entre la PAC et les 
+distributeurs/collecteurs.  
+
+• Permettre l’accessibilité pour une éventuelle intervention : 500 mm sur les côtés, 800 mm à l’avant 
+et 600 mm sur le dessus. 
+
+• Avant tout raccordement du nouveau générateur il sera nécessaire d’effectuer un nettoyage soigné 
+de l’installation existante ; les tubes et collecteurs/distributeurs mais aussi l’éventuel chauffe-eau en 
+désurchauffe. En effet les générateurs d’ancienne génération fonctionnaient avec des huiles 
+minérales qui sont incompatibles avec les huiles ester des nouveaux générateurs. Les dégradations 
+éventuelles des nouveaux générateurs en raison d’un mauvais nettoyage de l’installation initiale ne 
+pourront pas être prises sous garantie par Nextherm. 
+
+• Vérifier et où remplacer les protections électriques de la ligne d’alimentation des nouveaux 
+générateurs en fonctions de leurs caractéristiques techniques. 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+   Ind : AF Mars 2021 / Page 8 
+
+
+
+  
+ 
+
+2.3.6 Caractéristiques techniques 
+
+Générateur 2 3 4 5 6 8 10 12 
+
+Température d’évaporation -5°C ; Température de condensation 35°C  
+
+Puissance calorifique W 2430 3600 4770 5800 7560 9500 11500 13300 
+
+Puissance électrique 
+W 600 900 1200 1450 1800 2200 2650 3000 
+
+absorbée totale 
+
+Puissance frigorifique W 1830 2970 3570 4710 5760 7680 9225 10300 
+
+COP - 4.05 4 3.98 4 4.2 4.3 4.33 4.43 
+
+SCOP  4.6 4.6 4.57 4.6 4.82 4.92 4.97 507 
+
+Intensité Monophasé 230v A 2.9 4.4 5.79 7 8.7 10.6 12.8 14.5 
+
+Intensité Triphasé 400v A - - - - 3.24 4 4.8 5.5 
+
+Efficacité Energétique 
+% 184 184 183 184 193 197 199 203 
+
+Saisonnière (ηs)  
+Alimentation et protection électrique  (25m maxi)    
+
+Section câble puissance 
+mm² 3x2.5 3x2.5 3x2.5 3x4 3x4 3x4 3x6 3x6 
+
+Mono 
+
+Section câble puissance Tri mm² - - - - 5x2.5 5x2.5 5x2.5 5x4 
+
+Disjoncteur courbe C ou D 
+A 6 D 6 D 10 D 10 C 16 C 16 C 20 C 20 C 
+
+Mono 
+Disjoncteur courbe C ou D 
+
+A - - - - 6 D 6 C 6 C 10 C 
+Tri 
+
+Poids kg 22 24 25 29 35 57 62 64 
+
+Puissance acoustique  Db(A) 51 53 53.5 54.5 54.8 55.2 56.7 57.5 
+
+I démarrage Monophasé* A 19.2 25.9 30 30 30 30 30 30 
+
+I démarrage Triphasé* A - - - - 43 50 50 50 
+
+Pose sur terrain décapé avec extraction de 37W/m2 (température de base > -10°C) 
+
+Surface optimum m² 46 71 85 112 137 183 220 245 
+
+Pas avec couronnes 
+cm 57 44 35 35 34 38 34 38 
+
+capteurs 1/2 
+
+Pose sur terrain décapé avec extraction de 30W/m2 (température de base < -10°C) 
+
+Surface optimum m² 54 87 105 138 170 226 271 303 
+
+Pas avec couronnes 
+cm 68 54 44 43 43 47 42 47 
+
+capteurs 1/2 
+Nombre de couronnes 
+
+80m 1 2 3 4 5 6 8 8 
+capteurs  ½’’ 
+Nombre de couronnes 
+
+90m 1 2 3 4 5 6 8 8 
+émetteur 3/8’’ 
+
+Charge R410A** Kg 0.8 1.6 2.4 3.2 4 4.8 6.4 6.4 
+
+ 
+*Avec démarreur électronique, limitant le courant à 30A en monophasé et 50A en triphasé 
+** Pré charge puis ajustement par mesure de la surchauffe à 15°C + ou – 2°C 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+
+ 
+   Ind : AF Mars 2021 / Page 9 
+
+
+
+  
+ 
+
+2.3.7 Etiquette signalétique 
+
+A l’intérieur ou à l’arrière de la machine se trouve l’étiquette de série de la pompe à chaleur, avec les 
+informations techniques suivantes :  
+ 
+ 
+ 
+ 
+
+ 
+*Les caractéristiques sont indiquées aux conditions d’essais. 
+
+ 
+ 
+Repère Désignations 
+1 Alimentation électrique 
+2 Numéro et indice du schéma électrique 
+
+3 Limite des pressions et des températures pour le circuit chauffage et le circuit frigorifique 
+Le marquage CE correspond à la conformité du produit par rapport aux législations 
+
+4 
+européennes 
+
+5 Coefficient de performance 
+Classification du fluide frigorifique conformément à la direction des équipements sous 
+pression  
+
+6 
+La charge réelle est à indiquer par l’installateur et à rapporter sur la fiche de mise en 
+service 
+
+7 Régime de température et condition de test normalisé selon la norme NF EN 15879-1 
+ 
+
+  
+
+ 
+   Ind : AF Mars 2021 / Page 10 
+
+
+
+  
+ 
+
+Dimensionnement de l’installation 
+
+3 Dimensionnement de l’installation 
+
+3.1 Etude thermique 
+L’installateur devra s’assurer, avec son client, que la puissance délivrée par l’ancienne installation était 
+compatible avec les déperditions.  
+La pompe à chaleur doit être sélectionnée pour couvrir de manière optimum, les déperditions calculées 
+par le bureau d’études, majorées de 20% selon la réglementation thermique en vigueur et pour la 
+température extérieure de base.  
+La pompe à chaleur sera donc choisie dans la gamme de puissance NEXTHERM, de manière à ce que sa 
+puissance soit supérieure à 120% des déperditions. 
+ 
+ 
+Cette étude thermique doit être réalisée par un bureau d’études agréé et compétent, qui prendra en 
+compte tous les paramètres ayant une incidence sur les déperditions et en particulier : 
+
+• Le lieu de construction 
+• L’altitude, l’exposition aux vents, l’ensoleillement 
+• La nature, l’épaisseur et la qualité des isolants des parois 
+• La résistance thermique et l’étanchéité des vitrages et des portes 
+• La prise en compte des ponts thermiques 
+• Le taux de renouvellement d’air 
+• La température de confort intérieur souhaité par le client 
+
+ 
+• En cas de remplacement d’une ancienne PAC, vérifier avec le client que la pompe à chaleur qui 
+
+est remplacée était correctement dimensionnée et couvrait les besoins. Un calcul, viendra 
+enrichir le dossier technique, et confirmer la déclaration du client. 
+
+ 
+• Les puissances frigorifiques sur le capteur au mètre linéaire de tube et au mètre carré devront 
+
+être vérifiées afin que la machine choisie n’épuise pas le capteur. 
+ 
+
+ 
+
+Les Capteurs 
+
+4 Les capteurs 
+
+4.1 Généralités 
+Les capteurs sont censés capter un peu plus de 15W/m (en puissance moyenne journalière). 
+ 
+Si les capteurs sont déjà installés : Vérifiez impérativement la longueur et le nombre de boucles pour 
+déterminer la puissance à installer. Vérifiez la corrélation avec les émetteurs. 
+ 
+Les capteurs de la gamme SOL-SOL sont réalisés avec du tube cuivre de qualité frigorifique en ½’’ (Ø12.7 x 
+0,6mm). Les capteurs implantés horizontalement ont une longueur de 80m.  
+En cas de remplacement de module sur installations déjà existantes il est admis que les capteurs pourront 
+être en 3/8’’ (Ø9.52x0.4mm ou 9.52x0.6mm) mais en aucun cas les longueurs ne devront dépasser 75ml. 
+Dans tous les cas les tubes seront gainés avec du polyéthylène pour protéger le cuivre des chocs à la mise 
+en œuvre et de la corrosion en utilisation.  
+ 
+
+ 
+   Ind : AF Mars 2021 / Page 11 
+
+
+
+  
+ 
+
+Les capteurs sont reliés à un distributeur d’un côté et à un collecteur de l’autre. Ils répartissent le 
+réfrigérant sous forme liquide dans les capteurs et collectent le réfrigérant sous forme gazeuse pour le 
+ramener à la pompe à chaleur. 
+Les distributeurs / collecteurs ne doivent pas être en contact direct avec le sol afin de préserver l’intégrité 
+des soudures dans le temps. 
+ 
+Un test à l’azote sous une pression de 15 Bar devra valider la solidité mécanique des raccords brasés de 
+l’installation complète. 
+ 
+
+4.2 Etude Technique 
+Réalisez en collaboration avec le client, un document comportant : 
+
+• La taille et la forme du terrain disponible pour le captage ainsi que son ensoleillement. 
+• Les éléments de structures existants ou futurs (bâtiment, piscine, mur, fosses, …) 
+• Les emplacements où seront installés la pompe à chaleur ainsi que les accessoires (regards pour 
+
+la distribution …)  
+• Les arbres (pour s’éloigner des racines présentes ou à venir  et pour tenir compte de l’ombre sur 
+
+le capteur)  
+• L’accessibilité aux engins de chantier  
+• Les réseaux souterrains (égouts, téléphone, électricité, …) 
+
+ 
+Le concourt du client final est intéressant car il pourra renseigner le technicien sur le type de clôture ou de 
+haie qui seront implantés : mur avec arbustes, haies chez le client, haies chez le voisin, … 
+
+ 
+Respectez les distances d’implantation suivantes : 
+
+ 
+Obstacles Distance 
+
+Arbres (tronc) 3m 
+
+Bâtiments, piscine, Réseaux 2m 
+hydrauliques, égouts, … 
+Réseaux enterrés non hydrauliques, 1m 
+murs de clôture 
+Haies, allées, …  à l’appréciation de l’installateur et son 
+
+client 
+ 
+
+Tracez sur le plan de masse, les distances d’éloignement des ouvrages et des dispositifs techniques à 
+protéger.  
+ 
+Tracez alors les regards pour les distributeurs / collecteurs, les tubes de liaisons ainsi que les capteurs.  
+ 
+Dans l’exemple ci-dessous, les distances d’éloignement à minima sont signalées en bleu. 
+ Le bâtiment et les ouvrages bétonnés sont en rouge ainsi que les allées. 
+ 
+La zone de captage la plus étendue est alors facilement identifiable.  
+
+ 
+   Ind : AF Mars 2021 / Page 12 
+
+
+
+  
+ 
+
+ 
+
+4.3 Captage horizontal 
+
+4.3.1 Généralités 
+
+Nature du sol 
+L’installateur doit vérifier préalablement que le sol correspond aux exigences thermiques et mécaniques 
+d’un capteur géothermique. 
+Un sol argileux qui a été tassé par la tractopelle lors du décapage doit être biné avant l’installation du 
+capteur  
+Si l’installateur estime que les pierres contenues dans la terre sont susceptibles de blesser ou écraser le 
+tube, il doit dégager toutes les pierres effleurant le fond et réaliser un lit de terre végétale de 15cm 
+minimum au-dessus du capteur. 
+ 
+Capteurs 
+Les tubes sont maintenus par des crampons de sol afin de respecter le pas entre deux tubes. 
+ 
+Les départs capteur doivent être isolés avec du polyéthylène quand l’écartement est inférieur au pas.  
+ 
+
+ Il faut éviter toutes intrusions de terre et d’humidité dans les capteurs lors de la mise en œuvre. 
+ Les longueurs des boucles de capteur ne doivent pas être raccourcies. 
+
+ 
+Les capteurs sont successivement désoperculés puis soudés un par un au distributeur ou collecteur, en 
+prenant toutes les mesures nécessaires pour éviter toute entrée d’humidité dans la couronne. 
+ 
+
+ Vérifier que chaque couronne est encore sous pression. Si une couronne n’est plus sous pression ne 
+l’installez pas et remplacez celle-ci par une autre.  
+
+ Prévoyez donc toujours une couronne en plus à disposition des opérateurs. 
+ 
+
+ 
+   Ind : AF Mars 2021 / Page 13 
+
+
+
+  
+ 
+
+Faire l’opération par temps sec (la pluie amènerait de l’humidité) et par un technicien aguerri à la soudure 
+frigorifique et titulaire de son attestation d’aptitude. 
+ 
+Si le terrain est en pente (dénivelé > 1.5m) et si le fluide circule à la monté il est nécessaire de réaliser des 
+pièges à huile (principe : aider l’huile à monter car la vitesse du fluide frigorifique sur capteur horizontal 
+est basse). 
+ 
+ 
+Grillage avertisseur 
+Un dispositif avertisseur doit être enterré à 30cm de profondeur (NF T 54-080) 
+Le concept de tranchée ne permet pas de faire déborder le dispositif avertisseur latéralement. Un 
+bornage est donc conseillé. 
+ 
+Distributeur / collecteur 
+Afin de pouvoir placer toutes les boucles, il est préférable d’implanter le distributeur /collecteur au centre 
+du terrain.  
+Le distributeur / collecteur doit être installé dans un regard enterré avec le couvercle arrivant en surface 
+afin de faciliter la mise en œuvre et l’entretien.  
+ 
+Tubes de liaison 
+Les tubes de liaison fournis par Nextherm sont isolés thermiquement. Ils doivent restés isolés jusqu’à la 
+pompe à chaleur. Si le terrain est en pente (dénivelé > 1.5m) et que la PAC est en point haut par rapport 
+au capteur, il est nécessaire de réaliser des pièges à huile sur le tube d’aspiration fluide. (Principe : aider 
+l’huile à monter vers le compresseur). 
+ 
+Mise en œuvre 
+Les tubes doivent être exempts de tout dommage mécanique : pliure, éraflure, érosion, … 
+La pose doit être effectuée par du personnel responsable. 
+Une couronne de rechange doit toujours être à la disposition des poseurs afin de pallier immédiatement 
+une couronne défectueuse et éviter ainsi des couts induits (transport, temps). 
+La préparation des extrémités puis le brasage des tubes aux distributeurs collecteurs doivent être 
+parfaitement exécutés. 
+ 
+Contrôle du capteur 
+Une fois que la pompe à chaleur, les liaisons, le collecteur, le distributeur et les couronnes capteur sont 
+raccordés entre eux, l’installateur vérifiera l’étanchéité globale de l’installation en effectuant une mise 
+sous pression d’azote de 15 bars (pression du R410a à 25°C). 
+Les soudures doivent être examinées avec une lotion pour la détection des fuites (type 1000 bulles®). 
+ 
+Documents 
+Un plan de récolement devra être réalisé au plus tôt sur la base du document technique afin que le maître 
+d’ouvrage dispose de ces documents pour ses éventuels futurs travaux (piscine, arbre).  
+La réalisation de clichés répertoriés par l’installateur est aussi conseillée. 
+ 
+
+ 
+   Ind : AF Mars 2021 / Page 14 
+
+
+
+  
+ 
+
+Exemple d’implantation sur zone décapée :
+
+ 
+
+4.3.2  Surface de captage 
+
+La surface du capteur est le résultat du calcul : 
+Surface (m2) = Puissance frigorifique extraite (W) / Débit d’extraction (W/m2) 
+ 
+Puissance frigorifique extraite  
+C’est la puissance extraite du sol en fonction des déperditions du bâtiment et éventuellement de la 
+chauffe de l’eau chaude sanitaire. 
+ 
+Cette puissance peut être inférieure à la puissance frigorifique de la pompe à chaleur indiquée sur le 
+tableau des caractéristiques de la pompe à chaleur choisie. 
+ 
+Vérifier que la puissance captée en moyenne sur 24 h, ne dépasse pas les valeurs indiquées par le COSTIC : 
+
+En watt par m² de capteur, en watt par mètre de tube En kWh par m² et par an 
+ 
+ 
+Taux d'extraction  
+C’est une valeur normalisée en fonction de la nature du sol et de la durée annuelle de fonctionnement* 
+ 
+
+Débit d’extraction de chaleur spécifique 
+Qualité du sol Période de fonctionnement Période de fonctionnement 
+
+1800 h par an 2400 h par an 
+Sol sec, non cohésif 10 W/m² 8 W/m² 
+Sol humide cohésif 20 à 30 w/m² 16 à 24 W/m² 
+Sable ou gravier saturé d’eau 40 W/m² 32 W/m² 
+* Tableau extrait de la norme EN 15450:2007 
+ 
+
+ 
+   Ind : AF Mars 2021 / Page 15 
+
+
+
+  
+ 
+
+On constate que la surface du capteur va dépendre de la nature du sol.  
+ 
+ 
+Surface 
+La surface du capteur est ainsi calculée au plus juste. Une surface supérieure, quand c’est possible  
+
+          augmente les performances. 
+ 
+
+ 
+ 
+
+4.3.3 Captage en tranchées 
+
+Dans le cas ou le captage sur terrain décapé n’est pas ou partiellement réalisable (zone étroite, zone avec 
+arbres, …) il est possible de faire la totalité ou une partie du captage par tranchées. 
+ 
+L’installateur peut donc réaliser son capteur à partir de tranchée de 0.5m minimum sur 0.6m de 
+profondeur. 
+ 
+Les tranchées peuvent ne pas être creusé en parallèle permettent ainsi de s’adapter à la configuration du 
+terrain. Une répartition des tranchées, à la limite de la propriété quand c’est possible, permet d’optimiser 
+la surface disponible. 
+ 
+Si les capteurs doivent être implantés parallèlement, le décapage est préférable aux tranchés mais les 
+tranchées peuvent être aussi réalisé avec un entre axe minimum de 1.2m. 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+   Ind : AF Mars 2021 / Page 16 
+
+
+
+  
+ 
+
+Il est aussi possible de réaliser, sous certaines conditions, du captage en double couches. L’emprise sur le 
+terrain est alors réduite au minimum.  
+Toutes les mesures de sécurité doivent être prises concernant les risques d’éboulement de la tranchée 
+lors de la pose du capteur (banchage). 
+
+ 
+ 
+
+ 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+   Ind : AF Mars 2021 / Page 17 
+
+
+
+  
+ 
+
+5 Les liaisons 
+Réalisez le passage des liaisons d’après les préconisations suivantes (vue de côté en coupe)  
+ 
+
+ 
+  
+Veuillez particulièrement à rétablir l’étanchéité du passage du mur à l’ai de de matériaux appropriés. 
+Les tuyaux aller-retour ne doivent pas être en contact mais isolés thermiq uement entre eux deux et 
+étanches envers l’environnement.  
+
+5.1 Dimensionnement des liaisons capteur 
+Les liaisons doivent être enterrées et espacées à la même profondeur que les capteurs horizontaux. 
+Les longueurs des rouleaux sont de 25m. 
+Le raccordement soudé entre deux longueurs doit être accessible (regard) 
+ 
+
+Longueurs maximum théoriques des liaisons des capteurs horizontaux en mètres 
+Générateur 2 3 4 5 6 8 10 12 
+
+aller Ø1/2" 
+17 - - - - - - - 
+
+retour Ø1/2 ‘’ 
+aller Ø1/2" 
+
+- 50* 26 - - - - - 
+retour 5/8 ‘’ 
+aller Ø5/8" 
+
+- - - 50* 35 17 13 7.5 
+retour Ø3/4‘’ 
+aller Ø5/8" 
+
+- - - - - 50* 50* 35 
+retour 2 x Ø3/4 ‘’ 
+
+*Ne pas dépasser 2 longueurs de 25m soit 50m. 
+ 
+
+  
+
+ 
+   Ind : AF Mars 2021 / Page 18 
+
+
+
+  
+ 
+
+6 Remise en place de la terre 
+Le sol doit être exempt de grosses pierres (100 cm3) et la densité de pierres doit être inférieure à 25%. 
+Dans le cas contraire, supprimer toutes les pierres sur le passage du capteur et recouvrir le capteur d’un 
+lit de 15cm de terre végétale. 
+ 
+Maintenir la pression d’azote à 15 Bar lors de la phase de remblaiement. 
+ 
+Lors du remblaiement, le terrassier ne doit pas rouler sur les tubes, mais sur la terre qu’il poussera devant 
+les roues de son tractopelle.  
+ 
+L’installateur devra superviser le remblaiement. 
+ 
+L’installateur posera un grillage avertisseur à 30 cm au-dessus des tubes, sur toute la surface du capteur 
+(conforme à la norme NFT 54-080). 
+
+7 Distributeurs et collecteurs 
+Le raccordement des tubes de captages et des émetteurs se fait par l’intermédiaire de collecteurs et de 
+distributeurs qui sont conçues pour faire une répartition harmonieuse du fluide R410A. 
+Il convient de les positionner selon un axe vertical afin de maitriser les départs et les retours de l’huile 
+frigorifique présente dans l’installation. Cette huile ne doit en aucun cas se retrouvé piégée en un point du 
+circuit.  Les distributeurs et collecteurs sont fournis avec des adaptateurs cuivre pour faciliter les 
+raccordements. 
+ 
+ 
+
+Montage vertical 
+ 
+
+ 
+
+8 Remplissage par le capteur 
+ATTENTION : Le raccordement et le remplissage du capteur seront obligatoirement réalisés par une 
+entreprise ou un artisan possédant une attestation de capacité et un opérateur possédant l’attestation 
+d’aptitude pour la manipulation des fluides frigorigènes. 
+ 
+Procéder au tirage au vide de l’installation pour atteindre une valeur de l’ordre de 10mBar absolu 
+(mesuré avec un vacuum mètre et non avec le manifold) et vérifier que cette valeur se maintienne après 
+l’arrêt de la pompe à vide.  
+ 
+L’objectif du tirage au vide est double : Ne pas avoir de gaz étrangers dans l’installation (azote, air), mais 
+surtout d’éliminer toute trace d’humidité, vecteur de transformation acide à plus ou moins long terme. 
+ 
+ATTENTION : L’évaporation de l’humidité devient difficile en dessous une température limite de 10°C. 
+
+ 
+   Ind : AF Mars 2021 / Page 19 
+
+
+
+  
+ 
+
+ 
+Pour améliorer l'efficacité de la déshumidification, il faut "casser le vide", c'est-à-dire 
+introduire une certaine quantité d'azote pour retrouver la pression atmosphérique, puis retirer 
+l'installation au vide. Cette opération peut être répétée plusieurs fois en cas de suspicion d'humidité 
+(méthode des 3 vides). 
+Ne jamais laisser une machine sous vide pendant une durée prolongée sans que la pompe à vide ne soit 
+en fonction (prise d’humidité par une éventuelle micro fuite sur les raccords et tuyaux de la pompe à 
+vide). 
+Effectuez la charge de l’installation avec du R410A à 50% de la charge indiquée dans le tableau des 
+caractéristiques techniques. Le remplissage doit se faire par la valve après le détendeur, au niveau du 
+départ capteur. 
+
+Démarrez la pompe à chaleur et attendre quelques heures pour obtenir un régime de fonctionnement 
+optimum. 
+Mesurez la surchauffe de la pompe à chaleur. 
+Ajustez la charge pour atteindre une surchauffe de 15°C plus ou moins 2. (Supposition d’un capteur chaud) 
+En cas d’installation fonctionnant en hiver cette surchauffe peut être réduite à11°C plus ou moins 1°C  
+
+ 
+ATTENTION : le cycle est lent, attendre 10mn entre deux apports de charge. 
+ 
+ 
+Relevez la température d’aspiration du compresseur, la température de refoulement du compresseur les 
+pressions et le sous refroidissement. 
+Vérifiez l’étanchéité du circuit lors de la mise en service et environ un mois après (détection d’une fuite de 
+moins de 5g / an). 
+ 
+Les canalisations du circuit se trouvant à des températures négatives, il est impératif de les calorifuger 
+afin d’éviter la formation de condensation et de glace sur les tuyauteries. La formation de glace et de 
+condensation n’a pas d’influence technique sur le fonctionnement de la SMARTPACK3 mais implique un 
+désagrément à l’utilisateur. (présence d’eau au sol) 
+ 
+ 
+
+Emetteurs 
+ 
+
+9 Description des émetteurs (plancher chauffant) 
+Les émetteurs sont réalisés avec du tube cuivre de qualité frigorifique 3/8" (Ø9.52 x 0,6mm) et ont une 
+longueur de 90 à 110m. L’installateur doit vérifier que la répartition du fluide et donc de la puissance, se 
+fasse harmonieusement sur l’ensemble de l’installation. 
+ 
+Pour des raisons de distribution de fluides correcte entre les boucles de plancher chauffant, il est 
+nécessaire de traiter les différents niveaux de l’habitation par des modules indépendants, ce qui facilite 
+également la régulation de température. 
+ 
+En cas de zone à la baisse, les émetteurs seront munis d’une électrovanne au départ de la boucle et d’un 
+clapet anti-retour en sortie de boucle et ne devront pas couvrir plus de 30% de la surface de chauffe d’un 
+seul module. Au-delà de 30% prévoir 2 modules indépendants. 
+ 
+Les distributeurs /collecteurs ne doivent pas être enfouis dans la dalle mais au contraire parfaitement 
+accessibles. Les brins des distributeurs doivent avoir une longueur identique et ne doivent pas être ni 
+raccourcis ni allongés. 
+ 
+ 
+ 
+
+ 
+   Ind : AF Mars 2021 / Page 20 
+
+
+
+  
+ 
+
+Si le plancher chauffant est au même niveau que la PAC, les distributeurs et collecteurs seront courbes, et 
+ils seront droit si le plancher chauffant se trouve à l’étage. 
+ 
+ 
+ Montage vertical vers RDC Montage vertical vers étage 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+La mise en place et la mise en œuvre de la chape, se font conformément aux prescriptions données par 
+les DTU  
+Toutefois, pour des raisons d’inconfort utilisateurs, nous déconseillons les planchers chauffants de fortes 
+épaisseurs avec tubes de chauffages intégrer à la dalle de compression. Les apports solaires par les 
+ouvertures vitrées, cumulés avec la forte inertie du plancher sont incompatibles avec une maitrise de 
+températures des locaux. 
+ 
+ 
+La puissance maximale admissible ne doit pas dépasser 90W/m2 de plancher. 
+ 
+
+10 Raccordement thermodynamique (vue arrière) 
+ 
+ 
+ 
+ Vue arrière  Vue arrière  
+ habillage  habillage  
+ 2 modules 3 modules 
+ 
+ 
+
+ 
+
+Vue arrière   
+ 
+
+habillage  
+ 
+
+1 module 
+ 
+ 
+
+490 490  490 
+
+418 418  
+418 
+
+182 182  
+182 
+
+ 
+110 110  110 
+
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+   Ind : AF Mars 2021 / Page 21 
+
+82 
+
+82 
+904 
+
+82 
+904 
+
+1252 
+
+
+
+  
+ 
+
+ 
+ 
+ Vue Arrière SMARTPACK 2 SOL SOL 
+ 
+ 
+ 
+ Capteur Chauffage 
+ 
+ 
+ 
+ 
+ 
+ 
+ Retour Départ Départ Retour 
+ 
+ Ø 5/8 Ø 1/2 Ø 1/2 Ø 1/2 
+ 
+ 
+Les tuyaux et les éventuels accessoires ne doivent pas être montés sur des cloisons intérieures 
+susceptibles de transmettre des sons ou des vibrations. 
+ 
+Lors de la soudure des raccords frigorifiques (brasage), maintenir un chiffon humide aux passages des 
+parois pour éviter toutes surchauffes de l’isolant et des composants. 
+
+ 11 Raccordement électrique 
+ 
+Raccordez la commande thermostatique sur les bornes de la machine suivant le schéma fourni avec la 
+PAC. 
+ 
+Raccordez l’alimentation électrique de puissance de la pompe à chaleur sur une ligne réservée à cet effet. 
+ 
+Effectuer un resserrage de l’ensemble des connexions électrique de la machine  
+
+ 
+IMPORTANT : Les électriciens qui réalisent les tableaux électriques des bâtiments, calibrent les 
+disjoncteurs en fonction de la section des fils alimentant le récepteur.  
+Les pompes à chaleur ont cependant des sections de fils d’alimentation largement dimensionnées pour 
+éviter les chutes de tensions au démarrage des moteurs, il est important que les disjoncteurs de 
+protection associés à la PAC soit calibré suivant le régime de fonctionnement de la PAC.  
+ 
+Il est nécessaire d’expliquer ce principe à l’électricien qui engage sa crédibilité vis-à-vis du Consuel. 
+ 
+Si besoin, installer un coffret annexe à proximité de la PAC équipé de ses propres disjoncteurs adaptés à la 
+PAC. 
+ 
+La section des fils et le type de disjoncteur pour l’alimentation du compresseur sont indiqués dans le 
+tableau des caractéristiques techniques.  
+Ajustez   le réglage du disjoncteur de puissance en fonction de l’intensité maximale absorbée dans le 
+régime de fonctionnement de la PAC. 
+ 
+
+ 
+
+  
+
+ 
+   Ind : AF Mars 2021 / Page 22 
+
+
+
+  
+ 
+
+ 
+ 
+
+Exemple de tableau client avec disjoncteur magnéto thermique ajusté au courant absorbé 
+ 
+Important : Sécurité électrique 
+Afin de s’assurer que l’électricité ne soit pas rétablie sur la PAC durant les manipulations : 
+Les disjoncteurs doivent être munis d’un dispositif de condamnation efficace. 
+ 
+ATTENTION : 
+Passez les câbles d’alimentation de puissance et de commande dans les presses étoupes, puis serrez les 
+écrous des presses étoupes une fois les câbles raccordés.  
+ 
+L’installation et les raccordements devront être conformes à la norme EN60335-1 et EN60335-2-
+40 (Sécurité des appareils électrodomestiques). 
+
+ 
+11.1 Schéma électrique 
+
+ 
+La compréhension du schéma électrique permet la maitrise de l’installation. 
+L’état des capteurs composants la chaine de sécurité donnent des information précise sur la cause d’un 
+éventuel dysfonctionnement de l’installation. 
+Le schéma électrique intègre le câblage des différentes options possible sur la SMARTPACK. Dans un souci 
+de compréhension, les options ont été dessiné dans une couleur spécifique à l’option. 
+Pour des raisons de disponibilité du circuit de chauffage, l’alarme haute pression n’est pas à réarmement 
+manuel. Il est donc nécessaire d’établir une maintenance périodique, et de sensibiliser l’utilisateur sur ce 
+point. 
+
+11.2 Réglage de la temporisation 
+
+ 
+
+                      
+ 
+Temporisations RT1  
+ 
+Les pompes à chaleur sont toutes équipées d’une temporisation anti-cours cycles. 
+
+ 
+   Ind : AF Mars 2021 / Page 23 
+
+
+
+  
+ 
+
+Cette temporisation est repérée par RT1 sur les schémas et les étiquettes. 
+Cette temporisation est de 30 mn. Ce temps ne doit pas être raccourci (dégradation du compresseur). 
+L’objet de cette temporisation est d’éviter deux démarrages successifs du compresseur. 
+Effectivement, lors de l’arrêt du compresseur, la pression HP est à son maximum. Un démarrage avant 
+que les pressions HP/BP ne se soient équilibrées conduirait à un démarrage en charge du compresseur 
+avec toutes ses conséquences néfastes à la durée de vie du produit. 
+Les pompes à chaleurs équipés d’un démarreur disposent d’une temporisation supplémentaire de 
+
+ quelques minutes intégrée au démarreur. 
+ 
+
+ 
+   Ind : AF Mars 2021 / Page 24 
+
+
+
+  
+ 
+
+Mise en service 
+ 
+
+12 Mise en service 
+La mise en service ou la maintenance doivent être mise en œuvre par un technicien frigoriste ayant reçu 
+une formation au produit NEXTHERM.  
+ 
+ATTENTION : La mise en service ne peut être effectuée que lorsque les étapes suivantes sont terminées : 
+• Les circuits capteur et émetteurs doivent être raccordés. 
+• L’étanchéité des circuits doit être validée 
+• Les circuits doivent être préchargés en R410A. 
+• Le voyant liquide ne doit pas indiquer d’humidité. 
+• L’ensemble des soudures et les prises de pression ont été vérifiés au détecteur électronique. 
+• Le capteur et les liaisons doivent être remblayés. 
+• La chape du plancher chauffant doit être terminée et sèche. 
+• Les alimentations électriques raccordées. 
+• Les circuits de commande raccordés  
+
+ 
+Alimentez le circuit de puissance compresseur et procédez à la mise en service effective :  
+ 
+• Créer une demande de mise en service de la machine avec le thermostat d’ambiance. 
+• Attendez que la temporisation anti court cycle se termine (30mn) ou la forcer pour un premier 
+
+démarrage ou si la machine n’a pas fonctionné depuis 30 minutes. (Temporisation RT1 réglé 
+d’origine sur 2h et sur 5, possibilité de réduire en réglant sur 2 s. Remettre immédiatement le 
+réglage sur 2 h sous peine de détérioré le compresseur). Si, lors d’un démarrage ou la temporisation 
+a été réduite, le compresseur force et « grogne » sans démarrer, couper immédiatement le 
+disjoncteur de télécommande sous peine de détruire le compresseur. 
+
+• Lors de démarrage du compresseur, contrôlé la chute de tension. La tension ne doit pas descendre 
+en dessous de 220 v sous peine d’endommager le compresseur 
+
+• Après le démarrage du compresseur, attendre que la température de condensation atteigne 25 °C. 
+• Ajuster la charge de gaz pour obtenir une surchauffe de 15 °C plus ou moins 2 sur capteur chaud et 
+
+11°C plus ou moins 1 sur capteur froid. Procéder par petites charges successives espacé de 10 
+minutes afin de laisser au fluide le temps de faire le cycle complet. 
+
+• Remplir la fiche de mise en service.  
+• Relevez les paramètres indiqués sur la fiche de mise en service (pression, température, tension, 
+
+intensité et charge de l’installation). 
+• Indiquer dans la machine et sur la plaque signalétique la charge de fluide frigorigène. 
+• Vérifiez l’absence d’humidité dans le voyant liquide lorsqu’il est installé. 
+• Vérifiez que le compresseur, et particulièrement sa partie basse, n’est pas givrée. 
+• Mesurez la tension et l’intensité absorbée de la PAC à son régime de fonctionnement. 
+
+ 
+Rappel (paramètres de la PAC à calculer lors de la mise en service et lors de la maintenance) 
+ 
+Définition de la Surchauffe : C’est une marge de sécurité et de fonctionnement pour la régulation du 
+réfrigérant par le détendeur. C’est la différence entre la température, mesurée au thermomètre, à 
+l’entrée du compresseur avec la température d’évaporation, mesurée au manomètre BP.  
+ 
+Définition du Sous refroidissement : C’est une marge de fonctionnement pour la régulation du réfrigérant 
+par le détendeur.  C’est la différence entre la température de condensation, mesurée au manomètre HP, 
+avec la température en sortie condenseur, mesurée au thermomètre.  
+
+  
+
+ 
+   Ind : AF Mars 2021 / Page 25 
+
+
+
+  
+ 
+
+Fiche de mise en service 
+ 
+La fiche de mise en service se sépare en trois exemplaires : 1 exemplaire à remettre au client, un 
+exemplaire pour l’installateur et un exemplaire à envoyer à NEXTHERM. 
+ 
+
+Attention : L’envoi de la fiche de mise en service à NEXTHERM  
+conditionne la garantie 
+
+ 
+Maintenance 
+
+13 Maintenance 
+
+13.1 Généralités 
+Les opérations de maintenance doivent suivre les préconisations RGE citées dans l’introduction : 
+
+- Une surveillance préventive réalisée annuellement 
+- Un petit entretien 
+- Aléatoirement un dépannage 
+
+ 
+Toutes les étapes doivent être consignées par le technicien dans le carnet de chaufferie. 
+
+ 
+Le but est de fournir des performances optimales, allonger la durée de vie du matériel, assurer un 
+meilleur confort dans le temps. 
+
+ 
+En cas de panne, ne pas hésiter à faire appel à la hotline NEXTHERM après avoir fait les vérifications 
+d’usage de ce présent guide. 
+
+ 
+Lors de la maintenance annuelle de la pompe à chaleur, il est important de vérifier les points suivants : 
+
+13.2Vérifications du système électrique 
+Contrôler visuellement l’état du câblage électrique. 
+Resserrez les connexions électriques, notamment sur les câbles de puissance du côté du 
+compresseur (couple : 2.5Nm) 
+Vérifiez visuellement l’état et le serrage des cosses électriques. 
+Mesurez la tension et l’intensité absorbée à son régime de fonctionnement par le compresseur et la 
+comparer avec les mesures initiales. 
+Contrôler la chute de tension au démarrage (minimum 220v) 
+ 
+Afin de prévenir des dommages électriques, nous préconisons un contrôle annuel des échauffements 
+
+par caméra thermique. 
+ 
+Soyez particulièrement vigilant à l’appareillage et à la connectique des pompes à chaleur 
+
+(démarreur, condensateur, compresseurs temporisation, circulateur) 
+ 
+Certaines pièces, comme les condensateurs / les démarreurs (durée moyenne d’utilisation en 
+
+conditions de fonctionnement normal : environ 10 000 heures), restent des pièces d’usure. Il 
+convient d’en vérifier l’état. Nous recommandons de les remplacer par des modèles « nouvelle 
+génération », afin d’éviter une dégradation des performances et maintenir un fonctionnement 
+optimal de la PAC.  
+
+ 
+Vérifiez l’état du câblage, du condensateur, des bornes et des organes de commande à la recherche de 
+traces d’échauffement et les traiter si nécessaire. 
+
+ 
+   Ind : AF Mars 2021 / Page 26 
+
+
+
+  
+ 
+
+ 
+ 
+
+13.3 Vérification du circuit frigorifique 
+Vérifiez au détecteur électronique les soudures et les prises de pression sur la pompe à chaleur et sur les 
+distributeurs / collecteurs. 
+ 
+
+Effectuer un relevé de fonctionnement complet de l’installation et le comparer avec la fiche de mise 
+en service et les relever des années précédentes. Annualiser une éventuelle dérive.  
+Contrôler la surchauffe qui doit être de 15 °C + ou – 2 °C sur un capteur chaud (avant la saison de 
+chauffe) et de 11°C + ou – 1 °C sur un capteur froid (février/mars). 
+
+ 
+Remplir le carnet d’entretien avec les valeurs mesuré et les éventuelles actions entreprises. 
+En cas d’ouverture des prises de pressions, veuillez remplacer les joints qui se dégradent au fil du 
+temps. 
+ 
+En cas de suspicion d’un dysfonctionnement, faire intervenir un frigoriste. 
+Le frigoriste devra : 
+
+• Prendre les mesures élémentaires pour calculer la surchauffe et le sous refroidissement 
+ainsi que les mesures de température sur le capteur et les émetteurs. 
+
+• Reportez ces mesures sur une fiche de mises en service ou sur une fiche équivalente propre 
+à l’entreprise qui intervient. 
+
+• Etablir un diagnostic et intervenir sur le circuit si besoin.  
+ 
+
+Rappel (paramètres de la PAC à calculer lors de la mise en service et lors de la maintenance) 
+ 
+Définition de la Surchauffe : C’est une marge de sécurité et de fonctionnement pour la régulation du 
+réfrigérant par le détendeur. C’est la différence entre la température, mesurée au thermomètre, à 
+l’entrée du compresseur avec la température d’évaporation, mesurée au manomètre BP.  
+ 
+Définition du Sous refroidissement : C’est une marge de fonctionnement pour la régulation du réfrigérant 
+par le détendeur.  C’est la différence entre la température de condensation, mesurée au manomètre HP, 
+avec la température en sortie condenseur, mesurée au thermomètre.  
+ 
+Faire un relevé de fonctionnement de l’installation et comparez avec les paramètres d’origine.  
+Lors de la maintenance annuelle de la pompe à chaleur, il est important de vérifier les points suivants : 
+ 
+
+ 
+ 
+
+ 
+   Ind : AF Mars 2021 / Page 27 
+
+
+
+  
+ 
+
+ 
+ 
+
+ 
+   Ind : AF Mars 2021 / Page 28
