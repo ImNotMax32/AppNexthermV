@@ -948,7 +948,7 @@ Comment puis-je vous assister avec ce produit aujourd'hui ?`;
                           className={`px-4 py-3 rounded-lg ${
                             message.role === 'assistant'
                               ? 'bg-white border text-gray-800'
-                              : 'bg-[#86BC29] text-white'
+                              : 'bg-[#86BC29] text-white mr-2'
                           }`}
                         >
                           {message.role === 'assistant' ? (
