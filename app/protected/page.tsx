@@ -33,7 +33,7 @@ export default async function DashboardPage() {
   const { data: { user } } = await supabase.auth.getUser();
 
   if (!user) {
-    return redirect("/login");
+    return redirect("/sign-in");
   }
 
   // Récupérer le prénom de l'utilisateur depuis diverses sources possibles
