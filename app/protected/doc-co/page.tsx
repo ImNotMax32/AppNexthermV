@@ -495,7 +495,7 @@ const getIconForCategory = (category: string) => {
       return <FileSpreadsheet />;
     case "Plaquettes":
       return <Presentation />;
-    case "Ballon tampon":
+    case "Ballon Tampon":
     case "Ballon ECS":
       return <FileImage />;
     default:

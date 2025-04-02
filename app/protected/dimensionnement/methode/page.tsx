@@ -128,6 +128,16 @@ const pulseVariants = {
   }
 };
 
+const selectValueVariants = {
+  filled: {
+    y: [0, -10, 0],
+    transition: { duration: 0.2 }
+  },
+  empty: {
+    y: 0
+  }
+};
+
 // SelectWithAnimation component
 const SelectWithAnimation: React.FC<SelectWithAnimationProps> = ({ 
   label, 
@@ -179,11 +189,9 @@ const SelectWithAnimation: React.FC<SelectWithAnimationProps> = ({
               hasValue ? 'ring-1 ring-[#86BC29]' : ''}`}
         >
           <motion.div
-            initial={false}
-            animate={value ? {
-              y: [0, -10, 0],
-              transition: { duration: 0.2 }
-            } : {}}
+            initial="empty"
+            animate={hasValue ? "filled" : "empty"}
+            variants={selectValueVariants}
           >
             <SelectValue placeholder={`Sélectionnez ${label.toLowerCase()}`} />
           </motion.div>

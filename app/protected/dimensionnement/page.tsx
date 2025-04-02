@@ -225,6 +225,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
 });
 
 Input.displayName = 'Input';
+
 // Composant Select amélioré
 const SelectWithAnimation: React.FC<SelectWithAnimationProps> = ({ 
   label, 
@@ -235,6 +236,15 @@ const SelectWithAnimation: React.FC<SelectWithAnimationProps> = ({
   required = false
 }) => {
   const hasValue = value && value !== '';
+  
+  // Définir des variants pour les animations (constants à chaque rendu)
+  const selectValueVariants = {
+    idle: { y: 0 },
+    selected: { 
+      y: [0, -5, 0],
+      transition: { duration: 0.2 }
+    }
+  };
   
   return (
     <motion.div
@@ -276,23 +286,15 @@ const SelectWithAnimation: React.FC<SelectWithAnimationProps> = ({
               hasValue ? 'ring-1 ring-[#86BC29]' : ''}`}
         >
           <motion.div
-            initial={false}
-            animate={value ? {
-              y: [0, -10, 0],
-              transition: { duration: 0.2 }
-            } : {}}
+            initial="idle"
+            animate={hasValue ? "selected" : "idle"}
+            variants={selectValueVariants}
           >
             <SelectValue placeholder={`Sélectionnez ${label.toLowerCase()}`} />
           </motion.div>
         </SelectTrigger>
         <SelectContent>
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.2 }}
-          >
-            {children}
-          </motion.div>
+          {children}
         </SelectContent>
       </Select>
       {error && (

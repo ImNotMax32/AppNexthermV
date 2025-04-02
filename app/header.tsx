@@ -107,7 +107,7 @@ export default function Header() {
 
   async function handleSignOut() {
     try {
-      Promise.race([
+      await Promise.race([
         supabase.auth.signOut(),
         new Promise((resolve) => setTimeout(resolve, 3000))
       ]);

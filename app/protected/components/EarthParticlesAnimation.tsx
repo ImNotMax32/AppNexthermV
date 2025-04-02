@@ -62,14 +62,67 @@ function EarthParticlesAnimation() {
   
   useEffect(() => {
     const canvas = canvasRef.current;
-    if (!canvas || dimensions.width === 0) return;
+    // Vérifier que le canvas existe et a des dimensions
+    if (!canvas || dimensions.width === 0) {
+      return; // Sortir tôt si le canvas n'est pas prêt
+    }
     
     // Définir les dimensions du canvas
     canvas.width = dimensions.width;
     canvas.height = dimensions.height;
     
     const ctx = canvas.getContext('2d');
-    if (!ctx) return;
+    if (!ctx) {
+      return; // Sortir tôt si le contexte 2D n'est pas disponible
+    }
+    
+    // Constantes pour les couleurs selon le moment de la journée
+    const getColors = () => {
+      switch (timeOfDay) {
+        case 'dawn':
+          return {
+            skyTop: 'rgb(255, 165, 70)',
+            skyBottom: 'rgb(245, 215, 150)',
+            cloudColor: 'rgba(255, 255, 255, 0.7)',
+            treeColor: 'rgb(40, 70, 30)',
+            particleBaseColor: {r: 230, g: 180, b: 50}
+          };
+        case 'day':
+          return {
+            skyTop: 'rgb(135, 206, 235)',
+            skyBottom: 'rgb(220, 240, 255)',
+            cloudColor: 'rgba(255, 255, 255, 0.8)',
+            treeColor: 'rgb(34, 139, 34)',
+            particleBaseColor: {r: 225, g: 180, b: 0}
+          };
+        case 'dusk':
+          return {
+            skyTop: 'rgb(255, 100, 100)',
+            skyBottom: 'rgb(70, 100, 180)',
+            cloudColor: 'rgba(255, 230, 230, 0.65)',
+            treeColor: 'rgb(25, 55, 25)',
+            particleBaseColor: {r: 220, g: 150, b: 100}
+          };
+        case 'night':
+          return {
+            skyTop: 'rgb(5, 10, 60)',
+            skyBottom: 'rgb(30, 45, 110)',
+            cloudColor: 'rgba(200, 200, 230, 0.3)',
+            treeColor: 'rgb(10, 30, 20)',
+            particleBaseColor: {r: 100, g: 130, b: 200}
+          };
+        default:
+          return {
+            skyTop: 'rgb(135, 206, 235)',
+            skyBottom: 'rgb(220, 240, 255)',
+            cloudColor: 'rgba(255, 255, 255, 0.8)',
+            treeColor: 'rgb(34, 139, 34)',
+            particleBaseColor: {r: 225, g: 180, b: 0}
+          };
+      }
+    };
+    
+    const colors = getColors();
     
     // Classe pour créer des particules
     class Particle {
@@ -84,20 +137,20 @@ function EarthParticlesAnimation() {
       originalRadius: number;
       
       constructor() {
-        // On utilise l'assertion non-null (!) car on a déjà vérifié que canvas existe
+        // On utilise l'assertion non-null (!) car on a déjà vérifié que canvas existe dans l'effet
         this.x = Math.random() * canvas!.width;
         this.y = Math.random() * canvas!.height;
         this.radius = Math.random() * 5 + 1;
         this.originalRadius = this.radius;
         
-        // Couleur des particules ajustée selon le moment de la journée
-        if (timeOfDay === 'night') {
-          // Particules plus bleues pendant la nuit
-          this.color = `rgba(${Math.floor(Math.random() * 30 + 100)}, ${Math.floor(Math.random() * 100 + 100)}, ${Math.floor(Math.random() * 100 + 155)}, ${Math.random() * 0.5 + 0.5})`;
-        } else {
-          // Particules plus orange/jaune pendant la journée
-          this.color = `rgba(${Math.floor(Math.random() * 50 + 200)}, ${Math.floor(Math.random() * 100 + 155)}, ${Math.floor(Math.random() * 50)}, ${Math.random() * 0.5 + 0.5})`;
-        }
+        // Couleur des particules ajustée avec les couleurs prédéfinies
+        const { r, g, b } = colors.particleBaseColor;
+        const rVariation = Math.floor(Math.random() * 50);
+        const gVariation = Math.floor(Math.random() * 50);
+        const bVariation = Math.floor(Math.random() * 50);
+        const alpha = Math.random() * 0.5 + 0.5;
+        
+        this.color = `rgba(${Math.min(r + rVariation, 255)}, ${Math.min(g + gVariation, 255)}, ${Math.min(b + bVariation, 255)}, ${alpha})`;
         
         this.speedX = (Math.random() - 0.5) * 1.5;
         this.speedY = (Math.random() - 0.5) * 1.5;
@@ -136,7 +189,7 @@ function EarthParticlesAnimation() {
     }
     
     // Créer un tableau de particules (nombre adaptatif selon la taille)
-    const particleCount = Math.min(Math.floor((canvas.width * canvas.height) / 6000), 100);
+    const particleCount = Math.min(Math.floor((canvas!.width * canvas!.height) / 6000), 100);
     const particleArray: Particle[] = [];
     
     for (let i = 0; i < particleCount; i++) {
@@ -145,7 +198,8 @@ function EarthParticlesAnimation() {
     
     // Dessiner les couches terrestres ondulantes
     function drawEarthLayers() {
-      if (!ctx) return;
+      // Vérification de sécurité
+      if (!canvas || !ctx) return;
       
       // Dessiner plusieurs couches avec ondulation différente pour chaque
       const layers = [
@@ -199,7 +253,8 @@ function EarthParticlesAnimation() {
     
     // Fonction pour dessiner des nuages
     function drawClouds() {
-      if (!ctx) return;
+      // Vérification de sécurité
+      if (!canvas || !ctx) return;
       
       const clouds = [
         { x: canvas!.width * 0.1, y: canvas!.height * 0.15, size: 40 },
@@ -208,15 +263,7 @@ function EarthParticlesAnimation() {
       ];
       
       // Couleur des nuages selon le moment de la journée
-      let cloudColor = 'rgba(255, 255, 255, 0.7)';
-      
-      if (timeOfDay === 'dawn') {
-        cloudColor = 'rgba(255, 230, 230, 0.7)'; // Teinte rosée à l'aube
-      } else if (timeOfDay === 'dusk') {
-        cloudColor = 'rgba(255, 200, 150, 0.7)'; // Teinte orangée au crépuscule
-      } else if (timeOfDay === 'night') {
-        cloudColor = 'rgba(200, 200, 255, 0.5)'; // Teinte bleutée la nuit
-      }
+      let cloudColor = colors.cloudColor;
       
       clouds.forEach(cloud => {
         // Animation légère des nuages
@@ -235,7 +282,8 @@ function EarthParticlesAnimation() {
     
     // Fonction pour dessiner des arbres
     function drawTrees() {
-      if (!ctx) return;
+      // Vérification de sécurité
+      if (!canvas || !ctx) return;
       
       // Définir 4 arbres avec des positions et tailles différentes
       const trees = [
@@ -258,7 +306,8 @@ function EarthParticlesAnimation() {
         
         // Feuillage de l'arbre (plusieurs cercles pour donner l'effet touffu)
         // Ajuster la couleur du feuillage selon le moment de la journée
-        let greenHue = 120 + (Math.random() * 30 - 15);
+        // On utilise une valeur fixe pour éviter le clignotement
+        let greenHue = 120; // Couleur de base verte
         let leafSaturation = 70;
         let leafLightness = 35;
         
@@ -279,26 +328,29 @@ function EarthParticlesAnimation() {
         ctx.fillStyle = `hsla(${greenHue}, ${leafSaturation}%, ${leafLightness}%, 0.8)`;
         
         // Animation légère du feuillage avec le vent (réduite)
-        const swayFactor = Math.sin(Date.now() * 0.001 + x) * 3 * scale;
+        const swayFactor = Math.sin(Date.now() * 0.0005 + x) * 2 * scale;
         
-        // Dessiner plusieurs cercles pour créer un feuillage touffu
-        // Taille des cercles proportionnelle à l'échelle de l'arbre
-        const radius = treeHeight * 0.25;
+        // Dessiner chaque partie du feuillage séparément comme avant
+        // mais en gardant une couleur fixe pour éviter le clignotement
         
+        // Cercle principal (milieu)
         ctx.beginPath();
-        ctx.arc(x + swayFactor * 0.3, groundY - treeHeight * 0.45, radius, 0, Math.PI * 2);
+        ctx.arc(x + swayFactor * 0.3, groundY - treeHeight * 0.45, treeHeight * 0.25, 0, Math.PI * 2);
         ctx.fill();
         
+        // Cercle gauche
         ctx.beginPath();
-        ctx.arc(x - 15 * scale + swayFactor * 0.2, groundY - treeHeight * 0.55, radius * 0.8, 0, Math.PI * 2);
+        ctx.arc(x - 15 * scale + swayFactor * 0.2, groundY - treeHeight * 0.55, treeHeight * 0.2, 0, Math.PI * 2);
         ctx.fill();
         
+        // Cercle droit
         ctx.beginPath();
-        ctx.arc(x + 15 * scale + swayFactor * 0.4, groundY - treeHeight * 0.5, radius * 0.8, 0, Math.PI * 2);
+        ctx.arc(x + 15 * scale + swayFactor * 0.4, groundY - treeHeight * 0.5, treeHeight * 0.2, 0, Math.PI * 2);
         ctx.fill();
         
+        // Cercle supérieur
         ctx.beginPath();
-        ctx.arc(x + swayFactor * 0.2, groundY - treeHeight * 0.7, radius, 0, Math.PI * 2);
+        ctx.arc(x + swayFactor * 0.2, groundY - treeHeight * 0.7, treeHeight * 0.25, 0, Math.PI * 2);
         ctx.fill();
       });
     }
@@ -315,50 +367,11 @@ function EarthParticlesAnimation() {
       const skyGradient = ctx.createLinearGradient(0, 0, 0, canvas!.height * 0.7);
       
       // Définir les couleurs du ciel selon le moment de la journée
-      if (timeOfDay === 'dawn') {
-        // Aube: rose orangé qui se dégrade en bleu clair
-        skyGradient.addColorStop(0, 'rgba(255, 150, 100, 1)');
-        skyGradient.addColorStop(0.3, 'rgba(255, 200, 150, 0.9)');
-        skyGradient.addColorStop(1, 'rgba(173, 216, 230, 0.8)');
-      } else if (timeOfDay === 'day') {
-        // Jour: bleu clair
-        skyGradient.addColorStop(0, 'rgba(135, 206, 250, 1)');
-        skyGradient.addColorStop(1, 'rgba(173, 216, 230, 0.8)');
-      } else if (timeOfDay === 'dusk') {
-        // Crépuscule: orange qui se dégrade en bleu foncé
-        skyGradient.addColorStop(0, 'rgba(255, 100, 50, 1)');
-        skyGradient.addColorStop(0.3, 'rgba(255, 150, 100, 0.9)');
-        skyGradient.addColorStop(1, 'rgba(100, 150, 200, 0.8)');
-      } else {
-        // Nuit: bleu foncé à noir
-        skyGradient.addColorStop(0, 'rgba(25, 25, 112, 1)');  // Bleu nuit
-        skyGradient.addColorStop(0.5, 'rgba(50, 50, 100, 0.9)');
-        skyGradient.addColorStop(1, 'rgba(70, 70, 120, 0.8)');
-      }
+      skyGradient.addColorStop(0, colors.skyTop);
+      skyGradient.addColorStop(1, colors.skyBottom);
       
       ctx.fillStyle = skyGradient;
       ctx.fillRect(0, 0, canvas!.width, canvas!.height * 0.7);
-      
-      // Dessiner les étoiles si c'est la nuit
-      if (timeOfDay === 'night' || timeOfDay === 'dusk') {
-        // Dessiner quelques étoiles scintillantes
-        const starCount = Math.min(Math.floor(canvas!.width * canvas!.height / 10000), 50);
-        
-        for (let i = 0; i < starCount; i++) {
-          const x = Math.random() * canvas!.width;
-          const y = Math.random() * (canvas!.height * 0.6); // Étoiles uniquement dans le ciel
-          const size = Math.random() * 2 + 1;
-          const opacity = Math.random() * 0.5 + 0.5;
-          
-          // Animation de scintillement
-          const twinkle = Math.sin(Date.now() * 0.005 + i * 100) * 0.3 + 0.7;
-          
-          ctx.fillStyle = `rgba(255, 255, 255, ${opacity * twinkle})`;
-          ctx.beginPath();
-          ctx.arc(x, y, size, 0, Math.PI * 2);
-          ctx.fill();
-        }
-      }
       
       // Dessiner quelques nuages légers
       drawClouds();
@@ -404,7 +417,7 @@ function EarthParticlesAnimation() {
     
     // Nettoyer l'animation lors du démontage
     return () => {
-      if (ctx) {
+      if (ctx && canvas) {
         ctx.clearRect(0, 0, canvas!.width, canvas!.height);
       }
     };

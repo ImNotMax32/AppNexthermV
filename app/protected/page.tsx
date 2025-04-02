@@ -25,7 +25,7 @@ import {
   Thermometer,
   Cloud
 } from "lucide-react";
-import ClientEarthParticlesAnimation from "./components/ClientEarthParticlesAnimation";
+import ClientEarthParticlesAnimation, { WeatherTipIcon } from "./components/ClientEarthParticlesAnimation";
 
 // Composant principal qui charge les données et affiche la page
 export default async function DashboardPage() {
@@ -169,7 +169,7 @@ export default async function DashboardPage() {
       {/* Conseil rapide avec animation */}
       <div className="bg-white dark:bg-gray-800 rounded-xl p-4 shadow-md border border-gray-100 dark:border-gray-700 flex items-center gap-3 animate-slideInFromRight">
         <div className="p-2 bg-yellow-100 dark:bg-yellow-900/30 rounded-full">
-          {weatherTip.icon}
+          <WeatherTipIcon iconType={weatherTip.iconType} iconColor={weatherTip.iconColor} />
         </div>
         <div className="flex flex-col flex-grow">
           <p className="text-sm text-gray-700 dark:text-gray-300">
@@ -268,13 +268,15 @@ async function fetchWeatherTip(randomCity: { name: string; lat: number; lon: num
         {
           id: 'spring-1',
           text: `Au printemps, c'est le moment idéal pour effectuer la maintenance annuelle de votre pompe à chaleur avant les fortes chaleurs.`,
-          icon: <Zap className="h-5 w-5 text-green-600 dark:text-green-500" />,
+          iconType: 'zap',
+          iconColor: 'green',
           source: 'Conseils saisonniers'
         },
         {
           id: 'spring-2',
           text: `Contrôlez le bon fonctionnement de votre système de rafraîchissement avant l'arrivée des températures estivales.`,
-          icon: <Cloud className="h-5 w-5 text-blue-600 dark:text-blue-500" />,
+          iconType: 'cloud',
+          iconColor: 'blue',
           source: 'Conseils saisonniers'
         }
       ],
@@ -282,13 +284,15 @@ async function fetchWeatherTip(randomCity: { name: string; lat: number; lon: num
         {
           id: 'summer-1',
           text: `En été, réglez votre pompe à chaleur réversible à 26°C maximum pour un confort optimal et des économies d'énergie.`,
-          icon: <Thermometer className="h-5 w-5 text-red-600 dark:text-red-500" />,
+          iconType: 'thermometer',
+          iconColor: 'red',
           source: 'Conseils saisonniers'
         },
         {
           id: 'summer-2',
           text: `Vérifiez que votre unité extérieure est à l'ombre pour améliorer les performances de rafraîchissement.`,
-          icon: <Cloud className="h-5 w-5 text-blue-600 dark:text-blue-500" />,
+          iconType: 'cloud',
+          iconColor: 'blue',
           source: 'Conseils saisonniers'
         }
       ],
@@ -296,13 +300,15 @@ async function fetchWeatherTip(randomCity: { name: string; lat: number; lon: num
         {
           id: 'autumn-1',
           text: `En automne, vérifiez l'isolation de vos fenêtres et portes pour optimiser le rendement de votre chauffage.`,
-          icon: <Lightbulb className="h-5 w-5 text-yellow-600 dark:text-yellow-500" />,
+          iconType: 'lightbulb',
+          iconColor: 'yellow',
           source: 'Conseils saisonniers'
         },
         {
           id: 'autumn-2',
           text: `Contrôlez la pression du circuit de chauffage avant de basculer en mode hiver.`,
-          icon: <Zap className="h-5 w-5 text-green-600 dark:text-green-500" />,
+          iconType: 'zap',
+          iconColor: 'green',
           source: 'Conseils saisonniers'
         }
       ],
@@ -310,13 +316,15 @@ async function fetchWeatherTip(randomCity: { name: string; lat: number; lon: num
         {
           id: 'winter-1',
           text: `En hiver, dégagez régulièrement l'unité extérieure de toute neige ou glace pour maintenir l'efficacité.`,
-          icon: <Thermometer className="h-5 w-5 text-blue-600 dark:text-blue-500" />,
+          iconType: 'thermometer',
+          iconColor: 'blue',
           source: 'Conseils saisonniers'
         },
         {
           id: 'winter-2',
           text: `Réglez votre pompe à chaleur entre 19°C et 21°C pour un confort optimal et une consommation maîtrisée.`,
-          icon: <Zap className="h-5 w-5 text-green-600 dark:text-green-500" />,
+          iconType: 'zap',
+          iconColor: 'green',
           source: 'Conseils saisonniers'
         }
       ]
@@ -360,32 +368,38 @@ async function fetchWeatherTip(randomCity: { name: string; lat: number; lon: num
       {
         id: 1,
         text: "Pour un confort optimal, pensez aux systèmes réversibles qui peuvent chauffer et refroidir votre logement.",
-        icon: <Thermometer className="h-5 w-5 text-blue-600 dark:text-blue-500" />
+        iconType: 'thermometer',
+        iconColor: 'blue'
       },
       {
         id: 2,
         text: "Aujourd'hui est un jour idéal pour faire contrôler le rendement de votre pompe à chaleur.",
-        icon: <Zap className="h-5 w-5 text-yellow-600 dark:text-yellow-500" />
+        iconType: 'zap',
+        iconColor: 'yellow'
       },
       {
         id: 3,
         text: "Pensez à vérifier l'isolation de votre maison pour maximiser l'efficacité de votre chauffage géothermique.",
-        icon: <Lightbulb className="h-5 w-5 text-yellow-600 dark:text-yellow-500" />
+        iconType: 'lightbulb',
+        iconColor: 'yellow'
       },
       {
         id: 4,
         text: "Un entretien régulier de votre système de pompe à chaleur peut réduire votre consommation d'énergie de 10%.",
-        icon: <Zap className="h-5 w-5 text-green-600 dark:text-green-500" />
+        iconType: 'zap',
+        iconColor: 'green'
       },
       {
         id: 5,
         text: "La température idéale pour un système géothermique se situe entre 18 et 20°C pour un confort optimal.",
-        icon: <Thermometer className="h-5 w-5 text-red-600 dark:text-red-500" />
+        iconType: 'thermometer',
+        iconColor: 'red'
       },
       {
         id: 6,
         text: "Saviez-vous que les pompes à chaleur air-eau peuvent fonctionner jusqu'à -20°C extérieur?",
-        icon: <Cloud className="h-5 w-5 text-blue-600 dark:text-blue-500" />
+        iconType: 'cloud',
+        iconColor: 'blue'
       }
     ];
     
