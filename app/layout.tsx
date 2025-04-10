@@ -13,8 +13,13 @@ const defaultUrl = process.env.VERCEL_URL
 
 export const metadata = {
   metadataBase: new URL(defaultUrl),
-  title: "Next.js and Supabase Starter Kit",
-  description: "The fastest way to build apps with Next.js and Supabase",
+  title: "Nextherm Applications",
+  description: "Nextherm - Expert en solutions de pompes à chaleur",
+  icons: {
+    icon: [{ url: "/assets/img/Favicon-01.png", sizes: "any", type: "image/png" }],
+    shortcut: [{ url: "/assets/img/Favicon-01.png" }],
+    apple: [{ url: "/assets/img/Favicon-01.png" }],
+  },
 };
 
 export default function RootLayout({
