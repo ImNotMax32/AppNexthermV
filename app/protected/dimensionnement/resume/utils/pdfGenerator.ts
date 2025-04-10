@@ -391,6 +391,59 @@ export async function generateModernPdf(data: GeneratePdfData): Promise<void> {
     
     addTextSafely(doc, "Téléphone : ", 125, 273.3);
     addTextSafely(doc, installerInfo.phone, 147.521, 273.3);
+    
+    // Ajout du logo de l'installateur à droite du texte "Information installateur"
+    if (installerInfo.logo) {
+      try {
+        // Convertir le Blob en URL data
+        const logoUrl = URL.createObjectURL(installerInfo.logo);
+        const logoImg = await new Promise<HTMLImageElement>((resolve, reject) => {
+          const img = new Image();
+          img.onload = () => resolve(img);
+          img.onerror = reject;
+          img.src = logoUrl;
+        });
+        
+        // Dimensionnement du logo (max 40x20mm)
+        const maxLogoWidth = 40;
+        const maxLogoHeight = 20;
+        const logoDimensions = calculateLogoDimensions(
+          logoImg.width, 
+          logoImg.height, 
+          maxLogoWidth, 
+          maxLogoHeight
+        );
+        
+        // Position du logo (à droite du texte "Information installateur")
+        const logoX = 165; // Position à droite du texte, décalé légèrement à gauche
+        const logoY = 235;  // Remonté légèrement au-dessus des informations installateur
+        
+        // Créer un canvas pour convertir l'image en format utilisable par jsPDF
+        const canvas = document.createElement('canvas');
+        canvas.width = logoImg.width;
+        canvas.height = logoImg.height;
+        const ctx = canvas.getContext('2d');
+        if (ctx) {
+          ctx.drawImage(logoImg, 0, 0);
+          const logoDataUrl = canvas.toDataURL('image/png');
+          
+          // Ajouter le logo au PDF
+          doc.addImage(
+            logoDataUrl,
+            'PNG',
+            logoX,
+            logoY,
+            logoDimensions.width,
+            logoDimensions.height
+          );
+        }
+        
+        // Libérer l'URL
+        URL.revokeObjectURL(logoUrl);
+      } catch (error) {
+        console.error('Erreur lors de l\'ajout du logo de l\'installateur:', error);
+      }
+    }
 
     // PAGE 2
     doc.addPage();
@@ -699,9 +752,9 @@ if (resultDeperdition) {
         width = maxHeight * (img.width / img.height);
       }
 
-      // Centrer l'image horizontalement si nécessaire et décaler de 5% vers la droite
-      // La largeur maximale du PDF A4 en portrait est de 210mm, donc 5% = 10.5mm (environ 30 points)
-      const xPosition = -30 + (maxWidth - width) / 2 + 15; // Ajout d'un décalage de 15 points (≈ 5%)
+      // Centrer l'image horizontalement si nécessaire et décaler vers la gauche
+      // La largeur maximale du PDF A4 en portrait est de 210mm
+      const xPosition = -30 + (maxWidth - width) / 2 - 10; // Décalage négatif pour déplacer l'image davantage vers la gauche
 
       doc.addImage(
         productImg,

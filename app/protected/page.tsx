@@ -122,27 +122,21 @@ export default async function DashboardPage() {
       color: "text-teal-600"
     },
     {
-      title: "Formations",
-      icon: <FileText className="h-5 w-5" />,
-      href: "/protected/formations",
-      color: "text-purple-600"
-    },
-    {
       title: "Calculateurs",
       icon: <Calculator className="h-5 w-5" />,
-      href: "/protected/calculateurs",
+      href: "/protected/dimensionnement",
       color: "text-orange-600"
     },
     {
       title: "Catalogue",
       icon: <FileSpreadsheet className="h-5 w-5" />,
-      href: "/protected/produits",
+      href: "/protected/doc-co",
       color: "text-rose-600"
     },
     {
-      title: "Références",
+      title: "Fonctionnement",
       icon: <Building2 className="h-5 w-5" />,
-      href: "/protected/references",
+      href: "/protected/dimensionnement/fonctionnement",
       color: "text-emerald-600"
     }
   ];
@@ -218,7 +212,7 @@ export default async function DashboardPage() {
       </div>
 
       {/* Outils supplémentaires */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-6 gap-2 md:gap-3">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-5 gap-2 md:gap-3">
         {additionalTools.map((tool: any) => (
           <a 
             key={tool.title}

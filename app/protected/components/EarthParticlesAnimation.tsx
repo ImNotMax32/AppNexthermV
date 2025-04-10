@@ -306,8 +306,7 @@ function EarthParticlesAnimation() {
         
         // Feuillage de l'arbre (plusieurs cercles pour donner l'effet touffu)
         // Ajuster la couleur du feuillage selon le moment de la journée
-        // On utilise une valeur fixe pour éviter le clignotement
-        let greenHue = 120; // Couleur de base verte
+        let greenHue = 120 + (Math.random() * 30 - 15);
         let leafSaturation = 70;
         let leafLightness = 35;
         
@@ -328,29 +327,26 @@ function EarthParticlesAnimation() {
         ctx.fillStyle = `hsla(${greenHue}, ${leafSaturation}%, ${leafLightness}%, 0.8)`;
         
         // Animation légère du feuillage avec le vent (réduite)
-        const swayFactor = Math.sin(Date.now() * 0.0005 + x) * 2 * scale;
+        const swayFactor = Math.sin(Date.now() * 0.001 + x) * 3 * scale;
         
-        // Dessiner chaque partie du feuillage séparément comme avant
-        // mais en gardant une couleur fixe pour éviter le clignotement
+        // Dessiner plusieurs cercles pour créer un feuillage touffu
+        // Taille des cercles proportionnelle à l'échelle de l'arbre
+        const radius = treeHeight * 0.25;
         
-        // Cercle principal (milieu)
         ctx.beginPath();
-        ctx.arc(x + swayFactor * 0.3, groundY - treeHeight * 0.45, treeHeight * 0.25, 0, Math.PI * 2);
+        ctx.arc(x + swayFactor * 0.3, groundY - treeHeight * 0.45, radius, 0, Math.PI * 2);
         ctx.fill();
         
-        // Cercle gauche
         ctx.beginPath();
-        ctx.arc(x - 15 * scale + swayFactor * 0.2, groundY - treeHeight * 0.55, treeHeight * 0.2, 0, Math.PI * 2);
+        ctx.arc(x - 15 * scale + swayFactor * 0.2, groundY - treeHeight * 0.55, radius * 0.8, 0, Math.PI * 2);
         ctx.fill();
         
-        // Cercle droit
         ctx.beginPath();
-        ctx.arc(x + 15 * scale + swayFactor * 0.4, groundY - treeHeight * 0.5, treeHeight * 0.2, 0, Math.PI * 2);
+        ctx.arc(x + 15 * scale + swayFactor * 0.4, groundY - treeHeight * 0.5, radius * 0.8, 0, Math.PI * 2);
         ctx.fill();
         
-        // Cercle supérieur
         ctx.beginPath();
-        ctx.arc(x + swayFactor * 0.2, groundY - treeHeight * 0.7, treeHeight * 0.25, 0, Math.PI * 2);
+        ctx.arc(x + swayFactor * 0.2, groundY - treeHeight * 0.7, radius, 0, Math.PI * 2);
         ctx.fill();
       });
     }
