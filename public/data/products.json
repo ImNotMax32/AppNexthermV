@@ -8,7 +8,7 @@
                 "max": 17.300,
                 "disponibles": [
                     {
-                        "modele": "SP3 EGE - 2 KW",
+                        "modele": "SP3EGE2M",
                         "puissance_calo": 2.610,
                         "puissance_frigo": 2.000,
                         "puissance_absorbee": 0.610,
@@ -16,7 +16,7 @@
                         "etas": 166
                     },
                     {
-                        "modele": "SP3 EGE - 4 KW",
+                        "modele": "SP3EGE4M",
                         "puissance_calo": 4.860,
                         "puissance_frigo": 3.780,
                         "puissance_absorbee": 1.080,
@@ -24,7 +24,7 @@
                         "etas": 196
                     },
                     {
-                        "modele": "SP3 EGE - 6 KW",
+                        "modele": "SP3EGE6M",
                         "puissance_calo": 6.530,
                         "puissance_frigo": 5.000,
                         "puissance_absorbee": 1.530,
@@ -32,7 +32,7 @@
                         "etas": 167
                     },
                     {
-                        "modele": "SP3 EGE - 8 KW",
+                        "modele": "SP3EGE8M",
                         "puissance_calo": 7.470,
                         "puissance_frigo": 5.720,
                         "puissance_absorbee": 1.750,
@@ -40,7 +40,7 @@
                         "etas": 167
                     },
                     {
-                        "modele": "SP3 EGE - 10 KW",
+                        "modele": "SP3EGE10M/T",
                         "puissance_calo": 10.500,
                         "puissance_frigo": 8.000,
                         "puissance_absorbee": 2.500,
@@ -48,15 +48,15 @@
                         "etas": 186
                     },
                     {
-                        "modele": "SP3 EGE - 13 KW",
+                        "modele": "SP3EGE13M/T",
                         "puissance_calo": 13.300,
                         "puissance_frigo": 10.140,
                         "puissance_absorbee": 3.160,
                         "cop": 4.21,
-                        "etas": 184
+                        "etas": 184             
                     },
                     {
-                        "modele": "SP3 EGE - 17 KW",
+                        "modele": "SP3EGE17M/T",
                         "puissance_calo": 17.300,
                         "puissance_frigo": 13.210,
                         "puissance_absorbee": 4.090,
@@ -88,7 +88,7 @@
                 "max": 20.200,
                 "disponibles": [
                     {
-                        "modele": "SP2 EGE - 6 KW",
+                        "modele": "SPOG6MCSN",
                         "puissance_calo": 5.640,
                         "puissance_frigo": 4.300,
                         "puissance_absorbee": 1.340,
@@ -96,7 +96,7 @@
                         "etas": 193
                     },
                     {
-                        "modele": "SP2 EGE - 8 KW",
+                        "modele": "SPOG8MCSN",
                         "puissance_calo": 7.245,
                         "puissance_frigo": 5.550,
                         "puissance_absorbee": 1.695,
@@ -104,7 +104,7 @@
                         "etas": 193
                     },
                     {
-                        "modele": "SP2 EGE - 10 KW",
+                        "modele": "SPOG10MCSN",
                         "puissance_calo": 9.655,
                         "puissance_frigo": 7.355,
                         "puissance_absorbee": 2.300,
@@ -112,7 +112,7 @@
                         "etas": 193
                     },
                     {
-                        "modele": "SP2 EGE - 13 KW",
+                        "modele": "SPOG13MCSN",
                         "puissance_calo": 12.350,
                         "puissance_frigo": 9.410,
                         "puissance_absorbee": 2.940,
@@ -120,7 +120,7 @@
                         "etas": 194
                     },
                     {
-                        "modele": "SP2 EGE - 17 KW",
+                        "modele": "SPOG17TCSN",
                         "puissance_calo": 16.450,
                         "puissance_frigo": 12.550,
                         "puissance_absorbee": 3.900,
@@ -128,7 +128,7 @@
                         "etas": 192
                     },
                     {
-                        "modele": "SP2 EGE - 20 KW",
+                        "modele": "SPOG20TCSN",
                         "puissance_calo": 20.200,
                         "puissance_frigo": 15.670,
                         "puissance_absorbee": 4.530,

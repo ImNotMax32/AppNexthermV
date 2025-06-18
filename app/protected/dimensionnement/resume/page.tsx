@@ -410,7 +410,7 @@ const loadData = async () => {
           return true;
         }
       } else if (product.Puissance.disponibles) {
-        // Produits standards
+        // Produits standards - Garder tous les modèles compatibles
         const modelesOrdonnes = [...product.Puissance.disponibles].sort(
           (a, b) => a.puissance_calo - b.puissance_calo
         );
@@ -420,13 +420,16 @@ const loadData = async () => {
           return false;
         }
 
-        const modeleCompatible = modelesOrdonnes.find(
+        // Trouver tous les modèles compatibles (puissance >= déperditions)
+        const modelesCompatibles = modelesOrdonnes.filter(
           modele => modele.puissance_calo >= filterCriteria.heatLoss
         );
 
-        if (modeleCompatible) {
-          product.Puissance.disponibles = [modeleCompatible];
-          product.selectedModel = modeleCompatible;
+        if (modelesCompatibles.length > 0) {
+          // Garder tous les modèles compatibles pour permettre le choix
+          product.Puissance.disponibles = modelesCompatibles;
+          // Sélectionner par défaut le modèle avec la puissance la plus proche
+          product.selectedModel = modelesCompatibles[0];
           localStorage.setItem('selected_product', JSON.stringify(product));
           return true;
         }

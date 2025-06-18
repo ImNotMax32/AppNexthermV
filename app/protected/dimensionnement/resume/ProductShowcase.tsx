@@ -123,6 +123,8 @@ const ProductShowcase: React.FC<ProductShowcaseProps> = ({ products, buildingDat
   const [showForm, setShowForm] = useState(false);
   const formRef = useRef<HTMLDivElement | null>(null);
   const [showActionButtons, setShowActionButtons] = useState(false);
+  // État pour gérer les modèles sélectionnés pour chaque produit
+  const [selectedModels, setSelectedModels] = useState<{[productIndex: number]: number}>({});
   const [formData, setFormData] = useState({
     pdfName: '',  // Valeur par défaut vide
     client: {
@@ -157,6 +159,29 @@ const ProductShowcase: React.FC<ProductShowcaseProps> = ({ products, buildingDat
     setCurrentIndex(newPage < 0 ? products.length - 1 : newPage >= products.length ? 0 : newPage);
     setIsPlaying(true); // Réinitialiser l'état de lecture
   };
+
+  // Fonction pour changer de modèle
+  const handleModelChange = (productIndex: number, modelIndex: number) => {
+    setSelectedModels(prev => ({
+      ...prev,
+      [productIndex]: modelIndex
+    }));
+    
+    // Mettre à jour le modèle sélectionné dans le produit
+    const updatedProducts = [...products];
+    if (updatedProducts[productIndex].Puissance.disponibles) {
+      updatedProducts[productIndex].selectedModel = updatedProducts[productIndex].Puissance.disponibles[modelIndex];
+    }
+  };
+
+  // Initialiser les modèles sélectionnés au premier rendu
+  useEffect(() => {
+    const initialSelectedModels: {[productIndex: number]: number} = {};
+    products.forEach((product, index) => {
+      initialSelectedModels[index] = 0; // Sélectionner le premier modèle par défaut
+    });
+    setSelectedModels(initialSelectedModels);
+  }, [products]);
 
   useEffect(() => {
     const currentVideo = videoRef.current;
@@ -259,7 +284,10 @@ const ProductShowcase: React.FC<ProductShowcaseProps> = ({ products, buildingDat
   const currentProduct = products[page];
 // Modification de la fonction getTechnicalSpecs
 const getTechnicalSpecs = (product: Product): TechnicalSpecs | Spec[] => {
-  const selectedModel = product.selectedModel;
+  // Utiliser le modèle sélectionné basé sur l'état selectedModels
+  const selectedModelIndex = selectedModels[page] || 0;
+  const selectedModel = product.Puissance.disponibles?.[selectedModelIndex] || product.selectedModel;
+  
   if (!selectedModel) {
     return [
       {
@@ -366,10 +394,18 @@ const handleGeneratePdf = async () => {
       hotWater: buildingData.hotWater || undefined
     };
 
+    // Créer une copie du produit avec le modèle sélectionné
+    const selectedModelIndex = selectedModels[page] || 0;
+    const selectedModel = products[page].Puissance.disponibles?.[selectedModelIndex] || products[page].selectedModel;
+    const productWithSelectedModel = {
+      ...products[page],
+      selectedModel: selectedModel
+    };
+
     const pdfData: GeneratePdfData = {
       fileName: formData.pdfName,
       building: sanitizedBuildingData,
-      selectedProduct: products[page],
+      selectedProduct: productWithSelectedModel,
       referenceNumber: "REF-" + new Date().getTime(),
       clientInfo: formData.client,
       installerInfo: {
@@ -565,6 +601,76 @@ const handleSaveCalculation = async (data: any) => {
           >
             {activeTab === 'specs' ? (
               <motion.div variants={staggerContainer} initial="hidden" animate="show" className="space-y-6">
+                {/* Sélecteur de modèle */}
+                {currentProduct.Puissance.disponibles && currentProduct.Puissance.disponibles.length > 1 && (
+                  <motion.div 
+                    variants={fadeInUp} 
+                    className="bg-gradient-to-r from-[#86BC29]/10 to-[#86BC29]/5 p-6 rounded-xl border border-[#86BC29]/20"
+                  >
+                    <h3 className="font-semibold text-lg mb-4 flex items-center text-gray-800">
+                      <Settings className="w-5 h-5 mr-2 text-[#86BC29]" />
+                      Choisissez votre modèle
+                    </h3>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                      {currentProduct.Puissance.disponibles.map((model, modelIndex) => {
+                        const isSelected = selectedModels[page] === modelIndex;
+                        const isRecommended = modelIndex === 0; // Le premier modèle est recommandé
+                        
+                        return (
+                          <motion.button
+                            key={model.modele}
+                            whileHover={{ scale: 1.02 }}
+                            whileTap={{ scale: 0.98 }}
+                            onClick={() => handleModelChange(page, modelIndex)}
+                            className={`relative p-4 rounded-lg border-2 transition-all text-left ${
+                              isSelected
+                                ? 'border-[#86BC29] bg-[#86BC29]/10 shadow-md'
+                                : 'border-gray-200 bg-white hover:border-[#86BC29]/50 hover:bg-[#86BC29]/5'
+                            }`}
+                          >
+                            {isRecommended && (
+                              <div className="absolute -top-2 -right-2 bg-[#86BC29] text-white text-xs px-2 py-1 rounded-full font-medium">
+                                Recommandé
+                              </div>
+                            )}
+                            <div className="space-y-2">
+                              <div className="font-semibold text-gray-800 text-sm">
+                                {model.modele}
+                              </div>
+                              <div className="text-xs text-gray-600 space-y-1">
+                                <div className="flex justify-between">
+                                  <span>Puissance:</span>
+                                  <span className="font-medium">{model.puissance_calo} kW</span>
+                                </div>
+                                <div className="flex justify-between">
+                                  <span>COP:</span>
+                                  <span className="font-medium">{model.cop}</span>
+                                </div>
+                                <div className="flex justify-between">
+                                  <span>ETAS:</span>
+                                  <span className="font-medium">{model.etas}%</span>
+                                </div>
+                              </div>
+                            </div>
+                            {isSelected && (
+                              <div className="absolute top-2 right-2">
+                                <Check className="w-4 h-4 text-[#86BC29]" />
+                              </div>
+                            )}
+                          </motion.button>
+                        );
+                      })}
+                    </div>
+                    <div className="mt-4 p-3 bg-blue-50 rounded-lg border border-blue-200">
+                      <p className="text-sm text-blue-800">
+                        <Info className="w-4 h-4 inline mr-1" />
+                        Vos déperditions calculées : <strong>{buildingData.heatLoss} kW</strong>. 
+                        Nous recommandons le premier modèle qui couvre vos besoins.
+                      </p>
+                    </div>
+                  </motion.div>
+                )}
+
                 {(() => {
                   const specs = getTechnicalSpecs(currentProduct);
                   if (Array.isArray(specs)) {
@@ -773,7 +879,7 @@ const handleSaveCalculation = async (data: any) => {
             onClick={() => setShowForm(true)}
             className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-[#86BC29] text-white rounded-lg font-medium flex items-center justify-center shadow-lg hover:bg-[#75a625] transition-colors text-sm sm:text-base"
           >
-            <FileText className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
+            <FileText className="w-4 h-4 mr-2" />
             Générer un PDF
           </motion.button>
         </motion.div>
@@ -855,7 +961,6 @@ const handleSaveCalculation = async (data: any) => {
                   value={formData.client.name}
                   onChange={(e) => handleInputChange('client', 'name', e.target.value)}
                   className="w-full p-2 border border-gray-300 rounded-md text-sm sm:text-base"
-                  required
                 />
               </div>
               <div>
@@ -865,7 +970,6 @@ const handleSaveCalculation = async (data: any) => {
                   value={formData.client.address}
                   onChange={(e) => handleInputChange('client', 'address', e.target.value)}
                   className="w-full p-2 border border-gray-300 rounded-md text-sm sm:text-base"
-                  required
                 />
               </div>
               <div>
@@ -875,7 +979,6 @@ const handleSaveCalculation = async (data: any) => {
                   value={formData.client.phone}
                   onChange={(e) => handleInputChange('client', 'phone', e.target.value)}
                   className="w-full p-2 border border-gray-300 rounded-md text-sm sm:text-base"
-                  required
                 />
               </div>
               <div>
@@ -885,7 +988,6 @@ const handleSaveCalculation = async (data: any) => {
                   value={formData.client.city}
                   onChange={(e) => handleInputChange('client', 'city', e.target.value)}
                   className="w-full p-2 border border-gray-300 rounded-md text-sm sm:text-base"
-                  required
                 />
               </div>
               <div>
@@ -895,7 +997,6 @@ const handleSaveCalculation = async (data: any) => {
                   value={formData.client.postalCode}
                   onChange={(e) => handleInputChange('client', 'postalCode', e.target.value)}
                   className="w-full p-2 border border-gray-300 rounded-md text-sm sm:text-base"
-                  required
                   pattern="[0-9]{5}"
                   title="Code postal à 5 chiffres"
                 />
@@ -908,7 +1009,9 @@ const handleSaveCalculation = async (data: any) => {
             <h3 className="text-lg sm:text-xl font-semibold text-gray-800">Informations Installateur</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Société</label>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Société <span className="text-red-500">*</span>
+                </label>
                 <input
                   type="text"
                   value={formData.installer.company}
@@ -924,7 +1027,6 @@ const handleSaveCalculation = async (data: any) => {
                   value={formData.installer.contact}
                   onChange={(e) => handleInputChange('installer', 'contact', e.target.value)}
                   className="w-full p-2 border border-gray-300 rounded-md text-sm sm:text-base"
-                  required
                 />
               </div>
               <div>
@@ -934,7 +1036,6 @@ const handleSaveCalculation = async (data: any) => {
                   value={formData.installer.email}
                   onChange={(e) => handleInputChange('installer', 'email', e.target.value)}
                   className="w-full p-2 border border-gray-300 rounded-md text-sm sm:text-base"
-                  required
                 />
               </div>
               <div>
@@ -944,7 +1045,6 @@ const handleSaveCalculation = async (data: any) => {
                   value={formData.installer.phone}
                   onChange={(e) => handleInputChange('installer', 'phone', e.target.value)}
                   className="w-full p-2 border border-gray-300 rounded-md text-sm sm:text-base"
-                  required
                 />
               </div>
               <div className="col-span-2">
@@ -966,6 +1066,11 @@ const handleSaveCalculation = async (data: any) => {
                 </div>
               </div>
             </div>
+            
+            {/* Texte champs obligatoire */}
+            <p className="text-sm text-gray-500 mt-2">
+              <span className="text-red-500">*</span> Champs obligatoire
+            </p>
           </div>
 
           {/* Bouton de soumission */}

@@ -1,14 +1,23 @@
 'use client';
 
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { createClient } from '@/utils/supabase/client';
-import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
-import { ArrowUp, ArrowRight, Activity, PieChart as PieChartIcon, Calculator, FileText } from 'lucide-react';
-import { useToast } from "@/components/ui/use-toast";
-import { Button } from "@/components/ui/button";
 import { useRouter } from 'next/navigation';
+import { createClient } from '@/utils/supabase/client';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import { 
+  LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
+  PieChart, Pie, Cell 
+} from 'recharts';
+import { 
+  Calculator, Activity, PieChart as PieChartIcon, FileText, 
+  RefreshCw, Calendar, Clock, Filter, TrendingUp, TrendingDown,
+  ArrowUp, ArrowDown, Users, Euro, Target, Eye, Plus, Download
+} from 'lucide-react';
+import { useToast } from "@/components/ui/use-toast";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 interface Calculation {
   id: number;
@@ -52,9 +61,12 @@ export default function VueGenerale() {
   const [analysisType, setAnalysisType] = useState<'type' | 'department'>('type');
   const [devisAnalysisType, setDevisAnalysisType] = useState<'status' | 'month'>('status');
   const [isLoading, setIsLoading] = useState(true);
+  const [timeFilter, setTimeFilter] = useState<'7d' | '30d' | '90d' | '1y'>('30d');
+  const [refreshing, setRefreshing] = useState(false);
+  const [selectedMetric, setSelectedMetric] = useState<'count' | 'revenue'>('count');
   const { toast } = useToast();
   const router = useRouter();
-  const supabase = useMemo(() => createClient(), []);
+  const supabase = createClient();
   
   useEffect(() => {
     const fetchData = async () => {
@@ -113,17 +125,57 @@ export default function VueGenerale() {
     };
   }, [supabase, toast]);
 
+  const handleRefresh = async () => {
+    setRefreshing(true);
+    try {
+      // Fetch des dimensionnements
+      const { data: dimensionnements, error: dimError } = await supabase
+        .from('dimensionnements')
+        .select('*')
+        .is('deleted_at', null)
+        .order('created_at', { ascending: false });
+
+      if (dimError) throw dimError;
+      setCalculations(dimensionnements || []);
+
+      // Fetch des devis
+      const { data: devisData, error: devisError } = await supabase
+        .from('devis')
+        .select('*')
+        .order('created_at', { ascending: false });
+
+      if (devisError) throw devisError;
+      setDevis(devisData || []);
+
+      toast({
+        title: "Données actualisées",
+        description: "Les statistiques ont été mises à jour",
+      });
+    } catch (error) {
+      console.error('Error refreshing data:', error);
+      toast({
+        title: "Erreur",
+        description: "Impossible d'actualiser les données",
+        variant: "destructive",
+      });
+    } finally {
+      setRefreshing(false);
+    }
+  };
 
   const getChartData = () => {
-    // Créer un tableau des 30 derniers jours
-    const last30Days = [...Array(30)].map((_, i) => {
+    // Déterminer le nombre de jours selon le filtre
+    const days = timeFilter === '7d' ? 7 : timeFilter === '30d' ? 30 : timeFilter === '90d' ? 90 : 365;
+    
+    // Créer un tableau des derniers jours
+    const lastDays = [...Array(days)].map((_, i) => {
       const date = new Date();
-      date.setDate(date.getDate() - (29 - i)); // Pour avoir les dates dans l'ordre chronologique
+      date.setDate(date.getDate() - (days - 1 - i));
       return date.toISOString().split('T')[0];
     });
 
     // Compter les dimensionnements par jour
-    return last30Days.map(date => {
+    return lastDays.map(date => {
       const count = calculations.filter(calc => 
         new Date(calc.created_at).toISOString().split('T')[0] === date
       ).length;
@@ -139,88 +191,63 @@ export default function VueGenerale() {
     const now = new Date();
     const currentMonth = now.getMonth();
     const currentYear = now.getFullYear();
-    
+    const lastMonth = currentMonth === 0 ? 11 : currentMonth - 1;
+    const lastMonthYear = currentMonth === 0 ? currentYear - 1 : currentYear;
+
     const currentMonthCalcs = calculations.filter(calc => {
       const calcDate = new Date(calc.created_at);
-      return calcDate.getMonth() === currentMonth && 
-             calcDate.getFullYear() === currentYear;
+      return calcDate.getMonth() === currentMonth && calcDate.getFullYear() === currentYear;
     });
 
     const lastMonthCalcs = calculations.filter(calc => {
       const calcDate = new Date(calc.created_at);
-      return calcDate.getMonth() === (currentMonth - 1) && 
-             calcDate.getFullYear() === currentYear;
+      return calcDate.getMonth() === lastMonth && calcDate.getFullYear() === lastMonthYear;
     });
 
-    const growth = lastMonthCalcs.length > 0
-      ? ((currentMonthCalcs.length - lastMonthCalcs.length) / lastMonthCalcs.length) * 100
-      : 0;
+    const growthPercentage = lastMonthCalcs.length > 0 
+      ? Math.round(((currentMonthCalcs.length - lastMonthCalcs.length) / lastMonthCalcs.length) * 100)
+      : currentMonthCalcs.length > 0 ? 100 : 0;
 
-    return {
-      currentCount: currentMonthCalcs.length,
-      growth: Math.round(growth)
-    };
+    return { currentMonthCalcs, growthPercentage };
+  };
+
+  const getTotalRevenue = () => {
+    return devis
+      .filter(d => d.status === 'accepted')
+      .reduce((sum, d) => sum + (d.totals?.totalTTC || 0), 0);
+  };
+
+  const getAverageProjectValue = () => {
+    const acceptedDevis = devis.filter(d => d.status === 'accepted');
+    if (acceptedDevis.length === 0) return 0;
+    return getTotalRevenue() / acceptedDevis.length;
+  };
+
+  const getConversionRate = () => {
+    if (devis.length === 0) return 0;
+    const acceptedCount = devis.filter(d => d.status === 'accepted').length;
+    return Math.round((acceptedCount / devis.length) * 100);
+  };
+
+  const getTopDepartments = () => {
+    const deptCounts = calculations.reduce((acc: Record<string, number>, calc) => {
+      const dept = calc.parameters?.building?.department || 'Non spécifié';
+      acc[dept] = (acc[dept] || 0) + 1;
+      return acc;
+    }, {});
+
+    return Object.entries(deptCounts)
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 3)
+      .map(([name, value]) => ({ name, value }));
   };
 
   const chartData = getChartData();
   const monthStats = getCurrentMonthStats();
-
-  // Calcul des statistiques
-  const currentMonth = new Date().getMonth();
-  const lastMonth = new Date().getMonth() - 1;
-
-  const currentMonthCalcs = calculations.filter(calc => 
-    new Date(calc.created_at).getMonth() === currentMonth
-  );
-
-  const lastMonthCalcs = calculations.filter(calc => 
-    new Date(calc.created_at).getMonth() === lastMonth
-  );
-
-  const growthPercentage = lastMonthCalcs.length > 0
-    ? Math.round(((currentMonthCalcs.length - lastMonthCalcs.length) / lastMonthCalcs.length) * 100)
-    : 0;
-
-  // Données pour le graphique linéaire
-  const last30Days = [...Array(30)].map((_, i) => {
-    const date = new Date();
-    date.setDate(date.getDate() - i);
-    return date.toISOString().split('T')[0];
-  }).reverse();
-
-
-  const getPieData = (): PieDataItem[] => {
-    if (analysisType === 'type') {
-      const typeCounts = calculations.reduce((acc: Record<string, number>, calc) => {
-        const type = calc.parameters?.selectedProduct?.Particularites?.includes('Geothermie') 
-          ? 'Géothermie' 
-          : calc.parameters?.selectedProduct?.Particularites?.includes('Aerothermie')
-            ? 'Aérothermie'
-            : 'Non spécifié';
-        acc[type] = (acc[type] || 0) + 1;
-        return acc;
-      }, {});
-  
-      return Object.entries(typeCounts).map(([name, value]) => ({
-        name,
-        value
-      }));
-    } else {
-      const deptCounts = calculations.reduce((acc: Record<string, number>, calc) => {
-        const dept = calc.parameters?.building?.department || 'Non spécifié';
-        acc[dept] = (acc[dept] || 0) + 1;
-        return acc;
-      }, {});
-  
-      return Object.entries(deptCounts)
-        .sort((a, b) => b[1] - a[1])
-        .slice(0, 5)
-        .map(([name, value]) => ({
-          name,
-          value
-        }));
-    }
-  };
+  const totalRevenue = getTotalRevenue();
+  const avgProjectValue = getAverageProjectValue();
+  const conversionRate = getConversionRate();
+  const topDepartments = getTopDepartments();
 
   const CustomTooltip = ({ 
     active, 
@@ -246,18 +273,18 @@ export default function VueGenerale() {
     return null;
   };
 
-  const navigateToSavedFiles = () => {
-    router.push('/protected/dimensionnement/save');
-  };
-
   const getDevisChartData = () => {
-    const last30Days = [...Array(30)].map((_, i) => {
+    // Déterminer le nombre de jours selon le filtre
+    const days = timeFilter === '7d' ? 7 : timeFilter === '30d' ? 30 : timeFilter === '90d' ? 90 : 365;
+    
+    // Créer un tableau des derniers jours
+    const lastDays = [...Array(days)].map((_, i) => {
       const date = new Date();
-      date.setDate(date.getDate() - (29 - i));
+      date.setDate(date.getDate() - (days - 1 - i));
       return date.toISOString().split('T')[0];
     });
 
-    return last30Days.map(date => ({
+    return lastDays.map(date => ({
       date,
       count: devis.filter(d => 
         new Date(d.created_at).toISOString().split('T')[0] === date
@@ -298,120 +325,279 @@ export default function VueGenerale() {
     }
   };
 
+  const getPieData = (): PieDataItem[] => {
+    if (analysisType === 'type') {
+      const typeCounts = calculations.reduce((acc: Record<string, number>, calc) => {
+        const type = calc.parameters?.selectedProduct?.Particularites?.includes('Geothermie') 
+          ? 'Géothermie' 
+          : calc.parameters?.selectedProduct?.Particularites?.includes('Aerothermie')
+            ? 'Aérothermie'
+            : 'Non spécifié';
+        acc[type] = (acc[type] || 0) + 1;
+        return acc;
+      }, {});
+  
+      return Object.entries(typeCounts).map(([name, value]) => ({
+        name,
+        value
+      }));
+    } else {
+      const deptCounts = calculations.reduce((acc: Record<string, number>, calc) => {
+        const dept = calc.parameters?.building?.department || 'Non spécifié';
+        acc[dept] = (acc[dept] || 0) + 1;
+        return acc;
+      }, {});
+  
+      return Object.entries(deptCounts)
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, 5)
+        .map(([name, value]) => ({
+          name,
+          value
+        }));
+    }
+  };
+
+  if (isLoading) {
+    return (
+      <div className="p-6 space-y-6">
+        <div className="animate-pulse">
+          <div className="h-8 bg-gray-200 rounded w-1/4 mb-6"></div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+            {[...Array(4)].map((_, i) => (
+              <div key={i} className="h-32 bg-gray-200 rounded-lg"></div>
+            ))}
+          </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div className="h-96 bg-gray-200 rounded-lg"></div>
+            <div className="h-96 bg-gray-200 rounded-lg"></div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
-    <div className="p-6 space-y-6">
-      <motion.h1 
-        className="text-2xl font-bold text-gray-800"
+    <div className="p-6 space-y-8 bg-gradient-to-br from-gray-50 to-white min-h-screen">
+      {/* Header avec titre et actions */}
+      <motion.div 
+        className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        Vue Générale
-      </motion.h1>
+        <div>
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">Vue Générale</h1>
+          <p className="text-gray-600">Tableau de bord des performances et statistiques</p>
+        </div>
+        
+        <div className="flex flex-wrap gap-3">
+          <Select value={timeFilter} onValueChange={(value: '7d' | '30d' | '90d' | '1y') => setTimeFilter(value)}>
+            <SelectTrigger className="w-32">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="7d">7 jours</SelectItem>
+              <SelectItem value="30d">30 jours</SelectItem>
+              <SelectItem value="90d">90 jours</SelectItem>
+              <SelectItem value="1y">1 an</SelectItem>
+            </SelectContent>
+          </Select>
+          
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={handleRefresh}
+            disabled={refreshing}
+            className="flex items-center gap-2"
+          >
+            <RefreshCw className={`w-4 h-4 ${refreshing ? 'animate-spin' : ''}`} />
+            Actualiser
+          </Button>
+          
+          <Button
+            variant="default"
+            size="sm"
+            onClick={() => router.push('/protected/dimensionnement')}
+            className="flex items-center gap-2"
+          >
+            <Plus className="w-4 h-4" />
+            Nouveau projet
+          </Button>
+        </div>
+      </motion.div>
+
+      {/* KPI Cards */}
+      <motion.div 
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.1 }}
+      >
+        <Card className="bg-gradient-to-br from-blue-50 to-blue-100 border-blue-200 hover:shadow-lg transition-all duration-300">
+          <CardContent className="p-6">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-blue-600 text-sm font-medium">Total Projets</p>
+                <p className="text-3xl font-bold text-blue-900">{calculations.length}</p>
+              </div>
+              <Calculator className="w-8 h-8 text-blue-500" />
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card className="bg-gradient-to-br from-green-50 to-green-100 border-0 shadow-lg hover:shadow-xl transition-all duration-300">
+          <CardContent className="p-6">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-green-600 text-sm font-medium">Chiffre d'affaires</p>
+                <p className="text-3xl font-bold text-green-900">
+                  {totalRevenue.toLocaleString('fr-FR', { maximumFractionDigits: 0 })}
+                </p>
+              </div>
+              <Euro className="w-8 h-8 text-green-500" />
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card className="bg-gradient-to-br from-purple-50 to-purple-100 border-purple-200 hover:shadow-lg transition-all duration-300">
+          <CardContent className="p-6">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-purple-600 text-sm font-medium">Taux de conversion</p>
+                <p className="text-3xl font-bold text-purple-900">{conversionRate}%</p>
+              </div>
+              <TrendingUp className="w-8 h-8 text-purple-500" />
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card className="bg-gradient-to-br from-orange-50 to-orange-100 border-orange-200 hover:shadow-lg transition-all duration-300">
+          <CardContent className="p-6">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-orange-600 text-sm font-medium">Valeur moyenne</p>
+                <p className="text-3xl font-bold text-orange-900">
+                  {avgProjectValue.toLocaleString('fr-FR', { maximumFractionDigits: 0 })}
+                </p>
+              </div>
+              <FileText className="w-8 h-8 text-orange-500" />
+            </div>
+          </CardContent>
+        </Card>
+      </motion.div>
 
       {/* Section Dimensionnements */}
-      <div className="space-y-6">
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
-        >
-          <h2 className="text-lg text-gray-400 flex items-center gap-2 mb-5">
-            <Calculator className="w-5 h-5" />
-            Statistiques Dimensionnements
-          </h2>
-        </motion.div>
+      <motion.div 
+        className="space-y-6"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+      >
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="p-2 bg-green-100 rounded-lg">
+              <Calculator className="w-6 h-6 text-green-500" />
+            </div>
+            <div>
+              <h2 className="text-xl font-semibold text-gray-900">Dimensionnements</h2>
+              <p className="text-sm text-gray-600">Analyse des projets de dimensionnement</p>
+            </div>
+          </div>
+        </div>
 
-        <div 
-          className="grid grid-cols-1 lg:grid-cols-2 gap-8" 
-          style={{ 
-            width: '100%',
-            minHeight: '300px'
-          }}
-        >
-        {/* Graphique linéaire */}
-        <motion.div
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          style={{ width: '100%', minWidth: 0, height: '100%' }}
-        >
-          <Card className="bg-gradient-to-br from-white to-gray-50 border-none shadow-lg h-full" style={{ display: 'flex', flexDirection: 'column' }}>
-            <CardHeader className="pb-2">
-              <CardTitle className="text-lg text-gray-600 flex items-center gap-2">
-                <Activity className="w-5 h-5" />
-                Performance mensuelle
-              </CardTitle>
-            </CardHeader>
-            <CardContent style={{ flex: 1, minHeight: 0, paddingTop: '0.5rem' }}>
-              <div className="flex items-baseline gap-4">
-                <div className="text-4xl font-bold">{currentMonthCalcs.length}</div>
-                <div className={`text-sm font-medium flex items-center ${growthPercentage >= 0 ? 'text-green-600' : 'text-red-600'}`}>
-                  <ArrowUp className={`w-4 h-4 mr-1 ${growthPercentage < 0 ? 'rotate-180' : ''}`} />
-                  {growthPercentage}% vs mois dernier
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {/* Graphique linéaire amélioré */}
+          <Card className="bg-white border-0 shadow-xl hover:shadow-2xl transition-all duration-300">
+            <CardHeader className="pb-4">
+              <div className="flex items-center justify-between">
+                <CardTitle className="text-lg font-semibold text-gray-800 flex items-center gap-2">
+                  <Activity className="w-5 h-5 text-green-500" />
+                  Évolution temporelle
+                </CardTitle>
+                <div className="flex items-center gap-2 text-sm text-gray-600">
+                  <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                  Projets créés
                 </div>
               </div>
-              <div className="mt-2 h-[200px] sm:h-[250px]">
-              <ResponsiveContainer width="100%" height="100%">
-                <LineChart data={chartData}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#E5E7EB" />
-                  <XAxis 
-                    dataKey="date" 
-                    tick={{ fill: '#6B7280', fontSize: 12 }}
-                    tickFormatter={(date) => new Date(date).toLocaleDateString('fr-FR', { 
-                      day: '2-digit',
-                      month: '2-digit'
-                    })}
-                  />
-                  <YAxis tick={{ fill: '#6B7280', fontSize: 12 }} />
-                  <Tooltip
-                    contentStyle={{
-                      backgroundColor: 'white',
-                      border: 'none',
-                      borderRadius: '8px',
-                      boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)'
-                    }}
-                    formatter={(value) => [`${value} dimensionnements`, '']}
-                    labelFormatter={(date) => new Date(date).toLocaleDateString('fr-FR', {
-                      day: '2-digit',
-                      month: 'long'
-                    })}
-                  />
-                  <Line
-                    type="monotone"
-                    dataKey="count"
-                    stroke="#86BC29"
-                    strokeWidth={2}
-                    dot={false}
-                    activeDot={{ r: 6, strokeWidth: 2, fill: '#fff' }}
-                  />
-                </LineChart>
-              </ResponsiveContainer>
+            </CardHeader>
+            <CardContent className="pt-0">
+              <div className="flex items-baseline gap-4 mb-6">
+                <div className="text-3xl font-bold text-gray-900">{monthStats.currentMonthCalcs.length}</div>
+                <div className={`text-sm font-medium flex items-center px-2 py-1 rounded-full ${
+                  monthStats.growthPercentage >= 0 
+                    ? 'text-green-700 bg-green-100' 
+                    : 'text-red-700 bg-red-100'
+                }`}>
+                  {monthStats.growthPercentage >= 0 ? (
+                    <ArrowUp className="w-3 h-3 mr-1" />
+                  ) : (
+                    <ArrowDown className="w-3 h-3 mr-1" />
+                  )}
+                  {Math.abs(monthStats.growthPercentage)}% vs mois dernier
+                </div>
+              </div>
+              <div className="h-[280px]">
+                <ResponsiveContainer width="100%" height="100%">
+                  <LineChart data={chartData}>
+                    <CartesianGrid strokeDasharray="3 3" stroke="#F3F4F6" />
+                    <XAxis 
+                      dataKey="date" 
+                      tick={{ fill: '#6B7280', fontSize: 12 }}
+                      tickFormatter={(date) => new Date(date).toLocaleDateString('fr-FR', { 
+                        day: '2-digit',
+                        month: '2-digit'
+                      })}
+                      axisLine={false}
+                      tickLine={false}
+                    />
+                    <YAxis 
+                      tick={{ fill: '#6B7280', fontSize: 12 }} 
+                      axisLine={false}
+                      tickLine={false}
+                    />
+                    <Tooltip
+                      contentStyle={{
+                        backgroundColor: 'white',
+                        border: 'none',
+                        borderRadius: '12px',
+                        boxShadow: '0 10px 25px -5px rgb(0 0 0 / 0.1), 0 4px 6px -2px rgb(0 0 0 / 0.05)'
+                      }}
+                      formatter={(value) => [`${value} projets`, '']}
+                      labelFormatter={(date) => new Date(date).toLocaleDateString('fr-FR', {
+                        day: '2-digit',
+                        month: 'long',
+                        year: 'numeric'
+                      })}
+                    />
+                    <Line
+                      type="monotone"
+                      dataKey="count"
+                      stroke="#10B981"
+                      strokeWidth={3}
+                      dot={{ fill: '#10B981', strokeWidth: 2, r: 4 }}
+                      activeDot={{ r: 6, strokeWidth: 2, fill: '#fff', stroke: '#10B981' }}
+                    />
+                  </LineChart>
+                </ResponsiveContainer>
               </div>
             </CardContent>
           </Card>
-        </motion.div>
 
-        {/* Analyse des projets */}
-        <motion.div
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          style={{ width: '100%', minWidth: 0, height: '100%' }}
-        >
-          <Card className="bg-gradient-to-br from-white to-gray-50 border-none shadow-lg h-full" style={{ display: 'flex', flexDirection: 'column' }}>
-            <CardHeader className="pb-2">
+          {/* Analyse par type/département améliorée */}
+          <Card className="bg-white border-0 shadow-xl hover:shadow-2xl transition-all duration-300">
+            <CardHeader className="pb-4">
               <div className="flex justify-between items-center">
-                <CardTitle className="text-lg text-gray-600 flex items-center gap-2">
-                  <PieChartIcon className="w-5 h-5" />
-                  Analyse par {analysisType === 'type' ? 'type' : 'département'}
+                <CardTitle className="text-lg font-semibold text-gray-800 flex items-center gap-2">
+                  <PieChartIcon className="w-5 h-5 text-green-500" />
+                  Répartition par {analysisType === 'type' ? 'type' : 'département'}
                 </CardTitle>
                 <div className="flex gap-2">
                   <Button
                     variant={analysisType === 'type' ? 'default' : 'outline'}
                     size="sm"
                     onClick={() => setAnalysisType('type')}
+                    className="text-xs"
                   >
                     Type
                   </Button>
@@ -419,29 +605,29 @@ export default function VueGenerale() {
                     variant={analysisType === 'department' ? 'default' : 'outline'}
                     size="sm"
                     onClick={() => setAnalysisType('department')}
+                    className="text-xs"
                   >
                     Département
                   </Button>
                 </div>
               </div>
             </CardHeader>
-            <CardContent style={{ flex: 1, minHeight: 0 }}>
-              <div className="flex flex-col sm:flex-row items-center justify-between h-full">
-                <div className="w-full sm:w-3/5 h-[180px] sm:h-[220px]">
+            <CardContent className="pt-0">
+              <div className="flex flex-col lg:flex-row items-center justify-between h-full">
+                <div className="w-full lg:w-3/5 h-[200px] lg:h-[240px]">
                   <ResponsiveContainer width="100%" height="100%">
                     <PieChart>
                       <Pie
                         data={getPieData()}
                         cx="50%"
                         cy="50%"
-                        innerRadius={65}
-                        outerRadius={90}
-                        fill="#8884d8"
-                        paddingAngle={5}
+                        innerRadius={70}
+                        outerRadius={100}
+                        paddingAngle={2}
                         dataKey="value"
                         label={false}
                       >
-                        {getPieData().map((entry, index) => (
+                        {getPieData().map((entry: any, index: number) => (
                           <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                         ))}
                       </Pie>
@@ -449,209 +635,257 @@ export default function VueGenerale() {
                     </PieChart>
                   </ResponsiveContainer>
                 </div>
-                <div className="w-full sm:w-2/5 flex flex-col space-y-2 mt-4 sm:mt-0 sm:pl-4">
-                  {getPieData().map((entry, index) => (
-                    <div 
-                      key={entry.name} 
-                      className="flex items-center gap-2 text-sm p-2 rounded-lg hover:bg-gray-50 transition-colors"
+                <div className="w-full lg:w-2/5 flex flex-col space-y-3 mt-4 lg:mt-0 lg:pl-6">
+                  {getPieData().map((entry: any, index: number) => (
+                    <motion.div 
+                      key={entry.name}
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.3, delay: index * 0.1 }}
+                      className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer"
                     >
                       <div 
-                        className="w-3 h-3 rounded-full flex-shrink-0" 
+                        className="w-4 h-4 rounded-full flex-shrink-0" 
                         style={{ backgroundColor: COLORS[index % COLORS.length] }}
                       />
                       <div className="flex-1">
-                        <div className="font-medium">{entry.name}</div>
-                        <div className="text-xs text-gray-500">
-                          {entry.value} projets ({Math.round((entry.value / calculations.length) * 100)}%)
+                        <div className="font-medium text-gray-900">{entry.name}</div>
+                        <div className="text-xs text-gray-500 flex items-center gap-2">
+                          <span>{Math.round((entry.value / calculations.length) * 100)}%</span>
                         </div>
                       </div>
-                    </div>
+                    </motion.div>
                   ))}
                 </div>
               </div>
             </CardContent>
           </Card>
-        </motion.div>
-      </div>
-      </div>
+        </div>
+      </motion.div>
 
-      
-    {/* Section Devis */}
-    <div className="space-y-6 mt-10">
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
-        >
-          <h2 className="text-lg text-gray-400 flex items-center gap-2 mb-5">
-            <FileText className="w-5 h-5" />
-            Statistiques Devis
-          </h2>
-        </motion.div>
+      {/* Section Devis */}
+      <motion.div 
+        className="space-y-6"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.3 }}
+      >
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="p-2 bg-blue-100 rounded-lg">
+              <FileText className="w-6 h-6 text-blue-600" />
+            </div>
+            <div>
+              <h2 className="text-xl font-semibold text-gray-900">Devis</h2>
+              <p className="text-sm text-gray-600">Suivi des devis et performances commerciales</p>
+            </div>
+          </div>
+          <div className="flex items-center gap-3">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => router.push('/protected/devis')}
+              className="flex items-center gap-2"
+            >
+              <Eye className="w-4 h-4" />
+              Voir tous
+            </Button>
+          </div>
+        </div>
 
-        <div 
-          className="grid grid-cols-1 lg:grid-cols-2 gap-8" 
-          style={{ 
-            width: '100%',
-            minHeight: '300px'
-          }}
-        >
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Graphique linéaire des devis */}
-          <motion.div
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            style={{ width: '100%', minWidth: 0, height: '100%' }}
-          >
-            <Card className="bg-gradient-to-br from-white to-gray-50 border-none shadow-lg h-full" style={{ display: 'flex', flexDirection: 'column' }}>
-              <CardHeader className="pb-2">
-                <CardTitle className="text-lg text-gray-600 flex items-center gap-2">
-                  <Activity className="w-5 h-5" />
-                  Performance mensuelle
+          <Card className="bg-white border-0 shadow-xl hover:shadow-2xl transition-all duration-300">
+            <CardHeader className="pb-4">
+              <div className="flex items-center justify-between">
+                <CardTitle className="text-lg font-semibold text-gray-800 flex items-center gap-2">
+                  <Activity className="w-5 h-5 text-blue-500" />
+                  Évolution des devis
                 </CardTitle>
-              </CardHeader>
-              <CardContent style={{ flex: 1, minHeight: 0, paddingTop: '0.5rem' }}>
-                <div className="flex items-baseline gap-4">
-                  <div className="text-4xl font-bold">{devis.filter(d => 
+                <div className="flex items-center gap-2 text-sm text-gray-600">
+                  <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
+                  Devis créés
+                </div>
+              </div>
+            </CardHeader>
+            <CardContent className="pt-0">
+              <div className="flex items-baseline gap-4 mb-6">
+                <div className="text-3xl font-bold text-gray-900">
+                  {devis.filter(d => 
                     new Date(d.created_at).getMonth() === new Date().getMonth()
-                  ).length}</div>
-                  <div className={`text-sm font-medium flex items-center ${
-                    devis.filter(d => new Date(d.created_at).getMonth() === new Date().getMonth()).length >= 
-                    devis.filter(d => new Date(d.created_at).getMonth() === new Date().getMonth() - 1).length 
-                    ? 'text-green-600' : 'text-red-600'}`}>
-                    <ArrowUp className={`w-4 h-4 mr-1 ${
-                      devis.filter(d => new Date(d.created_at).getMonth() === new Date().getMonth()).length < 
-                      devis.filter(d => new Date(d.created_at).getMonth() === new Date().getMonth() - 1).length 
-                      ? 'rotate-180' : ''}`} />
-                    {Math.abs(Math.round(
-                      ((devis.filter(d => new Date(d.created_at).getMonth() === new Date().getMonth()).length - 
-                        devis.filter(d => new Date(d.created_at).getMonth() === new Date().getMonth() - 1).length) / 
-                        Math.max(devis.filter(d => new Date(d.created_at).getMonth() === new Date().getMonth() - 1).length, 1)) * 100
-                    ))}% vs mois dernier
-                  </div>
+                  ).length}
                 </div>
-                <div className="h-[200px] sm:h-[250px]">
-                  <ResponsiveContainer width="100%" height="100%">
-                    <LineChart data={getDevisChartData()}>
-                      <CartesianGrid strokeDasharray="3 3" stroke="#E5E7EB" />
-                      <XAxis 
-                        dataKey="date" 
-                        tick={{ fill: '#6B7280', fontSize: 12 }}
-                        tickFormatter={(date) => new Date(date).toLocaleDateString('fr-FR', { 
-                          day: '2-digit',
-                          month: '2-digit'
-                        })}
-                      />
-                      <YAxis tick={{ fill: '#6B7280', fontSize: 12 }} />
-                      <Tooltip
-                        contentStyle={{
-                          backgroundColor: 'white',
-                          border: 'none',
-                          borderRadius: '8px',
-                          boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)'
-                        }}
-                        formatter={(value) => [`${value} devis`, '']}
-                        labelFormatter={(date) => new Date(date).toLocaleDateString('fr-FR', {
-                          day: '2-digit',
-                          month: 'long'
-                        })}
-                      />
-                      <Line
-                        type="monotone"
-                        dataKey="count"
-                        stroke="#86BC29"
-                        strokeWidth={2}
-                        dot={false}
-                        activeDot={{ r: 6, strokeWidth: 2, fill: '#fff' }}
-                      />
-                    </LineChart>
-                  </ResponsiveContainer>
+                <div className="text-sm font-medium flex items-center px-2 py-1 rounded-full bg-blue-100 text-blue-700">
+                  <Calendar className="w-3 h-3 mr-1" />
+                  Ce mois
                 </div>
-              </CardContent>
-            </Card>
-          </motion.div>
+              </div>
+              <div className="h-[280px]">
+                <ResponsiveContainer width="100%" height="100%">
+                  <LineChart data={getDevisChartData()}>
+                    <CartesianGrid strokeDasharray="3 3" stroke="#F3F4F6" />
+                    <XAxis 
+                      dataKey="date" 
+                      tick={{ fill: '#6B7280', fontSize: 12 }}
+                      tickFormatter={(date) => new Date(date).toLocaleDateString('fr-FR', { 
+                        day: '2-digit',
+                        month: '2-digit'
+                      })}
+                      axisLine={false}
+                      tickLine={false}
+                    />
+                    <YAxis 
+                      tick={{ fill: '#6B7280', fontSize: 12 }} 
+                      axisLine={false}
+                      tickLine={false}
+                    />
+                    <Tooltip
+                      contentStyle={{
+                        backgroundColor: 'white',
+                        border: 'none',
+                        borderRadius: '12px',
+                        boxShadow: '0 10px 25px -5px rgb(0 0 0 / 0.1), 0 4px 6px -2px rgb(0 0 0 / 0.05)'
+                      }}
+                      formatter={(value) => [`${value} devis`, '']}
+                      labelFormatter={(date) => new Date(date).toLocaleDateString('fr-FR', {
+                        day: '2-digit',
+                        month: 'long',
+                        year: 'numeric'
+                      })}
+                    />
+                    <Line
+                      type="monotone"
+                      dataKey="count"
+                      stroke="#3B82F6"
+                      strokeWidth={3}
+                      dot={{ fill: '#3B82F6', strokeWidth: 2, r: 4 }}
+                      activeDot={{ r: 6, strokeWidth: 2, fill: '#fff', stroke: '#3B82F6' }}
+                    />
+                  </LineChart>
+                </ResponsiveContainer>
+              </div>
+            </CardContent>
+          </Card>
 
           {/* Analyse des devis */}
-          <motion.div
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            style={{ width: '100%', minWidth: 0, height: '100%' }}
-          >
-            <Card className="bg-gradient-to-br from-white to-gray-50 border-none shadow-lg h-full" style={{ display: 'flex', flexDirection: 'column' }}>
-              <CardHeader className="pb-2">
-                <div className="flex justify-between items-center">
-                  <CardTitle className="text-lg text-gray-600 flex items-center gap-2">
-                    <PieChartIcon className="w-5 h-5" />
-                    Analyse des devis
-                  </CardTitle>
-                  <div className="flex gap-2">
-                    <Button
-                      variant={devisAnalysisType === 'status' ? 'default' : 'outline'}
-                      size="sm"
-                      onClick={() => setDevisAnalysisType('status')}
-                    >
-                      Statut
-                    </Button>
-                    <Button
-                      variant={devisAnalysisType === 'month' ? 'default' : 'outline'}
-                      size="sm"
-                      onClick={() => setDevisAnalysisType('month')}
-                    >
-                      Mois
-                    </Button>
-                  </div>
+          <Card className="bg-white border-0 shadow-xl hover:shadow-2xl transition-all duration-300">
+            <CardHeader className="pb-4">
+              <div className="flex justify-between items-center">
+                <CardTitle className="text-lg font-semibold text-gray-800 flex items-center gap-2">
+                  <PieChartIcon className="w-5 h-5 text-blue-500" />
+                  Analyse des devis
+                </CardTitle>
+                <div className="flex gap-2">
+                  <Button
+                    variant={devisAnalysisType === 'status' ? 'default' : 'outline'}
+                    size="sm"
+                    onClick={() => setDevisAnalysisType('status')}
+                    className="text-xs"
+                  >
+                    Statut
+                  </Button>
+                  <Button
+                    variant={devisAnalysisType === 'month' ? 'default' : 'outline'}
+                    size="sm"
+                    onClick={() => setDevisAnalysisType('month')}
+                    className="text-xs"
+                  >
+                    Mois
+                  </Button>
                 </div>
-              </CardHeader>
-              <CardContent style={{ flex: 1, minHeight: 0 }}>
-                <div className="flex flex-col sm:flex-row items-center justify-between h-full">
-                  <div className="w-full sm:w-3/5 h-[180px] sm:h-[220px]">
-                    <ResponsiveContainer width="100%" height="100%">
-                      <PieChart>
-                        <Pie
-                          data={getDevisPieData()}
-                          cx="50%"
-                          cy="50%"
-                          innerRadius={65}
-                          outerRadius={90}
-                          fill="#8884d8"
-                          paddingAngle={5}
-                          dataKey="value"
-                          label={false}
-                        >
-                          {getDevisPieData().map((entry, index) => (
-                            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                          ))}
-                        </Pie>
-                        <Tooltip content={<CustomTooltip />} />
-                      </PieChart>
-                    </ResponsiveContainer>
-                  </div>
-                  <div className="w-full sm:w-2/5 flex flex-col space-y-2 mt-4 sm:mt-0 sm:pl-4">
-                    {getDevisPieData().map((entry, index) => (
-                      <div 
-                        key={entry.name} 
-                        className="flex items-center gap-2 text-sm p-2 rounded-lg hover:bg-gray-50 transition-colors"
+              </div>
+            </CardHeader>
+            <CardContent className="pt-0">
+              <div className="flex flex-col lg:flex-row items-center justify-between h-full">
+                <div className="w-full lg:w-3/5 h-[200px] lg:h-[240px]">
+                  <ResponsiveContainer width="100%" height="100%">
+                    <PieChart>
+                      <Pie
+                        data={getDevisPieData()}
+                        cx="50%"
+                        cy="50%"
+                        innerRadius={70}
+                        outerRadius={100}
+                        paddingAngle={2}
+                        dataKey="value"
+                        label={false}
                       >
-                        <div 
-                          className="w-3 h-3 rounded-full flex-shrink-0" 
-                          style={{ backgroundColor: COLORS[index % COLORS.length] }}
-                        />
-                        <div className="flex-1">
-                          <div className="font-medium">{entry.name}</div>
-                          <div className="text-xs text-gray-500">
-                            {entry.value} devis ({Math.round((entry.value / devis.length) * 100)}%)
-                          </div>
+                        {getDevisPieData().map((entry: any, index: number) => (
+                          <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                        ))}
+                      </Pie>
+                      <Tooltip content={<CustomTooltip />} />
+                    </PieChart>
+                  </ResponsiveContainer>
+                </div>
+                <div className="w-full lg:w-2/5 flex flex-col space-y-3 mt-4 lg:mt-0 lg:pl-6">
+                  {getDevisPieData().map((entry: any, index: number) => (
+                    <motion.div 
+                      key={entry.name}
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.3, delay: index * 0.1 }}
+                      className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer"
+                    >
+                      <div 
+                        className="w-4 h-4 rounded-full flex-shrink-0" 
+                        style={{ backgroundColor: COLORS[index % COLORS.length] }}
+                      />
+                      <div className="flex-1">
+                        <div className="font-medium text-gray-900">{entry.name}</div>
+                        <div className="text-xs text-gray-500 flex items-center gap-2">
+                          <span>{Math.round((entry.value / devis.length) * 100)}%</span>
                         </div>
                       </div>
-                    ))}
-                  </div>
+                    </motion.div>
+                  ))}
                 </div>
-              </CardContent>
-            </Card>
-          </motion.div>
+              </div>
+            </CardContent>
+          </Card>
         </div>
-      </div>
+      </motion.div>
+
+      {/* Section Actions rapides */}
+      <motion.div 
+        className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-6"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.4 }}
+      >
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div>
+            <h3 className="text-lg font-semibold text-gray-900 mb-2">Actions rapides</h3>
+            <p className="text-gray-600 text-sm">Accédez rapidement aux fonctionnalités principales</p>
+          </div>
+          <div className="flex flex-wrap gap-3">
+            <Button
+              variant="outline"
+              onClick={() => router.push('/protected/dimensionnement')}
+              className="flex items-center gap-2"
+            >
+              <Plus className="w-4 h-4" />
+              Nouveau dimensionnement
+            </Button>
+            <Button
+              variant="outline"
+              onClick={() => router.push('/protected/devis')}
+              className="flex items-center gap-2"
+            >
+              <FileText className="w-4 h-4" />
+              Gérer les devis
+            </Button>
+            <Button
+              variant="outline"
+              onClick={() => router.push('/protected/dimensionnement/save')}
+              className="flex items-center gap-2"
+            >
+              <Download className="w-4 h-4" />
+              Projets sauvegardés
+            </Button>
+          </div>
+        </div>
+      </motion.div>
     </div>
   );
 }

@@ -211,6 +211,51 @@ export default async function DashboardPage() {
         ))}
       </div>
 
+      {/* Notes de mise à jour */}
+      <div className="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-gray-800 dark:to-gray-700 rounded-xl p-6 border border-blue-100 dark:border-gray-600">
+        <div className="flex items-center gap-3 mb-4">
+          <div className="p-2 bg-blue-100 dark:bg-blue-900/30 rounded-full">
+            <Sparkles className="h-5 w-5 text-blue-600 dark:text-blue-400" />
+          </div>
+          <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200">Notes de mise à jour</h3>
+        </div>
+        
+        <div className="space-y-4">
+          {/* Mise à jour du jour */}
+          <div className="bg-white dark:bg-gray-800 rounded-lg p-4 border-l-4 border-gray-300 dark:border-gray-600">
+            <div className="flex items-center justify-between mb-2">
+              <div className="flex items-center gap-2">
+                <h4 className="font-medium text-gray-800 dark:text-gray-200">Version 1.05</h4>
+                <span className="text-sm text-gray-500 dark:text-gray-400">• 18 juin 2025</span>
+              </div>
+              <Badge className="bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400">Nouveau</Badge>
+            </div>
+            <ul className="text-sm text-gray-600 dark:text-gray-400 space-y-1">
+              <li>• <strong>Sélection multiple de modèles :</strong> Possibilité de choisir parmi plusieurs modèles compatibles dans la même famille de produits</li>
+              <li>• <strong>Amélioration PDF :</strong> Correction des températures d'arrêt et simplification du formulaire (seule la société est obligatoire)</li>
+              <li>• <strong>Interface utilisateur :</strong> Sélecteur de modèles avec animations et recommandations visuelles</li>
+            </ul>
+          </div>
+
+          {/* Mise à jour d'il y a 3 semaines */}
+          <div className="bg-white dark:bg-gray-800 rounded-lg p-4 border-l-4 border-gray-300 dark:border-gray-600">
+            <div className="flex items-center justify-between mb-2">
+              <div className="flex items-center gap-2">
+                <h4 className="font-medium text-gray-800 dark:text-gray-200">Version 1.04.5</h4>
+                <span className="text-sm text-gray-500 dark:text-gray-400">• 28 mai 2025</span>
+              </div>
+              <Badge className="bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400">Stable</Badge>
+            </div>
+            <ul className="text-sm text-gray-600 dark:text-gray-400 space-y-1">
+              <li>• <strong>Page d'accueil :</strong> Nouvelle interface moderne avec animations et conseils météo personnalisés</li>
+              <li>• <strong>Corrections mineures :</strong> Amélioration de la stabilité et de la performance générale</li>
+              <li>• <strong>Navigation :</strong> Optimisation de l'expérience utilisateur sur tous les appareils</li>
+              <li>• <strong>Design :</strong> Mise à jour de l'identité visuelle et des composants UI</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
       {/* Outils supplémentaires */}
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-5 gap-2 md:gap-3">
         {additionalTools.map((tool: any) => (

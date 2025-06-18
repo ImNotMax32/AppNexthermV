@@ -645,27 +645,12 @@ if (resultDeperdition) {
 
     addTableItem(col1X, currentY, "3 - Temp d'arrêt de la PAC :", 
         "(La température à laquelle la pompe à chaleur arrête de fonctionner)", 
-        localStorage.getItem('type_pac') === 'Aérothermie' ? "-5°C" : "Géothermie pas affectée");
+        localStorage.getItem('type_pac') === 'Aérothermie' ? "-5°C" : "-20°C");
     currentY += lineHeight * 2;
-
-    // Calculer les déperditions à température d'arrêt pour l'aérothermie
-    const calculateDeperditionAtStop = () => {
-        if (localStorage.getItem('type_pac') === 'Aérothermie') {
-            // Pour l'aérothermie, calcul approximatif à -5°C
-            const heatLoss = parseFloat(String(data.building.heatLoss || '0'));
-            const tBase = parseFloat(String(temperatureExterieure || '0'));
-            // Facteur d'ajustement pour -5°C 
-            if (!isNaN(heatLoss) && !isNaN(tBase)) {
-                const factor = (-5 - tBase) / (20 - tBase); // Ratio de la différence de température
-                return Math.round(heatLoss * factor * 1000).toString(); // En watts
-            }
-        }
-        return "X";
-    };
 
     addTableItem(col1X, currentY, "4 - Déperditions thermiques à T d'arrêt en W :", 
         "(La déperdition thermique totale de votre logement à la température d'arrêt de la pompe à chaleur)", 
-        calculateDeperditionAtStop());
+        `${Math.round(parseFloat(data.building.heatLoss || '0') * 1000)}`);
     currentY += lineHeight * 2;
 
     addTableItem(col1X, currentY, "5 - Surface desservies par le réseau de la PAC :", 
@@ -678,22 +663,12 @@ if (resultDeperdition) {
         ? `${Math.round(parseFloat(String(data.selectedProduct.selectedModel.puissance_calo)) * 1000)}` 
         : '';
 
-    // Calculer la puissance à la température d'arrêt pour l'aérothermie
-    const calculatePowerAtStopTemp = () => {
-        if (localStorage.getItem('type_pac') === 'Aérothermie' && data.selectedProduct?.selectedModel?.puissance_calo) {
-            // Diminution approximative de 30% à -5°C pour une PAC Air/Eau
-            const puissance = parseFloat(String(data.selectedProduct.selectedModel.puissance_calo));
-            return Math.round(puissance * 0.7 * 1000).toString();
-        }
-        return "X";
-    };
-
     // Point 7
     currentY += addTableItem(col2X, currentY, "7 - Puissance de la PAC à 60% des déperditions (W) :",
         "(La puissance de la pompe à chaleur à 60% des déperditions thermiques totales de votre logement)",
         "", [
             { label: "température de base", value: puissancePac },
-            { label: "température d'arrêt", value: localStorage.getItem('type_pac') === 'Aérothermie' ? calculatePowerAtStopTemp() : "X" }
+            { label: "température d'arrêt", value: puissancePac }
         ]);
 
     // Point 8
@@ -701,7 +676,7 @@ if (resultDeperdition) {
         "(La puissance de la pompe à chaleur à 140% des déperditions thermiques totales de votre logement)",
         "", [
             { label: "température de base", value: puissancePac },
-            { label: "température d'arrêt", value: localStorage.getItem('type_pac') === 'Aérothermie' ? calculatePowerAtStopTemp() : "X" }
+            { label: "température d'arrêt", value: puissancePac }
         ]);
 
     // Point 9
@@ -709,7 +684,7 @@ if (resultDeperdition) {
         "(La puissance de la pompe à chaleur sélectionnée)",
         "", [
             { label: "température de base", value: puissancePac },
-            { label: "température d'arrêt", value: localStorage.getItem('type_pac') === 'Aérothermie' ? calculatePowerAtStopTemp() : "X" }
+            { label: "température d'arrêt", value: puissancePac }
         ]);
 
     // Point 10
@@ -717,7 +692,7 @@ if (resultDeperdition) {
         "(La température d'eau pour la puissance de la pompe à chaleur sélectionnée)",
         "", [
             { label: "température de base", value: `${data.selectedProduct?.Emetteur?.max}°C` },
-            { label: "température d'arrêt", value: "X" }
+            { label: "température d'arrêt", value: `${data.selectedProduct?.Emetteur?.max}°C` }
         ]);
 
     // Ajouter le footer à la page 2
