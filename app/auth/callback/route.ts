@@ -4,7 +4,8 @@ import { NextResponse } from 'next/server';
 export async function GET(request: Request) {
   const requestUrl = new URL(request.url);
   const code = requestUrl.searchParams.get('code'); // 🔥 Récupération du code d'auth
-  const redirect = requestUrl.searchParams.get('redirect') || '/protected';
+  // Redirection toujours vers /protected pour garantir un comportement cohérent
+  const redirect = '/protected';
 
   if (!code) {
     console.error('No code found in URL');
