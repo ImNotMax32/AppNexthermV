@@ -395,6 +395,16 @@ const HeatLossDonut = ({ deperditionsRecalculated }: { deperditionsRecalculated:
 const MotionCard = motion(Card);
 
 export default function SummaryPage() {
+  // Fonction utilitaire pour accéder à localStorage de manière sécurisée
+  const getLocalStorageItem = (key: string, defaultValue: string = '') => {
+    if (typeof window === 'undefined') return defaultValue;
+    try {
+      return localStorage.getItem(key) || defaultValue;
+    } catch (error) {
+      return defaultValue;
+    }
+  };
+
   const [buildingData, setBuildingData] = useState<BuildingData | null>(null);
   const [compatibleProducts, setCompatibleProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -433,25 +443,15 @@ export default function SummaryPage() {
   const [showAdditionalInfo, setShowAdditionalInfo] = useState(false);
   const [showInfoForm, setShowInfoForm] = useState(false);
   
-  // Fonction utilitaire pour accéder à localStorage de manière sécurisée
-  const getLocalStorageItem = (key: string, defaultValue: string = '') => {
-    if (typeof window === 'undefined') return defaultValue;
-    try {
-      return localStorage.getItem(key) || defaultValue;
-    } catch (error) {
-      return defaultValue;
-    }
-  };
-
   // Récupérer le nom d'utilisateur depuis localStorage ou le paramètre supposé être dans sessionStorage
   const userName = typeof window !== 'undefined' ? 
-    (localStorage.getItem('user_name') || sessionStorage.getItem('user_name') || 'Moi') : 'Moi';
+    (getLocalStorageItem('user_name') || (typeof window !== 'undefined' ? sessionStorage.getItem('user_name') : null) || 'Moi') : 'Moi';
   
   // Information de l'utilisateur actuel (remplace les agents commerciaux)
   const currentUser = {
     id: 'current-user',
     name: userName,
-    email: localStorage.getItem('user_email') || userEmail || ''
+    email: getLocalStorageItem('user_email') || userEmail || ''
   };
 
   const calculateTotalSurface = () => {
@@ -477,47 +477,47 @@ export default function SummaryPage() {
       // Construire l'objet formData à partir des données localStorage
       const formData = {
         hasExistingCalculation: false,
-        knownDeperdition: localStorage.getItem('ResultatDeperdition') || '',
-        constructionYear: localStorage.getItem('Annee_de_construction') || '',
-        buildingType: localStorage.getItem('Type_de_construction') || '',
+        knownDeperdition: getLocalStorageItem('ResultatDeperdition'),
+        constructionYear: getLocalStorageItem('Annee_de_construction'),
+        buildingType: getLocalStorageItem('Type_de_construction'),
         floors: {
           ground: {
-            surface: localStorage.getItem('Surface_RDC') || '',
+            surface: getLocalStorageItem('Surface_RDC'),
             height: '2.5' // Valeur par défaut
           },
           first: {
-            surface: localStorage.getItem('Surface_1er_etage') || '',
+            surface: getLocalStorageItem('Surface_1er_etage'),
             height: '2.5'
           },
           second: {
-            surface: localStorage.getItem('Surface_2e_etage') || '',
+            surface: getLocalStorageItem('Surface_2e_etage'),
             height: '2.5'
           }
         },
-        buildingStructure: localStorage.getItem('Structure_de_la_construction') || '',
-        groundStructure: localStorage.getItem('Structure_du_sol') || '',
+        buildingStructure: getLocalStorageItem('Structure_de_la_construction'),
+        groundStructure: getLocalStorageItem('Structure_du_sol'),
         showAdvancedOptions: false,
-        wallThickness: localStorage.getItem('wallThickness') || '',
-        wallComposition: localStorage.getItem('wallComposition') || '',
+        wallThickness: getLocalStorageItem('wallThickness'),
+        wallComposition: getLocalStorageItem('wallComposition'),
         interiorInsulation: {
-          enabled: localStorage.getItem('interiorInsulation') === 'true',
-          material: localStorage.getItem('interiorMaterial') || '',
-          thickness: localStorage.getItem('interiorThickness') || ''
+          enabled: getLocalStorageItem('interiorInsulation') === 'true',
+          material: getLocalStorageItem('interiorMaterial'),
+          thickness: getLocalStorageItem('interiorThickness')
         },
         exteriorInsulation: {
-          enabled: localStorage.getItem('exteriorInsulation') === 'true',
-          material: localStorage.getItem('exteriorMaterial') || '',
-          thickness: localStorage.getItem('exteriorThickness') || ''
+          enabled: getLocalStorageItem('exteriorInsulation') === 'true',
+          material: getLocalStorageItem('exteriorMaterial'),
+          thickness: getLocalStorageItem('exteriorThickness')
         },
-        atticInsulation: localStorage.getItem('atticInsulation') || '',
-        floorInsulation: localStorage.getItem('floorInsulation') || '',
-        windowSurface: localStorage.getItem('Surface_de_vitrage') || '',
-        windowType: localStorage.getItem('windowType') || '',
-        adjacency: localStorage.getItem('Mitoyennete') || '',
-        mainOrientation: localStorage.getItem('mainOrientation') || '',
-        ventilation: localStorage.getItem('Ventilation') || '',
-        heatingTemp: localStorage.getItem('Temperature_de_chauffage') || '',
-        department: localStorage.getItem('Departement') || '',
+        atticInsulation: getLocalStorageItem('atticInsulation'),
+        floorInsulation: getLocalStorageItem('floorInsulation'),
+        windowSurface: getLocalStorageItem('Surface_de_vitrage'),
+        windowType: getLocalStorageItem('windowType'),
+        adjacency: getLocalStorageItem('Mitoyennete'),
+        mainOrientation: getLocalStorageItem('mainOrientation'),
+        ventilation: getLocalStorageItem('Ventilation'),
+        heatingTemp: getLocalStorageItem('Temperature_de_chauffage'),
+        department: getLocalStorageItem('Departement'),
         termsAccepted: true
       };
 
@@ -525,17 +525,17 @@ export default function SummaryPage() {
       
       // Debug des données localStorage importantes
       console.log('🔍 Debug localStorage:');
-      console.log('- Surface RDC:', localStorage.getItem('Surface_RDC'));
-      console.log('- Surface 1er étage:', localStorage.getItem('Surface_1er_etage'));
-      console.log('- Surface 2e étage:', localStorage.getItem('Surface_2e_etage'));
-      console.log('- Type construction:', localStorage.getItem('Type_de_construction'));
-      console.log('- Structure construction:', localStorage.getItem('Structure_de_la_construction'));
-      console.log('- Année construction:', localStorage.getItem('Annee_de_construction'));
-      console.log('- Surface vitrage:', localStorage.getItem('Surface_de_vitrage'));
-      console.log('- Mitoyenneté:', localStorage.getItem('Mitoyennete'));
-      console.log('- Ventilation:', localStorage.getItem('Ventilation'));
-      console.log('- Département:', localStorage.getItem('Departement'));
-      console.log('- Température chauffage:', localStorage.getItem('Temperature_de_chauffage'));
+      console.log('- Surface RDC:', getLocalStorageItem('Surface_RDC'));
+      console.log('- Surface 1er étage:', getLocalStorageItem('Surface_1er_etage'));
+      console.log('- Surface 2e étage:', getLocalStorageItem('Surface_2e_etage'));
+      console.log('- Type construction:', getLocalStorageItem('Type_de_construction'));
+      console.log('- Structure construction:', getLocalStorageItem('Structure_de_la_construction'));
+      console.log('- Année construction:', getLocalStorageItem('Annee_de_construction'));
+      console.log('- Surface vitrage:', getLocalStorageItem('Surface_de_vitrage'));
+      console.log('- Mitoyenneté:', getLocalStorageItem('Mitoyennete'));
+      console.log('- Ventilation:', getLocalStorageItem('Ventilation'));
+      console.log('- Département:', getLocalStorageItem('Departement'));
+      console.log('- Température chauffage:', getLocalStorageItem('Temperature_de_chauffage'));
 
       // Utiliser directement les fonctions de calcul importées
       
@@ -707,18 +707,18 @@ const loadData = async () => {
     const products = data.products as Product[];
     
     // Récupération des données de localStorage
-    const typePac = localStorage.getItem('type_pac') || '';
-    const heatLoss = parseFloat(localStorage.getItem('ResultatDeperdition') || 
-                              localStorage.getItem('ResultatDeperdition1') || '0');
+    const typePac = getLocalStorageItem('type_pac');
+    const heatLoss = parseFloat(getLocalStorageItem('ResultatDeperdition') || 
+                              getLocalStorageItem('ResultatDeperdition1') || '0');
 
     const filterCriteria = {
       heatLoss,
       heatPumpType: heatPumpTypeMap[typePac] || typePac,
-      heatPumpSystem: localStorage.getItem('systeme_pac') || '',
-      emitterType: localStorage.getItem('emetteur_type') || '',
-      emitterTemp: localStorage.getItem('emetteur_type') === 'radiateur'
-        ? parseFloat(localStorage.getItem('temp_radiateur') || '35')
-        : parseFloat(localStorage.getItem('temp_plancher') || '25')
+      heatPumpSystem: getLocalStorageItem('systeme_pac'),
+      emitterType: getLocalStorageItem('emetteur_type'),
+      emitterTemp: getLocalStorageItem('emetteur_type') === 'radiateur'
+        ? parseFloat(getLocalStorageItem('temp_radiateur') || '35')
+        : parseFloat(getLocalStorageItem('temp_plancher') || '25')
     };
 
     const filtered = products.filter((product: Product) => {
@@ -779,7 +779,7 @@ const router = useRouter();
 
 useEffect(() => {
   // Récupérer le département
-  const department = localStorage.getItem('Departement') || undefined;
+  const department = getLocalStorageItem('Departement') || undefined;
   
   // Extraire le numéro de département et obtenir la température correspondante
   let externalTemp = '-15'; // Valeur par défaut
@@ -791,27 +791,27 @@ useEffect(() => {
   }
   
   // Vérifier si c'est un système SOL/SOL pour forcer les options
-  const heatPumpSystem = localStorage.getItem('systeme_pac');
+  const heatPumpSystem = getLocalStorageItem('systeme_pac');
   const isSolSolSystem = heatPumpSystem === 'Sol/Sol';
 
   const newBuildingData: BuildingData = {
-    constructionYear: localStorage.getItem('Annee_de_construction') || undefined,
-    buildingType: localStorage.getItem('Type_de_construction') || undefined,
-    heatLoss: localStorage.getItem('ResultatDeperdition') || 
-              localStorage.getItem('ResultatDeperdition1') || undefined,
+    constructionYear: getLocalStorageItem('Annee_de_construction') || undefined,
+    buildingType: getLocalStorageItem('Type_de_construction') || undefined,
+    heatLoss: getLocalStorageItem('ResultatDeperdition') || 
+              getLocalStorageItem('ResultatDeperdition1') || undefined,
     totalSurface: calculateTotalSurface(),
-    ventilation: localStorage.getItem('Ventilation') || undefined,
-    heatingTemp: localStorage.getItem('Temperature_de_chauffage') || undefined,
+    ventilation: getLocalStorageItem('Ventilation') || undefined,
+    heatingTemp: getLocalStorageItem('Temperature_de_chauffage') || undefined,
     department: department,
-    structure: localStorage.getItem('Structure_de_la_construction') || undefined,
-    groundStructure: localStorage.getItem('Structure_du_sol') || undefined,
-    windowSurface: localStorage.getItem('Surface_de_vitrage') || undefined,
-    adjacency: localStorage.getItem('Mitoyennete') || undefined,
+    structure: getLocalStorageItem('Structure_de_la_construction') || undefined,
+    groundStructure: getLocalStorageItem('Structure_du_sol') || undefined,
+    windowSurface: getLocalStorageItem('Surface_de_vitrage') || undefined,
+    adjacency: getLocalStorageItem('Mitoyennete') || undefined,
     // Pour les systèmes SOL/SOL, forcer les options à "Non"
-    poolKit: isSolSolSystem ? 'Non' : (localStorage.getItem('kit_piscine') || undefined),
-    freecoolingKit: isSolSolSystem ? 'Non' : (localStorage.getItem('kit_freecooling') || undefined),
-    hotWater: isSolSolSystem ? 'Non' : (localStorage.getItem('kit_ECS') || undefined),
-    heatPumpType: localStorage.getItem('type_pac') || undefined,
+    poolKit: isSolSolSystem ? 'Non' : (getLocalStorageItem('kit_piscine') || undefined),
+    freecoolingKit: isSolSolSystem ? 'Non' : (getLocalStorageItem('kit_freecooling') || undefined),
+    hotWater: isSolSolSystem ? 'Non' : (getLocalStorageItem('kit_ECS') || undefined),
+    heatPumpType: getLocalStorageItem('type_pac') || undefined,
     heatPumpSystem: heatPumpSystem || undefined,
     externalTemp: externalTemp
   };
@@ -829,7 +829,7 @@ useEffect(() => {
 // useEffect pour recalculer les déperditions détaillées si nécessaire
 useEffect(() => {
   // Vérifier si on a des données dans localStorage mais pas dans sessionStorage
-  const hasLocalStorageData = localStorage.getItem('ResultatDeperdition');
+  const hasLocalStorageData = getLocalStorageItem('ResultatDeperdition');
   const hasSessionStorageData = sessionStorage.getItem('windowHeatLoss') || 
                                 sessionStorage.getItem('roofHeatLoss') ||
                                 sessionStorage.getItem('FloorHeatLoss');
@@ -988,8 +988,8 @@ useEffect(() => {
         selectedProduct: selectedProduct,
         referenceNumber: `REF-${new Date().getTime()}`,
         clientInfo: {
-          name: includeDimensionnement && showInfoForm ? clientName : (localStorage.getItem('Nom_client') || ''),
-          address: includeDimensionnement && showInfoForm ? clientAddress : (localStorage.getItem('Adresse_client') || ''),
+          name: includeDimensionnement && showInfoForm ? clientName : (getLocalStorageItem('Nom_client') || ''),
+          address: includeDimensionnement && showInfoForm ? clientAddress : (getLocalStorageItem('Adresse_client') || ''),
           phone: includeDimensionnement && showInfoForm ? clientPhone : '',
           city: includeDimensionnement && showInfoForm ? clientCity : '',
           postalCode: includeDimensionnement && showInfoForm ? clientPostalCode : '',
