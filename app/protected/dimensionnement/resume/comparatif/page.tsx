@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useMemo } from 'react';
-import { useSimpleAutoRefresh } from '@/hooks/useAutoRefresh';
+import { useSmartAutoRefresh, usePageContentDebug } from '@/hooks/usePageDebug';
 import { motion } from 'framer-motion';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
@@ -84,7 +84,10 @@ const ComparatifPage = () => {
   const router = useRouter();
   
   // Hook pour refresh automatique si le contenu ne se charge pas
-  useSimpleAutoRefresh();
+  useSmartAutoRefresh();
+  
+  // Hook de debug temporaire pour analyser le contenu
+  usePageContentDebug();
   const [selectedProduct, setSelectedProduct] = useState<any>(null);
   const [selectedModel, setSelectedModel] = useState<any>(null);
   const [buildingData, setBuildingData] = useState<any>(null);

@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useState, useRef, Fragment } from 'react';
-import { useSimpleAutoRefresh } from '@/hooks/useAutoRefresh';
+import { useSmartAutoRefresh } from '@/hooks/usePageDebug';
 
 // Désactiver le rendu statique pour cette page
 export const dynamic = 'force-dynamic';
@@ -397,7 +397,7 @@ const MotionCard = motion(Card);
 
 export default function SummaryPage() {
   // Hook pour refresh automatique si le contenu ne se charge pas
-  useSimpleAutoRefresh();
+  useSmartAutoRefresh();
   
   // Fonction utilitaire pour accéder à localStorage de manière sécurisée
   const getLocalStorageItem = (key: string, defaultValue: string = '') => {
