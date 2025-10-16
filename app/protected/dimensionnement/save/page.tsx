@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useCallback, useMemo } from 'react';
 import { useRouter } from 'next/navigation';
-import { useSmartAutoRefresh } from '@/hooks/usePageDebug';
+import { useSavedFilesAutoRefresh } from '@/hooks/usePageSpecificRefresh';
 import {
   Card,
   CardContent,
@@ -125,7 +125,7 @@ export default function SavedFiles() {
   const router = useRouter();
   
   // Hook pour refresh automatique si le contenu ne se charge pas
-  useSmartAutoRefresh();
+  useSavedFilesAutoRefresh();
   
   const supabase = useMemo(() => createClient(), []); // Création du client une seule fois
   const [searchTerm, setSearchTerm] = useState('');

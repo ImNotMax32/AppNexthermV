@@ -80,22 +80,28 @@ export function useSmartAutoRefresh() {
         return;
       }
 
+      // Chercher le contenu principal réel (div avec flex-1 ou contenu de page)
+      const mainContentDiv = mainContent.querySelector('div.flex-1, div[class*="content"], div[class*="container"], div[class*="page"]') || 
+                            mainContent.querySelector('div:not(header):not(footer)') ||
+                            mainContent;
+
       // Analyser le contenu du main
-      const childrenCount = mainContent.children.length;
-      const textLength = mainContent.textContent?.trim().length || 0;
+      const childrenCount = mainContentDiv.children.length;
+      const textLength = mainContentDiv.textContent?.trim().length || 0;
       
       // Chercher des éléments spécifiques de contenu
-      const cards = mainContent.querySelectorAll('div[class*="card"]');
-      const containers = mainContent.querySelectorAll('div[class*="container"]');
-      const buttons = mainContent.querySelectorAll('button');
-      const forms = mainContent.querySelectorAll('form');
-      const tables = mainContent.querySelectorAll('table');
-      const headings = mainContent.querySelectorAll('h1, h2, h3, h4, h5, h6');
+      const cards = mainContentDiv.querySelectorAll('div[class*="card"]');
+      const containers = mainContentDiv.querySelectorAll('div[class*="container"]');
+      const buttons = mainContentDiv.querySelectorAll('button');
+      const forms = mainContentDiv.querySelectorAll('form');
+      const tables = mainContentDiv.querySelectorAll('table');
+      const headings = mainContentDiv.querySelectorAll('h1, h2, h3, h4, h5, h6');
       
       const contentElementsCount = cards.length + containers.length + buttons.length + forms.length + tables.length + headings.length;
       
       console.log('📊 Main content analysis:', {
-        childrenCount,
+        mainChildrenCount: mainContent.children.length,
+        contentDivChildrenCount: childrenCount,
         textLength,
         cards: cards.length,
         containers: containers.length,
@@ -104,11 +110,12 @@ export function useSmartAutoRefresh() {
         tables: tables.length,
         headings: headings.length,
         totalContentElements: contentElementsCount,
-        innerHTML: mainContent.innerHTML.substring(0, 200) + '...'
+        contentDivHTML: mainContentDiv.innerHTML.substring(0, 200) + '...'
       });
 
       // Critères pour déterminer si la page est vide
-      const hasMinimalContent = childrenCount > 0 && textLength > 50;
+      // Le contenu principal doit avoir soit du texte significatif, soit des éléments de contenu
+      const hasMinimalContent = childrenCount > 0 && textLength > 100;
       const hasContentElements = contentElementsCount > 0;
       
       // Si pas de contenu minimal ET pas d'éléments de contenu
