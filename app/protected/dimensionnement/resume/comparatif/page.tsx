@@ -371,6 +371,14 @@ const ComparatifPage = () => {
     dureeChauffe: 180 // jours de chauffe par an
   });
 
+  // Nettoyer les données au chargement de la page pour forcer le mode sélection
+  useEffect(() => {
+    // Nettoyer les données pour forcer le mode sélection
+    localStorage.removeItem('selected_product');
+    localStorage.removeItem('selected_model');
+    sessionStorage.removeItem('buildingData');
+  }, []);
+
   useEffect(() => {
     // Charger les produits disponibles
     const loadProducts = async () => {

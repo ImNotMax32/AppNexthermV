@@ -111,13 +111,7 @@ export default function DashboardLayout({
     { 
       href: '/protected/dimensionnement/resume/comparatif', 
       icon: BarChart3, 
-      label: 'Comparatif solutions',
-      onClick: () => {
-        // Nettoyer les données pour forcer le mode sélection
-        localStorage.removeItem('selected_product');
-        localStorage.removeItem('selected_model');
-        sessionStorage.removeItem('buildingData');
-      }
+      label: 'Comparatif solutions'
     },
   ];
   
