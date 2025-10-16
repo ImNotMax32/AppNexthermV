@@ -3,6 +3,11 @@
 import { useEffect, useState, useCallback, useMemo } from 'react';
 import { useRouter } from 'next/navigation';
 import { useSavedFilesAutoRefresh } from '@/hooks/usePageSpecificRefresh';
+import { HydrationGuard } from '@/components/HydrationGuard';
+
+// Désactiver le rendu statique pour éviter les problèmes d'hydratation
+export const dynamic = 'force-dynamic';
+export const runtime = 'nodejs';
 import {
   Card,
   CardContent,
@@ -856,7 +861,8 @@ Inclut : échangeur et vannes de régulation`
   };
 
   return (
-    <motion.div
+    <HydrationGuard>
+      <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
@@ -1080,6 +1086,7 @@ Inclut : échangeur et vannes de régulation`
           </Table>
         </CardContent>
       </Card>
-    </motion.div>
+      </motion.div>
+    </HydrationGuard>
   );
 }

@@ -3,6 +3,11 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useComparatifAutoRefresh } from '@/hooks/usePageSpecificRefresh';
 import { usePageContentDebug } from '@/hooks/usePageDebug';
+import { HydrationGuard } from '@/components/HydrationGuard';
+
+// Désactiver le rendu statique pour éviter les problèmes d'hydratation
+export const dynamic = 'force-dynamic';
+export const runtime = 'nodejs';
 import { motion } from 'framer-motion';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
@@ -381,10 +386,12 @@ const ComparatifPage = () => {
 
   // Nettoyer les données au chargement de la page pour forcer le mode sélection
   useEffect(() => {
-    // Nettoyer les données pour forcer le mode sélection
-    localStorage.removeItem('selected_product');
-    localStorage.removeItem('selected_model');
-    sessionStorage.removeItem('buildingData');
+    // Nettoyer les données pour forcer le mode sélection (avec protection SSR)
+    if (typeof window !== 'undefined') {
+      localStorage.removeItem('selected_product');
+      localStorage.removeItem('selected_model');
+      sessionStorage.removeItem('buildingData');
+    }
   }, []);
 
   useEffect(() => {
@@ -744,7 +751,8 @@ const ComparatifPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <HydrationGuard>
+      <div className="min-h-screen bg-gray-50">
       <div className="max-w-7xl mx-auto p-6 space-y-6">
         {/* En-tête principal */}
         <motion.div 
@@ -1738,7 +1746,8 @@ const ComparatifPage = () => {
         </DialogContent>
       </Dialog>
       </div>
-    </div>
+      </div>
+    </HydrationGuard>
   );
 };
 
