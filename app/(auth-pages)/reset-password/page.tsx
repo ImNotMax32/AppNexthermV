@@ -7,9 +7,8 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { FormMessage, Message } from '@/components/form-message';
-import { createBrowserClient } from '@supabase/ssr';
+import { createClient } from '@/utils/supabase/client';
 import { toast } from 'sonner';
-import { store, memoryLocalStorageAdapter } from '@/utils/store';
 
 export default function ResetPasswordPage() {
   const router = useRouter();
@@ -35,19 +34,7 @@ export default function ResetPasswordPage() {
     const email = formData.get('email') as string;
 
     try {
-      const supabase = createBrowserClient(
-        process.env.NEXT_PUBLIC_SUPABASE_URL!,
-        process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-        {
-          auth: {
-            flowType: 'pkce',
-            detectSessionInUrl: true,
-            autoRefreshToken: false,
-            persistSession: true,
-            storage: memoryLocalStorageAdapter(store),
-          }
-        }
-      );
+      const supabase = createClient();
       const { error } = await supabase.auth.resetPasswordForEmail(email, {
         redirectTo: `${window.location.origin}/auth/callback?redirect=/reset-password&type=recovery`,
       });
@@ -77,19 +64,7 @@ export default function ResetPasswordPage() {
     const password = formData.get('password') as string;
 
     try {
-      const supabase = createBrowserClient(
-        process.env.NEXT_PUBLIC_SUPABASE_URL!,
-        process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-        {
-          auth: {
-            flowType: 'pkce',
-            detectSessionInUrl: true,
-            autoRefreshToken: false,
-            persistSession: true,
-            storage: memoryLocalStorageAdapter(store),
-          }
-        }
-      );
+      const supabase = createClient();
 
       const { error } = await supabase.auth.updateUser({
         password: password
