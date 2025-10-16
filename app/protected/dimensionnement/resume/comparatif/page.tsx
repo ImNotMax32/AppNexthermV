@@ -396,14 +396,21 @@ const ComparatifPage = () => {
     };
   }, []);
 
-  // Rechargement automatique simple après 0.5 seconde
+  // Rechargement automatique simple après 0.5 seconde (une fois par ouverture de page)
   useEffect(() => {
-    const timer = setTimeout(() => {
-      console.log('ComparatifPage: rechargement automatique après 0.5s');
-      window.location.reload();
-    }, 500);
+    const hasReloaded = sessionStorage.getItem('comparatif_reloaded');
+    
+    if (!hasReloaded) {
+      const timer = setTimeout(() => {
+        console.log('ComparatifPage: rechargement automatique après 0.5s');
+        sessionStorage.setItem('comparatif_reloaded', 'true');
+        window.location.reload();
+      }, 500);
 
-    return () => clearTimeout(timer);
+      return () => clearTimeout(timer);
+    } else {
+      console.log('ComparatifPage: rechargement déjà effectué pour cette session');
+    }
   }, []);
 
   useEffect(() => {
