@@ -1,8 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useMemo } from 'react';
-import { useComparatifAutoRefresh } from '@/hooks/usePageSpecificRefresh';
-import { usePageContentDebug } from '@/hooks/usePageDebug';
+import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { HydrationGuard } from '@/components/HydrationGuard';
 
 // Désactiver le rendu statique pour éviter les problèmes d'hydratation
@@ -51,17 +49,6 @@ import {
   Legend
 } from 'chart.js';
 
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  LineElement,
-  PointElement,
-  Title,
-  Tooltip,
-  Legend
-);
-
 interface EnergyPrices {
   electriciteHP: number; // €/kWh heures pleines
   electriciteHC: number; // €/kWh heures creuses
@@ -88,12 +75,6 @@ interface HeatingSystem {
 
 const ComparatifPage = () => {
   const router = useRouter();
-  
-  // Hook pour refresh automatique si le contenu ne se charge pas
-  useComparatifAutoRefresh();
-  
-  // Hook de debug temporaire pour analyser le contenu
-  usePageContentDebug();
   const [selectedProduct, setSelectedProduct] = useState<any>(null);
   const [selectedModel, setSelectedModel] = useState<any>(null);
   const [buildingData, setBuildingData] = useState<any>(null);
@@ -139,7 +120,7 @@ const ComparatifPage = () => {
   });
   
   // Fonction pour capturer l'écran et générer un PDF
-  const handleGeneratePdf = async () => {
+  const handleGeneratePdf = useCallback(async () => {
     console.log('handleGeneratePdf called - capture d\'écran');
     try {
       setIsGeneratingPdf(true);
@@ -158,6 +139,9 @@ const ComparatifPage = () => {
         toast.error("Aucun modèle sélectionné. Veuillez sélectionner un modèle pour ce produit.");
         return;
       }
+
+      // Attendre un peu pour s'assurer que le DOM est stable
+      await new Promise(resolve => setTimeout(resolve, 500));
 
       // Trouver l'élément principal à capturer (tout le contenu sauf l'en-tête avec les boutons)
       const captureElement = document.querySelector('.max-w-7xl.mx-auto.p-6.space-y-6');
@@ -208,7 +192,7 @@ const ComparatifPage = () => {
     } finally {
       setIsGeneratingPdf(false);
     }
-  };
+  }, [buildingData, selectedProduct, selectedModel, pdfFileName]);
 
   // Fonctions pour l'envoi par email
   const handleEmailModalOpen = () => {
@@ -384,17 +368,37 @@ const ComparatifPage = () => {
     dureeChauffe: 180 // jours de chauffe par an
   });
 
-  // Nettoyer les données au chargement de la page pour forcer le mode sélection
+  // Enregistrer Chart.js et nettoyer les données au chargement de la page
   useEffect(() => {
+    // Enregistrer Chart.js pour cette page uniquement
+    ChartJS.register(
+      CategoryScale,
+      LinearScale,
+      BarElement,
+      LineElement,
+      PointElement,
+      Title,
+      Tooltip,
+      Legend
+    );
+
     // Nettoyer les données pour forcer le mode sélection (avec protection SSR)
     if (typeof window !== 'undefined') {
       localStorage.removeItem('selected_product');
       localStorage.removeItem('selected_model');
       sessionStorage.removeItem('buildingData');
     }
+
+    // Cleanup function pour dé-enregistrer Chart.js quand on quitte la page
+    return () => {
+      // Note: Chart.js ne fournit pas de méthode unregister, mais le composant sera démonté
+      // donc les instances seront nettoyées automatiquement
+    };
   }, []);
 
   useEffect(() => {
+    let isMounted = true; // Flag pour éviter les mises à jour d'état après démontage
+
     // Charger les produits disponibles
     const loadProducts = async () => {
       try {
@@ -407,11 +411,16 @@ const ComparatifPage = () => {
           ...product,
           id: product.Nom?.replace(/[^a-zA-Z0-9]/g, '_').toLowerCase() || `product_${index}`
         }));
-        setAvailableProducts(productsWithIds);
-        console.log('Produits chargés:', productsWithIds.length);
+        
+        if (isMounted) {
+          setAvailableProducts(productsWithIds);
+          console.log('Produits chargés:', productsWithIds.length);
+        }
       } catch (error) {
         console.error('Erreur lors du chargement des produits:', error);
-        setAvailableProducts([]);
+        if (isMounted) {
+          setAvailableProducts([]);
+        }
       }
     };
 
@@ -427,13 +436,7 @@ const ComparatifPage = () => {
       storedBuilding: !!storedBuilding
     });
     
-    // Debug détaillé des données
-    console.log('sessionStorage buildingData:', sessionStorage.getItem('buildingData'));
-    console.log('localStorage building_data:', localStorage.getItem('building_data'));
-    console.log('localStorage keys:', Object.keys(localStorage));
-    console.log('sessionStorage keys:', Object.keys(sessionStorage));
-    
-    if (storedProduct) {
+    if (storedProduct && isMounted) {
       // Mode "depuis résumé" : produit déjà sélectionné
       const product = JSON.parse(storedProduct);
       setSelectedProduct(product);
@@ -464,20 +467,22 @@ const ComparatifPage = () => {
             return currentDiff < bestDiff ? current : best;
           });
           
-          setSelectedModel(bestModel);
-          console.log('Modèle sélectionné automatiquement:', bestModel.modele, 'pour', heatLoss, 'W de déperditions');
+          if (isMounted) {
+            setSelectedModel(bestModel);
+            console.log('Modèle sélectionné automatiquement:', bestModel.modele, 'pour', heatLoss, 'W de déperditions');
+          }
         }
       }
-    } else {
+    } else if (isMounted) {
       // Mode "accès direct" : afficher le sélecteur
       setShowProductSelector(true);
       console.log('Mode accès direct - sélecteur affiché');
     }
     
-    if (storedBuilding) {
+    if (storedBuilding && isMounted) {
       setBuildingData(JSON.parse(storedBuilding));
       console.log('Données bâtiment récupérées');
-    } else {
+    } else if (isMounted) {
       // Fallback : reconstruire les données du bâtiment depuis localStorage
       console.log('Aucune donnée bâtiment trouvée, reconstruction depuis localStorage...');
       const reconstructedBuildingData = {
@@ -509,6 +514,11 @@ const ComparatifPage = () => {
     }
 
     loadProducts();
+
+    // Cleanup function
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
   // Générer les options de puissance pour Cascade (40 à 400 kW par pas de 5 kW)
@@ -749,6 +759,14 @@ const ComparatifPage = () => {
       }
     ]
   };
+
+  // Effet de nettoyage au démontage du composant
+  useEffect(() => {
+    return () => {
+      // Nettoyer les timers et les références
+      console.log('ComparatifPage: nettoyage du composant');
+    };
+  }, []);
 
   return (
     <HydrationGuard>
