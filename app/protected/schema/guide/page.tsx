@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
   Card,
   CardContent,
@@ -20,215 +20,99 @@ const productFamilies = [
     "Air/Eau" 
   ];
 
+interface Guide {
+  id: number;
+  title: string;
+  family: string;
+  date: string;
+  version: string;
+  description: string;
+  url: string;
+}
 
-const guides = [
-  // Sol/Sol
-  {
-    id: 1,
-    title: "OPTI S/S R410A",
-    family: "Sol/Sol",
-    date: "03/2024",
-    version: "AA",
-    description: "Guide d'installation pour pompe à chaleur OPTI Sol/Sol R410A",
-    url: "https://www.nextherm.fr/wp-content/uploads/2024/03/Guide-dinstallation-OPTI-SOL-SOL-R410A.pdf",
-  },
-  {
-    id: 2,
-    title: "OPTIPACK2 S/S R32",
-    family: "Sol/Sol",
-    date: "03/2024",
-    version: "AA",
-    description: "Guide d'installation pour pompe à chaleur OPTIPACK2 Sol/Sol R32",
-    url: "https://www.nextherm.fr/wp-content/uploads/2024/03/Guide-dinstallation-OPTIPACK2-SOL-SOL-R32-ind-AA-1.pdf",
-  },
-  {
-    id: 3,
-    title: "SMARTPACK2 S/S R410A",
-    family: "Sol/Sol",
-    date: "04/2023",
-    version: "AF",
-    description: "Guide d'installation pour pompe à chaleur SMARTPACK2 Sol/Sol R410A",
-    url: "https://www.nextherm.fr/wp-content/uploads/2023/04/Guide-dinstallation-SMARTPACK2-SOL-SOL-R410-ind-AF.pdf",
-  },
-  {
-    id: 4,
-    title: "SMARTPACK3 S/S R32",
-    family: "Sol/Sol",
-    date: "04/2023",
-    version: "AD",
-    description: "Guide d'installation pour pompe à chaleur SMARTPACK3 Sol/Sol R32",
-    url: "https://www.nextherm.fr/wp-content/uploads/2023/04/Guide-dinstallation-SMARTPACK3-SOL-SOL-R32-ind-AD.pdf",
-  },
+interface Product {
+  Nom: string;
+  Particularites: string[];
+  GuideInstallationWebURL?: string;
+  BrochureURL?: string;
+}
 
-  // Eau glycolée/Eau
-  {
-    id: 5,
-    title: "OPTIPACK2 EG/E R32",
-    family: "Eau glycolée/Eau",
-    date: "02/2025",
-    version: "AE",
-    description: "Guide d'installation pour pompe à chaleur OPTIPACK2 Eau glycolée/Eau R32",
-    url: "https://www.nextherm.fr/wp-content/uploads/2025/02/191125-Guide-dinstallation-OPTIPACK2-OGO-R32-ind-AE.pdf",
-  },
-  {
-    id: 6,
-    title: "OPTIPACKDUO2 EG/E R32",
-    family: "Eau glycolée/Eau",
-    date: "02/2025",
-    version: "AE",
-    description: "Guide d'installation pour pompe à chaleur OPTIPACKDUO2 Eau glycolée/Eau R32",
-    url: "https://www.nextherm.fr/wp-content/uploads/2025/02/Guide-dinstallation-OPTIPACKDUO2-Eau-Glycolee-Eau-R32-ind-AE.pdf",
-  },
-  {
-    id: 7,
-    title: "OPTIPACKDUO EG/E R410A",
-    family: "Eau glycolée/Eau",
-    date: "02/2025",
-    version: "AL",
-    description: "Guide d'installation pour pompe à chaleur OPTIPACKDUO Eau glycolée/Eau R410A",
-    url: "https://www.nextherm.fr/wp-content/uploads/2025/02/Guide-dinstallation-OPTIPACKDUO-Eau-Glycolee-Eau-ind-AL.pdf",
-  },
-  {
-    id: 8,
-    title: "SMARTPACK2 GP EG/E R410A",
-    family: "Eau glycolée/Eau",
-    date: "02/2025",
-    version: "AD",
-    description: "Guide d'installation pour pompe à chaleur SMARTPACK2 GP Eau glycolée/Eau R410A",
-    url: "https://www.nextherm.fr/wp-content/uploads/2025/02/Guide-dinstallation-SMARTPACK2-GP-Eau-Glycolee-Eau-ind-AD.pdf",
-  },
-  {
-    id: 9,
-    title: "SMARTPACK2 HT EG/E R32",
-    family: "Eau glycolée/Eau",
-    date: "02/2025",
-    version: "AD",
-    description: "Guide d'installation pour pompe à chaleur SMARTPACK2 HT Eau glycolée/Eau R32",
-    url: "https://www.nextherm.fr/wp-content/uploads/2025/02/Guide_installation_SMARTPACK2_Eau-Glycolee-Eau-haute-temperature_ind_AD.pdf",
-  },
-  {
-    id: 10,
-    title: "SMARTPACK3 EG/E R32",
-    family: "Eau glycolée/Eau",
-    date: "02/2025",
-    version: "AF",
-    description: "Guide d'installation pour pompe à chaleur SMARTPACK3 Eau glycolée/Eau R32",
-    url: "https://www.nextherm.fr/wp-content/uploads/2025/02/Guide-dinstallation-SMARTPACK3-Eau-Glycolee-Eau-R32-ind-AF.pdf",
-  },
-  {
-    id: 11,
-    title: "OPTIPACK E/E",
-    family: "Eau glycolée/Eau",
-    date: "02/2025",
-    version: "AT",
-    description: "Guide d'installation pour pompe à chaleur OPTIPACK Eau/Eau",
-    url: "https://www.nextherm.fr/wp-content/uploads/2025/02/Guide-dinstallation-OPTIPACK-EAU-EAU-ind-AT.pdf",
-  },
-  {
-    id: 12,
-    title: "SMARTPACK2 E/E R410",
-    family: "Eau glycolée/Eau",
-    date: "02/2025",
-    version: "AR",
-    description: "Guide d'installation pour pompe à chaleur SMARTPACK2 Eau/Eau R410",
-    url: "https://www.nextherm.fr/wp-content/uploads/2025/02/Guide_installation_SMARTPACK2_EAU_EAU_ind_AR-modif.pdf",
-  },
+interface ProductsData {
+  products: Product[];
+}
 
-  // Sol/Eau
-  {
-    id: 13,
-    title: "OPTIPACK2 S/E R32",
-    family: "Sol/Eau",
-    date: "07/2022",
-    version: "AC",
-    description: "Guide d'installation pour pompe à chaleur OPTIPACK2 Sol/Eau R32",
-    url: "https://www.nextherm.fr/wp-content/uploads/2023/04/Guide-dinstallation-OPTIPACK2-SOL-EAU-R32-juillet-2022-ind-AC.pdf",
-  },
-  {
-    id: 14,
-    title: "OPTIPACKDUO2 S/E R32",
-    family: "Sol/Eau",
-    date: "07/2022",
-    version: "AB",
-    description: "Guide d'installation pour pompe à chaleur OPTIPACKDUO2 Sol/Eau R32",
-    url: "https://www.nextherm.fr/wp-content/uploads/2023/04/Guide-dinstallation-OPTIPACKDUO2-SOL-EAU-R32-juillet-2022-ind-AB-.pdf",
-  },
-  {
-    id: 15,
-    title: "OPTIPACKDUO S/E R410A",
-    family: "Sol/Eau",
-    date: "04/2023",
-    version: "AE",
-    description: "Guide d'installation pour pompe à chaleur OPTIPACKDUO Sol/Eau R410A",
-    url: "https://www.nextherm.fr/wp-content/uploads/2023/04/Guide-dinstallation-OPTIPACKDUO-SOL-EAU-R410-ind-AE.pdf",
-  },
-  {
-    id: 16,
-    title: "SMARTPACK2 S/E R410A",
-    family: "Sol/Eau",
-    date: "04/2023",
-    version: "AH",
-    description: "Guide d'installation pour pompe à chaleur SMARTPACK2 Sol/Eau R410A",
-    url: "https://www.nextherm.fr/wp-content/uploads/2023/04/Guide-dinstallation-SMARTPACK2-SOL-EAU-R410-ind-AH.pdf",
-  },
-  {
-    id: 17,
-    title: "SMARTPACK3 S/E R32",
-    family: "Sol/Eau",
-    date: "07/2022",
-    version: "AB",
-    description: "Guide d'installation pour pompe à chaleur SMARTPACK3 Sol/Eau R32",
-    url: "https://www.nextherm.fr/wp-content/uploads/2023/04/Guide-dinstallation-SMARTPACK3-SOL-EAU-R32-Juillet-2022-ind-AB-.pdf",
-  },
-  {
-    id: 21, 
-    title: "OPTIPACK S/E R410",
-    family: "Sol/Eau",
-    date: "04/2023",
-    version: "AQ",
-    description: "Guide d'installation pour pompe à chaleur OPTIPACK Sol/Eau R410",
-    url: "https://www.nextherm.fr/wp-content/uploads/2023/04/Guide-dinstallation-OPTIPACK-SOL-EAU-R410-ind-AQ.pdf",
-  },
+// Fonction pour mapper les particularités aux familles de produits
+const mapParticularitesToFamily = (particularites: string[]): string => {
+  if (particularites.includes("Sol/Sol")) return "Sol/Sol";
+  if (particularites.includes("Sol/Eau")) return "Sol/Eau";
+  if (particularites.includes("Eau/Sol")) return "Eau/Sol";
+  if (particularites.includes("Air/Eau")) return "Air/Eau";
+  if (particularites.includes("Geothermie") || particularites.includes("Eau/Eau")) return "Eau glycolée/Eau";
+  return "Eau glycolée/Eau"; // Défaut
+};
 
+// Fonction pour extraire les informations de version et date depuis l'URL
+const extractVersionAndDate = (url: string): { version: string; date: string } => {
+  // Extraire le nom du fichier depuis l'URL
+  const fileName = url.split('/').pop() || '';
   
-  // Eau/Sol
-  {
-    id: 19,
-    title: "SMARTPACK2 EG/S R410",
-    family: "Eau/Sol",
-    date: "01/2024",
-    version: "AB",
-    description: "Guide d'installation pour pompe à chaleur SMARTPACK2 Eau glycolée/Sol R410",
-    url: "https://www.nextherm.fr/wp-content/uploads/2024/01/Guide_installation_EAU_SOL-R410_ind_AB.pdf",
-  },
-  {
-    id: 22,
-    title: "SMARTPACK3 EG/S R32",
-    family: "Eau/Sol",
-    date: "01/2024",
-    version: "AB",
-    description: "Guide d'installation pour pompe à chaleur SMARTPACK3 Eau glycolée/Sol R32",
-    url: "https://www.nextherm.fr/wp-content/uploads/2024/01/Guide_installation_EAU_SOL-R32_ind_AB.pdf",
-  },
+  // Patterns pour extraire version
+  const versionMatch = fileName.match(/ind[_-]([A-Z]{1,2})/i);
+  
+  let version = versionMatch ? versionMatch[1].toUpperCase() : 'N/A';
+  let date = '03/2025'; // Date fixe pour tous les guides
+  
+  return { version, date };
+};
 
-  {
-    id: 23,
-    title: "ROPACK3 A/E R32",
-    family: "Air/Eau",
-    date: "02/2024",
-    version: "AA",
-    description: "Guide d'installation pour pompe à chaleur ROPACK3 Air/Eau R32",
-    url: "https://www.nextherm.fr/wp-content/uploads/2024/02/ROPACK3-NEXTHERM-Notice-technique-.pdf",
-  },
-];
-
+// Fonction pour générer une description basée sur le nom du produit
+const generateDescription = (productName: string): string => {
+  return `Guide d'installation pour pompe à chaleur ${productName}`;
+};
 
 export default function InstallationGuides() {
     const [searchTerm, setSearchTerm] = useState('');
     const [selectedFamily, setSelectedFamily] = useState('Tous');
+    const [guides, setGuides] = useState<Guide[]>([]);
+    const [loading, setLoading] = useState(true);
+
+    // Charger les données des produits et générer les guides
+    useEffect(() => {
+      const loadGuides = async () => {
+        try {
+          const response = await fetch('/data/products.json');
+          const data: ProductsData = await response.json();
+          
+          const generatedGuides: Guide[] = data.products
+            .filter(product => product.GuideInstallationWebURL) // Seulement les produits avec une URL de guide
+            .map((product, index) => {
+              const family = mapParticularitesToFamily(product.Particularites);
+              const { version, date } = extractVersionAndDate(product.GuideInstallationWebURL!);
+              
+              return {
+                id: index + 1,
+                title: product.Nom,
+                family,
+                date,
+                version,
+                description: generateDescription(product.Nom),
+                url: product.GuideInstallationWebURL!
+              };
+            });
+          
+          setGuides(generatedGuides);
+        } catch (error) {
+          console.error('Erreur lors du chargement des guides:', error);
+        } finally {
+          setLoading(false);
+        }
+      };
+
+      loadGuides();
+    }, []);
   
     // Fonction de tri alphabétique pour les guides
-    const sortGuides = (a: any, b: any) => {
+    const sortGuides = (a: Guide, b: Guide) => {
       return a.title.localeCompare(b.title, 'fr', { sensitivity: 'base' });
     };
   
@@ -242,6 +126,19 @@ export default function InstallationGuides() {
         return matchesSearch && matchesFamily;
       })
       .sort(sortGuides);
+
+    if (loading) {
+      return (
+        <div className="container mx-auto p-6 max-w-7xl">
+          <div className="flex items-center justify-center h-64">
+            <div className="text-center">
+              <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#86BC29] mx-auto mb-4"></div>
+              <p className="text-gray-600">Chargement des guides...</p>
+            </div>
+          </div>
+        </div>
+      );
+    }
   
     return (
       <motion.div

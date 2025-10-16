@@ -138,33 +138,39 @@ function SignUpContent() {
   }
 
   return (
-    <div className="min-h-[70dvh] flex flex-col justify-between bg-white">
+    <div className="min-h-[95dvh] flex flex-col justify-between bg-white">
       <div className="flex-1 flex flex-col justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-md space-y-6">
-          <h1 className="text-2xl font-bold text-center">
-            Créer un compte
-          </h1>
+          <div className="mb-8 text-center">
+            <h2 className="text-3xl font-bold text-[#333333] mb-2">
+              Inscription
+            </h2>
+            <div className="w-32 h-1.5 bg-[#86BC29] rounded-full mx-auto mb-3"></div>
+            <p className="text-lg text-gray-600 mb-6">
+              Créez votre compte Nextherm
+            </p>
+          </div>
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="space-y-4">
               <div className="space-y-2">
-                <Label htmlFor="email">Email</Label>
+                <Label htmlFor="email" className="text-base font-medium">Email</Label>
                 <Input
                   id="email"
                   name="email"
                   type="email"
                   placeholder="exemple@email.com"
                   required
-                  className="w-full px-3 py-2 border rounded-md"
+                  className="w-full px-5 py-4 text-lg border rounded-md"
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="password">Mot de passe</Label>
+                <Label htmlFor="password" className="text-base font-medium">Mot de passe</Label>
                 <Input
                   id="password"
                   name="password"
                   type="password"
                   required
-                  className="w-full px-3 py-2 border rounded-md"
+                  className="w-full px-5 py-4 text-lg border rounded-md"
                 />
               </div>
             </div>
@@ -179,7 +185,7 @@ function SignUpContent() {
               <div className="space-y-4">
                 <Button
                   type="submit"
-                  className="w-full flex justify-center items-center py-2 px-4 border border-transparent rounded-full shadow-sm text-sm font-medium text-white bg-[#86BC29] hover:bg-[#75a625] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#86BC29] transition-colors duration-200"
+                  className="w-full flex justify-center items-center py-4 px-8 border border-transparent rounded-lg shadow-md text-lg font-medium text-white bg-[#86BC29] hover:bg-[#75a625] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#86BC29] transition-all duration-300"
                   disabled={isLoading}
                 >
                   {isLoading ? (
@@ -206,7 +212,7 @@ function SignUpContent() {
                 <Button
                   type="button"
                   variant="outline"
-                  className="w-full"
+                  className="w-full py-3 text-lg flex items-center justify-center"
                   onClick={handleGoogleSignIn}
                   disabled={isLoading}
                 >
@@ -226,10 +232,10 @@ function SignUpContent() {
               </div>
             </motion.div>
 
-            <div className="text-center">
+            <div className="text-center mt-6">
               <Link
                 href="/sign-in"
-                className="text-sm text-muted-foreground hover:underline"
+                className="text-base text-gray-600 hover:text-[#86BC29] hover:underline transition-colors"
               >
                 Déjà un compte ? Connectez-vous
               </Link>

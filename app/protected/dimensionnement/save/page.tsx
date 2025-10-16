@@ -28,7 +28,7 @@ import { createClient } from '@/utils/supabase/client';
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { Search, Download, Trash2, Filter, SlidersHorizontal, Edit, FileText } from "lucide-react";
+import { Search, Download, Trash2, Filter, SlidersHorizontal, Edit, FileText, BarChart3 } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
 import { generateModernPdf } from '@/app/protected/dimensionnement/resume/utils/pdfGenerator';
 import { BuildingData } from '@/app/protected/dimensionnement/resume/types/building'
@@ -208,6 +208,105 @@ export default function SavedFiles() {
     }
   };
 
+  // Fonction pour éditer un calcul sauvegardé
+  const editCalculation = (calc: Calculation) => {
+    try {
+      console.log('📝 Édition du calcul:', calc);
+      
+      // Nettoyer le localStorage avant de charger les nouvelles données
+      const keysToKeep = ['supabase.auth.token']; // Garder les clés importantes
+      const currentStorage = { ...localStorage };
+      localStorage.clear();
+      keysToKeep.forEach(key => {
+        if (currentStorage[key]) {
+          localStorage.setItem(key, currentStorage[key]);
+        }
+      });
+      
+      // Nettoyer aussi le sessionStorage pour forcer le recalcul
+      sessionStorage.clear();
+      
+      // Charger les données du bâtiment
+      const building = calc.parameters?.building;
+      if (building) {
+        localStorage.setItem('ResultatDeperdition', building.heatLoss || '0');
+        localStorage.setItem('Annee_de_construction', building.constructionYear || '');
+        localStorage.setItem('Type_de_construction', building.buildingType || '');
+        localStorage.setItem('Surface_RDC', building.surfaceRDC || '0');
+        localStorage.setItem('Surface_1er_etage', building.surface1erEtage || '0');
+        localStorage.setItem('Surface_2e_etage', building.surface2eEtage || '0');
+        localStorage.setItem('Structure_de_la_construction', building.structure || '');
+        localStorage.setItem('Structure_du_sol', building.groundStructure || '');
+        localStorage.setItem('Surface_de_vitrage', building.windowSurface || '');
+        localStorage.setItem('Mitoyennete', building.adjacency || '');
+        localStorage.setItem('Ventilation', building.ventilation || '');
+        localStorage.setItem('Temperature_de_chauffage', building.heatingTemp || '');
+        localStorage.setItem('Departement', building.department || '');
+        localStorage.setItem('kit_piscine', building.poolKit || 'Non');
+        localStorage.setItem('kit_freecooling', building.freecoolingKit || 'Non');
+        localStorage.setItem('kit_ECS', building.hotWater || 'Non');
+      }
+      
+      // Charger les détails des déperditions depuis la section heating
+      const heating = calc.parameters?.heating;
+      if (heating) {
+        if (heating.windowHeatLoss) sessionStorage.setItem('windowHeatLoss', heating.windowHeatLoss);
+        if (heating.roofHeatLoss) sessionStorage.setItem('roofHeatLoss', heating.roofHeatLoss);
+        if (heating.floorHeatLoss) sessionStorage.setItem('FloorHeatLoss', heating.floorHeatLoss);
+        if (heating.airNeufLoss) sessionStorage.setItem('airNeufLoss', heating.airNeufLoss);
+        if (heating.thermalBridgeLoss) sessionStorage.setItem('thermalBridgeLoss', heating.thermalBridgeLoss);
+      }
+      
+      // Charger les données de la pompe à chaleur
+      const heatPump = calc.parameters?.heatPump;
+      if (heatPump) {
+        localStorage.setItem('type_pac', heatPump.type || '');
+        localStorage.setItem('systeme_pac', heatPump.system || '');
+        localStorage.setItem('type_emetteur', heatPump.emitterType || '');
+        localStorage.setItem('temperature_radiateur', heatPump.radiatorTemp || '');
+        localStorage.setItem('temperature_plancher', heatPump.floorTemp || '');
+        if (heatPump.captorType) localStorage.setItem('captorType', heatPump.captorType);
+        if (heatPump.waterTable) localStorage.setItem('waterTable', heatPump.waterTable);
+        if (heatPump.support) localStorage.setItem('support', heatPump.support);
+      }
+      
+      // Charger les informations client et installateur
+      if (calc.parameters?.clientInfo) {
+        localStorage.setItem('clientInfo', JSON.stringify(calc.parameters.clientInfo));
+      }
+      if (calc.parameters?.installerInfo) {
+        localStorage.setItem('installerInfo', JSON.stringify(calc.parameters.installerInfo));
+      }
+      
+      // Charger le produit sélectionné
+      if (calc.parameters?.selectedProduct) {
+        localStorage.setItem('selected_product', JSON.stringify(calc.parameters.selectedProduct));
+      }
+      
+      // Marquer comme édition pour que la page de dimensionnement charge les données
+      localStorage.setItem('isEditing', 'true');
+      localStorage.setItem('editingProjectName', calc.project_name);
+      localStorage.setItem('editingProjectId', calc.id);
+      
+      console.log('✅ Données chargées dans localStorage pour édition');
+      
+      // Rediriger vers la page de dimensionnement
+      router.push('/protected/dimensionnement');
+      
+      toast({
+        title: "Projet chargé",
+        description: `Le projet "${calc.project_name}" a été chargé pour modification`,
+      });
+    } catch (error) {
+      console.error('Erreur lors du chargement du calcul pour édition:', error);
+      toast({
+        title: "Erreur",
+        description: "Impossible de charger le projet pour modification",
+        variant: "destructive",
+      });
+    }
+  };
+
   
   const filterAndSortCalculations = useCallback(() => {
     let filtered = [...calculations];
@@ -308,7 +407,7 @@ export default function SavedFiles() {
           department: buildingData.department || '',
           structure: buildingData.structure || '',
           groundStructure: buildingData.groundStructure || '',
-          windowSurface: buildingData.windowSurface || '',
+          windowSurface: buildingData.windowSurface || '0',
           adjacency: buildingData.adjacency || '',
           poolKit: buildingData.poolKit || 'Non',
           freecoolingKit: buildingData.freecoolingKit || 'Non',
@@ -379,122 +478,285 @@ export default function SavedFiles() {
       });
     }
   }, [toast]);
-  const editCalculation = useCallback(async (calculation: Calculation) => {
-    if (!calculation.parameters) return;
-    
+
+  // Fonction pour ouvrir le comparatif avec les données du fichier sauvegardé
+  const openComparatif = (calc: Calculation) => {
     try {
-      const { building, heatPump } = calculation.parameters;
-      console.log("Données reçues de la DB :", calculation.parameters);
-  
-      // Stockage dans localStorage
-      localStorage.setItem('kit_piscine', building.poolKit || 'Non');
-      localStorage.setItem('kit_freecooling', building.freecoolingKit || 'Non');
-      localStorage.setItem('kit_ECS', building.hotWater || 'Non');
-  
-      console.log("Données stockées dans localStorage :");
-      console.log("kit_piscine:", localStorage.getItem('kit_piscine'));
-      console.log("kit_freecooling:", localStorage.getItem('kit_freecooling'));
-      console.log("kit_ECS:", localStorage.getItem('kit_ECS'));
-      // Données du bâtiment
-      Object.entries({
-        'Annee_de_construction': building.constructionYear,
-        'Type_de_construction': building.buildingType,
-        'Surface_RDC': building.surfaceRDC,
-        'Surface_1er_etage': building.surface1erEtage,
-        'Surface_2e_etage': building.surface2eEtage,
-        'ResultatDeperdition': building.heatLoss,
-        'Ventilation': building.ventilation,
-        'Temperature_de_chauffage': building.heatingTemp,
-        'Departement': building.department,
-        'Structure_de_la_construction': building.structure,
-        'Structure_du_sol': building.groundStructure,
-        'Surface_de_vitrage': building.windowSurface,
-        'Mitoyennete': building.adjacency,
-        'kit_piscine': building.poolKit,
-        'kit_freecooling': building.freecoolingKit,
-        'kit_ECS': building.hotWater
-      }).forEach(([key, value]) => {
-        if (value !== undefined && value !== null) {
-          localStorage.setItem(key, value);
+      // Préparer les données du bâtiment pour le comparatif
+      const buildingData: BuildingData = {
+        constructionYear: calc.parameters?.building?.constructionYear || '',
+        buildingType: calc.parameters?.building?.buildingType || '',
+        heatLoss: calc.parameters?.building?.heatLoss || '0',
+        totalSurface: calc.parameters?.building?.totalSurface || 0,
+        ventilation: calc.parameters?.building?.ventilation || '',
+        heatingTemp: calc.parameters?.building?.heatingTemp || '',
+        department: calc.parameters?.building?.department || '',
+        structure: calc.parameters?.building?.structure || '',
+        groundStructure: calc.parameters?.building?.groundStructure || '',
+        windowSurface: calc.parameters?.building?.windowSurface || '0',
+        adjacency: calc.parameters?.building?.adjacency || '',
+        poolKit: calc.parameters?.building?.poolKit || 'Non',
+        freecoolingKit: calc.parameters?.building?.freecoolingKit || 'Non',
+        hotWater: calc.parameters?.building?.hotWater || 'Non'
+      };
+
+      // Sauvegarder les données dans sessionStorage pour le comparatif
+      sessionStorage.setItem('buildingData', JSON.stringify(buildingData));
+      
+      // Sauvegarder le produit sélectionné dans localStorage
+      if (calc.parameters?.selectedProduct) {
+        localStorage.setItem('selected_product', JSON.stringify(calc.parameters.selectedProduct));
+        if (calc.parameters.selectedProduct.selectedModel) {
+          localStorage.setItem('selected_model', JSON.stringify(calc.parameters.selectedProduct.selectedModel));
         }
-      });
-  
-      // Données de la PAC
-      Object.entries({
-        'type_pac': heatPump.type,
-        'systeme_pac': heatPump.system,
-        'emetteur_type': heatPump.emitterType,
-        'temp_radiateur': heatPump.radiatorTemp,
-        'temp_plancher': heatPump.floorTemp
-      }).forEach(([key, value]) => {
-        if (value !== undefined && value !== null) {
-          localStorage.setItem(key, value);
-        }
-      });
-  
-      if (calculation.parameters.selectedProduct) {
-        localStorage.setItem('selected_product', JSON.stringify(calculation.parameters.selectedProduct));
       }
-  
-      router.push('/protected/dimensionnement/resume');
-  
+
+      // Naviguer vers la page comparatif
+      router.push('/protected/dimensionnement/resume/comparatif');
+      
+      toast({
+        title: "Comparatif ouvert",
+        description: "Redirection vers le comparatif des solutions de chauffage",
+      });
     } catch (error) {
-      console.error('Erreur lors de l\'édition:', error);
+      console.error('Erreur lors de l\'ouverture du comparatif:', error);
       toast({
         title: "Erreur",
-        description: "Impossible de charger les paramètres du calcul",
+        description: "Impossible d'ouvrir le comparatif",
         variant: "destructive",
       });
     }
-  }, [router, toast]);
+  };
 
-  
-const getWaterKitModel = (powerKw: number) => {
-  if (powerKw <= 17) return { code: "KEN 15", power: "13-17 kW" };
-  if (powerKw <= 22) return { code: "KEN 20", power: "17-22 kW" };
-  if (powerKw <= 27) return { code: "KEN 25", power: "22-27 kW" };
-  if (powerKw <= 32) return { code: "KEN 30", power: "27-32 kW" };
-  return { code: "KEN 35", power: "32+ kW" };
-};
+  // Fonction pour générer une demande de devis avec les données du fichier sauvegardé
+  const generateQuoteRequest = (calc: Calculation) => {
+    try {
+      console.log('🔍 Génération demande de devis - Données reçues:', calc);
+      
+      // Déterminer le type de projet
+      let typeProjet = '';
+      const buildingType = calc.parameters?.building?.buildingType?.toLowerCase() || '';
+      if (buildingType.includes('neuf')) {
+        typeProjet = 'neuf';
+      } else if (buildingType.includes('rénovation') || buildingType.includes('renovation')) {
+        typeProjet = 'renovation';
+      } else if (buildingType.includes('remplacement')) {
+        typeProjet = 'remplacementChaudiere';
+      }
 
-const getPoolKitModel = (powerKw: number) => {
-  if (powerKw <= 17) return { code: "KP 15", power: "jusqu'à 17 kW" };
-  if (powerKw <= 27) return { code: "KP 25", power: "17-27 kW" };
-  return { code: "KP 35", power: "27+ kW" };
-};
+      console.log('📋 Type de projet déterminé:', typeProjet, 'depuis buildingType:', buildingType);
 
-const convertToQuote = useCallback(async (calculation: Calculation) => {
-  try {
-    const selectedProduct = calculation.parameters?.selectedProduct;
-    const clientInfo = calculation.parameters?.clientInfo;
-    const heatPump = calculation.parameters?.heatPump;
-    const building = calculation.parameters?.building;
-    
-    if (!selectedProduct || !selectedProduct.selectedModel) {
+      // Créer les zones dynamiquement
+      const zones = [];
+      let zoneId = 1;
+
+      // Zone RDC
+      if (calc.parameters?.building?.surfaceRDC) {
+        zones.push({
+          id: zoneId.toString(),
+          surface: calc.parameters.building.surfaceRDC,
+          volume: (parseFloat(calc.parameters.building.surfaceRDC) * 2.5).toString(),
+          emetteur: calc.parameters?.heatPump?.emitterType || ''
+        });
+        zoneId++;
+      }
+
+      // Zone 1er étage
+      if (calc.parameters?.building?.surface1erEtage) {
+        zones.push({
+          id: zoneId.toString(),
+          surface: calc.parameters.building.surface1erEtage,
+          volume: (parseFloat(calc.parameters.building.surface1erEtage) * 2.5).toString(),
+          emetteur: calc.parameters?.heatPump?.emitterType || ''
+        });
+        zoneId++;
+      }
+
+      // Zone 2e étage
+      if (calc.parameters?.building?.surface2eEtage) {
+        zones.push({
+          id: zoneId.toString(),
+          surface: calc.parameters.building.surface2eEtage,
+          volume: (parseFloat(calc.parameters.building.surface2eEtage) * 2.5).toString(),
+          emetteur: calc.parameters?.heatPump?.emitterType || ''
+        });
+        zoneId++;
+      }
+
+      // Au moins une zone par défaut si aucune zone n'est trouvée
+      if (zones.length === 0) {
+        zones.push({
+          id: '1',
+          surface: '',
+          volume: '',
+          emetteur: ''
+        });
+      }
+
+      console.log('🏠 Zones créées:', zones);
+
+      // Déterminer le type de PAC et les sous-options
+      let typePAC = '';
+      let fluideFrigo = 'r32'; // Par défaut R32
+      let aeroType = '';
+      let aeroConfig = '';
+      let geoType = '';
+
+      if (calc.parameters?.heatPump?.type === 'Aérothermie') {
+        typePAC = 'aerothermie';
+        aeroType = 'airEau'; // Par défaut Air/Eau
+        if (calc.parameters?.heatPump?.system === 'Monobloc') {
+          aeroConfig = 'monoBloc';
+        } else if (calc.parameters?.heatPump?.system === 'Bibloc') {
+          aeroConfig = 'biBloc';
+        }
+      } else if (calc.parameters?.heatPump?.type === 'Géothermie') {
+        typePAC = 'geothermie';
+        geoType = 'eauGlycoleEau'; // Par défaut Eau Glycolée/Eau
+      }
+
+      console.log('🔧 Type PAC déterminé:', { typePAC, fluideFrigo, aeroType, aeroConfig, geoType });
+
+      // Mapper les données du dimensionnement vers le format FormData de la demande de devis
+      const mappedFormData = {
+        // Informations générales
+        entreprise: calc.parameters?.installerInfo?.company || '',
+        reference: calc.project_name || '',
+        date: new Date().toISOString().split('T')[0],
+        interlocuteur: calc.parameters?.installerInfo?.contact || '',
+        
+        // Élément d'étude - nouveau format avec choix unique
+        typeProjet,
+        typeMaison: calc.parameters?.building?.buildingType || '',
+        zoneClimatique: calc.parameters?.building?.department || '',
+        altitude: '', // Non disponible dans les données actuelles
+        
+        // Zones du bâtiment - nouveau format dynamique
+        zones,
+        
+        // Déperditions et températures
+        deperditions: calc.parameters?.building?.heatLoss || '',
+        tExterieure: calc.parameters?.building?.heatingTemp || '',
+        tDepartEau: calc.parameters?.heatPump?.radiatorTemp || calc.parameters?.heatPump?.floorTemp || '',
+        tAmbiante: '20', // Valeur par défaut
+        
+        // Type de pompe à chaleur - nouveau format
+        typePAC,
+        fluideFrigo,
+        aeroType,
+        aeroConfig,
+        geoType,
+        
+        // Gammes - basé sur le nom du produit
+        optipack: calc.parameters?.selectedProduct?.Nom?.includes('OPTIPACK') || false,
+        smartpack: calc.parameters?.selectedProduct?.Nom?.includes('SMARTPACK') || false,
+        optipackDuo: calc.parameters?.selectedProduct?.Nom?.includes('OPTIPACK DUO') || false,
+        smartpackSupport: false,
+        smartpackHabillage: false,
+        
+        // Accessoires Aérothermie
+        supportsMuraux: calc.parameters?.heatPump?.support?.toLowerCase().includes('mural') || false,
+        supportsSol: calc.parameters?.heatPump?.support?.toLowerCase().includes('sol') || false,
+        
+        // Type capteur Géothermie
+        horizontal: calc.parameters?.heatPump?.captorType?.toLowerCase().includes('horizontal') || false,
+        vertical: calc.parameters?.heatPump?.captorType?.toLowerCase().includes('vertical') || false,
+        charge: false,
+        nonCharge: false,
+        eauNappe: calc.parameters?.heatPump?.waterTable === 'Oui',
+        
+        // Options
+        kitPiscine: calc.parameters?.building?.poolKit === 'Oui',
+        reversible: false, // Non disponible dans les données actuelles
+        kitFreecooling: calc.parameters?.building?.freecoolingKit === 'Oui',
+        
+        // Dimensions - non disponibles dans les données actuelles
+        longueur: '',
+        largeur: '',
+        profondeur: '',
+        kitResistanceElectrique: false,
+        ballonTampon: false,
+        resistanceElectriqueAMonter: false,
+        resistanceElectriqueTuyauterie: false,
+        puissanceResistance1: '',
+        puissanceResistance2: '',
+        
+        // Information bassin - non disponible dans les données actuelles
+        prive: false,
+        public: false,
+        estivale: false,
+        annuel: false,
+        
+        // Régulation - non disponible dans les données actuelles
+        thermostat: false,
+        radio: false,
+        filaire: false,
+        connecte: false,
+        loiEau: false,
+        
+        // Eau Chaude Sanitaire
+        ecsOui: calc.parameters?.building?.hotWater === 'Oui',
+        ecsNon: calc.parameters?.building?.hotWater === 'Non',
+        nombrePersonnes: '', // Non disponible dans les données actuelles
+        nombrePointsTirage: '', // Non disponible dans les données actuelles
+      };
+
+      console.log('📝 Données mappées pour le formulaire:', mappedFormData);
+
+      // Sauvegarder les données dans sessionStorage pour pré-remplir le formulaire
+      sessionStorage.setItem('formData', JSON.stringify(mappedFormData));
+      console.log('💾 Données sauvegardées dans sessionStorage');
+      
+      // Naviguer vers la page de demande de devis avec le paramètre prefill
+      router.push('/protected/demande-devis?prefill=true');
+      
+      toast({
+        title: "Demande de devis générée",
+        description: "Redirection vers le formulaire pré-rempli avec vos données",
+      });
+    } catch (error) {
+      console.error('❌ Erreur lors de la génération de la demande de devis:', error);
       toast({
         title: "Erreur",
-        description: "Impossible de convertir : informations produit manquantes",
+        description: "Impossible de générer la demande de devis",
         variant: "destructive",
       });
-      return;
     }
+  };
 
-    // Création des produits avec totalHT calculé
-    const createProduct = (code: string, description: string, quantity: number = 1, priceHT: number = 0, tva: number = 20) => ({
-      code,
-      description,
-      quantity,
-      priceHT,
-      tva,
-      totalHT: quantity * priceHT // Ajout du totalHT
-    });
+  // Fonction pour générer une demande de devis avec les données du fichier sauvegardé
+  const convertToQuote = useCallback(async (calculation: Calculation) => {
+    try {
+      const selectedProduct = calculation.parameters?.selectedProduct;
+      const clientInfo = calculation.parameters?.clientInfo;
+      const heatPump = calculation.parameters?.heatPump;
+      const building = calculation.parameters?.building;
+      
+      if (!selectedProduct || !selectedProduct.selectedModel) {
+        toast({
+          title: "Erreur",
+          description: "Impossible de convertir : informations produit manquantes",
+          variant: "destructive",
+        });
+        return;
+      }
 
-    const products = [];
+      // Création des produits avec totalHT calculé
+      const createProduct = (code: string, description: string, quantity: number = 1, priceHT: number = 0, tva: number = 20) => ({
+        code,
+        description,
+        quantity,
+        priceHT,
+        tva,
+        totalHT: quantity * priceHT // Ajout du totalHT
+      });
 
-    // Produit principal
-    const mainProduct = createProduct(
-      selectedProduct.selectedModel.modele,
-      `${selectedProduct.Nom}
+      const products = [];
+
+      // Produit principal
+      const mainProduct = createProduct(
+        selectedProduct.selectedModel.modele,
+        `${selectedProduct.Nom}
 Caractéristiques techniques:
 - Puissance calorifique: ${selectedProduct.selectedModel.puissance_calo} kW
 - Puissance frigorifique: ${selectedProduct.selectedModel.puissance_frigo} kW
@@ -503,76 +765,90 @@ Caractéristiques techniques:
 Type: ${selectedProduct.Particularites.join(', ')}
 Type de capteur: ${heatPump?.captorType || 'Non spécifié'}
 ${heatPump?.captorType === 'Vertical' ? `Eau de nappe: ${heatPump?.waterTable}` : ''}`
-    );
-    products.push(mainProduct);
+      );
+      products.push(mainProduct);
 
-    // Kit eau de nappe
-    const isGeothermal = selectedProduct.Particularites.includes('Geothermie');
-    if (isGeothermal && heatPump?.captorType === 'Vertical' && heatPump?.waterTable === 'Oui') {
-      const waterKit = getWaterKitModel(selectedProduct.selectedModel.puissance_calo);
-      products.push(createProduct(
-        waterKit.code,
-        `Kit Eau de Nappe - ${waterKit.power}
+      // Kit eau de nappe
+      const isGeothermal = selectedProduct.Particularites.includes('Geothermie');
+      if (isGeothermal && heatPump?.captorType === 'Vertical' && heatPump?.waterTable === 'Oui') {
+        const waterKit = getWaterKitModel(selectedProduct.selectedModel.puissance_calo);
+        products.push(createProduct(
+          waterKit.code,
+          `Kit Eau de Nappe - ${waterKit.power}
 Compatible avec ${selectedProduct.selectedModel.modele}
 Inclut : pompe de relevage, filtres et accessoires`
-      ));
-    }
+        ));
+      }
 
-    // Kit piscine
-    if (building?.poolKit === 'Oui') {
-      const poolKit = getPoolKitModel(selectedProduct.selectedModel.puissance_calo);
-      products.push(createProduct(
-        poolKit.code,
-        `Kit Piscine - ${poolKit.power}
+      // Kit piscine
+      if (building?.poolKit === 'Oui') {
+        const poolKit = getPoolKitModel(selectedProduct.selectedModel.puissance_calo);
+        products.push(createProduct(
+          poolKit.code,
+          `Kit Piscine - ${poolKit.power}
 Compatible avec ${selectedProduct.selectedModel.modele}
 Inclut : échangeur et vannes de régulation`
-      ));
+        ));
+      }
+
+      const quoteData: QuoteConversionData = {
+        products,
+        heatPumpData: {
+          type: heatPump?.type || null,
+          system: heatPump?.system || null,
+          captorType: heatPump?.captorType || null,
+          waterTable: heatPump?.waterTable || null,
+          support: heatPump?.support || null,
+        },
+        building: {
+          poolKit: building?.poolKit || 'Non',
+          freecoolingKit: building?.freecoolingKit || 'Non',
+          hotWater: building?.hotWater || 'Non',
+          totalSurface: building?.totalSurface || 0,
+        },
+        client: clientInfo ? {
+          name: clientInfo.name || '',
+          address: clientInfo.address || '',
+          zipCode: clientInfo.postalCode || '',
+          city: clientInfo.city || '',
+          phone: clientInfo.phone || '',
+          email: clientInfo.email || ''
+        } : undefined
+      };
+
+      // Log de vérification avant stockage
+      console.log("Données formatées pour conversion:", quoteData);
+      console.log("Produits formatés:", products);
+
+      // Stockage dans localStorage
+      localStorage.setItem('quoteConversionData', JSON.stringify(quoteData));
+      
+      // Navigation après confirmation du stockage
+      router.push('/protected/devis');
+
+    } catch (error) {
+      console.error('Erreur lors de la conversion en devis:', error);
+      toast({
+        title: "Erreur",
+        description: "Impossible de convertir le dimensionnement en devis",
+        variant: "destructive",
+      });
     }
+  }, [toast, router]);
 
-    const quoteData: QuoteConversionData = {
-      products,
-      heatPumpData: {
-        type: heatPump?.type || null,
-        system: heatPump?.system || null,
-        captorType: heatPump?.captorType || null,
-        waterTable: heatPump?.waterTable || null,
-        support: heatPump?.support || null,
-      },
-      building: {
-        poolKit: building?.poolKit || 'Non',
-        freecoolingKit: building?.freecoolingKit || 'Non',
-        hotWater: building?.hotWater || 'Non',
-        totalSurface: building?.totalSurface || 0,
-      },
-      client: clientInfo ? {
-        name: clientInfo.name || '',
-        address: clientInfo.address || '',
-        zipCode: clientInfo.postalCode || '',
-        city: clientInfo.city || '',
-        phone: clientInfo.phone || '',
-        email: clientInfo.email || ''
-      } : undefined
-    };
+  const getWaterKitModel = (powerKw: number) => {
+    if (powerKw <= 17) return { code: "KEN 15", power: "13-17 kW" };
+    if (powerKw <= 22) return { code: "KEN 20", power: "17-22 kW" };
+    if (powerKw <= 27) return { code: "KEN 25", power: "22-27 kW" };
+    if (powerKw <= 32) return { code: "KEN 30", power: "27-32 kW" };
+    return { code: "KEN 35", power: "32+ kW" };
+  };
 
-    // Log de vérification avant stockage
-    console.log("Données formatées pour conversion:", quoteData);
-    console.log("Produits formatés:", products);
-
-    // Stockage dans localStorage
-    localStorage.setItem('quoteConversionData', JSON.stringify(quoteData));
-    
-    // Navigation après confirmation du stockage
-    router.push('/protected/devis');
-
-  } catch (error) {
-    console.error('Erreur lors de la conversion en devis:', error);
-    toast({
-      title: "Erreur",
-      description: "Impossible de convertir le dimensionnement en devis",
-      variant: "destructive",
-    });
-  }
-}, [toast, router]);
+  const getPoolKitModel = (powerKw: number) => {
+    if (powerKw <= 17) return { code: "KP 15", power: "jusqu'à 17 kW" };
+    if (powerKw <= 27) return { code: "KP 25", power: "17-27 kW" };
+    return { code: "KP 35", power: "27+ kW" };
+  };
 
   return (
     <motion.div
@@ -649,7 +925,7 @@ Inclut : échangeur et vannes de régulation`
                 </DropdownMenuTrigger>
                 <DropdownMenuContent className="w-56">
                   <div className="p-2">
-                    <h4 className="font-semibold mb-2">Type de pompe</h4>
+                    <h4 className="font-semibold mb-2">Type de PAC</h4>
                     <DropdownMenuRadioGroup value={typeFilter} onValueChange={setTypeFilter}>
                       <DropdownMenuRadioItem value="all">Tous</DropdownMenuRadioItem>
                       <DropdownMenuRadioItem value="geothermie">Géothermie</DropdownMenuRadioItem>
@@ -704,7 +980,7 @@ Inclut : échangeur et vannes de régulation`
               <TableRow>
                 <TableHead>Nom du projet</TableHead>
                 <TableHead>Date</TableHead>
-                <TableHead>Type de pompe</TableHead>
+                <TableHead>Type de PAC</TableHead>
                 <TableHead>Département</TableHead>
                 <TableHead>Déperditions</TableHead>
                 <TableHead className="text-right">Actions</TableHead>
@@ -766,11 +1042,20 @@ Inclut : échangeur et vannes de régulation`
                         <Button
                           variant="ghost"
                           size="icon"
-                          className="hover:text-blue-600"
+                          className="hover:text-[#86BC29]"
                           onClick={() => editCalculation(calc)}
                           title="Modifier le projet"
                         >
                           <Edit className="h-4 w-4" />
+                        </Button>
+                        <Button
+                          variant="ghost"
+                          size="icon"
+                          className="hover:text-[#86BC29]"
+                          onClick={() => openComparatif(calc)}
+                          title="Ouvrir le comparatif"
+                        >
+                          <BarChart3 className="h-4 w-4" />
                         </Button>
                         <Button
                           variant="ghost"

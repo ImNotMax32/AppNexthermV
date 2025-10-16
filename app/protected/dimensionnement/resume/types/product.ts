@@ -54,6 +54,7 @@ export interface Product {
     BrochureURL: string;
     Description: string;
     selectedModel?: PowerModel;
+    documentationUrl?: string; // URL vers la documentation commerciale du produit
 }
 
 export interface FilterCriteria {

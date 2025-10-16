@@ -194,10 +194,10 @@ export default function HomePage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2, duration: 0.8 }}
-                className="font-bold text-gray-900 tracking-tight"
+                className="font-extrabold text-gray-900 tracking-tight"
                 style={{
-                  fontSize: 'clamp(2.25rem, 5vw, 4rem)',
-                  lineHeight: '1.1',
+                  fontSize: 'clamp(2.5rem, 5.5vw, 4.5rem)',
+                  lineHeight: '1.05',
                 }}
               >
                 Les applications
@@ -221,7 +221,7 @@ export default function HomePage() {
                 // @ts-ignore
                 className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl"
               >
-                Des outils professionnels conçus pour les installateurs : dimensionnement précis, schématèques détaillées, et assistance technique complète.
+                Plateforme digitale complète pour les professionnels de la géothermie : dimensionnement intelligent, bibliothèque technique interactive et outils de devis intégrés.
               </motion.p>
               <motion.div 
                   initial={{ opacity: 0, y: 20 }}
@@ -232,7 +232,7 @@ export default function HomePage() {
                 >
                   <Button 
                     asChild 
-                    className="bg-white hover:bg-gray-100 text-black border border-gray-200 rounded-full text-lg px-8 py-4 inline-flex items-center justify-center transform transition-all duration-300 hover:shadow-lg"
+                    className="bg-[#86BC29] hover:bg-[#75a625] text-white border-0 rounded-full text-lg px-10 py-5 inline-flex items-center justify-center transform transition-all duration-300 hover:shadow-xl hover:scale-105 font-semibold"
                   >
                     <Link href="/protected">
                       Accéder aux outils
@@ -255,9 +255,9 @@ export default function HomePage() {
                 // @ts-ignore
                 className="mt-12 relative sm:max-w-lg sm:mx-auto lg:mt-0 lg:max-w-none lg:mx-0 lg:col-span-6 lg:flex lg:items-center"
               >
-                <div className="w-full rounded-xl shadow-lg overflow-hidden bg-white border border-gray-200 text-gray-800">
+                <div className="w-full rounded-2xl shadow-2xl overflow-hidden bg-white border border-gray-100 text-gray-800 backdrop-blur-sm">
                   {/* Terminal Header */}
-                  <div className="flex items-center justify-between px-4 py-3 bg-gray-50 border-b border-gray-200">
+                  <div className="flex items-center justify-between px-5 py-4 bg-gradient-to-r from-gray-50 to-gray-100 border-b border-gray-200">
                     <div className="flex space-x-2">
                       <div className="w-3 h-3 rounded-full bg-red-400"></div>
                       <div className="w-3 h-3 rounded-full bg-yellow-400"></div>
@@ -268,8 +268,8 @@ export default function HomePage() {
                   </div>
                   
                   {/* Content */}
-                  <div className="p-6 overflow-hidden">
-                    <pre className="font-sans text-[15px] leading-relaxed tracking-wide whitespace-pre-wrap text-gray-700">
+                  <div className="p-8 overflow-hidden bg-gradient-to-br from-white to-gray-50">
+                    <pre className="font-mono text-[16px] leading-relaxed tracking-wide whitespace-pre-wrap text-gray-800">
                       <code 
                         className="block relative"
                         dangerouslySetInnerHTML={{ 
@@ -291,7 +291,7 @@ export default function HomePage() {
   initial="hidden"
   whileInView="show"
   viewport={{ once: true }}
-  className="py-16 bg-white w-full relative"
+  className="py-24 bg-gradient-to-b from-white to-gray-50 w-full relative"
 >
   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     {/* Grid des features */}
@@ -308,7 +308,7 @@ export default function HomePage() {
       {/* Feature 1 - Dimensionnement */}
       <motion.div
         variants={item}
-        whileHover={{ scale: 1.03, boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)" }}
+        whileHover={{ scale: 1.05, boxShadow: "0 20px 40px -10px rgba(0, 0, 0, 0.15)" }}
         onClick={() => {
           if (openSection === 0) {
             setOpenSection(null);
@@ -359,7 +359,7 @@ export default function HomePage() {
       {/* Feature 2 - Schématèque */}
       <motion.div
         variants={item}
-        whileHover={{ scale: 1.03, boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)" }}
+        whileHover={{ scale: 1.05, boxShadow: "0 20px 40px -10px rgba(0, 0, 0, 0.15)" }}
         onClick={() => {
           if (openSection === 1) {
             setOpenSection(null);
@@ -410,7 +410,7 @@ export default function HomePage() {
       {/* Feature 3 - Support */}
       <motion.div
         variants={item}
-        whileHover={{ scale: 1.03, boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)" }}
+        whileHover={{ scale: 1.05, boxShadow: "0 20px 40px -10px rgba(0, 0, 0, 0.25)" }}
         onClick={() => {
           if (openSection === 2) {
             setOpenSection(null);

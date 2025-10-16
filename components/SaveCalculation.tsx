@@ -188,10 +188,10 @@ const SaveCalculation: React.FC<SaveCalculationProps> = ({ onSave }) => {
   return (
     <div className="relative">
       <motion.button
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
           onClick={() => setShowDialog(true)}
-          className="px-6 py-3 bg-[#86BC29] text-white rounded-lg font-medium flex items-center shadow-lg hover:bg-[#75a625] transition-colors"
+          className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-[#86BC29] text-white rounded-lg font-medium flex items-center justify-center shadow-lg hover:bg-[#75a625] transition-colors text-sm sm:text-base"
         >
           {saveSuccess ? (
             <div className="flex items-center">

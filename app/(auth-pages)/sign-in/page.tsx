@@ -3,7 +3,7 @@
 import { Suspense } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { Loader2 } from 'lucide-react';
+import { Loader2, Check } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -136,24 +136,24 @@ function LoginForm() {
     <form onSubmit={handleSubmit} className="space-y-6">
       <div className="space-y-4">
         <div className="space-y-2">
-          <Label htmlFor="email">Email</Label>
+          <Label htmlFor="email" className="text-base font-medium">Email</Label>
           <Input
             id="email"
             name="email"
             type="email"
             placeholder="exemple@email.com"
             required
-            className="w-full px-3 py-2 border rounded-md"
+            className="w-full px-5 py-4 text-lg border rounded-md"
           />
         </div>
         <div className="space-y-2">
-          <Label htmlFor="password">Mot de passe</Label>
+          <Label htmlFor="password" className="text-base font-medium">Mot de passe</Label>
           <Input
             id="password"
             name="password"
             type="password"
             required
-            className="w-full px-3 py-2 border rounded-md"
+            className="w-full px-5 py-4 text-lg border rounded-md"
           />
           <div className="text-sm text-right">
             <Link href="/reset-password" className="text-primary hover:underline">
@@ -173,7 +173,7 @@ function LoginForm() {
         <div className="space-y-4">
           <Button
             type="submit"
-            className="w-full flex justify-center items-center py-2 px-4 border border-transparent rounded-full shadow-sm text-sm font-medium text-white bg-[#86BC29] hover:bg-[#75a625] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#86BC29] transition-colors duration-200"
+            className="w-full flex justify-center items-center py-4 px-8 border border-transparent rounded-full shadow-sm text-lg font-medium text-white bg-[#86BC29] hover:bg-[#75a625] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#86BC29] transition-colors duration-200"
             disabled={isLoading || loginSuccess}
           >
             {isLoading ? (
@@ -205,7 +205,7 @@ function LoginForm() {
           <Button
             type="button"
             variant="outline"
-            className="w-full"
+            className="w-full py-4 px-8 text-lg"
             onClick={handleGoogleSignIn}
             disabled={isLoading}
           >
@@ -224,34 +224,86 @@ function LoginForm() {
           </Button>
         </div>
       </motion.div>
-
-      <Link
-        href="/sign-up"
-        className="block text-center text-sm text-muted-foreground hover:underline mt-4"
-      >
-        Pas encore de compte ? Inscrivez-vous
-      </Link>
+      
+      {/* Section inscription supprimée car doublon avec la partie droite */}
     </form>
   );
 }
 
 export default function SignInPage() {
   return (
-    <div className="min-h-[70dvh] flex flex-col justify-between bg-white">
-      <div className="flex-1 flex flex-col justify-center py-12 px-4 sm:px-6 lg:px-8">
-        <div className="sm:mx-auto sm:w-full sm:max-w-md space-y-6">
-          <h1 className="text-2xl font-bold text-center">
-            Connexion à votre compte
-          </h1>
-          <Suspense
-            fallback={
-              <div className="flex justify-center">
-                <Loader2 className="animate-spin h-8 w-8 text-[#86BC29]" />
-              </div>
-            }
-          >
-            <LoginForm />
-          </Suspense>
+    <div className="min-h-[95dvh] bg-white">
+      <div className="flex flex-col md:flex-row min-h-[95dvh] max-w-6xl mx-auto">
+        {/* Colonne gauche - Section connexion */}
+        <div className="md:w-1/2 flex flex-col justify-center items-center py-12 px-4 sm:px-6 md:px-12 lg:px-16 relative">
+          <div className="pt-4 max-w-md mx-auto w-full">
+            {/* Pas de logo - supprimé */}
+            
+            {/* Titre principal de la connexion */}
+            <div className="mb-8 text-center">
+              <h2 className="text-3xl font-bold text-[#333333] mb-2">
+                Connexion
+              </h2>
+              <div className="w-32 h-1.5 bg-[#86BC29] rounded-full mx-auto mb-3"></div>
+              <p className="text-lg text-gray-600 mb-6">
+                Utilisateurs déjà inscrits
+              </p>
+            </div>
+            
+            <Suspense
+              fallback={
+                <div className="flex justify-center">
+                  <Loader2 className="animate-spin h-8 w-8 text-[#86BC29]" />
+                </div>
+              }
+            >
+              <LoginForm />
+            </Suspense>
+          </div>
+          
+          {/* Barre verticale de séparation */}
+          <div className="hidden md:block absolute right-0 top-1/2 transform -translate-y-1/2 h-4/5 w-px bg-gradient-to-b from-transparent via-gray-300 to-transparent"></div>
+        </div>
+        
+        {/* Colonne droite - Section inscription */}
+        <div className="md:w-1/2 bg-[#f5fbea] flex flex-col justify-center items-center p-8 md:p-12 shadow-inner">
+          <div className="pt-4 max-w-xs mx-auto w-full text-center space-y-8">
+            <div className="mb-8">
+              <h2 className="text-3xl font-bold text-[#333333] mb-2">Inscription</h2>
+              <div className="w-32 h-1.5 bg-[#86BC29] rounded-full mx-auto mb-3"></div>
+              <p className="text-gray-600 mb-6 text-lg">Nouveaux utilisateurs</p>
+              
+              <motion.div
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
+              >
+                <Link 
+                  href="/sign-up"
+                  className="inline-flex items-center justify-center w-full px-8 py-4 text-lg font-medium text-white bg-[#86BC29] rounded-lg shadow-md hover:shadow-lg hover:bg-[#75a625] transition-all duration-300"
+                >
+                  S'inscrire gratuitement
+                </Link>
+              </motion.div>
+            </div>
+            
+            <div className="pt-6 border-t border-gray-200">
+              <h3 className="text-lg font-semibold text-gray-700 mb-4">Avantages de l'inscription :</h3>
+              <ul className="text-base text-gray-600 text-left space-y-4">
+                <li className="flex items-center">
+                  <Check className="w-5 h-5 text-[#86BC29] mr-3" /> Sauvegardez vos projets
+                </li>
+                <li className="flex items-center">
+                  <Check className="w-5 h-5 text-[#86BC29] mr-3" /> Accédez aux analyses comparatives
+                </li>
+                <li className="flex items-center">
+                  <Check className="w-5 h-5 text-[#86BC29] mr-3" /> Générez des rapports PDF
+                </li>
+                <li className="flex items-center">
+                  <Check className="w-5 h-5 text-[#86BC29] mr-3" /> Contactez un conseiller
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </div>

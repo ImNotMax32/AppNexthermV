@@ -22,7 +22,9 @@ import {
   Droplets,
   ChevronRight,
   Check,
-  FileText
+  FileText,
+  Mail,
+  Send
 } from 'lucide-react';
 import SaveCalculation from '@/components/SaveCalculation';
 import { Product } from '@/app/protected/dimensionnement/resume/types/product';
@@ -158,6 +160,7 @@ const ProductShowcase: React.FC<ProductShowcaseProps> = ({ products, buildingDat
     }
     setCurrentIndex(newPage < 0 ? products.length - 1 : newPage >= products.length ? 0 : newPage);
     setIsPlaying(true); // Réinitialiser l'état de lecture
+    setShowActionButtons(false); // Fermer le menu déroulant des actions quand on change de produit
   };
 
   // Fonction pour changer de modèle
@@ -172,6 +175,9 @@ const ProductShowcase: React.FC<ProductShowcaseProps> = ({ products, buildingDat
     if (updatedProducts[productIndex].Puissance.disponibles) {
       updatedProducts[productIndex].selectedModel = updatedProducts[productIndex].Puissance.disponibles[modelIndex];
     }
+    
+    // Fermer le menu déroulant des actions quand on change de modèle
+    setShowActionButtons(false);
   };
 
   // Initialiser les modèles sélectionnés au premier rendu
@@ -254,20 +260,20 @@ const ProductShowcase: React.FC<ProductShowcaseProps> = ({ products, buildingDat
       <div className={`bg-gray-50 rounded-xl border border-gray-100 ${className}`}>
         <div 
           onClick={onToggle}
-          className="flex items-center p-6 cursor-pointer hover:shadow-lg transition-all"
+          className="flex items-center p-4 cursor-pointer hover:shadow-lg transition-all"
         >
-          <div className="mr-4 bg-white p-3 rounded-full shadow-sm">
+          <div className="mr-3 bg-white p-2 rounded-full shadow-sm">
             {spec.icon}
           </div>
           <div className="flex-grow">
-            <p className="text-sm text-gray-500 font-medium">{spec.label}</p>
-            <p className="text-xl font-bold text-gray-800">{spec.value}</p>
+            <p className="text-xs text-gray-500 font-medium">{spec.label}</p>
+            <p className="text-lg font-bold text-gray-800">{spec.value}</p>
           </div>
         </div>
-  
+
         {/* Ajout d'une condition style inline pour éviter l'espace vide */}
         <div style={{ display: isOpen ? 'block' : 'none' }} className="border-t border-gray-100">
-          <div className="p-6 bg-white/50">
+          <div className="p-4 bg-white/50">
             <p className="text-gray-600 text-sm leading-relaxed">
               {spec.description}
             </p>
@@ -283,7 +289,7 @@ const ProductShowcase: React.FC<ProductShowcaseProps> = ({ products, buildingDat
 
   const currentProduct = products[page];
 // Modification de la fonction getTechnicalSpecs
-const getTechnicalSpecs = (product: Product): TechnicalSpecs | Spec[] => {
+const getTechnicalSpecs = (product: Product): Spec[] => {
   // Utiliser le modèle sélectionné basé sur l'état selectedModels
   const selectedModelIndex = selectedModels[page] || 0;
   const selectedModel = product.Puissance.disponibles?.[selectedModelIndex] || product.selectedModel;
@@ -314,39 +320,37 @@ const getTechnicalSpecs = (product: Product): TechnicalSpecs | Spec[] => {
     ];
   }
 
-  return {
-    reference: {
+  // Retourner un tableau unique avec tous les éléments pour affichage en ligne
+  return [
+    {
       type: 'reference',
       icon: <Cpu className="text-[#86BC29]" size={24} />,
       label: "Référence",
       value: selectedModel.modele,
       description: specDescriptions.reference
     },
-    powerSpecs: [
-      {
-        type: 'puissance_calo',
-        icon: <ThermometerSun className="text-[#86BC29]" size={24} />,
-        label: "P. calorifique",
-        value: `${selectedModel.puissance_calo} kW`,
-        description: specDescriptions.puissance_calo
-      },
-      {
-        type: 'puissance_frigo',
-        icon: <Snowflake className="text-[#86BC29]" size={24} />,
-        label: "P. frigorifique",
-        value: `${selectedModel.puissance_frigo} kW`,
-        description: specDescriptions.puissance_frigo
-      },
-      {
-        type: 'puissance_absorbee',
-        icon: <Zap className="text-[#86BC29]" size={24} />,
-        label: "P. absorbée",
-        value: `${selectedModel.puissance_absorbee} kW`,
-        description: specDescriptions.puissance_absorbee
-      }
-    ],
-    performanceSpecs: []
-  };
+    {
+      type: 'puissance_calo',
+      icon: <ThermometerSun className="text-[#86BC29]" size={24} />,
+      label: "P. calorifique",
+      value: `${selectedModel.puissance_calo} kW`,
+      description: specDescriptions.puissance_calo
+    },
+    {
+      type: 'puissance_frigo',
+      icon: <Snowflake className="text-[#86BC29]" size={24} />,
+      label: "P. frigorifique",
+      value: `${selectedModel.puissance_frigo} kW`,
+      description: specDescriptions.puissance_frigo
+    },
+    {
+      type: 'puissance_absorbee',
+      icon: <Zap className="text-[#86BC29]" size={24} />,
+      label: "P. absorbée",
+      value: `${selectedModel.puissance_absorbee} kW`,
+      description: specDescriptions.puissance_absorbee
+    }
+  ];
 };
 
 
@@ -357,7 +361,7 @@ const handleInputChange = (section: FormSection, field: string, value: any) => {
         ...prev,
         [field]: value
       };
-    }
+    } 
     return {
       ...prev,
       [section]: {
@@ -515,21 +519,34 @@ const handleSaveCalculation = async (data: any) => {
       >
         <div className="flex flex-col sm:flex-row items-center justify-between mb-4 sm:mb-2">
           {/* Conteneur flèche gauche avec texte */}
-          <div className="flex flex-col items-center min-w-[100px] mb-4 sm:mb-0">
+          <div className="flex flex-col items-center min-w-[120px] mb-4 sm:mb-0">
             {!isFirstProduct ? (
               <>
                 <motion.button
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
+                  whileHover={{ 
+                    scale: 1.15,
+                    boxShadow: "0 8px 25px rgba(134, 188, 41, 0.3)"
+                  }}
+                  whileTap={{ scale: 0.95 }}
+                  animate={{ 
+                    y: [0, -8, 0],
+                    transition: { 
+                      duration: 1.5, 
+                      repeat: Infinity, 
+                      ease: "easeInOut",
+                      repeatDelay: 0.5
+                    }
+                  }}
                   onClick={() => paginate(-1)}
-                  className="p-3 rounded-full hover:bg-gray-100 transition-colors border border-gray-200 mb-1"
+                  className="p-4 rounded-full bg-[#86BC29] hover:bg-[#75a625] border-2 border-[#86BC29] shadow-lg hover:shadow-xl mb-2"
+                  style={{ willChange: 'transform' }}
                 >
-                  <ChevronLeft className="w-6 h-6" />
+                  <ChevronLeft className="w-8 h-8 text-white" />
                 </motion.button>
-                <span className="text-xs text-gray-500">Produit précédent</span>
+                <span className="text-sm font-medium text-[#86BC29]">Produit précédent</span>
               </>
             ) : (
-              <div className="w-12 h-12" /> // Maintien de l'espacement
+              <div className="w-16 h-16" /> // Maintien de l'espacement
             )}
           </div>
 
@@ -539,33 +556,76 @@ const handleSaveCalculation = async (data: any) => {
             animate={{ opacity: 1, y: 0 }}
             className="text-3xl sm:text-4xl font-bold text-center text-gray-800 flex flex-col items-center mb-4 sm:mb-8 mx-2"
           >
-            <span className="text-sm text-[#86BC29] uppercase tracking-wider mb-2">
-              Produit compatible
-            </span>
+            <div className="flex items-center gap-2 mb-2">
+              <span className="text-sm text-[#86BC29] uppercase tracking-wider">
+                Produit compatible
+              </span>
+              {showActionButtons && (
+                <span className="text-xs bg-[#86BC29] text-white px-2 py-1 rounded-full font-medium">
+                  ✓ Sélectionné
+                </span>
+              )}
+            </div>
             <span className="text-2xl sm:text-3xl mb-2 text-center">{currentProduct.Nom}</span>
             {currentProduct.selectedModel && (
               <span className="text-xl sm:text-2xl text-[#86BC29] font-semibold mt-2">
                 {currentProduct.selectedModel.puissance_calo} kW
               </span>
             )}
+            
+            {/* Indicateurs de progression déplacés ici */}
+            <div className="mt-4 flex justify-center space-x-3">
+              {products.map((_, index) => (
+                <motion.button
+                  key={index}
+                  initial={{ scale: 0 }}
+                  animate={{
+                    scale: 1,
+                    backgroundColor: index === page ? '#86BC29' : '#e5e7eb'
+                  }}
+                  whileHover={{ scale: 1.2 }}
+                  onClick={() => {
+                    setPage([index, index > page ? 1 : -1]);
+                    // Réinitialiser l'état de sélection comme dans paginate
+                    setShowActionButtons(false); // Fermer le menu déroulant des actions
+                  }}
+                  className={`w-3 h-3 rounded-full transition-all ${
+                    index === page ? 'shadow-md' : ''
+                  }`}
+                />
+              ))}
+            </div>
           </motion.h2>
 
           {/* Conteneur flèche droite avec texte */}
-          <div className="flex flex-col items-center min-w-[100px] mb-4 sm:mb-0">
+          <div className="flex flex-col items-center min-w-[120px] mb-4 sm:mb-0">
             {!isLastProduct ? (
               <>
                 <motion.button
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
+                  whileHover={{ 
+                    scale: 1.15,
+                    boxShadow: "0 8px 25px rgba(134, 188, 41, 0.3)"
+                  }}
+                  whileTap={{ scale: 0.95 }}
+                  animate={{ 
+                    y: [0, -8, 0],
+                    transition: { 
+                      duration: 1.5, 
+                      repeat: Infinity, 
+                      ease: "easeInOut",
+                      repeatDelay: 0.5
+                    }
+                  }}
                   onClick={() => paginate(1)}
-                  className="p-3 rounded-full hover:bg-gray-100 transition-colors border border-gray-200 mb-1"
+                  className="p-4 rounded-full bg-[#86BC29] hover:bg-[#75a625] border-2 border-[#86BC29] shadow-lg hover:shadow-xl mb-2"
+                  style={{ willChange: 'transform' }}
                 >
-                  <ChevronRight className="w-6 h-6" />
+                  <ChevronRight className="w-8 h-8 text-white" />
                 </motion.button>
-                <span className="text-xs text-gray-500">Produit suivant</span>
+                <span className="text-sm font-medium text-[#86BC29]">Produit suivant</span>
               </>
             ) : (
-              <div className="w-12 h-12" /> // Maintien de l'espacement
+              <div className="w-16 h-16" /> // Maintien de l'espacement
             )}
           </div>
         </div>
@@ -622,7 +682,7 @@ const handleSaveCalculation = async (data: any) => {
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.98 }}
                             onClick={() => handleModelChange(page, modelIndex)}
-                            className={`relative p-4 rounded-lg border-2 transition-all text-left ${
+                            className={`relative p-3 rounded-lg border-2 transition-all text-left ${
                               isSelected
                                 ? 'border-[#86BC29] bg-[#86BC29]/10 shadow-md'
                                 : 'border-gray-200 bg-white hover:border-[#86BC29]/50 hover:bg-[#86BC29]/5'
@@ -637,19 +697,19 @@ const handleSaveCalculation = async (data: any) => {
                               <div className="font-semibold text-gray-800 text-sm">
                                 {model.modele}
                               </div>
-                              <div className="text-xs text-gray-600 space-y-1">
-                                <div className="flex justify-between">
-                                  <span>Puissance:</span>
-                                  <span className="font-medium">{model.puissance_calo} kW</span>
-                                </div>
-                                <div className="flex justify-between">
-                                  <span>COP:</span>
-                                  <span className="font-medium">{model.cop}</span>
-                                </div>
-                                <div className="flex justify-between">
-                                  <span>ETAS:</span>
-                                  <span className="font-medium">{model.etas}%</span>
-                                </div>
+                              <div className="text-xs text-gray-600 flex flex-wrap gap-x-3 gap-y-1">
+                                <span>
+                                  <span className="text-gray-500">P.cal:</span>
+                                  <span className="font-medium ml-1">{model.puissance_calo}kW</span>
+                                </span>
+                                <span>
+                                  <span className="text-gray-500">COP:</span>
+                                  <span className="font-medium ml-1">{model.cop}</span>
+                                </span>
+                                <span>
+                                  <span className="text-gray-500">ETAS:</span>
+                                  <span className="font-medium ml-1">{model.etas}%</span>
+                                </span>
                               </div>
                             </div>
                             {isSelected && (
@@ -661,9 +721,9 @@ const handleSaveCalculation = async (data: any) => {
                         );
                       })}
                     </div>
-                    <div className="mt-4 p-3 bg-blue-50 rounded-lg border border-blue-200">
-                      <p className="text-sm text-blue-800">
-                        <Info className="w-4 h-4 inline mr-1" />
+                    <div className="mt-4 p-3 bg-gray-50 rounded-lg border border-gray-200">
+                      <p className="text-sm text-gray-700">
+                        <Info className="w-4 h-4 inline mr-1 text-[#86BC29]" />
                         Vos déperditions calculées : <strong>{buildingData.heatLoss} kW</strong>. 
                         Nous recommandons le premier modèle qui couvre vos besoins.
                       </p>
@@ -671,46 +731,16 @@ const handleSaveCalculation = async (data: any) => {
                   </motion.div>
                 )}
 
-                {(() => {
-                  const specs = getTechnicalSpecs(currentProduct);
-                  if (Array.isArray(specs)) {
-                    // Rendu pour le cas où selectedModel est null
-                    return specs.map((spec) => (
-                      <SpecCard
-                        key={spec.type}
-                        spec={spec}
-                        isOpen={openSpec === spec.type}
-                        onToggle={() => setOpenSpec(openSpec === spec.type ? null : spec.type)}
-                      />
-                    ));
-                  }
-                  // Rendu pour le cas où selectedModel existe
-                  return (
-                    <>
-                      <motion.div variants={fadeInUp} className="w-full flex justify-center">
-                        <div className="w-full max-w-2xl">
-                          <SpecCard
-                            spec={specs.reference}
-                            isOpen={openSpec === 'reference'}
-                            onToggle={() => setOpenSpec(openSpec === 'reference' ? null : 'reference')}
-                            className="bg-[#86BC29]/10"
-                          />
-                        </div>
-                      </motion.div>
-
-                      <motion.div variants={fadeInUp} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                        {specs.powerSpecs.map((spec) => (
-                          <SpecCard
-                            key={spec.type}
-                            spec={spec}
-                            isOpen={openSpec === spec.type}
-                            onToggle={() => setOpenSpec(openSpec === spec.type ? null : spec.type)}
-                          />
-                        ))}
-                      </motion.div>
-                    </>
-                  );
-                })()}
+                <motion.div variants={fadeInUp} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                  {getTechnicalSpecs(currentProduct).map((spec) => (
+                    <SpecCard
+                      key={spec.type}
+                      spec={spec}
+                      isOpen={openSpec === spec.type}
+                      onToggle={() => setOpenSpec(openSpec === spec.type ? null : spec.type)}
+                    />
+                  ))}
+                </motion.div>
               </motion.div>
             ) : (
               <motion.div
@@ -831,26 +861,53 @@ const handleSaveCalculation = async (data: any) => {
 
         {/* Section du formulaire et des boutons - NOUVEAU CODE */}
 <div className="mt-8 space-y-6">
-  {/* Bouton principal "Je choisis ce produit" */}
-  <motion.button
-    whileHover={{ scale: 1.05 }}
-    whileTap={{ scale: 0.95 }}
-    onClick={() => {
-      // Sauvegarder le produit sélectionné dans le localStorage
-      const selectedProduct = products[page];
-      localStorage.setItem('selected_product', JSON.stringify(selectedProduct));
-      setShowActionButtons(true); // Nouvel état pour afficher les boutons d'action
-    }}
-    className="w-full px-6 py-4 bg-[#86BC29] text-white rounded-xl font-medium flex items-center justify-center shadow-lg hover:bg-[#75a625] transition-colors text-lg"
-  >
-    <motion.div
-      whileHover={{ rotate: 360 }}
-      transition={{ duration: 0.5 }}
-    >
-      <Check className="w-6 h-6 mr-3" />
-    </motion.div>
-    Je choisis ce produit
-  </motion.button>
+  {/* Bouton principal "Je choisis ce produit" - Avec AnimatePresence pour disparaître */}
+  <AnimatePresence>
+    {!showActionButtons && (
+      <motion.button
+        initial={{ opacity: 1, y: 0 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -20, height: 0, marginBottom: 0 }}
+        transition={{ duration: 0.3 }}
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        onClick={() => {
+          // Récupérer le produit actuel et le modèle sélectionné
+          const currentProduct = products[page];
+          const selectedModelIndex = selectedModels[page] || 0;
+          const selectedModel = currentProduct.Puissance.disponibles?.[selectedModelIndex];
+          
+          // Créer l'objet produit avec le modèle sélectionné
+          const productToSave = {
+            ...currentProduct,
+            selectedModel: selectedModel
+          };
+          
+          // Sauvegarder le produit sélectionné dans le localStorage
+          localStorage.setItem('selected_product', JSON.stringify(productToSave));
+          
+          // Sauvegarder aussi le modèle séparément pour la page comparatif
+          if (selectedModel) {
+            localStorage.setItem('selected_model', JSON.stringify(selectedModel));
+          }
+          
+          console.log('Produit sélectionné:', currentProduct.Nom);
+          console.log('Modèle sélectionné:', selectedModel?.modele || 'Aucun modèle spécifique');
+          
+          setShowActionButtons(true); // Afficher les boutons d'action
+        }}
+        className="w-full px-6 py-4 bg-[#86BC29] text-white rounded-xl font-medium flex items-center justify-center shadow-lg hover:bg-[#75a625] transition-colors text-lg"
+      >
+        <motion.div
+          whileHover={{ rotate: 360 }}
+          transition={{ duration: 0.5 }}
+        >
+          <Check className="w-6 h-6 mr-3" />
+        </motion.div>
+        Je choisis ce produit
+      </motion.button>
+    )}
+  </AnimatePresence>
 
   {/* Boutons d'action - apparaissent après avoir cliqué sur "Je choisis ce produit" */}
   <AnimatePresence>
@@ -897,6 +954,48 @@ const handleSaveCalculation = async (data: any) => {
             Enregistrer le projet pour le modifier à n'importe quel moment
           </p>
           <SaveCalculation onSave={handleSaveCalculation} />
+        </motion.div>
+      </motion.div>
+    )}
+  </AnimatePresence>
+
+  {/* Nouveau bloc Comparatif - apparaît après avoir cliqué sur "Je choisis ce produit" */}
+  <AnimatePresence>
+    {showActionButtons && (
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -20 }}
+        className="mt-4"
+      >
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          className="bg-white p-4 sm:p-6 rounded-xl shadow-md border border-gray-100 space-y-3 sm:space-y-4"
+        >
+          <h3 className="text-base sm:text-lg font-semibold text-[#86BC29] mb-1 sm:mb-2 flex items-center">
+            <Mail className="w-5 h-5 mr-2" />
+            Envoyer par email
+          </h3>
+          <p className="text-xs sm:text-sm text-gray-600 mb-2 sm:mb-4">
+            Partagez ce dossier de dimensionnement par email avec vos clients ou agents commerciaux
+          </p>
+          <motion.button
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            onClick={() => {
+              // Appel à la fonction d'ouverture de la modal email
+              if (typeof window !== 'undefined') {
+                // Déclencher l'événement personnalisé pour ouvrir la modal
+                const openEmailModalEvent = new CustomEvent('openEmailModal');
+                window.dispatchEvent(openEmailModalEvent);
+              }
+            }}
+            className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-gradient-to-r from-[#86BC29] to-[#75a625] text-white rounded-lg font-medium flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 text-sm sm:text-base"
+          >
+            <Send className="w-4 h-4 mr-2" />
+            Envoyer le dossier par email
+          </motion.button>
         </motion.div>
       </motion.div>
     )}
@@ -1109,25 +1208,6 @@ const handleSaveCalculation = async (data: any) => {
   )}
 </AnimatePresence>
 </div>
-
-            {/* Indicateurs de progression modernisés */}
-            <div className="mt-8 flex justify-center space-x-3">
-      {products.map((_, index) => (
-        <motion.button
-          key={index}
-          initial={{ scale: 0 }}
-          animate={{
-            scale: 1,
-            backgroundColor: index === page ? '#86BC29' : '#e5e7eb'
-          }}
-          whileHover={{ scale: 1.2 }}
-          onClick={() => setPage([index, index > page ? 1 : -1])}
-          className={`w-3 h-3 rounded-full transition-all ${
-            index === page ? 'shadow-md' : ''
-          }`}
-        />
-      ))}
-    </div>
 
       </motion.div>
     </div>

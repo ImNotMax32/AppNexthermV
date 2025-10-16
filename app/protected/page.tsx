@@ -222,13 +222,32 @@ export default async function DashboardPage() {
         
         <div className="space-y-4">
           {/* Mise à jour du jour */}
+          <div className="bg-white dark:bg-gray-800 rounded-lg p-4 border-l-4 border-[#86BC29] dark:border-[#86BC29]">
+            <div className="flex items-center justify-between mb-2">
+              <div className="flex items-center gap-2">
+                <h4 className="font-medium text-gray-800 dark:text-gray-200">Version 1.06</h4>
+                <span className="text-sm text-gray-500 dark:text-gray-400">• Aujourd'hui</span>
+              </div>
+              <Badge className="bg-[#86BC29]/10 text-[#86BC29] dark:bg-[#86BC29]/20 dark:text-[#86BC29]">Nouveau</Badge>
+            </div>
+            <ul className="text-sm text-gray-600 dark:text-gray-400 space-y-1">
+              <li>• <strong>Page de comparaison :</strong> Nouvelle fonctionnalité permettant de comparer plusieurs produits côte à côte avec capture d'écran et envoi par email</li>
+              <li>• <strong>Envoi par email amélioré :</strong> Possibilité d'envoyer des comparaisons par email avec sélection des pages (Coûts et/ou CO2) et adresse libre</li>
+              <li>• <strong>Interface utilisateur :</strong> Amélioration de la visibilité des boutons de navigation avec animations et effets visuels</li>
+              <li>• <strong>Restrictions SOL/SOL :</strong> Application automatique des contraintes techniques pour les systèmes Sol/Sol (plancher, température, options)</li>
+              <li>• <strong>Uniformisation graphique :</strong> Harmonisation des couleurs sur toute l'application avec la charte verte Nextherm</li>
+              <li>• <strong>Corrections techniques :</strong> Résolution des erreurs TypeScript et amélioration de la stabilité générale</li>
+            </ul>
+          </div>
+
+          {/* Mise à jour précédente */}
           <div className="bg-white dark:bg-gray-800 rounded-lg p-4 border-l-4 border-gray-300 dark:border-gray-600">
             <div className="flex items-center justify-between mb-2">
               <div className="flex items-center gap-2">
                 <h4 className="font-medium text-gray-800 dark:text-gray-200">Version 1.05</h4>
                 <span className="text-sm text-gray-500 dark:text-gray-400">• 18 juin 2025</span>
               </div>
-              <Badge className="bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400">Nouveau</Badge>
+              <Badge className="bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400">Stable</Badge>
             </div>
             <ul className="text-sm text-gray-600 dark:text-gray-400 space-y-1">
               <li>• <strong>Sélection multiple de modèles :</strong> Possibilité de choisir parmi plusieurs modèles compatibles dans la même famille de produits</li>

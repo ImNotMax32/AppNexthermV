@@ -23,9 +23,18 @@ import {
   Globe,
   LibraryBig,
   HeartHandshake,
-  LayoutDashboard
+  LayoutDashboard,
+  BarChart3
 } from 'lucide-react';
 import { createClient } from '@/utils/supabase/client';
+
+interface MenuItem {
+  href: string;
+  icon: any;
+  label: string;
+  onClick?: () => void;
+  available?: boolean;
+}
 
 const ComingSoonButton = ({ icon: Icon, label }: { icon: any; label: string }) => (
   <div className="relative flex items-center w-full group">
@@ -96,18 +105,28 @@ export default function DashboardLayout({
     };
   }, []);
 
-  const dimensionnementItems = [
+  const dimensionnementItems: MenuItem[] = [
     { href: '/protected/dimensionnement', icon: Calculator, label: 'Logiciel' },
     { href: '/protected/dimensionnement/save', icon: Save, label: 'Fichiers sauvegardés' },
-    { href: '/protected/dimensionnement/fonctionnement', icon: BookOpen, label: 'Fonctionnement' },
+    { 
+      href: '/protected/dimensionnement/resume/comparatif', 
+      icon: BarChart3, 
+      label: 'Comparatif solutions',
+      onClick: () => {
+        // Nettoyer les données pour forcer le mode sélection
+        localStorage.removeItem('selected_product');
+        localStorage.removeItem('selected_model');
+        sessionStorage.removeItem('buildingData');
+      }
+    },
   ];
   
-  const schemaItems = [
+  const schemaItems: MenuItem[] = [
     { href: '/protected/schema/schematheque', icon: LibraryBig, label: 'Schémathèque', available: true },
     { href: '/protected/schema/guide', icon: BookOpen, label: 'Guide d\'installation', available: true },
   ];
 
-  const devisItems = [
+  const devisItems: MenuItem[] = [
     { href: '/protected/devis', icon: LibraryBig, label: 'Devis', available: true },
     { href: '/protected/devis/devissave', icon: Save, label: 'Devis sauvegardés', available: true },
   ];
@@ -228,6 +247,7 @@ export default function DashboardLayout({
                           className={`w-full justify-start text-sm rounded-lg transition-all duration-200 ${
                             pathname === item.href ? 'bg-[#86BC29] text-white hover:bg-[#86BC29]/90' : 'hover:bg-gray-100'
                            }`}
+                          onClick={item.onClick || undefined}
                         >
                           <item.icon className="mr-2 h-4 w-4" />
                           {item.label}
@@ -290,6 +310,14 @@ export default function DashboardLayout({
                     IA Nextherm
                   </Button>
                 </Link>
+
+                <div className="relative group">
+                  <ComingSoonButton icon={Activity} label="Fiche de mise en service" />
+                  <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 bg-gray-800 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap z-[9999] pointer-events-none">
+                    Bientôt disponible
+                    <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-2 border-r-2 border-t-2 border-transparent border-t-gray-800"></div>
+                  </div>
+                </div>
               </div>
             </NavSection>
 
@@ -321,17 +349,17 @@ export default function DashboardLayout({
                   </Button>
                 </Link>
 {/* comming soon 
-                <Link href="/protected/doc-types" passHref>
-                  <Button
-                    variant={pathname === '/protected/doc-types' ? 'secondary' : 'ghost'}
-                    className={`w-full justify-start ${
-                      pathname === '/protected/doc-types' ? 'bg-[#86BC29] text-white hover:bg-[#86BC29]' : 'hover:bg-gray-100'
-                    }`}
-                  >
-                    <Users className="mr-2 h-4 w-4" />
-                    Document types
-                  </Button>
-                </Link>*/}
+            <Link href="/protected/doc-types" passHref>
+              <Button
+                variant={pathname === '/protected/doc-types' ? 'secondary' : 'ghost'}
+                className={`w-full justify-start ${
+                  pathname === '/protected/doc-types' ? 'bg-[#86BC29] text-white hover:bg-[#86BC29]' : 'hover:bg-gray-100'
+                }`}
+              >
+                <Users className="mr-2 h-4 w-4" />
+                Document types
+              </Button>
+            </Link>*/}
 
                 <Link href="/protected/devis" passHref>
                   <Button

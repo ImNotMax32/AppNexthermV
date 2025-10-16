@@ -498,7 +498,11 @@ Comment puis-je vous assister avec ce produit aujourd'hui ?`;
         body: JSON.stringify({
           message: messageWithContext,
           productId: selectedProduct,
-          threadId: currentThreadId
+          powerOption: selectedPowerOption,
+          conversationHistory: messages.map(msg => ({
+            role: msg.role,
+            content: msg.content
+          }))
         }),
       });
       

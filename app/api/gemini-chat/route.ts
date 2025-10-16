@@ -41,7 +41,6 @@ export async function POST(req: Request) {
     const apiKey = process.env.GEMINI_API_KEY;
     
     if (!apiKey) {
-      console.error('GEMINI_API_KEY not found in environment variables');
       return NextResponse.json(
         { error: 'Gemini API Key not configured' },
         { status: 500 }
@@ -57,14 +56,6 @@ export async function POST(req: Request) {
       productId?: string | null;
       powerOption?: string | null;
     };
-
-    console.log('Received request:', {
-      message: message?.substring(0, 100) + '...',
-      hasSystemPrompt: !!systemPrompt,
-      conversationHistoryLength: conversationHistory?.length || 0,
-      productId,
-      powerOption
-    });
 
     if (!message) {
       return NextResponse.json(
@@ -195,14 +186,9 @@ Spécifications techniques:
     });
 
   } catch (error) {
-    console.error('Error in chat route:', error);
-    console.error('Error details:', {
-      message: error instanceof Error ? error.message : 'Unknown error',
-      stack: error instanceof Error ? error.stack : undefined,
-      name: error instanceof Error ? error.name : undefined
-    });
+    console.error('Error in gemini-chat route:', error);
     return NextResponse.json(
-      { error: 'Internal server error', details: error instanceof Error ? error.message : 'Unknown error' },
+      { error: 'Internal server error' },
       { status: 500 }
     );
   }

@@ -215,14 +215,10 @@ export default function Header() {
                     </Link>
                   </DropdownMenuItem>
                   <DropdownMenuSeparator />
-                  <form action={handleSignOut} className="w-full">
-                    <button type="submit" className="flex w-full">
-                      <DropdownMenuItem className="w-full cursor-pointer text-red-600" onClick={handleSignOut}>
-                        <LogOut className="mr-2 h-4 w-4" />
-                        <span>Déconnexion</span>
-                      </DropdownMenuItem>
-                    </button>
-                  </form>
+                  <DropdownMenuItem className="w-full cursor-pointer text-red-600" onClick={handleSignOut}>
+                    <LogOut className="mr-2 h-4 w-4" />
+                    <span>Déconnexion</span>
+                  </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
             </div>

@@ -318,7 +318,7 @@ const addFooter = (doc: jsPDF) => {
   doc.text('Siège social : 30 Rue Maryse Bastié, ZA de Clairac, Beaumont-lès-Valence 26760', pageCenter, 294, { align: 'center' });
 };
 
-export async function generateModernPdf(data: GeneratePdfData): Promise<void> {
+export async function generateModernPdf(data: GeneratePdfData, returnBase64: boolean = false): Promise<void | string> {
   
   try {
     // Création du PDF
@@ -777,8 +777,16 @@ console.log("Chemin de l'image maison:", housePath);
     addFooter(doc);
   }
 
-  // Sauvegarde du PDF
-  doc.save(`${data.fileName || `proposition_nextherm_${data.referenceNumber || 'sans_reference'}`}.pdf`);
+  // Sauvegarde du PDF ou retour en base64
+  if (returnBase64) {
+    // Retourner le PDF en base64
+    const pdfBase64 = doc.output('datauristring');
+    return pdfBase64;
+  } else {
+    // Télécharger le PDF comme avant
+    doc.save(`${data.fileName || `proposition_nextherm_${data.referenceNumber || 'sans_reference'}`}.pdf`);
+    return;
+  }
 
   } catch (error) {
     console.error('Erreur lors de la génération du PDF:', error);

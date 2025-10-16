@@ -53,7 +53,7 @@ interface PieDataItem {
   value: number;
 }
 
-const COLORS = ['#86BC29', '#FFB020', '#0EA5E9', '#F43F5E', '#8B5CF6']
+const COLORS = ['#86BC29', '#6BA83A', '#4A7C59', '#2D5A3D', '#1A3D2A']
 
 export default function VueGenerale() {
   const [calculations, setCalculations] = useState<Calculation[]>([]);
@@ -434,54 +434,54 @@ export default function VueGenerale() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.1 }}
       >
-        <Card className="bg-gradient-to-br from-blue-50 to-blue-100 border-blue-200 hover:shadow-lg transition-all duration-300">
+        <Card className="bg-gradient-to-br from-[#86BC29]/10 to-[#86BC29]/5 border-[#86BC29]/20 hover:shadow-lg transition-all duration-300">
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-blue-600 text-sm font-medium">Total Projets</p>
-                <p className="text-3xl font-bold text-blue-900">{calculations.length}</p>
+                <p className="text-[#86BC29] text-sm font-medium">Total Projets</p>
+                <p className="text-3xl font-bold text-gray-900">{calculations.length}</p>
               </div>
-              <Calculator className="w-8 h-8 text-blue-500" />
+              <Calculator className="w-8 h-8 text-[#86BC29]" />
             </div>
           </CardContent>
         </Card>
 
-        <Card className="bg-gradient-to-br from-green-50 to-green-100 border-0 shadow-lg hover:shadow-xl transition-all duration-300">
+        <Card className="bg-gradient-to-br from-[#6BA83A]/10 to-[#6BA83A]/5 border-[#6BA83A]/20 shadow-lg hover:shadow-xl transition-all duration-300">
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-green-600 text-sm font-medium">Chiffre d'affaires</p>
-                <p className="text-3xl font-bold text-green-900">
+                <p className="text-[#6BA83A] text-sm font-medium">Chiffre d'affaires</p>
+                <p className="text-3xl font-bold text-gray-900">
                   {totalRevenue.toLocaleString('fr-FR', { maximumFractionDigits: 0 })}
                 </p>
               </div>
-              <Euro className="w-8 h-8 text-green-500" />
+              <Euro className="w-8 h-8 text-[#6BA83A]" />
             </div>
           </CardContent>
         </Card>
 
-        <Card className="bg-gradient-to-br from-purple-50 to-purple-100 border-purple-200 hover:shadow-lg transition-all duration-300">
+        <Card className="bg-gradient-to-br from-[#4A7C59]/10 to-[#4A7C59]/5 border-[#4A7C59]/20 hover:shadow-lg transition-all duration-300">
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-purple-600 text-sm font-medium">Taux de conversion</p>
-                <p className="text-3xl font-bold text-purple-900">{conversionRate}%</p>
+                <p className="text-[#4A7C59] text-sm font-medium">Taux de conversion</p>
+                <p className="text-3xl font-bold text-gray-900">{conversionRate}%</p>
               </div>
-              <TrendingUp className="w-8 h-8 text-purple-500" />
+              <TrendingUp className="w-8 h-8 text-[#4A7C59]" />
             </div>
           </CardContent>
         </Card>
 
-        <Card className="bg-gradient-to-br from-orange-50 to-orange-100 border-orange-200 hover:shadow-lg transition-all duration-300">
+        <Card className="bg-gradient-to-br from-[#2D5A3D]/10 to-[#2D5A3D]/5 border-[#2D5A3D]/20 hover:shadow-lg transition-all duration-300">
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-orange-600 text-sm font-medium">Valeur moyenne</p>
-                <p className="text-3xl font-bold text-orange-900">
+                <p className="text-[#2D5A3D] text-sm font-medium">Valeur moyenne</p>
+                <p className="text-3xl font-bold text-gray-900">
                   {avgProjectValue.toLocaleString('fr-FR', { maximumFractionDigits: 0 })}
                 </p>
               </div>
-              <FileText className="w-8 h-8 text-orange-500" />
+              <FileText className="w-8 h-8 text-[#2D5A3D]" />
             </div>
           </CardContent>
         </Card>
@@ -496,8 +496,8 @@ export default function VueGenerale() {
       >
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="p-2 bg-green-100 rounded-lg">
-              <Calculator className="w-6 h-6 text-green-500" />
+            <div className="p-2 bg-[#86BC29]/10 rounded-lg">
+              <Calculator className="w-6 h-6 text-[#86BC29]" />
             </div>
             <div>
               <h2 className="text-xl font-semibold text-gray-900">Dimensionnements</h2>
@@ -512,11 +512,11 @@ export default function VueGenerale() {
             <CardHeader className="pb-4">
               <div className="flex items-center justify-between">
                 <CardTitle className="text-lg font-semibold text-gray-800 flex items-center gap-2">
-                  <Activity className="w-5 h-5 text-green-500" />
+                  <Activity className="w-5 h-5 text-[#86BC29]" />
                   Évolution temporelle
                 </CardTitle>
                 <div className="flex items-center gap-2 text-sm text-gray-600">
-                  <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                  <div className="w-3 h-3 bg-[#86BC29] rounded-full"></div>
                   Projets créés
                 </div>
               </div>
@@ -526,7 +526,7 @@ export default function VueGenerale() {
                 <div className="text-3xl font-bold text-gray-900">{monthStats.currentMonthCalcs.length}</div>
                 <div className={`text-sm font-medium flex items-center px-2 py-1 rounded-full ${
                   monthStats.growthPercentage >= 0 
-                    ? 'text-green-700 bg-green-100' 
+                    ? 'text-[#86BC29] bg-[#86BC29]/10' 
                     : 'text-red-700 bg-red-100'
                 }`}>
                   {monthStats.growthPercentage >= 0 ? (
@@ -573,10 +573,10 @@ export default function VueGenerale() {
                     <Line
                       type="monotone"
                       dataKey="count"
-                      stroke="#10B981"
+                      stroke="#86BC29"
                       strokeWidth={3}
-                      dot={{ fill: '#10B981', strokeWidth: 2, r: 4 }}
-                      activeDot={{ r: 6, strokeWidth: 2, fill: '#fff', stroke: '#10B981' }}
+                      dot={{ fill: '#86BC29', strokeWidth: 2, r: 4 }}
+                      activeDot={{ r: 6, strokeWidth: 2, fill: '#fff', stroke: '#86BC29' }}
                     />
                   </LineChart>
                 </ResponsiveContainer>
@@ -589,7 +589,7 @@ export default function VueGenerale() {
             <CardHeader className="pb-4">
               <div className="flex justify-between items-center">
                 <CardTitle className="text-lg font-semibold text-gray-800 flex items-center gap-2">
-                  <PieChartIcon className="w-5 h-5 text-green-500" />
+                  <PieChartIcon className="w-5 h-5 text-[#86BC29]" />
                   Répartition par {analysisType === 'type' ? 'type' : 'département'}
                 </CardTitle>
                 <div className="flex gap-2">
@@ -672,8 +672,8 @@ export default function VueGenerale() {
       >
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="p-2 bg-blue-100 rounded-lg">
-              <FileText className="w-6 h-6 text-blue-600" />
+            <div className="p-2 bg-[#6BA83A]/10 rounded-lg">
+              <FileText className="w-6 h-6 text-[#6BA83A]" />
             </div>
             <div>
               <h2 className="text-xl font-semibold text-gray-900">Devis</h2>
@@ -699,11 +699,11 @@ export default function VueGenerale() {
             <CardHeader className="pb-4">
               <div className="flex items-center justify-between">
                 <CardTitle className="text-lg font-semibold text-gray-800 flex items-center gap-2">
-                  <Activity className="w-5 h-5 text-blue-500" />
+                  <Activity className="w-5 h-5 text-[#6BA83A]" />
                   Évolution des devis
                 </CardTitle>
                 <div className="flex items-center gap-2 text-sm text-gray-600">
-                  <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
+                  <div className="w-3 h-3 bg-[#6BA83A] rounded-full"></div>
                   Devis créés
                 </div>
               </div>
@@ -715,7 +715,7 @@ export default function VueGenerale() {
                     new Date(d.created_at).getMonth() === new Date().getMonth()
                   ).length}
                 </div>
-                <div className="text-sm font-medium flex items-center px-2 py-1 rounded-full bg-blue-100 text-blue-700">
+                <div className="text-sm font-medium flex items-center px-2 py-1 rounded-full bg-[#6BA83A]/10 text-[#6BA83A]">
                   <Calendar className="w-3 h-3 mr-1" />
                   Ce mois
                 </div>
@@ -756,10 +756,10 @@ export default function VueGenerale() {
                     <Line
                       type="monotone"
                       dataKey="count"
-                      stroke="#3B82F6"
+                      stroke="#6BA83A"
                       strokeWidth={3}
-                      dot={{ fill: '#3B82F6', strokeWidth: 2, r: 4 }}
-                      activeDot={{ r: 6, strokeWidth: 2, fill: '#fff', stroke: '#3B82F6' }}
+                      dot={{ fill: '#6BA83A', strokeWidth: 2, r: 4 }}
+                      activeDot={{ r: 6, strokeWidth: 2, fill: '#fff', stroke: '#6BA83A' }}
                     />
                   </LineChart>
                 </ResponsiveContainer>
@@ -772,7 +772,7 @@ export default function VueGenerale() {
             <CardHeader className="pb-4">
               <div className="flex justify-between items-center">
                 <CardTitle className="text-lg font-semibold text-gray-800 flex items-center gap-2">
-                  <PieChartIcon className="w-5 h-5 text-blue-500" />
+                  <PieChartIcon className="w-5 h-5 text-[#6BA83A]" />
                   Analyse des devis
                 </CardTitle>
                 <div className="flex gap-2">
@@ -848,7 +848,7 @@ export default function VueGenerale() {
 
       {/* Section Actions rapides */}
       <motion.div 
-        className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-6"
+        className="bg-gradient-to-r from-[#86BC29]/5 to-[#6BA83A]/5 rounded-2xl p-6"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.4 }}

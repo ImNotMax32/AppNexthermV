@@ -22,6 +22,7 @@ interface SelectWithAnimationProps {
   children: React.ReactNode;
   error?: boolean;
   required?: boolean;
+  disabled?: boolean;
 }
 
 interface HeatingMethodFormData {
@@ -145,7 +146,8 @@ const SelectWithAnimation: React.FC<SelectWithAnimationProps> = ({
   onValueChange, 
   children,
   error = false,
-  required = false
+  required = false,
+  disabled = false
  }) => {
   const hasValue = value && value !== '';
   
@@ -157,12 +159,13 @@ const SelectWithAnimation: React.FC<SelectWithAnimationProps> = ({
       <div className="flex items-center gap-2">
         <Label className={
           error ? "text-red-500 font-medium" : 
-          hasValue ? "text-[#86BC29] font-medium" : ""
+          hasValue ? "text-[#86BC29] font-medium" : 
+          disabled ? "text-gray-400 font-medium" : ""
         }>
           {label}
           {required && !hasValue && <span className="text-red-500 ml-1">*</span>}
         </Label>
-        {hasValue && !error && (
+        {hasValue && !error && !disabled && (
           <motion.span
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -181,12 +184,13 @@ const SelectWithAnimation: React.FC<SelectWithAnimationProps> = ({
           </motion.span>
         )}
       </div>
-      <Select value={value} onValueChange={onValueChange}>
+      <Select value={value} onValueChange={onValueChange} disabled={disabled}>
         <SelectTrigger 
           className={`w-full transition-all duration-300 
             hover:ring-2 hover:ring-[#86BC29]/50
             ${error ? 'ring-2 ring-red-500 bg-red-50' : 
-              hasValue ? 'ring-1 ring-[#86BC29]' : ''}`}
+              hasValue ? 'ring-1 ring-[#86BC29]' : ''}
+            ${disabled ? 'opacity-50 cursor-not-allowed bg-gray-100' : ''}`}
         >
           <motion.div
             initial="empty"
@@ -233,6 +237,7 @@ export default function HeatingMethodPage() {
     freecoolingKit: '',
     hotWater: ''
   });
+  const [selectedProduct, setSelectedProduct] = useState<any>(null);
   const supabase = createClient();
 
   useEffect(() => {
@@ -245,6 +250,38 @@ export default function HeatingMethodPage() {
     checkAuth();
   }, []);
 
+  // Charger le produit sélectionné pour appliquer les restrictions SOL/SOL
+  useEffect(() => {
+    const storedProduct = localStorage.getItem('selected_product');
+    if (storedProduct) {
+      try {
+        const product = JSON.parse(storedProduct);
+        setSelectedProduct(product);
+        
+        // Si c'est un produit SOL/SOL, appliquer les restrictions automatiquement
+        if (product.Particularites?.includes('Sol/Sol')) {
+          setFormData(prev => ({
+            ...prev,
+            emitterType: 'Plancher',
+            emitterTemperature: '35',
+            poolKit: 'Non',
+            freecoolingKit: 'Non',
+            hotWater: 'Non'
+          }));
+          
+          // Sauvegarder dans localStorage
+          localStorage.setItem('emetteur_type', 'Plancher');
+          localStorage.setItem('temp_plancher', '35');
+          localStorage.setItem('kit_piscine', 'Non');
+          localStorage.setItem('kit_freecooling', 'Non');
+          localStorage.setItem('kit_ECS', 'Non');
+        }
+      } catch (error) {
+        console.error('Erreur lors du parsing du produit sélectionné:', error);
+      }
+    }
+  }, []);
+
 
   const [formErrors, setFormErrors] = useState<FormErrors>({});
   const validateForm = (): boolean => {
@@ -253,16 +290,29 @@ export default function HeatingMethodPage() {
     // Validation de base pour tous les types
     if (!formData.heatPumpType) errors.heatPumpType = true;
     if (!formData.heatPumpSystem) errors.heatPumpSystem = true;
-    if (!formData.emitterType) errors.emitterType = true;
-    if (!formData.emitterTemperature) errors.emitterTemperature = true;
-    if (!formData.poolKit) errors.poolKit = true;
-    if (!formData.freecoolingKit) errors.freecoolingKit = true;
-    if (!formData.hotWater) errors.hotWater = true;
+    
+    // Pour les systèmes SOL/SOL, les valeurs sont forcées donc toujours valides
+    if (isSolSolProduct) {
+      // Les champs forcés pour SOL/SOL sont automatiquement valides
+      // Pas besoin de vérifier emitterType, emitterTemperature, captorType, poolKit, freecoolingKit, hotWater
+    } else {
+      // Validation normale pour les autres systèmes
+      if (!formData.emitterType) errors.emitterType = true;
+      if (!formData.emitterTemperature) errors.emitterTemperature = true;
+      if (!formData.poolKit) errors.poolKit = true;
+      if (!formData.freecoolingKit) errors.freecoolingKit = true;
+      if (!formData.hotWater) errors.hotWater = true;
+    }
   
     // Validation spécifique pour la géothermie
     if (formData.heatPumpType === 'Géothermie') {
-      // Validation du type de capteur toujours requise pour la géothermie
-      if (!formData.captorType) errors.captorType = true;
+      // Pour SOL/SOL, le capteur est forcé à Horizontal donc toujours valide
+      if (isSolSolProduct) {
+        // Le capteur est forcé à Horizontal, donc valide
+      } else {
+        // Validation du type de capteur toujours requise pour la géothermie
+        if (!formData.captorType) errors.captorType = true;
+      }
       
       // Validation de l'eau de nappe uniquement si le capteur est vertical
       if (formData.captorType === 'Vertical') {
@@ -293,6 +343,11 @@ export default function HeatingMethodPage() {
   };
   
   const handleChange = (field: keyof HeatingMethodFormData, value: string) => {
+    // Empêcher les modifications pour les produits SOL/SOL sur les champs restreints
+    if (isSolSolProduct && ['emitterType', 'emitterTemperature', 'captorType', 'poolKit', 'freecoolingKit', 'hotWater'].includes(field)) {
+      return; // Ne pas permettre la modification
+    }
+
     // Mise à jour du state avec réinitialisation des champs dépendants
     setFormData(prev => {
       const newData = { ...prev, [field]: value };
@@ -309,6 +364,16 @@ export default function HeatingMethodPage() {
         newData.waterTable = '';
         newData.captorFilling = '';
         newData.aerothermySupport = '';
+      }
+      
+      // Appliquer les restrictions SOL/SOL quand le système est sélectionné
+      if (field === 'heatPumpSystem' && value === 'Sol/Sol') {
+        newData.emitterType = 'Plancher';
+        newData.emitterTemperature = '35';
+        newData.captorType = 'Horizontal';
+        newData.poolKit = 'Non';
+        newData.freecoolingKit = 'Non';
+        newData.hotWater = 'Non';
       }
       
       // Réinitialisation des champs dépendants lors du changement de type de capteur
@@ -342,6 +407,15 @@ export default function HeatingMethodPage() {
   
       case 'heatPumpSystem':
         localStorage.setItem('systeme_pac', value);
+        // Si c'est SOL/SOL, sauvegarder aussi les valeurs forcées
+        if (value === 'Sol/Sol') {
+          localStorage.setItem('emetteur_type', 'Plancher');
+          localStorage.setItem('temp_plancher', '35');
+          localStorage.setItem('capteur_type', 'Horizontal');
+          localStorage.setItem('kit_piscine', 'Non');
+          localStorage.setItem('kit_freecooling', 'Non');
+          localStorage.setItem('kit_ECS', 'Non');
+        }
         break;
   
       case 'emitterType':
@@ -429,6 +503,7 @@ export default function HeatingMethodPage() {
   }, []);
 
   const isGeothermal = formData.heatPumpType === 'Géothermie';
+  const isSolSolProduct = formData.heatPumpSystem === 'Sol/Sol';
   const router = useRouter();
   return (
     <motion.div 
@@ -508,10 +583,13 @@ export default function HeatingMethodPage() {
                   <Label className={`font-medium ${formErrors.emitterType ? 'text-red-500' : ''}`}>
                     Type d'émetteur
                     {formErrors.emitterType && <span className="text-red-500 ml-1">*</span>}
+                    {isSolSolProduct && (
+                      <span className="text-xs text-gray-500 ml-2">(Forcé à Plancher pour SOL/SOL)</span>
+                    )}
                   </Label>
                   <div className="grid grid-cols-2 gap-4">
                     <motion.div
-                      whileHover="hover"
+                      whileHover={isSolSolProduct ? {} : "hover"}
                       animate={formData.emitterType === 'Radiateur' ? 'selected' : 'idle'}
                       variants={pulseVariants}
                     >
@@ -521,12 +599,14 @@ export default function HeatingMethodPage() {
                           ${formData.emitterType === 'Radiateur' 
                             ? 'bg-[#86BC29] hover:bg-[#75a625] text-white' 
                             : 'hover:border-[#86BC29] hover:text-[#86BC29]'}
-                          ${formErrors.emitterType ? 'border-red-500 bg-red-50' : ''}`}
-                        onClick={() => handleChange('emitterType', 'Radiateur')}
+                          ${formErrors.emitterType ? 'border-red-500 bg-red-50' : ''}
+                          ${isSolSolProduct ? 'opacity-50 cursor-not-allowed' : ''}`}
+                        onClick={() => !isSolSolProduct && handleChange('emitterType', 'Radiateur')}
+                        disabled={isSolSolProduct}
                       >
                         <motion.div 
                           className="h-16 w-16 mb-2 flex items-center justify-center"
-                          whileHover={{ rotate: [0, -5, 5, -5, 0] }}
+                          whileHover={isSolSolProduct ? {} : { rotate: [0, -5, 5, -5, 0] }}
                           transition={{ duration: 0.5 }}
                         >
                           <img 
@@ -538,9 +618,9 @@ export default function HeatingMethodPage() {
                         <span className="text-sm">Radiateur</span>
                       </Button>
                     </motion.div>
-  
+
                     <motion.div
-                      whileHover="hover"
+                      whileHover={isSolSolProduct ? {} : "hover"}
                       animate={formData.emitterType === 'Plancher' ? 'selected' : 'idle'}
                       variants={pulseVariants}
                     >
@@ -550,12 +630,14 @@ export default function HeatingMethodPage() {
                           ${formData.emitterType === 'Plancher' 
                             ? 'bg-[#86BC29] hover:bg-[#75a625] text-white' 
                             : 'hover:border-[#86BC29] hover:text-[#86BC29]'}
-                          ${formErrors.emitterType ? 'border-red-500 bg-red-50' : ''}`}
-                        onClick={() => handleChange('emitterType', 'Plancher')}
+                          ${formErrors.emitterType ? 'border-red-500 bg-red-50' : ''}
+                          ${isSolSolProduct ? 'ring-2 ring-[#86BC29] bg-[#86BC29]/10' : ''}`}
+                        onClick={() => !isSolSolProduct && handleChange('emitterType', 'Plancher')}
+                        disabled={isSolSolProduct}
                       >
                         <motion.div 
                           className="h-16 w-16 mb-2 flex items-center justify-center"
-                          whileHover={{ scale: [1, 1.1, 1] }}
+                          whileHover={isSolSolProduct ? {} : { scale: [1, 1.1, 1] }}
                           transition={{ duration: 0.5 }}
                         >
                           <img 
@@ -575,11 +657,12 @@ export default function HeatingMethodPage() {
   
                 {formData.emitterType && (
                   <SelectWithAnimation
-                    label="Température"
+                    label={`Température${isSolSolProduct ? ' (Forcée à 35°C pour SOL/SOL)' : ''}`}
                     value={formData.emitterTemperature}
                     onValueChange={(value) => handleChange('emitterTemperature', value)}
                     error={formErrors.emitterTemperature}
                     required
+                    disabled={isSolSolProduct}
                   >
                     {formData.emitterType === 'Radiateur' ? (
                       <>
@@ -620,11 +703,12 @@ export default function HeatingMethodPage() {
               {isGeothermal ? (
                   <>
                     <SelectWithAnimation
-                      label="Type de capteur"
+                      label={`Type de capteur${isSolSolProduct ? ' (Forcé à Horizontal pour SOL/SOL)' : ''}`}
                       value={formData.captorType}
                       onValueChange={(value) => handleChange('captorType', value)}
                       error={formErrors.captorType}
                       required
+                      disabled={isSolSolProduct}
                     >
                       <SelectItem value="Horizontal">Horizontal</SelectItem>
                       <SelectItem value="Vertical">Vertical</SelectItem>
@@ -674,33 +758,36 @@ export default function HeatingMethodPage() {
               </CardHeader>
               <CardContent className="space-y-6">
                 <SelectWithAnimation
-                  label="Kit Piscine"
+                  label={`Kit Piscine${isSolSolProduct ? ' (Non disponible pour SOL/SOL)' : ''}`}
                   value={formData.poolKit}
                   onValueChange={(value) => handleChange('poolKit', value)}
                   error={formErrors.poolKit}
                   required
+                  disabled={isSolSolProduct}
                 >
                   <SelectItem value="Oui">Oui</SelectItem>
                   <SelectItem value="Non">Non</SelectItem>
                 </SelectWithAnimation>
-  
+
                 <SelectWithAnimation
-                  label="Kit freecooling"
+                  label={`Kit freecooling${isSolSolProduct ? ' (Non disponible pour SOL/SOL)' : ''}`}
                   value={formData.freecoolingKit}
                   onValueChange={(value) => handleChange('freecoolingKit', value)}
                   error={formErrors.freecoolingKit}
                   required
+                  disabled={isSolSolProduct}
                 >
                   <SelectItem value="Oui">Oui</SelectItem>
                   <SelectItem value="Non">Non</SelectItem>
                 </SelectWithAnimation>
-  
+
                 <SelectWithAnimation
-                  label="ECS (Eau Chaude Sanitaire)"
+                  label={`ECS (Eau Chaude Sanitaire)${isSolSolProduct ? ' (Non disponible pour SOL/SOL)' : ''}`}
                   value={formData.hotWater}
                   onValueChange={(value) => handleChange('hotWater', value)}
                   error={formErrors.hotWater}
                   required
+                  disabled={isSolSolProduct}
                 >
                   <SelectItem value="Oui">Oui</SelectItem>
                   <SelectItem value="Non">Non</SelectItem>
