@@ -396,6 +396,16 @@ const ComparatifPage = () => {
     };
   }, []);
 
+  // Rechargement automatique simple après 0.5 seconde
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      console.log('ComparatifPage: rechargement automatique après 0.5s');
+      window.location.reload();
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   useEffect(() => {
     let isMounted = true; // Flag pour éviter les mises à jour d'état après démontage
 
