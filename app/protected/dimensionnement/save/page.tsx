@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useCallback, useMemo } from 'react';
 import { useRouter } from 'next/navigation';
+import { useSimpleAutoRefresh } from '@/hooks/useAutoRefresh';
 import {
   Card,
   CardContent,
@@ -122,6 +123,10 @@ interface QuoteConversionData {
 
 export default function SavedFiles() {
   const router = useRouter();
+  
+  // Hook pour refresh automatique si le contenu ne se charge pas
+  useSimpleAutoRefresh();
+  
   const supabase = useMemo(() => createClient(), []); // Création du client une seule fois
   const [searchTerm, setSearchTerm] = useState('');
   const [calculations, setCalculations] = useState<Calculation[]>([]);
