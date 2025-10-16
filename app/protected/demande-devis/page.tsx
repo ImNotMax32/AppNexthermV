@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -105,7 +105,7 @@ interface FormData {
   nombrePointsTirage: string;
 }
 
-export default function DemandeDevisPage() {
+function DemandeDevisContent() {
   const [formData, setFormData] = useState<FormData>({
     entreprise: '',
     reference: '',
@@ -1372,5 +1372,13 @@ export default function DemandeDevisPage() {
         )}
       </div>
     </div>
+  );
+}
+
+export default function DemandeDevisPage() {
+  return (
+    <Suspense fallback={<div>Chargement...</div>}>
+      <DemandeDevisContent />
+    </Suspense>
   );
 }

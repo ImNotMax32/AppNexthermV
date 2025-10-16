@@ -163,7 +163,7 @@ Spécifications techniques:
     }
 
     // Construire l'historique de conversation si fourni
-    let chatHistory = [];
+    let chatHistory: Array<{ role: string; parts: Array<{ text: string }> }> = [];
     if (conversationHistory && conversationHistory.length > 0) {
       chatHistory = conversationHistory.map(msg => ({
         role: msg.role === 'user' ? 'user' : 'model',

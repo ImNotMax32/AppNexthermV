@@ -1,6 +1,10 @@
 'use client';
 
 import React, { useEffect, useState, useRef, Fragment } from 'react';
+
+// Désactiver le rendu statique pour cette page
+export const dynamic = 'force-dynamic';
+export const runtime = 'nodejs';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -429,8 +433,19 @@ export default function SummaryPage() {
   const [showAdditionalInfo, setShowAdditionalInfo] = useState(false);
   const [showInfoForm, setShowInfoForm] = useState(false);
   
+  // Fonction utilitaire pour accéder à localStorage de manière sécurisée
+  const getLocalStorageItem = (key: string, defaultValue: string = '') => {
+    if (typeof window === 'undefined') return defaultValue;
+    try {
+      return localStorage.getItem(key) || defaultValue;
+    } catch (error) {
+      return defaultValue;
+    }
+  };
+
   // Récupérer le nom d'utilisateur depuis localStorage ou le paramètre supposé être dans sessionStorage
-  const userName = localStorage.getItem('user_name') || sessionStorage.getItem('user_name') || 'Moi';
+  const userName = typeof window !== 'undefined' ? 
+    (localStorage.getItem('user_name') || sessionStorage.getItem('user_name') || 'Moi') : 'Moi';
   
   // Information de l'utilisateur actuel (remplace les agents commerciaux)
   const currentUser = {
@@ -440,10 +455,10 @@ export default function SummaryPage() {
   };
 
   const calculateTotalSurface = () => {
-    const groundFloor = parseFloat(localStorage.getItem('Surface_RDC') || '0');
-    const firstFloor = parseFloat(localStorage.getItem('Surface_1er_etage') || '0');
-    const secondFloor = parseFloat(localStorage.getItem('Surface_2e_etage') || '0');
-    const buildingType = localStorage.getItem('Type_de_construction');
+    const groundFloor = parseFloat(getLocalStorageItem('Surface_RDC', '0'));
+    const firstFloor = parseFloat(getLocalStorageItem('Surface_1er_etage', '0'));
+    const secondFloor = parseFloat(getLocalStorageItem('Surface_2e_etage', '0'));
+    const buildingType = getLocalStorageItem('Type_de_construction');
 
     let total = groundFloor;
     if (buildingType === '1 Étage') {
