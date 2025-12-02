@@ -542,7 +542,7 @@ if (resultDeperdition) {
     doc.setFontSize(6);
     doc.setTextColor(81, 83, 74);
     const pageCenter = doc.internal.pageSize.getWidth() / 2;
-    const disclaimerText = "*Les informations fournies sont une estimation basée sur des critères spécifiques et n'engagent en rien la responsabilité de Nextherm sur le dimensionnement de l'installation. De plus, elles ne remplacent pas un véritable diagnostic nécessaire pour l'installation.";
+    const disclaimerText = "*Les informations fournies sont une estimation basée sur des critères spécifiques et n'engagent en rien la responsabilité de Nextherm sur le dimensionnement de l'installation. De plus, elles ne remplacent pas un véritable diagnostic énergétique et technique nécessaire pour l'installation.";
     doc.text(disclaimerText, pageCenter, 162, { align: 'center', maxWidth: 180 });
 
     // Titre principal (descendu de 3px supplémentaires)
