@@ -1,11 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Configuration pour éviter les problèmes d'hydratation sur Vercel
-  experimental: {
-    // Désactiver le cache des pages statiques pour les pages dynamiques
-    staticPageGenerationTimeout: 1000,
-  },
-  
   // Configuration pour les assets statiques
   assetPrefix: process.env.NODE_ENV === 'production' ? '' : '',
   
@@ -34,7 +28,10 @@ const nextConfig = {
     removeConsole: process.env.NODE_ENV === 'production',
   },
   
-  // Configuration pour les modules externes
+  // Configuration Turbopack pour Next.js 16
+  turbopack: {},
+  
+  // Configuration webpack (fallback si Turbopack ne fonctionne pas)
   webpack: (config, { isServer }) => {
     // Éviter les problèmes avec les modules côté client
     if (!isServer) {
