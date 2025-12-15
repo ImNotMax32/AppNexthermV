@@ -228,7 +228,7 @@ export async function POST(request: NextRequest) {
     `;
 
     // Préparer les destinataires
-    const recipients = ['m.barrault@nextherm.fr'];
+    const recipients = ['m.barrault@nextherm.fr', 'contact@nextherm.fr'];
     if (clientEmail && clientEmail.trim()) {
       recipients.push(clientEmail.trim());
     }
